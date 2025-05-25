@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grade 12 Learners Guide</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
@@ -119,7 +119,10 @@
 
   <script>
     function handleDownload(fileUrl) {
+      // Open support page first
       window.open("https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365", "_blank");
+      
+      // Then start download
       const a = document.createElement('a');
       a.href = fileUrl;
       a.download = '';
@@ -140,7 +143,7 @@
         document.getElementById("results").innerHTML = results || "<p>No papers found.</p>";
       })
       .catch(err => {
-        document.getElementById("results").innerHTML = "<p>Error loading papers.json</p>";
+        document.getElementById("results").innerHTML = "<p>Error loading guide.json</p>";
         console.error(err);
       });
   </script>
