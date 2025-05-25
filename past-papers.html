@@ -200,16 +200,7 @@ p {
   <option value="2015">2015</option>
 </select>
 
-  </div>    <div class="result" id="results">Loading...</div>    <div class="extra-button-container">  
-    <a href="https://info.dtech24.co.za" class="question-button" target="_blank">Need Help or Can't Find a Paper?</a>  
-  </div>    <div class="nav-buttons">  
-    <a href="2015-2019.html" class="nav-button">Grade 12 June & Nov (2015–2019)</a>  
-    <a href="Grade12-non-exams.html" class="nav-button">Grade 12 Non-Exam Papers</a>  
-    <a href="Grade11.html" class="nav-button">Grade 11</a>  
-    <a href="Grade10.html" class="nav-button">Grade 10</a>  
-    <a href="Grade9.html" class="nav-button">Grade 9</a>  
-    <a href="Grade8.html" class="nav-button">Grade 8</a>  
-  </div>    <script>  
+  </div>      <script>  
     let papers = [];  
   
     // Function to extract unique subjects from papers and populate subject dropdown  
@@ -287,7 +278,7 @@ p {
       `).join("");  
     }  
   
-    fetch('paper.json')  
+    fetch('papers.json')  
       .then(res => res.json())  
       .then(data => {  
         papers = data;  
