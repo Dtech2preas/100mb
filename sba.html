@@ -128,7 +128,7 @@
       document.body.removeChild(a);
     }
 
-    fetch('papers.json')
+    fetch('SBA.json')
       .then(res => res.json())
       .then(data => {
         const results = data.map(p => `
