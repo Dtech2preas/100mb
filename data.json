@@ -895,6 +895,65 @@
     "twitter": "https://twitter.com/TUTCommunications"
   },
   "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "University of Johannesburg",
+  "short": "UJ",
+  "province": "Gauteng",
+  "city": "Johannesburg",
+  "type": "Public",
+  "logo": "uj.png",
+  "motto": "Service Through Knowledge",
+  "website": "https://www.uj.ac.za",
+  "application": {
+    "link": "https://www.uj.ac.za/admission-aid/undergraduate/",
+    "open": "2025-04-01",
+    "close": "2025-10-31",
+    "fee": 200,
+    "lateAllowed": true,
+    "lateOpen": "2025-01-14",
+    "lateClose": "2025-01-19"
+  },
+  "faculties": [
+    "College of Business and Economics",
+    "Faculty of Art, Design and Architecture",
+    "Faculty of Education",
+    "Faculty of Engineering and the Built Environment",
+    "Faculty of Health Sciences",
+    "Faculty of Humanities",
+    "Faculty of Law",
+    "Faculty of Science",
+    "Johannesburg Business School"
+  ],
+  "minAPS": 18,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.uj.ac.za/admission-aid/student-finance/fees/",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Auckland Park Kingsway",
+    "Auckland Park Bunting Road",
+    "Doornfontein",
+    "Soweto"
+  ],
+  "highlights": [
+    "One of South Africa's largest comprehensive contact universities",
+    "Diverse, inclusive, and transformational institution",
+    "Offers a wide range of undergraduate and postgraduate programs"
+  ],
+  "contact": {
+    "email": "enrolment@uj.ac.za",
+    "phone": "+27 11 559 4555",
+    "address": "Auckland Park, Johannesburg, Gauteng, South Africa"
+  },
+  "map": "https://maps.google.com/?q=University+of+Johannesburg",
+  "social": {
+    "facebook": "https://www.facebook.com/UniversityOfJohannesburg",
+    "instagram": "https://www.instagram.com/universityofjohannesburg",
+    "twitter": "https://twitter.com/UJNews"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
 }
-
 ]
