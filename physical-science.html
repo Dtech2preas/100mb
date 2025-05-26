@@ -161,8 +161,10 @@
         return;
       }
 
+      const fileURL = `https://raw.githubusercontent.com/Dtech2preas/100mb/main/${subject}/${term}.json`;
+
       try {
-        const response = await fetch(`${subject}/${term}.json`);
+        const response = await fetch(fileURL);
         if (!response.ok) throw new Error("Quiz file not found");
 
         questions = await response.json();
