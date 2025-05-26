@@ -109,7 +109,7 @@
     <a href="https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365" class="support-button" target="_blank">Support</a>
   </header>
 
-  <h1>SCHOOL BAST</h1>
+  <h1>SCHOOL BASED ASSESSMENT</h1>
 
   <div class="result" id="results">Loading...</div>
 
@@ -119,18 +119,13 @@
 
   <script>
     function handleDownload(fileUrl) {
-      // Open ad in a new tab
-      window.open("https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365", "_blank");
-      
-      // Delay the download to ensure the ad tab opens first
+      // Step 1: Open the file in the default browser
+      window.location.href = fileUrl;
+
+      // Step 2: After 2 seconds, open the ad in a new tab
       setTimeout(() => {
-        const a = document.createElement('a');
-        a.href = fileUrl;
-        a.download = '';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      }, 1000); // 1-second delay (adjust if needed)
+        window.open("https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365", "_blank");
+      }, 2000);
     }
 
     fetch('SBA.json')
