@@ -254,7 +254,7 @@
       resultsContainer.innerHTML = filtered.length
         ? filtered.map(p => `
           <div class="paper">
-            <a href="${p.url}" onclick="handleDownload('${p.url}'); return false;">${p.name}</a>
+            <a href="${p.file}" onclick="handleDownload('${p.filel}'); return false;">${p.name}</a>
           </div>`).join('')
         : "<p>No results found.</p>";
     }
