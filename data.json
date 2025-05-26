@@ -96,5 +96,245 @@
   },
   "notes": "Application fee is non-refundable. International applicants pay R750. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
 },
+{
+  "name": "Cape Peninsula University of Technology",
+  "short": "CPUT",
+  "province": "Western Cape",
+  "city": "Cape Town",
+  "type": "Public",
+  "logo": "cput_logo.png",
+  "motto": "Creating Futures",
+  "website": "https://www.cput.ac.za",
+  "application": {
+    "link": "https://www.cput.ac.za/study/apply",
+    "open": "2025-05-13",
+    "close": "2025-09-30",
+    "fee": 0,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Applied Sciences",
+    "Business and Management Sciences",
+    "Education",
+    "Engineering and the Built Environment",
+    "Informatics and Design",
+    "Health and Wellness Sciences"
+  ],
+  "minAPS": 24,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.cput.ac.za/study/funding/undergraduate/nsfas-funding",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Bellville Campus",
+    "District Six Campus",
+    "Mowbray Campus",
+    "Granger Bay Campus",
+    "Wellington Campus"
+  ],
+  "highlights": [
+    "Offers a wide range of undergraduate and postgraduate programs",
+    "Strong emphasis on research and community engagement",
+    "Diverse student body with a focus on inclusivity"
+  ],
+  "contact": {
+    "email": "study@cput.ac.za",
+    "phone": "021 959 6767",
+    "address": "Cape Peninsula University of Technology, PO Box 1906, Bellville, 7535, Western Cape, South Africa"
+  },
+  "map": "https://maps.google.com/?q=Cape+Peninsula+University+of+Technology",
+  "social": {
+    "facebook": "https://www.facebook.com/CPUT",
+    "instagram": "https://www.instagram.com/CPUT",
+    "twitter": "https://twitter.com/CPUT"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "Durban University of Technology",
+  "short": "DUT",
+  "province": "KwaZulu-Natal",
+  "city": "Durban",
+  "type": "Public",
+  "logo": "dut_logo.png",
+  "motto": "Creative. Distinctive. Impactful.",
+  "website": "https://www.dut.ac.za",
+  "application": {
+    "link": "https://www.cao.ac.za",
+    "open": "2024-03-01",
+    "close": "2024-09-30",
+    "fee": 250,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Accounting and Informatics",
+    "Applied Sciences",
+    "Arts and Design",
+    "Engineering and the Built Environment",
+    "Health Sciences",
+    "Management Sciences"
+  ],
+  "minAPS": 20,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.dut.ac.za/financial-aid/",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Brickfield Campus",
+    "City Campus",
+    "Indumiso Campus",
+    "ML Sultan Campus",
+    "Ritson Campus",
+    "Riverside Campus",
+    "Steve Biko Campus"
+  ],
+  "highlights": [
+    "Offers a wide range of undergraduate and postgraduate programs",
+    "Strong emphasis on research and community engagement",
+    "Diverse student body with a focus on inclusivity"
+  ],
+  "contact": {
+    "email": "study@dut.ac.za",
+    "phone": "031 373 5005",
+    "address": "Durban University of Technology, PO Box 1334, Durban, 4000, KwaZulu-Natal, South Africa"
+  },
+  "map": "https://maps.google.com/?q=Durban+University+of+Technology",
+  "social": {
+    "facebook": "https://www.facebook.com/OfficialDUT",
+    "instagram": "https://www.instagram.com/dut_edu",
+    "twitter": "https://twitter.com/DUT_University"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "University of South Africa",
+  "short": "UNISA",
+  "province": "Gauteng",
+  "city": "Pretoria",
+  "type": "Public",
+  "logo": "unisa_logo.png",
+  "motto": "Pro Gentibus Sapientia",
+  "website": "https://www.unisa.ac.za",
+  "application": {
+    "link": "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission",
+    "open": "2025-09-01",
+    "close": "2026-01-01",
+    "fee": 135,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Accounting Sciences",
+    "Agriculture and Environmental Sciences",
+    "Education",
+    "Economic and Management Sciences",
+    "Graduate Studies",
+    "Human Sciences",
+    "Law",
+    "Science, Engineering and Technology"
+  ],
+  "minAPS": {
+    "Accounting Sciences": 23,
+    "Agriculture and Environmental Sciences": 22,
+    "Education": 20,
+    "Economic and Management Sciences": 21,
+    "Graduate Studies": 24,
+    "Human Sciences": 20,
+    "Law": 24,
+    "Science, Engineering and Technology": 24
+  },
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.unisa.ac.za/sites/myunisa/default/Student-Affairs-%26-SRC/Student-funding%3A-bursaries-%26-loans",
+  "residence": {
+    "available": false
+  },
+  "campuses": [
+    "Muckleneuk Campus",
+    "Florida Science Campus",
+    "Sunnyside Campus"
+  ],
+  "highlights": [
+    "Largest open distance learning institution in Africa",
+    "Offers a wide range of undergraduate and postgraduate programs",
+    "Strong emphasis on research and community engagement",
+    "Diverse student body with a focus on inclusivity"
+  ],
+  "contact": {
+    "email": "study@unisa.ac.za",
+    "phone": "0800 00 1870",
+    "address": "University of South Africa, PO Box 392, UNISA, 0003, Pretoria, Gauteng, South Africa"
+  },
+  "map": "https://maps.google.com/?q=University+of+South+Africa",
+  "social": {
+    "facebook": "https://www.facebook.com/UniversityOfSouthAfrica",
+    "instagram": "https://www.instagram.com/unisa_official",
+    "twitter": "https://twitter.com/unisa_news"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "University of KwaZulu-Natal",
+  "short": "UKZN",
+  "province": "KwaZulu-Natal",
+  "city": "Durban",
+  "type": "Public",
+  "logo": "ukzn_logo.png",
+  "motto": "Inspiring Greatness",
+  "website": "https://www.ukzn.ac.za",
+  "application": {
+    "link": "https://ww1.applications.ukzn.ac.za/",
+    "open": "2025-04-01",
+    "close": "2025-09-30",
+    "fee": 420,
+    "lateAllowed": true
+  },
+  "faculties": [
+    "College of Agriculture, Engineering & Science",
+    "College of Health Sciences",
+    "College of Humanities",
+    "College of Law and Management Studies"
+  ],
+  "minAPS": {
+    "College of Agriculture, Engineering & Science": 30,
+    "College of Health Sciences": 32,
+    "College of Humanities": 28,
+    "College of Law and Management Studies": 30
+  },
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://studentfunding.ukzn.ac.za/",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Westville Campus",
+    "Howard College Campus",
+    "Pietermaritzburg Campus",
+    "Edgewood Campus",
+    "Nelson R. Mandela School of Medicine"
+  ],
+  "highlights": [
+    "One of South Africa's leading research universities",
+    "Offers a wide range of undergraduate and postgraduate programs",
+    "Strong emphasis on community engagement and sustainability",
+    "Diverse student body with a focus on inclusivity"
+  ],
+  "contact": {
+    "email": "study@ukzn.ac.za",
+    "phone": "031 260 1111",
+    "address": "University of KwaZulu-Natal, Private Bag X54001, Durban, 4000, KwaZulu-Natal, South Africa"
+  },
+  "map": "https://maps.google.com/?q=University+of+KwaZulu-Natal",
+  "social": {
+    "facebook": "https://www.facebook.com/ukzn1",
+    "instagram": "https://www.instagram.com/ukzn_official",
+    "twitter": "https://twitter.com/ukzn"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
 
 ]
