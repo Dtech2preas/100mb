@@ -1,62 +1,51 @@
 [
   {
-    "id": 1,
-    "question": "Which part of the cell contains the genetic material?",
-    "correct_answer": "Nucleus",
-    "incorrect_answers": [
-      "Cell membrane",
-      "Cytoplasm",
-      "Mitochondria",
-      "Ribosome",
-      "Endoplasmic reticulum"
-    ]
-  },
-  {
-    "id": 2,
-    "question": "What is the solution to 2x + 3 = 11?",
-    "correct_answer": "x = 4",
-    "incorrect_answers": [
-      "x = 5",
-      "x = 3",
-      "x = 2",
-      "x = 6",
-      "x = 1"
-    ]
-  },
-  {
-    "id": 3,
-    "question": "Which planet is known as the Red Planet?",
-    "correct_answer": "Mars",
-    "incorrect_answers": [
-      "Venus",
-      "Jupiter",
-      "Saturn",
-      "Mercury",
-      "Neptune"
-    ]
-  },
-  {
-    "id": 4,
-    "question": "What is the chemical symbol for water?",
-    "correct_answer": "H2O",
-    "incorrect_answers": [
-      "O2",
-      "CO2",
-      "HO2",
-      "NaCl",
-      "CH4"
-    ]
-  },
-  {
-    "id": 5,
-    "question": "What type of blood cells help fight infections?",
-    "correct_answer": "White blood cells",
-    "incorrect_answers": [
-      "Red blood cells",
-      "Platelets",
-      "Plasma",
-      "Nerve cells",
-      "Muscle cells"
-    ]
+    "name": "University of Cape Town",
+    "short": "UCT",
+    "province": "Western Cape",
+    "city": "Cape Town",
+    "type": "Public",
+    "logo": "uct.png",
+    "motto": "Spes Bona",
+    "website": "https://uct.ac.za",
+    "application": {
+      "link": "https://applyonline.uct.ac.za",
+      "open": "2025-04-01",
+      "close": "2025-07-31",
+      "fee": 100,
+      "lateAllowed": false
+    },
+    "faculties": [
+      "Science",
+      "Commerce",
+      "Engineering",
+      "Law",
+      "Health Sciences"
+    ],
+    "minAPS": 36,
+    "language": "English",
+    "nsfas": true,
+    "bursaryLink": "https://www.uct.ac.za/financial-aid",
+    "residence": {
+      "available": true
+    },
+    "campuses": ["Upper Campus", "Middle Campus", "Lower Campus"],
+    "highlights": [
+      "Top-ranked in Africa",
+      "World-class research facilities",
+      "Strong international reputation"
+    ],
+    "contact": {
+      "email": "info@uct.ac.za",
+      "phone": "021 650 9111",
+      "address": "Rondebosch, Cape Town, 7700"
+    },
+    "map": "https://maps.google.com/?q=University+of+Cape+Town",
+    "social": {
+      "facebook": "https://facebook.com/uct.ac.za",
+      "instagram": "https://instagram.com/uct.ac.za",
+      "twitter": "https://twitter.com/uct_news"
+    },
+    "notes": "Application fee is non-refundable. International applicants may have different deadlines."
   }
 ]
