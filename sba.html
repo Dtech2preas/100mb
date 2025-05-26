@@ -119,13 +119,18 @@
 
   <script>
     function handleDownload(fileUrl) {
+      // Open ad in a new tab
       window.open("https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365", "_blank");
-      const a = document.createElement('a');
-      a.href = fileUrl;
-      a.download = '';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      
+      // Delay the download to ensure the ad tab opens first
+      setTimeout(() => {
+        const a = document.createElement('a');
+        a.href = fileUrl;
+        a.download = '';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }, 1000); // 1-second delay (adjust if needed)
     }
 
     fetch('SBA.json')
@@ -140,7 +145,7 @@
         document.getElementById("results").innerHTML = results || "<p>No papers found.</p>";
       })
       .catch(err => {
-        document.getElementById("results").innerHTML = "<p>Error loading papers.json</p>";
+        document.getElementById("results").innerHTML = "<p>Error loading SBA.json</p>";
         console.error(err);
       });
   </script>
