@@ -147,11 +147,35 @@
     .score-high {
       background: #2e7d32; /* green */
     }
+ 
   </style>
 </head>
 <body>
   <div id="quiz-container">
-    <div id="question-section">
+    <div id="selection-section">
+      <label for="subject">Select Subject:</label>
+      <select id="subject">
+        <option value="" disabled selected>Choose Subject</option>
+        <option value="math">Mathematics</option>
+        <option value="physics">Physics</option>
+        <option value="life-science">Life Science</option>
+      </select>
+
+      <label for="term">Select Term:</label>
+      <select id="term">
+        <option value="" disabled selected>Choose Term</option>
+        <option value="term1">Term 1</option>
+        <option value="term2">Term 2</option>
+        <option value="term3">Term 3</option>
+        <option value="term4">Term 4</option>
+      </select>
+
+      <button id="start-btn">Start Quiz</button>
+    </div>
+
+    <h2 id="quiz-heading" style="display:none; text-align:center;"></h2>
+
+    <div id="question-section" style="display:none;">
       <div class="question" id="question-text"></div>
       <div class="options" id="options-container"></div>
       <button id="next-btn">Next</button>
@@ -169,18 +193,37 @@
     let currentQuestionIndex = 0;
     let userAnswers = [];
 
-    async function loadQuestions() {
-      const response = await fetch('data.json');
-      questions = await response.json();
-      showQuestion();
-    }
+    document.getElementById('start-btn').onclick = async () => {
+      const subject = document.getElementById('subject').value;
+      const term = document.getElementById('term').value;
+
+      if (!subject || !term) {
+        alert("Please select both subject and term.");
+        return;
+      }
+
+      const filePath = `${subject}/${term}.json`;
+      try {
+        const response = await fetch(filePath);
+        questions = await response.json();
+
+        document.getElementById('selection-section').style.display = 'none';
+        document.getElementById('quiz-section').style.display = 'block';
+        document.getElementById('quiz-heading').style.display = 'block';
+        document.getElementById('quiz-heading').innerText = `Subject: ${subject.replace("-", " ")} | Term: ${term.toUpperCase()}`;
+
+        showQuestion();
+      } catch (err) {
+        alert("Failed to load quiz. Please check if the file exists.");
+        console.error(err);
+      }
+    };
 
     function showQuestion() {
       const questionObj = questions[currentQuestionIndex];
-      const allOptions = [...questionObj.incorrect_answers];
-      const selectedIncorrect = allOptions.sort(() => 0.5 - Math.random()).slice(0, 3);
-      const options = [...selectedIncorrect, questionObj.correct_answer].sort(() => 0.5 - Math.random());
+      const options = [...questionObj.incorrect_answers, questionObj.correct_answer].sort(() => 0.5 - Math.random());
 
+      document.getElementById('question-section').style.display = 'block';
       document.getElementById('question-text').innerText = `Q${currentQuestionIndex + 1}: ${questionObj.question}`;
       const optionsContainer = document.getElementById('options-container');
       optionsContainer.innerHTML = '';
@@ -194,7 +237,6 @@
             selected: option,
             correct: questionObj.correct_answer
           };
-          // Disable all buttons after selection
           document.querySelectorAll('#options-container button').forEach(b => {
             b.disabled = true;
             b.classList.remove('selected');
@@ -249,17 +291,8 @@
       const scoreEl = document.getElementById('score');
       scoreEl.innerText = `You got ${correctCount} out of ${questions.length} correct (${percent}%)`;
 
-      // Apply color class based on percent
-      if (percent < 50) {
-        scoreEl.className = 'score-low';
-      } else if (percent < 80) {
-        scoreEl.className = 'score-mid';
-      } else {
-        scoreEl.className = 'score-high';
-      }
+      scoreEl.className = percent < 50 ? 'score-low' : percent < 80 ? 'score-mid' : 'score-high';
     }
-
-    loadQuestions();
   </script>
 </body>
 </html>
