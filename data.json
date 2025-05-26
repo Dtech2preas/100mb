@@ -619,6 +619,282 @@
     "twitter": "https://twitter.com/UniMpumalanga"
   },
   "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "University of Cape Town",
+  "short": "UCT",
+  "province": "Western Cape",
+  "city": "Cape Town",
+  "type": "Public",
+  "logo": "uct.png",
+  "motto": "Spes Bona",
+  "website": "https://www.uct.ac.za",
+  "application": {
+    "link": "https://applyonline.uct.ac.za",
+    "open": "2025-04-01",
+    "close": "2025-07-31",
+    "fee": 100,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Commerce",
+    "Engineering and the Built Environment",
+    "Health Sciences",
+    "Law",
+    "Science",
+    "Humanities"
+  ],
+  "minAPS": 36,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.uct.ac.za/financial-aid",
+  "residence": {
+    "available": true
+  },
+  "campuses": ["Upper Campus", "Middle Campus", "Lower Campus"],
+  "highlights": [
+    "Top-ranked in Africa",
+    "World-class research facilities",
+    "Strong international reputation"
+  ],
+  "contact": {
+    "email": "info@uct.ac.za",
+    "phone": "021 650 9111",
+    "address": "Rondebosch, Cape Town, 7700"
+  },
+  "map": "https://maps.google.com/?q=University+of+Cape+Town",
+  "social": {
+    "facebook": "https://facebook.com/uct.ac.za",
+    "instagram": "https://instagram.com/uct.ac.za",
+    "twitter": "https://twitter.com/uct_news"
+  },
+  "notes": "Application fee is non-refundable. International applicants may have different deadlines."
+},
+{
+  "name": "Nelson Mandela University",
+  "short": "NMU",
+  "province": "Eastern Cape",
+  "city": "Gqeberha",
+  "type": "Public",
+  "logo": "nmu.png",
+  "motto": "Change the world",
+  "website": "https://www.mandela.ac.za",
+  "application": {
+    "link": "https://www.mandela.ac.za/Study-at-Mandela/Application/Apply-undergraduate",
+    "open": "2025-04-01",
+    "close": "2025-09-30",
+    "fee": 0,
+    "lateAllowed": true,
+    "lateOpen": "2025-10-01",
+    "lateClose": "2025-10-31"
+  },
+  "faculties": [
+    "Faculty of Business and Economic Sciences",
+    "Faculty of Education",
+    "Faculty of Engineering, the Built Environment and Technology",
+    "Faculty of Health Sciences",
+    "Faculty of Humanities",
+    "Faculty of Law",
+    "Faculty of Science"
+  ],
+  "minAPS": 20,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.mandela.ac.za/Study-at-Mandela/Financial-Aid",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "South Campus",
+    "North Campus",
+    "Second Avenue Campus",
+    "Missionvale Campus",
+    "George Campus"
+  ],
+  "highlights": [
+    "Located in the coastal city of Gqeberha",
+    "Offers over 500 study programmes across seven faculties",
+    "Strong emphasis on community engagement and transformation"
+  ],
+  "contact": {
+    "email": "info@mandela.ac.za",
+    "phone": "+27 41 504 1111",
+    "address": "PO Box 77000, Gqeberha, 6031, South Africa"
+  },
+  "map": "https://maps.google.com/?q=Nelson+Mandela+University",
+  "social": {
+    "facebook": "https://www.facebook.com/MandelaUni",
+    "instagram": "https://www.instagram.com/mandelauni",
+    "twitter": "https://twitter.com/MandelaUni"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "University of the Witwatersrand",
+  "short": "Wits",
+  "province": "Gauteng",
+  "city": "Johannesburg",
+  "type": "Public",
+  "logo": "wits.png",
+  "motto": "Scientia et Labore",
+  "website": "https://www.wits.ac.za",
+  "application": {
+    "link": "https://www.wits.ac.za/undergraduate/apply-to-wits/",
+    "open": "2025-04-01",
+    "close": "2025-09-30",
+    "fee": 100,
+    "lateAllowed": true,
+    "lateOpen": "2025-10-01",
+    "lateClose": "2025-10-31"
+  },
+  "faculties": [
+    "Commerce, Law and Management",
+    "Engineering and the Built Environment",
+    "Health Sciences",
+    "Humanities",
+    "Science"
+  ],
+  "minAPS": 30,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.wits.ac.za/study-at-wits/financial-aid-and-scholarships-administration/scholarships-and-bursaries/",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "East Campus",
+    "West Campus",
+    "Health Sciences Campus",
+    "Parktown Campus"
+  ],
+  "highlights": [
+    "One of Africa’s leading research universities",
+    "Offers over 3,600 undergraduate and postgraduate courses",
+    "Home to multiple Nobel laureates among its alumni"
+  ],
+  "contact": {
+    "email": "ask.wits@wits.ac.za",
+    "phone": "+27 11 717 1888",
+    "address": "1 Jan Smuts Avenue, Braamfontein, Johannesburg, 2000, South Africa"
+  },
+  "map": "https://maps.google.com/?q=University+of+the+Witwatersrand",
+  "social": {
+    "facebook": "https://www.facebook.com/WitsUniversity",
+    "instagram": "https://www.instagram.com/witsuniversity",
+    "twitter": "https://twitter.com/WitsUniversity"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "University of Venda",
+  "short": "UNIVEN",
+  "province": "Limpopo",
+  "city": "Thohoyandou",
+  "type": "Public",
+  "logo": "univen.png",
+  "motto": "Creating Future Leaders",
+  "website": "https://www.univen.ac.za",
+  "application": {
+    "link": "https://www.univen.ac.za/apply/",
+    "open": "2025-04-01",
+    "close": "2025-09-26",
+    "fee": 0,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Faculty of Science, Engineering and Agriculture",
+    "Faculty of Management, Commerce and Law",
+    "Faculty of Humanities, Social Sciences and Education",
+    "Faculty of Health Sciences"
+  ],
+  "minAPS": 26,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.univen.ac.za/students/scholarships/",
+  "residence": {
+    "available": true
+  },
+  "campuses": ["Main Campus"],
+  "highlights": [
+    "Located in Thohoyandou, Limpopo",
+    "Offers a range of undergraduate and postgraduate programs",
+    "Active in community engagement and rural development"
+  ],
+  "contact": {
+    "email": "studentfinancesupport@univen.ac.za",
+    "phone": "+27 15 962 8000",
+    "address": "Private Bag X5050, Thohoyandou, 0950, Limpopo, South Africa"
+  },
+  "map": "https://maps.google.com/?q=University+of+Venda",
+  "social": {
+    "facebook": "https://www.facebook.com/UniversityOfVenda",
+    "instagram": "https://www.instagram.com/univen_official",
+    "twitter": "https://twitter.com/univen_official"
+  },
+  "notes": "Application is free of charge. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "Tshwane University of Technology",
+  "short": "TUT",
+  "province": "Gauteng",
+  "city": "Pretoria",
+  "type": "Public",
+  "logo": "tut.png",
+  "motto": "We empower people",
+  "website": "https://www.tut.ac.za",
+  "application": {
+    "link": "https://www.tut.ac.za/online-application-form",
+    "open": "2025-04-01",
+    "close": "2025-09-30",
+    "fee": 240,
+    "lateAllowed": true,
+    "lateOpen": "2025-10-01",
+    "lateClose": "2025-10-31"
+  },
+  "faculties": [
+    "Faculty of Engineering and the Built Environment",
+    "Faculty of Information and Communication Technology",
+    "Faculty of Science",
+    "Faculty of Humanities",
+    "Faculty of Management Sciences",
+    "Faculty of Arts and Design",
+    "Faculty of Health Sciences"
+  ],
+  "minAPS": 24,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.tut.ac.za/study-at-tut/financial-aid",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Pretoria Campus",
+    "Arcadia Campus",
+    "Arts Campus",
+    "Soshanguve North Campus",
+    "Soshanguve South Campus",
+    "Ga-Rankuwa Campus",
+    "Witbank (eMalahleni) Campus",
+    "Mbombela (Nelspruit) Campus",
+    "Polokwane Campus"
+  ],
+  "highlights": [
+    "Largest residential higher education institution in South Africa",
+    "Offers a wide range of vocational and professional programs",
+    "Strong focus on cooperative education and industry partnerships"
+  ],
+  "contact": {
+    "email": "general@tut.ac.za",
+    "phone": "086 110 2421",
+    "address": "Private Bag X680, Pretoria, 0001, South Africa"
+  },
+  "map": "https://maps.google.com/?q=Tshwane+University+of+Technology",
+  "social": {
+    "facebook": "https://www.facebook.com/TUTCommunications",
+    "instagram": "https://www.instagram.com/tutcommunications",
+    "twitter": "https://twitter.com/TUTCommunications"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
 }
 
 ]
