@@ -47,5 +47,54 @@
       "twitter": "https://twitter.com/uct_news"
     },
     "notes": "Application fee is non-refundable. International applicants may have different deadlines."
-  }
+  },
+{
+  "name": "University of Limpopo",
+  "short": "UL",
+  "province": "Limpopo",
+  "city": "Mankweng",
+  "type": "Public",
+  "logo": "ul.png",
+  "motto": "The University of Limpopo for human and environmental wellness in a rural context; finding solutions for Africa!",
+  "website": "https://www.ul.ac.za",
+  "application": {
+    "link": "https://www.ul.ac.za/admissions/undergraduate-studies/",
+    "open": "2025-04-01",
+    "close": "2025-10-31",
+    "fee": 200,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Humanities",
+    "Management and Law",
+    "Science and Agriculture",
+    "Health Sciences"
+  ],
+  "minAPS": 20,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.ul.ac.za/admissions/undergraduate-studies/student-fees/",
+  "residence": {
+    "available": true
+  },
+  "campuses": ["Turfloop Campus"],
+  "highlights": [
+    "Focus on rural development and African solutions",
+    "Strong programs in health sciences and agriculture",
+    "Emphasis on human and environmental wellness"
+  ],
+  "contact": {
+    "email": "enrolment@ul.ac.za",
+    "phone": "+27 15 268 3332",
+    "address": "C/O R71 Tzaneen Road and University Street, Mankweng Township, Polokwane, Limpopo Province"
+  },
+  "map": "https://maps.google.com/?q=University+of+Limpopo",
+  "social": {
+    "facebook": "https://www.facebook.com/UniversityOfLimpopo",
+    "instagram": "https://www.instagram.com/universityoflimpopo",
+    "twitter": "https://twitter.com/ULvarsity"
+  },
+  "notes": "Application fee is non-refundable. International applicants pay R750. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+
 ]
