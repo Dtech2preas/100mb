@@ -41,36 +41,54 @@
       margin-bottom: 1rem;
     }
 
-    .section {
-      margin-top: 3rem;
+    .dropdowns {
+      margin: 2rem 0;
     }
 
-    .section h2 {
-      color: #00ffff;
+    select, button {
+      padding: 10px;
+      margin: 0 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #00d8ff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #quiz-container {
+      display: none;
+      max-width: 700px;
+      margin: auto;
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .question {
+      font-size: 1.2rem;
       margin-bottom: 1rem;
     }
 
-    .terms {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .terms a {
-      text-decoration: none;
-      background: #121212;
-      padding: 1rem 2rem;
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 10px;
+      background: #2a2a2a;
+      color: white;
       border: 1px solid #00d8ff;
-      border-radius: 10px;
-      color: #fff;
-      font-weight: bold;
-      transition: 0.3s ease;
+      border-radius: 6px;
+      cursor: pointer;
     }
 
-    .terms a:hover {
+    .options button:hover {
       background: #00d8ff;
-      color: #0e0e0e;
+      color: #000;
     }
 
     footer {
@@ -92,30 +110,101 @@
   <main>
     <h1>Physical Science Quizzes</h1>
 
-    <div class="section">
-      <h2>Chemistry</h2>
-      <div class="terms">
-        <a href="PYchem/term1.json">Term 1</a>
-        <a href="PYchem/term2.json">Term 2</a>
-        <a href="PYchem/term3.json">Term 3</a>
-        <a href="PYchem/term4.json">Term 4</a>
-      </div>
+    <div class="dropdowns">
+      <select id="subject">
+        <option value="">-- Select Subject --</option>
+        <option value="PYchem">Chemistry</option>
+        <option value="PYPh">Physics</option>
+      </select>
+
+      <select id="term">
+        <option value="">-- Select Term --</option>
+        <option value="term1">Term 1</option>
+        <option value="term2">Term 2</option>
+        <option value="term3">Term 3</option>
+        <option value="term4">Term 4</option>
+      </select>
+
+      <button id="start-btn">Start Quiz</button>
     </div>
 
-    <div class="section">
-      <h2>Physics</h2>
-      <div class="terms">
-        <a href="PYPh/term1.json">Term 1</a>
-        <a href="PYPh/term2.json">Term 2</a>
-        <a href="PYPh/term3.json">Term 3</a>
-        <a href="PYPh/term4.json">Term 4</a>
-      </div>
+    <div id="quiz-container">
+      <div id="question" class="question"></div>
+      <div id="options" class="options"></div>
+      <button id="next-btn" style="display:none;">Next</button>
     </div>
   </main>
 
   <footer>
     &copy; 2025 DTECH - Powered by Preasx24
   </footer>
+
+  <script>
+    const startBtn = document.getElementById('start-btn');
+    const subjectSelect = document.getElementById('subject');
+    const termSelect = document.getElementById('term');
+    const quizContainer = document.getElementById('quiz-container');
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const nextBtn = document.getElementById('next-btn');
+
+    let questions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    startBtn.addEventListener('click', async () => {
+      const subject = subjectSelect.value;
+      const term = termSelect.value;
+
+      if (!subject || !term) {
+        alert('Please select both subject and term.');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${subject}/${term}.json`);
+        if (!response.ok) throw new Error("Quiz file not found");
+
+        questions = await response.json();
+        currentQuestionIndex = 0;
+        score = 0;
+        startBtn.style.display = 'none';
+        subjectSelect.disabled = true;
+        termSelect.disabled = true;
+        quizContainer.style.display = 'block';
+        showQuestion();
+      } catch (err) {
+        alert("Unable to load quiz for selected options.");
+        console.error(err);
+      }
+    });
+
+    function showQuestion() {
+      const question = questions[currentQuestionIndex];
+      questionEl.textContent = question.question;
+      optionsEl.innerHTML = '';
+      question.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.onclick = () => selectAnswer(i);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(selected) {
+      const correct = questions[currentQuestionIndex].answer;
+      if (selected === correct) score++;
+
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion();
+      } else {
+        questionEl.textContent = `Quiz complete! You scored ${score} out of ${questions.length}.`;
+        optionsEl.innerHTML = '';
+        nextBtn.style.display = 'none';
+      }
+    }
+  </script>
 
 </body>
 </html>
