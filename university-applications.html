@@ -96,13 +96,13 @@
       body.className = 'card-body';
       body.innerHTML = `
         <p><strong>Motto:</strong> ${u.motto || 'N/A'}</p>
-        <p><strong>Website:</strong> <a href="${u.website}" target="_blank">${u.website}</a></p>
-        <p><strong>Application:</strong> Opens ${u.application.open}, Closes ${u.application.close}, Fee: R${u.application.fee}, Late Allowed: ${u.application.lateAllowed ? 'Yes' : 'No'} | <a href="${u.application.link}" target="_blank">Apply Here</a></p>
+        <p><strong>Website:</strong> <a href="${u.website}" target="_blank" rel="noopener noreferrer">${u.website}</a></p>
+        <p><strong>Application:</strong> Opens ${u.application.open}, Closes ${u.application.close}, Fee: R${u.application.fee}, Late Allowed: ${u.application.lateAllowed ? 'Yes' : 'No'} | <a href="${u.application.link}" target="_blank" rel="noopener noreferrer">Apply Here</a></p>
         <p><strong>Faculties:</strong> ${u.faculties.join(', ')}</p>
         <p><strong>Min APS:</strong> ${u.minAPS}</p>
         <p><strong>Language of Instruction:</strong> ${u.language}</p>
         <p><strong>NSFAS:</strong> ${u.nsfas ? 'Accepted' : 'Not Accepted'}</p>
-        <p><strong>Bursary Info:</strong> <a href="${u.bursaryLink}" target="_blank">Click Here</a></p>
+        <p><strong>Bursary Info:</strong> <a href="${u.bursaryLink}" target="_blank" rel="noopener noreferrer">Click Here</a></p>
         <p><strong>Residence Available:</strong> ${u.residence.available ? 'Yes' : 'No'}</p>
         <p><strong>Campuses:</strong> ${u.campuses.join(', ')}</p>
         <div>
@@ -110,11 +110,11 @@
           ${u.highlights.map(h => `<div class="highlight">${h}</div>`).join('')}
         </div>
         <p><strong>Contact:</strong> ${u.contact.email}, ${u.contact.phone}, ${u.contact.address}</p>
-        <p><strong>Map:</strong> <a href="${u.map}" target="_blank">View Location</a></p>
+        <p><strong>Map:</strong> <a href="${u.map}" target="_blank" rel="noopener noreferrer">View Location</a></p>
         <p><strong>Social:</strong> 
-          ${u.social.facebook ? `<a href="${u.social.facebook}" target="_blank">Facebook</a> ` : ''}
-          ${u.social.instagram ? `<a href="${u.social.instagram}" target="_blank">Instagram</a> ` : ''}
-          ${u.social.twitter ? `<a href="${u.social.twitter}" target="_blank">Twitter</a>` : ''}
+          ${u.social.facebook ? `<a href="${u.social.facebook}" target="_blank" rel="noopener noreferrer">Facebook</a> ` : ''}
+          ${u.social.instagram ? `<a href="${u.social.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a> ` : ''}
+          ${u.social.twitter ? `<a href="${u.social.twitter}" target="_blank" rel="noopener noreferrer">Twitter</a>` : ''}
         </p>
         <p><strong>Notes:</strong> ${u.notes || 'None'}</p>
       `;
