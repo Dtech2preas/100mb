@@ -1,1 +1,12 @@
-h
+[
+  {
+    "question": "What is the chemical formula of water?",
+    "options": ["H2O", "CO2", "O2", "NaCl"],
+    "answer": 0
+  },
+  {
+    "question": "Which gas is used in balloons?",
+    "options": ["Helium", "Hydrogen", "Oxygen", "Nitrogen"],
+    "answer": 0
+  }
+]
