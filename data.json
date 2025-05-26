@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "question": "Which part of the cell contains the genetic material?",
+    "correct_answer": "Nucleus",
+    "incorrect_answers": [
+      "Cell membrane",
+      "Cytoplasm",
+      "Mitochondria",
+      "Ribosome",
+      "Endoplasmic reticulum"
+    ]
+  }
+]
