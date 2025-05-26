@@ -336,5 +336,289 @@
   },
   "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
 },
+{
+  "name": "North-West University",
+  "short": "NWU",
+  "province": "North West",
+  "city": "Potchefstroom",
+  "type": "Public",
+  "logo": "nwu.png",
+  "motto": "Inspiring Greatness",
+  "website": "https://www.nwu.ac.za",
+  "application": {
+    "link": "https://studies.nwu.ac.za/undergraduate-studies/application",
+    "open": "2025-04-01",
+    "close": "2025-08-31",
+    "fee": 600,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Economic and Management Sciences",
+    "Education",
+    "Engineering",
+    "Health Sciences",
+    "Humanities",
+    "Law",
+    "Natural and Agricultural Sciences",
+    "Theology"
+  ],
+  "minAPS": 24,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://studies.nwu.ac.za/financial-support-services/bursaries-undergraduate-studies",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Mahikeng Campus",
+    "Potchefstroom Campus",
+    "Vanderbijlpark Campus"
+  ],
+  "highlights": [
+    "Multi-campus university with a diverse student body",
+    "Offers a wide range of undergraduate and postgraduate programs",
+    "Strong emphasis on research and community engagement"
+  ],
+  "contact": {
+    "email": "studies@nwu.ac.za",
+    "phone": "0860 169 698",
+    "address": "Private Bag X2046, Mmabatho, 2735, North West, South Africa"
+  },
+  "map": "https://maps.google.com/?q=North-West+University",
+  "social": {
+    "facebook": "https://www.facebook.com/NWUUniversity",
+    "instagram": "https://www.instagram.com/nwuniversity",
+    "twitter": "https://twitter.com/NWUUniversity"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "University of the Free State",
+  "short": "UFS",
+  "province": "Free State",
+  "city": "Bloemfontein",
+  "type": "Public",
+  "logo": "ufs.png",
+  "motto": "In Veritate Sapientiae Lux",
+  "website": "https://www.ufs.ac.za",
+  "application": {
+    "link": "https://apply.ufs.ac.za/",
+    "open": "2024-04-01",
+    "close": "2024-09-30",
+    "fee": 0,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Economic and Management Sciences",
+    "Education",
+    "Health Sciences",
+    "Humanities",
+    "Law",
+    "Natural and Agricultural Sciences",
+    "Theology and Religion"
+  ],
+  "minAPS": 26,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.ufs.ac.za/kovsielife/unlisted-pages/bursaries/financial-aid",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Bloemfontein Campus",
+    "Qwaqwa Campus",
+    "South Campus"
+  ],
+  "highlights": [
+    "Offers a wide range of undergraduate and postgraduate programs",
+    "Strong emphasis on research and community engagement",
+    "Diverse student body with a focus on inclusivity"
+  ],
+  "contact": {
+    "email": "studies@ufs.ac.za",
+    "phone": "+27 51 401 9111",
+    "address": "University of the Free State, 205 Nelson Mandela Drive, Park West, Bloemfontein, 9301, South Africa"
+  },
+  "map": "https://maps.google.com/?q=University+of+the+Free+State",
+  "social": {
+    "facebook": "https://www.facebook.com/UFSUniversity",
+    "instagram": "https://www.instagram.com/ufs_official",
+    "twitter": "https://twitter.com/ufsweb"
+  },
+  "notes": "Application is free of charge. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "University of Pretoria",
+  "short": "UP",
+  "province": "Gauteng",
+  "city": "Pretoria",
+  "type": "Public",
+  "logo": "up.png",
+  "motto": "Praecepta Vitae",
+  "website": "https://www.up.ac.za",
+  "application": {
+    "link": "https://www.up.ac.za/online-application",
+    "open": "2025-04-01",
+    "close": "2025-06-30",
+    "fee": 300,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Engineering, Built Environment and Information Technology",
+    "Health Sciences",
+    "Humanities",
+    "Law",
+    "Natural and Agricultural Sciences",
+    "Economic and Management Sciences",
+    "Education",
+    "Theology",
+    "Veterinary Science"
+  ],
+  "minAPS": 28,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.up.ac.za/student-fees/article/3298935/application-for-study-finance-bursaries-loans-2025",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Hatfield Campus",
+    "Groenkloof Campus",
+    "Hillcrest Campus",
+    "Mamelodi Campus",
+    "Onderstepoort Campus",
+    "Prinshof Campus"
+  ],
+  "highlights": [
+    "Offers a wide range of undergraduate and postgraduate programs",
+    "Strong emphasis on research and innovation",
+    "Diverse student body with a focus on inclusivity"
+  ],
+  "contact": {
+    "email": "studies@up.ac.za",
+    "phone": "012 420 3111",
+    "address": "Private Bag X20, Hatfield, Pretoria, 0028, South Africa"
+  },
+  "map": "https://maps.google.com/?q=University+of+Pretoria",
+  "social": {
+    "facebook": "https://www.facebook.com/UPTuks",
+    "instagram": "https://www.instagram.com/uptuks",
+    "twitter": "https://twitter.com/UPTuks"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "Rhodes University",
+  "short": "RU",
+  "province": "Eastern Cape",
+  "city": "Grahamstown",
+  "type": "Public",
+  "logo": "rhodes_university_logo.png",
+  "motto": "Where leaders learn",
+  "website": "https://www.ru.ac.za",
+  "application": {
+    "link": "https://ross.ru.ac.za/ugadmissions",
+    "open": "2024-04-01",
+    "close": "2024-09-30",
+    "fee": 1000,
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Commerce",
+    "Education",
+    "Engineering",
+    "Humanities",
+    "Law",
+    "Science",
+    "Theology"
+  ],
+  "minAPS": 34,
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.ru.ac.za/studentfeesandfinancialaid/",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Main Campus"
+  ],
+  "highlights": [
+    "Offers a wide range of undergraduate and postgraduate programs",
+    "Strong emphasis on research and community engagement",
+    "Diverse student body with a focus on inclusivity"
+  ],
+  "contact": {
+    "email": "studies@ru.ac.za",
+    "phone": "046 603 8111",
+    "address": "Rhodes University, PO Box 94, Grahamstown, 6140, Eastern Cape, South Africa"
+  },
+  "map": "https://maps.google.com/?q=Rhodes+University",
+  "social": {
+    "facebook": "https://www.facebook.com/RhodesUniversity",
+    "instagram": "https://www.instagram.com/rhodesuniversity",
+    "twitter": "https://twitter.com/Rhodes_Uni"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+},
+{
+  "name": "University of Mpumalanga",
+  "short": "UMP",
+  "province": "Mpumalanga",
+  "city": "Mbombela",
+  "type": "Public",
+  "logo": "ump_logo.png",
+  "motto": "Creating Opportunities",
+  "website": "https://www.ump.ac.za",
+  "application": {
+    "link": "https://www.ump.ac.za/Study-with-us/Application-Process/Online-Applications",
+    "open": "2025-06-01",
+    "close": "2025-11-30",
+    "fee": {
+      "SA": 200,
+      "SADC": 400,
+      "International": 550
+    },
+    "lateAllowed": false
+  },
+  "faculties": [
+    "Agriculture and Natural Sciences",
+    "Education",
+    "Economics, Development and Business Sciences",
+    "Humanities and Social Sciences"
+  ],
+  "minAPS": {
+    "Agriculture and Natural Sciences": 30,
+    "Education": 26,
+    "Economics, Development and Business Sciences": 28,
+    "Humanities and Social Sciences": 28
+  },
+  "language": "English",
+  "nsfas": true,
+  "bursaryLink": "https://www.ump.ac.za/Study-with-us/Student-Funding.aspx",
+  "residence": {
+    "available": true
+  },
+  "campuses": [
+    "Mbombela Campus",
+    "Siyabuswa Campus"
+  ],
+  "highlights": [
+    "Offers a wide range of undergraduate and postgraduate programs",
+    "Strong emphasis on research and community engagement",
+    "Diverse student body with a focus on inclusivity"
+  ],
+  "contact": {
+    "email": "studentapplications@ump.ac.za",
+    "phone": "013 002 0001",
+    "address": "University of Mpumalanga, Mbombela Campus, Mbombela, Mpumalanga, South Africa"
+  },
+  "map": "https://maps.google.com/?q=University+of+Mpumalanga",
+  "social": {
+    "facebook": "https://www.facebook.com/UniMpumalanga",
+    "instagram": "https://www.instagram.com/UniMpumalanga",
+    "twitter": "https://twitter.com/UniMpumalanga"
+  },
+  "notes": "Application fee is non-refundable. Meeting the minimum APS does not guarantee admission; specific programs may have higher requirements."
+}
 
 ]
