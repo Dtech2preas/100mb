@@ -202,7 +202,7 @@
     let papers = [];
 
     async function loadData() {
-      const response = await fetch('data.json'); // Replace with your JSON file
+      const response = await fetch('papers.json'); // Replace with your JSON file
       papers = await response.json();
       populateSubjects();
       filterPapers();
