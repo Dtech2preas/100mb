@@ -5,52 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Grade 12 Quiz</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    .question { font-size: 1.2em; margin-bottom: 10px; }
-    .options button { display: block; margin: 5px 0; width: 100%; padding: 10px; }
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    #quiz-container { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto; }
+    .question { font-size: 1.2em; margin-bottom: 15px; }
+    .options button { display: block; margin: 8px 0; width: 100%; padding: 10px; }
+    #next-btn { margin-top: 20px; padding: 10px 20px; }
+    #result { display: none; }
+    .correct { color: green; }
+    .incorrect { color: red; }
   </style>
 </head>
 <body>
   <div id="quiz-container">
-    <div class="question" id="question-text"></div>
-    <div class="options" id="options-container"></div>
+    <div id="question-section">
+      <div class="question" id="question-text"></div>
+      <div class="options" id="options-container"></div>
+      <button id="next-btn">Next</button>
+    </div>
+
+    <div id="result">
+      <h2>Quiz Completed</h2>
+      <p id="score"></p>
+      <div id="review"></div>
+    </div>
   </div>
 
   <script>
-    async function loadQuiz() {
+    let questions = [];
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+
+    async function loadQuestions() {
       const response = await fetch('data.json');
-      const questions = await response.json();
-      const current = questions[0];
+      questions = await response.json();
+      showQuestion();
+    }
 
-      // Pick 3 random incorrect answers
-      const incorrect = [...current.incorrect_answers];
-      const selectedIncorrect = incorrect.sort(() => 0.5 - Math.random()).slice(0, 3);
+    function showQuestion() {
+      const questionObj = questions[currentQuestionIndex];
+      const allOptions = [...questionObj.incorrect_answers];
+      const selectedIncorrect = allOptions.sort(() => 0.5 - Math.random()).slice(0, 3);
+      const options = [...selectedIncorrect, questionObj.correct_answer].sort(() => 0.5 - Math.random());
 
-      // Combine with correct answer and shuffle
-      const allOptions = [...selectedIncorrect, current.correct_answer].sort(() => 0.5 - Math.random());
-
-      // Display question
-      document.getElementById('question-text').innerText = current.question;
-
-      // Display options
+      document.getElementById('question-text').innerText = `Q${currentQuestionIndex + 1}: ${questionObj.question}`;
       const optionsContainer = document.getElementById('options-container');
       optionsContainer.innerHTML = '';
 
-      allOptions.forEach(option => {
+      options.forEach(option => {
         const btn = document.createElement('button');
         btn.innerText = option;
         btn.onclick = () => {
-          if (option === current.correct_answer) {
-            alert('Correct!');
-          } else {
-            alert('Incorrect!');
-          }
+          userAnswers[currentQuestionIndex] = {
+            question: questionObj.question,
+            selected: option,
+            correct: questionObj.correct_answer
+          };
+          document.querySelectorAll('#options-container button').forEach(b => b.disabled = true);
+          btn.style.backgroundColor = '#ddd';
         };
         optionsContainer.appendChild(btn);
       });
+
+      document.getElementById('next-btn').innerText = currentQuestionIndex === questions.length - 1 ? "Finish" : "Next";
     }
 
-    loadQuiz();
+    document.getElementById('next-btn').onclick = () => {
+      if (!userAnswers[currentQuestionIndex]) {
+        alert("Please select an answer first.");
+        return;
+      }
+
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    };
+
+    function showResult() {
+      document.getElementById('question-section').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+
+      let correctCount = 0;
+      const reviewDiv = document.getElementById('review');
+      reviewDiv.innerHTML = '';
+
+      userAnswers.forEach((ans, index) => {
+        const isCorrect = ans.selected === ans.correct;
+        if (isCorrect) correctCount++;
+
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <p>
+            <strong>Q${index + 1}:</strong> ${ans.question}<br/>
+            Your answer: <span class="${isCorrect ? 'correct' : 'incorrect'}">${ans.selected}</span><br/>
+            ${!isCorrect ? `Correct answer: <span class="correct">${ans.correct}</span>` : ''}
+          </p>
+        `;
+        reviewDiv.appendChild(div);
+      });
+
+      const percent = Math.round((correctCount / questions.length) * 100);
+      document.getElementById('score').innerText = `You got ${correctCount} out of ${questions.length} correct (${percent}%)`;
+    }
+
+    loadQuestions();
   </script>
 </body>
-  </html>
+</html>
