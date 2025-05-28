@@ -167,7 +167,7 @@
     let userAnswers = [];  
   
     async function loadQuestions() {  
-      const response = await fetch('quizes/dad.json');  
+      const response = await fetch('quizzes/dad.json');  
       questions = await response.json();  
       showQuestion();  
     }  
