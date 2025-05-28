@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Grade 12 Quiz</title>
   <style>
-    /* General Styling */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #667eea, #764ba2);
@@ -27,7 +26,7 @@
       box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
     }
 
-    #subject-title {
+    #subject-heading {
       font-size: 1.5rem;
       font-weight: bold;
       margin-bottom: 20px;
@@ -71,19 +70,19 @@
       font-weight: 700;
     }
 
-    #next-btn {
-      margin-top: 25px;
+    #next-btn, #mode-btn {
+      margin-top: 15px;
       background: #667eea;
       border: none;
       color: white;
-      padding: 14px 28px;
-      font-size: 1.1rem;
+      padding: 12px 20px;
+      font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
     }
 
-    #next-btn:hover {
+    #next-btn:hover, #mode-btn:hover {
       background: #5369d6;
     }
 
@@ -135,123 +134,124 @@
     .score-high { background: #2e7d32; }
   </style>
 </head>
-<body>  
-  <div id="quiz-container">  
+<body>
+  <div id="quiz-container">
     <h2 id="subject-heading">Physical Science – Physics Term 1</h2>
-    <div id="question-section">  
-      <div class="question" id="question-text"></div>  
-      <div class="options" id="options-container"></div>  
-      <button id="next-btn">Next</button>  
-    </div>  
-    <div id="result">  
-      <h2>Quiz Completed</h2>  
-      <p id="score"></p>  
-      <div id="review"></div>  
-    </div>  
-  </div>  
+    <button id="mode-btn">Switch to 50 Questions</button>
+    <div id="question-section">
+      <div class="question" id="question-text"></div>
+      <div class="options" id="options-container"></div>
+      <button id="next-btn">Next</button>
+    </div>
+    <div id="result">
+      <h2>Quiz Completed</h2>
+      <p id="score"></p>
+      <div id="review"></div>
+    </div>
+  </div>
 
-  <script>  
-    let questions = [];  
-    let currentQuestionIndex = 0;  
-    let userAnswers = [];  
+  <script>
+    let questions = [];
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let questionLimit = 30;
 
-    async function loadQuestions() {  
-      const response = await fetch('quizzes/dad.json');  
-      questions = await response.json();  
-      questions = shuffleArray(questions); // Shuffle questions  
-      showQuestion();  
-    }  
+    document.getElementById('mode-btn').onclick = () => {
+      questionLimit = questionLimit === 30 ? 50 : 30;
+      document.getElementById('mode-btn').innerText = `Switch to ${questionLimit === 30 ? 50 : 30} Questions`;
+      currentQuestionIndex = 0;
+      userAnswers = [];
+      loadQuestions();
+    };
 
-    function shuffleArray(array) {  
-      return array.sort(() => Math.random() - 0.5);  
-    }  
+    async function loadQuestions() {
+      const response = await fetch('quizzes/dad.json');
+      const allQuestions = await response.json();
+      questions = shuffleArray(allQuestions).slice(0, questionLimit);
+      showQuestion();
+    }
 
-    function showQuestion() {  
-      const questionObj = questions[currentQuestionIndex];  
+    function shuffleArray(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
 
-      // Pick 3 random incorrect answers  
-      const shuffledIncorrect = shuffleArray([...questionObj.incorrect_answers]).slice(0, 3);  
-      const options = shuffleArray([...shuffledIncorrect, questionObj.correct_answer]);  
+    function showQuestion() {
+      const questionObj = questions[currentQuestionIndex];
 
-      document.getElementById('question-text').innerText = `Q${currentQuestionIndex + 1}: ${questionObj.question}`;  
-      const optionsContainer = document.getElementById('options-container');  
-      optionsContainer.innerHTML = '';  
+      const shuffledIncorrect = shuffleArray([...questionObj.incorrect_answers]).slice(0, 3);
+      const options = shuffleArray([...shuffledIncorrect, questionObj.correct_answer]);
 
-      options.forEach(option => {  
-        const btn = document.createElement('button');  
-        btn.innerText = option;  
-        btn.onclick = () => {  
-          userAnswers[currentQuestionIndex] = {  
-            question: questionObj.question,  
-            selected: option,  
-            correct: questionObj.correct_answer  
-          };  
+      document.getElementById('question-text').innerText = `Q${currentQuestionIndex + 1}: ${questionObj.question}`;
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
 
-          // Disable all buttons after selection  
-          document.querySelectorAll('#options-container button').forEach(b => {  
-            b.disabled = true;  
-            b.classList.remove('selected');  
-          });  
-          btn.classList.add('selected');  
-        };  
-        optionsContainer.appendChild(btn);  
-      });  
+      options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.innerText = option;
+        btn.onclick = () => {
+          userAnswers[currentQuestionIndex] = {
+            question: questionObj.question,
+            selected: option,
+            correct: questionObj.correct_answer
+          };
 
-      const nextBtn = document.getElementById('next-btn');  
-      nextBtn.innerText = currentQuestionIndex === questions.length - 1 ? "Finish" : "Next";  
-    }  
+          document.querySelectorAll('#options-container button').forEach(b => {
+            b.disabled = true;
+            b.classList.remove('selected');
+          });
+          btn.classList.add('selected');
+        };
+        optionsContainer.appendChild(btn);
+      });
 
-    document.getElementById('next-btn').onclick = () => {  
-      if (!userAnswers[currentQuestionIndex]) {  
-        alert("Please select an answer first.");  
-        return;  
-      }  
+      document.getElementById('next-btn').innerText = currentQuestionIndex === questions.length - 1 ? "Finish" : "Next";
+    }
 
-      currentQuestionIndex++;  
-      if (currentQuestionIndex < questions.length) {  
-        showQuestion();  
-      } else {  
-        showResult();  
-      }  
-    };  
+    document.getElementById('next-btn').onclick = () => {
+      if (!userAnswers[currentQuestionIndex]) {
+        alert("Please select an answer first.");
+        return;
+      }
 
-    function showResult() {  
-      document.getElementById('question-section').style.display = 'none';  
-      document.getElementById('result').style.display = 'block';  
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    };
 
-      let correctCount = 0;  
-      const reviewDiv = document.getElementById('review');  
-      reviewDiv.innerHTML = '';  
+    function showResult() {
+      document.getElementById('question-section').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
 
-      userAnswers.forEach((ans, index) => {  
-        const isCorrect = ans.selected === ans.correct;  
-        if (isCorrect) correctCount++;  
+      let correctCount = 0;
+      const reviewDiv = document.getElementById('review');
+      reviewDiv.innerHTML = '';
 
-        const div = document.createElement('div');  
-        div.innerHTML = `  
-          <p>  
-            <strong>Q${index + 1}:</strong> ${ans.question}<br/>  
-            Your answer: <span class="${isCorrect ? 'correct' : 'incorrect'}">${ans.selected}</span><br/>  
-            ${!isCorrect ? `Correct answer: <span class="correct">${ans.correct}</span>` : ''}  
-          </p>  
-        `;  
-        reviewDiv.appendChild(div);  
-      });  
+      userAnswers.forEach((ans, index) => {
+        const isCorrect = ans.selected === ans.correct;
+        if (isCorrect) correctCount++;
 
-      const percent = Math.round((correctCount / questions.length) * 100);  
-      const scoreEl = document.getElementById('score');  
-      scoreEl.innerText = `You got ${correctCount} out of ${questions.length} correct (${percent}%)`;  
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <p>
+            <strong>Q${index + 1}:</strong> ${ans.question}<br/>
+            Your answer: <span class="${isCorrect ? 'correct' : 'incorrect'}">${ans.selected}</span><br/>
+            ${!isCorrect ? `Correct answer: <span class="correct">${ans.correct}</span>` : ''}
+          </p>
+        `;
+        reviewDiv.appendChild(div);
+      });
 
-      if (percent < 50) {  
-        scoreEl.className = 'score-low';  
-      } else if (percent < 80) {  
-        scoreEl.className = 'score-mid';  
-      } else {  
-        scoreEl.className = 'score-high';  
-      }  
-    }  
+      const percent = Math.round((correctCount / questions.length) * 100);
+      const scoreEl = document.getElementById('score');
+      scoreEl.innerText = `You got ${correctCount} out of ${questions.length} correct (${percent}%)`;
 
-    loadQuestions();  
-  </script>  
+      scoreEl.className = percent < 50 ? 'score-low' : percent < 80 ? 'score-mid' : 'score-high';
+    }
+
+    loadQuestions();
+  </script>
 </body>
 </html>
