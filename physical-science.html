@@ -1,261 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grade 12 Quiz</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #333;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
 
+    #quiz-container {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px 40px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
 
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1" />  
-  <title>Grade 12 Quiz</title>  
-  <style>  
-    /* Reset */  
-    * {  
-      box-sizing: border-box;  
-    }  body {  
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
-  background: linear-gradient(135deg, #667eea, #764ba2);  
-  color: #333;  
-  margin: 0;  
-  padding: 40px 20px;  
-  min-height: 100vh;  
-  display: flex;  
-  justify-content: center;  
-  align-items: flex-start;  
-}  
+    #subject-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #444;
+    }
 
-#quiz-container {  
-  background: #fff;  
-  border-radius: 12px;  
-  padding: 30px 40px;  
-  max-width: 650px;  
-  width: 100%;  
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);  
-}  
+    .question {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
 
-.question {  
-  font-size: 1.4rem;  
-  font-weight: 600;  
-  margin-bottom: 20px;  
-  color: #2c3e50;  
-}  
+    .options button {
+      background: #f4f4f4;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      text-align: left;
+    }
 
-.options button {  
-  background: #f4f4f4;  
-  border: 2px solid #ccc;  
-  border-radius: 8px;  
-  padding: 15px 20px;  
-  margin-bottom: 12px;  
-  font-size: 1rem;  
-  cursor: pointer;  
-  transition: all 0.3s ease;  
-  width: 100%;  
-  text-align: left;  
-}  
-.options button:hover:not(:disabled) {  
-  background: #d6dbff;  
-  border-color: #667eea;  
-}  
-.options button:disabled {  
-  cursor: default;  
-  color: #777;  
-  background: #e1e4ff;  
-}  
-.options button.selected {  
-  border-color: #3f51b5;  
-  background: #c5cae9;  
-  font-weight: 700;  
-}  
+    .options button:hover:not(:disabled) {
+      background: #d6dbff;
+      border-color: #667eea;
+    }
 
-#next-btn {  
-  margin-top: 25px;  
-  background: #667eea;  
-  border: none;  
-  color: white;  
-  padding: 14px 28px;  
-  font-size: 1.1rem;  
-  border-radius: 8px;  
-  cursor: pointer;  
-  transition: background 0.3s ease;  
-  display: block;  
-  width: 100%;  
-}  
-#next-btn:hover {  
-  background: #5369d6;  
-}  
+    .options button:disabled {
+      cursor: default;
+      color: #777;
+      background: #e1e4ff;
+    }
 
-#result {  
-  display: none;  
-  text-align: center;  
-}  
+    .options button.selected {
+      border-color: #3f51b5;
+      background: #c5cae9;
+      font-weight: 700;
+    }
 
-#result h2 {  
-  font-size: 2rem;  
-  margin-bottom: 15px;  
-  color: #2c3e50;  
-}  
+    #next-btn {
+      margin-top: 25px;
+      background: #667eea;
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
 
-#score {  
-  font-size: 1.6rem;  
-  font-weight: 700;  
-  margin-bottom: 30px;  
-  padding: 20px;  
-  border-radius: 10px;  
-  color: white;  
-  width: fit-content;  
-  margin-left: auto;  
-  margin-right: auto;  
-  user-select: none;  
-}  
+    #next-btn:hover {
+      background: #5369d6;
+    }
 
-#review {  
-  text-align: left;  
-  max-height: 400px;  
-  overflow-y: auto;  
-  padding-right: 8px;  
-  border-top: 1px solid #ddd;  
-}  
+    #result {
+      display: none;
+      text-align: center;
+    }
 
-#review div {  
-  margin-bottom: 20px;  
-  padding-bottom: 10px;  
-  border-bottom: 1px solid #eee;  
-}  
+    #result h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
 
-#review p {  
-  margin: 6px 0;  
-  line-height: 1.4;  
-  font-size: 1rem;  
-}  
+    #score {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+      width: fit-content;
+      margin: 0 auto;
+    }
 
-.correct {  
-  color: #2e7d32; /* green */  
-  font-weight: 600;  
-}  
+    #review {
+      text-align: left;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 8px;
+      border-top: 1px solid #ddd;
+    }
 
-.incorrect {  
-  color: #c62828; /* red */  
-  font-weight: 600;  
-}  
+    #review div {
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
 
-/* Color gradient for score box from red to green */  
-.score-low {  
-  background: #e53935; /* red */  
-}  
-.score-mid {  
-  background: #fbc02d; /* yellow */  
-  color: #222;  
-}  
-.score-high {  
-  background: #2e7d32; /* green */  
-}
+    #review p {
+      margin: 6px 0;
+      line-height: 1.4;
+    }
 
-  </style>  
-</head>  
-<body>  
-  <div id="quiz-container">  
-    <div id="question-section">  
-      <div class="question" id="question-text"></div>  
-      <div class="options" id="options-container"></div>  
-      <button id="next-btn">Next</button>  
-    </div>  <div id="result">  
-  <h2>Quiz Completed</h2>  
-  <p id="score"></p>  
-  <div id="review"></div>  
-</div>
+    .correct { color: #2e7d32; font-weight: 600; }
+    .incorrect { color: #c62828; font-weight: 600; }
+    .score-low { background: #e53935; }
+    .score-mid { background: #fbc02d; color: #222; }
+    .score-high { background: #2e7d32; }
+  </style>
+</head>
+<body>
+  <div id="quiz-container">
+    <div id="subject-title">Physical Science – Physics Term 1</div>
+    <div id="question-section">
+      <div class="question" id="question-text"></div>
+      <div class="options" id="options-container"></div>
+      <button id="next-btn">Next</button>
+    </div>
+    <div id="result">
+      <h2>Quiz Completed</h2>
+      <p id="score"></p>
+      <div id="review"></div>
+    </div>
+  </div>
 
-  </div>    <script>  
-    let questions = [];  
-    let currentQuestionIndex = 0;  
-    let userAnswers = [];  
-  
-    async function loadQuestions() {  
-      const response = await fetch('quizzes/dad.json');  
-      questions = await response.json();  
-      showQuestion();  
-    }  
-  
-    function showQuestion() {  
-      const questionObj = questions[currentQuestionIndex];  
-      const allOptions = [...questionObj.incorrect_answers];  
-      const selectedIncorrect = allOptions.sort(() => 0.5 - Math.random()).slice(0, 3);  
-      const options = [...selectedIncorrect, questionObj.correct_answer].sort(() => 0.5 - Math.random());  
-  
-      document.getElementById('question-text').innerText = `Q${currentQuestionIndex + 1}: ${questionObj.question}`;  
-      const optionsContainer = document.getElementById('options-container');  
-      optionsContainer.innerHTML = '';  
-  
-      options.forEach(option => {  
-        const btn = document.createElement('button');  
-        btn.innerText = option;  
-        btn.onclick = () => {  
-          userAnswers[currentQuestionIndex] = {  
-            question: questionObj.question,  
-            selected: option,  
-            correct: questionObj.correct_answer  
-          };  
-          // Disable all buttons after selection  
-          document.querySelectorAll('#options-container button').forEach(b => {  
-            b.disabled = true;  
-            b.classList.remove('selected');  
-          });  
-          btn.classList.add('selected');  
-        };  
-        optionsContainer.appendChild(btn);  
-      });  
-  
-      const nextBtn = document.getElementById('next-btn');  
-      nextBtn.innerText = currentQuestionIndex === questions.length - 1 ? "Finish" : "Next";  
-    }  
-  
-    document.getElementById('next-btn').onclick = () => {  
-      if (!userAnswers[currentQuestionIndex]) {  
-        alert("Please select an answer first.");  
-        return;  
-      }  
-  
-      currentQuestionIndex++;  
-      if (currentQuestionIndex < questions.length) {  
-        showQuestion();  
-      } else {  
-        showResult();  
-      }  
-    };  
-  
-    function showResult() {  
-      document.getElementById('question-section').style.display = 'none';  
-      document.getElementById('result').style.display = 'block';  
-  
-      let correctCount = 0;  
-      const reviewDiv = document.getElementById('review');  
-      reviewDiv.innerHTML = '';  
-  
-      userAnswers.forEach((ans, index) => {  
-        const isCorrect = ans.selected === ans.correct;  
-        if (isCorrect) correctCount++;  
-  
-        const div = document.createElement('div');  
-        div.innerHTML = `  
-          <p>  
-            <strong>Q${index + 1}:</strong> ${ans.question}<br/>  
-            Your answer: <span class="${isCorrect ? 'correct' : 'incorrect'}">${ans.selected}</span><br/>  
-            ${!isCorrect ? `Correct answer: <span class="correct">${ans.correct}</span>` : ''}  
-          </p>  
-        `;  
-        reviewDiv.appendChild(div);  
-      });  
-  
-      const percent = Math.round((correctCount / questions.length) * 100);  
-      const scoreEl = document.getElementById('score');  
-      scoreEl.innerText = `You got ${correctCount} out of ${questions.length} correct (${percent}%)`;  
-  
-      // Apply color class based on percent  
-      if (percent < 50) {  
-        scoreEl.className = 'score-low';  
-      } else if (percent < 80) {  
-        scoreEl.className = 'score-mid';  
-      } else {  
-        scoreEl.className = 'score-high';  
-      }  
-    }  
-  
-    loadQuestions();  
-  </script>  </body>  
+  <script>
+    let questions = [];
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+
+    async function loadQuestions() {
+      const response = await fetch('quizzes/dad.json');
+      const data = await response.json();
+      questions = data.sort(() => Math.random() - 0.5); // Shuffle questions
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const questionObj = questions[currentQuestionIndex];
+      const options = [...questionObj.incorrect_answers, questionObj.correct_answer]
+        .sort(() => Math.random() - 0.5); // Shuffle options
+
+      document.getElementById('question-text').innerText = `Q${currentQuestionIndex + 1}: ${questionObj.question}`;
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.innerText = option;
+        btn.onclick = () => {
+          userAnswers[currentQuestionIndex] = {
+            question: questionObj.question,
+            selected: option,
+            correct: questionObj.correct_answer
+          };
+
+          document.querySelectorAll('#options-container button').forEach(b => {
+            b.disabled = true;
+            b.classList.remove('selected');
+          });
+          btn.classList.add('selected');
+        };
+        optionsContainer.appendChild(btn);
+      });
+
+      document.getElementById('next-btn').innerText = currentQuestionIndex === questions.length - 1 ? "Finish" : "Next";
+    }
+
+    document.getElementById('next-btn').onclick = () => {
+      if (!userAnswers[currentQuestionIndex]) {
+        alert("Please select an answer first.");
+        return;
+      }
+
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    };
+
+    function showResult() {
+      document.getElementById('question-section').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+
+      let correctCount = 0;
+      const reviewDiv = document.getElementById('review');
+      reviewDiv.innerHTML = '';
+
+      userAnswers.forEach((ans, index) => {
+        const isCorrect = ans.selected === ans.correct;
+        if (isCorrect) correctCount++;
+
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <p>
+            <strong>Q${index + 1}:</strong> ${ans.question}<br/>
+            Your answer: <span class="${isCorrect ? 'correct' : 'incorrect'}">${ans.selected}</span><br/>
+            ${!isCorrect ? `Correct answer: <span class="correct">${ans.correct}</span>` : ''}
+          </p>
+        `;
+        reviewDiv.appendChild(div);
+      });
+
+      const percent = Math.round((correctCount / questions.length) * 100);
+      const scoreEl = document.getElementById('score');
+      scoreEl.innerText = `You got ${correctCount} out of ${questions.length} correct (${percent}%)`;
+
+      scoreEl.className = percent < 50 ? 'score-low' : percent < 80 ? 'score-mid' : 'score-high';
+    }
+
+    loadQuestions();
+  </script>
+</body>
 </html>
