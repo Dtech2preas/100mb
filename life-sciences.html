@@ -152,7 +152,7 @@
 </head>
 <body>
   <div id="quiz-container">
-    <h2 id="subject-heading">LIFE SCIENCES – Term 1</h2>
+    <h2 id="subject-heading">LIFE SCIENCES –  Term 1</h2>
     <button id="mode-btn">Switch to 50 Questions</button>
     <p id="mode-display">30 Questions Mode</p><div id="question-section">
   <div class="question" id="question-text"></div>
@@ -195,25 +195,15 @@
     };
 
     async function loadQuestions() {
-  const jsonPaths = [
-    'quizzes/lifesciterm1.json'
-    // Add more JSON paths here as needed
-  ];
+      const response = await fetch('quizzes/lifesciterm1.json');
+      const allQuestions = await response.json();
+      questions = shuffleArray(allQuestions).slice(0, questionLimit);
+      showQuestion();
+    }
 
-  let allQuestions = [];
-
-  // Fetch all files in parallel and merge the results
-  await Promise.all(jsonPaths.map(async path => {
-    const res = await fetch(path);
-    const data = await res.json();
-    allQuestions = allQuestions.concat(data);
-  }));
-
-  // Shuffle all questions and limit
-  questions = shuffleArray(allQuestions).slice(0, questionLimit);
-  currentQuestionIndex = 0;
-  showQuestion();
-}
+    function shuffleArray(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
 
     function showQuestion() {
       const questionObj = questions[currentQuestionIndex];
