@@ -277,7 +277,7 @@
       scoreEl.className = percent < 50 ? 'score-low' : percent < 80 ? 'score-mid' : 'score-high';
     }
 
-    document.getElementById('download-btn').onclick = () => {
+    document.getElementById('download-btn').onclick = async () => {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
   const name = document.getElementById('name-input').value || "Anonymous";
@@ -298,12 +298,32 @@
   doc.text(`Time: ${timeStr}`, 20, 75);
   doc.text(`Score: ${correctCount} / ${questions.length}`, 20, 85);
   doc.text(`Percentage: ${percent}%`, 20, 95);
-  doc.text(`Feedback: ${percent < 50 ? "Needs Improvement" : percent < 80 ? "Good Job!" : "Excellent Work!"}`, 20, 105);
 
-  // Open in browser instead of downloading
-  doc.output('bloburl').then(url => {
-    window.open(url, '_blank');
-  });
+  let y = 110;
+  for (let i = 0; i < userAnswers.length; i++) {
+    const ans = userAnswers[i];
+    const isCorrect = ans.selected === ans.correct;
+    const text = `Q${i + 1}: ${ans.question} | Your answer: ${ans.selected}${!isCorrect ? ` | Correct: ${ans.correct}` : ''}`;
+    
+    const lines = doc.splitTextToSize(text, 170);
+    if (y + lines.length * 10 > 280) {
+      doc.addPage();
+      y = 20;
+    }
+    doc.text(lines, 20, y);
+    y += lines.length * 10;
+  }
+
+  // Generate Blob and simulate download
+  const blob = doc.output("blob");
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `quiz-result-${Date.now()}.pdf`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 };
 
     loadQuestions();
