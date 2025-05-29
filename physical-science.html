@@ -272,49 +272,82 @@
       scoreEl.className = percent < 50 ? 'score-low' : percent < 80 ? 'score-mid' : 'score-high';
     }
 
-    document.getElementById('download-btn').onclick = async () => {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      const name = document.getElementById('name-input').value || "Anonymous";
-      const now = new Date();
-      const dateStr = now.toLocaleDateString();
-      const timeStr = now.toLocaleTimeString();
+    document.getElementById('download-btn').onclick = () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('landscape', 'mm', 'a4');
+  const name = document.getElementById('name-input').value || "Anonymous";
+  const now = new Date();
+  const dateStr = now.toLocaleDateString();
+  const timeStr = now.toLocaleTimeString();
 
-      let correctCount = userAnswers.filter(ans => ans.selected === ans.correct).length;
-      let percent = Math.round((correctCount / questions.length) * 100);
+  let correctCount = userAnswers.filter(ans => ans.selected === ans.correct).length;
+  let percent = Math.round((correctCount / questions.length) * 100);
 
-      doc.setFontSize(18);
-      doc.text("DTECH Official Quiz Result", 20, 20);
-      doc.setFontSize(12);
-      doc.text(`Name: ${name}`, 20, 35);
-      doc.text(`Subject: Physical Science – Physics`, 20, 45);
-      doc.text(`Term: 1`, 20, 55);
-      doc.text(`Date: ${dateStr}`, 20, 65);
-      doc.text(`Time: ${timeStr}`, 20, 75);
-      doc.text(`Score: ${correctCount} / ${questions.length}`, 20, 85);
-      doc.text(`Percentage: ${percent}%`, 20, 95);
+  // --- Certificate Layout ---
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
 
-      let y = 110;
-      for (let i = 0; i < userAnswers.length; i++) {
-        const ans = userAnswers[i];
-        const isCorrect = ans.selected === ans.correct;
-        const text = `Q${i + 1}: ${ans.question} | Your answer: ${ans.selected}${!isCorrect ? ` | Correct: ${ans.correct}` : ''}`;
+  // Background and border
+  doc.setDrawColor(0);
+  doc.setLineWidth(2);
+  doc.rect(10, 10, pageWidth - 20, pageHeight - 20); // Decorative border
 
-        const lines = doc.splitTextToSize(text, 170);
-        if (y + lines.length * 7 > 280) {
-          doc.addPage();
-          y = 20;
-        }
-        lines.forEach(line => {
-          doc.text(line, 20, y);
-          y += 7;
-        });
-      }
+  // Watermark
+  doc.setTextColor(230, 230, 230);
+  doc.setFontSize(60);
+  doc.setFont('helvetica', 'bolditalic');
+  doc.text("D-TECH", pageWidth / 2, pageHeight / 2, { angle: 45, align: 'center' });
 
-      doc.save(`${name.replace(/\s+/g, '_')}_Quiz_Result.pdf`);
-    };
+  // Logo (if base64 logo is available)
+  // doc.addImage(logoBase64, 'PNG', pageWidth/2 - 15, 15, 30, 30);
 
-    // Load first set of questions on page load
-    window.onload = loadQuestions;
+  // Title
+  doc.setTextColor(0, 102, 204);
+  doc.setFontSize(26);
+  doc.setFont('helvetica', 'bold');
+  doc.textWithLink("D-TECH CERTIFICATE OF ACHIEVEMENT", pageWidth / 2, 50, { align: 'center' });
+  doc.setLineWidth(0.5);
+  doc.line(60, 52, pageWidth - 60, 52); // underline
+
+  // Recipient Name
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(18);
+  doc.setFont('times', 'italic');
+  doc.text("Awarded to", pageWidth / 2, 70, { align: 'center' });
+
+  doc.setFontSize(22);
+  doc.setFont('helvetica', 'bold');
+  doc.text(name.toUpperCase(), pageWidth / 2, 85, { align: 'center' });
+
+  // Subject & Exam
+  doc.setFontSize(16);
+  doc.setFont('times', 'normal');
+  doc.text("For performance in: PHYSICAL SCIENCE – PHYSICS QUIZ (TERM 1)", pageWidth / 2, 100, { align: 'center' });
+
+  // Score & Performance
+  doc.setFontSize(20);
+  doc.setTextColor(34, 139, 34);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`Score: ${correctCount} / ${questions.length}`, pageWidth / 2, 120, { align: 'center' });
+  doc.text(`Performance: ${percent}%`, pageWidth / 2, 135, { align: 'center' });
+
+  // Date & Signature
+  doc.setFontSize(12);
+  doc.setTextColor(0);
+  doc.setFont('times', 'italic');
+  doc.text(`Date: ${dateStr} | Time: ${timeStr}`, pageWidth / 2, 155, { align: 'center' });
+
+  doc.setFont('times', 'normal');
+  doc.line(pageWidth - 80, 165, pageWidth - 30, 165); // signature line
+  doc.text("Signature", pageWidth - 55, 170, { align: 'center' });
+
+  // Footer
+  doc.setFontSize(10);
+  doc.setTextColor(100);
+  doc.text("Powered by DTECH | Empowering the Youth Through Digital Innovation", pageWidth / 2, 200, { align: 'center' });
+
+  // Save
+  doc.save(`${name.replace(/\s+/g, '_')}_Certificate.pdf`);
+};
   </script></body>
 </html>
