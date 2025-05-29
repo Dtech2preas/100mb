@@ -300,8 +300,8 @@
   doc.text(`Percentage: ${percent}%`, 20, 95);
   doc.text(`Feedback: ${percent < 50 ? "Needs Improvement" : percent < 80 ? "Good Job!" : "Excellent Work!"}`, 20, 105);
 
-  // Open the PDF in a new tab or system viewer instead of downloading
-  doc.output('bloburl').then(function (url) {
+  // Open in browser instead of downloading
+  doc.output('bloburl').then(url => {
     window.open(url, '_blank');
   });
 };
