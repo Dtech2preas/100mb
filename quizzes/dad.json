@@ -196,5 +196,1039 @@
       "Inertia opposes gravity.",
       "Energy is equal to speed squared."
     ]
-  }
+  },
+{
+    "question": "What is the definition of work in physics?",
+    "correct_answer": "The product of the net force on an object and the displacement in the force’s direction.",
+    "incorrect_answers": [
+      "The product of mass and acceleration.",
+      "The sum of kinetic and potential energy.",
+      "The force divided by time.",
+      "The change in momentum.",
+      "The energy stored in a spring."
+    ]
+  },
+  {
+    "question": "When is the work done by a force zero?",
+    "correct_answer": "When the force is perpendicular to the displacement.",
+    "incorrect_answers": [
+      "When the force is parallel to displacement.",
+      "When the force is in the direction of motion.",
+      "When the displacement is zero.",
+      "When the force is variable.",
+      "When the mass is constant."
+    ]
+  },
+  {
+    "question": "If you lift a book upward at constant speed, what is the work done by gravity?",
+    "correct_answer": "Negative, equal in magnitude to the lifting work.",
+    "incorrect_answers": [
+      "Positive and equal to lifting work.",
+      "Zero, since speed is constant.",
+      "Positive and double the lifting work.",
+      "Zero, because displacement is upward.",
+      "Negative, but half the lifting work."
+    ]
+  },
+  {
+    "question": "What is the work done by friction when an object slides at constant speed?",
+    "correct_answer": "Negative, equal to the applied work in magnitude.",
+    "incorrect_answers": [
+      "Positive, equal to applied work.",
+      "Zero, because speed is constant.",
+      "Positive, but less than applied work.",
+      "Zero, because friction does no work.",
+      "Negative, but double the applied work."
+    ]
+  },
+  {
+    "question": "The work–energy theorem relates work done to:",
+    "correct_answer": "Change in kinetic energy.",
+    "incorrect_answers": [
+      "Change in potential energy.",
+      "Total mechanical energy.",
+      "Total displacement.",
+      "Total power.",
+      "Impulse."
+    ]
+  },
+  {
+    "question": "What is kinetic energy for a mass m moving at speed v?",
+    "correct_answer": "½ m v²",
+    "incorrect_answers": [
+      "m g v",
+      "m v",
+      "m v²",
+      "½ m g v",
+      "m² v"
+    ]
+  },
+  {
+    "question": "Which expression gives gravitational potential energy near Earth’s surface?",
+    "correct_answer": "m g h",
+    "incorrect_answers": [
+      "½ m g h",
+      "m g / h",
+      "m v h",
+      "m g² h",
+      "m h²"
+    ]
+  },
+  {
+    "question": "What happens to kinetic and potential energy in absence of friction on a pendulum?",
+    "correct_answer": "They interchange but total mechanical energy stays constant.",
+    "incorrect_answers": [
+      "Both increase together.",
+      "Both decrease together.",
+      "Kinetic stays constant, potential changes.",
+      "Potential stays constant, kinetic changes.",
+      "Total energy increases."
+    ]
+  },
+  {
+    "question": "When a spring is compressed, what type of energy increases?",
+    "correct_answer": "Elastic potential energy.",
+    "incorrect_answers": [
+      "Kinetic energy.",
+      "Gravitational potential energy.",
+      "Thermal energy only.",
+      "Chemical energy.",
+      "Electrical energy."
+    ]
+  },
+  {
+    "question": "What is the unit of power in the SI system?",
+    "correct_answer": "Watt (Joule per second)",
+    "incorrect_answers": [
+      "Newton (kg·m/s²)",
+      "Joule (N·m)",
+      "Pascal (N/m²)",
+      "Newton-meter per second (N·m/s)",
+      "Kilogram (kg)"
+    ]
+  },
+  {
+    "question": "How is average power defined?",
+    "correct_answer": "Work done divided by the time interval.",
+    "incorrect_answers": [
+      "Force times displacement.",
+      "Change in energy times time.",
+      "Energy divided by displacement.",
+      "Work done multiplied by time.",
+      "Energy per unit displacement."
+    ]
+  },
+  {
+    "question": "What is instantaneous power?",
+    "correct_answer": "The derivative of work with respect to time.",
+    "incorrect_answers": [
+      "The average over a long interval.",
+      "Force times mass.",
+      "Potential energy per second.",
+      "Momentum per second.",
+      "Energy squared per time."
+    ]
+  },
+  {
+    "question": "If a 2 kg object moves at 3 m/s, what is its kinetic energy?",
+    "correct_answer": "9 J",
+    "incorrect_answers": [
+      "6 J",
+      "18 J",
+      "3 J",
+      "12 J",
+      "4 J"
+    ]
+  },
+  {
+    "question": "What is the change in potential energy when an object of mass m is lowered by height h?",
+    "correct_answer": "−m g h",
+    "incorrect_answers": [
+      "m g h",
+      "0",
+      "−½ m g h",
+      "½ m g h",
+      "m v²/2"
+    ]
+  },
+  {
+    "question": "Which work is done when a person holds a weight stationary?",
+    "correct_answer": "Zero",
+    "incorrect_answers": [
+      "Positive equal to m g h.",
+      "Negative equal to m g h.",
+      "Positive but smaller than m g h.",
+      "Negative but smaller than m g h.",
+      "Constant nonzero."
+    ]
+  },
+  {
+    "question": "When a force and displacement are in opposite directions, work is:",
+    "correct_answer": "Negative",
+    "incorrect_answers": [
+      "Positive",
+      "Zero",
+      "Undefined",
+      "Infinite",
+      "Always equal to force"
+    ]
+  },
+  {
+    "question": "How much work is done lifting 10 kg through 2 m against gravity?",
+    "correct_answer": "196 J",
+    "incorrect_answers": [
+      "98 J",
+      "392 J",
+      "49 J",
+      "20 J",
+      "400 J"
+    ]
+  },
+  {
+    "question": "What is the work done by gravity when an object falls freely through h?",
+    "correct_answer": "m g h",
+    "incorrect_answers": [
+      "−m g h",
+      "0",
+      "½ m g h",
+      "m v²/2",
+      "m g / h"
+    ]
+  },
+  {
+    "question": "Which theorem links net work to kinetic energy change?",
+    "correct_answer": "Work–energy theorem",
+    "incorrect_answers": [
+      "Conservation of energy",
+      "Impulse–momentum theorem",
+      "Conservation of momentum",
+      "Hooke’s law",
+      "Pascal’s principle"
+    ]
+  },
+  {
+    "question": "A 5 N force moves an object 4 m in its direction. How much work is done?",
+    "correct_answer": "20 J",
+    "incorrect_answers": [
+      "9 J",
+      "5 J",
+      "10 J",
+      "2 J",
+      "25 J"
+    ]
+  },
+  {
+    "question": "What is the potential energy at the lowest point of a frictionless roller coaster (relative to start)?",
+    "correct_answer": "Zero",
+    "incorrect_answers": [
+      "Maximum",
+      "Same as start",
+      "Negative maximum",
+      "Equal to kinetic energy",
+      "Undefined"
+    ]
+  },
+  {
+    "question": "When mechanical energy is conserved, what remains constant?",
+    "correct_answer": "Sum of kinetic and potential energies.",
+    "incorrect_answers": [
+      "Kinetic energy only.",
+      "Potential energy only.",
+      "Work done only.",
+      "Force applied only.",
+      "Total displacement."
+    ]
+  },
+  {
+    "question": "If a 100 W motor runs for 10 s, how much energy does it deliver?",
+    "correct_answer": "1000 J",
+    "incorrect_answers": [
+      "100 J",
+      "10 J",
+      "100 kJ",
+      "1 J",
+      "10 kJ"
+    ]
+  },
+  {
+    "question": "What is the work done by a variable force represented by a force–distance graph?",
+    "correct_answer": "Area under the curve.",
+    "incorrect_answers": [
+      "Slope of the curve.",
+      "Width of the curve.",
+      "Height of the curve.",
+      "Perimeter of the curve.",
+      "Maximum force times distance."
+    ]
+  },
+  {
+    "question": "Which quantity has units of Joules?",
+    "correct_answer": "Work",
+    "incorrect_answers": [
+      "Power",
+      "Force",
+      "Pressure",
+      "Frequency",
+      "Velocity"
+    ]
+  },
+  {
+    "question": "What is the gravitational potential energy of a 3 kg object 5 m high?",
+    "correct_answer": "147 J",
+    "incorrect_answers": [
+      "15 J",
+      "75 J",
+      "294 J",
+      "98 J",
+      "3 J"
+    ]
+  },
+  {
+    "question": "When a car brake does negative work on a car, what happens to the car’s energy?",
+    "correct_answer": "Kinetic energy decreases and is dissipated as heat.",
+    "incorrect_answers": [
+      "Potential energy increases.",
+      "Mass increases.",
+      "Momentum increases.",
+      "Energy remains constant.",
+      "Work becomes positive."
+    ]
+  },
+  {
+    "question": "How is instantaneous power related to force and velocity?",
+    "correct_answer": "P = F · v",
+    "incorrect_answers": [
+      "P = F / v",
+      "P = v / F",
+      "P = F + v",
+      "P = F − v",
+      "P = F · t"
+    ]
+  },
+  {
+    "question": "What is the work done by the normal force on a horizontal surface?",
+    "correct_answer": "Zero",
+    "incorrect_answers": [
+      "Positive equal to m g h.",
+      "Negative equal to m g h.",
+      "Equal to friction work.",
+      "Equal to applied force.",
+      "Equal to potential energy."
+    ]
+  },
+  {
+    "question": "If mechanical energy is not conserved, which is present?",
+    "correct_answer": "Nonconservative forces like friction.",
+    "incorrect_answers": [
+      "Only gravity.",
+      "Only spring forces.",
+      "No forces at all.",
+      "Only conservative forces.",
+      "Only inertial forces."
+    ]
+  },
+  {
+    "question": "What is the power output of a 50 J/s device in Watts?",
+    "correct_answer": "50 W",
+    "incorrect_answers": [
+      "5 W",
+      "500 W",
+      "0.5 W",
+      "100 W",
+      "1 W"
+    ]
+  },
+  {
+    "question": "How much work does a 20 N force do over 3 m at 60° to direction of motion?",
+    "correct_answer": "30 J",
+    "incorrect_answers": [
+      "60 J",
+      "40 J",
+      "20 J",
+      "10 J",
+      "0 J"
+    ]
+  },
+  {
+    "question": "What is kinetic energy change if speed doubles?",
+    "correct_answer": "Quadruples",
+    "incorrect_answers": [
+      "Doubles",
+      "Halves",
+      "Remains same",
+      "Triples",
+      "Becomes zero"
+    ]
+  },
+  {
+    "question": "What is the potential energy of a mass at the reference level?",
+    "correct_answer": "Zero",
+    "incorrect_answers": [
+      "Maximum",
+      "Undefined",
+      "Negative",
+      "Equal to kinetic energy",
+      "Equal to work done"
+    ]
+  },
+  {
+    "question": "Which scenario does positive work on an object?",
+    "correct_answer": "Pulling a sled uphill.",
+    "incorrect_answers": [
+      "Holding a book stationary.",
+      "Sliding with friction uphill.",
+      "Pulling a box with perpendicular force.",
+      "Lowering a weight slowly.",
+      "Carrying a weight horizontally."
+    ]
+  },
+  {
+    "question": "What is the average power if 200 J work is done in 4 s?",
+    "correct_answer": "50 W",
+    "incorrect_answers": [
+      "800 W",
+      "200 W",
+      "4 W",
+      "500 W",
+      "2 W"
+    ]
+  },
+  {
+    "question": "Which energy is highest at the top of a frictionless roller coaster?",
+    "correct_answer": "Potential energy",
+    "incorrect_answers": [
+      "Kinetic energy",
+      "Thermal energy",
+      "Elastic energy",
+      "Chemical energy",
+      "Electrical energy"
+    ]
+  },
+  {
+    "question": "The work done by gravity in raising an object is positive when:",
+    "correct_answer": "Object moves downward while force and displacement align.",
+    "incorrect_answers": [
+      "Object moves upward.",
+      "Object remains at rest.",
+      "Force is perpendicular.",
+      "Displacement is zero.",
+      "Object moves horizontally."
+    ]
+  },
+  {
+    "question": "What is the instantaneous power of a 10 N force moving at 2 m/s?",
+    "correct_answer": "20 W",
+    "incorrect_answers": [
+      "5 W",
+      "12 W",
+      "10 W",
+      "2 W",
+      "200 W"
+    ]
+  },
+  {
+    "question": "Which expression represents total mechanical energy?",
+    "correct_answer": "KE + PE",
+    "incorrect_answers": [
+      "KE − PE",
+      "Work × time",
+      "Force × displacement",
+      "Power × time",
+      "Momentum × velocity"
+    ]
+  },
+  {
+    "question": "What is the work done on a mass sliding at constant speed on horizontal ice?",
+    "correct_answer": "Zero net work",
+    "incorrect_answers": [
+      "Positive work by friction",
+      "Negative work by applied force",
+      "Positive work by normal force",
+      "Negative work by gravity",
+      "Positive work by gravity"
+    ]
+  },
+  {
+    "question": "How does adding friction affect conservation of mechanical energy?",
+    "correct_answer": "Total mechanical energy decreases over time.",
+    "incorrect_answers": [
+      "Total mechanical energy increases.",
+      "Mechanical energy remains constant.",
+      "Potential energy is destroyed.",
+      "Kinetic energy becomes potential.",
+      "Work–energy theorem fails."
+    ]
+  },
+  {
+    "question": "A 3 kg object has 45 J kinetic energy. What is its speed?",
+    "correct_answer": "√(30) ≈ 5.48 m/s",
+    "incorrect_answers": [
+      "3 m/s",
+      "15 m/s",
+      "√(15) m/s",
+      "9 m/s",
+      "6 m/s"
+    ]
+  },
+  {
+    "question": "What is the work done by gravity when lifting an object slowly?",
+    "correct_answer": "Negative, equal to m g h",
+    "incorrect_answers": [
+      "Positive, equal to m g h",
+      "Zero",
+      "Positive, equal to ½ m g h",
+      "Negative, equal to ½ m g h",
+      "Positive, equal to 2 m g h"
+    ]
+  },
+  {
+    "question": "Which power output corresponds to lifting 100 kg at 0.5 m/s?",
+    "correct_answer": "490 W",
+    "incorrect_answers": [
+      "50 W",
+      "980 W",
+      "100 W",
+      "245 W",
+      "4900 W"
+    ]
+  },
+  {
+    "question": "In a frictionless pendulum, what is maximum kinetic energy point?",
+    "correct_answer": "Lowest point of the swing",
+    "incorrect_answers": [
+      "Highest point",
+      "Midway on ascent",
+      "At release",
+      "When it stops",
+      "At 45°"
+    ]
+  },
+  {
+    "question": "How much work is done compressing a spring (k) by x?",
+    "correct_answer": "½ k x²",
+    "incorrect_answers": [
+      "k x",
+      "k x²",
+      "½ k x",
+      "m g x",
+      "k / x"
+    ]
+  },
+  {
+    "question": "What is the mechanical energy of a 2 kg object at rest 5 m high?",
+    "correct_answer": "98 J",
+    "incorrect_answers": [
+      "49 J",
+      "0 J",
+      "196 J",
+      "25 J",
+      "10 J"
+    ]
+  },
+  {
+    "question": "When instantaneous power is zero?",
+    "correct_answer": "When either force or velocity is zero.",
+    "incorrect_answers": [
+      "When acceleration is zero.",
+      "When work is positive.",
+      "When energy is conserved.",
+      "When mass is zero.",
+      "When time is zero."
+    ]
+  },
+{
+    "question": "What is the standard acceleration due to gravity near Earth's surface?",
+    "correct_answer": "9.8 m/s² downward",
+    "incorrect_answers": [
+      "9.8 m/s² upward",
+      "9.8 N/kg downward",
+      "10 m/s² upward",
+      "9.8 m/s² sideways",
+      "1 g upward"
+    ]
+  },
+  {
+    "question": "Which equation relates final velocity v, initial velocity u, acceleration a, and time t?",
+    "correct_answer": "v = u + a·t",
+    "incorrect_answers": [
+      "v = u · a · t",
+      "v² = u² + 2a·t",
+      "s = u·t + ½a·t²",
+      "v = u − a·t²",
+      "s = u + a·t"
+    ]
+  },
+  {
+    "question": "Which equation gives displacement s under constant acceleration?",
+    "correct_answer": "s = u·t + ½a·t²",
+    "incorrect_answers": [
+      "s = u + a·t",
+      "s = ut − ½a·t²",
+      "s = v·t + ½a·t²",
+      "v² = u² + 2as",
+      "s = u² + a·t"
+    ]
+  },
+  {
+    "question": "What is the equation that does not include time explicitly?",
+    "correct_answer": "v² = u² + 2a·s",
+    "incorrect_answers": [
+      "s = ut + ½a·t²",
+      "v = u + a·t",
+      "s = vt − ½a·t²",
+      "a = (v − u)/t",
+      "s = u² + v²"
+    ]
+  },
+  {
+    "question": "In free fall, which quantity is zero at the maximum height?",
+    "correct_answer": "Instantaneous velocity",
+    "incorrect_answers": [
+      "Acceleration",
+      "Displacement",
+      "Acceleration due to gravity",
+      "Time",
+      "Initial velocity"
+    ]
+  },
+  {
+    "question": "What is the time to reach maximum height for a projectile thrown upward with initial speed u?",
+    "correct_answer": "t = u/g",
+    "incorrect_answers": [
+      "t = 2u/g",
+      "t = u/(2g)",
+      "t = √(2u/g)",
+      "t = g/u",
+      "t = u²/(2g)"
+    ]
+  },
+  {
+    "question": "How high will a projectile rise if launched upward with speed u?",
+    "correct_answer": "h = u²/(2g)",
+    "incorrect_answers": [
+      "h = 2u/g",
+      "h = u/g",
+      "h = u²/g",
+      "h = u²/(g)",
+      "h = u·t"
+    ]
+  },
+  {
+    "question": "What is the total time of flight for vertical throw up and down with initial speed u?",
+    "correct_answer": "2u/g",
+    "incorrect_answers": [
+      "u/g",
+      "u/2g",
+      "u²/g",
+      "g/2u",
+      "u·g"
+    ]
+  },
+  {
+    "question": "Which graph shows constant downward acceleration?",
+    "correct_answer": "Acceleration vs. time is a horizontal line at −g",
+    "incorrect_answers": [
+      "Velocity vs. time is a horizontal line at −g",
+      "Position vs. time is a horizontal line at −g",
+      "Acceleration vs. time is a sloping line",
+      "Velocity vs. time is a parabola",
+      "Position vs. time is linear"
+    ]
+  },
+  {
+    "question": "On a velocity vs. time graph for free fall, what is the slope?",
+    "correct_answer": "Constant −g",
+    "incorrect_answers": [
+      "Zero",
+      "v/t",
+      "g upward",
+      "Parabolic",
+      "Variable"
+    ]
+  },
+  {
+    "question": "What shape is a position vs. time graph under constant acceleration?",
+    "correct_answer": "Parabola",
+    "incorrect_answers": [
+      "Straight line",
+      "Hyperbola",
+      "Circle",
+      "Exponential curve",
+      "Sinusoid"
+    ]
+  },
+  {
+    "question": "If an object is dropped from rest, its initial velocity is:",
+    "correct_answer": "0 m/s",
+    "incorrect_answers": [
+      "g m/s",
+      "g t m/s",
+      "9.8 m/s",
+      "v²/(2g)",
+      "Unknown"
+    ]
+  },
+  {
+    "question": "What is the displacement after time t for object dropped from rest?",
+    "correct_answer": "½g·t² downward",
+    "incorrect_answers": [
+      "g·t² upward",
+      "g·t² downward",
+      "½u·t²",
+      "u·t",
+      "gt"
+    ]
+  },
+  {
+    "question": "Which quantity is negative for a projectile thrown upward when moving upward?",
+    "correct_answer": "Acceleration",
+    "incorrect_answers": [
+      "Displacement",
+      "Time",
+      "Initial speed",
+      "Velocity",
+      "Maximum height"
+    ]
+  },
+  {
+    "question": "What is the velocity of a free-falling object after time t from rest?",
+    "correct_answer": "v = g·t downward",
+    "incorrect_answers": [
+      "v = ½g·t",
+      "v = g·t upward",
+      "v = g·t²",
+      "v = u + g·t",
+      "v = t/(2g)"
+    ]
+  },
+  {
+    "question": "If a ball is thrown downward with initial speed u, its velocity after time t is:",
+    "correct_answer": "v = u + g·t downward",
+    "incorrect_answers": [
+      "v = u − g·t downward",
+      "v = u + ½g·t",
+      "v = g·t − u",
+      "v = u + g·t upward",
+      "v = ut + gt"
+    ]
+  },
+  {
+    "question": "What is the displacement of a ball thrown downward with initial speed u after time t?",
+    "correct_answer": "s = u·t + ½g·t² downward",
+    "incorrect_answers": [
+      "s = u·t − ½g·t²",
+      "s = ½u·t²",
+      "s = g·t²",
+      "s = ut",
+      "s = ½gt² upward"
+    ]
+  },
+  {
+    "question": "How does the time to fall from height h compare to rise time from ground to same height?",
+    "correct_answer": "They are equal.",
+    "incorrect_answers": [
+      "Fall time is half rise time.",
+      "Fall time is double rise time.",
+      "Fall time is zero.",
+      "They differ depending on u.",
+      "Fall time is g-dependent only."
+    ]
+  },
+  {
+    "question": "What is the average velocity for free fall from rest over time t?",
+    "correct_answer": "½g·t downward",
+    "incorrect_answers": [
+      "g·t downward",
+      "g·t upward",
+      "g·t²",
+      "u/max",
+      "0"
+    ]
+  },
+  {
+    "question": "Which statement about free fall is correct?",
+    "correct_answer": "All objects accelerate at g regardless of mass (neglecting air resistance).",
+    "incorrect_answers": [
+      "Heavier objects fall faster.",
+      "Lighter objects fall faster.",
+      "Acceleration depends on shape.",
+      "Velocity is constant.",
+      "Displacement is linear"
+    ]
+  },
+  {
+    "question": "In a velocity vs. time graph for upward throw, what is the intercept?",
+    "correct_answer": "Initial velocity u",
+    "incorrect_answers": [
+      "Zero",
+      "−g",
+      "Maximum height",
+      "Time to fall",
+      "g·t"
+    ]
+  },
+  {
+    "question": "What does the area under a velocity vs. time curve represent?",
+    "correct_answer": "Displacement",
+    "incorrect_answers": [
+      "Acceleration",
+      "Velocity change",
+      "Time",
+      "Force",
+      "Energy"
+    ]
+  },
+  {
+    "question": "For an object thrown upward, what is the sign of displacement at maximum height relative to launch point?",
+    "correct_answer": "Positive",
+    "incorrect_answers": [
+      "Zero",
+      "Negative",
+      "Undefined",
+      "Depends on time",
+      "Depends on mass"
+    ]
+  },
+  {
+    "question": "Which of these is not a valid kinematic equation for vertical motion?",
+    "correct_answer": "v = u² + 2gt",
+    "incorrect_answers": [
+      "v = u + gt",
+      "s = ut + ½gt²",
+      "v² = u² + 2gs",
+      "a = (v − u)/t",
+      "s = vt − ½gt²"
+    ]
+  },
+  {
+    "question": "What is the velocity squared at maximum height for upward projectile?",
+    "correct_answer": "0",
+    "incorrect_answers": [
+      "u²",
+      "2gh",
+      "g·t²",
+      "u + gt",
+      "u·g"
+    ]
+  },
+  {
+    "question": "On a position vs. time graph for upward throw, how does position change after launch?",
+    "correct_answer": "Increases, then decreases symmetrically.",
+    "incorrect_answers": [
+      "Decreases linearly.",
+      "Stays constant.",
+      "Oscillates.",
+      "Increases exponentially.",
+      "Decreases then increases."
+    ]
+  },
+  {
+    "question": "What is the slope of a position vs. time graph at any instant?",
+    "correct_answer": "Instantaneous velocity",
+    "incorrect_answers": [
+      "Instantaneous acceleration",
+      "Average velocity",
+      "Average acceleration",
+      "Displacement",
+      "Time rate"
+    ]
+  },
+  {
+    "question": "Which best describes a velocity vs. time graph of free-fall throw up?",
+    "correct_answer": "Straight line with slope −g crossing zero at top.",
+    "incorrect_answers": [
+      "Parabola opening upward.",
+      "Horizontal line at u.",
+      "Sine curve.",
+      "Hyperbola.",
+      "Exponential decay."
+    ]
+  },
+  {
+    "question": "What is the acceleration vs. time graph for vertical motion with air resistance neglected?",
+    "correct_answer": "Horizontal line at −g.",
+    "incorrect_answers": [
+      "Horizontal line at +g.",
+      "Linearly decreasing line.",
+      "Parabola shape.",
+      "Sinusoidal wave.",
+      "Vertical line."
+    ]
+  },
+  {
+    "question": "Which point on v–t graph corresponds to maximum height?",
+    "correct_answer": "Where v = 0",
+    "incorrect_answers": [
+      "Where a = 0",
+      "Where t = 0",
+      "Where s = 0",
+      "Where slope is maximum",
+      "Where curvature is maximum"
+    ]
+  },
+  {
+    "question": "What is the instantaneous acceleration at top of projectile when air resistance is negligible?",
+    "correct_answer": "−g",
+    "incorrect_answers": [
+      "0",
+      "+g",
+      "Depends on u",
+      "Depends on height",
+      "Cannot be determined"
+    ]
+  },
+  {
+    "question": "Which graph shows symmetric ascent and descent times?",
+    "correct_answer": "Position vs. time is symmetric about peak.",
+    "incorrect_answers": [
+      "Acceleration vs. time symmetric.",
+      "Velocity vs. time symmetric.",
+      "Force vs. time symmetric.",
+      "Energy vs. time symmetric.",
+      "Displacement vs. velocity symmetric."
+    ]
+  },
+  {
+    "question": "What does negative area under velocity–time graph indicate?",
+    "correct_answer": "Displacement in negative direction",
+    "incorrect_answers": [
+      "Negative acceleration",
+      "Negative time",
+      "Negative energy",
+      "Negative force",
+      "No motion"
+    ]
+  },
+  {
+    "question": "If a ball is thrown upward with 20 m/s, how long until it returns to launch height?",
+    "correct_answer": "4.08 s",
+    "incorrect_answers": [
+      "2.04 s",
+      "9.8 s",
+      "20 s",
+      "1.02 s",
+      "5 s"
+    ]
+  },
+  {
+    "question": "What is the maximum height reached by a ball thrown at 20 m/s?",
+    "correct_answer": "20.4 m",
+    "incorrect_answers": [
+      "10 m",
+      "40.8 m",
+      "9.8 m",
+      "20 m",
+      "30 m"
+    ]
+  },
+  {
+    "question": "Which describes vertical motion of a dropped object from rest?",
+    "correct_answer": "s ∝ t²",
+    "incorrect_answers": [
+      "s ∝ t",
+      "v ∝ t²",
+      "v ∝ t³",
+      "a ∝ t",
+      "a ∝ t²"
+    ]
+  },
+  {
+    "question": "What is the initial acceleration of a thrown ball at t = 0?",
+    "correct_answer": "−g",
+    "incorrect_answers": [
+      "0",
+      "+g",
+      "u/t",
+      "u",
+      "Depends on v"
+    ]
+  },
+  {
+    "question": "How is instantaneous displacement determined from a velocity–time graph?",
+    "correct_answer": "By computing the area under the curve",
+    "incorrect_answers": [
+      "By measuring the slope",
+      "By finding the slope at peak",
+      "By reading the intercept",
+      "By computing curvature",
+      "By summing velocities"
+    ]
+  },
+  {
+    "question": "If v = u − g·t, what is the intercept on v–t graph?",
+    "correct_answer": "u",
+    "incorrect_answers": [
+      "−g",
+      "0",
+      "g·t",
+      "s",
+      "−u"
+    ]
+  },
+  {
+    "question": "A stone is released from rest at height h. What is its speed just before impact?",
+    "correct_answer": "√(2gh)",
+    "incorrect_answers": [
+      "gh",
+      "gh/2",
+      "g·t",
+      "gt²",
+      "g/h"
+    ]
+  },
+  {
+    "question": "What is the shape of the acceleration vs. time graph for any vertical motion in vacuum?",
+    "correct_answer": "Constant horizontal line",
+    "incorrect_answers": [
+      "Upward parabola",
+      "Downward parabola",
+      "Sloping line up",
+      "Sloping line down",
+      "Sine wave"
+    ]
+  },
+  {
+    "question": "What is the average acceleration for free fall from rest over time t?",
+    "correct_answer": "−g",
+    "incorrect_answers": [
+      "0",
+      "−g/2",
+      "g/2",
+      "g",
+      "Depends on t"
+    ]
+  },
+  {
+    "question": "Which graph segment corresponds to deceleration during ascent?",
+    "correct_answer": "Negative slope on v–t graph",
+    "incorrect_answers": [
+      "Positive slope on v–t graph",
+      "Horizontal segment on v–t graph",
+      "Vertical segment on s–t graph",
+      "Curved segment on a–t graph",
+      "Sinusoidal segment on v–t graph"
+    ]
+  },
+  {
+    "question": "How does the displacement–time graph behave for constant negative acceleration?",
+    "correct_answer": "Concave downward parabola",
+    "incorrect_answers": [
+      "Concave upward parabola",
+      "Straight line",
+      "Exponential decay",
+      "Circular arc",
+      "Sinusoid"
+    ]
+  },
+  {
+    "question": "What is the significance of the inflection point on an s–t graph for vertical motion?",
+    "correct_answer": "None; parabolic s–t has no inflection",
+    "incorrect_answers": [
+      "Time of maximum height",
+      "Point of zero acceleration",
+      "Change of concavity",
+      "Change of direction",
+      "Maximum velocity"
+    ]
+  },
 ]
