@@ -1231,4 +1231,1181 @@
       "Maximum velocity"
     ]
   },
+{
+    "question": "What is the SI unit of linear momentum?",
+    "correct_answer": "Kilogram metre per second (kg·m/s)",
+    "incorrect_answers": [
+      "Newton metre (N·m)",
+      "Joule (J)",
+      "Watt (W)",
+      "Pascal (Pa)",
+      "Kilogram second (kg·s)"
+    ]
+  },
+  {
+    "question": "Which expression gives the vector nature of momentum?",
+    "correct_answer": "p = m · v (with direction of v)",
+    "incorrect_answers": [
+      "p = F · t",
+      "p = v / m",
+      "p = m + v",
+      "p = m / t",
+      "p = m² · v"
+    ]
+  },
+  {
+    "question": "According to the conservation of momentum, when is total momentum constant?",
+    "correct_answer": "When no external forces act on the system.",
+    "incorrect_answers": [
+      "When energy is added continuously.",
+      "If objects remain at rest.",
+      "When mass changes in the system.",
+      "Only in elastic collisions.",
+      "If velocity is constant."
+    ]
+  },
+  {
+    "question": "In a perfectly inelastic 1D collision, what happens?",
+    "correct_answer": "The two bodies stick and move together.",
+    "incorrect_answers": [
+      "They bounce off with equal speeds.",
+      "They exchange velocities fully.",
+      "They separate with no energy loss.",
+      "They reverse direction instantly.",
+      "They pass through each other."
+    ]
+  },
+  {
+    "question": "Which quantity is always conserved in both elastic and inelastic collisions (absent external forces)?",
+    "correct_answer": "Total momentum",
+    "incorrect_answers": [
+      "Total kinetic energy",
+      "Total speed",
+      "Total displacement",
+      "Total acceleration",
+      "Total velocity"
+    ]
+  },
+  {
+    "question": "How is impulse defined?",
+    "correct_answer": "Product of net force and time interval.",
+    "incorrect_answers": [
+      "Force divided by velocity.",
+      "Mass times acceleration.",
+      "Energy per unit distance.",
+      "Velocity multiplied by distance.",
+      "Power over time."
+    ]
+  },
+  {
+    "question": "What effect does a short, large force have compared to a small force over a long time, if impulse is same?",
+    "correct_answer": "Both yield the same change in momentum.",
+    "incorrect_answers": [
+      "The short force changes direction.",
+      "Long force increases mass.",
+      "Only the large force changes energy.",
+      "Only the long force conserves momentum.",
+      "They produce different impulses."
+    ]
+  },
+  {
+    "question": "Which scenario describes an elastic collision in 1D?",
+    "correct_answer": "Two billiard balls striking and separating.",
+    "incorrect_answers": [
+      "Clay blobs merging on impact.",
+      "Cars crumpling after crash.",
+      "Mud splats sticking.",
+      "Dough pieces fusing.",
+      "Gum balls gluing together."
+    ]
+  },
+  {
+    "question": "What does the change in momentum equal?",
+    "correct_answer": "Impulse applied.",
+    "incorrect_answers": [
+      "Force squared.",
+      "Kinetic energy lost.",
+      "Velocity times mass squared.",
+      "Distance times force.",
+      "Power times time."
+    ]
+  },
+  {
+    "question": "If a 2 kg object moves at 3 m/s east, what is its momentum?",
+    "correct_answer": "6 kg·m/s east",
+    "incorrect_answers": [
+      "5 kg·m/s west",
+      "6 kg·m/s north",
+      "3 kg·m/s east",
+      "9 kg·m/s east",
+      "6 kg·m/s (no direction)"
+    ]
+  },
+  {
+    "question": "What is true for momentum vectors of two objects before collision in an isolated system?",
+    "correct_answer": "Their vector sum equals the sum after.",
+    "incorrect_answers": [
+      "Each is unchanged individually.",
+      "One reverses direction.",
+      "They always cancel out.",
+      "They add to zero.",
+      "They rotate by 90°."
+    ]
+  },
+  {
+    "question": "Which is a scalar quantity?",
+    "correct_answer": "Impulse magnitude",
+    "incorrect_answers": [
+      "Momentum vector",
+      "Velocity vector",
+      "Force vector",
+      "Displacement vector",
+      "Acceleration vector"
+    ]
+  },
+  {
+    "question": "During a collision, momentum is conserved in which direction?",
+    "correct_answer": "Along the line of impact.",
+    "incorrect_answers": [
+      "Perpendicular to force.",
+      "At right angles always.",
+      "Upward only.",
+      "Circularly around center.",
+      "Diagonally always."
+    ]
+  },
+  {
+    "question": "Which condition is necessary for conservation of momentum?",
+    "correct_answer": "No net external impulse.",
+    "incorrect_answers": [
+      "No gravity present.",
+      "Velocities equal.",
+      "Mass constant only.",
+      "Energy constant only.",
+      "Distance small."
+    ]
+  },
+  {
+    "question": "How does a perfectly elastic collision differ from a perfectly inelastic one?",
+    "correct_answer": "Kinetic energy is conserved only in elastic.",
+    "incorrect_answers": [
+      "Momentum lost in elastic.",
+      "Mass lost in elastic.",
+      "Force disappears in elastic.",
+      "Time stops in elastic.",
+      "Velocity resets in elastic."
+    ]
+  },
+  {
+    "question": "What is the impulse on a 5 N force acting for 4 s?",
+    "correct_answer": "20 N·s",
+    "incorrect_answers": [
+      "1.25 N·s",
+      "9 N·s",
+      "5 N·s",
+      "20 J",
+      "20 kg·m"
+    ]
+  },
+  {
+    "question": "Which law explains why a gun recoils when fired?",
+    "correct_answer": "Conservation of momentum.",
+    "incorrect_answers": [
+      "Newton’s law of cooling.",
+      "Conservation of energy.",
+      "Hooke’s law.",
+      "Law of gravitation.",
+      "Ohm’s law."
+    ]
+  },
+  {
+    "question": "How is vector momentum represented graphically?",
+    "correct_answer": "Arrow whose length ∝ magnitude and orientation ∝ direction.",
+    "incorrect_answers": [
+      "Circle area ∝ magnitude.",
+      "Bar height ∝ direction.",
+      "Line thickness ∝ magnitude.",
+      "Pie slice angle ∝ direction.",
+      "Dot size ∝ magnitude."
+    ]
+  },
+  {
+    "question": "What happens to momentum when two equal masses collide elastically head-on with equal and opposite speeds?",
+    "correct_answer": "Each reverses speed, so total stays zero.",
+    "incorrect_answers": [
+      "They stick and remain at rest.",
+      "They both stop momentarily.",
+      "Speeds double in same direction.",
+      "Total becomes nonzero.",
+      "They spiral outward."
+    ]
+  },
+  {
+    "question": "Which factor does NOT affect impulse?",
+    "correct_answer": "Mass of Earth.",
+    "incorrect_answers": [
+      "Magnitude of force.",
+      "Time over which force acts.",
+      "Net external force.",
+      "Contact duration.",
+      "Impulse itself."
+    ]
+  },
+  {
+    "question": "What is the result if impulse is zero?",
+    "correct_answer": "No change in momentum.",
+    "incorrect_answers": [
+      "Maximum speed reached.",
+      "Mass doubles.",
+      "Direction reverses.",
+      "Energy lost.",
+      "Time stops."
+    ]
+  },
+  {
+    "question": "Which property distinguishes elastic from inelastic collisions?",
+    "correct_answer": "Kinetic energy conservation.",
+    "incorrect_answers": [
+      "Mass conservation.",
+      "Velocity magnitude.",
+      "Momentum sign.",
+      "Force sign.",
+      "Time interval."
+    ]
+  },
+  {
+    "question": "If two objects collide and stick, what type of collision occurred?",
+    "correct_answer": "Perfectly inelastic collision.",
+    "incorrect_answers": [
+      "Elastic collision.",
+      "Superelastic collision.",
+      "Explosive separation.",
+      "Partially elastic collision.",
+      "Reversible collision."
+    ]
+  },
+  {
+    "question": "How do you compute the total momentum of two bodies moving in 1D?",
+    "correct_answer": "Sum of their individual momenta algebraically.",
+    "incorrect_answers": [
+      "Multiply their momenta.",
+      "Subtract smaller from larger.",
+      "Add magnitudes only.",
+      "Divide by total mass.",
+      "Average their speeds."
+    ]
+  },
+  {
+    "question": "What is required to change an object’s momentum?",
+    "correct_answer": "An impulse.",
+    "incorrect_answers": [
+      "A displacement.",
+      "Uniform motion.",
+      "No atmosphere.",
+      "Constant speed.",
+      "Zero force."
+    ]
+  },
+  {
+    "question": "Which statement about impulse and area under a force–time graph is correct?",
+    "correct_answer": "Impulse equals area under the curve.",
+    "incorrect_answers": [
+      "Impulse equals peak force.",
+      "Impulse equals time only.",
+      "Impulse equals force only.",
+      "Impulse equals slope.",
+      "Impulse equals y-intercept."
+    ]
+  },
+  {
+    "question": "A force acts on a 4 kg mass, changing its velocity from 3 m/s to 7 m/s. What impulse occurred?",
+    "correct_answer": "16 N·s",
+    "incorrect_answers": [
+      "10 N·s",
+      "4 N·s",
+      "28 N·s",
+      "12 J",
+      "16 kg·m"
+    ]
+  },
+  {
+    "question": "During an elastic collision, what happens to internal energy?",
+    "correct_answer": "Remains unchanged.",
+    "incorrect_answers": [
+      "Increases always.",
+      "Decreases to zero.",
+      "Converts to mass.",
+      "Dissipates as heat.",
+      "Doubles immediately."
+    ]
+  },
+  {
+    "question": "Which momentum component changes when a car turns left on a frictionless track?",
+    "correct_answer": "Direction only.",
+    "incorrect_answers": [
+      "Magnitude only.",
+      "Mass only.",
+      "Time component.",
+      "Energy component.",
+      "Speed only."
+    ]
+  },
+  {
+    "question": "What is the combined momentum of a 1 kg mass at 2 m/s and a 3 kg mass at –1 m/s?",
+    "correct_answer": "–1 kg·m/s",
+    "incorrect_answers": [
+      "1 kg·m/s",
+      "5 kg·m/s",
+      "–5 kg·m/s",
+      "3 kg·m/s",
+      "0 kg·m/s"
+    ]
+  },
+  {
+    "question": "If two carts of different masses collide elastically, which remains constant?",
+    "correct_answer": "Total momentum and total KE.",
+    "incorrect_answers": [
+      "Individual speeds.",
+      "Individual momenta.",
+      "Relative separation.",
+      "Net force.",
+      "External impulse."
+    ]
+  },
+  {
+    "question": "How does impulse relate to area if force is not constant?",
+    "correct_answer": "Integral of force over time.",
+    "incorrect_answers": [
+      "Force peak times duration.",
+      "Force divided by time.",
+      "Time squared times force.",
+      "Force minus time.",
+      "Average force only."
+    ]
+  },
+  {
+    "question": "What does a negative impulse indicate?",
+    "correct_answer": "Momentum decreased in chosen direction.",
+    "incorrect_answers": [
+      "Mass decreased.",
+      "Time reversed.",
+      "Force was zero.",
+      "Speed increased.",
+      "Energy input."
+    ]
+  },
+  {
+    "question": "Why do rockets use staged separation to conserve momentum?",
+    "correct_answer": "To shed mass and maintain thrust efficiency.",
+    "incorrect_answers": [
+      "To increase gravitational pull.",
+      "To reduce velocity.",
+      "To change direction only.",
+      "To store energy.",
+      "To slow descent."
+    ]
+  },
+  {
+    "question": "A bullet of mass 0.01 kg strikes and embeds in a 0.99 kg block at rest. If the combined speed is 1 m/s, what was bullet speed before?",
+    "correct_answer": "100 m/s",
+    "incorrect_answers": [
+      "1 m/s",
+      "0.01 m/s",
+      "10 m/s",
+      "0.1 m/s",
+      "50 m/s"
+    ]
+  },
+  {
+    "question": "Which collision converts some KE into internal energy?",
+    "correct_answer": "Inelastic collision.",
+    "incorrect_answers": [
+      "Elastic collision.",
+      "Perfectly elastic collision.",
+      "Superelastic collision.",
+      "Magnetic collision.",
+      "Frictionless collision."
+    ]
+  },
+  {
+    "question": "What kind of collision has coefficient of restitution equal to zero?",
+    "correct_answer": "Perfectly inelastic collision.",
+    "incorrect_answers": [
+      "Perfectly elastic collision.",
+      "Partially elastic collision.",
+      "Superelastic collision.",
+      "Frictionless collision.",
+      "Explosive separation."
+    ]
+  },
+  {
+    "question": "Which parameter does NOT change in an isolated system?",
+    "correct_answer": "Total momentum.",
+    "incorrect_answers": [
+      "Total temperature.",
+      "Total volume.",
+      "Total charge.",
+      "Total pressure.",
+      "Total speed."
+    ]
+  },
+  {
+    "question": "How is average force calculated from impulse Δp over Δt?",
+    "correct_answer": "F_avg = Δp/Δt",
+    "incorrect_answers": [
+      "F_avg = Δt/Δp",
+      "F_avg = Δp × Δt",
+      "F_avg = p · t",
+      "F_avg = m · a",
+      "F_avg = v/t"
+    ]
+  },
+  {
+    "question": "Which collision in 1D has maximum rebound speed?",
+    "correct_answer": "Elastic collision with equal masses.",
+    "incorrect_answers": [
+      "Inelastic collision.",
+      "Perfectly inelastic collision.",
+      "Collision with massless object.",
+      "Sticky collision.",
+      "Superelastic collision."
+    ]
+  },
+  {
+    "question": "What determines the sign of impulse?",
+    "correct_answer": "Direction of force relative to chosen axis.",
+    "incorrect_answers": [
+      "Magnitude of mass only.",
+      "Size of object.",
+      "Distance covered.",
+      "Time alone.",
+      "Speed only."
+    ]
+  },
+  {
+    "question": "In a two-body system, if body A exerts impulse on B, what does B exert on A?",
+    "correct_answer": "Equal and opposite impulse.",
+    "incorrect_answers": [
+      "Twice the impulse.",
+      "No impulse.",
+      "Half the impulse.",
+      "Infinite impulse.",
+      "Impulse in same direction."
+    ]
+  },
+  {
+    "question": "Why is momentum a vector but mass is not?",
+    "correct_answer": "Momentum depends on velocity direction.",
+    "incorrect_answers": [
+      "Mass changes direction.",
+      "Mass is time-dependent.",
+      "Momentum has no units.",
+      "Mass depends on speed.",
+      "Momentum is scalar."
+    ]
+  },
+  {
+    "question": "Which is NOT a valid way to increase impulse on an object?",
+    "correct_answer": "Reducing force but shortening time so product unchanged.",
+    "incorrect_answers": [
+      "Applying a larger force.",
+      "Extending the contact time.",
+      "Applying the same force twice.",
+      "Applying force in opposite direction.",
+      "Increasing duration of impact."
+    ]
+  },
+  {
+    "question": "What is the coefficient of restitution for a perfectly elastic collision?",
+    "correct_answer": "One",
+    "incorrect_answers": [
+      "Zero",
+      "Greater than one",
+      "Between zero and one",
+      "Minus one",
+      "Undefined"
+    ]
+  },
+  {
+    "question": "A car traveling east collides with a truck traveling west. Total momentum before collision is zero. What is it afterward?",
+    "correct_answer": "Zero",
+    "incorrect_answers": [
+      "Positive",
+      "Negative",
+      "Infinite",
+      "Depends on speed",
+      "Depends on mass"
+    ]
+  },
+  {
+    "question": "What ensures real-world collisions are never perfectly elastic?",
+    "correct_answer": "Some kinetic energy always converts to heat or sound.",
+    "incorrect_answers": [
+      "Mass is lost.",
+      "Momentum disappears.",
+      "Time reverses.",
+      "Velocity doubles.",
+      "Direction is random."
+    ]
+  },
+  {
+    "question": "When hockey puck and stick collide, which is conserved?",
+    "correct_answer": "Total momentum of puck+stick if no external force.",
+    "incorrect_answers": [
+      "Total speed of puck only.",
+      "Energy in stick only.",
+      "Momentum of puck only.",
+      "Momentum if friction present.",
+      "Velocity magnitude."
+    ]
+  },
+  {
+    "question": "In a force–time graph, what does a steeper slope represent?",
+    "correct_answer": "Rate of change of force with time.",
+    "incorrect_answers": [
+      "Higher impulse directly.",
+      "Greater distance covered.",
+      "Constant momentum.",
+      "Zero impulse.",
+      "Mass increase."
+    ]
+  },
+  {
+    "question": "How does a padded surface reduce impulse felt?",
+    "correct_answer": "It extends the time of impact.",
+    "incorrect_answers": [
+      "It increases force abruptly.",
+      "It reduces mass.",
+      "It removes gravity.",
+      "It reverses direction.",
+      "It halves distance."
+    ]
+  },
+  {
+    "question": "If two objects have equal momentum, which may differ?",
+    "correct_answer": "Their masses and speeds.",
+    "incorrect_answers": [
+      "Their combined momentum.",
+      "Their combined impulse.",
+      "Their vector nature.",
+      "Their directions always.",
+      "Their energy always."
+    ]
+  },
+  {
+    "question": "What is the change in momentum if both mass and velocity remain constant?",
+    "correct_answer": "Zero",
+    "incorrect_answers": [
+      "Equal to mass times velocity.",
+      "Equal to force only.",
+      "Equal to time only.",
+      "Infinite.",
+      "Momentum doubles."
+    ]
+  },
+  {
+    "question": "Which aspect of momentum makes it useful in analyzing collisions?",
+    "correct_answer": "Its vector conservation property.",
+    "incorrect_answers": [
+      "Its scalar simplicity.",
+      "Its independence from velocity.",
+      "Its conversion to energy.",
+      "Its unitless nature.",
+      "Its dependence on displacement."
+    ]
+  },
+  {
+    "question": "What happens to an object’s momentum if its velocity doubles?",
+    "correct_answer": "Momentum doubles.",
+    "incorrect_answers": [
+      "Momentum quadruples.",
+      "Momentum halves.",
+      "Momentum stays same.",
+      "Momentum triples.",
+      "Momentum reverses."
+    ]
+  },
+  {
+    "question": "Why is impulse a vector quantity?",
+    "correct_answer": "Because it results from force, a vector.",
+    "incorrect_answers": [
+      "Because time is vector.",
+      "Because mass is vector.",
+      "Because distance is vector.",
+      "Because energy is vector.",
+      "Because velocity is scalar."
+    ]
+  },
+  {
+    "question": "Which quantity can be determined directly from the slope of a momentum–velocity graph?",
+    "correct_answer": "Mass of the object.",
+    "incorrect_answers": [
+      "Impulse.",
+      "Force.",
+      "Distance.",
+      "Time.",
+      "Energy."
+    ]
+  },
+  {
+    "question": "A 3 kg object moving at 4 m/s collides elastically with a 3 kg object at rest. What is their speed exchange outcome?",
+    "correct_answer": "First stops, second moves at 4 m/s.",
+    "incorrect_answers": [
+      "Both move at 2 m/s.",
+      "First moves at 8 m/s.",
+      "Second stops.",
+      "Both stop.",
+      "Both move at 4 m/s."
+    ]
+  },
+{
+    "question": "Which statement best describes Newton’s First Law?",
+    "correct_answer": "An object remains at rest or in uniform motion unless acted upon by a net external force.",
+    "incorrect_answers": [
+      "Force equals mass times velocity.",
+      "Every action has an equal and opposite reaction.",
+      "Objects accelerate in proportion to force.",
+      "Energy cannot be created or destroyed.",
+      "Acceleration is zero when forces are balanced."
+    ]
+  },
+  {
+    "question": "What does Newton’s Second Law quantify?",
+    "correct_answer": "The relationship between net force, mass, and acceleration (F = ma).",
+    "incorrect_answers": [
+      "The tendency of objects to resist motion.",
+      "The fact that acceleration is constant under gravity.",
+      "The conservation of momentum in closed systems.",
+      "The equivalence of mass and energy.",
+      "That action and reaction forces are equal."
+    ]
+  },
+  {
+    "question": "Newton’s Third Law can be stated as:",
+    "correct_answer": "For every action force there is an equal and opposite reaction force.",
+    "incorrect_answers": [
+      "Objects at rest tend to stay at rest.",
+      "Net force equals zero when acceleration is zero.",
+      "Force is always perpendicular to displacement.",
+      "Momentum is conserved in collisions.",
+      "Energy is the capacity to do work."
+    ]
+  },
+  {
+    "question": "In a free-body diagram, which force should be drawn if an object is on a horizontal surface with friction?",
+    "correct_answer": "Weight downward, normal upward, friction opposite motion, applied force in direction of pull.",
+    "incorrect_answers": [
+      "Only weight and applied force.",
+      "Only normal and friction.",
+      "Only weight and normal.",
+      "Only friction and applied force.",
+      "Only weight, normal, and tension."
+    ]
+  },
+  {
+    "question": "What distinguishes static friction from kinetic friction?",
+    "correct_answer": "Static friction acts before motion starts and can be greater than kinetic friction.",
+    "incorrect_answers": [
+      "Static friction acts during motion and is less than kinetic.",
+      "Kinetic friction acts before motion and equals static friction.",
+      "Kinetic friction varies with surface area.",
+      "Static friction does not depend on normal force.",
+      "Kinetic friction can be zero on surfaces."
+    ]
+  },
+  {
+    "question": "What is the typical direction of kinetic friction on a sliding block?",
+    "correct_answer": "Opposite to the direction of motion.",
+    "incorrect_answers": [
+      "In the same direction as motion.",
+      "Upward perpendicular to surface.",
+      "Downward along the surface.",
+      "At right angles to motion.",
+      "At 45° to the motion."
+    ]
+  },
+  {
+    "question": "Which formula gives the maximum static frictional force?",
+    "correct_answer": "f_s ≤ μ_s N",
+    "incorrect_answers": [
+      "f_k = μ_s N",
+      "f_s = μ_k N",
+      "f = m a",
+      "F = m g",
+      "f_k ≤ μ_s N"
+    ]
+  },
+  {
+    "question": "On an inclined plane at angle θ with no friction, what is the acceleration down the plane?",
+    "correct_answer": "a = g·sinθ",
+    "incorrect_answers": [
+      "a = g·cosθ",
+      "a = g·tanθ",
+      "a = g/ sinθ",
+      "a = g/ cosθ",
+      "a = g"
+    ]
+  },
+  {
+    "question": "How does the normal force on an inclined plane compare to weight?",
+    "correct_answer": "N = mg·cosθ",
+    "incorrect_answers": [
+      "N = mg·sinθ",
+      "N = mg",
+      "N = mg·tanθ",
+      "N = mg/ cosθ",
+      "N = mg/ sinθ"
+    ]
+  },
+  {
+    "question": "In an Atwood machine with masses m1 and m2, what is the system acceleration?",
+    "correct_answer": "a = (m2 − m1)·g / (m1 + m2)",
+    "incorrect_answers": [
+      "a = (m1 + m2)·g / (m2 − m1)",
+      "a = (m1 − m2)·g / (m1 + m2)",
+      "a = g·(m1 + m2)",
+      "a = g·(m2 − m1)",
+      "a = g / (m1 + m2)"
+    ]
+  },
+  {
+    "question": "When drawing a free-body diagram for an object in an elevator accelerating upward, which force diagram is correct?",
+    "correct_answer": "Weight downward and a larger normal force upward.",
+    "incorrect_answers": [
+      "Weight downward only.",
+      "Normal upward only.",
+      "Weight upward, normal downward.",
+      "Weight downward and equal normal upward.",
+      "No forces if acceleration is present."
+    ]
+  },
+  {
+    "question": "What net force acts on a 10 kg mass accelerating at 2 m/s²?",
+    "correct_answer": "20 N",
+    "incorrect_answers": [
+      "5 N",
+      "10 N",
+      "12 N",
+      "8 N",
+      "15 N"
+    ]
+  },
+  {
+    "question": "Which quantity remains constant for an object under only its weight near Earth’s surface?",
+    "correct_answer": "Gravitational acceleration (g).",
+    "incorrect_answers": [
+      "Velocity.",
+      "Momentum.",
+      "Net force.",
+      "Normal force.",
+      "Kinetic energy."
+    ]
+  },
+  {
+    "question": "What is the third law pair when you push on a wall?",
+    "correct_answer": "Wall pushes back on you with equal and opposite force.",
+    "incorrect_answers": [
+      "Friction pushes wall forward.",
+      "Gravity pulls the wall down.",
+      "Wall’s weight increases.",
+      "Wall’s acceleration increases.",
+      "Wall’s normal force disappears."
+    ]
+  },
+  {
+    "question": "If static friction coefficient μ_s = 0.5 and N = 100 N, what is maximum static friction?",
+    "correct_answer": "50 N",
+    "incorrect_answers": [
+      "150 N",
+      "5 N",
+      "500 N",
+      "100 N",
+      "0 N"
+    ]
+  },
+  {
+    "question": "In horizontal motion with no friction, what happens to velocity if no net force acts?",
+    "correct_answer": "It remains constant.",
+    "incorrect_answers": [
+      "It increases linearly.",
+      "It decreases linearly.",
+      "It oscillates.",
+      "It reverses direction.",
+      "It becomes zero."
+    ]
+  },
+  {
+    "question": "On a rough horizontal surface, how do you determine kinetic friction?",
+    "correct_answer": "f_k = μ_k · N",
+    "incorrect_answers": [
+      "f_k = μ_s · N²",
+      "f_k = m · a",
+      "f_k = m · g",
+      "f_k = μ_k / N",
+      "f_k = mg·sinθ"
+    ]
+  },
+  {
+    "question": "Which diagram correctly shows forces on a block pulled rightward at constant speed?",
+    "correct_answer": "Tension right, friction left, weight down, normal up.",
+    "incorrect_answers": [
+      "Tension up, friction down, weight left.",
+      "Weight up, normal down, tension left.",
+      "Friction right, tension left, no weight.",
+      "Tension right, no friction, weight down.",
+      "Only weight and tension."
+    ]
+  },
+  {
+    "question": "What net force acts on a car of mass 800 kg if it accelerates at 1.5 m/s²?",
+    "correct_answer": "1200 N",
+    "incorrect_answers": [
+      "800 N",
+      "1500 N",
+      "120 N",
+      "533 N",
+      "2000 N"
+    ]
+  },
+  {
+    "question": "Which free-body diagram is correct for a block sliding down an incline with friction?",
+    "correct_answer": "Weight down, normal perpendicular up, friction up the plane.",
+    "incorrect_answers": [
+      "Weight perpendicular, friction down the plane.",
+      "Normal down, friction up, weight sideways.",
+      "Friction absent, only weight and normal.",
+      "Weight up, friction down, normal sideways.",
+      "Normal and friction only."
+    ]
+  },
+  {
+    "question": "What does a steeper slope in a force vs. acceleration graph represent?",
+    "correct_answer": "Smaller mass (steeper F–a relation).",
+    "incorrect_answers": [
+      "Greater friction.",
+      "Higher force at zero acceleration.",
+      "Less force required.",
+      "Higher acceleration at zero force.",
+      "Constant velocity."
+    ]
+  },
+  {
+    "question": "How does tension compare on either side of a massless, frictionless pulley?",
+    "correct_answer": "Tension is the same on both sides.",
+    "incorrect_answers": [
+      "Tension is higher on the heavier side.",
+      "Tension is zero on one side.",
+      "Tension doubles on the light side.",
+      "Tension is opposite in direction only.",
+      "Tension varies with speed."
+    ]
+  },
+  {
+    "question": "In a system of two blocks connected by a rope over a pulley, acceleration depends on:",
+    "correct_answer": "The difference of their weights divided by total mass.",
+    "incorrect_answers": [
+      "Sum of their masses times gravity.",
+      "Product of their masses.",
+      "Sum of their weights only.",
+      "Difference of rope tension.",
+      "Their coefficients of friction only."
+    ]
+  },
+  {
+    "question": "Which of the following forces always acts perpendicular to a surface?",
+    "correct_answer": "Normal force",
+    "incorrect_answers": [
+      "Frictional force",
+      "Applied force",
+      "Tension force",
+      "Gravitational force",
+      "Centripetal force"
+    ]
+  },
+  {
+    "question": "What effect does increasing the mass on an inclined plane have on acceleration (neglecting friction)?",
+    "correct_answer": "Acceleration remains g·sinθ, independent of mass.",
+    "incorrect_answers": [
+      "Acceleration increases linearly with mass.",
+      "Acceleration decreases with mass.",
+      "Acceleration becomes zero.",
+      "Acceleration doubles.",
+      "Acceleration halves."
+    ]
+  },
+  {
+    "question": "For a block dragged at constant speed on a flat surface, net force is:",
+    "correct_answer": "Zero",
+    "incorrect_answers": [
+      "Equal to applied force.",
+      "Equal to friction plus weight.",
+      "Equal to mass times gravity.",
+      "Equal to tension.",
+      "Equal to normal force."
+    ]
+  },
+  {
+    "question": "A block on a horizontal table is pulled with force F. If μ_k > μ_s, what happens when F exceeds μ_s·N but is less than μ_k·N?",
+    "correct_answer": "Block begins to move and friction drops to kinetic value.",
+    "incorrect_answers": [
+      "Block remains at rest.",
+      "Block moves with increasing acceleration.",
+      "Block moves with decreasing friction.",
+      "Block stops instantly.",
+      "Block moves without friction."
+    ]
+  },
+  {
+    "question": "Which scenario demonstrates an application of Newton’s Third Law?",
+    "correct_answer": "A swimmer pushes water backward and moves forward.",
+    "incorrect_answers": [
+      "A rock hangs stationary on a rope.",
+      "A car coasts without engine.",
+      "A ball rolling at constant speed.",
+      "A book resting on a table.",
+      "A falling object accelerating."
+    ]
+  },
+  {
+    "question": "What net force acts on an object in uniform circular motion?",
+    "correct_answer": "A centripetal force directed toward the center.",
+    "incorrect_answers": [
+      "A centrifugal force outward.",
+      "No force since speed is constant.",
+      "A tangential force.",
+      "A force opposite velocity.",
+      "A vertical force only."
+    ]
+  },
+  {
+    "question": "How do you resolve weight into components on an inclined plane?",
+    "correct_answer": "mg·sinθ parallel, mg·cosθ perpendicular.",
+    "incorrect_answers": [
+      "mg·cosθ parallel, mg·sinθ perpendicular.",
+      "mg·tanθ parallel, mg·secθ perpendicular.",
+      "mg·θ parallel, mg·(1−θ) perpendicular.",
+      "mg·sinθ perpendicular, mg·cosθ parallel.",
+      "mg parallel only."
+    ]
+  },
+  {
+    "question": "An object is dropped in vacuum. Which law governs its motion?",
+    "correct_answer": "Newton’s Second Law with only weight acting.",
+    "incorrect_answers": [
+      "Newton’s First Law only.",
+      "Newton’s Third Law only.",
+      "Law of conservation of energy only.",
+      "Law of conservation of momentum only.",
+      "Hooke’s Law."
+    ]
+  },
+  {
+    "question": "When two ice skaters push off each other, what is conserved?",
+    "correct_answer": "Total momentum of the pair.",
+    "incorrect_answers": [
+      "Total kinetic energy always.",
+      "Total velocity always.",
+      "Total acceleration always.",
+      "Total force always.",
+      "Total displacement always."
+    ]
+  },
+  {
+    "question": "In a force diagram for a block on a ramp with friction, which way does kinetic friction point?",
+    "correct_answer": "Up the ramp, opposing motion.",
+    "incorrect_answers": [
+      "Down the ramp, with motion.",
+      "Perpendicular to the ramp.",
+      "Toward the pivot.",
+      "Toward the center of Earth.",
+      "At 90° to motion."
+    ]
+  },
+  {
+    "question": "Which factor affects both static and kinetic friction?",
+    "correct_answer": "Normal force between surfaces.",
+    "incorrect_answers": [
+      "Contact area (neglecting special cases).",
+      "Speed of sliding.",
+      "Volume of object.",
+      "Length of surface.",
+      "Temperature only."
+    ]
+  },
+  {
+    "question": "A 2 kg block on a 30° incline has μ_k = 0.2. What is its acceleration down the plane?",
+    "correct_answer": "a = g·(sin30° − 0.2·cos30°)",
+    "incorrect_answers": [
+      "a = g·sin30°",
+      "a = g·cos30°",
+      "a = g·(sin30° + 0.2·cos30°)",
+      "a = g/2",
+      "a = g·0.2"
+    ]
+  },
+  {
+    "question": "What happens to acceleration if the applied force doubles on a constant mass?",
+    "correct_answer": "Acceleration doubles.",
+    "incorrect_answers": [
+      "Acceleration halves.",
+      "Acceleration remains same.",
+      "Acceleration quadruples.",
+      "Acceleration becomes zero.",
+      "Acceleration reverses."
+    ]
+  },
+  {
+    "question": "Which feature distinguishes a free-body diagram?",
+    "correct_answer": "It shows only external forces on the object of interest.",
+    "incorrect_answers": [
+      "It shows internal forces between parts.",
+      "It includes motion paths.",
+      "It shows all interactions in system.",
+      "It shows energy changes.",
+      "It shows force magnitudes only."
+    ]
+  },
+  {
+    "question": "In an elevator accelerating downward, how does normal force compare to weight?",
+    "correct_answer": "Normal is less than weight.",
+    "incorrect_answers": [
+      "Normal equals weight.",
+      "Normal is greater than weight.",
+      "Normal is zero.",
+      "Normal is negative.",
+      "Normal is infinite."
+    ]
+  },
+  {
+    "question": "Which equation applies to a falling body with air resistance proportional to velocity?",
+    "correct_answer": "m·a = mg − b·v",
+    "incorrect_answers": [
+      "m·a = mg + b·v",
+      "m·v = mg − b·a",
+      "F = m·g·v",
+      "F = b·v²",
+      "m·a = b·v"
+    ]
+  },
+  {
+    "question": "Why can’t a single isolated force change an object’s motion indefinitely?",
+    "correct_answer": "Because an equal and opposite reaction prevents net force.",
+    "incorrect_answers": [
+      "Because friction always stops it.",
+      "Because mass increases.",
+      "Because energy is lost.",
+      "Because gravity balances it.",
+      "Because velocity is constant."
+    ]
+  },
+  {
+    "question": "Which motion illustrates Newton’s First Law most clearly?",
+    "correct_answer": "A puck gliding on frictionless ice remains in motion.",
+    "incorrect_answers": [
+      "A weight hanging stationary.",
+      "A car accelerating uphill.",
+      "A ball bouncing.",
+      "A mass oscillating on a spring.",
+      "A rocket launching."
+    ]
+  },
+  {
+    "question": "On a flat surface with friction, what is needed to keep an object moving at constant speed?",
+    "correct_answer": "A forward applied force equal to kinetic friction.",
+    "incorrect_answers": [
+      "No force at all.",
+      "Any small force.",
+      "Backward force equal to weight.",
+      "Upward force equal to normal.",
+      "Force exceeding weight."
+    ]
+  },
+  {
+    "question": "When two ice blocks collide and bounce off, what stays the same if collision is elastic?",
+    "correct_answer": "Both momentum and kinetic energy.",
+    "incorrect_answers": [
+      "Only momentum.",
+      "Only kinetic energy.",
+      "Only speed.",
+      "Only acceleration.",
+      "Only force."
+    ]
+  },
+  {
+    "question": "Which free-body diagram is correct for a hanging mass at rest?",
+    "correct_answer": "Weight downward and tension upward of equal magnitude.",
+    "incorrect_answers": [
+      "Weight only downward.",
+      "Tension only upward.",
+      "Weight upward and tension downward.",
+      "Weight and friction.",
+      "No forces if at rest."
+    ]
+  },
+  {
+    "question": "What does μ_k = 0.3 mean physically?",
+    "correct_answer": "Kinetic friction is 0.3 times the normal force.",
+    "incorrect_answers": [
+      "Static friction equals kinetic friction.",
+      "Friction is 30 N regardless of N.",
+      "Normal force is 0.3 N.",
+      "Coefficient of restitution is 0.3.",
+      "Friction depends on speed."
+    ]
+  },
+  {
+    "question": "In horizontal circular motion, what provides centripetal force?",
+    "correct_answer": "The net radial force toward center.",
+    "incorrect_answers": [
+      "Tangential component of gravity.",
+      "Friction perpendicular to motion.",
+      "Air resistance only.",
+      "Normal force only.",
+      "Weight only."
+    ]
+  },
+  {
+    "question": "Which situation violates Newton’s First Law?",
+    "correct_answer": "An object changes speed without any net force acting.",
+    "incorrect_answers": [
+      "A ball rolls to rest due to friction.",
+      "A spaceship coasts in vacuum.",
+      "A book stays on a table.",
+      "A pendulum swings under gravity.",
+      "A car cruises at constant speed."
+    ]
+  },
+  {
+    "question": "For a mass on a frictionless surface pulled by F, what work does friction do?",
+    "correct_answer": "Zero",
+    "incorrect_answers": [
+      "F·s",
+      "μ_k·N·s",
+      "m·a·s",
+      "mg·s",
+      "−F·s"
+    ]
+  },
+  {
+    "question": "When hauling a box up at constant speed, which forces balance?",
+    "correct_answer": "Applied force plus normal equals weight plus friction horizontally and vertically.",
+    "incorrect_answers": [
+      "Weight equals zero.",
+      "Applied force equals zero.",
+      "Friction equals weight.",
+      "Normal equals applied force.",
+      "Normal equals friction."
+    ]
+  },
+  {
+    "question": "What is required to draw a correct free-body diagram?",
+    "correct_answer": "Identify the object, isolate it, and draw all external forces acting on it.",
+    "incorrect_answers": [
+      "Include forces between all system parts.",
+      "Show motion trajectory.",
+      "Show internal stresses.",
+      "Show energy changes.",
+      "Show forces on other objects."
+    ]
+  }
 ]
