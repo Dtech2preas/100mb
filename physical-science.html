@@ -277,110 +277,72 @@
 
     document.getElementById('download-btn').onclick = async () => {
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF('landscape');
+  const doc = new jsPDF('portrait', 'mm', 'a4');
   const name = document.getElementById('name-input').value || "Anonymous";
   const now = new Date();
   const dateStr = now.toLocaleDateString();
   const timeStr = now.toLocaleTimeString();
+  const certID = `CERT-${Math.floor(100000 + Math.random() * 900000)}`;
+  const correctCount = userAnswers.filter(ans => ans.selected === ans.correct).length;
+  const percent = Math.round((correctCount / questions.length) * 100);
 
-  let correctCount = userAnswers.filter(ans => ans.selected === ans.correct).length;
-  let percent = Math.round((correctCount / questions.length) * 100);
+  // Load Logo
+  const logo = await fetch('logo.png').then(res => res.blob());
+  const reader = new FileReader();
 
-  const logo = new Image();
-  logo.src = 'logo.png'; // Ensure logo.png is correctly placed
+  reader.onload = function () {
+    const logoBase64 = reader.result;
 
-  logo.onload = async () => {
-    // White background
-    doc.setFillColor(255, 255, 255);
-    doc.rect(0, 0, 297, 210, 'F');
+    // Add Logo
+    doc.addImage(logoBase64, 'PNG', 20, 15, 40, 40);
 
-    // Drop shadow border
-    doc.setDrawColor(180);
-    doc.setLineWidth(0.5);
-    doc.rect(12, 12, 273, 186);
+    // Main Certificate Layout
+    doc.setFontSize(28);
+    doc.setFont('helvetica', 'bold');
+    doc.text("DTECH CERTIFICATE OF ACHIEVEMENT", 105, 65, { align: 'center' });
 
-    // Main border
-    doc.setDrawColor(0);
-    doc.setLineWidth(1.5);
-    doc.rect(10, 10, 277, 190);
-
-    // Logo
-    doc.addImage(logo, 'PNG', 125, 15, 45, 20);
-
-    // Title
-    doc.setFont('times', 'bold');
-    doc.setTextColor(212, 175, 55); // Gold color
-    doc.setFontSize(26);
-    doc.text("CERTIFICATE OF ACHIEVEMENT", 148.5, 50, { align: 'center' });
-
-    // Thin golden line
-    doc.setDrawColor(212, 175, 55);
-    doc.setLineWidth(0.5);
-    doc.line(70, 55, 227, 55);
-
-    // Subtitle
-    doc.setFont('helvetica', 'italic');
-    doc.setTextColor(0);
     doc.setFontSize(16);
-    doc.text("Awarded to", 148.5, 70, { align: 'center' });
+    doc.setFont('times', 'italic');
+    doc.text("This is to certify that", 105, 85, { align: 'center' });
 
-    // Recipient Name
-    doc.setFont('helvetica', 'bold');
     doc.setFontSize(24);
-    doc.text(name.toUpperCase(), 148.5, 85, { align: 'center' });
-
-    // Completion line
-    doc.setFont('times', 'normal');
-    doc.setFontSize(14);
-    doc.text("For successfully completing the", 148.5, 100, { align: 'center' });
-
-    // Quiz Title
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(18);
-    doc.text("Physical Science – Physics Quiz (Term 1)", 148.5, 112, { align: 'center' });
+    doc.text(name.toUpperCase(), 105, 100, { align: 'center' });
 
-    // Score
+    doc.setFontSize(16);
     doc.setFont('times', 'normal');
+    doc.text("has successfully completed the", 105, 115, { align: 'center' });
+
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.text("Physical Science – Physics Quiz (Term 1)", 105, 130, { align: 'center' });
+
+    // Score + Stats
     doc.setFontSize(14);
-    doc.text(`Score: ${correctCount} / ${questions.length} (${percent}%)`, 148.5, 125, { align: 'center' });
+    doc.setFont('times', 'normal');
+    doc.text(`Score: ${correctCount} out of ${questions.length} (${percent}%)`, 105, 145, { align: 'center' });
+    doc.text(`Questions Attempted: ${questions.length}`, 105, 155, { align: 'center' });
+    doc.text(`Date: ${dateStr}    Time: ${timeStr}`, 105, 165, { align: 'center' });
+    doc.text(`Certificate ID: ${certID}`, 105, 175, { align: 'center' });
 
-    // Date
+    // Description
     doc.setFontSize(12);
-    doc.text(`Issued on ${dateStr} at ${timeStr}`, 148.5, 135, { align: 'center' });
+    doc.text("This certificate confirms that the above participant has demonstrated a solid understanding", 105, 190, { align: 'center' });
+    doc.text("of key physical science principles aligned with the Term 1 curriculum.", 105, 198, { align: 'center' });
 
-    // App Link (Text + QR)
-    doc.setFontSize(12);
-    doc.setTextColor(0, 102, 204);
-    doc.textWithLink("📲 Download Our Free Quiz App", 148.5, 150, {
-      align: 'center',
-      url: "https://example.com/download-app" // replace with real URL
-    });
+    // Quote
+    doc.setFontSize(10);
+    doc.setFont('times', 'italic');
+    doc.text("“Education is the most powerful weapon which you can use to change the world.” — Nelson Mandela", 105, 215, { align: 'center' });
 
-    // Optional QR Code (if you have a generator or static image)
-    const qr = new Image();
-    qr.src = 'qr.png'; // Optional: a small QR code for app link
-    qr.onload = () => {
-      doc.addImage(qr, 'PNG', 240, 145, 20, 20);
+    // Footer / Signature
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.text("Issued by DTECH | Empowering the Youth Through Digital Innovation", 105, 240, { align: 'center' });
 
-      // Footer
-      doc.setTextColor(0);
-      doc.setFontSize(10);
-      doc.setFont('courier', 'italic');
-      doc.text("DTECH | Empowering the Youth Through Digital Innovation", 148.5, 195, { align: 'center' });
-
-      doc.save(`${name.replace(/\s+/g, '_')}_Certificate.pdf`);
-    };
-
-    // If no QR, just save it anyway
-    qr.onerror = () => {
-      doc.setTextColor(0);
-      doc.setFontSize(10);
-      doc.setFont('courier', 'italic');
-      doc.text("DTECH | Empowering the Youth Through Digital Innovation", 148.5, 195, { align: 'center' });
-
-      doc.save(`${name.replace(/\s+/g, '_')}_Certificate.pdf`);
-    };
+    doc.save(`${name.replace(/\s+/g, '_')}_Certificate.pdf`);
   };
+  reader.readAsDataURL(logo);
 };
 
     loadQuestions();
