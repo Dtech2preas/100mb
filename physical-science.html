@@ -286,39 +286,44 @@
   const correctCount = userAnswers.filter(ans => ans.selected === ans.correct).length;
   const percent = Math.round((correctCount / questions.length) * 100);
 
-  // Load logo
   const logo = await fetch('logo.png').then(res => res.blob());
   const reader = new FileReader();
 
   reader.onload = function () {
     const logoBase64 = reader.result;
 
-    // Draw border
+    // Border
     doc.setDrawColor(0);
     doc.setLineWidth(1.5);
-    doc.rect(10, 10, 190, 277); // outer border
+    doc.rect(10, 10, 190, 277);
 
-    // Add diagonal watermark
-    doc.setTextColor(200);
-    doc.setFontSize(60);
+    // Watermark
+    doc.setTextColor(230); // very light gray
+    doc.setFontSize(70);
     doc.setFont("helvetica", "bold");
     doc.saveGraphicsState();
     doc.rotate(-45, { origin: [105, 150] });
-    doc.text("D-TECH", 30, 150, { align: "center" });
+
+    const watermarkText = "D-TECH";
+    for (let y = 40; y < 300; y += 50) {
+      for (let x = -50; x < 210; x += 100) {
+        doc.text(watermarkText, x, y, { align: "center" });
+      }
+    }
     doc.restoreGraphicsState();
 
-    // Add logo at center top
+    // Logo
     doc.addImage(logoBase64, 'PNG', 85, 20, 40, 40);
 
     // Heading
-    doc.setTextColor(0, 102, 204); // DTECH blue
+    doc.setTextColor(0, 102, 204);
     doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
     doc.textWithLink("D-TECH CERTIFICATE OF ACHIEVEMENT", 105, 75, { align: "center" });
     doc.setDrawColor(0, 102, 204);
-    doc.line(40, 78, 170, 78); // underline
+    doc.line(40, 78, 170, 78);
 
-    // Subtext
+    // Awarded to
     doc.setTextColor(0);
     doc.setFontSize(14);
     doc.setFont("times", "italic");
@@ -338,26 +343,25 @@
     doc.setFont("helvetica", "bold");
     doc.text("Physical Science – Physics Quiz (Term 1)", 105, 127, { align: 'center' });
 
-    // Stats block
+    // Score
     doc.setFontSize(14);
-    doc.setTextColor(0);
     doc.setFont("helvetica", "bold");
     doc.text(`SCORE: ${correctCount}/${questions.length}`, 105, 145, { align: "center" });
 
-    // Performance circle
+    // Percentage Circle
     const centerX = 105;
     const centerY = 165;
     const radius = 20;
 
     doc.setDrawColor(0, 102, 204);
     doc.setLineWidth(2);
-    doc.circle(centerX, centerY, radius); // outer circle
+    doc.circle(centerX, centerY, radius);
 
     doc.setFontSize(16);
     doc.setTextColor(0);
     doc.text(`${percent}%`, centerX, centerY + 5, { align: "center" });
 
-    // Footer
+    // Footer Information
     doc.setFontSize(12);
     doc.setTextColor(0);
     doc.setFont("times", "normal");
@@ -369,12 +373,16 @@
     doc.setFont("helvetica", "italic");
     doc.text("Empowering the Youth Through Digital Innovation", 105, 225, { align: "center" });
 
-    // Signature (optional, placeholder)
+    // Signature Area (rotated text)
+    doc.saveGraphicsState();
+    doc.rotate(-90, { origin: [20, 280] });
     doc.setFontSize(11);
     doc.setTextColor(0);
     doc.setFont("helvetica", "bold");
-    doc.text("Founder: Preasx24", 35, 265);
-    doc.text("__________________", 30, 260);
+    doc.text("Founder: Preasx24", -260, 35);
+    doc.setFontSize(14);
+    doc.text("__________________", -265, 40);
+    doc.restoreGraphicsState();
 
     doc.save(`${name.replace(/\s+/g, '_')}_Certificate.pdf`);
   };
