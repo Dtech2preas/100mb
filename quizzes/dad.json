@@ -1,62 +1,218 @@
 [
   {
     "id": 1,
-    "question": "Which part of the cell contains the genetic material?",
-    "correct_answer": "Nucleus",
+    "question": "Define momentum.",
+    "correct_answer": "Momentum is the product of an object's mass and its velocity.",
     "incorrect_answers": [
-      "Cell membrane",
-      "Cytoplasm",
-      "Mitochondria",
-      "Ribosome",
-      "Endoplasmic reticulum"
+      "Momentum is force times time.",
+      "Momentum is energy times distance.",
+      "Momentum is the change in acceleration.",
+      "Momentum is speed multiplied by time.",
+      "Momentum is work divided by mass."
     ]
   },
   {
     "id": 2,
-    "question": "What is the solution to 2x + 3 = 11?",
-    "correct_answer": "x = 4",
+    "question": "Define impulse.",
+    "correct_answer": "Impulse is the product of the net force acting on an object and the time the force acts.",
     "incorrect_answers": [
-      "x = 5",
-      "x = 3",
-      "x = 2",
-      "x = 6",
-      "x = 1"
+      "Impulse is the object's velocity divided by time.",
+      "Impulse is the change in gravitational energy.",
+      "Impulse is the power exerted over time.",
+      "Impulse is the force divided by acceleration.",
+      "Impulse is work times time."
     ]
   },
   {
     "id": 3,
-    "question": "Which planet is known as the Red Planet?",
-    "correct_answer": "Mars",
+    "question": "State the principle of conservation of linear momentum.",
+    "correct_answer": "The total linear momentum of a closed, isolated system remains constant.",
     "incorrect_answers": [
-      "Venus",
-      "Jupiter",
-      "Saturn",
-      "Mercury",
-      "Neptune"
+      "Momentum increases if the velocity increases.",
+      "Momentum is always zero in a system.",
+      "Momentum is not conserved in elastic collisions.",
+      "Momentum changes only in gravity.",
+      "Momentum is conserved only if mass is constant."
     ]
   },
   {
     "id": 4,
-    "question": "What is the chemical symbol for water?",
-    "correct_answer": "H2O",
+    "question": "Define a system.",
+    "correct_answer": "A system is a group of interacting objects being considered.",
     "incorrect_answers": [
-      "O2",
-      "CO2",
-      "HO2",
-      "NaCl",
-      "CH4"
+      "A system is a single object in motion.",
+      "A system is an object at rest.",
+      "A system is only one force.",
+      "A system is any non-physical interaction.",
+      "A system is defined by speed alone."
     ]
   },
   {
     "id": 5,
-    "question": "What type of blood cells help fight infections?",
-    "correct_answer": "White blood cells",
+    "question": "Define an isolated system.",
+    "correct_answer": "An isolated system is one that does not interact with its surroundings (no external forces).",
     "incorrect_answers": [
-      "Red blood cells",
-      "Platelets",
-      "Plasma",
-      "Nerve cells",
-      "Muscle cells"
+      "A system that is only affected by friction.",
+      "A system with changing energy.",
+      "A system under constant force.",
+      "A system that does work continuously.",
+      "A system with variable mass."
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Define an inelastic collision.",
+    "correct_answer": "A collision where kinetic energy is not conserved.",
+    "incorrect_answers": [
+      "A collision where mass is lost.",
+      "A collision that involves no forces.",
+      "A collision where momentum is not conserved.",
+      "A collision that is perfectly balanced.",
+      "A collision that does not change speed."
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Define a perfectly inelastic collision.",
+    "correct_answer": "A collision in which the objects stick together after colliding.",
+    "incorrect_answers": [
+      "A collision where both objects bounce apart.",
+      "A collision where velocity increases.",
+      "A collision without any heat loss.",
+      "A collision with no motion.",
+      "A collision in a vacuum."
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Define a perfectly elastic collision.",
+    "correct_answer": "A collision where both momentum and kinetic energy are conserved.",
+    "incorrect_answers": [
+      "A collision where only momentum is conserved.",
+      "A collision where all energy is lost.",
+      "A collision with friction.",
+      "A collision with mass change.",
+      "A collision with no velocity change."
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Define work (physics).",
+    "correct_answer": "Work is the product of force and displacement in the direction of the force.",
+    "incorrect_answers": [
+      "Work is mass times velocity.",
+      "Work is energy minus distance.",
+      "Work is time divided by force.",
+      "Work is force plus distance.",
+      "Work is the object's speed squared."
+    ]
+  },
+  {
+    "id": 10,
+    "question": "State the work-energy theorem.",
+    "correct_answer": "The net work done on an object is equal to the change in its kinetic energy.",
+    "incorrect_answers": [
+      "Work equals the change in gravitational energy.",
+      "Work is equal to momentum times time.",
+      "Work is the total energy of the system.",
+      "Work is not related to motion.",
+      "Work equals the force divided by mass."
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Define power.",
+    "correct_answer": "Power is the rate at which work is done or energy is transferred.",
+    "incorrect_answers": [
+      "Power is energy times time.",
+      "Power is velocity divided by force.",
+      "Power is mass over displacement.",
+      "Power is momentum times distance.",
+      "Power is force times speed."
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Define kinetic energy.",
+    "correct_answer": "Kinetic energy is the energy an object has due to its motion.",
+    "incorrect_answers": [
+      "Kinetic energy is stored in springs.",
+      "Kinetic energy is the energy of heat.",
+      "Kinetic energy is the energy of gravity.",
+      "Kinetic energy is only in solids.",
+      "Kinetic energy is a type of momentum."
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Define potential energy.",
+    "correct_answer": "Potential energy is the stored energy an object has due to its position in a field (e.g., gravitational).",
+    "incorrect_answers": [
+      "Potential energy is motion-based.",
+      "Potential energy is sound energy.",
+      "Potential energy is used up immediately.",
+      "Potential energy is equal to speed squared.",
+      "Potential energy is always zero."
+    ]
+  },
+  {
+    "id": 14,
+    "question": "What is a conservative force?",
+    "correct_answer": "A force for which the work done is path-independent and can be fully recovered.",
+    "incorrect_answers": [
+      "A force that always opposes motion.",
+      "A force that increases with speed.",
+      "A force that causes energy loss.",
+      "A force with changing direction.",
+      "A force that does no work."
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What is a non-conservative force?",
+    "correct_answer": "A force where the work done depends on the path taken, and energy is not fully recoverable.",
+    "incorrect_answers": [
+      "A force that stores energy.",
+      "A force with no direction.",
+      "A force that increases energy.",
+      "A force always equal to gravity.",
+      "A force that follows Newton's first law."
+    ]
+  },
+  {
+    "id": 16,
+    "question": "State Newton's First Law of Motion.",
+    "correct_answer": "An object remains in a state of rest or uniform motion unless acted upon by a net external force.",
+    "incorrect_answers": [
+      "An object accelerates unless no force is present.",
+      "An object moves due to energy.",
+      "Force is equal to mass times energy.",
+      "Objects change velocity due to inertia.",
+      "Only gravity affects objects."
+    ]
+  },
+  {
+    "id": 17,
+    "question": "State Newton’s Second Law of Motion.",
+    "correct_answer": "The net force acting on an object is equal to the rate of change of momentum (F = ma).",
+    "incorrect_answers": [
+      "Force is mass divided by velocity.",
+      "Acceleration causes force to increase.",
+      "Objects move due to gravity alone.",
+      "The net force is always conserved.",
+      "Speed determines force."
+    ]
+  },
+  {
+    "id": 18,
+    "question": "State Newton’s Third Law of Motion.",
+    "correct_answer": "For every action, there is an equal and opposite reaction.",
+    "incorrect_answers": [
+      "Motion is equal in all directions.",
+      "Force is always attractive.",
+      "Mass causes motion.",
+      "Inertia opposes gravity.",
+      "Energy is equal to speed squared."
     ]
   }
 ]
