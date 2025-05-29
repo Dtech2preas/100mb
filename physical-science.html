@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Grade 12 Quiz</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -70,7 +71,7 @@
       font-weight: 700;
     }
 
-    #next-btn, #mode-btn {
+    #next-btn {
       margin-top: 15px;
       background: #667eea;
       border: none;
@@ -82,8 +83,19 @@
       width: 100%;
     }
 
-    #next-btn:hover, #mode-btn:hover {
+    #next-btn:hover {
       background: #5369d6;
+    }
+
+    #mode-btn {
+      font-size: 0.9rem;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      background: #444;
+      color: white;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
     }
 
     #result {
@@ -91,21 +103,14 @@
       text-align: center;
     }
 
-    #result h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-      color: #2c3e50;
-    }
-
     #score {
       font-size: 1.6rem;
       font-weight: 700;
-      margin-bottom: 30px;
+      margin: 20px auto;
       padding: 20px;
       border-radius: 10px;
       color: white;
       width: fit-content;
-      margin: 0 auto;
     }
 
     #review {
@@ -122,30 +127,48 @@
       border-bottom: 1px solid #eee;
     }
 
-    #review p {
-      margin: 6px 0;
-      line-height: 1.4;
-    }
-
     .correct { color: #2e7d32; font-weight: 600; }
     .incorrect { color: #c62828; font-weight: 600; }
     .score-low { background: #e53935; }
     .score-mid { background: #fbc02d; color: #222; }
     .score-high { background: #2e7d32; }
+
+    #name-input {
+      margin-top: 20px;
+    }
+
+    #download-btn {
+      margin-top: 10px;
+      background: #2c3e50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #download-btn:hover {
+      background: #1a252f;
+    }
   </style>
 </head>
 <body>
   <div id="quiz-container">
     <h2 id="subject-heading">Physical Science – Physics Term 1</h2>
     <button id="mode-btn">Switch to 50 Questions</button>
+    <p id="mode-display">30 Questions Mode</p>
+
     <div id="question-section">
       <div class="question" id="question-text"></div>
       <div class="options" id="options-container"></div>
       <button id="next-btn">Next</button>
     </div>
+
     <div id="result">
       <h2>Quiz Completed</h2>
       <p id="score"></p>
+      <input id="name-input" type="text" placeholder="Enter your name for the PDF" />
+      <button id="download-btn">Download Result PDF</button>
       <div id="review"></div>
     </div>
   </div>
@@ -159,6 +182,7 @@
     document.getElementById('mode-btn').onclick = () => {
       questionLimit = questionLimit === 30 ? 50 : 30;
       document.getElementById('mode-btn').innerText = `Switch to ${questionLimit === 30 ? 50 : 30} Questions`;
+      document.getElementById('mode-display').innerText = `${questionLimit} Questions Mode`;
       currentQuestionIndex = 0;
       userAnswers = [];
       loadQuestions();
@@ -178,8 +202,10 @@
     function showQuestion() {
       const questionObj = questions[currentQuestionIndex];
 
-      const shuffledIncorrect = shuffleArray([...questionObj.incorrect_answers]).slice(0, 3);
-      const options = shuffleArray([...shuffledIncorrect, questionObj.correct_answer]);
+      const options = shuffleArray([
+        ...shuffleArray(questionObj.incorrect_answers).slice(0, 3),
+        questionObj.correct_answer
+      ]);
 
       document.getElementById('question-text').innerText = `Q${currentQuestionIndex + 1}: ${questionObj.question}`;
       const optionsContainer = document.getElementById('options-container');
@@ -250,6 +276,32 @@
 
       scoreEl.className = percent < 50 ? 'score-low' : percent < 80 ? 'score-mid' : 'score-high';
     }
+
+    document.getElementById('download-btn').onclick = () => {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const name = document.getElementById('name-input').value || "Anonymous";
+      const now = new Date();
+      const dateStr = now.toLocaleDateString();
+      const timeStr = now.toLocaleTimeString();
+
+      let correctCount = userAnswers.filter(ans => ans.selected === ans.correct).length;
+      let percent = Math.round((correctCount / questions.length) * 100);
+
+      doc.setFontSize(18);
+      doc.text("DTECH Official Quiz Result", 20, 20);
+      doc.setFontSize(12);
+      doc.text(`Name: ${name}`, 20, 35);
+      doc.text(`Subject: Physical Science – Physics`, 20, 45);
+      doc.text(`Term: 1`, 20, 55);
+      doc.text(`Date: ${dateStr}`, 20, 65);
+      doc.text(`Time: ${timeStr}`, 20, 75);
+      doc.text(`Score: ${correctCount} / ${questions.length}`, 20, 85);
+      doc.text(`Percentage: ${percent}%`, 20, 95);
+      doc.text(`Feedback: ${percent < 50 ? "Needs Improvement" : percent < 80 ? "Good Job!" : "Excellent Work!"}`, 20, 105);
+
+      doc.save(`DTECH_Quiz_Result_${name}.pdf`);
+    };
 
     loadQuestions();
   </script>
