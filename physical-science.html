@@ -159,6 +159,17 @@
   <div class="options" id="options-container"></div>
   <button id="next-btn">Next</button>
 </div>
+<script>
+  // Preload logo and store as base64
+  let logoBase64 = "";
+  fetch("logo.png")
+    .then(response => response.blob())
+    .then(blob => {
+      const reader = new FileReader();
+      reader.onload = () => window.logoBase64 = reader.result;
+      reader.readAsDataURL(blob);
+    });
+</script>
 
 <div id="result">
   <h2>Quiz Completed</h2>
