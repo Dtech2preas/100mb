@@ -278,30 +278,33 @@
     }
 
     document.getElementById('download-btn').onclick = () => {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      const name = document.getElementById('name-input').value || "Anonymous";
-      const now = new Date();
-      const dateStr = now.toLocaleDateString();
-      const timeStr = now.toLocaleTimeString();
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const name = document.getElementById('name-input').value || "Anonymous";
+  const now = new Date();
+  const dateStr = now.toLocaleDateString();
+  const timeStr = now.toLocaleTimeString();
 
-      let correctCount = userAnswers.filter(ans => ans.selected === ans.correct).length;
-      let percent = Math.round((correctCount / questions.length) * 100);
+  let correctCount = userAnswers.filter(ans => ans.selected === ans.correct).length;
+  let percent = Math.round((correctCount / questions.length) * 100);
 
-      doc.setFontSize(18);
-      doc.text("DTECH Official Quiz Result", 20, 20);
-      doc.setFontSize(12);
-      doc.text(`Name: ${name}`, 20, 35);
-      doc.text(`Subject: Physical Science – Physics`, 20, 45);
-      doc.text(`Term: 1`, 20, 55);
-      doc.text(`Date: ${dateStr}`, 20, 65);
-      doc.text(`Time: ${timeStr}`, 20, 75);
-      doc.text(`Score: ${correctCount} / ${questions.length}`, 20, 85);
-      doc.text(`Percentage: ${percent}%`, 20, 95);
-      doc.text(`Feedback: ${percent < 50 ? "Needs Improvement" : percent < 80 ? "Good Job!" : "Excellent Work!"}`, 20, 105);
+  doc.setFontSize(18);
+  doc.text("DTECH Official Quiz Result", 20, 20);
+  doc.setFontSize(12);
+  doc.text(`Name: ${name}`, 20, 35);
+  doc.text(`Subject: Physical Science – Physics`, 20, 45);
+  doc.text(`Term: 1`, 20, 55);
+  doc.text(`Date: ${dateStr}`, 20, 65);
+  doc.text(`Time: ${timeStr}`, 20, 75);
+  doc.text(`Score: ${correctCount} / ${questions.length}`, 20, 85);
+  doc.text(`Percentage: ${percent}%`, 20, 95);
+  doc.text(`Feedback: ${percent < 50 ? "Needs Improvement" : percent < 80 ? "Good Job!" : "Excellent Work!"}`, 20, 105);
 
-      doc.save(`DTECH_Quiz_Result_${name}.pdf`);
-    };
+  // Open the PDF in a new tab or system viewer instead of downloading
+  doc.output('bloburl').then(function (url) {
+    window.open(url, '_blank');
+  });
+};
 
     loadQuestions();
   </script>
