@@ -335,34 +335,6 @@
   // Save
   doc.save(`${name.replace(/\s+/g, '_')}_Certificate.pdf`);
 };
-  let y = 110;
-  for (let i = 0; i < userAnswers.length; i++) {
-    const ans = userAnswers[i];
-    const isCorrect = ans.selected === ans.correct;
-    const text = `Q${i + 1}: ${ans.question} | Your answer: ${ans.selected}${!isCorrect ? ` | Correct: ${ans.correct}` : ''}`;
-    
-    const lines = doc.splitTextToSize(text, 170);
-    if (y + lines.length * 10 > 280) {
-      doc.addPage();
-      y = 20;
-    }
-    doc.text(lines, 20, y);
-    y += lines.length * 10;
-  }
-
-  // Generate Blob and simulate download
-  const blob = doc.output("blob");
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `quiz-result-${Date.now()}.pdf`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-};
-
-    loadQuestions();
   </script>
 </body>
 </html>
