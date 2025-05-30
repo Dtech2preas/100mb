@@ -218,5 +218,160 @@
       "They cause radioactive decay",
       "They slow down electron movement"
     ]
-  }
+  },
+{
+    "question": "What is a continuous emission spectrum?",
+    "correct_answer": "A spectrum showing all wavelengths of light without interruption.",
+    "incorrect_answers": [
+      "A spectrum with only discrete lines.",
+      "A spectrum showing only infrared light.",
+      "A spectrum of absorbed colors.",
+      "A spectrum with missing wavelengths.",
+      "A spectrum produced by cooled gases."
+    ]
+  },
+  {
+    "question": "Which source produces a continuous spectrum?",
+    "correct_answer": "Incandescent solid or dense gas",
+    "incorrect_answers": [
+      "Low-pressure gas discharge",
+      "Cold gas cloud",
+      "Fluorescent lamp",
+      "Laser beam",
+      "Monochromator"
+    ]
+  },
+  {
+    "question": "What are atomic emission spectra?",
+    "correct_answer": "Discrete lines emitted by excited atoms.",
+    "incorrect_answers": [
+      "A continuous rainbow of light.",
+      "Absorption lines in a star.",
+      "A spectrum from a diffraction grating.",
+      "Scattered sunlight.",
+      "Thermal radiation peaks."
+    ]
+  },
+  {
+    "question": "What causes the lines in atomic emission spectra?",
+    "correct_answer": "Electron transitions between energy levels.",
+    "incorrect_answers": [
+      "Nuclear decay events.",
+      "Vibrational modes in molecules.",
+      "Electron spin flips.",
+      "Thermal expansion.",
+      "Ion collisions only."
+    ]
+  },
+  {
+    "question": "Which element’s emission spectrum is characterized by a prominent yellow doublet?",
+    "correct_answer": "Sodium",
+    "incorrect_answers": [
+      "Hydrogen",
+      "Helium",
+      "Neon",
+      "Potassium",
+      "Calcium"
+    ]
+  },
+  {
+    "question": "What is an absorption spectrum?",
+    "correct_answer": "Dark lines where light at specific wavelengths is absorbed.",
+    "incorrect_answers": [
+      "Bright lines of emitted light.",
+      "Continuous rainbow without gaps.",
+      "Radio frequency peaks.",
+      "Thermal emission peaks.",
+      "Ultraviolet continuum."
+    ]
+  },
+  {
+    "question": "How does an absorption spectrum relate to emission spectrum?",
+    "correct_answer": "Absorption lines appear at same wavelengths as emission lines.",
+    "incorrect_answers": [
+      "Absorption lines are at different wavelengths.",
+      "Emission lines fill gaps in absorption.",
+      "They have no relation.",
+      "Emission lines are continuous where absorption is discrete.",
+      "Absorption is only infrared."
+    ]
+  },
+  {
+    "question": "A hydrogen Balmer line has wavelength 656 nm. What is its frequency? (c=3×10^8 m/s)",
+    "correct_answer": "4.57×10^14 Hz",
+    "incorrect_answers": [
+      "2.02×10^15 Hz",
+      "4.57×10^12 Hz",
+      "6.56×10^14 Hz",
+      "3.00×10^8 Hz",
+      "1.82×10^14 Hz"
+    ]
+  },
+  {
+    "question": "Calculate the energy of a photon at 486 nm (E=hc/λ, h=6.63×10^-34 J·s).",
+    "correct_answer": "4.09×10^-19 J",
+    "incorrect_answers": [
+      "3.27×10^-19 J",
+      "5.00×10^-19 J",
+      "2.03×10^-19 J",
+      "4.09×10^-18 J",
+      "1.23×10^-19 J"
+    ]
+  },
+  {
+    "question": "Which series in hydrogen corresponds to transitions ending at n=2?",
+    "correct_answer": "Balmer series",
+    "incorrect_answers": [
+      "Lyman series",
+      "Paschen series",
+      "Brackett series",
+      "Pfund series",
+      "Pfennig series"
+    ]
+  },
+  {
+    "question": "What region does the Lyman series lie in?",
+    "correct_answer": "Ultraviolet",
+    "incorrect_answers": [
+      "Visible",
+      "Infrared",
+      "X-ray",
+      "Radio",
+      "Microwave"
+    ]
+  },
+  {
+    "question": "Calculate the wavelength of a photon with energy 2.5 eV (1 eV=1.6×10^-19 J).",
+    "correct_answer": "496 nm",
+    "incorrect_answers": [
+      "250 nm",
+      "1248 nm",
+      "310 nm",
+      "800 nm",
+      "4960 nm"
+    ]
+  },
+  {
+    "question": "Which element shows a red line at 656 nm in its emission spectrum?",
+    "correct_answer": "Hydrogen",
+    "incorrect_answers": [
+      "Helium",
+      "Neon",
+      "Argon",
+      "Sodium",
+      "Potassium"
+    ]
+  },
+  {
+    "question": "Atomic absorption lines in the solar spectrum reveal presence of which element at 589 nm?",
+    "correct_answer": "Sodium",
+    "incorrect_answers": [
+      "Calcium",
+      "Iron",
+      "Hydrogen",
+      "Helium",
+      "Magnesium"
+    ]
+  },
+
 ]
