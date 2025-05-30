@@ -1,0 +1,475 @@
+[
+  {
+    "question": "Which factor does NOT influence the resistance of a uniform wire conductor?",
+    "correct_answer": "Ambient humidity",
+    "incorrect_answers": [
+      "Length of the wire",
+      "Cross-sectional area",
+      "Material’s resistivity",
+      "Temperature of the wire",
+      "Presence of impurities"
+    ]
+  },
+  {
+    "question": "If you double the length of a copper wire (keeping area constant), its resistance will:",
+    "correct_answer": "Double",
+    "incorrect_answers": [
+      "Halve",
+      "Stay the same",
+      "Quadruple",
+      "Become zero",
+      "Decrease by √2"
+    ]
+  },
+  {
+    "question": "What happens to the resistance of a metal wire as its temperature increases (within normal range)?",
+    "correct_answer": "It increases",
+    "incorrect_answers": [
+      "It decreases",
+      "It remains unchanged",
+      "It becomes zero",
+      "It fluctuates randomly",
+      "It becomes negative"
+    ]
+  },
+  {
+    "question": "A 2 m length of wire has resistance 4 Ω. What is the resistance of 1 m of the same wire?",
+    "correct_answer": "2 Ω",
+    "incorrect_answers": [
+      "8 Ω",
+      "1 Ω",
+      "4 Ω",
+      "0.5 Ω",
+      "6 Ω"
+    ]
+  },
+  {
+    "question": "How does doubling the cross-sectional area of a wire affect its resistance?",
+    "correct_answer": "It halves the resistance",
+    "incorrect_answers": [
+      "It doubles the resistance",
+      "It leaves resistance unchanged",
+      "It quarters the resistance",
+      "It quarters the resistivity",
+      "It doubles the resistivity"
+    ]
+  },
+  {
+    "question": "Which material property appears in the formula R = ρ·L/A?",
+    "correct_answer": "Resistivity (ρ)",
+    "incorrect_answers": [
+      "Permittivity",
+      "Permeability",
+      "Conductance",
+      "Capacitance",
+      "Conductivity"
+    ]
+  },
+  {
+    "question": "According to Ohm’s Law, V = I·R, if current is 5 A and R is 2 Ω, voltage is:",
+    "correct_answer": "10 V",
+    "incorrect_answers": [
+      "7 V",
+      "0.4 V",
+      "3 V",
+      "2.5 V",
+      "15 V"
+    ]
+  },
+  {
+    "question": "A resistor draws 0.5 A when 12 V is applied. What is its resistance?",
+    "correct_answer": "24 Ω",
+    "incorrect_answers": [
+      "6 Ω",
+      "48 Ω",
+      "0.0417 Ω",
+      "12 Ω",
+      "18 Ω"
+    ]
+  },
+  {
+    "question": "If the voltage across a 10 Ω resistor is 20 V, the current through it is:",
+    "correct_answer": "2 A",
+    "incorrect_answers": [
+      "0.5 A",
+      "200 A",
+      "10 A",
+      "0 A",
+      "4 A"
+    ]
+  },
+  {
+    "question": "Which plot is a straight line for an ohmic conductor?",
+    "correct_answer": "I vs V",
+    "incorrect_answers": [
+      "P vs I",
+      "R vs V",
+      "V vs R",
+      "V vs P",
+      "R vs I"
+    ]
+  },
+  {
+    "question": "An Ohmic resistor at 20 °C obeys V ∝ I. What happens at high temperature?",
+    "correct_answer": "May deviate due to changing resistivity",
+    "incorrect_answers": [
+      "Becomes superconducting",
+      "Retains perfect linearity always",
+      "Stops conducting",
+      "Voltage becomes constant",
+      "Current reverses"
+    ]
+  },
+  {
+    "question": "Electromotive force (emf) of a cell is defined as:",
+    "correct_answer": "Energy per unit charge supplied by the source",
+    "incorrect_answers": [
+      "Current per unit resistance",
+      "Work done by external agent",
+      "Charge per unit energy",
+      "Power per unit voltage",
+      "Heat produced per unit charge"
+    ]
+  },
+  {
+    "question": "A 12 V battery drives 2 A in an external circuit. Its emf is 12 V and internal resistance 1 Ω. Terminal voltage is:",
+    "correct_answer": "10 V",
+    "incorrect_answers": [
+      "12 V",
+      "14 V",
+      "11 V",
+      "2 V",
+      "8 V"
+    ]
+  },
+  {
+    "question": "Which formula relates emf ε, internal resistance r, current I and terminal voltage V?",
+    "correct_answer": "V = ε − I·r",
+    "incorrect_answers": [
+      "V = ε + I·r",
+      "V = ε·I·r",
+      "ε = V + I/r",
+      "r = ε / (V·I)",
+      "V = ε / I·r"
+    ]
+  },
+  {
+    "question": "A cell of emf 9 V and internal resistance 0.5 Ω delivers 1 A. Energy lost inside per second is:",
+    "correct_answer": "0.5 W",
+    "incorrect_answers": [
+      "9 W",
+      "4.5 W",
+      "1 W",
+      "0 W",
+      "18 W"
+    ]
+  },
+  {
+    "question": "When no current flows, terminal pd equals emf because:",
+    "correct_answer": "No voltage drop across internal resistance",
+    "incorrect_answers": [
+      "Internal resistance is zero",
+      "External resistance is infinite",
+      "Cell is short-circuited",
+      "Cell is dead",
+      "All energy is dissipated externally"
+    ]
+  },
+  {
+    "question": "Electric energy used by a device is given by E = V·I·t. If V= 5 V, I = 2 A, t = 10 s, E is:",
+    "correct_answer": "100 J",
+    "incorrect_answers": [
+      "10 J",
+      "50 J",
+      "20 J",
+      "500 J",
+      "0 J"
+    ]
+  },
+  {
+    "question": "A 100 W bulb runs for 2 hours. How much energy (in kJ) does it consume?",
+    "correct_answer": "720 kJ",
+    "incorrect_answers": [
+      "720 J",
+      "200 kJ",
+      "36 kJ",
+      "100 kJ",
+      "7200 kJ"
+    ]
+  },
+  {
+    "question": "Power can be expressed as P = I²·R. A 3 Ω resistor carrying 2 A dissipates:",
+    "correct_answer": "12 W",
+    "incorrect_answers": [
+      "6 W",
+      "3 W",
+      "36 W",
+      "4 W",
+      "24 W"
+    ]
+  },
+  {
+    "question": "Which expression gives power in terms of voltage and resistance?",
+    "correct_answer": "P = V² / R",
+    "incorrect_answers": [
+      "P = R / V²",
+      "P = V / R²",
+      "P = V² · R",
+      "P = V / R",
+      "P = R² / V"
+    ]
+  },
+  {
+    "question": "A device draws 0.2 A at 12 V. Its power consumption is:",
+    "correct_answer": "2.4 W",
+    "incorrect_answers": [
+      "0.024 W",
+      "60 W",
+      "2 W",
+      "14.4 W",
+      "24 W"
+    ]
+  },
+  {
+    "question": "Which plot is linear for a constant-power device?",
+    "correct_answer": "I vs 1/V",
+    "incorrect_answers": [
+      "I vs V",
+      "P vs I",
+      "R vs I",
+      "V vs R",
+      "P vs V"
+    ]
+  },
+  {
+    "question": "What is the average power if 50 J of work is done in 5 s?",
+    "correct_answer": "10 W",
+    "incorrect_answers": [
+      "0.1 W",
+      "250 W",
+      "5 W",
+      "50 W",
+      "2 W"
+    ]
+  },
+  {
+    "question": "A 200 Ω resistor dissipates 0.1 A. What voltage is across it?",
+    "correct_answer": "20 V",
+    "incorrect_answers": [
+      "2 V",
+      "0.5 V",
+      "200 V",
+      "10 V",
+      "5 V"
+    ]
+  },
+  {
+    "question": "Which factor increases the power dissipated in a resistor?",
+    "correct_answer": "Increasing current",
+    "incorrect_answers": [
+      "Decreasing resistance only",
+      "Decreasing voltage",
+      "Keeping I constant",
+      "Lowering temperature",
+      "Increasing emf"
+    ]
+  },
+  {
+    "question": "In a series circuit of two resistors (4 Ω and 6 Ω) with 10 V supply, the current is:",
+    "correct_answer": "1 A",
+    "incorrect_answers": [
+      "10 A",
+      "0.1 A",
+      "2 A",
+      "4 A",
+      "0.5 A"
+    ]
+  },
+  {
+    "question": "What is the total resistance of two 5 Ω resistors in parallel?",
+    "correct_answer": "2.5 Ω",
+    "incorrect_answers": [
+      "10 Ω",
+      "5 Ω",
+      "0 Ω",
+      "1 Ω",
+      "7.5 Ω"
+    ]
+  },
+  {
+    "question": "Which statement about series vs parallel is true?",
+    "correct_answer": "In series current is same; in parallel voltage is same",
+    "incorrect_answers": [
+      "In series voltage is same; in parallel current is same",
+      "Both have same current and voltage",
+      "Neither conserves current",
+      "Parallel circuits never have same voltage",
+      "Series circuits never have same current"
+    ]
+  },
+  {
+    "question": "If a 12 V battery has internal resistance 1 Ω and external 5 Ω, current is:",
+    "correct_answer": "2 A",
+    "incorrect_answers": [
+      "12 A",
+      "0.2 A",
+      "6 A",
+      "4 A",
+      "1 A"
+    ]
+  },
+  {
+    "question": "Which energy unit is commonly used on electricity bills?",
+    "correct_answer": "Kilowatt-hour",
+    "incorrect_answers": [
+      "Joule",
+      "Watt",
+      "Volt-ampere",
+      "Newton-metre",
+      "Calorie"
+    ]
+  },
+  {
+    "question": "A 60 W lamp runs for 3 hours. How many kWh is consumed?",
+    "correct_answer": "0.18 kWh",
+    "incorrect_answers": [
+      "18 kWh",
+      "0.018 kWh",
+      "1.8 kWh",
+      "60 kWh",
+      "180 kWh"
+    ]
+  },
+  {
+    "question": "Which formula gives electrical energy in terms of power and time?",
+    "correct_answer": "E = P·t",
+    "incorrect_answers": [
+      "E = V·I·t²",
+      "E = I·R·t",
+      "E = V² / R",
+      "E = I²·R·t",
+      "E = V·t / I"
+    ]
+  },
+  {
+    "question": "What is the energy used when 100 W runs for 60 s?",
+    "correct_answer": "6000 J",
+    "incorrect_answers": [
+      "60 J",
+      "1600 J",
+      "600 J",
+      "100 J",
+      "60000 J"
+    ]
+  },
+  {
+    "question": "In a circuit, doubling V across fixed R does what to power?",
+    "correct_answer": "Quadruples",
+    "incorrect_answers": [
+      "Doubles",
+      "Halves",
+      "Stays same",
+      "Becomes zero",
+      "Triples"
+    ]
+  },
+  {
+    "question": "Which expression shows power loss in transmission (I constant)?",
+    "correct_answer": "P = I²·R",
+    "incorrect_answers": [
+      "P = V·I·R",
+      "P = I·R²",
+      "P = V² / I",
+      "P = R / I",
+      "P = I / R"
+    ]
+  },
+  {
+    "question": "Why use high voltage for power transmission?",
+    "correct_answer": "To reduce I and minimize I²R losses",
+    "incorrect_answers": [
+      "To reduce emf",
+      "To increase current",
+      "To decrease voltage drop",
+      "To increase power loss",
+      "To increase resistance"
+    ]
+  },
+  {
+    "question": "What is the gradient of a V vs I graph for an ohmic resistor?",
+    "correct_answer": "Resistance",
+    "incorrect_answers": [
+      "Conductance",
+      "Power",
+      "Energy",
+      "Emf",
+      "Current"
+    ]
+  },
+  {
+    "question": "Which device maintains constant voltage regardless of load?",
+    "correct_answer": "Ideal voltage source",
+    "incorrect_answers": [
+      "Ideal ammeter",
+      "Variable resistor",
+      "Current source",
+      "Capacitor",
+      "Transformer"
+    ]
+  },
+  {
+    "question": "What is a kilowatt-hour in joules?",
+    "correct_answer": "3.6 × 10^6 J",
+    "incorrect_answers": [
+      "3600 J",
+      "1000 J",
+      "1 J",
+      "3.6 J",
+      "3.6 × 10^3 J"
+    ]
+  },
+  {
+    "question": "A cell delivers 5 A into 2 Ω load. If emf is 12 V, internal resistance is:",
+    "correct_answer": "0.4 Ω",
+    "incorrect_answers": [
+      "2.4 Ω",
+      "0.2 Ω",
+      "5 Ω",
+      "12 Ω",
+      "1.6 Ω"
+    ]
+  },
+  {
+    "question": "For a fixed emf, increasing external R does what to terminal voltage V?",
+    "correct_answer": "Increases V toward emf",
+    "incorrect_answers": [
+      "Decreases V toward zero",
+      "Leaves V constant",
+      "Makes V negative",
+      "Doubles V",
+      "Halves V"
+    ]
+  },
+  {
+    "question": "What is the total current in two parallel branches carrying 3 A and 4 A?",
+    "correct_answer": "7 A",
+    "incorrect_answers": [
+      "1 A",
+      "3 A",
+      "4 A",
+      "12 A",
+      "0 A"
+    ]
+  },
+  {
+    "question": "How much charge flows in 10 s if the current is 2 A?",
+    "correct_answer": "20 C",
+    "incorrect_answers": [
+      "5 C",
+      "200 C",
+      "2 C",
+      "10 C",
+      "0.2 C"
+    ]
+  }
+]
