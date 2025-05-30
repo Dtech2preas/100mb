@@ -1,1 +1,970 @@
-n
+[
+  {
+    "question": "Solve for x: 2x + 5 = 13.",
+    "correct_answer": "4",
+    "incorrect_answers": [
+      "5",
+      "3",
+      "6",
+      "8",
+      "2"
+    ]
+  },
+  {
+    "question": "Solve for x: x² − 9 = 0.",
+    "correct_answer": "x = 3 or x = −3",
+    "incorrect_answers": [
+      "x = 9 or x = −9",
+      "x = 0",
+      "x = 3 only",
+      "x = −3 only",
+      "No real solutions"
+    ]
+  },
+  {
+    "question": "Solve the simultaneous equations: x + y = 5, x − y = 1.",
+    "correct_answer": "x = 3, y = 2",
+    "incorrect_answers": [
+      "x = 2, y = 3",
+      "x = 4, y = 1",
+      "x = 1, y = 4",
+      "x = 5, y = 0",
+      "x = 0, y = 5"
+    ]
+  },
+  {
+    "question": "Solve inequality: 3x − 7 > 2.",
+    "correct_answer": "x > 3",
+    "incorrect_answers": [
+      "x < 3",
+      "x ≥ 3",
+      "x > −3",
+      "x < −3",
+      "x ≥ −3"
+    ]
+  },
+  {
+    "question": "Simplify the rational expression: (x² − 1)/(x − 1).",
+    "correct_answer": "x + 1",
+    "incorrect_answers": [
+      "x − 1",
+      "x² + 1",
+      "1/(x+1)",
+      "(x−1)/(x+1)",
+      "x^2−1"
+    ]
+  },
+  {
+    "question": "Simplify: (2^3)·(2^4).",
+    "correct_answer": "2^7",
+    "incorrect_answers": [
+      "2^12",
+      "2^1",
+      "2^24",
+      "2^11",
+      "2^4"
+    ]
+  },
+  {
+    "question": "Simplify: √50.",
+    "correct_answer": "5√2",
+    "incorrect_answers": [
+      "7√2",
+      "10√5",
+      "√25",
+      "2√5",
+      "5√5"
+    ]
+  },
+  {
+    "question": "Solve word problem: If 5 pens cost $3, how much do 8 cost?",
+    "correct_answer": "$4.80",
+    "incorrect_answers": [
+      "$5.00",
+      "$4.50",
+      "$4.00",
+      "$3.80",
+      "$5.80"
+    ]
+  },
+  {
+    "question": "Write equation of line through (0,2) with slope 3.",
+    "correct_answer": "y = 3x + 2",
+    "incorrect_answers": [
+      "y = 2x + 3",
+      "y = 3x − 2",
+      "y = x + 2",
+      "y = 2x − 3",
+      "y = −3x + 2"
+    ]
+  },
+  {
+    "question": "Factorise: x² + 5x + 6.",
+    "correct_answer": "(x + 2)(x + 3)",
+    "incorrect_answers": [
+      "(x + 1)(x + 6)",
+      "(x + 2)(x + 2)",
+      "(x + 3)(x + 3)",
+      "(x − 2)(x − 3)",
+      "(x − 1)(x − 6)"
+    ]
+  },
+  {
+    "question": "Solve quadratic: x² − 4x + 4 = 0.",
+    "correct_answer": "x = 2 (double root)",
+    "incorrect_answers": [
+      "x = 4 or 1",
+      "x = 0 or 4",
+      "x = −2",
+      "No solution",
+      "x = 2 or −2"
+    ]
+  },
+  {
+    "question": "Simplify: (3x³)/(9x).",
+    "correct_answer": "x²/3",
+    "incorrect_answers": [
+      "3x²",
+      "x²",
+      "x/3",
+      "3/x²",
+      "x³/9"
+    ]
+  },
+  {
+    "question": "Solve for x: 1/(x − 2) = 3.",
+    "correct_answer": "x = 2 + 1/3",
+    "incorrect_answers": [
+      "x = 3",
+      "x = 2/3",
+      "x = −1",
+      "x = 1/3",
+      "x = 2"
+    ]
+  },
+  {
+    "question": "Simplify exponent: (x³)².",
+    "correct_answer": "x^6",
+    "incorrect_answers": [
+      "x^5",
+      "x^9",
+      "(x^3)²",
+      "x^3",
+      "x^2"
+    ]
+  },
+  {
+    "question": "Rationalise denominator: 1/√3.",
+    "correct_answer": "√3/3",
+    "incorrect_answers": [
+      "1/3",
+      "3/√3",
+      "√3",
+      "3",
+      "√3/2"
+    ]
+  },
+  {
+    "question": "Solve inequality: x² − 1 ≤ 0.",
+    "correct_answer": "−1 ≤ x ≤ 1",
+    "incorrect_answers": [
+      "x ≤ −1 or x ≥ 1",
+      "x > 1",
+      "x < −1",
+      "x ≥ 1",
+      "No solution"
+    ]
+  },
+  {
+    "question": "Simplify: (2x − 4)/(2).",
+    "correct_answer": "x − 2",
+    "incorrect_answers": [
+      "2x − 4",
+      "x + 2",
+      "x/2 − 2",
+      "2x − 2",
+      "2(x − 2)"
+    ]
+  },
+  {
+    "question": "Find x if x^(1/3) = 8.",
+    "correct_answer": "512",
+    "incorrect_answers": [
+      "4",
+      "2",
+      "64",
+      "16",
+      "−8"
+    ]
+  },
+  {
+    "question": "Factorise completely: 4x² − 9.",
+    "correct_answer": "(2x − 3)(2x + 3)",
+    "incorrect_answers": [
+      "(4x − 3)(x + 3)",
+      "(2x − 9)(2x + 1)",
+      "(2x − 3)²",
+      "(4x − 9)(x + 1)",
+      "(x − 3)(4x + 3)"
+    ]
+  },
+  {
+    "question": "Solve for x: 5/(x + 1) = 1.",
+    "correct_answer": "x = 4",
+    "incorrect_answers": [
+      "x = 5",
+      "x = 0",
+      "x = −4",
+      "x = −5",
+      "x = 1"
+    ]
+  },
+  {
+    "question": "Which is a solution to x² + x − 6 = 0?",
+    "correct_answer": "x = 2 or x = −3",
+    "incorrect_answers": [
+      "x = 3 or x = −2",
+      "x = 6 or x = −1",
+      "x = 3 only",
+      "x = 2 only",
+      "No real solution"
+    ]
+  },
+  {
+    "question": "Solve simultaneous: 2x + 3y = 7, x − y = 1.",
+    "correct_answer": "x = 2, y = 1",
+    "incorrect_answers": [
+      "x = 1, y = 2",
+      "x = 3, y = 1",
+      "x = 2, y = −1",
+      "x = −2, y = 1",
+      "x = 0, y = 1"
+    ]
+  },
+  {
+    "question": "Simplify: (x^(−2)).",
+    "correct_answer": "1/x²",
+    "incorrect_answers": [
+      "x²",
+      "−x²",
+      "1/(−x²)",
+      "x^−2",
+      "−1/x²"
+    ]
+  },
+  {
+    "question": "Solve for x: √(2x + 3) = 5.",
+    "correct_answer": "x = 11",
+    "incorrect_answers": [
+      "x = 1",
+      "x = 5",
+      "x = 4",
+      "x = 7",
+      "x = 8"
+    ]
+  },
+  {
+    "question": "Simplify: (3x²y)/(6xy³).",
+    "correct_answer": "x/(2y²)",
+    "incorrect_answers": [
+      "x/(y²)",
+      "3/(6y²)",
+      "x²/(2y³)",
+      "y/(2x)",
+      "3x/(6y)"
+    ]
+  },
+  {
+    "question": "Solve inequality: (x − 2)(x + 3) < 0.",
+    "correct_answer": "−3 < x < 2",
+    "incorrect_answers": [
+      "x < −3 or x > 2",
+      "x > 2",
+      "x < −3",
+      "x ≥ −3 and x ≤ 2",
+      "No solution"
+    ]
+  },
+  {
+    "question": "Factorise: x³ − 8.",
+    "correct_answer": "(x − 2)(x² + 2x + 4)",
+    "incorrect_answers": [
+      "(x − 4)(x² + 4x + 16)",
+      "(x + 2)(x² − 2x + 4)",
+      "(x − 2)³",
+      "(x − 8)(x² + 8x + 64)",
+      "x(x² − 8)"
+    ]
+  },
+  {
+    "question": "Simplify: (2^(1/2)·2^(1/3)).",
+    "correct_answer": "2^(5/6)",
+    "incorrect_answers": [
+      "2^(−1/6)",
+      "2^(3/5)",
+      "2^(2/5)",
+      "2^(1/5)",
+      "2^(1/6)"
+    ]
+  },
+  {
+    "question": "Solve: 4^{x−1} = 16.",
+    "correct_answer": "x − 1 = 2 ⇒ x = 3",
+    "incorrect_answers": [
+      "x = 4",
+      "x = 1",
+      "x = 5",
+      "x = 2",
+      "x = 0"
+    ]
+  },
+  {
+    "question": "Simplify surd: √72.",
+    "correct_answer": "6√2",
+    "incorrect_answers": [
+      "8√2",
+      "3√8",
+      "12√6",
+      "√36",
+      "2√18"
+    ]
+  },
+  {
+    "question": "Solve for x: (x/3) + (x/4) = 7.",
+    "correct_answer": "x = 84/7 = 12",
+    "incorrect_answers": [
+      "x = 7",
+      "x = 11",
+      "x = 14",
+      "x = 13",
+      "x = 10"
+    ]
+  },
+  {
+    "question": "If 2^a = 8, what is a?",
+    "correct_answer": "3",
+    "incorrect_answers": [
+      "2",
+      "4",
+      "1",
+      "8",
+      "0"
+    ]
+  },
+  {
+    "question": "Solve the word problem: A number plus 5 equals twice the number. Find the number.",
+    "correct_answer": "5 = 2n − n ⇒ n = 5",
+    "incorrect_answers": [
+      "n = 10",
+      "n = −5",
+      "n = 0",
+      "n = 2.5",
+      "n = −2.5"
+    ]
+  },
+  {
+    "question": "Simplify: (x^2 − y^2)/(x − y).",
+    "correct_answer": "x + y",
+    "incorrect_answers": [
+      "x − y",
+      "x^2 + y^2",
+      "1",
+      "x^2 − y",
+      "y − x"
+    ]
+  },
+  {
+    "question": "Solve simultaneous: x + 2y = 6, 3x − y = 7.",
+    "correct_answer": "x = 3, y = 1.5",
+    "incorrect_answers": [
+      "x = 2, y = 2",
+      "x = 1, y = 2.5",
+      "x = 3, y = 2",
+      "x = 4, y = 1",
+      "x = 2, y = 3"
+    ]
+  },
+  {
+    "question": "Solve for x: (x+2)/(x−1) = 3.",
+    "correct_answer": "x + 2 = 3x − 3 ⇒ 2+3 = 2x ⇒ x = 5/2",
+    "incorrect_answers": [
+      "x = 1",
+      "x = 2",
+      "x = 3",
+      "x = 5",
+      "x = −1"
+    ]
+  },
+  {
+    "question": "Express 27^(2/3) in simplest form.",
+    "correct_answer": "9",
+    "incorrect_answers": [
+      "3",
+      "27",
+      "6",
+      "√27",
+      "13.5"
+    ]
+  },
+  {
+    "question": "Simplify: (x^(1/2))^4.",
+    "correct_answer": "x²",
+    "incorrect_answers": [
+      "x",
+      "x^(2)",
+      "x^(1/8)",
+      "x⁴",
+      "√x"
+    ]
+  },
+  {
+    "question": "Factorise: 9x² − 16.",
+    "correct_answer": "(3x − 4)(3x + 4)",
+    "incorrect_answers": [
+      "(9x − 4)(x + 4)",
+      "(3x − 4)²",
+      "(9x − 16)(x + 1)",
+      "(3x + 4)²",
+      "(x − 4)(9x + 4)"
+    ]
+  },
+  {
+    "question": "Solve inequality: x² − 5x + 6 ≥ 0.",
+    "correct_answer": "x ≤ 2 or x ≥ 3",
+    "incorrect_answers": [
+      "2 < x < 3",
+      "x ≥ 2 and x ≤ 3",
+      "x ≥ 2 and x ≥ 3",
+      "No solution",
+      "All real x"
+    ]
+  },
+  {
+    "question": "Simplify: (x^3 y^2)/(x y^5).",
+    "correct_answer": "x²/(y³)",
+    "incorrect_answers": [
+      "x/(y³)",
+      "x² y³",
+      "x y²",
+      "x^4 y",
+      "x/(y²)"
+    ]
+  },
+  {
+    "question": "Convert 0.00081 to a power of 10.",
+    "correct_answer": "8.1 × 10^−4",
+    "incorrect_answers": [
+      "8.1 × 10^−5",
+      "8.1 × 10^−3",
+      "81 × 10^−4",
+      "0.81 × 10^−3",
+      "8.1 × 10^−2"
+    ]
+  },
+  {
+    "question": "Solve for x: 5^(x) = 125.",
+    "correct_answer": "x = 3",
+    "incorrect_answers": [
+      "x = 2",
+      "x = 4",
+      "x = 1",
+      "x = 5",
+      "x = 0"
+    ]
+  },
+{
+    "question": "Using first principles, what is the derivative of f(x) = x²?",
+    "correct_answer": "2x",
+    "incorrect_answers": [
+      "x",
+      "x²",
+      "2",
+      "x+1",
+      "x−1"
+    ]
+  },
+  {
+    "question": "What is d/dx of f(x) = 3x³ − 5x + 2?",
+    "correct_answer": "9x² − 5",
+    "incorrect_answers": [
+      "3x³ − 5",
+      "9x³ − 5",
+      "3x² − 5",
+      "9x² + 2",
+      "x² − 5"
+    ]
+  },
+  {
+    "question": "Find the derivative of f(x) = sin(x).",
+    "correct_answer": "cos(x)",
+    "incorrect_answers": [
+      "−cos(x)",
+      "sin(x)",
+      "−sin(x)",
+      "tan(x)",
+      "sec(x)"
+    ]
+  },
+  {
+    "question": "What is d/dx [e^x]?",
+    "correct_answer": "e^x",
+    "incorrect_answers": [
+      "x·e^{x−1}",
+      "e^{x+1}",
+      "ln(x)e^x",
+      "e^x/x",
+      "x"
+    ]
+  },
+  {
+    "question": "Using the product rule, d/dx [x·ln(x)] =",
+    "correct_answer": "1·ln(x) + x·(1/x) = ln(x) + 1",
+    "incorrect_answers": [
+      "ln(x)",
+      "x ln(x)",
+      "1/x + x",
+      "x",
+      "ln(x)−1"
+    ]
+  },
+  {
+    "question": "Using the quotient rule, d/dx [1/x] =",
+    "correct_answer": "−1/x²",
+    "incorrect_answers": [
+      "1/x²",
+      "−x",
+      "1/x",
+      "−1/x",
+      "x²"
+    ]
+  },
+  {
+    "question": "What is d/dx [ln(x)]?",
+    "correct_answer": "1/x",
+    "incorrect_answers": [
+      "ln(x)/x",
+      "x",
+      "1/ln(x)",
+      "x ln(x)",
+      "−1/x"
+    ]
+  },
+  {
+    "question": "Find the tangent gradient to y = x² at x = 3.",
+    "correct_answer": "2·3 = 6",
+    "incorrect_answers": [
+      "3",
+      "9",
+      "5",
+      "12",
+      "4"
+    ]
+  },
+  {
+    "question": "What is the second derivative of f(x) = x³?",
+    "correct_answer": "6x",
+    "incorrect_answers": [
+      "3x²",
+      "x³",
+      "3x",
+      "6",
+      "x"
+    ]
+  },
+  {
+    "question": "At which x does f(x) = x³ − 3x² have a stationary point?",
+    "correct_answer": "Solve 3x² − 6x = 0 ⇒ x = 0 or 2",
+    "incorrect_answers": [
+      "x = 1",
+      "x = −1",
+      "x = 3",
+      "x = ±√3",
+      "x = ½"
+    ]
+  },
+  {
+    "question": "Use first principles: derivative of f(x) = 5 is",
+    "correct_answer": "0",
+    "incorrect_answers": [
+      "5",
+      "1",
+      "x",
+      "∞",
+      "undefined"
+    ]
+  },
+  {
+    "question": "Differentiate f(x) = (3x + 2)⁴ by chain rule.",
+    "correct_answer": "4(3x + 2)³ · 3 = 12(3x + 2)³",
+    "incorrect_answers": [
+      "4(3x+2)³",
+      "3(3x+2)⁴",
+      "(3x+2)³",
+      "12(3x+2)⁴",
+      "12x(3x+2)³"
+    ]
+  },
+  {
+    "question": "The derivative of f(x) = tan(x) is",
+    "correct_answer": "sec²(x)",
+    "incorrect_answers": [
+      "csc²(x)",
+      "tan²(x)",
+      "1/cos(x)",
+      "sec(x)tan(x)",
+      "cos²(x)"
+    ]
+  },
+  {
+    "question": "Find d/dx [√x] =",
+    "correct_answer": "1/(2√x)",
+    "incorrect_answers": [
+      "√x/2",
+      "2√x",
+      "1/√x",
+      "x/(2√x)",
+      "1/(√x)"
+    ]
+  },
+  {
+    "question": "For f(x) = x² − 4x + 1, the minimum occurs at x =",
+    "correct_answer": "Solve f' = 2x − 4 = 0 ⇒ x = 2",
+    "incorrect_answers": [
+      "x = 1",
+      "x = 0",
+      "x = −2",
+      "x = 4",
+      "x = 3"
+    ]
+  },
+  {
+    "question": "What is the derivative of f(x) = e^{2x}?",
+    "correct_answer": "2e^{2x}",
+    "incorrect_answers": [
+      "e^{2x}",
+      "e^{x}",
+      "2e^{x}",
+      "x·e^{2x}",
+      "2x·e^{2x}"
+    ]
+  },
+  {
+    "question": "Differentiate f(x) = ln(3x).",
+    "correct_answer": "1/(3x)·3 = 1/x",
+    "incorrect_answers": [
+      "ln(3)/x",
+      "1/(3x)",
+      "3/x",
+      "x/3",
+      "ln(x)/3"
+    ]
+  },
+  {
+    "question": "f(x) = x·e^x. f'(x) by product rule is",
+    "correct_answer": "e^x + x·e^x = e^x(1 + x)",
+    "incorrect_answers": [
+      "x·e^x",
+      "e^x",
+      "e^{x}(x−1)",
+      "xe^{x}−e^x",
+      "1 + e^x"
+    ]
+  },
+  {
+    "question": "Which test uses f'' to classify stationary points?",
+    "correct_answer": "Second derivative test",
+    "incorrect_answers": [
+      "First derivative test",
+      "Ratio test",
+      "Sign test",
+      "Chain test",
+      "Product test"
+    ]
+  },
+  {
+    "question": "What does f''(x) > 0 imply about f at x?",
+    "correct_answer": "Concave up (local minimum)",
+    "incorrect_answers": [
+      "Concave down",
+      "Inflection point",
+      "Local maximum",
+      "Stationary",
+      "Undefined"
+    ]
+  },
+  {
+    "question": "If f'(x) changes from + to −, f has a",
+    "correct_answer": "Local maximum",
+    "incorrect_answers": [
+      "Local minimum",
+      "Point of inflection",
+      "No stationary point",
+      "Saddle point",
+      "Vertical tangent"
+    ]
+  },
+  {
+    "question": "Differentiate x^{n} to get",
+    "correct_answer": "n x^{n−1}",
+    "incorrect_answers": [
+      "x^{n+1}/n",
+      "x^{n−1}",
+      "nx^{n}",
+      "nx^{n+1}",
+      "x^{n}/n"
+    ]
+  },
+  {
+    "question": "Find derivative of f(x) = 1/(x²).",
+    "correct_answer": "−2/x³",
+    "incorrect_answers": [
+      "2/x³",
+      "−1/x²",
+      "−2/x²",
+      "1/(2x)",
+      "2x"
+    ]
+  },
+  {
+    "question": "Solve optimization: maximize A = x(10 − x). x optimum is",
+    "correct_answer": "x = 5",
+    "incorrect_answers": [
+      "x = 10",
+      "x = 0",
+      "x = 2",
+      "x = 8",
+      "x = 4"
+    ]
+  },
+  {
+    "question": "Differentiate implicitly: d/dx[x² + y² = 1], dy/dx =",
+    "correct_answer": "−x/y",
+    "incorrect_answers": [
+      "y/x",
+      "x/y",
+      "−y/x",
+      "−1",
+      "1"
+    ]
+  },
+  {
+    "question": "What is derivative of f(x) = a^x (a>0)?",
+    "correct_answer": "a^x ln(a)",
+    "incorrect_answers": [
+      "x a^{x−1}",
+      "a^x",
+      "ln(x)a^x",
+      "a^x / ln(a)",
+      "x ln(a)"
+    ]
+  },
+  {
+    "question": "What is the gradient at the origin for y = x³?",
+    "correct_answer": "0",
+    "incorrect_answers": [
+      "1",
+      "3",
+      "−3",
+      "Undefined",
+      "∞"
+    ]
+  },
+  {
+    "question": "What is d/dx [cos(x)]?",
+    "correct_answer": "−sin(x)",
+    "incorrect_answers": [
+      "sin(x)",
+      "cos(x)",
+      "−cos(x)",
+      "sec(x)",
+      "tan(x)"
+    ]
+  },
+  {
+    "question": "If velocity v = dx/dt, then acceleration a =",
+    "correct_answer": "d²x/dt²",
+    "incorrect_answers": [
+      "dx/dt",
+      "dv/dx",
+      "dx²/dt",
+      "dv·dt",
+      "d³x/dt"
+    ]
+  },
+  {
+    "question": "Sketching: where f' = 0 and f'' > 0 indicates",
+    "correct_answer": "Local minimum",
+    "incorrect_answers": [
+      "Local maximum",
+      "Inflection",
+      "No stationary",
+      "Vertical tangent",
+      "Saddle point"
+    ]
+  },
+  {
+    "question": "Solve for critical points of f(x)=x³−6x²+9x. f' = 3x²−12x+9=0 gives x=",
+    "correct_answer": "x = 1 or 3",
+    "incorrect_answers": [
+      "x = 2",
+      "x = −1 or 3",
+      "x = 0 or 3",
+      "x = 1 only",
+      "x = −1"
+    ]
+  },
+  {
+    "question": "For f(x)=x³−6x²+9x, f''=6x−12, at x=1 f'' =",
+    "correct_answer": "−6 (concave down => max)",
+    "incorrect_answers": [
+      "6",
+      "0",
+      "1",
+      "12",
+      "−12"
+    ]
+  },
+  {
+    "question": "Use first principles: derivative of f(x)=3x is",
+    "correct_answer": "3",
+    "incorrect_answers": [
+      "x",
+      "3x",
+      "0",
+      "1",
+      "x+3"
+    ]
+  },
+  {
+    "question": "Differentiate f(x)=ln(x²+1)",
+    "correct_answer": "(2x)/(x²+1)",
+    "incorrect_answers": [
+      "ln(2x+1)",
+      "1/(x²+1)",
+      "2/(x²+1)",
+      "x/(x²+1)",
+      "2x"
+    ]
+  },
+  {
+    "question": "Which point is inflection for f(x)=x³?",
+    "correct_answer": "x = 0",
+    "incorrect_answers": [
+      "x = 1",
+      "x = −1",
+      "No inflection",
+      "x = 2",
+      "x = 3"
+    ]
+  },
+  {
+    "question": "Differentiate f(x)=arctan(x)",
+    "correct_answer": "1/(1 + x²)",
+    "incorrect_answers": [
+      "1/(1 − x²)",
+      "tan(x)",
+      "sec²(x)",
+      "cos²(x)",
+      "1/x"
+    ]
+  },
+  {
+    "question": "What is the derivative of f(x)=|x| for x>0?",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "−1",
+      "0",
+      "Undefined",
+      "x/|x|",
+      "|x|"
+    ]
+  },
+  {
+    "question": "Solve optimization: minimize y=x+1/x for x>0. dy/dx=0 ⇒",
+    "correct_answer": "1 − 1/x² = 0 ⇒ x=1",
+    "incorrect_answers": [
+      "x=0",
+      "x=−1",
+      "x=2",
+      "x=±1",
+      "No solution"
+    ]
+  },
+  {
+    "question": "For f(x)=e^x sin(x), f' =",
+    "correct_answer": "e^x sin(x) + e^x cos(x)",
+    "incorrect_answers": [
+      "e^x cos(x)",
+      "e^x sin(x)",
+      "sin(x) + cos(x)",
+      "e^x tan(x)",
+      "e^x"
+    ]
+  },
+  {
+    "question": "What is d/dx [sec(x)]?",
+    "correct_answer": "sec(x) tan(x)",
+    "incorrect_answers": [
+      "sec²(x)",
+      "tan²(x)",
+      "cos(x)",
+      "sin(x)",
+      "−sec(x) tan(x)"
+    ]
+  },
+  {
+    "question": "Identify critical point of f(x)=x^4−4x^2 at f'=4x^3−8x=0 ⇒",
+    "correct_answer": "x = −√2, 0, √2",
+    "incorrect_answers": [
+      "x = 0 only",
+      "x = ±1",
+      "x = ±2",
+      "x = 1 or −2",
+      "x = ±√3"
+    ]
+  },
+  {
+    "question": "If f(x)=x^4−4x^2, which x gives local maxima?",
+    "correct_answer": "x = 0",
+    "incorrect_answers": [
+      "x = ±√2",
+      "x = ±1",
+      "x = 1",
+      "x = 2",
+      "x = −2"
+    ]
+  },
+  {
+    "question": "Which function has derivative f'(x)=0 ∀ x?",
+    "correct_answer": "f(x)=constant",
+    "incorrect_answers": [
+      "f(x)=x",
+      "f(x)=x²",
+      "f(x)=e^x",
+      "f(x)=sin(x)",
+      "f(x)=ln(x)"
+    ]
+  },
+  {
+    "question": "Find d/dx [x·e^{-x}].",
+    "correct_answer": "e^{-x} − x e^{-x}",
+    "incorrect_answers": [
+      "e^{-x}",
+      "−e^{-x}",
+      "x e^{-x}",
+      "−x e^{−x} + e^x",
+      "−e^x"
+    ]
+  },
+  {
+    "question": "The gradient function for y=sin^2(x) is",
+    "correct_answer": "2 sin(x) cos(x) = sin(2x)",
+    "incorrect_answers": [
+      "cos^2(x)",
+      "2 sin(x)",
+      "cos(2x)",
+      "−sin(x)",
+      "2 cos(x)"
+    ]
+  }
+]
