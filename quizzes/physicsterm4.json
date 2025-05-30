@@ -1,2 +1,222 @@
-[ { "question": "What is the range of wavelengths for visible light in vacuum?", "correct_answer": "Approximately 400–700 nm", "incorrect_answers": [ "200–400 nm", "700–1000 nm", "1–10 µm", "10–100 nm", "0.1–1 nm" ] }, { "question": "Which portion of the electromagnetic spectrum has higher frequency than visible light?", "correct_answer": "Ultraviolet", "incorrect_answers": [ "Infrared", "Microwave", "Radio", "Terahertz", "Sound waves" ] }, { "question": "What is the speed of light in a vacuum?", "correct_answer": "3.00 × 10^8 m/s", "incorrect_answers": [ "1.50 × 10^8 m/s", "3.00 × 10^6 m/s", "3.00 × 10^10 m/s", "1.00 × 10^8 m/s", "3.00 × 10^7 m/s" ] }, { "question": "How does light behave when passing from air into glass?", "correct_answer": "Slows down and refracts towards normal", "incorrect_answers": [ "Speeds up and refracts away from normal", "Maintains speed and direction", "Is completely absorbed", "Reflects back entirely", "Becomes polarized" ] }, { "question": "Which phenomenon explains the spreading of light around obstacles?", "correct_answer": "Diffraction", "incorrect_answers": [ "Reflection", "Refraction", "Polarization", "Interference", "Absorption" ] }, { "question": "Constructive interference of two coherent light waves occurs when their path difference is:", "correct_answer": "An integer multiple of the wavelength", "incorrect_answers": [ "An odd multiple of half the wavelength", "Equal to half the wavelength", "Zero only", "Undefined", "Less than wavelength" ] }, { "question": "What is the fundamental cause of polarization of light?", "correct_answer": "Oscillations confined to a single plane", "incorrect_answers": [ "Change in frequency", "Change in speed", "Change in wavelength", "Emission of photoelectrons", "Absorption by medium" ] }, { "question": "The energy of a photon is given by E = hf. What is h?", "correct_answer": "Planck’s constant", "incorrect_answers": [ "Boltzmann’s constant", "Gravitational constant", "Coulomb’s constant", "Stefan–Boltzmann constant", "Permeability of free space" ] }, { "question": "What happens to photon energy when frequency doubles?", "correct_answer": "Energy doubles", "incorrect_answers": [ "Energy halves", "Energy quadruples", "Energy remains same", "Energy becomes zero", "Energy squares" ] }, { "question": "Which color corresponds to the highest frequency in visible spectrum?", "correct_answer": "Violet", "incorrect_answers": [ "Red", "Green", "Yellow", "Blue", "Orange" ] }, { "question": "What is the photoelectric effect?", "correct_answer": "Emission of electrons from surface when illuminated by light", "incorrect_answers": [ "Absorption of electrons by surface", "Reflection of light from surface", "Diffraction of light", "Polarization of light", "Emission of photons by electrons" ] }, { "question": "According to photoelectric effect, emission occurs only if light frequency is above the:", "correct_answer": "Threshold frequency", "incorrect_answers": [ "Critical frequency", "Resonance frequency", "Plasma frequency", "Cutoff frequency", "Natural frequency" ] }, { "question": "Bernard Einstein’s photoelectric equation is KE_max = hf − φ. What does φ represent?", "correct_answer": "Work function of material", "incorrect_answers": [ "Photon flux", "Electric potential", "Photon momentum", "Stopping potential", "Threshold intensity" ] }, { "question": "If incident light has frequency f and h f = φ, what is maximum KE of electrons?", ""correct_answer":"Zero","incorrect_answers":["Equal to φ","Infinite","hf","hf/2","hf+φ"] }, { "question": "Stopping potential V_s relates to KE by eV_s = KE_max. What is e?", "correct_answer": "Elementary charge", "incorrect_answers": [ "Electron mass", "Photon energy", "Planck’s constant", "Permittivity", "Resistivity" ] }, { "question": "In a photoelectric experiment, increasing light intensity (above threshold) at fixed frequency:", "correct_answer": "Increases photoelectron current", "incorrect_answers": [ "Increases KE of electrons", "Decreases KE of electrons", "Changes threshold frequency", "Emits protons", "No effect" ] }, { "question": "What is the stopping potential for electrons with KE_max of 2 eV?", "correct_answer": "2 V", "incorrect_answers": [ "1 V", "4 V", "0.5 V", "2 eV", "0 V" ] }, { "question": "In a typical photoelectric setup, the photocurrent vs. stopping potential graph reaches saturation current because:", "correct_answer": "All emitted electrons are collected", "incorrect_answers": [ "Light intensity drops", "Photon energy increases", "Work function changes", "Anodes oxidize", "Voltage reverses" ] }, { "question": "Which material property determines its work function?", "correct_answer": "Type of metal", "incorrect_answers": [ "Intensity of light", "Frequency of light", "Temperature of environment", "Applied voltage", "Electron affinity only" ] }, { "question": "Calculate photon energy for green light of wavelength 550 nm (h=6.63×10^-34 J·s, c=3×10^8 m/s).", "correct_answer": "3.61×10^-19 J", "incorrect_answers": [ "1.21×10^-19 J", "5.45×10^-19 J", "2.18×10^-19 J", "3.61×10^-18 J", "6.63×10^-19 J" ] }, { "question": "What is the frequency of light with wavelength 600 nm?", "correct_answer": "5×10^14 Hz", "incorrect_answers": [ "2×10^14 Hz", "1×10^15 Hz", "5×10^13 Hz", "3×10^14 Hz", "6×10^14 Hz" ] }, { "question": "A metal has work function 2.0 eV. What threshold wavelength (nm)? (hc=1240 eV·nm)", "correct_answer": "620 nm", "incorrect_answers": [ "310 nm", "1240 nm", "2.0 nm", "124 nm", "6200 nm" ] }, { "question": "If stopping potential is 1.5 V for light of 5×10^14 Hz, what is work function? (use eV) ", "correct_answer": "hf−eV_s ≈ (4.14×10^-15×5×10^14)−1.5 ≈ 0.57 eV", "incorrect_answers": [ "1.5 eV", "2.07 eV", "3.0 eV", "4.14 eV", "0 eV" ] }, { "question": "Which effect invalidated classical wave theory of light?", "correct_answer": "Photoelectric effect", "incorrect_answers": [ "Refraction", "Diffraction", "Polarization", "Interference", "Reflection" ] }, { "question": "What is the saturation current in photoelectric effect?", "correct_answer": "Maximum photocurrent at given intensity", "incorrect_answers": [ "Zero current", "Current at threshold frequency", "Current at threshold intensity", "Current when no electrons emitted", "Current at infinite voltage" ] }, { "question": "Which graph is linear according to Einstein’s photoelectric equation?", "correct_answer": "Stopping potential vs frequency", "incorrect_answers": [ "Photocurrent vs frequency", "Electron KE vs intensity", "Photocurrent vs intensity", "Electron KE vs wavelength", "Intensity vs frequency" ] }, { "question": "From stopping potential vs frequency graph slope gives h/e. What is its significance?", "correct_answer": "Planck’s constant divided by electron charge", "incorrect_answers": [ "Electron mass", "Photon energy", "Work function", "Threshold frequency", "Electric field" ] }, { "question": "What is the shape of photocurrent vs anode voltage curve above threshold?", "correct_answer": "Plateaus at saturation current", "incorrect_answers": [ "Goes to zero", "Oscillates", "Linear increase", "Exponential decay", "Parabolic" ] }, { "question": "Which term describes frequency below which no electrons are emitted?", "correct_answer": "Threshold frequency", "incorrect_answers": [ "Resonance frequency", "Cutoff frequency", "Critical frequency", "Exclusion frequency", "Reflection frequency" ] }, { "question": "In photoelectric experiments, what effect does increasing stopping potential have?", "correct_answer": "Reduces photocurrent to zero", "incorrect_answers": [ "Increases photocurrent", "Increases KE of electrons", "Raises work function", "Changes threshold frequency", "Generates heat" ] }, { "question": "Which of the following affects the photoelectric current?", "correct_answer": "Light intensity", "incorrect_answers": [ "Plate area only", "Temperature of metal", "Electron spin", "Electron affinity only", "Magnetic field" ] }, { "question": "What property of light did Einstein explain using photons?", "correct_answer": "Particle-like interaction in photoelectric effect", "incorrect_answers": [ "Refraction at interfaces", "Diffraction patterns", "Polarization behavior", "Wave speed in media", "Intensity distribution" ] }, { "question": "Calculate stopping potential if photon energy is 3 eV and work function is 1 eV.", "correct_answer": "2 V", "incorrect_answers": [ "1 V", "3 V", "4 V", "0 V", "2 eV" ] } ]
+[ { "question": "What is the range of wavelengths for visible light in vacuum?", "correct_answer": "Approximately 400–700 nm", "incorrect_answers": [ "200–400 nm", "700–1000 nm", "1–10 µm", "10–100 nm", "0.1–1 nm" ] }, { "question": "Which portion of the electromagnetic spectrum has higher frequency than visible light?", "correct_answer": "Ultraviolet", "incorrect_answers": [ "Infrared", "Microwave", "Radio", "Terahertz", "Sound waves" ] }, { "question": "What is the speed of light in a vacuum?", "correct_answer": "3.00 × 10^8 m/s", "incorrect_answers": [ "1.50 × 10^8 m/s", "3.00 × 10^6 m/s", "3.00 × 10^10 m/s", "1.00 × 10^8 m/s", "3.00 × 10^7 m/s" ] }, { "question": "How does light behave when passing from air into glass?", "correct_answer": "Slows down and refracts towards normal", "incorrect_answers": [ "Speeds up and refracts away from normal", "Maintains speed and direction", "Is completely absorbed", "Reflects back entirely", "Becomes polarized" ] }, { "question": "Which phenomenon explains the spreading of light around obstacles?", "correct_answer": "Diffraction", "incorrect_answers": [ "Reflection", "Refraction", "Polarization", "Interference", "Absorption" ] }, { "question": "Constructive interference of two coherent light waves occurs when their path difference is:", "correct_answer": "An integer multiple of the wavelength", "incorrect_answers": [ "An odd multiple of half the wavelength", "Equal to half the wavelength", "Zero only", "Undefined", "Less than wavelength" ] }, { "question": "What is the fundamental cause of polarization of light?", "correct_answer": "Oscillations confined to a single plane", "incorrect_answers": [ "Change in frequency", "Change in speed", "Change in wavelength", "Emission of photoelectrons", "Absorption by medium" ] }, { "question": "The energy of a photon is given by E = hf. What is h?", "correct_answer": "Planck’s constant", "incorrect_answers": [ "Boltzmann’s constant", "Gravitational constant", "Coulomb’s constant", "Stefan–Boltzmann constant", "Permeability of free space" ] }, { "question": "What happens to photon energy when frequency doubles?", "correct_answer": "Energy doubles", "incorrect_answers": [ "Energy halves", "Energy quadruples", "Energy remains same", "Energy becomes zero", "Energy squares" ] }, { "question": "Which color corresponds to the highest frequency in visible spectrum?", "correct_answer": "Violet", "incorrect_answers": [ "Red", "Green", "Yellow", "Blue", "Orange" ] }, { "question": "What is the photoelectric effect?", "correct_answer": "Emission of electrons from surface when illuminated by light", "incorrect_answers": [ "Absorption of electrons by surface", "Reflection of light from surface", "Diffraction of light", "Polarization of light", "Emission of photons by electrons" ] }, { "question": "According to photoelectric effect, emission occurs only if light frequency is above the:", "correct_answer": "Threshold frequency", "incorrect_answers": [ "Critical frequency", "Resonance frequency", "Plasma frequency", "Cutoff frequency", "Natural frequency" ] }, { "question": "Bernard Einstein’s photoelectric equation is KE_max = hf − φ. What does φ represent?", "correct_answer": "Work function of material", "incorrect_answers": [ "Photon flux", "Electric potential", "Photon momentum", "Stopping potential", "Threshold intensity" ] }, { "question": "If incident light has frequency f and h f = φ, what is maximum KE of electrons?", ""correct_answer":"Zero","incorrect_answers":["Equal to φ","Infinite","hf","hf/2","hf+φ"] }, { "question": "Stopping potential V_s relates to KE by eV_s = KE_max. What is e?", "correct_answer": "Elementary charge", "incorrect_answers": [ "Electron mass", "Photon energy", "Planck’s constant", "Permittivity", "Resistivity" ] }, { "question": "In a photoelectric experiment, increasing light intensity (above threshold) at fixed frequency:", "correct_answer": "Increases photoelectron current", "incorrect_answers": [ "Increases KE of electrons", "Decreases KE of electrons", "Changes threshold frequency", "Emits protons", "No effect" ] }, { "question": "What is the stopping potential for electrons with KE_max of 2 eV?", "correct_answer": "2 V", "incorrect_answers": [ "1 V", "4 V", "0.5 V", "2 eV", "0 V" ] }, { "question": "In a typical photoelectric setup, the photocurrent vs. stopping potential graph reaches saturation current because:", "correct_answer": "All emitted electrons are collected", "incorrect_answers": [ "Light intensity drops", "Photon energy increases", "Work function changes", "Anodes oxidize", "Voltage reverses" ] }, { "question": "Which material property determines its work function?", "correct_answer": "Type of metal", "incorrect_answers": [ "Intensity of light", "Frequency of light", "Temperature of environment", "Applied voltage", "Electron affinity only" ] }, { "question": "Calculate photon energy for green light of wavelength 550 nm (h=6.63×10^-34 J·s, c=3×10^8 m/s).", "correct_answer": "3.61×10^-19 J", "incorrect_answers": [ "1.21×10^-19 J", "5.45×10^-19 J", "2.18×10^-19 J", "3.61×10^-18 J", "6.63×10^-19 J" ] }, { "question": "What is the frequency of light with wavelength 600 nm?", "correct_answer": "5×10^14 Hz", "incorrect_answers": [ "2×10^14 Hz", "1×10^15 Hz", "5×10^13 Hz", "3×10^14 Hz", "6×10^14 Hz" ] }, { "question": "A metal has work function 2.0 eV. What threshold wavelength (nm)? (hc=1240 eV·nm)", "correct_answer": "620 nm", "incorrect_answers": [ "310 nm", "1240 nm", "2.0 nm", "124 nm", "6200 nm" ] }, { "question": "If stopping potential is 1.5 V for light of 5×10^14 Hz, what is work function? (use eV) ", "correct_answer": "hf−eV_s ≈ (4.14×10^-15×5×10^14)−1.5 ≈ 0.57 eV", "incorrect_answers": [ "1.5 eV", "2.07 eV", "3.0 eV", "4.14 eV", "0 eV" ] }, { "question": "Which effect invalidated classical wave theory of light?", "correct_answer": "Photoelectric effect", "incorrect_answers": [ "Refraction", "Diffraction", "Polarization", "Interference", "Reflection" ] }, { "question": "What is the saturation current in photoelectric effect?", "correct_answer": "Maximum photocurrent at given intensity", "incorrect_answers": [ "Zero current", "Current at threshold frequency", "Current at threshold intensity", "Current when no electrons emitted", "Current at infinite voltage" ] }, { "question": "Which graph is linear according to Einstein’s photoelectric equation?", "correct_answer": "Stopping potential vs frequency", "incorrect_answers": [ "Photocurrent vs frequency", "Electron KE vs intensity", "Photocurrent vs intensity", "Electron KE vs wavelength", "Intensity vs frequency" ] }, { "question": "From stopping potential vs frequency graph slope gives h/e. What is its significance?", "correct_answer": "Planck’s constant divided by electron charge", "incorrect_answers": [ "Electron mass", "Photon energy", "Work function", "Threshold frequency", "Electric field" ] }, { "question": "What is the shape of photocurrent vs anode voltage curve above threshold?", "correct_answer": "Plateaus at saturation current", "incorrect_answers": [ "Goes to zero", "Oscillates", "Linear increase", "Exponential decay", "Parabolic" ] }, { "question": "Which term describes frequency below which no electrons are emitted?", "correct_answer": "Threshold frequency", "incorrect_answers": [ "Resonance frequency", "Cutoff frequency", "Critical frequency", "Exclusion frequency", "Reflection frequency" ] }, { "question": "In photoelectric experiments, what effect does increasing stopping potential have?", "correct_answer": "Reduces photocurrent to zero", "incorrect_answers": [ "Increases photocurrent", "Increases KE of electrons", "Raises work function", "Changes threshold frequency", "Generates heat" ] }, { "question": "Which of the following affects the photoelectric current?", "correct_answer": "Light intensity", "incorrect_answers": [ "Plate area only", "Temperature of metal", "Electron spin", "Electron affinity only", "Magnetic field" ] }, { "question": "What property of light did Einstein explain using photons?", "correct_answer": "Particle-like interaction in photoelectric effect", "incorrect_answers": [ "Refraction at interfaces", "Diffraction patterns", "Polarization behavior", "Wave speed in media", "Intensity distribution" ] }, { "question": "Calculate stopping potential if photon energy is 3 eV and work function is 1 eV.", "correct_answer": "2 V", "incorrect_answers": [ "1 V", "3 V", "4 V", "0 V", "2 eV" ] },{ "question": "What is a continuous emission spectrum?", "correct_answer": "A spectrum showing all wavelengths of light without interruption.", "incorrect_answers": [ "A spectrum with only discrete lines.", "A spectrum showing only infrared light.", "A spectrum of absorbed colors.", "A spectrum with missing wavelengths.", "A spectrum produced by cooled gases." ] }, { "question": "Which source produces a continuous spectrum?", "correct_answer": "Incandescent solid or dense gas", "incorrect_answers": [ "Low-pressure gas discharge", "Cold gas cloud", "Fluorescent lamp", "Laser beam", "Monochromator" ] }, { "question": "What are atomic emission spectra?", "correct_answer": "Discrete lines emitted by excited atoms.", "incorrect_answers": [ "A continuous rainbow of light.", "Absorption lines in a star.", "A spectrum from a diffraction grating.", "Scattered sunlight.", "Thermal radiation peaks." ] }, { "question": "What causes the lines in atomic emission spectra?", "correct_answer": "Electron transitions between energy levels.", "incorrect_answers": [ "Nuclear decay events.", "Vibrational modes in molecules.", "Electron spin flips.", "Thermal expansion.", "Ion collisions only." ] }, { "question": "Which element’s emission spectrum is characterized by a prominent yellow doublet?", "correct_answer": "Sodium", "incorrect_answers": [ "Hydrogen", "Helium", "Neon", "Potassium", "Calcium" ] }, { "question": "What is an absorption spectrum?", "correct_answer": "Dark lines where light at specific wavelengths is absorbed.", "incorrect_answers": [ "Bright lines of emitted light.", "Continuous rainbow without gaps.", "Radio frequency peaks.", "Thermal emission peaks.", "Ultraviolet continuum." ] }, { "question": "How does an absorption spectrum relate to emission spectrum?", "correct_answer": "Absorption lines appear at same wavelengths as emission lines.", "incorrect_answers": [ "Absorption lines are at different wavelengths.", "Emission lines fill gaps in absorption.", "They have no relation.", "Emission lines are continuous where absorption is discrete.", "Absorption is only infrared." ] }, { "question": "A hydrogen Balmer line has wavelength 656 nm. What is its frequency? (c=3×10^8 m/s)", "correct_answer": "4.57×10^14 Hz", "incorrect_answers": [ "2.02×10^15 Hz", "4.57×10^12 Hz", "6.56×10^14 Hz", "3.00×10^8 Hz", "1.82×10^14 Hz" ] }, { "question": "Calculate the energy of a photon at 486 nm (E=hc/λ, h=6.63×10^-34 J·s).", "correct_answer": "4.09×10^-19 J", "incorrect_answers": [ "3.27×10^-19 J", "5.00×10^-19 J", "2.03×10^-19 J", "4.09×10^-18 J", "1.23×10^-19 J" ] }, { "question": "Which series in hydrogen corresponds to transitions ending at n=2?", "correct_answer": "Balmer series", "incorrect_answers": [ "Lyman series", "Paschen series", "Brackett series", "Pfund series", "Pfennig series" ] }, { "question": "What region does the Lyman series lie in?", "correct_answer": "Ultraviolet", "incorrect_answers": [ "Visible", "Infrared", "X-ray", "Radio", "Microwave" ] }, { "question": "Calculate the wavelength of a photon with energy 2.5 eV (1 eV=1.6×10^-19 J).", "correct_answer": "496 nm", "incorrect_answers": [ "250 nm", "1248 nm", "310 nm", "800 nm", "4960 nm" ] }, { "question": "Which element shows a red line at 656 nm in its emission spectrum?", "correct_answer": "Hydrogen", "incorrect_answers": [ "Helium", "Neon", "Argon", "Sodium", "Potassium" ] }, { "question": "Atomic absorption lines in the solar spectrum reveal presence of which element at 589 nm?", "correct_answer": "Sodium", "incorrect_answers": [ "Calcium", "Iron", "Hydrogen", "Helium", "Magnesium" ] },{
+    "question": "Which type of spectrum is produced when white light passes through a cool gas and then through a prism?",
+    "correct_answer": "Absorption spectrum",
+    "incorrect_answers": [
+      "Emission spectrum",
+      "Continuous spectrum",
+      "Ultraviolet spectrum",
+      "X-ray spectrum",
+      "Gamma ray spectrum"
+    ]
+  },
+  {
+    "question": "Which element emits a red emission line visible in hydrogen's spectrum?",
+    "correct_answer": "Hydrogen",
+    "incorrect_answers": [
+      "Helium",
+      "Sodium",
+      "Neon",
+      "Oxygen",
+      "Carbon"
+    ]
+  },
+  {
+    "question": "What causes the lines in an atomic emission spectrum?",
+    "correct_answer": "Electrons moving from higher to lower energy levels",
+    "incorrect_answers": [
+      "Protons combining with electrons",
+      "Atoms losing neutrons",
+      "Electrons moving from lower to higher energy levels",
+      "Absorption of thermal radiation",
+      "Collisions between nuclei"
+    ]
+  },
+  {
+    "question": "What does a line in an atomic absorption spectrum represent?",
+    "correct_answer": "A specific wavelength absorbed by an electron",
+    "incorrect_answers": [
+      "A missing photon in the nucleus",
+      "Energy released by an atom",
+      "Proton transitions",
+      "Radioactive decay",
+      "Emission due to collisions"
+    ]
+  },
+  {
+    "question": "In atomic spectra, what is the name of the series that corresponds to visible light in hydrogen?",
+    "correct_answer": "Balmer series",
+    "incorrect_answers": [
+      "Lyman series",
+      "Paschen series",
+      "Rydberg series",
+      "Alpha series",
+      "Bohr series"
+    ]
+  },
+  {
+    "question": "Which transition in a hydrogen atom will produce the highest energy photon?",
+    "correct_answer": "From n=6 to n=1",
+    "incorrect_answers": [
+      "From n=2 to n=1",
+      "From n=3 to n=2",
+      "From n=5 to n=4",
+      "From n=4 to n=3",
+      "From n=3 to n=1"
+    ]
+  },
+  {
+    "question": "What is the result when an electron absorbs energy?",
+    "correct_answer": "It moves to a higher energy level",
+    "incorrect_answers": [
+      "It loses mass",
+      "It emits a photon",
+      "It becomes a neutron",
+      "It splits into two particles",
+      "It ionizes immediately"
+    ]
+  },
+  {
+    "question": "Which instrument is used to study spectra of light?",
+    "correct_answer": "Spectroscope",
+    "incorrect_answers": [
+      "Microscope",
+      "Telescope",
+      "Voltmeter",
+      "Oscilloscope",
+      "Thermometer"
+    ]
+  },
+  {
+    "question": "Which scientist explained the line spectrum of hydrogen using quantized energy levels?",
+    "correct_answer": "Niels Bohr",
+    "incorrect_answers": [
+      "Albert Einstein",
+      "James Clerk Maxwell",
+      "Michael Faraday",
+      "Isaac Newton",
+      "Werner Heisenberg"
+    ]
+  },
+  {
+    "question": "Which type of spectrum is produced by heated solids or dense gases?",
+    "correct_answer": "Continuous spectrum",
+    "incorrect_answers": [
+      "Line emission spectrum",
+      "Line absorption spectrum",
+      "Photoelectric spectrum",
+      "Dark-line spectrum",
+      "Spectral gap"
+    ]
+  },
+  {
+    "question": "The bright lines in a line emission spectrum are caused by...",
+    "correct_answer": "Electrons releasing energy as they return to lower energy levels",
+    "incorrect_answers": [
+      "Electrons gaining kinetic energy",
+      "Atoms colliding and emitting sound",
+      "Neutrons losing charge",
+      "Nuclei fusing together",
+      "Electrons leaving the atom permanently"
+    ]
+  },
+  {
+    "question": "What is the main difference between an emission and absorption spectrum?",
+    "correct_answer": "Emission shows light emitted; absorption shows light absorbed",
+    "incorrect_answers": [
+      "Emission is black and white; absorption is colored",
+      "Emission is random; absorption is ordered",
+      "Emission happens in cold gases only",
+      "There is no difference",
+      "Emission involves nuclear decay"
+    ]
+  },
+  {
+    "question": "Which color of light has the shortest wavelength?",
+    "correct_answer": "Violet",
+    "incorrect_answers": [
+      "Red",
+      "Orange",
+      "Yellow",
+      "Green",
+      "Blue-green"
+    ]
+  },
+  {
+    "question": "Which formula relates the energy of a photon to its frequency?",
+    "correct_answer": "E = hf",
+    "incorrect_answers": [
+      "E = mc²",
+      "F = ma",
+      "E = ½mv²",
+      "E = qV",
+      "E = λf"
+    ]
+  },
+  {
+    "question": "Calculate the energy of a photon with frequency 6 × 10¹⁴ Hz. (Use h = 6.63 × 10⁻³⁴ J·s)",
+    "correct_answer": "3.98 × 10⁻¹⁹ J",
+    "incorrect_answers": [
+      "9.95 × 10⁻¹⁷ J",
+      "1.50 × 10⁻²⁰ J",
+      "3.00 × 10⁸ J",
+      "2.18 × 10⁻¹⁸ J",
+      "7.45 × 10⁻²⁰ J"
+    ]
+  },
+  {
+    "question": "What does the intensity of a spectral line represent?",
+    "correct_answer": "The number of photons emitted at that wavelength",
+    "incorrect_answers": [
+      "The mass of electrons in orbit",
+      "The temperature of the gas",
+      "The speed of light",
+      "The angle of reflection",
+      "The refractive index"
+    ]
+  },
+  {
+    "question": "Which spectrum would you observe if white light passes through hydrogen gas and then through a prism?",
+    "correct_answer": "Absorption spectrum",
+    "incorrect_answers": [
+      "Emission spectrum",
+      "Gamma ray spectrum",
+      "Microwave spectrum",
+      "Infrared emission",
+      "UV line spectrum"
+    ]
+  },
+  {
+    "question": "Which energy level transition emits the longest wavelength in hydrogen?",
+    "correct_answer": "From n=3 to n=2",
+    "incorrect_answers": [
+      "From n=6 to n=1",
+      "From n=4 to n=2",
+      "From n=5 to n=1",
+      "From n=4 to n=3",
+      "From n=2 to n=1"
+    ]
+  },
+  {
+    "question": "If the wavelength of a photon is 500 nm, what is its frequency? (c = 3 × 10⁸ m/s)",
+    "correct_answer": "6 × 10¹⁴ Hz",
+    "incorrect_answers": [
+      "3 × 10⁸ Hz",
+      "1.5 × 10¹⁴ Hz",
+      "9 × 10¹³ Hz",
+      "7 × 10¹² Hz",
+      "2 × 10⁹ Hz"
+    ]
+  },
+  {
+    "question": "What is the role of quantized energy levels in atoms?",
+    "correct_answer": "They allow only specific energy transitions",
+    "incorrect_answers": [
+      "They create infinite energy storage",
+      "They eliminate the uncertainty principle",
+      "They restrict atomic size",
+      "They cause radioactive decay",
+      "They slow down electron movement"
+    ]
+  }
+]
 
