@@ -1,1 +1,900 @@
-j
+[
+  {
+    "question": "What is the distance between (1,2) and (4,6)?",
+    "correct_answer": "5",
+    "incorrect_answers": [
+      "4",
+      "6",
+      "3",
+      "7",
+      "√41"
+    ]
+  },
+  {
+    "question": "What is the midpoint of the segment joining (−2,5) and (4,1)?",
+    "correct_answer": "(1,3)",
+    "incorrect_answers": [
+      "(−1,3)",
+      "(2,2)",
+      "(1,2)",
+      "(0,3)",
+      "(2,3)"
+    ]
+  },
+  {
+    "question": "What is the gradient of the line through (2,3) and (5,11)?",
+    "correct_answer": "8/3",
+    "incorrect_answers": [
+      "3/8",
+      "4/3",
+      "11/5",
+      "5/11",
+      "−8/3"
+    ]
+  },
+  {
+    "question": "Which is the equation of the line with gradient 2 passing through (0,−1)?",
+    "correct_answer": "y = 2x − 1",
+    "incorrect_answers": [
+      "y = x − 1",
+      "y = 2x + 1",
+      "y = (1/2)x − 1",
+      "y = 2x",
+      "y = −2x − 1"
+    ]
+  },
+  {
+    "question": "What is the angle of inclination (to x-axis) of the line y = √3 x?",
+    "correct_answer": "60°",
+    "incorrect_answers": [
+      "30°",
+      "45°",
+      "90°",
+      "120°",
+      "75°"
+    ]
+  },
+  {
+    "question": "Two lines have gradients m₁ = 3 and m₂ = −1/3. They are:",
+    "correct_answer": "Perpendicular",
+    "incorrect_answers": [
+      "Parallel",
+      "Coincident",
+      "Intersecting at 45°",
+      "Orthogonal only if through origin",
+      "Neither"
+    ]
+  },
+  {
+    "question": "Which condition proves two lines are parallel?",
+    "correct_answer": "Their gradients are equal",
+    "incorrect_answers": [
+      "Their y-intercepts are equal",
+      "Their product of gradients is −1",
+      "Their sum of gradients is 0",
+      "Their lines intersect at right angles",
+      "Their equations share no solution"
+    ]
+  },
+  {
+    "question": "Find the equation of the perpendicular bisector of the segment joining (0,0) and (4,4).",
+    "correct_answer": "y = −x + 4",
+    "incorrect_answers": [
+      "y = x − 2",
+      "y = x + 2",
+      "y = −x − 2",
+      "y = −x",
+      "y = x + 4"
+    ]
+  },
+  {
+    "question": "What is the y-intercept of the line 3x + 2y = 6?",
+    "correct_answer": "3",
+    "incorrect_answers": [
+      "2",
+      "6",
+      "−3",
+      "−2",
+      "1"
+    ]
+  },
+  {
+    "question": "What is the x-intercept of the line 5x − y = 10?",
+    "correct_answer": "2",
+    "incorrect_answers": [
+      "−2",
+      "10",
+      "0",
+      "5",
+      "−5"
+    ]
+  },
+  {
+    "question": "Find the area of triangle with vertices (0,0), (4,0), (0,3).",
+    "correct_answer": "6",
+    "incorrect_answers": [
+      "12",
+      "7",
+      "5",
+      "8",
+      "2"
+    ]
+  },
+  {
+    "question": "What is the center of the circle x² + y² − 6x + 4y + 9 = 0?",
+    "correct_answer": "(3, −2)",
+    "incorrect_answers": [
+      "(−3,2)",
+      "(−3,−2)",
+      "(3,2)",
+      "(−6,4)",
+      "(6,−4)"
+    ]
+  },
+  {
+    "question": "What is the radius of the circle (x − 1)² + (y + 2)² = 25?",
+    "correct_answer": "5",
+    "incorrect_answers": [
+      "25",
+      "√25",
+      "±5",
+      "1",
+      "2"
+    ]
+  },
+  {
+    "question": "Does the point (2,1) lie inside, on, or outside the circle x² + y² = 5?",
+    "correct_answer": "Inside",
+    "incorrect_answers": [
+      "On",
+      "Outside",
+      "Cannot determine",
+      "Tangent",
+      "Intersecting"
+    ]
+  },
+  {
+    "question": "Equation of circle through (3,0),(0,4),(−3,0),(0,−4) is",
+    "correct_answer": "x² + y² = 9",
+    "incorrect_answers": [
+      "x² + y² = 16",
+      "x² + y² = 25",
+      "x² + y² = 12",
+      "x² + y² = 5",
+      "(x−3)² + (y−4)² = 9"
+    ]
+  },
+  {
+    "question": "What is the gradient of the tangent to y = x³ at x = 2?",
+    "correct_answer": "12",
+    "incorrect_answers": [
+      "8",
+      "6",
+      "4",
+      "3",
+      "2"
+    ]
+  },
+  {
+    "question": "Equation of tangent to circle x² + y² = 25 at (3,4) is",
+    "correct_answer": "3x + 4y = 25",
+    "incorrect_answers": [
+      "4x + 3y = 25",
+      "3x − 4y = 25",
+      "4y − 3x = 25",
+      "3x + 4y = 1",
+      "x/3 + y/4 = 1"
+    ]
+  },
+  {
+    "question": "What is the equation of the normal to y = x² at (1,1)?",
+    "correct_answer": "y − 1 = −(1/2)(x − 1)",
+    "incorrect_answers": [
+      "y − 1 = 2(x − 1)",
+      "y − 1 = (1/2)(x − 1)",
+      "y − 1 = −2(x − 1)",
+      "y = x",
+      "x + y = 2"
+    ]
+  },
+  {
+    "question": "Find gradient of line joining (−1,2) and (3,−2).",
+    "correct_answer": "−1",
+    "incorrect_answers": [
+      "1",
+      "−2/3",
+      "2/3",
+      "2",
+      "−4"
+    ]
+  },
+  {
+    "question": "What is the equation of the line through (2,3) parallel to y = −x + 5?",
+    "correct_answer": "y = −x + 5",
+    "incorrect_answers": [
+      "y = x + 1",
+      "y = −x + 1",
+      "y = x + 5",
+      "y = x − 2",
+      "y = −x + 7"
+    ]
+  },
+  {
+    "question": "What is the distance from point (2,−1) to the line y = 3x + 4?",
+    "correct_answer": "│3·2 − 1 + 4│/√10 = 9/√10",
+    "incorrect_answers": [
+      "7/√10",
+      "5/√10",
+      "9/√5",
+      "3/√10",
+      "6/√10"
+    ]
+  },
+  {
+    "question": "What is the area of triangle with vertices A(1,1), B(4,5), C(7,1)?",
+    "correct_answer": "6",
+    "incorrect_answers": [
+      "9",
+      "12",
+      "8",
+      "10",
+      "15"
+    ]
+  },
+  {
+    "question": "The circle x² + y² + 4x − 6y + 9 = 0 intersects x-axis at",
+    "correct_answer": "x = 1 or x = −5",
+    "incorrect_answers": [
+      "x=3 or x=−3",
+      "x=−1 or x=5",
+      "x=±3",
+      "x=±1",
+      "No intersection"
+    ]
+  },
+  {
+    "question": "Which pairs of lines are perpendicular? 2x − y + 3 = 0 and x + 2y − 1 = 0",
+    "correct_answer": "Yes (product of gradients = −1)",
+    "incorrect_answers": [
+      "No",
+      "Parallel",
+      "Coincident",
+      "Intersect at 45° only",
+      "Cannot say"
+    ]
+  },
+  {
+    "question": "Find the circumcenter of triangle with vertices (0,0),(4,0),(0,4).",
+    "correct_answer": "(2,2)",
+    "incorrect_answers": [
+      "(1,1)",
+      "(0,0)",
+      "(4,4)",
+      "(2,0)",
+      "(0,2)"
+    ]
+  },
+  {
+    "question": "Equation of circle through (0,0),(2,0),(0,2) is",
+    "correct_answer": "x² + y² − 2x − 2y = 0",
+    "incorrect_answers": [
+      "x² + y² + 2x + 2y = 0",
+      "x² + y² − 4x − 4y = 0",
+      "x² + y² = 2",
+      "x² + y² + 2x + 2y +1=0",
+      "x² + y² − x − y = 0"
+    ]
+  },
+  {
+    "question": "What is the foot of the perpendicular from (3,4) to x-axis?",
+    "correct_answer": "(3,0)",
+    "incorrect_answers": [
+      "(0,4)",
+      "(4,3)",
+      "(0,3)",
+      "(3,4)",
+      "(−3,0)"
+    ]
+  },
+  {
+    "question": "Find equation of chord of contact from (3,4) to circle x² + y² = 25.",
+    "correct_answer": "3x + 4y = 25",
+    "incorrect_answers": [
+      "4x + 3y = 25",
+      "3x − 4y = 25",
+      "x + y = 5",
+      "3x + 4y = 5",
+      "x² + y² = 25"
+    ]
+  },
+  {
+    "question": "What is the harmonic mean of gradients m₁ and m₂ if lines are perpendicular?",
+    "correct_answer": "Undefined (one gradient is negative reciprocal)",
+    "incorrect_answers": [
+      "0",
+      "1",
+      "−1",
+      "m₁ + m₂",
+      "2/(m₁ + m₂)"
+    ]
+  },
+  {
+    "question": "For triangle with vertices (0,0),(a,0),(0,b), its area is",
+    "correct_answer": "ab/2",
+    "incorrect_answers": [
+      "ab",
+      "a+b",
+      "2ab",
+      "a/b",
+      "b/a"
+    ]
+  },
+  {
+    "question": "What is the equation of the diameter of the circle x² + y² = 9 that is parallel to x-axis?",
+    "correct_answer": "y = 0",
+    "incorrect_answers": [
+      "x = 0",
+      "y = 3",
+      "y = −3",
+      "x = 3",
+      "x = −3"
+    ]
+  },
+  {
+    "question": "Find the center of the circle passing through (1,1),(1,−1),(−1,1).",
+    "correct_answer": "(0,0)",
+    "incorrect_answers": [
+      "(1,1)",
+      "(−1,−1)",
+      "(0,1)",
+      "(1,0)",
+      "(−1,0)"
+    ]
+  },
+  {
+    "question": "What is the orthocenter of right triangle with right angle at (0,0) and other vertices (a,0),(0,b)?",
+    "correct_answer": "(0,0)",
+    "incorrect_answers": [
+      "(a,0)",
+      "(0,b)",
+      "(a,b)",
+      "(a/2,b/2)",
+      "(−a,−b)"
+    ]
+  },
+  {
+    "question": "Find equation of line through (2,−1) with gradient undefined.",
+    "correct_answer": "x = 2",
+    "incorrect_answers": [
+      "y = −1",
+      "x = −1",
+      "y = 2",
+      "x + y = 1",
+      "2x + y = 3"
+    ]
+  },
+  {
+    "question": "What is the gradient of the tangent to y = 1/x at x = 2?",
+    "correct_answer": "−1/4",
+    "incorrect_answers": [
+      "1/4",
+      "−2",
+      "2",
+      "1/2",
+      "−1/2"
+    ]
+  },
+  {
+    "question": "The locus of points equidistant from (0,0) and (4,0) is",
+    "correct_answer": "x = 2",
+    "incorrect_answers": [
+      "y = 2",
+      "x² + y² = 4",
+      "y² = 4",
+      "x = −2",
+      "y = 0"
+    ]
+  },
+  {
+    "question": "Point (x,y) moves so that distance from (1,0) equals distance from (−1,0). The locus is",
+    "correct_answer": "x = 0",
+    "incorrect_answers": [
+      "y = 0",
+      "x² + y² = 1",
+      "y² = 1",
+      "x = 1",
+      "x + y = 0"
+    ]
+  },
+  {
+    "question": "Which triangle inscribed in circle x² + y² = r² has maximum area?",
+    "correct_answer": "Right-angled isosceles",
+    "incorrect_answers": [
+      "Equilateral",
+      "Scalene",
+      "Right-angled but not isosceles",
+      "Acute",
+      "Obtuse"
+    ]
+  },
+  {
+    "question": "Find the length of the arc from (r,0) to (0,r) on circle x² + y² = r².",
+    "correct_answer": "πr/2",
+    "incorrect_answers": [
+      "πr",
+      "πr/4",
+      "r",
+      "2πr",
+      "rπ"
+    ]
+  },
+  {
+    "question": "What is the foot of the perpendicular from (4,3) to line y = x?",
+    "correct_answer": "(3.5,3.5)",
+    "incorrect_answers": [
+      "(4,4)",
+      "(3,3)",
+      "(4,3)",
+      "(3,4)",
+      "(3,2)"
+    ]
+  },
+  {
+    "question": "If two chords of a circle are equal, then they subtend equal angles at the center. True or false?",
+    "correct_answer": "True",
+    "incorrect_answers": [
+      "False",
+      "Only if circle is unit circle",
+      "Only if chords are diameters",
+      "Only for perpendicular chords",
+      "Cannot say"
+    ]
+  },
+  {
+    "question": "The intersection of lines 2x−3y=6 and x+2y=5 is",
+    "correct_answer": "(3,1)",
+    "incorrect_answers": [
+      "(1,2)",
+      "(−3,−1)",
+      "(2,3)",
+      "(5,0)",
+      "(0,5)"
+    ]
+  },
+  {
+    "question": "The perpendicular from center to a chord bisects the chord. True or false?",
+    "correct_answer": "True",
+    "incorrect_answers": [
+      "False",
+      "Only for diameters",
+      "Only if chord passes through origin",
+      "Only in unit circle",
+      "Cannot say"
+    ]
+  },
+{
+    "question": "Simplify the identity: sin²θ + cos²θ = ?",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "sinθ",
+      "cosθ",
+      "0",
+      "tan²θ",
+      "sec²θ"
+    ]
+  },
+  {
+    "question": "Express tanθ in terms of sinθ and cosθ.",
+    "correct_answer": "sinθ / cosθ",
+    "incorrect_answers": [
+      "cosθ / sinθ",
+      "1 / (sinθ cosθ)",
+      "sin²θ + cos²θ",
+      "sinθ cosθ",
+      "1 / tanθ"
+    ]
+  },
+  {
+    "question": "Prove the reduction formula: cos(π − θ) = ?",
+    "correct_answer": "−cosθ",
+    "incorrect_answers": [
+      "cosθ",
+      "sinθ",
+      "−sinθ",
+      "sin(π − θ)",
+      "−cos(π + θ)"
+    ]
+  },
+  {
+    "question": "Simplify: sec²θ − tan²θ = ?",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "secθ",
+      "tanθ",
+      "0",
+      "sinθ",
+      "1/sec²θ"
+    ]
+  },
+  {
+    "question": "Reduction: sin(π + θ) = ?",
+    "correct_answer": "−sinθ",
+    "incorrect_answers": [
+      "sinθ",
+      "cosθ",
+      "−cosθ",
+      "sin(π − θ)",
+      "cos(π + θ)"
+    ]
+  },
+  {
+    "question": "State the Pythagorean identity for tangent and secant.",
+    "correct_answer": "1 + tan²θ = sec²θ",
+    "incorrect_answers": [
+      "1 + sec²θ = tan²θ",
+      "1 + tan²θ = csc²θ",
+      "sec²θ − tan²θ = cos²θ",
+      "tan²θ − 1 = sec²θ",
+      "secθ = 1/tanθ"
+    ]
+  },
+  {
+    "question": "Simplify: 1 − cos²θ = ?",
+    "correct_answer": "sin²θ",
+    "incorrect_answers": [
+      "cos²θ",
+      "tan²θ",
+      "sec²θ",
+      "1",
+      "−sin²θ"
+    ]
+  },
+  {
+    "question": "Reduction: tan(π + θ) = ?",
+    "correct_answer": "tanθ",
+    "incorrect_answers": [
+      "−tanθ",
+      "cotθ",
+      "−cotθ",
+      "secθ",
+      "−secθ"
+    ]
+  },
+  {
+    "question": "Express cotθ in terms of cosθ and sinθ.",
+    "correct_answer": "cosθ / sinθ",
+    "incorrect_answers": [
+      "sinθ / cosθ",
+      "1 / tanθ",
+      "tanθ",
+      "secθ",
+      "cscθ"
+    ]
+  },
+  {
+    "question": "Simplify: csc²θ − cot²θ = ?",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "cscθ",
+      "cotθ",
+      "0",
+      "sin²θ",
+      "1/csc²θ"
+    ]
+  },
+  {
+    "question": "Reduction: cos(2π − θ) = ?",
+    "correct_answer": "cosθ",
+    "incorrect_answers": [
+      "−cosθ",
+      "sinθ",
+      "−sinθ",
+      "cos(π + θ)",
+      "−cos(π − θ)"
+    ]
+  },
+  {
+    "question": "Identity: tanθ · cotθ = ?",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "tan²θ",
+      "cot²θ",
+      "0",
+      "secθ",
+      "cscθ"
+    ]
+  },
+  {
+    "question": "Reduction: sin(2π + θ) = ?",
+    "correct_answer": "sinθ",
+    "incorrect_answers": [
+      "−sinθ",
+      "cosθ",
+      "−cosθ",
+      "sin(π − θ)",
+      "sin(π + θ)"
+    ]
+  },
+  {
+    "question": "Express secθ in terms of cosine.",
+    "correct_answer": "1 / cosθ",
+    "incorrect_answers": [
+      "1 / sinθ",
+      "tanθ",
+      "cosθ",
+      "sinθ",
+      "cotθ"
+    ]
+  },
+  {
+    "question": "Simplify: (1 + tanθ)(1 − tanθ) = ?",
+    "correct_answer": "1 − tan²θ",
+    "incorrect_answers": [
+      "1 + tan²θ",
+      "sec²θ",
+      "tan²θ",
+      "0",
+      "secθ tanθ"
+    ]
+  },
+  {
+    "question": "Solve for θ: sinθ = 1/2 in [0, 2π].",
+    "correct_answer": "θ = π/6 or 5π/6",
+    "incorrect_answers": [
+      "θ = π/3 or 2π/3",
+      "θ = π/2 or 3π/2",
+      "θ = π/4 or 3π/4",
+      "θ = 0 or π",
+      "θ = π/6 only"
+    ]
+  },
+  {
+    "question": "Prove: tan(2θ) = 2 tanθ / (1 − tan²θ).",
+    "correct_answer": "Use addition formula tan(a+b)",
+    "incorrect_answers": [
+      "Use Pythagorean identity",
+      "Use double-angle for sine only",
+      "Use half-angle identity",
+      "Use reciprocal identities",
+      "Divide by cos2θ"
+    ]
+  },
+  {
+    "question": "Solve equation: 2 cos²θ − 1 = 0 in [0, 2π].",
+    "correct_answer": "θ = π/4, 3π/4, 5π/4, 7π/4",
+    "incorrect_answers": [
+      "θ = π/3, 2π/3, 4π/3, 5π/3",
+      "θ = 0, π/2, π, 3π/2",
+      "θ = π/6, 5π/6, 7π/6, 11π/6",
+      "θ = π/2, 3π/2",
+      "θ = π/4 only"
+    ]
+  },
+  {
+    "question": "Show that 1/(1 + sinθ) + 1/(1 − sinθ) simplifies to?",
+    "correct_answer": "2 sec²θ",
+    "incorrect_answers": [
+      "2 csc²θ",
+      "2 tan²θ",
+      "sec²θ",
+      "1",
+      "2"
+    ]
+  },
+  {
+    "question": "Solve for θ: tan²θ = 3 in [0, π].",
+    "correct_answer": "θ = π/3 or 2π/3",
+    "incorrect_answers": [
+      "θ = π/4 or 3π/4",
+      "θ = π/6 or 5π/6",
+      "θ = π/2",
+      "θ = π/3 only",
+      "θ = 2π/3 only"
+    ]
+  },
+  {
+    "question": "Prove: sin(α + β) = sinα cosβ + cosα sinβ.",
+    "correct_answer": "Use unit circle or area method",
+    "incorrect_answers": [
+      "Use Pythagorean theorem",
+      "Use double-angle formula",
+      "Use sum-to-product identities",
+      "Use Euler’s formula",
+      "Use half-angle formula"
+    ]
+  },
+  {
+    "question": "Express sin(3θ) in terms of sinθ.",
+    "correct_answer": "3 sinθ − 4 sin³θ",
+    "incorrect_answers": [
+      "4 sinθ − 3 sin³θ",
+      "3 sinθ + 4 sin³θ",
+      "sinθ(3 − sin²θ)",
+      "3 sinθ sin²θ",
+      "sin³θ"
+    ]
+  },
+  {
+    "question": "Solve: cos2θ = 1/2 in [0, 2π].",
+    "correct_answer": "θ = ±π/6, ±5π/6 → π/6, 5π/6, 7π/6, 11π/6",
+    "incorrect_answers": [
+      "θ = π/3, 2π/3, 4π/3, 5π/3",
+      "θ = π/4, 3π/4, 5π/4, 7π/4",
+      "θ = 0, π/2, π, 3π/2",
+      "θ = π/6 only",
+      "θ = π/2 only"
+    ]
+  },
+  {
+    "question": "Show that cotθ + tanθ = 2 csc2θ / sin2θ. True or false?",
+    "correct_answer": "False",
+    "incorrect_answers": [
+      "True",
+      "True for θ=π/4",
+      "True if cosec defined",
+      "Cannot determine",
+      "True if cot undefined"
+    ]
+  },
+  {
+    "question": "Solve for θ: sinθ + sin2θ = 0 in [0, 2π].",
+    "correct_answer": "θ = 0, π, 2π, 2π/3, 4π/3",
+    "incorrect_answers": [
+      "θ = π/2, 3π/2",
+      "θ = π/4, 3π/4",
+      "θ = π/6, 5π/6",
+      "θ = π/3, 2π/3",
+      "θ = 0, π"
+    ]
+  },
+  {
+    "question": "Prove: cos²θ = (1 + cos2θ)/2.",
+    "correct_answer": "Use double-angle identity",
+    "incorrect_answers": [
+      "Use Pythagorean",
+      "Use addition formula",
+      "Use reciprocal identity",
+      "Use half-angle formula",
+      "Use product-to-sum"
+    ]
+  },
+  {
+    "question": "Simplify: sinθ / cosθ + cosθ / sinθ = ?",
+    "correct_answer": "tanθ + cotθ",
+    "incorrect_answers": [
+      "secθ + cscθ",
+      "1",
+      "sin²θ + cos²θ",
+      "tan²θ + cot²θ",
+      "2 sinθ cosθ"
+    ]
+  },
+  {
+    "question": "Solve: sin3θ = 0 in [0, 2π].",
+    "correct_answer": "θ = 0, π/3, 2π/3, π, 4π/3, 5π/3",
+    "incorrect_answers": [
+      "θ = 0, π, 2π",
+      "θ = π/6, 5π/6",
+      "θ = π/4, 3π/4",
+      "θ = π/2, 3π/2",
+      "θ = π/3, 2π/3"
+    ]
+  },
+  {
+    "question": "Prove: tan(π/4 + θ) = (1 + tanθ)/(1 − tanθ).",
+    "correct_answer": "Use addition formula for tan",
+    "incorrect_answers": [
+      "Use Pythagorean identity",
+      "Use double-angle formula",
+      "Use subtraction formula",
+      "Use sine formula",
+      "Use reciprocal identity"
+    ]
+  },
+  {
+    "question": "Express cos(3θ) in terms of cosθ.",
+    "correct_answer": "4 cos³θ − 3 cosθ",
+    "incorrect_answers": [
+      "3 cosθ − 4 cos³θ",
+      "cos³θ",
+      "4 cosθ − 3 cos³θ",
+      "3 cosθ + cos³θ",
+      "2 cos²θ − 1"
+    ]
+  },
+  {
+    "question": "Solve for θ: tanθ = √3 in [0, π].",
+    "correct_answer": "θ = π/3",
+    "incorrect_answers": [
+      "θ = π/6",
+      "θ = 2π/3",
+      "θ = π/4",
+      "θ = π/2",
+      "θ = 3π/4"
+    ]
+  },
+  {
+    "question": "Prove: 1 + cot²θ = csc²θ.",
+    "correct_answer": "Use reciprocal identity of tan",
+    "incorrect_answers": [
+      "Use Pythagorean",
+      "Use double-angle formula",
+      "Use sum-to-product",
+      "Use addition formula",
+      "Use half-angle"
+    ]
+  },
+  {
+    "question": "Simplify: cosθ / (1 + sinθ) + cosθ / (1 − sinθ) = ?",
+    "correct_answer": "2 secθ",
+    "incorrect_answers": [
+      "2 cosθ",
+      "2 tanθ",
+      "sec²θ",
+      "2",
+      "0"
+    ]
+  },
+  {
+    "question": "Solve: 2 cos²θ + cosθ − 1 = 0 in [0, 2π].",
+    "correct_answer": "cosθ = ½ or −1 → θ = π/3, 5π/3, π",
+    "incorrect_answers": [
+      "θ = π/4, 3π/4",
+      "θ = π/6, 5π/6",
+      "θ = 0, π",
+      "θ = 2π/3, 4π/3",
+      "θ = π/2"
+    ]
+  },
+  {
+    "question": "Prove: sin(π/2 − θ) = cosθ.",
+    "correct_answer": "Use complementary angle identity",
+    "incorrect_answers": [
+      "Use addition formula",
+      "Use Pythagorean",
+      "Use double-angle",
+      "Use sum-to-product",
+      "Use reciprocal identity"
+    ]
+  },
+  {
+    "question": "Express tan(2θ) in terms of sin and cos.",
+    "correct_answer": "2 sinθ cosθ / (cos²θ − sin²θ)",
+    "incorrect_answers": [
+      "sin2θ / cos2θ",
+      "tan²θ",
+      "2 tanθ",
+      "2 cotθ",
+      "sin²θ + cos²θ"
+    ]
+  },
+  {
+    "question": "Solve for θ: cosθ = −1/2 in [0, 2π].",
+    "correct_answer": "θ = 2π/3 or 4π/3",
+    "incorrect_answers": [
+      "θ = π/3 or 5π/3",
+      "θ = π/6 or 5π/6",
+      "θ = π/2 or 3π/2",
+      "θ = π",
+      "θ = 0"
+    ]
+  },
+  {
+    "question": "Simplify: sinθ − sin(π − θ) = ?",
+    "correct_answer": "0",
+    "incorrect_answers": [
+      "2 sinθ",
+      "2 cosθ",
+      "sin²θ",
+      "cos²θ",
+      "sinθ"
+    ]
+  },
+  {
+    "question": "Use identity: sin2θ = ?",
+    "correct_answer": "2 sinθ cosθ",
+    "incorrect_answers": [
+      "sin²θ + cos²θ",
+      "tanθ + cotθ",
+      "secθ tanθ",
+      "1 
