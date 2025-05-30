@@ -1,1 +1,475 @@
-b
+[
+  {
+    "question": "What is the distance between (1,2) and (4,6)?",
+    "correct_answer": "5",
+    "incorrect_answers": [
+      "4",
+      "6",
+      "3",
+      "7",
+      "√41"
+    ]
+  },
+  {
+    "question": "What is the midpoint of the segment joining (−2,5) and (4,1)?",
+    "correct_answer": "(1,3)",
+    "incorrect_answers": [
+      "(−1,3)",
+      "(2,2)",
+      "(1,2)",
+      "(0,3)",
+      "(2,3)"
+    ]
+  },
+  {
+    "question": "What is the gradient of the line through (2,3) and (5,11)?",
+    "correct_answer": "8/3",
+    "incorrect_answers": [
+      "3/8",
+      "4/3",
+      "11/5",
+      "5/11",
+      "−8/3"
+    ]
+  },
+  {
+    "question": "Which is the equation of the line with gradient 2 passing through (0,−1)?",
+    "correct_answer": "y = 2x − 1",
+    "incorrect_answers": [
+      "y = x − 1",
+      "y = 2x + 1",
+      "y = (1/2)x − 1",
+      "y = 2x",
+      "y = −2x − 1"
+    ]
+  },
+  {
+    "question": "What is the angle of inclination (to x-axis) of the line y = √3 x?",
+    "correct_answer": "60°",
+    "incorrect_answers": [
+      "30°",
+      "45°",
+      "90°",
+      "120°",
+      "75°"
+    ]
+  },
+  {
+    "question": "Two lines have gradients m₁ = 3 and m₂ = −1/3. They are:",
+    "correct_answer": "Perpendicular",
+    "incorrect_answers": [
+      "Parallel",
+      "Coincident",
+      "Intersecting at 45°",
+      "Orthogonal only if through origin",
+      "Neither"
+    ]
+  },
+  {
+    "question": "Which condition proves two lines are parallel?",
+    "correct_answer": "Their gradients are equal",
+    "incorrect_answers": [
+      "Their y-intercepts are equal",
+      "Their product of gradients is −1",
+      "Their sum of gradients is 0",
+      "Their lines intersect at right angles",
+      "Their equations share no solution"
+    ]
+  },
+  {
+    "question": "Find the equation of the perpendicular bisector of the segment joining (0,0) and (4,4).",
+    "correct_answer": "y = −x + 4",
+    "incorrect_answers": [
+      "y = x − 2",
+      "y = x + 2",
+      "y = −x − 2",
+      "y = −x",
+      "y = x + 4"
+    ]
+  },
+  {
+    "question": "What is the y-intercept of the line 3x + 2y = 6?",
+    "correct_answer": "3",
+    "incorrect_answers": [
+      "2",
+      "6",
+      "−3",
+      "−2",
+      "1"
+    ]
+  },
+  {
+    "question": "What is the x-intercept of the line 5x − y = 10?",
+    "correct_answer": "2",
+    "incorrect_answers": [
+      "−2",
+      "10",
+      "0",
+      "5",
+      "−5"
+    ]
+  },
+  {
+    "question": "Find the area of triangle with vertices (0,0), (4,0), (0,3).",
+    "correct_answer": "6",
+    "incorrect_answers": [
+      "12",
+      "7",
+      "5",
+      "8",
+      "2"
+    ]
+  },
+  {
+    "question": "What is the center of the circle x² + y² − 6x + 4y + 9 = 0?",
+    "correct_answer": "(3, −2)",
+    "incorrect_answers": [
+      "(−3,2)",
+      "(−3,−2)",
+      "(3,2)",
+      "(−6,4)",
+      "(6,−4)"
+    ]
+  },
+  {
+    "question": "What is the radius of the circle (x − 1)² + (y + 2)² = 25?",
+    "correct_answer": "5",
+    "incorrect_answers": [
+      "25",
+      "√25",
+      "±5",
+      "1",
+      "2"
+    ]
+  },
+  {
+    "question": "Does the point (2,1) lie inside, on, or outside the circle x² + y² = 5?",
+    "correct_answer": "Inside",
+    "incorrect_answers": [
+      "On",
+      "Outside",
+      "Cannot determine",
+      "Tangent",
+      "Intersecting"
+    ]
+  },
+  {
+    "question": "Equation of circle through (3,0),(0,4),(−3,0),(0,−4) is",
+    "correct_answer": "x² + y² = 9",
+    "incorrect_answers": [
+      "x² + y² = 16",
+      "x² + y² = 25",
+      "x² + y² = 12",
+      "x² + y² = 5",
+      "(x−3)² + (y−4)² = 9"
+    ]
+  },
+  {
+    "question": "What is the gradient of the tangent to y = x³ at x = 2?",
+    "correct_answer": "12",
+    "incorrect_answers": [
+      "8",
+      "6",
+      "4",
+      "3",
+      "2"
+    ]
+  },
+  {
+    "question": "Equation of tangent to circle x² + y² = 25 at (3,4) is",
+    "correct_answer": "3x + 4y = 25",
+    "incorrect_answers": [
+      "4x + 3y = 25",
+      "3x − 4y = 25",
+      "4y − 3x = 25",
+      "3x + 4y = 1",
+      "x/3 + y/4 = 1"
+    ]
+  },
+  {
+    "question": "What is the equation of the normal to y = x² at (1,1)?",
+    "correct_answer": "y − 1 = −(1/2)(x − 1)",
+    "incorrect_answers": [
+      "y − 1 = 2(x − 1)",
+      "y − 1 = (1/2)(x − 1)",
+      "y − 1 = −2(x − 1)",
+      "y = x",
+      "x + y = 2"
+    ]
+  },
+  {
+    "question": "Find gradient of line joining (−1,2) and (3,−2).",
+    "correct_answer": "−1",
+    "incorrect_answers": [
+      "1",
+      "−2/3",
+      "2/3",
+      "2",
+      "−4"
+    ]
+  },
+  {
+    "question": "What is the equation of the line through (2,3) parallel to y = −x + 5?",
+    "correct_answer": "y = −x + 5",
+    "incorrect_answers": [
+      "y = x + 1",
+      "y = −x + 1",
+      "y = x + 5",
+      "y = x − 2",
+      "y = −x + 7"
+    ]
+  },
+  {
+    "question": "What is the distance from point (2,−1) to the line y = 3x + 4?",
+    "correct_answer": "│3·2 − 1 + 4│/√10 = 9/√10",
+    "incorrect_answers": [
+      "7/√10",
+      "5/√10",
+      "9/√5",
+      "3/√10",
+      "6/√10"
+    ]
+  },
+  {
+    "question": "What is the area of triangle with vertices A(1,1), B(4,5), C(7,1)?",
+    "correct_answer": "6",
+    "incorrect_answers": [
+      "9",
+      "12",
+      "8",
+      "10",
+      "15"
+    ]
+  },
+  {
+    "question": "The circle x² + y² + 4x − 6y + 9 = 0 intersects x-axis at",
+    "correct_answer": "x = 1 or x = −5",
+    "incorrect_answers": [
+      "x=3 or x=−3",
+      "x=−1 or x=5",
+      "x=±3",
+      "x=±1",
+      "No intersection"
+    ]
+  },
+  {
+    "question": "Which pairs of lines are perpendicular? 2x − y + 3 = 0 and x + 2y − 1 = 0",
+    "correct_answer": "Yes (product of gradients = −1)",
+    "incorrect_answers": [
+      "No",
+      "Parallel",
+      "Coincident",
+      "Intersect at 45° only",
+      "Cannot say"
+    ]
+  },
+  {
+    "question": "Find the circumcenter of triangle with vertices (0,0),(4,0),(0,4).",
+    "correct_answer": "(2,2)",
+    "incorrect_answers": [
+      "(1,1)",
+      "(0,0)",
+      "(4,4)",
+      "(2,0)",
+      "(0,2)"
+    ]
+  },
+  {
+    "question": "Equation of circle through (0,0),(2,0),(0,2) is",
+    "correct_answer": "x² + y² − 2x − 2y = 0",
+    "incorrect_answers": [
+      "x² + y² + 2x + 2y = 0",
+      "x² + y² − 4x − 4y = 0",
+      "x² + y² = 2",
+      "x² + y² + 2x + 2y +1=0",
+      "x² + y² − x − y = 0"
+    ]
+  },
+  {
+    "question": "What is the foot of the perpendicular from (3,4) to x-axis?",
+    "correct_answer": "(3,0)",
+    "incorrect_answers": [
+      "(0,4)",
+      "(4,3)",
+      "(0,3)",
+      "(3,4)",
+      "(−3,0)"
+    ]
+  },
+  {
+    "question": "Find equation of chord of contact from (3,4) to circle x² + y² = 25.",
+    "correct_answer": "3x + 4y = 25",
+    "incorrect_answers": [
+      "4x + 3y = 25",
+      "3x − 4y = 25",
+      "x + y = 5",
+      "3x + 4y = 5",
+      "x² + y² = 25"
+    ]
+  },
+  {
+    "question": "What is the harmonic mean of gradients m₁ and m₂ if lines are perpendicular?",
+    "correct_answer": "Undefined (one gradient is negative reciprocal)",
+    "incorrect_answers": [
+      "0",
+      "1",
+      "−1",
+      "m₁ + m₂",
+      "2/(m₁ + m₂)"
+    ]
+  },
+  {
+    "question": "For triangle with vertices (0,0),(a,0),(0,b), its area is",
+    "correct_answer": "ab/2",
+    "incorrect_answers": [
+      "ab",
+      "a+b",
+      "2ab",
+      "a/b",
+      "b/a"
+    ]
+  },
+  {
+    "question": "What is the equation of the diameter of the circle x² + y² = 9 that is parallel to x-axis?",
+    "correct_answer": "y = 0",
+    "incorrect_answers": [
+      "x = 0",
+      "y = 3",
+      "y = −3",
+      "x = 3",
+      "x = −3"
+    ]
+  },
+  {
+    "question": "Find the center of the circle passing through (1,1),(1,−1),(−1,1).",
+    "correct_answer": "(0,0)",
+    "incorrect_answers": [
+      "(1,1)",
+      "(−1,−1)",
+      "(0,1)",
+      "(1,0)",
+      "(−1,0)"
+    ]
+  },
+  {
+    "question": "What is the orthocenter of right triangle with right angle at (0,0) and other vertices (a,0),(0,b)?",
+    "correct_answer": "(0,0)",
+    "incorrect_answers": [
+      "(a,0)",
+      "(0,b)",
+      "(a,b)",
+      "(a/2,b/2)",
+      "(−a,−b)"
+    ]
+  },
+  {
+    "question": "Find equation of line through (2,−1) with gradient undefined.",
+    "correct_answer": "x = 2",
+    "incorrect_answers": [
+      "y = −1",
+      "x = −1",
+      "y = 2",
+      "x + y = 1",
+      "2x + y = 3"
+    ]
+  },
+  {
+    "question": "What is the gradient of the tangent to y = 1/x at x = 2?",
+    "correct_answer": "−1/4",
+    "incorrect_answers": [
+      "1/4",
+      "−2",
+      "2",
+      "1/2",
+      "−1/2"
+    ]
+  },
+  {
+    "question": "The locus of points equidistant from (0,0) and (4,0) is",
+    "correct_answer": "x = 2",
+    "incorrect_answers": [
+      "y = 2",
+      "x² + y² = 4",
+      "y² = 4",
+      "x = −2",
+      "y = 0"
+    ]
+  },
+  {
+    "question": "Point (x,y) moves so that distance from (1,0) equals distance from (−1,0). The locus is",
+    "correct_answer": "x = 0",
+    "incorrect_answers": [
+      "y = 0",
+      "x² + y² = 1",
+      "y² = 1",
+      "x = 1",
+      "x + y = 0"
+    ]
+  },
+  {
+    "question": "Which triangle inscribed in circle x² + y² = r² has maximum area?",
+    "correct_answer": "Right-angled isosceles",
+    "incorrect_answers": [
+      "Equilateral",
+      "Scalene",
+      "Right-angled but not isosceles",
+      "Acute",
+      "Obtuse"
+    ]
+  },
+  {
+    "question": "Find the length of the arc from (r,0) to (0,r) on circle x² + y² = r².",
+    "correct_answer": "πr/2",
+    "incorrect_answers": [
+      "πr",
+      "πr/4",
+      "r",
+      "2πr",
+      "rπ"
+    ]
+  },
+  {
+    "question": "What is the foot of the perpendicular from (4,3) to line y = x?",
+    "correct_answer": "(3.5,3.5)",
+    "incorrect_answers": [
+      "(4,4)",
+      "(3,3)",
+      "(4,3)",
+      "(3,4)",
+      "(3,2)"
+    ]
+  },
+  {
+    "question": "If two chords of a circle are equal, then they subtend equal angles at the center. True or false?",
+    "correct_answer": "True",
+    "incorrect_answers": [
+      "False",
+      "Only if circle is unit circle",
+      "Only if chords are diameters",
+      "Only for perpendicular chords",
+      "Cannot say"
+    ]
+  },
+  {
+    "question": "The intersection of lines 2x−3y=6 and x+2y=5 is",
+    "correct_answer": "(3,1)",
+    "incorrect_answers": [
+      "(1,2)",
+      "(−3,−1)",
+      "(2,3)",
+      "(5,0)",
+      "(0,5)"
+    ]
+  },
+  {
+    "question": "The perpendicular from center to a chord bisects the chord. True or false?",
+    "correct_answer": "True",
+    "incorrect_answers": [
+      "False",
+      "Only for diameters",
+      "Only if chord passes through origin",
+      "Only in unit circle",
+      "Cannot say"
+    ]
+  }
+]
