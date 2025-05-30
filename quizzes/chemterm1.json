@@ -1,0 +1,926 @@
+[
+  {
+    "question": "How many particles are in one mole of substance?",
+    "correct_answer": "6.02 × 10^23",
+    "incorrect_answers": [
+      "6.02 × 10^22",
+      "6.02 × 10^24",
+      "1.00 × 10^23",
+      "3.01 × 10^23",
+      "9.11 × 10^23"
+    ]
+  },
+  {
+    "question": "What is the molar mass of water (H₂O)?",
+    "correct_answer": "18.02 g/mol",
+    "incorrect_answers": [
+      "16.00 g/mol",
+      "20.02 g/mol",
+      "17.01 g/mol",
+      "19.02 g/mol",
+      "18.00 g/mol"
+    ]
+  },
+  {
+    "question": "What volume does 1 mole of an ideal gas occupy at STP (0 °C, 1 atm)?",
+    "correct_answer": "22.4 dm³",
+    "incorrect_answers": [
+      "24.0 dm³",
+      "20.0 dm³",
+      "22.4 cm³",
+      "22.4 L",
+      "2.24 dm³"
+    ]
+  },
+  {
+    "question": "Calculate the mass of 2.50 moles of NaCl (M = 58.44 g/mol).",
+    "correct_answer": "146.1 g",
+    "incorrect_answers": [
+      "116.9 g",
+      "58.44 g",
+      "232.8 g",
+      "29.22 g",
+      "1461 g"
+    ]
+  },
+  {
+    "question": "What is the empirical formula of a compound containing 40% C, 6.7% H, 53.3% O by mass?",
+    "correct_answer": "CH₂O",
+    "incorrect_answers": [
+      "C₂H₄O₂",
+      "CHO",
+      "C₂H₂O",
+      "CH₄O",
+      "CHO₂"
+    ]
+  },
+  {
+    "question": "A sample contains 2.0 moles of electrons. How many electrons is this?",
+    "correct_answer": "1.20 × 10^24",
+    "incorrect_answers": [
+      "3.01 × 10^23",
+      "6.02 × 10^23",
+      "1.20 × 10^23",
+      "2.00 × 10^24",
+      "1.00 × 10^24"
+    ]
+  },
+  {
+    "question": "Find the molar mass of CaCO₃.",
+    "correct_answer": "100.09 g/mol",
+    "incorrect_answers": [
+      "40.08 g/mol",
+      "60.01 g/mol",
+      "120.10 g/mol",
+      "84.01 g/mol",
+      "100.00 g/mol"
+    ]
+  },
+  {
+    "question": "What volume in dm³ is occupied by 0.500 mol of O₂ at STP?",
+    "correct_answer": "11.2 dm³",
+    "incorrect_answers": [
+      "22.4 dm³",
+      "5.60 dm³",
+      "0.500 dm³",
+      "44.8 dm³",
+      "112 dm³"
+    ]
+  },
+  {
+    "question": "Determine the molecular formula if empirical formula is CH₂ and the molar mass is 56 g/mol.",
+    "correct_answer": "C₄H₈",
+    "incorrect_answers": [
+      "CH₂",
+      "C₂H₄",
+      "C₆H₁₂",
+      "C₈H₁₆",
+      "C₃H₆"
+    ]
+  },
+  {
+    "question": "How many grams of CO₂ are produced by burning 1.00 mol of CH₄? (CH₄ + 2O₂ → CO₂ + 2H₂O)",
+    "correct_answer": "44.01 g",
+    "incorrect_answers": [
+      "16.04 g",
+      "32.00 g",
+      "88.02 g",
+      "22.00 g",
+      "18.02 g"
+    ]
+  },
+  {
+    "question": "A solution has concentration 0.200 mol·dm⁻³. How many moles are in 0.500 dm³?",
+    "correct_answer": "0.100 mol",
+    "incorrect_answers": [
+      "0.400 mol",
+      "0.050 mol",
+      "1.000 mol",
+      "0.250 mol",
+      "0.020 mol"
+    ]
+  },
+  {
+    "question": "Calculate the concentration of a solution containing 5.00 g of NaOH (M=40.00 g/mol) in 250 cm³.",
+    "correct_answer": "0.500 mol·dm⁻³",
+    "incorrect_answers": [
+      "0.200 mol·dm⁻³",
+      "1.00 mol·dm⁻³",
+      "0.0500 mol·dm⁻³",
+      "2.00 mol·dm⁻³",
+      "0.125 mol·dm⁻³"
+    ]
+  },
+  {
+    "question": "In 1.00 dm³ of 0.0500 mol·dm⁻³ HCl, how many particles of HCl are present?",
+    "correct_answer": "3.01 × 10^22",
+    "incorrect_answers": [
+      "6.02 × 10^22",
+      "3.01 × 10^23",
+      "1.51 × 10^22",
+      "6.02 × 10^23",
+      "1.00 × 10^23"
+    ]
+  },
+  {
+    "question": "Balance and then calculate moles of H₂O produced: 2H₂ + O₂ → 2H₂O, if 3.00 mol H₂ used.",
+    "correct_answer": "3.00 mol",
+    "incorrect_answers": [
+      "1.50 mol",
+      "2.00 mol",
+      "6.00 mol",
+      "0.750 mol",
+      "4.00 mol"
+    ]
+  },
+  {
+    "question": "How many grams of H₂O form when 6.00 g of H₂ reacts with excess O₂? (Use Mr H₂O=18.02 g/mol)",
+    "correct_answer": "54.06 g",
+    "incorrect_answers": [
+      "36.04 g",
+      "18.02 g",
+      "6.00 g",
+      "72.08 g",
+      "108.12 g"
+    ]
+  },
+  {
+    "question": "What is the limiting reagent when 2.00 mol H₂ reacts with 1.00 mol O₂?",
+    "correct_answer": "H₂",
+    "incorrect_answers": [
+      "O₂",
+      "H₂O",
+      "Neither, both limit equally",
+      "Excess reagent",
+      "Impossible to determine"
+    ]
+  },
+  {
+    "question": "In the reaction N₂ + 3H₂ → 2NH₃, how many moles of NH₃ form from 1.00 mol N₂ and 2.00 mol H₂?",
+    "correct_answer": "1.33 mol",
+    "incorrect_answers": [
+      "2.00 mol",
+      "0.67 mol",
+      "1.00 mol",
+      "2.67 mol",
+      "0.50 mol"
+    ]
+  },
+  {
+    "question": "Calculate the percentage yield if 10.0 g of product is obtained but theoretical yield is 12.5 g.",
+    "correct_answer": "80.0%",
+    "incorrect_answers": [
+      "125%",
+      "90.0%",
+      "75.0%",
+      "100%",
+      "64.0%"
+    ]
+  },
+  {
+    "question": "What mass of aluminum oxide forms from 2.70 g of Al if yield is 85%? (4Al + 3O₂ → 2Al₂O₃)",
+    "correct_answer": "4.82 g",
+    "incorrect_answers": [
+      "3.46 g",
+      "2.70 g",
+      "5.40 g",
+      "6.35 g",
+      "7.12 g"
+    ]
+  },
+  {
+    "question": "Find the empirical formula of a compound containing 52.14% C, 34.73% O, and 13.13% H.",
+    "correct_answer": "CH₂O",
+    "incorrect_answers": [
+      "C₂H₄O",
+      "CHO",
+      "C₂H₂O₂",
+      "CH₂O₂",
+      "C₃H₆O"
+    ]
+  },
+  {
+    "question": "How many moles of electrons are in 1.00 C of charge? (1 mole e⁻ = 96485 C)",
+    "correct_answer": "1.04 × 10⁻⁵ mol",
+    "incorrect_answers": [
+      "9.65 × 10⁻⁶ mol",
+      "1.00 × 10⁻⁶ mol",
+      "1.04 × 10⁻⁴ mol",
+      "9.65 × 10⁻⁵ mol",
+      "1.00 × 10⁻⁴ mol"
+    ]
+  },
+  {
+    "question": "A 0.250 mol sample of gas occupies 5.60 dm³ at STP. What is its molar volume?",
+    "correct_answer": "22.4 dm³/mol",
+    "incorrect_answers": [
+      "5.60 dm³/mol",
+      "2.24 dm³/mol",
+      "28.0 dm³/mol",
+      "0.0448 dm³/mol",
+      "16.8 dm³/mol"
+    ]
+  },
+  {
+    "question": "What is the molecular formula of a compound with empirical formula CH and molar mass 78 g/mol?",
+    "correct_answer": "C₆H₆",
+    "incorrect_answers": [
+      "CH₆",
+      "C₂H₂",
+      "C₃H₃",
+      "C₆H₁₂",
+      "C₄H₄"
+    ]
+  },
+  {
+    "question": "Find concentration in mol·dm⁻³ of 0.500 mol solute in 250 cm³ solution.",
+    "correct_answer": "2.00 mol·dm⁻³",
+    "incorrect_answers": [
+      "0.500 mol·dm⁻³",
+      "0.125 mol·dm⁻³",
+      "1.00 mol·dm⁻³",
+      "4.00 mol·dm⁻³",
+      "0.250 mol·dm⁻³"
+    ]
+  },
+  {
+    "question": "How many grams of NaCl are needed to prepare 0.100 dm³ of 1.00 mol·dm⁻³ solution? (M=58.44 g/mol)",
+    "correct_answer": "5.84 g",
+    "incorrect_answers": [
+      "58.44 g",
+      "0.584 g",
+      "10.0 g",
+      "1.00 g",
+      "2.92 g"
+    ]
+  },
+  {
+    "question": "In the reaction 2H₂ + O₂ → 2H₂O, what volume of O₂ is needed to consume 5.00 dm³ of H₂ at STP?",
+    "correct_answer": "2.50 dm³",
+    "incorrect_answers": [
+      "5.00 dm³",
+      "10.0 dm³",
+      "1.25 dm³",
+      "7.50 dm³",
+      "0 dm³"
+    ]
+  },
+  {
+    "question": "What is the percentage purity of a sample if only 8.00 g of pure product is obtained from 10.0 g impure reactant?",
+    "correct_answer": "80.0%",
+    "incorrect_answers": [
+      "125%",
+      "90.0%",
+      "75.0%",
+      "100%",
+      "64.0%"
+    ]
+  },
+  {
+    "question": "Which reagent is limiting when 10.0 g of A reacts with 8.00 g of B (A + 2B → C)?",
+    "correct_answer": "B",
+    "incorrect_answers": [
+      "A",
+      "C",
+      "None, both consumed",
+      "Impossible to tell",
+      "Excess reagent"
+    ]
+  },
+  {
+    "question": "How many moles of H₂SO₄ are required to neutralize 0.250 mol of OH⁻? (H₂SO₄ + 2OH⁻ → SO₄²⁻ + 2H₂O)",
+    "correct_answer": "0.125 mol",
+    "incorrect_answers": [
+      "0.250 mol",
+      "0.500 mol",
+      "0.0625 mol",
+      "1.00 mol",
+      "2.00 mol"
+    ]
+  },
+  {
+    "question": "Calculate theoretical yield of H₂O from 18.0 g H₂ (2H₂ + O₂ → 2H₂O).",
+    "correct_answer": "162 g",
+    "incorrect_answers": [
+      "18.0 g",
+      "36.0 g",
+      "9.00 g",
+      "144 g",
+      "324 g"
+    ]
+  },
+  {
+    "question": "What is the empirical formula of a hydrate that yields CuSO₄ and 2H₂O upon heating?",
+    "correct_answer": "CuSO₄·2H₂O",
+    "incorrect_answers": [
+      "CuSO₄·H₂O",
+      "CuSO₄·5H₂O",
+      "Cu·S·O₄·H₂O",
+      "CuSO₄·3H₂O",
+      "CuSO₄·4H₂O"
+    ]
+  },
+  {
+    "question": "How many moles of SO₄²⁻ ions are in 0.500 mol of Al₂(SO₄)₃?",
+    "correct_answer": "1.50 mol",
+    "incorrect_answers": [
+      "0.500 mol",
+      "3.00 mol",
+      "0.250 mol",
+      "2.00 mol",
+      "4.50 mol"
+    ]
+  },
+  {
+    "question": "Calculate mass of chlorine gas produced from 58.5 g NaCl (2NaCl → 2Na + Cl₂).",
+    "correct_answer": "21.2 g",
+    "incorrect_answers": [
+      "58.5 g",
+      "42.5 g",
+      "29.2 g",
+      "15.5 g",
+      "84.7 g"
+    ]
+  },
+  {
+    "question": "What is the molar mass of glucose C₆H₁₂O₆?",
+    "correct_answer": "180.16 g/mol",
+    "incorrect_answers": [
+      "162.14 g/mol",
+      "150.16 g/mol",
+      "172.12 g/mol",
+      "200.18 g/mol",
+      "180.00 g/mol"
+    ]
+  },
+  {
+    "question": "How many grams of CO₂ are produced by 44.0 g of C (C + O₂ → CO₂)?",
+    "correct_answer": "162.4 g",
+    "incorrect_answers": [
+      "44.0 g",
+      "88.0 g",
+      "220.4 g",
+      "148.4 g",
+      "32.0 g"
+    ]
+  },
+  {
+    "question": "If 5.00 g of Mg reacts with excess O₂, how many moles of MgO form? (2Mg + O₂ → 2MgO)",
+    "correct_answer": "0.205 mol",
+    "incorrect_answers": [
+      "0.408 mol",
+      "0.125 mol",
+      "0.0500 mol",
+      "0.250 mol",
+      "0.100 mol"
+    ]
+  },
+  {
+    "question": "What volume in dm³ does 1.00 mol of NH₃ gas occupy at 27 °C and 1 atm? (R=0.0831 dm³·bar/mol·K)",
+    "correct_answer": "24.5 dm³",
+    "incorrect_answers": [
+      "22.4 dm³",
+      "20.0 dm³",
+      "30.1 dm³",
+      "18.2 dm³",
+      "25.0 dm³"
+    ]
+  },
+  {
+    "question": "Determine the percent composition of Na in Na₂SO₄ (M=142.04 g/mol).",
+    "correct_answer": "31.2%",
+    "incorrect_answers": [
+      "23.4%",
+      "42.5%",
+      "18.8%",
+      "50.0%",
+      "28.3%"
+    ]
+  },
+  {
+    "question": "How many moles of electrons are needed to plate out 10.0 g of Ag (Ag⁺ + e⁻ → Ag)? (M=107.87 g/mol)",
+    "correct_answer": "9.27 × 10⁻² mol",
+    "incorrect_answers": [
+      "5.00 × 10⁻² mol",
+      "1.85 × 10⁻¹ mol",
+      "1.00 × 10⁻² mol",
+      "9.27 × 10⁻³ mol",
+      "1.08 × 10⁻¹ mol"
+    ]
+  },
+  {
+    "question": "What is the empirical formula of hydrogen peroxide H₂O₂?",
+    "correct_answer": "HO",
+    "incorrect_answers": [
+      "H₂O₂",
+      "H₂O",
+      "HO₂",
+      "H₂O₃",
+      "HHOO"
+    ]
+  },
+{
+    "question": "What type of reaction absorbs heat from the surroundings?",
+    "correct_answer": "Endothermic reaction",
+    "incorrect_answers": [
+      "Exothermic reaction",
+      "Isothermal reaction",
+      "Adiabatic reaction",
+      "Reversible reaction",
+      "Spontaneous reaction"
+    ]
+  },
+  {
+    "question": "Which reaction releases heat to the surroundings?",
+    "correct_answer": "Exothermic reaction",
+    "incorrect_answers": [
+      "Endothermic reaction",
+      "Isobaric reaction",
+      "Isothermal reaction",
+      "Adiabatic reaction",
+      "Reversible reaction"
+    ]
+  },
+  {
+    "question": "On a potential energy diagram, what does the peak represent?",
+    "correct_answer": "Activation energy barrier",
+    "incorrect_answers": [
+      "Overall heat change",
+      "Reactant stability",
+      "Product stability",
+      "Average kinetic energy",
+      "Zero-point energy"
+    ]
+  },
+  {
+    "question": "What is activation energy?",
+    "correct_answer": "Minimum energy required to start a reaction",
+    "incorrect_answers": [
+      "Energy released in a reaction",
+      "Total energy of products",
+      "Average energy of reactants",
+      "Energy of catalysts",
+      "Energy lost as heat"
+    ]
+  },
+  {
+    "question": "If ΔH is positive, the reaction is:",
+    "correct_answer": "Endothermic",
+    "incorrect_answers": [
+      "Exothermic",
+      "Isothermal",
+      "Adiabatic",
+      "Spontaneous",
+      "Catalytic"
+    ]
+  },
+  {
+    "question": "If ΔH is negative, the reaction is:",
+    "correct_answer": "Exothermic",
+    "incorrect_answers": [
+      "Endothermic",
+      "Isobaric",
+      "Isothermal",
+      "Endergonic",
+      "Non-spontaneous"
+    ]
+  },
+  {
+    "question": "What equation gives heat absorbed or released: ",
+    "correct_answer": "q = m·c·ΔT",
+    "incorrect_answers": [
+      "q = m·c/ΔT",
+      "q = mc²",
+      "q = ΔH·n",
+      "q = c·ΔT",
+      "q = m·ΔH"
+    ]
+  },
+  {
+    "question": "Calculate q when 100 g of water (c=4.18 J/g·K) is heated from 20 °C to 80 °C.",
+    "correct_answer": "25 080 J",
+    "incorrect_answers": [
+      "4 180 J",
+      "167 200 J",
+      "2 508 J",
+      "6 270 J",
+      "10 000 J"
+    ]
+  },
+  {
+    "question": "How much heat is required to raise 50 g of aluminum (c=0.90 J/g·K) from 25 °C to 75 °C?",
+    "correct_answer": "2 250 J",
+    "incorrect_answers": [
+      "450 J",
+      "4 500 J",
+      "12 500 J",
+      "1 125 J",
+      "5 000 J"
+    ]
+  },
+  {
+    "question": "What is ΔH for the reaction if H_products=–120 kJ and H_reactants=–50 kJ?",
+    "correct_answer": "–70 kJ",
+    "incorrect_answers": [
+      "70 kJ",
+      "–170 kJ",
+      "50 kJ",
+      "–50 kJ",
+      "120 kJ"
+    ]
+  },
+  {
+    "question": "For ΔH = H_products – H_reactants, if H_products=100 kJ and H_reactants=150 kJ, ΔH = ",
+    "correct_answer": "–50 kJ",
+    "incorrect_answers": [
+      "50 kJ",
+      "250 kJ",
+      "100 kJ",
+      "–100 kJ",
+      "0 kJ"
+    ]
+  },
+  {
+    "question": "Calculate q for heating 200 g of ethanol (c=2.44 J/g·K) from 10 °C to 35 °C.",
+    "correct_answer": "12 200 J",
+    "incorrect_answers": [
+      "4 880 J",
+      "2 440 J",
+      "24 400 J",
+      "6 100 J",
+      "61 000 J"
+    ]
+  },
+  {
+    "question": "A reaction with ΔH = +150 kJ is called:",
+    "correct_answer": "Endothermic",
+    "incorrect_answers": [
+      "Exothermic",
+      "Isothermal",
+      "Spontaneous",
+      "Exergonic",
+      "Adiabatic"
+    ]
+  },
+  {
+    "question": "Which diagram axis labels are correct for a potential energy diagram?",
+    "correct_answer": "Energy vs Reaction Coordinate",
+    "incorrect_answers": [
+      "Temperature vs Time",
+      "Heat vs Mass",
+      "Pressure vs Volume",
+      "Entropy vs Temperature",
+      "Volume vs Pressure"
+    ]
+  },
+  {
+    "question": "How much heat is released when 500 g of water cools from 80 °C to 20 °C?",
+    "correct_answer": "125 400 J",
+    "incorrect_answers": [
+      "25 080 J",
+      "41 800 J",
+      "167 200 J",
+      "83 600 J",
+      "12 540 J"
+    ]
+  },
+  {
+    "question": "If a catalyst lowers activation energy, the diagram’s peak:",
+    "correct_answer": "Is lower",
+    "incorrect_answers": [
+      "Is higher",
+      "Shifts right",
+      "Remains same",
+      "Shifts left",
+      "Disappears"
+    ]
+  },
+  {
+    "question": "Calculate q for 75 g of copper (c=0.385 J/g·K) heated from 20 °C to 100 °C.",
+    "correct_answer": "11 560 J",
+    "incorrect_answers": [
+      "2 887 J",
+      "30 625 J",
+      "3 850 J",
+      "7 700 J",
+      "15 415 J"
+    ]
+  },
+  {
+    "question": "For the reaction C + O₂ → CO₂, ΔH = –394 kJ. This is:",
+    "correct_answer": "Exothermic",
+    "incorrect_answers": [
+      "Endothermic",
+      "Heat-neutral",
+      "Catalytic",
+      "Isothermal",
+      "Adiabatic"
+    ]
+  },
+  {
+    "question": "A 250 g sample of iron (c=0.45 J/g·K) is cooled from 100 °C to 20 °C. Calculate q.",
+    "correct_answer": "9 000 J",
+    "incorrect_answers": [
+      "1 800 J",
+      "45 000 J",
+      "112 500 J",
+      "2 250 J",
+      "5 625 J"
+    ]
+  },
+  {
+    "question": "Activation energy appears as the difference between:",
+    "correct_answer": "Reactant energy and transition state energy",
+    "incorrect_answers": [
+      "Products and reactants energy",
+      "Reactants and catalysts energy",
+      "Products and catalysts energy",
+      "Catalyst and transition state energy",
+      "Products and transition state energy"
+    ]
+  },
+  {
+    "question": "Compute ΔH for H₂O formation: H₂ + ½O₂ → H₂O; H_products=–285 kJ, H_reactants=0 kJ.",
+    "correct_answer": "–285 kJ",
+    "incorrect_answers": [
+      "285 kJ",
+      "–142.5 kJ",
+      "0 kJ",
+      "–570 kJ",
+      "142.5 kJ"
+    ]
+  },
+  {
+    "question": "How much heat is required to raise 120 g of ethanol (c=2.44 J/g·K) from 15 °C to 65 °C?",
+    "correct_answer": "14 640 J",
+    "incorrect_answers": [
+      "7 320 J",
+      "29 280 J",
+      "4 880 J",
+      "2 920 J",
+      "24 400 J"
+    ]
+  },
+  {
+    "question": "In a potential energy diagram, products lower than reactants indicates:",
+    "correct_answer": "Exothermic reaction",
+    "incorrect_answers": [
+      "Endothermic reaction",
+      "No reaction",
+      "Catalytic reaction",
+      "Reversible reaction",
+      "Rate-limited reaction"
+    ]
+  },
+  {
+    "question": "A reaction with ΔH = +200 kJ is:",
+    "correct_answer": "Endothermic",
+    "incorrect_answers": [
+      "Exothermic",
+      "Isothermal",
+      "Spontaneous",
+      "Exergonic",
+      "Heat-neutral"
+    ]
+  },
+  {
+    "question": "Calculate q when 150 g of water cools from 90 °C to 25 °C.",
+    "correct_answer": "100 650 J",
+    "incorrect_answers": [
+      "65 100 J",
+      "105 000 J",
+      "70 875 J",
+      "50 325 J",
+      "90 000 J"
+    ]
+  },
+  {
+    "question": "Which factor does NOT affect activation energy?",
+    "correct_answer": "Quantity of reactant",
+    "incorrect_answers": [
+      "Orientation of molecules",
+      "Bond strengths",
+      "Catalyst presence",
+      "Temperature",
+      "Molecular geometry"
+    ]
+  },
+  {
+    "question": "For ΔH = H_products – H_reactants, if H_products=–100 kJ and H_reactants=+50 kJ, ΔH =",
+    "correct_answer": "–150 kJ",
+    "incorrect_answers": [
+      "150 kJ",
+      "–50 kJ",
+      "100 kJ",
+      "50 kJ",
+      "0 kJ"
+    ]
+  },
+  {
+    "question": "How much heat is released when 80 g of water cools from 60 °C to 20 °C?",
+    "correct_answer": "13 376 J",
+    "incorrect_answers": [
+      "8 320 J",
+      "16 752 J",
+      "5 888 J",
+      "3 392 J",
+      "20 000 J"
+    ]
+  },
+  {
+    "question": "Which step on a potential energy diagram corresponds to catalyst presence?",
+    "correct_answer": "Lower peak for activation energy",
+    "incorrect_answers": [
+      "Higher peak",
+      "Shifted products",
+      "Shifted reactants",
+      "Inverted curve",
+      "No reaction path"
+    ]
+  },
+  {
+    "question": "Compute ΔH for N₂ + 3H₂ → 2NH₃ if H_products=–92 kJ, H_reactants=0 kJ.",
+    "correct_answer": "–92 kJ",
+    "incorrect_answers": [
+      "92 kJ",
+      "–184 kJ",
+      "0 kJ",
+      "–46 kJ",
+      "184 kJ"
+    ]
+  },
+  {
+    "question": "Calculate q for 200 g of copper (c=0.385 J/g·K) heated from 25 °C to 125 °C.",
+    "correct_answer": "7 700 J",
+    "incorrect_answers": [
+      "3 850 J",
+      "15 400 J",
+      "1 925 J",
+      "9 625 J",
+      "12 100 J"
+    ]
+  },
+  {
+    "question": "What does a higher activation energy imply about reaction rate?",
+    "correct_answer": "Slower reaction",
+    "incorrect_answers": [
+      "Faster reaction",
+      "No change",
+      "Spontaneous reaction",
+      "Instant reaction",
+      "Equilibrium shift"
+    ]
+  },
+  {
+    "question": "A reaction has ΔH = –120 kJ. How is heat flow described?",
+    "correct_answer": "120 kJ released",
+    "incorrect_answers": [
+      "120 kJ absorbed",
+      "No heat flow",
+      "240 kJ released",
+      "–120 kJ absorbed",
+      "–120 kJ released"
+    ]
+  },
+  {
+    "question": "How much heat to raise 300 g of water from 10 °C to 30 °C?",
+    "correct_answer": "25 080 J",
+    "incorrect_answers": [
+      "12 540 J",
+      "41 800 J",
+      "8 360 J",
+      "4 180 J",
+      "50 160 J"
+    ]
+  },
+  {
+    "question": "Which energy change is represented by ΔH in reactions?",
+    "correct_answer": "Enthalpy change",
+    "incorrect_answers": [
+      "Entropy change",
+      "Internal energy change",
+      "Gibbs free energy",
+      "Activation energy",
+      "Work done"
+    ]
+  },
+  {
+    "question": "Calculate q for cooling 500 g of water from 80 °C to 20 °C.",
+    "correct_answer": "125 400 J",
+    "incorrect_answers": [
+      "41 800 J",
+      "167 200 J",
+      "83 600 J",
+      "20 000 J",
+      "100 320 J"
+    ]
+  },
+  {
+    "question": "What is the effect of a catalyst on ΔH?",
+    "correct_answer": "No change",
+    "incorrect_answers": [
+      "Increases ΔH",
+      "Decreases ΔH",
+      "Reverses sign of ΔH",
+      "Doubles ΔH",
+      "Halves ΔH"
+    ]
+  },
+  {
+    "question": "If ΔH_products > ΔH_reactants, the reaction is:",
+    "correct_answer": "Endothermic",
+    "incorrect_answers": [
+      "Exothermic",
+      "Isothermal",
+      "Spontaneous",
+      "Adiabatic",
+      "Reversible"
+    ]
+  },
+  {
+    "question": "Calculate ΔH for reaction with H_products=+250 kJ, H_reactants=+100 kJ.",
+    "correct_answer": "150 kJ",
+    "incorrect_answers": [
+      "–150 kJ",
+      "350 kJ",
+      "–350 kJ",
+      "–100 kJ",
+      "100 kJ"
+    ]
+  },
+  {
+    "question": "A reaction requires 500 J to increase temperature of 50 g of substance by 10 K. Compute c.",
+    "correct_answer": "1.00 J/g·K",
+    "incorrect_answers": [
+      "0.10 J/g·K",
+      "5.00 J/g·K",
+      "50.0 J/g·K",
+      "0.50 J/g·K",
+      "10.0 J/g·K"
+    ]
+  },
+  {
+    "question": "In a potential energy diagram, the difference between reactants and products is:",
+    "correct_answer": "Enthalpy change ΔH",
+    "incorrect_answers": [
+      "Activation energy",
+      "Kinetic energy",
+      "Free energy",
+      "Entropy change",
+      "Work function"
+    ]
+  },
+  {
+    "question": "Compute q for 100 g of iron (c=0.45 J/g·K) heated from 20 °C to 80 °C.",
+    "correct_answer": "2 700 J",
+    "incorrect_answers": [
+      "450 J",
+      "27 000 J",
+      "4 500 J",
+      "1 800 J",
+      "3 600 J"
+    ]
+  },
+  {
+    "question": "Which term describes the hump on a potential energy curve?",
+    "correct_answer": "Transition state",
+    "incorrect_answers": [
+      "Intermediate state",
+      "Catalyst complex",
+      "Activated complex",
+      "Final state",
+      "Ground state"
+    ]
+  },
+  {
+    "question": "If q is positive for surroundings, the reaction is:",
+    "correct_answer": "Exothermic",
+    "incorrect_answers": [
+      "Endothermic",
+      "Isothermal",
+      "Adiabatic",
+      "Reversible",
+      "Spontaneous"
+    ]
+  }
+]
