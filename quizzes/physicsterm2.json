@@ -1,0 +1,552 @@
+[
+  {
+    "question": "What is the relationship between wave speed (v), frequency (f) and wavelength (λ)?",
+    "correct_answer": "v = f × λ",
+    "incorrect_answers": [
+      "v = f + λ",
+      "v = f / λ",
+      "v = λ / f",
+      "f = v − λ",
+      "λ = v + f"
+    ]
+  },
+  {
+    "question": "What type of wave is sound in air?",
+    "correct_answer": "Longitudinal wave",
+    "incorrect_answers": [
+      "Transverse wave",
+      "Surface wave",
+      "Standing wave",
+      "Electromagnetic wave",
+      "Torsional wave"
+    ]
+  },
+  {
+    "question": "Which quantity is the reciprocal of frequency?",
+    "correct_answer": "Period",
+    "incorrect_answers": [
+      "Wavelength",
+      "Amplitude",
+      "Wave speed",
+      "Intensity",
+      "Phase"
+    ]
+  },
+  {
+    "question": "What happens to wave speed when it travels into a denser medium?",
+    "correct_answer": "It usually decreases",
+    "incorrect_answers": [
+      "It always doubles",
+      "It remains constant",
+      "It becomes zero",
+      "It becomes infinite",
+      "It reverses direction"
+    ]
+  },
+  {
+    "question": "Which phenomenon occurs when two waves overlap?",
+    "correct_answer": "Interference",
+    "incorrect_answers": [
+      "Refraction",
+      "Diffraction",
+      "Polarization",
+      "Dispersion",
+      "Absorption"
+    ]
+  },
+  {
+    "question": "Which graph plots displacement vs. time for a vibrating particle?",
+    "correct_answer": "Oscillatory waveform",
+    "incorrect_answers": [
+      "Straight line",
+      "Hyperbola",
+      "Parabola",
+      "Step function",
+      "Exponential curve"
+    ]
+  },
+  {
+    "question": "What is the crest of a wave?",
+    "correct_answer": "Point of maximum positive displacement",
+    "incorrect_answers": [
+      "Point of zero displacement",
+      "Point of maximum negative displacement",
+      "Point halfway between nodes",
+      "Point where speed is zero",
+      "Point of minimum wavelength"
+    ]
+  },
+  {
+    "question": "What is the trough of a wave?",
+    "correct_answer": "Point of maximum negative displacement",
+    "incorrect_answers": [
+      "Point of maximum positive displacement",
+      "Mean position",
+      "Node position",
+      "Antinode position",
+      "Point of zero frequency"
+    ]
+  },
+  {
+    "question": "Which term describes the distance between two successive crests?",
+    "correct_answer": "Wavelength",
+    "incorrect_answers": [
+      "Amplitude",
+      "Period",
+      "Frequency",
+      "Phase",
+      "Intensity"
+    ]
+  },
+  {
+    "question": "When a wave passes from air into water at an angle, what happens?",
+    "correct_answer": "It refracts (changes direction)",
+    "incorrect_answers": [
+      "It disappears",
+      "It speeds up indefinitely",
+      "It reflects only",
+      "It stops",
+      "It polarizes spontaneously"
+    ]
+  },
+  {
+    "question": "What is the Doppler Effect?",
+    "correct_answer": "Change in observed frequency due to relative motion",
+    "incorrect_answers": [
+      "Change in amplitude over time",
+      "Loss of energy in waves",
+      "Change in wave speed only",
+      "Variation in intensity with distance",
+      "Phase shift between sources"
+    ]
+  },
+  {
+    "question": "If a source moves toward an observer, the observed frequency:",
+    "correct_answer": "Increases",
+    "incorrect_answers": [
+      "Decreases",
+      "Stays the same",
+      "Becomes zero",
+      "Becomes infinite",
+      "Reverses sign"
+    ]
+  },
+  {
+    "question": "If an observer moves away from a stationary source, the observed frequency:",
+    "correct_answer": "Decreases",
+    "incorrect_answers": [
+      "Increases",
+      "Stays the same",
+      "Becomes zero",
+      "Becomes double",
+      "Reverses phase"
+    ]
+  },
+  {
+    "question": "Which formula gives observed frequency f′ for moving source and observer?",
+    "correct_answer": "f′ = f (v + v_o)/(v − v_s)",
+    "incorrect_answers": [
+      "f′ = f (v − v_o)/(v + v_s)",
+      "f′ = f (v − v_s)/(v + v_o)",
+      "f′ = f v/(v − v_o − v_s)",
+      "f′ = f (v_s + v_o)/v",
+      "f′ = f/[(v + v_o)(v − v_s)]"
+    ]
+  },
+  {
+    "question": "When both source and observer move toward each other, the frequency shift is:",
+    "correct_answer": "Larger than if only one moves",
+    "incorrect_answers": [
+      "Smaller than if only one moves",
+      "Zero",
+      "Equal to original frequency",
+      "Negative",
+      "Independent of speeds"
+    ]
+  },
+  {
+    "question": "What happens to wavelength when observed frequency increases (sound in air)?",
+    "correct_answer": "Wavelength decreases",
+    "incorrect_answers": [
+      "Wavelength increases",
+      "Wavelength stays same",
+      "Wavelength doubles",
+      "Wavelength becomes zero",
+      "Wavelength reverses"
+    ]
+  },
+  {
+    "question": "What is a practical application of the Doppler Effect in meteorology?",
+    "correct_answer": "Radar for tracking storms",
+    "incorrect_answers": [
+      "Measuring humidity directly",
+      "Forecasting earthquakes",
+      "Measuring soil moisture",
+      "Detecting ozone layer thickness",
+      "Monitoring UV index"
+    ]
+  },
+  {
+    "question": "Which medical device uses ultrasound Doppler to image blood flow?",
+    "correct_answer": "Ultrasound Doppler scanner",
+    "incorrect_answers": [
+      "MRI machine",
+      "X-ray fluoroscope",
+      "Electrocardiograph",
+      "CT scanner",
+      "PET scanner"
+    ]
+  },
+  {
+    "question": "How does Doppler ultrasound detect blood flow?",
+    "correct_answer": "By measuring frequency shifts from moving blood cells",
+    "incorrect_answers": [
+      "By measuring amplitude changes in echoes",
+      "By using magnetic resonance",
+      "By detecting changes in polarization",
+      "By tracking echo delay times",
+      "By direct visual imaging"
+    ]
+  },
+  {
+    "question": "What shift is detected when blood flows toward the ultrasound probe?",
+    "correct_answer": "Positive frequency shift",
+    "incorrect_answers": [
+      "Negative frequency shift",
+      "No shift",
+      "Phase shift only",
+      "Amplitude increase",
+      "Wavelength increase"
+    ]
+  },
+  {
+    "question": "Which Doppler mode shows blood flow velocity as a waveform over time?",
+    "correct_answer": "Spectral Doppler",
+    "incorrect_answers": [
+      "B-mode Doppler",
+      "Color Doppler",
+      "M-mode Doppler",
+      "Power Doppler",
+      "Phase Doppler"
+    ]
+  },
+  {
+    "question": "Color Doppler ultrasound maps flow direction by:",
+    "correct_answer": "Encoding frequency shifts into colors",
+    "incorrect_answers": [
+      "Recording echo amplitudes",
+      "Measuring sound intensity",
+      "Tracking probe movement",
+      "Measuring pressure changes",
+      "Analyzing tissue stiffness"
+    ]
+  },
+  {
+    "question": "What is a limitation of ultrasound Doppler in deep vessels?",
+    "correct_answer": "Signal attenuation reduces accuracy",
+    "incorrect_answers": [
+      "Speed increases too much",
+      "Wavelength becomes infinite",
+      "Amplitude becomes zero",
+      "Probe cannot emit waves",
+      "Doppler formula fails"
+    ]
+  },
+  {
+    "question": "What effect does a higher ultrasound frequency have on Doppler sensitivity?",
+    "correct_answer": "Improves sensitivity but reduces penetration depth",
+    "incorrect_answers": [
+      "Improves both sensitivity and depth",
+      "Reduces sensitivity and depth",
+      "Has no effect",
+      "Reverses Doppler shift",
+      "Invalidates Doppler equation"
+    ]
+  },
+  {
+    "question": "Which application uses Doppler Effect with light rather than sound?",
+    "correct_answer": "Measuring galaxy recession speeds",
+    "incorrect_answers": [
+      "Ultrasound imaging",
+      "Radar speed guns",
+      "Sonar depth finding",
+      "Acoustic flow meters",
+      "Geiger counters"
+    ]
+  },
+  {
+    "question": "What shift of spectral lines occurs when a star moves away?",
+    "correct_answer": "Red shift",
+    "incorrect_answers": [
+      "Blue shift",
+      "Green shift",
+      "Ultra shift",
+      "Infra shift",
+      "Yellow shift"
+    ]
+  },
+  {
+    "question": "What shift of spectral lines occurs when a star approaches?",
+    "correct_answer": "Blue shift",
+    "incorrect_answers": [
+      "Red shift",
+      "Infra shift",
+      "Ultra shift",
+      "Green shift",
+      "Yellow shift"
+    ]
+  },
+  {
+    "question": "Which law relates red shift to velocity of a galaxy?",
+    "correct_answer": "Hubble’s law",
+    "incorrect_answers": [
+      "Ohm’s law",
+      "Kepler’s law",
+      "Snell’s law",
+      "Planck’s law",
+      "Hooke’s law"
+    ]
+  },
+  {
+    "question": "Police radar guns use the Doppler Effect to measure:",
+    "correct_answer": "Vehicle speed by frequency shift",
+    "incorrect_answers": [
+      "Engine temperature",
+      "Fuel efficiency",
+      "Tire pressure",
+      "Air quality",
+      "Weight of car"
+    ]
+  },
+  {
+    "question": "What happens to Doppler shift if target moves perpendicular to radar beam?",
+    "correct_answer": "Shift goes to zero",
+    "incorrect_answers": [
+      "Shift doubles",
+      "Shift reverses",
+      "Shift becomes infinite",
+      "Shift remains same",
+      "Shift negative"
+    ]
+  },
+  {
+    "question": "In astronomy, Doppler shift helps determine:",
+    "correct_answer": "Radial velocity of objects",
+    "incorrect_answers": [
+      "Transverse velocity only",
+      "Mass of objects",
+      "Chemical composition",
+      "Distance by parallax",
+      "Magnetic field strength"
+    ]
+  },
+  {
+    "question": "What happens to observed frequency when both observer and source recede?",
+    "correct_answer": "Frequency decreases more than one moving alone",
+    "incorrect_answers": [
+      "Frequency increases",
+      "Frequency stays same",
+      "Frequency doubles",
+      "Frequency reverses sign",
+      "Frequency equals zero"
+    ]
+  },
+  {
+    "question": "Why does Doppler shift of light require relativistic formula at high speeds?",
+    "correct_answer": "Because time dilation affects observed frequency",
+    "incorrect_answers": [
+      "Because light speed changes",
+      "Because mass changes",
+      "Because wavelength is constant",
+      "Because gravity dominates",
+      "Because amplitude shifts"
+    ]
+  },
+  {
+    "question": "Which device uses optical Doppler to measure blood flow in the retina?",
+    "correct_answer": "Laser Doppler flowmeter",
+    "incorrect_answers": [
+      "Ultrasound transducer",
+      "MRI coil",
+      "CT detector",
+      "PET scanner",
+      "Infrared camera"
+    ]
+  },
+  {
+    "question": "What is Doppler broadening in spectroscopy?",
+    "correct_answer": "Widening of spectral lines due to velocity spread",
+    "incorrect_answers": [
+      "Narrowing of lines at high pressure",
+      "Shift of all lines uniformly",
+      "Appearance of new lines",
+      "Disappearance of lines",
+      "Coloration of lines"
+    ]
+  },
+  {
+    "question": "Which principle underlies LIDAR speed measurement?",
+    "correct_answer": "Optical Doppler shift",
+    "incorrect_answers": [
+      "Acoustic reflection",
+      "Magnetic resonance",
+      "Thermal expansion",
+      "Ultrasonic echo",
+      "Electrical conductivity"
+    ]
+  },
+  {
+    "question": "How does weather radar detect wind velocities?",
+    "correct_answer": "By measuring Doppler shift of returned microwaves",
+    "incorrect_answers": [
+      "By measuring sound delay",
+      "By using infrared imaging",
+      "By detecting raindrop size",
+      "By timing echo strength",
+      "By analyzing polarization"
+    ]
+  },
+  {
+    "question": "What shift is used in cosmology to measure universe expansion?",
+    "correct_answer": "Cosmological red shift",
+    "incorrect_answers": [
+      "Acoustic shift",
+      "Thermal shift",
+      "Magnetic shift",
+      "Gravitational shift",
+      "Infrared shift"
+    ]
+  },
+  {
+    "question": "What is the effect of source speed approaching the wave speed in medium?",
+    "correct_answer": "Apparent frequency tends to infinity (sonic boom)",
+    "incorrect_answers": [
+      "Frequency becomes zero",
+      "Frequency stays same",
+      "Frequency reverses",
+      "Frequency equals source frequency",
+      "Frequency negative"
+    ]
+  },
+  {
+    "question": "What phenomenon occurs when a source moves at exactly wave speed?",
+    "correct_answer": "Wavefronts pile up (sonic boom)",
+    "incorrect_answers": [
+      "Wavefronts vanish",
+      "Wavefronts slow down",
+      "Wavefronts cross",
+      "Wavefronts refract",
+      "Wavefronts polarize"
+    ]
+  },
+  {
+    "question": "What is shock wave formation in supersonic flight?",
+    "correct_answer": "Boundary where pressure jumps due to wavefront overlap",
+    "incorrect_answers": [
+      "Area of zero pressure",
+      "Reflection of waves",
+      "Absorption zone",
+      "Interference pattern",
+      "Diffraction pattern"
+    ]
+  },
+  {
+    "question": "Which formula describes relativistic Doppler for light?",
+    "correct_answer": "f′ = f √((1 ± β)/(1 ∓ β)), β = v/c",
+    "incorrect_answers": [
+      "f′ = f (v ± c)/(v ∓ c)",
+      "f′ = f (c ± v)/v",
+      "f′ = f v/c",
+      "f′ = f(c² − v²)",
+      "f′ = f/(1 ∓ β)"
+    ]
+  },
+  {
+    "question": "What is the acoustic Doppler current profiler used for?",
+    "correct_answer": "Measuring water current velocities",
+    "incorrect_answers": [
+      "Measuring air speed",
+      "Measuring blood pressure",
+      "Measuring seismic waves",
+      "Measuring light intensity",
+      "Measuring magnetic fields"
+    ]
+  },
+  {
+    "question": "Which astrophysical measurement relies on red shift?",
+    "correct_answer": "Determining galaxy distances",
+    "incorrect_answers": [
+      "Measuring star temperatures",
+      "Measuring star masses",
+      "Measuring star rotations",
+      "Measuring planet orbits",
+      "Measuring cosmic rays"
+    ]
+  },
+  {
+    "question": "What shift is observed in GPS signals due to satellite motion?",
+    "correct_answer": "Doppler shift",
+    "incorrect_answers": [
+      "Red shift",
+      "Blue shift",
+      "Cosmological shift",
+      "Magnetic shift",
+      "Thermal shift"
+    ]
+  },
+  {
+    "question": "Why must Doppler shift be corrected in GPS receivers?",
+    "correct_answer": "To maintain accurate position fixes",
+    "incorrect_answers": [
+      "To reduce battery drain",
+      "To avoid interference",
+      "To improve signal strength",
+      "To change map datum",
+      "To calibrate antenna"
+    ]
+  },
+  {
+    "question": "What effect does turbulence have on Doppler radar readings?",
+    "correct_answer": "Causes broadening of returned signal spectrum",
+    "incorrect_answers": [
+      "Eliminates Doppler shift",
+      "Reverses shift sign",
+      "Increases wave speed",
+      "Lowers transmitted power",
+      "Creates standing waves"
+    ]
+  },
+  {
+    "question": "How is Doppler ultrasound used in fetal monitoring?",
+    "correct_answer": "By tracking fetal heartbeat frequency shifts",
+    "incorrect_answers": [
+      "By imaging bone density",
+      "By measuring amniotic fluid temperature",
+      "By mapping placenta shape",
+      "By measuring maternal brain waves",
+      "By detecting maternal blood pressure"
+    ]
+  },
+  {
+    "question": "What is the main advantage of continuous-wave Doppler?",
+    "correct_answer": "Can measure high velocities without aliasing",
+    "incorrect_answers": [
+      "Can image structure in detail",
+      "Uses no moving parts",
+      "Has unlimited penetration depth",
+      "Requires no calibration",
+      "Consumes no power"
+    ]
+  },
+  {
+    "question": "What is aliasing in pulsed Doppler ultrasound?",
+    "correct_answer": "Misinterpretation of velocity due to sampling limit",
+    "incorrect_answers": [
+      "Loss of signal entirely",
+      "Excessive signal strength",
+      "Complete absence of shift",
+      "Reversal of frequency",
+      "Overheating of probe"
+    ]
+  }
+]
