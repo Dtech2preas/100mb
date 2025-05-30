@@ -4,76 +4,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DTECH Education Hub</title>
   <meta name="description" content="DTECH Education Hub – past papers, study guides, video & audio lessons, quizzes and more to empower youth through digital innovation." />
-  <meta property="og:title" content="DTECH Education Hub" />
-  <meta property="og:description" content="Access past papers, study guides, quizzes, and more to boost your studies." />
-  <meta property="og:image" content="/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.4/dist/tailwind.min.css" onload="this.rel='stylesheet'" />
   <noscript><link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.4/dist/tailwind.min.css" rel="stylesheet"></noscript>
   <style>
-    /* small custom overrides */
-    body {
-      @apply bg-gradient-to-br from-slate-900 to-slate-800;
-    }
+    body { @apply bg-gradient-to-br from-gray-900 to-gray-800 font-poppins text-white antialiased smooth-scroll; }
+    .cards-container { perspective: 1000px; }
+    .card { transform-style: preserve-3d; transition: transform 0.5s; }
+    .card:hover { transform: rotateY(12deg) scale(1.05); }
   </style>
 </head>
-<body class="font-sans text-white antialiased">
-  <!-- Dark/Light mode toggle -->
+<body class="relative">
+  <!-- Theme Toggle -->
   <div class="fixed top-4 right-4 z-50">
-    <button id="theme-toggle" class="p-2 bg-gray-200 dark:bg-gray-700 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" aria-label="Toggle dark/light mode">
-      🌓
+    <button id="theme-toggle" class="p-2 bg-white dark:bg-gray-700 rounded-xl shadow-md hover:scale-110 transform transition" aria-label="Toggle dark/light mode">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-9h-1M4.34 12h-1m14.07-6.07l-.7.7M6.34 17.66l-.7.7m14.07 0l-.7-.7M6.34 6.34l-.7-.7" />
+      </svg>
     </button>
-  </div>  <header class="bg-gradient-to-r from-black via-blue-900 to-black p-6 shadow-lg animate-slide-in">
+  </div>  <!-- Header -->  <header class="bg-gradient-to-r from-indigo-900 via-blue-800 to-indigo-900 p-6 shadow-xl animate-slide-down">
     <div class="container mx-auto flex items-center space-x-4">
-      <img src="logo.png" alt="DTECH Logo" loading="lazy" class="h-14 w-14 rounded-full bg-white p-1 border-4 border-blue-400 shadow-lg animate-pulse" />
+      <img src="logo.png" alt="DTECH Logo" loading="lazy" class="h-16 w-16 rounded-full bg-white p-2 border-4 border-blue-400 shadow-lg animate-pulse" />
       <div>
-        <h1 class="text-3xl font-extrabold tracking-wide text-blue-400">DTECH Education Hub</h1>
-        <p class="text-sm italic text-blue-200">Empowering the Youth Through Digital Innovation</p>
+        <h1 class="text-4xl font-extrabold tracking-wide text-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-400">DTECH Education Hub</h1>
+        <p class="mt-1 text-lg italic text-blue-200 drop-shadow">Empowering the Youth Through Digital Innovation</p>
       </div>
     </div>
-  </header>  <main class="container mx-auto p-6">
-    <section aria-labelledby="resources-heading" class="mb-8">
-      <h2 id="resources-heading" class="text-2xl font-bold mb-4 text-blue-300">Explore Resources</h2>
-      <nav id="resource-nav" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" aria-label="Resource categories">
-        <!-- JS will populate categories -->
-      </nav>
-    </section>
-  </main>  <footer class="bg-black text-white p-4 text-center mt-10 shadow-inner animate-slide-in">
-    <p class="text-sm text-blue-300">Powered by <strong>Preasx24</strong> | DTECH 2025</p>
-  </footer>  <script>
-    // Theme toggle
-    const btn = document.getElementById('theme-toggle');
-    btn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-    });
+  </header>  <!-- Hero Section -->  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 mix-blend-overlay bg-black opacity-50"></div>
+    <div class="container mx-auto py-20 text-center relative z-10">
+      <h2 class="text-5xl font-bold mb-4 animate-fade-in-down">Unlock Your Academic Potential</h2>
+      <p class="text-xl mb-8 animate-fade-in-up">Access curated past papers, interactive quizzes, and expert guides—all in one place.</p>
+      <a href="#resources" class="px-8 py-3 bg-blue-500 rounded-full font-semibold shadow-lg hover:scale-105 transform transition animate-bounce">Explore Now</a>
+    </div>
+    <div class="absolute bottom-0 right-0 w-1/2 opacity-20 animate-pulse">
+      <img src="hero-shape.svg" alt="Decorative waves" />
+    </div>
+  </section>  <!-- Resources Grid -->  <main id="resources" class="container mx-auto p-6">  
+    <h2 class="text-3xl font-bold mb-6 text-center text-blue-300">Explore Resources</h2>
+    <div class="cards-container grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <!-- Cards populated via JS -->
+    </div>
+  </main>  <!-- Footer -->  <footer class="bg-gray-900 text-gray-400 p-6 mt-12 shadow-inner">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm">&copy; 2025 DTECH. All Rights Reserved.</p>
+      <p class="text-sm">Powered by <span class="font-semibold text-white">Preasx24</span></p>
+    </div>
+  </footer>  <!-- Scripts -->  <script>
+    // Theme toggle script
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => document.documentElement.classList.toggle('dark'));
 
-    // Data-driven categories
+    // Dynamic resource cards
     const categories = [
-      { name: 'Past Papers', href: 'past-papers.html', color: 'blue-700', aria: 'Past exam papers' },
-      { name: 'Study Guides', href: 'study-guides.html', color: 'purple-700', aria: 'Study guide resources' },
-      { name: 'Vid & Audio Lessons', href: 'learner-guide.html', color: 'pink-700', aria: 'Video and audio lessons' },
-      { name: 'SBA Learners Guide', href: 'sba.html', color: 'green-700', aria: 'School based assessment guide' },
-      { name: 'PATs', href: 'pats.html', color: 'yellow-700', aria: 'Practical assessment tasks' },
-      { name: 'Eligibility Checker', href: 'https://uni.dtech24.co.za', color: 'indigo-700', aria: 'University eligibility checker' },
-      { name: 'Quizzes', href: 'quizes.html', color: 'red-700', aria: 'Practice quizzes' },
-      { name: 'NSFAS Info', href: 'nsfas.html', color: 'blue-500', aria: 'NSFAS funding information' },
-      { name: 'University Info', href: 'university-applications.html', color: 'gray-700', aria: 'University application info' },
+      { name: 'Past Papers', href: 'past-papers.html', icon: '📄', color: 'from-blue-600 to-blue-400' },
+      { name: 'Study Guides', href: 'study-guides.html', icon: '📚', color: 'from-purple-600 to-purple-400' },
+      { name: 'Vid & Audio Lessons', href: 'learner-guide.html', icon: '🎥', color: 'from-pink-600 to-pink-400' },
+      { name: 'SBA Learners Guide', href: 'sba.html', icon: '🗂️', color: 'from-green-600 to-green-400' },
+      { name: 'PATs', href: 'pats.html', icon: '🛠️', color: 'from-yellow-600 to-yellow-400' },
+      { name: 'Eligibility Checker', href: 'https://uni.dtech24.co.za', icon: '✅', color: 'from-indigo-600 to-indigo-400' },
+      { name: 'Quizzes', href: 'quizzes.html', icon: '❓', color: 'from-red-600 to-red-400' },
+      { name: 'NSFAS Info', href: 'nsfas.html', icon: '💰', color: 'from-blue-500 to-blue-300' },
+      { name: 'University Info', href: 'university-applications.html', icon: '🎓', color: 'from-gray-600 to-gray-400' },
     ];
-    const nav = document.getElementById('resource-nav');
+    const container = document.querySelector('.cards-container');
     categories.forEach(cat => {
       const a = document.createElement('a');
       a.href = cat.href;
-      a.setAttribute('aria-label', cat.aria);
-      a.className = `bg-${cat.color} rounded-lg p-4 text-center font-semibold shadow-lg transition-transform transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-${cat.color}`;
-      a.textContent = cat.name;
-      nav.appendChild(a);
+      a.className = `block relative bg-gradient-to-br ${cat.color} rounded-2xl p-6 text-center font-bold shadow-2xl group transform transition hover:scale-105 hover:shadow-blue-500/50`;
+      a.setAttribute('aria-label', cat.name);
+      a.innerHTML = `
+        <div class="text-4xl mb-2 group-hover:animate-pulse">${cat.icon}</div>
+        <span class="text-lg text-white">${cat.name}</span>
+      `;
+      container.appendChild(a);
     });
-  </script>  <!-- Tailwind animation utilities -->  <script>
+  </script>  <!-- Tailwind Animations -->  <script>
     const style = document.createElement('style');
     style.innerHTML = `
-      @keyframes slide-in { 0% { opacity: 0; transform: translateY(30px);} 100% { opacity: 1; transform: translateY(0);} }
-      .animate-slide-in { animation: slide-in 0.8s ease-out forwards; }
-      .animate-pulse { animation: pulse 2s infinite; }
-      @keyframes pulse { 0%,100% {transform:scale(1);} 50% {transform:scale(1.05);} }
+      @keyframes slide-down { from { opacity: 0; transform: translateY(-20px);} to { opacity: 1; transform: translateY(0);} }
+      .animate-slide-down { animation: slide-down 0.6s ease-out forwards; }
+      @keyframes fade-in-down { from { opacity:0; transform:translateY(-10px);} to { opacity:1; transform:translateY(0);} }
+      .animate-fade-in-down { animation: fade-in-down 0.8s ease-out forwards; }
+      @keyframes fade-in-up { from { opacity:0; transform:translateY(10px);} to { opacity:1; transform:translateY(0);} }
+      .animate-fade-in-up { animation: fade-in-up 0.8s ease-out 0.3s forwards; }
+      @keyframes bounce { 0%,20%,50%,80%,100% {transform: translateY(0);} 40% {transform: translateY(-8px);} 60% {transform: translateY(-4px);} }
+      .animate-bounce { animation: bounce 2s infinite; }
     `;
     document.head.appendChild(style);
   </script></body>
