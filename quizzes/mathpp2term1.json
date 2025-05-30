@@ -1,1 +1,552 @@
-j
+[
+  {
+    "question": "What is the formula for the mean of a dataset?",
+    "correct_answer": "Sum of all values divided by number of values",
+    "incorrect_answers": [
+      "Middle value of ordered list",
+      "Most frequent value",
+      "Difference between highest and lowest",
+      "Square root of variance",
+      "Sum of squared deviations"
+    ]
+  },
+  {
+    "question": "In the dataset [2, 5, 7, 10, 12], the median is:",
+    "correct_answer": "7",
+    "incorrect_answers": [
+      "6",
+      "8",
+      "5",
+      "10",
+      "9"
+    ]
+  },
+  {
+    "question": "The mode of [4, 4, 5, 6, 6, 6, 7] is:",
+    "correct_answer": "6",
+    "incorrect_answers": [
+      "4",
+      "5",
+      "7",
+      "4 and 6",
+      "No mode"
+    ]
+  },
+  {
+    "question": "The range of [3, 8, 12, 15] is:",
+    "correct_answer": "12",
+    "incorrect_answers": [
+      "8",
+      "15",
+      "5",
+      "3",
+      "11"
+    ]
+  },
+  {
+    "question": "The interquartile range (IQR) is defined as:",
+    "correct_answer": "Q3 − Q1",
+    "incorrect_answers": [
+      "Max − Min",
+      "Median − Mean",
+      "Q2 − Q1",
+      "Q3 + Q1",
+      "Variance − SD"
+    ]
+  },
+  {
+    "question": "For [1, 2, 3, 4, 5, 6, 7, 8], Q1 is:",
+    "correct_answer": "2.5",
+    "incorrect_answers": [
+      "1.5",
+      "3",
+      "4.5",
+      "5",
+      "2"
+    ]
+  },
+  {
+    "question": "Standard deviation measures:",
+    "correct_answer": "Average distance from the mean",
+    "incorrect_answers": [
+      "Middle value",
+      "Most frequent value",
+      "Sum of values",
+      "Range of values",
+      "Quartile spread"
+    ]
+  },
+  {
+    "question": "In [5, 5, 5, 5], the standard deviation is:",
+    "correct_answer": "0",
+    "incorrect_answers": [
+      "1",
+      "2",
+      "5",
+      "Undefined",
+      "0.5"
+    ]
+  },
+  {
+    "question": "The five-number summary includes:",
+    "correct_answer": "Min, Q1, Median, Q3, Max",
+    "incorrect_answers": [
+      "Mean, Mode, SD, Variance, Range",
+      "Min, Max, Mean, SD, IQR",
+      "Q1, Q2, Q3 only",
+      "Mode, Median, Range, IQR, SD",
+      "Min, Median, Max only"
+    ]
+  },
+  {
+    "question": "A box-and-whisker plot displays:",
+    "correct_answer": "Five-number summary",
+    "incorrect_answers": [
+      "Mean and standard deviation",
+      "Raw data points",
+      "Histogram bars",
+      "Scatterplot trend",
+      "Regression line"
+    ]
+  },
+  {
+    "question": "In a boxplot, points beyond the whiskers are:",
+    "correct_answer": "Outliers",
+    "incorrect_answers": [
+      "Quartiles",
+      "Medians",
+      "Modes",
+      "Bins",
+      "Frequencies"
+    ]
+  },
+  {
+    "question": "A histogram shows:",
+    "correct_answer": "Frequency distribution of intervals",
+    "incorrect_answers": [
+      "Scatter of two variables",
+      "Line of best fit",
+      "Boxplot summary",
+      "Cumulative percentage",
+      "Pie chart slices"
+    ]
+  },
+  {
+    "question": "A frequency polygon is constructed by:",
+    "correct_answer": "Connecting class midpoints",
+    "incorrect_answers": [
+      "Drawing rectangles",
+      "Plotting raw data points",
+      "Marking box boundaries",
+      "Drawing normal curve",
+      "Plotting cumulative frequencies"
+    ]
+  },
+  {
+    "question": "Mean of [1, 3, 5, 7, 9] is:",
+    "correct_answer": "5",
+    "incorrect_answers": [
+      "4",
+      "6",
+      "3",
+      "7",
+      "9"
+    ]
+  },
+  {
+    "question": "Median of [2, 4, 6, 8] is:",
+    "correct_answer": "5",
+    "incorrect_answers": [
+      "6",
+      "4",
+      "8",
+      "7",
+      "5.5"
+    ]
+  },
+  {
+    "question": "Mode of [1, 2, 2, 3, 3] is:",
+    "correct_answer": "2 and 3",
+    "incorrect_answers": [
+      "2",
+      "3",
+      "1",
+      "No mode",
+      "1 and 2"
+    ]
+  },
+  {
+    "question": "Range of [10, 15, 20, 25, 30] is:",
+    "correct_answer": "20",
+    "incorrect_answers": [
+      "15",
+      "30",
+      "10",
+      "25",
+      "5"
+    ]
+  },
+  {
+    "question": "If Q1 = 4 and Q3 = 10, the IQR =",
+    "correct_answer": "6",
+    "incorrect_answers": [
+      "14",
+      "40",
+      "2.5",
+      "7",
+      "4"
+    ]
+  },
+  {
+    "question": "Sample standard deviation differs from population by:",
+    "correct_answer": "Dividing by n−1 instead of n",
+    "incorrect_answers": [
+      "Taking square root",
+      "Subtracting mean",
+      "Using median",
+      "Using mode",
+      "Ignoring outliers"
+    ]
+  },
+  {
+    "question": "Five-number summary of [3,7,8,5,12,14,21,13,18] is:",
+    "correct_answer": "3, 7, 12, 14, 21",
+    "incorrect_answers": [
+      "3, 5, 12, 18, 21",
+      "3, 7, 8, 18, 21",
+      "5, 7, 12, 13, 18",
+      "3, 8, 12, 14, 21",
+      "3, 7, 12, 18, 21"
+    ]
+  },
+  {
+    "question": "Boxplot whiskers typically extend to:",
+    "correct_answer": "Most extreme non-outlier",
+    "incorrect_answers": [
+      "Max and min",
+      "Mean ± SD",
+      "First and third quartile",
+      "All data points",
+      "Median"
+    ]
+  },
+  {
+    "question": "Histogram bins must be:",
+    "correct_answer": "Non-overlapping intervals",
+    "incorrect_answers": [
+      "Overlapping intervals",
+      "Equal frequency",
+      "Single data points",
+      "Cumulative frequencies",
+      "Random widths"
+    ]
+  },
+  {
+    "question": "Frequency polygon uses:",
+    "correct_answer": "Line segments",
+    "incorrect_answers": [
+      "Bars",
+      "Boxes",
+      "Dots",
+      "Points only",
+      "Pie slices"
+    ]
+  },
+  {
+    "question": "Mean of grouped data uses:",
+    "correct_answer": "Class midpoints",
+    "incorrect_answers": [
+      "Raw values",
+      "Quartiles",
+      "Mode",
+      "Median",
+      "Boxplot"
+    ]
+  },
+  {
+    "question": "Cumulative frequency graph is:",
+    "correct_answer": "Ogive",
+    "incorrect_answers": [
+      "Histogram",
+      "Boxplot",
+      "Scatterplot",
+      "Bar chart",
+      "Pie chart"
+    ]
+  },
+  {
+    "question": "Mean is sensitive to:",
+    "correct_answer": "Extreme values",
+    "incorrect_answers": [
+      "Median",
+      "Mode",
+      "IQR",
+      "Boxplot",
+      "Frequency"
+    ]
+  },
+  {
+    "question": "Median is robust to:",
+    "correct_answer": "Outliers",
+    "incorrect_answers": [
+      "Mean",
+      "Mode",
+      "Range",
+      "SD",
+      "Variance"
+    ]
+  },
+  {
+    "question": "In a perfectly symmetric distribution, mean =",
+    "correct_answer": "Median",
+    "incorrect_answers": [
+      "Mode",
+      "Range",
+      "IQR",
+      "SD",
+      "All above"
+    ]
+  },
+  {
+    "question": "Standard deviation squared is:",
+    "correct_answer": "Variance",
+    "incorrect_answers": [
+      "SD/2",
+      "IQR",
+      "Range",
+      "Mean",
+      "Median"
+    ]
+  },
+  {
+    "question": "Five-number summary is used to create:",
+    "correct_answer": "Box-and-whisker plot",
+    "incorrect_answers": [
+      "Histogram",
+      "Pie chart",
+      "Scatterplot",
+      "Bar chart",
+      "Line graph"
+    ]
+  },
+  {
+    "question": "Skewed right distributions have median which is:",
+    "correct_answer": "Less than mean",
+    "incorrect_answers": [
+      "Greater than mean",
+      "Equal to mean",
+      "Less than mode",
+      "Greater than mode",
+      "Undefined"
+    ]
+  },
+  {
+    "question": "Histogram with taller bars on left is:",
+    "correct_answer": "Skewed right",
+    "incorrect_answers": [
+      "Skewed left",
+      "Symmetric",
+      "Uniform",
+      "Bimodal",
+      "None"
+    ]
+  },
+  {
+    "question": "Frequency polygon can show:",
+    "correct_answer": "Trends across classes",
+    "incorrect_answers": [
+      "Individual data points",
+      "Quartiles",
+      "Outliers",
+      "Boxplot",
+      "Mode only"
+    ]
+  },
+  {
+    "question": "IQR is used to detect:",
+    "correct_answer": "Outliers",
+    "incorrect_answers": [
+      "Mean",
+      "Median",
+      "Mode",
+      "Range",
+      "Variance"
+    ]
+  },
+  {
+    "question": "In boxplot, center line is:",
+    "correct_answer": "Median",
+    "incorrect_answers": [
+      "Mean",
+      "Mode",
+      "Q1",
+      "Q3",
+      "Range"
+    ]
+  },
+  {
+    "question": "Histogram bar widths represent:",
+    "correct_answer": "Class intervals",
+    "incorrect_answers": [
+      "Frequencies",
+      "Cumulative frequencies",
+      "Percentages",
+      "Box lengths",
+      "Outliers"
+    ]
+  },
+  {
+    "question": "Frequency polygon connects:",
+    "correct_answer": "Midpoints of histogram bars",
+    "incorrect_answers": [
+      "Quartile points",
+      "Boxplot whiskers",
+      "Raw data values",
+      "Mode points",
+      "Outlier markers"
+    ]
+  },
+  {
+    "question": "If data has heavy tails, boxplot whiskers are:",
+    "correct_answer": "Long",
+    "incorrect_answers": [
+      "Short",
+      "At median",
+      "At Q1 and Q3",
+      "Zero",
+      "Outliers only"
+    ]
+  },
+  {
+    "question": "Mean absolute deviation uses:",
+    "correct_answer": "Absolute deviations from mean",
+    "incorrect_answers": [
+      "Squared deviations",
+      "Raw values",
+      "Quartile differences",
+      "Mode differences",
+      "Cumulative frequencies"
+    ]
+  },
+  {
+    "question": "For normal-like histogram, mean≈median. True or false?",
+    "correct_answer": "True",
+    "incorrect_answers": [
+      "False",
+      "Only if symmetric",
+      "Only if unimodal",
+      "Only if SD small",
+      "Only if no outliers"
+    ]
+  },
+  {
+    "question": "Dataset [2,4,4,4,5,7,9], boxplot Q1=4, Q3=7, median=4. What is IQR?",
+    "correct_answer": "3",
+    "incorrect_answers": [
+      "2",
+      "4",
+      "1",
+      "5",
+      "6"
+    ]
+  },
+  {
+    "question": "Standard deviation of [1,1,1,1,1] equals:",
+    "correct_answer": "0",
+    "incorrect_answers": [
+      "1",
+      "√1",
+      "Undefined",
+      "5",
+      "0.5"
+    ]
+  },
+  {
+    "question": "Histogram with two peaks is called:",
+    "correct_answer": "Bimodal",
+    "incorrect_answers": [
+      "Unimodal",
+      "Uniform",
+      "Skewed",
+      "Symmetric",
+      "Multimodal"
+    ]
+  },
+  {
+    "question": "Cumulative frequency at a value x shows:",
+    "correct_answer": "Number of observations ≤ x",
+    "incorrect_answers": [
+      "Number of observations ≥ x",
+      "Frequency of x",
+      "Mode at x",
+      "Mean at x",
+      "Median at x"
+    ]
+  },
+  {
+    "question": "Boxplot notches indicate:",
+    "correct_answer": "Confidence interval for median",
+    "incorrect_answers": [
+      "Mean location",
+      "Mode location",
+      "IQR",
+      "Range",
+      "Outliers"
+    ]
+  },
+  {
+    "question": "To compare two distributions, one uses:",
+    "correct_answer": "Side-by-side boxplots",
+    "incorrect_answers": [
+      "Single histogram",
+      "Pie charts",
+      "Scatterplot",
+      "Time series",
+      "Stem-and-leaf"
+    ]
+  },
+  {
+    "question": "In a stem-and-leaf plot, leaves represent:",
+    "correct_answer": "Individual data values",
+    "incorrect_answers": [
+      "Class intervals",
+      "Quartile values",
+      "Histogram bars",
+      "Box edges",
+      "Median values"
+    ]
+  },
+  {
+    "question": "A right-skewed boxplot has whisker that extends:",
+    "correct_answer": "Further to the right",
+    "incorrect_answers": [
+      "Further to the left",
+      "Equal both sides",
+      "No whiskers",
+      "Only one whisker",
+      "At median"
+    ]
+  },
+  {
+    "question": "In a histogram of heights, each bar’s area is proportional to:",
+    "correct_answer": "Frequency",
+    "incorrect_answers": [
+      "Class width",
+      "Midpoint",
+      "Cumulative frequency",
+      "Percentile",
+      "Mean"
+    ]
+  },
+  {
+    "question": "The sum of lower whisker length and upper whisker length equals:",
+    "correct_answer": "Range of non-outliers",
+    "incorrect_answers": [
+      "Range of full data",
+      "IQR",
+      "SD",
+      "5-number summary",
+      "5"
+    ]
+  }
+]
