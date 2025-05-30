@@ -471,5 +471,412 @@
       "10 C",
       "0.2 C"
     ]
+  },
+{
+    "question": "What is the principle behind a generator?",
+    "correct_answer": "Electromagnetic induction",
+    "incorrect_answers": [
+      "Electrostatic attraction",
+      "Magnetic resonance",
+      "Piezoelectric effect",
+      "Thermoelectric effect",
+      "Photoelectric effect"
+    ]
+  },
+  {
+    "question": "What law quantifies the induced emf in a coil due to changing magnetic flux?",
+    "correct_answer": "Faraday’s Law",
+    "incorrect_answers": [
+      "Lenz’s Law",
+      "Ampère’s Law",
+      "Coulomb’s Law",
+      "Ohm’s Law",
+      "Gauss’s Law"
+    ]
+  },
+  {
+    "question": "According to Lenz’s Law, the direction of an induced current is such that it:",
+    "correct_answer": "Opposes the change in magnetic flux",
+    "incorrect_answers": [
+      "Enhances the change in flux",
+      "Is always clockwise",
+      "Minimizes resistance",
+      "Maximizes electron flow",
+      "Aligns with Earth's field"
+    ]
+  },
+  {
+    "question": "In a simple DC generator, a coil of 50 turns rotates at 200 rpm in a 0.3 T field. The coil area is 0.05 m². What is the peak emf? (Use ω = 2π·f)",
+    "correct_answer": "π·N·B·A·f = π·50·0.3·0.05·(200/60) ≈ 7.85 V",
+    "incorrect_answers": [
+      "15.7 V",
+      "3.93 V",
+      "31.4 V",
+      "1.57 V",
+      "62.8 V"
+    ]
+  },
+  {
+    "question": "Which device converts electrical energy into mechanical energy?",
+    "correct_answer": "Electric motor",
+    "incorrect_answers": [
+      "Generator",
+      "Transformer",
+      "Capacitor",
+      "Resistor",
+      "Rectifier"
+    ]
+  },
+  {
+    "question": "What is the motor effect?",
+    "correct_answer": "Force on a current-carrying conductor in a magnetic field",
+    "incorrect_answers": [
+      "Induced emf in a moving magnet",
+      "Attraction between poles",
+      "Resistance change with temperature",
+      "Flux linkage in a coil",
+      "Voltage across a capacitor"
+    ]
+  },
+  {
+    "question": "A straight conductor 0.2 m long carries 5 A perpendicular to a 0.4 T field. What force acts on it?",
+    "correct_answer": "F = B·I·L = 0.4·5·0.2 = 0.4 N",
+    "incorrect_answers": [
+      "2.0 N",
+      "0.04 N",
+      "4.0 N",
+      "1.0 N",
+      "0.8 N"
+    ]
+  },
+  {
+    "question": "Which law gives the force between two current-carrying wires?",
+    "correct_answer": "Ampère’s force law",
+    "incorrect_answers": [
+      "Faraday’s Law",
+      "Ohm’s Law",
+      "Lenz’s Law",
+      "Coulomb’s Law",
+      "Gauss’s Law"
+    ]
+  },
+  {
+    "question": "In an AC generator, what component reverses the connection every half turn?",
+    "correct_answer": "Slip rings",
+    "incorrect_answers": [
+      "Commutator",
+      "Rectifier",
+      "Rotor",
+      "Stator",
+      "Diode"
+    ]
+  },
+  {
+    "question": "What is the rms voltage of a sinusoidal 10 V peak AC supply?",
+    "correct_answer": "10/√2 ≈ 7.07 V",
+    "incorrect_answers": [
+      "10 V",
+      "5 V",
+      "14.14 V",
+      "20 V",
+      "3.54 V"
+    ]
+  },
+  {
+    "question": "A 0.1 kg coil rotates with angular speed 314 rad/s in a 0.2 T field; radius of loop = 0.05 m; current 2 A. What is torque? (τ = N·B·I·A)",
+    "correct_answer": "τ = 1·0.2·2·(π·0.05²) ≈ 0.00628 N·m",
+    "incorrect_answers": [
+      "0.0126 N·m",
+      "0.00314 N·m",
+      "0.0628 N·m",
+      "0.000628 N·m",
+      "0.0314 N·m"
+    ]
+  },
+  {
+    "question": "Which type of motor uses commutator and brushes?",
+    "correct_answer": "DC motor",
+    "incorrect_answers": [
+      "Synchronous AC motor",
+      "Induction motor",
+      "Stepper motor",
+      "Brushless DC motor",
+      "Hysteresis motor"
+    ]
+  },
+  {
+    "question": "What principle causes a loudspeaker cone to move?",
+    "correct_answer": "Motor effect in a coil in magnetic field",
+    "incorrect_answers": [
+      "Piezoelectric effect",
+      "Electrostatic force",
+      "Ultrasonic vibration",
+      "Thermal expansion",
+      "Radiation pressure"
+    ]
+  },
+  {
+    "question": "An AC generator produces 220 V at 50 Hz. What is its peak emf?",
+    "correct_answer": "220·√2 ≈ 311 V",
+    "incorrect_answers": [
+      "220 V",
+      "110 V",
+      "155.6 V",
+      "440 V",
+      "100 V"
+    ]
+  },
+  {
+    "question": "Faraday’s Law states that induced emf equals:",
+    "correct_answer": "−dΦ/dt",
+    "incorrect_answers": [
+      "dΦ/dt",
+      "μ₀·I·L",
+      "B·I·L",
+      "ε₀·Q",
+      "Φ·t"
+    ]
+  },
+  {
+    "question": "A coil with 200 turns has changing flux of 0.005 Wb/s. What emf is induced?",
+    "correct_answer": "ε = N·dΦ/dt = 200·0.005 = 1 V",
+    "incorrect_answers": [
+      "0.01 V",
+      "0.5 V",
+      "2 V",
+      "5 V",
+      "10 V"
+    ]
+  },
+  {
+    "question": "Which effect explains the braking action when eddy currents are generated?",
+    "correct_answer": "Lenz’s Law",
+    "incorrect_answers": [
+      "Hall effect",
+      "Skin effect",
+      "Eddy suppression",
+      "Peltier effect",
+      "Seebeck effect"
+    ]
+  },
+  {
+    "question": "What is eddy current heating?",
+    "correct_answer": "Heat generated by circulating currents in a conductor",
+    "incorrect_answers": [
+      "Heat from solar eddies",
+      "Heat in insulating materials",
+      "Heat due to friction",
+      "Heat from chemical reaction",
+      "Heat from magnetic resonance"
+    ]
+  },
+  {
+    "question": "In a transformer, which part is stationary?",
+    "correct_answer": "Stator",
+    "incorrect_answers": [
+      "Rotor",
+      "Armature",
+      "Commutator",
+      "Field coil",
+      "Diode"
+    ]
+  },
+  {
+    "question": "What is back emf in a DC motor?",
+    "correct_answer": "Induced emf opposing applied voltage",
+    "incorrect_answers": [
+      "Supply emf increased",
+      "Voltage drop across brushes",
+      "Residual magnetism",
+      "Frictional voltage",
+      "Commutator voltage"
+    ]
+  },
+  {
+    "question": "Why does increasing load on a motor reduce speed?",
+    "correct_answer": "Back emf decreases as speed falls",
+    "incorrect_answers": [
+      "Resistance decreases",
+      "Supply voltage increases",
+      "Magnetic field strengthens",
+      "Friction reduces",
+      "Inductance rises"
+    ]
+  },
+  {
+    "question": "What is the direction of force on a conductor given by Fleming’s left-hand rule?",
+    "correct_answer": "Thumb (motion), Forefinger (field), Middle finger (current)",
+    "incorrect_answers": [
+      "Thumb (field), Forefinger (current), Middle finger (motion)",
+      "Thumb (current), Forefinger (motion), Middle finger (field)",
+      "Thumb (current), Forefinger (field), Middle finger (motion)",
+      "Thumb (field), Forefinger (motion), Middle finger (current)",
+      "Thumb (motion), Forefinger (current), Middle finger (field)"
+    ]
+  },
+  {
+    "question": "A solenoid has 500 turns, length 0.2 m, current 4 A. What is its magnetic field inside? (μ₀=4π×10⁻⁷)",
+    "correct_answer": "B = μ₀·n·I ≈ 4π×10⁻⁷·(500/0.2)·4 ≈ 0.0126 T",
+    "incorrect_answers": [
+      "0.00126 T",
+      "0.126 T",
+      "0.0565 T",
+      "0.0005 T",
+      "1.26 T"
+    ]
+  },
+  {
+    "question": "Which phenomenon is utilized in induction cooktops?",
+    "correct_answer": "Eddy currents in cookware",
+    "incorrect_answers": [
+      "Photoelectric effect",
+      "Piezoelectric heating",
+      "Resistive heating",
+      "Capacitive coupling",
+      "Thermoelectric effect"
+    ]
+  },
+  {
+    "question": "What does a DC motor’s speed depend on?",
+    "correct_answer": "Supply voltage and load torque",
+    "incorrect_answers": [
+      "Ambient temperature only",
+      "Supply frequency",
+      "Wire length",
+      "Number of brushes only",
+      "Rotor color"
+    ]
+  },
+  {
+    "question": "Which device converts mechanical rotation into DC electricity?",
+    "correct_answer": "DC generator (dynamo)",
+    "incorrect_answers": [
+      "Alternator",
+      "Transformers",
+      "Tesla coil",
+      "Fuel cell",
+      "Rectifier"
+    ]
+  },
+  {
+    "question": "A loop of area 0.02 m² rotates at 1200 rpm in 0.5 T field with 100 turns. What peak emf? (ω=2π·20)",
+    "correct_answer": "ε₀ = N·B·A·ω =100·0.5·0.02·(2π·20) ≈ 125.66 V",
+    "incorrect_answers": [
+      "62.83 V",
+      "31.42 V",
+      "251.33 V",
+      "12.57 V",
+      "314.16 V"
+    ]
+  },
+  {
+    "question": "What is the effect of inserting an iron core into a coil?",
+    "correct_answer": "Increases magnetic flux density",
+    "incorrect_answers": [
+      "Decreases number of turns",
+      "Reverses flux direction",
+      "Destroys magnetic field",
+      "Reduces inductance",
+      "Has no effect"
+    ]
+  },
+  {
+    "question": "Which law explains the direction of induced current in a generator coil?",
+    "correct_answer": "Lenz’s Law",
+    "incorrect_answers": [
+      "Newton’s Law",
+      "Ohm’s Law",
+      "Kirchhoff’s Law",
+      "Coulomb’s Law",
+      "Gauss’s Law"
+    ]
+  },
+  {
+    "question": "What does back emf control in a motor?",
+    "correct_answer": "Current draw at varying speeds",
+    "incorrect_answers": [
+      "Brush wear",
+      "Supply voltage",
+      "Magnet strength",
+      "Rotor inertia",
+      "Armature resistance"
+    ]
+  },
+  {
+    "question": "What happens to induced emf if the magnetic flux change rate doubles?",
+    "correct_answer": "Emf doubles",
+    "incorrect_answers": [
+      "Emf halves",
+      "Emf stays same",
+      "Emf quadruples",
+      "Emf becomes zero",
+      "Emf reverses direction"
+    ]
+  },
+  {
+    "question": "Which machine uses slip rings instead of commutator?",
+    "correct_answer": "AC generator",
+    "incorrect_answers": [
+      "DC motor",
+      "DC generator",
+      "Stepper motor",
+      "Servo motor",
+      "Brushless DC motor"
+    ]
+  },
+  {
+    "question": "What type of current do alternators produce?",
+    "correct_answer": "Alternating current",
+    "incorrect_answers": [
+      "Direct current",
+      "Pulsating DC only",
+      "Three-phase DC",
+      "High-frequency DC",
+      "Static current"
+    ]
+  },
+  {
+    "question": "Which device reduces AC voltage by electromagnetic induction?",
+    "correct_answer": "Transformer",
+    "incorrect_answers": [
+      "Rectifier",
+      "DC motor",
+      "Generator",
+      "Resistor",
+      "Capacitor"
+    ]
+  },
+  {
+    "question": "What role does the commutator play in a DC motor?",
+    "correct_answer": "Reverses current direction in armature winding",
+    "incorrect_answers": [
+      "Keeps current direction constant",
+      "Rectifies AC to DC output",
+      "Measures speed",
+      "Adjusts field strength",
+      "Charges battery"
+    ]
+  },
+  {
+    "question": "In a three-phase AC generator, how many voltage peaks occur per revolution?",
+    "correct_answer": "Three",
+    "incorrect_answers": [
+      "One",
+      "Two",
+      "Four",
+      "Six",
+      "Twelve"
+    ]
+  },
+  {
+    "question": "How is mechanical power developed in a motor calculated?",
+    "correct_answer": "P = τ·ω",
+    "incorrect_answers": [
+      "P = V·I",
+      "P = I²·R",
+      "P = F·d",
+      "P = m·a",
+      "P = V² / R"
+    ]
   }
 ]
