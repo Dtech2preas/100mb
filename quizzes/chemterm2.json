@@ -1,861 +1,711 @@
 [
   {
-    "question": "What is the oxidation number of sulfur in SO₄²⁻?",
-    "correct_answer": "+6",
+    "question": "What is the general formula for alkanes?",
+    "correct_answer": "CnH2n+2",
     "incorrect_answers": [
-      "+4",
-      "–2",
-      "+2",
-      "0",
-      "–6"
+      "CnH2n",
+      "CnH2n-2",
+      "CnH2n+1",
+      "CnHn",
+      "CnH2n+4"
     ]
   },
   {
-    "question": "In the redox reaction Zn + Cu²⁺ → Zn²⁺ + Cu, which species is oxidized?",
-    "correct_answer": "Zn",
+    "question": "Which type of bond is found in alkenes but not in alkanes?",
+    "correct_answer": "Double bond",
     "incorrect_answers": [
-      "Cu²⁺",
-      "Zn²⁺",
-      "Cu",
-      "Both Zn and Cu²⁺",
-      "Neither"
+      "Single bond",
+      "Triple bond",
+      "Ionic bond",
+      "Hydrogen bond",
+      "Peptide bond"
     ]
   },
   {
-    "question": "Which is the oxidising agent in Fe²⁺ + MnO₄⁻ → Fe³⁺ + Mn²⁺?",
-    "correct_answer": "MnO₄⁻",
+    "question": "What is the IUPAC name of CH3CH2OH?",
+    "correct_answer": "Ethanol",
     "incorrect_answers": [
-      "Fe²⁺",
-      "Fe³⁺",
-      "Mn²⁺",
-      "O₂",
-      "H⁺"
+      "Methanol",
+      "Propanol",
+      "Ethanoic acid",
+      "Ethanone",
+      "Ethene"
     ]
   },
   {
-    "question": "What is the oxidation number of chlorine in NaClO?",
-    "correct_answer": "+1",
+    "question": "Which compound is an example of a carboxylic acid?",
+    "correct_answer": "CH3COOH",
     "incorrect_answers": [
-      "–1",
-      "+3",
-      "+5",
-      "0",
-      "+7"
+      "CH3OH",
+      "CH3CH2CH3",
+      "CH3Cl",
+      "CH3OCH3",
+      "CH2CH2"
     ]
   },
   {
-    "question": "Balance the half-reaction: MnO₄⁻ → Mn²⁺ in acidic solution. What is the coefficient for H₂O?",
-    "correct_answer": "4",
+    "question": "Which of the following is a characteristic of esters?",
+    "correct_answer": "Pleasant fruity smell",
     "incorrect_answers": [
-      "2",
-      "1",
-      "5",
-      "3",
-      "6"
+      "Strong acid",
+      "Metallic luster",
+      "High boiling point",
+      "Rotten egg smell",
+      "Basic pH"
     ]
   },
   {
-    "question": "Which species loses electrons in a redox reaction?",
-    "correct_answer": "Reducing agent",
+    "question": "What functional group is present in alcohols?",
+    "correct_answer": "Hydroxyl (-OH)",
     "incorrect_answers": [
-      "Oxidising agent",
-      "Salt",
-      "Catalyst",
-      "Acid",
-      "Base"
+      "Carbonyl",
+      "Carboxyl",
+      "Amine",
+      "Alkyl",
+      "Ester"
     ]
   },
   {
-    "question": "In a galvanic cell, electrons flow from the:",
-    "correct_answer": "Anode to cathode",
+    "question": "What is the IUPAC name for CH≡CH?",
+    "correct_answer": "Ethyne",
     "incorrect_answers": [
-      "Cathode to anode",
-      "Salt bridge to anode",
-      "Cathode to solution",
-      "Electrolyte to anode",
-      "Anode to salt bridge"
+      "Ethene",
+      "Ethane",
+      "Methyne",
+      "Propene",
+      "Butyne"
     ]
   },
   {
-    "question": "What is the cell notation for a Zn–Cu galvanic cell?",
-    "correct_answer": "Zn|Zn²⁺||Cu²⁺|Cu",
+    "question": "What is the product when ethene reacts with hydrogen?",
+    "correct_answer": "Ethane",
     "incorrect_answers": [
-      "Cu|Cu²⁺||Zn²⁺|Zn",
-      "Zn|Cu||Zn²⁺|Cu²⁺",
-      "Zn²⁺|Zn||Cu|Cu²⁺",
-      "Zn||Zn²⁺|Cu²⁺||Cu",
-      "Zn²⁺|Zn||Cu|Cu²⁺"
+      "Ethyne",
+      "Methane",
+      "Ethanol",
+      "Ethanoic acid",
+      "Acetylene"
     ]
   },
   {
-    "question": "Which half-reaction occurs at the cathode of a voltaic cell?",
-    "correct_answer": "Reduction",
+    "question": "Which of these has a halogen functional group?",
+    "correct_answer": "CH3Cl",
     "incorrect_answers": [
+      "CH3OH",
+      "CH3COOH",
+      "CH4",
+      "CH3NH2",
+      "CH3CH2OH"
+    ]
+  },
+  {
+    "question": "Which hydrocarbon has the highest number of hydrogen atoms per carbon atom?",
+    "correct_answer": "Alkane",
+    "incorrect_answers": [
+      "Alkene",
+      "Alkyne",
+      "Aromatic compound",
+      "Ketone",
+      "Ester"
+    ]
+  },
+  {
+    "question": "What is the molecular formula of butane?",
+    "correct_answer": "C4H10",
+    "incorrect_answers": [
+      "C4H8",
+      "C3H8",
+      "C4H6",
+      "C5H12",
+      "C2H6"
+    ]
+  },
+  {
+    "question": "Which of these compounds is a structural isomer of butanol?",
+    "correct_answer": "2-butanol",
+    "incorrect_answers": [
+      "Butanoic acid",
+      "Ethanol",
+      "Propanol",
+      "Methanol",
+      "Pentanol"
+    ]
+  },
+  {
+    "question": "What is the product of the reaction between a carboxylic acid and an alcohol?",
+    "correct_answer": "Ester",
+    "incorrect_answers": [
+      "Aldehyde",
+      "Amine",
+      "Ketone",
+      "Hydrocarbon",
+      "Ether"
+    ]
+  },
+  {
+    "question": "Which compound is the product of the oxidation of ethanol?",
+    "correct_answer": "Ethanoic acid",
+    "incorrect_answers": [
+      "Methanol",
+      "Ethene",
+      "Ethanol",
+      "Acetone",
+      "Ethanone"
+    ]
+  },
+  {
+    "question": "What is the correct IUPAC name for CH3COOCH2CH3?",
+    "correct_answer": "Ethyl ethanoate",
+    "incorrect_answers": [
+      "Ethanoic ethanoate",
+      "Methyl acetate",
+      "Propyl ethanoate",
+      "Ethyl methanoate",
+      "Acetic ether"
+    ]
+  },
+  {
+    "question": "Which reaction involves the addition of HBr to an alkene?",
+    "correct_answer": "Electrophilic addition",
+    "incorrect_answers": [
+      "Nucleophilic substitution",
+      "Elimination",
+      "Combustion",
+      "Hydrolysis",
+      "Cracking"
+    ]
+  },
+  {
+    "question": "What type of reaction converts an alkane to a halogenoalkane?",
+    "correct_answer": "Substitution",
+    "incorrect_answers": [
+      "Addition",
+      "Hydrogenation",
+      "Polymerisation",
       "Oxidation",
-      "Neutralisation",
-      "Precipitation",
-      "Dissolution",
-      "Combustion"
+      "Condensation"
     ]
   },
   {
-    "question": "Calculate the total electrons transferred in 2 Fe → 2 Fe³⁺ + 6 e⁻.",
-    "correct_answer": "6",
+    "question": "Which reagent is used to test for alkenes?",
+    "correct_answer": "Bromine water",
     "incorrect_answers": [
-      "3",
-      "2",
-      "4",
-      "1",
-      "8"
+      "Benedict's solution",
+      "Hydrochloric acid",
+      "Sulfuric acid",
+      "Tollens reagent",
+      "Limewater"
     ]
   },
   {
-    "question": "Which is the reducing agent in 2 Al + 3 Cl₂ → 2 AlCl₃?",
-    "correct_answer": "Al",
-    "incorrect_answers": [
-      "Cl₂",
-      "AlCl₃",
-      "Al³⁺",
-      "Cl⁻",
-      "Chloride"
-    ]
-  },
-  {
-    "question": "What happens to the mass of the anode in a galvanic cell?",
-    "correct_answer": "Decreases",
-    "incorrect_answers": [
-      "Increases",
-      "Stays same",
-      "Becomes neutral",
-      "Becomes oxidised then reduced",
-      "Becomes acidic"
-    ]
-  },
-  {
-    "question": "Identify the change in oxidation number for Cl in 2 Cl⁻ → Cl₂ + 2 e⁻.",
-    "correct_answer": "–1 to 0",
-    "incorrect_answers": [
-      "–1 to +1",
-      "0 to –1",
-      "–1 to –2",
-      "+1 to 0",
-      "0 to +1"
-    ]
-  },
-  {
-    "question": "Balance the redox reaction: Fe²⁺ + Ce⁴⁺ → Fe³⁺ + Ce³⁺. How many electrons are transferred per Fe²⁺?",
-    "correct_answer": "1",
+    "question": "How many carbon atoms are in propane?",
+    "correct_answer": "3",
     "incorrect_answers": [
       "2",
-      "3",
       "4",
-      "0",
-      "½"
+      "5",
+      "6",
+      "1"
     ]
   },
   {
-    "question": "Which component maintains electrical neutrality in a galvanic cell?",
-    "correct_answer": "Salt bridge",
+    "question": "Which of the following is a saturated hydrocarbon?",
+    "correct_answer": "Ethane",
     "incorrect_answers": [
-      "Membrane",
-      "Diaphragm",
-      "Anode",
-      "Cathode",
-      "Electrode"
+      "Ethene",
+      "Ethyne",
+      "Benzene",
+      "Butene",
+      "Propene"
     ]
   },
   {
-    "question": "In the Daniell cell, what is the standard potential E° (approximately)?",
-    "correct_answer": "+1.10 V",
+    "question": "The boiling point of alcohols is higher than alkanes due to...",
+    "correct_answer": "Hydrogen bonding",
     "incorrect_answers": [
-      "–1.10 V",
-      "0 V",
-      "+0.76 V",
-      "–0.76 V",
-      "+2.20 V"
+      "Ionic bonding",
+      "Van der Waals forces",
+      "Covalent bonding",
+      "Electrostatic attraction",
+      "Lattice energy"
     ]
   },
   {
-    "question": "What is the electrode potential of the standard hydrogen electrode (SHE)?",
-    "correct_answer": "0.00 V",
+    "question": "What is the name of the simplest alkyne?",
+    "correct_answer": "Ethyne",
     "incorrect_answers": [
-      "+0.76 V",
-      "–0.76 V",
-      "+1.10 V",
-      "–1.10 V",
-      "+0.34 V"
+      "Methyne",
+      "Propene",
+      "Ethanol",
+      "Methanol",
+      "Ethene"
     ]
   },
   {
-    "question": "Which law states that the sum of oxidation numbers in a neutral compound is zero?",
-    "correct_answer": "Rule of algebraic sum",
+    "question": "What does 'structural isomer' mean?",
+    "correct_answer": "Same molecular formula but different structure",
     "incorrect_answers": [
-      "Le Chatelier’s principle",
-      "Hess’s law",
-      "Kirchhoff’s law",
-      "Avogadro’s law",
-      "Faraday’s law"
+      "Different molecular formula but same structure",
+      "Same formula and structure",
+      "Different elements",
+      "Same boiling point",
+      "Same melting point"
     ]
   },
   {
-    "question": "In the reaction 2 H₂O₂ → 2 H₂O + O₂, which species is both oxidised and reduced?",
-    "correct_answer": "Oxygen",
+    "question": "What is the IUPAC name of CH3CH2COOH?",
+    "correct_answer": "Propanoic acid",
     "incorrect_answers": [
-      "Hydrogen",
-      "Water",
-      "Peroxide",
-      "Protons",
-      "Electrons"
+      "Propionic acid",
+      "Butanoic acid",
+      "Acetic acid",
+      "Ethanoic acid",
+      "Methanoic acid"
     ]
   },
   {
-    "question": "What is the oxidation number of nitrogen in NO₃⁻?",
-    "correct_answer": "+5",
+    "question": "Which of the following is the correct name for CH3CH2CH2Br?",
+    "correct_answer": "1-bromopropane",
     "incorrect_answers": [
-      "+3",
-      "0",
-      "–3",
-      "+4",
-      "+2"
+      "Propyl bromide",
+      "2-bromopropane",
+      "Methyl bromide",
+      "Isopropyl bromide",
+      "Butyl bromide"
     ]
   },
   {
-    "question": "Which half-reaction correctly represents oxidation of silver?",
-    "correct_answer": "Ag → Ag⁺ + e⁻",
+    "question": "What kind of reaction is the combustion of an alkane?",
+    "correct_answer": "Exothermic",
     "incorrect_answers": [
-      "Ag⁺ + e⁻ → Ag",
-      "Ag → Ag²⁺ + 2 e⁻",
-      "Ag²⁺ + 2 e⁻ → Ag",
-      "Ag → Ag⁻ + e⁻",
-      "Ag⁻ + e⁻ → Ag"
+      "Endothermic",
+      "Isomerization",
+      "Substitution",
+      "Hydrolysis",
+      "Neutralisation"
     ]
   },
   {
-    "question": "Calculate the number of moles of electrons in 193.2 g of Fe reacting: Fe → Fe³⁺ + 3 e⁻ (M=55.85 g/mol).",
-    "correct_answer": "3.0 mol",
+    "question": "What functional group does a ketone contain?",
+    "correct_answer": "Carbonyl group within the carbon chain",
     "incorrect_answers": [
-      "1.0 mol",
-      "2.0 mol",
-      "6.0 mol",
-      "0.5 mol",
-      "9.0 mol"
+      "Carbonyl group at end",
+      "Hydroxyl group",
+      "Amine group",
+      "Carboxyl group",
+      "Ester group"
     ]
   },
   {
-    "question": "Which statement is true for galvanic cells?",
-    "correct_answer": "Spontaneous reaction produces electricity",
-    "incorrect_errors": [
-      "Non-spontaneous reaction produces electricity",
-      "Spontaneous reaction consumes electricity",
-      "Electricity is used to produce reaction",
-      "No electrons flow",
-      "Reaction stops at equilibrium"
-    ]
-  },
-  {
-    "question": "In standard conditions, which electrode is the negative terminal?",
-    "correct_answer": "Anode",
+    "question": "What is the IUPAC name of CH3CH2CH2CH3?",
+    "correct_answer": "Butane",
     "incorrect_answers": [
-      "Cathode",
-      "Salt bridge",
-      "Reference electrode",
-      "Membrane",
-      "Diaphragm"
+      "Methane",
+      "Ethane",
+      "Propane",
+      "Pentane",
+      "Butene"
     ]
-  },
-  {
-    "question": "What is the cell potential if E°cell = E°cathode – E°anode with E°Ag⁺/Ag=+0.80 V and E°Zn²⁺/Zn=–0.76 V?",
-    "correct_answer": "+1.56 V",
-    "incorrect_answers": [
-      "+0.04 V",
-      "–1.56 V",
-      "+0.76 V",
-      "–0.80 V",
-      "+0.24 V"
-    ]
-  },
-  {
-    "question": "Which reaction occurs at the anode of a lead-acid battery during discharge?",
-    "correct_answer": "Pb + HSO₄⁻ → PbSO₄ + H⁺ + 2e⁻",
-    "incorrect_answers": [
-      "PbO₂ + 4H⁺ + SO₄²⁻ + 2e⁻ → PbSO₄ + 2H₂O",
-      "PbSO₄ + 2e⁻ → Pb + SO₄²⁻",
-      "Pb + 2e⁻ → Pb²⁺",
-      "2H₂O → O₂ + 4H⁺ + 4e⁻",
-      "H₂ → 2H⁺ + 2e⁻"
-    ]
-  },
-  {
-    "question": "Identify the reducing agent in Cl₂ + 2Br⁻ → 2Cl⁻ + Br₂.",
-    "correct_answer": "Br⁻",
-    "incorrect_answers": [
-      "Cl₂",
-      "Cl⁻",
-      "Br₂",
-      "ClO⁻",
-      "H₂O"
-    ]
-  },
-  {
-    "question": "Which concept explains why a galvanic cell eventually stops producing current?",
-    "correct_answer": "Concentrations reach equilibrium",
-    "incorrect_answers": [
-      "Electrode dissolves completely",
-      "Salt bridge dries",
-      "Electron flow reverses",
-      "Voltage becomes infinite",
-      "Temperature drops to zero"
-    ]
-  },
-  {
-    "question": "Calculate K for the cell reaction using E°cell = (0.0592/n) log K if E°cell=1.10 V and n=2.",
-    "correct_answer": "K ≈ 10^(1.10*2/0.0592) ≈ 10^37",
-    "incorrect_answers": [
-      "10^5",
-      "10^10",
-      "10^2",
-      "10^–37",
-      "10^20"
-    ]
-  },
-  {
-    "question": "Which property increases the voltage of a cell?",
-    "correct_answer": "Greater difference in electrode potentials",
-    "incorrect_answers": [
-      "Larger electrode surface area",
-      "Higher electrolyte concentration only",
-      "Higher temperature only",
-      "Smaller salt bridge",
-      "More inert electrodes"
-    ]
-  },
-  {
-    "question": "In the Nernst equation, E = E° – (0.0592/n) log Q, what does Q represent?",
-    "correct_answer": "Reaction quotient",
-    ""
   },
 {
-    "question": "According to the Arrhenius definition, an acid is any substance that:",
-    "correct_answer": "Produces H⁺ ions in aqueous solution",
+    "question": "What type of bond is found in alkanes?",
+    "correct_answer": "Single covalent bonds",
     "incorrect_answers": [
-      "Accepts electron pairs",
-      "Donates OH⁻ ions in water",
-      "Donates protons to bases",
-      "Has a pH above 7",
-      "Produces H₂ gas in water"
+      "Double covalent bonds",
+      "Triple covalent bonds",
+      "Ionic bonds",
+      "Metallic bonds"
     ]
   },
   {
-    "question": "According to the Brønsted–Lowry definition, a base is any substance that:",
-    "correct_answer": "Accepts a proton (H⁺)",
+    "question": "Which of the following is a saturated hydrocarbon?",
+    "correct_answer": "Alkane",
     "incorrect_answers": [
-      "Donates an electron",
-      "Produces OH⁻ ions only",
-      "Has a pH below 7",
-      "Produces H⁺ ions",
-      "Accepts electrons in redox"
+      "Alkene",
+      "Alkyne",
+      "Alcohol",
+      "Ester"
     ]
   },
   {
-    "question": "Which of the following is a strong acid?",
-    "correct_answer": "HCl",
+    "question": "What is the IUPAC name for CH₄?",
+    "correct_answer": "Methane",
+    "incorrect_answers": [
+      "Ethane",
+      "Propane",
+      "Butane",
+      "Methanol"
+    ]
+  },
+  {
+    "question": "Which functional group is present in carboxylic acids?",
+    "correct_answer": "Carboxyl (-COOH)",
+    "incorrect_answers": [
+      "Hydroxyl (-OH)",
+      "Carbonyl (C=O)",
+      "Amino (-NH2)",
+      "Ester (-COO-)"
+    ]
+  },
+  {
+    "question": "Which compound is an ester?",
+    "correct_answer": "CH₃COOCH₃",
     "incorrect_answers": [
       "CH₃COOH",
-      "HF",
-      "H₂CO₃",
-      "H₃PO₄",
-      "NH₄Cl"
+      "CH₃OH",
+      "CH₄",
+      "C₂H₆"
     ]
   },
   {
-    "question": "Which base is considered weak?",
-    "correct_answer": "NH₃",
+    "question": "What is the correct IUPAC name for CH₃CH₂CH₂OH?",
+    "correct_answer": "Propan-1-ol",
     "incorrect_answers": [
-      "NaOH",
-      "KOH",
-      "Ba(OH)₂",
-      "Ca(OH)₂",
-      "RbOH"
+      "Ethanol",
+      "Methanol",
+      "Butan-1-ol",
+      "Propan-2-ol"
     ]
   },
   {
-    "question": "What is the pH of a neutral solution at 25 °C?",
-    "correct_answer": "7.00",
+    "question": "Which hydrocarbon has a triple bond?",
+    "correct_answer": "Alkyne",
     "incorrect_answers": [
-      "14.00",
-      "0.00",
-      "1.00",
-      "6.00",
-      "8.00"
+      "Alkane",
+      "Alkene",
+      "Alcohol",
+      "Ester"
     ]
   },
   {
-    "question": "Calculate the pOH of a solution whose pH is 4.00.",
-    "correct_answer": "10.00",
+    "question": "Which of these is the correct name for C₂H₂?",
+    "correct_answer": "Ethyne",
     "incorrect_answers": [
-      "4.00",
-      "2.00",
-      "14.00",
-      "0.00",
-      "6.00"
+      "Ethene",
+      "Ethane",
+      "Methyne",
+      "Propene"
     ]
   },
   {
-    "question": "What is [H₃O⁺] in a solution of pH 3.00?",
-    "correct_answer": "1.0 × 10⁻³ M",
+    "question": "What is the product of esterification?",
+    "correct_answer": "Ester and water",
     "incorrect_answers": [
-      "3.0 M",
-      "1.0 × 10⁻¹ M",
-      "1.0 × 10³ M",
-      "1.0 × 10⁻⁶ M",
-      "1.0 × 10⁻¹² M"
+      "Acid and alcohol",
+      "Alcohol and water",
+      "Ketone and acid",
+      "Ether and alcohol"
     ]
   },
   {
-    "question": "Which salt in water produces an acidic solution by hydrolysis?",
-    "correct_answer": "NH₄Cl",
+    "question": "What type of isomerism do alkenes exhibit?",
+    "correct_answer": "Geometric (cis-trans)",
     "incorrect_answers": [
-      "KCl",
-      "NaNO₃",
-      "NaCl",
-      "KBr",
-      "LiClO₄"
+      "Chain",
+      "Positional",
+      "Functional",
+      "Tautomeric"
     ]
   },
-  {
-    "question": "Which salt produces a basic solution upon hydrolysis?",
-    "correct_answer": "Na₂CO₃",
-    "incorrect_answers": [
-      "NH₄Cl",
-      "AlCl₃",
-      "FeCl₃",
-      "ZnSO₄",
-      "NaCl"
-    ]
-  },
-  {
-    "question": "In a strong acid–strong base titration, the equivalence point pH is:",
-    "correct_answer": "7.00",
-    "incorrect_answers": [
-      "Below 7",
-      "Above 7",
-      "Depends on indicator",
-      "0",
-      "14"
-    ]
-  },
-  {
-    "question": "Which indicator is suitable for titrating a weak acid with a strong base?",
-    "correct_answer": "Phenolphthalein",
-    "incorrect_answers": [
-      "Methyl orange",
-      "Bromothymol blue",
-      "Litmus",
-      "Thymol blue",
-      "Congo red"
-    ]
-  },
-  {
-    "question": "For the reaction HA + OH⁻ → A⁻ + H₂O, the equivalence point pH will be:",
-    "correct_answer": "Above 7",
-    "incorrect_answers": [
-      "Below 7",
-      "Exactly 7",
-      "0",
-      "14",
-      "Depends on concentration"
-    ]
-  },
-  {
-    "question": "Which of these reactions is a neutralisation reaction?",
-    "correct_answer": "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O",
-    "incorrect_answers": [
-      "NaCl + AgNO₃ → AgCl + NaNO₃",
-      "CaCO₃ → CaO + CO₂",
-      "2H₂O₂ → 2H₂O + O₂",
-      "2NO₂ → N₂O₄",
-      "NH₄NO₃ → N₂O + 2H₂O"
-    ]
-  },
-  {
-    "question": "Calculate q (heat) when 50.0 g of water (c=4.18 J/g·K) is cooled from 80 °C to 20 °C.",
-    "correct_answer": "−12 540 J",
-    "incorrect_answers": [
-      "12 540 J",
-      "−4 180 J",
-      "−25 080 J",
-      "4 180 J",
-      "25 080 J"
-    ]
-  },
-  {
-    "question": "A solution has [OH⁻] = 1 × 10⁻⁵ M. What is its pH?",
-    "correct_answer": "9.00",
-    "incorrect_answers": [
-      "5.00",
-      "4.00",
-      "11.00",
-      "3.00",
-      "7.00"
-    ]
-  },
-  {
-    "question": "The Ka for acetic acid is 1.8 × 10⁻⁵. What is the pH of a 0.10 M solution? (Ka = x²/(c−x))",
-    "correct_answer": "2.87",
-    "incorrect_answers": [
-      "5.00",
-      "7.00",
-      "3.00",
-      "4.50",
-      "2.00"
-    ]
-  },
-  {
-    "question": "Determine [H⁺] in a 0.010 M HCl solution.",
-    "correct_answer": "1.0 × 10⁻² M",
-    "incorrect_answers": [
-      "1.0 × 10⁻⁴ M",
-      "1.0 × 10⁻¹ M",
-      "0 M",
-      "0.010 M OH⁻",
-      "1.0 M"
-    ]
-  },
-  {
-    "question": "What is pOH of a 0.001 M NaOH solution?",
-    "correct_answer": "3.00",
-    "incorrect_answers": [
-      "11.00",
-      "1.00",
-      "7.00",
-      "12.00",
-      "0.00"
-    ]
-  },
-  {
-    "question": "Calculate the pH after mixing 25.0 cm³ of 0.10 M HCl with 25.0 cm³ of 0.10 M NaOH.",
-    "correct_answer": "7.00",
-    "incorrect_answers": [
-      "1.00",
-      "6.00",
-      "8.00",
-      "14.00",
-      "4.00"
-    ]
-  },
-  {
-    "question": "In titration, the end point is detected by:",
-    "correct_answer": "Indicator color change",
-    "incorrect_answers": [
-      "pH meter reading zero",
-      "Temperature change",
-      "Gas evolution",
-      "Precipitate formation",
-      "Conductivity zero"
-    ]
-  },
-  {
-    "question": "What is the pH of a 0.001 M solution of a weak base with Kb = 1 × 10⁻⁵?",
-    "correct_answer": "8.00",
-    "incorrect_answers": [
-      "6.00",
-      "7.00",
-      "9.00",
-      "11.00",
-      "5.00"
-    ]
-  },
-  {
-    "question": "Which salt solution is neutral when dissolved in water?",
-    "correct_answer": "NaCl",
-    "incorrect_answers": [
-      "NH₄Cl",
-      "Na₂CO₃",
-      "AlCl₃",
-      "FeCl₃",
-      "NH₄NO₃"
-    ]
-  },
-  {
-    "question": "Compute the pH of a 0.050 M HNO₃ solution.",
-    "correct_answer": "1.30",
-    "incorrect_answers": [
-      "0.30",
-      "2.00",
-      "3.00",
-      "1.70",
-      "1.00"
-    ]
-  },
-  {
-    "question": "A 100 cm³ sample of 0.20 M HCl is titrated with 0.10 M NaOH. What volume of NaOH is needed to reach equivalence?",
-    "correct_answer": "200 cm³",
-    "incorrect_answers": [
-      "100 cm³",
-      "50 cm³",
-      "20 cm³",
-      "400 cm³",
-      "150 cm³"
-    ]
-  },
-  {
-    "question": "What is the pH at half-neutralisation point for a weak acid titrated with strong base?",
-    "correct_answer": "pKa of the acid",
-    "incorrect_answers": [
-      "pH 7",
-      "pKb of the conjugate base",
-      "pH 14",
-      "pH zero",
-      "pH mid-point"
-    ]
-  },
-  {
-    "question": "Which gas evolution indicates acid–carbonate reaction?",
-    "correct_answer": "CO₂",
-    "incorrect_answers": [
-      "H₂",
-      "O₂",
-      "NH₃",
-      "SO₂",
-      "Cl₂"
-    ]
-  },
-  {
-    "question": "Calculate ΔH when 5.00 g of NaOH dissolves in water absorbing 2.50 kJ of heat. q = mcΔT concept applies?",
-    "correct_answer": "Not applicable – solution calorimetry differs",
-    "incorrect_answers": [
-      "5.00 kJ",
-      "2.50 kJ/g",
-      "12.50 kJ",
-      "0.50 kJ",
-      "25.00 kJ"
-    ]
-  },
-  {
-    "question": "Which indicator changes color at pH around 8.2?",
-    "correct_answer": "Phenolphthalein",
-    "incorrect_answers": [
-      "Methyl orange",
-      "Bromocresol green",
-      "Thymol blue",
-      "Litmus",
-      "Bromothymol blue"
-    ]
-  },
-  {
-    "question": "Find [OH⁻] in neutral water at 25 °C.",
-    "correct_answer": "1.0 × 10⁻⁷ M",
-    "incorrect_answers": [
-      "1.0 × 10⁻¹⁴ M",
-      "1.0 × 10⁻³ M",
-      "0 M",
-      "1.0 × 10⁻⁸ M",
-      "1.0 × 10⁻⁶ M"
-    ]
-  },
-  {
-    "question": "What is the pKa of an acid whose Ka = 1 × 10⁻⁴?",
-    "correct_answer": "4.00",
-    "incorrect_answers": [
-      "10.00",
-      "1.00",
-      "14.00",
-      "0.00",
-      "2.00"
-    ]
-  },
-  {
-    "question": "Calculate the pH of a solution where [H₃O⁺] = 2.5 × 10⁻³ M.",
-    "correct_answer": "2.60",
-    "incorrect_answers": [
-      "3.60",
-      "1.60",
-      "2.40",
-      "2.00",
-      "4.60"
-    ]
-  },
-  {
-    "question": "Which salt solution of a strong base and weak acid is basic in water?",
-    "correct_answer": "CH₃COONa",
-    "incorrect_answers": [
-      "NH₄Cl",
-      "NaCl",
-      "K₂SO₄",
-      "FeCl₃",
-      "CuSO₄"
-    ]
-  },
-  {
-    "question": "A buffer resists pH change because it contains:",
-    "correct_answer": "Weak acid and its conjugate base",
-    "incorrect_answers": [
-      "Strong acid and strong base",
-      "Only strong acid",
-      "Only salt",
-      "Only water",
-      "Only metal ions"
-    ]
-  },
-  {
-    "question": "Calculate the pH of a buffer made from 0.10 M HA and 0.10 M A⁻ if pKa=4.75.",
-    "correct_answer": "4.75",
-    "incorrect_answers": [
-      "7.00",
-      "4.00",
-      "5.00",
-      "3.75",
-      "6.50"
-    ]
-  },
-  {
-    "question": "During titration of weak acid with strong base, the pH at equivalence is:",
-    "correct_answer": "Greater than 7",
-    "incorrect_answers": [
-      "Less than 7",
-      "Exactly 7",
-      "Zero",
-      "Depends on indicator",
-      "Always 14"
-    ]
-  },
-  {
-    "question": "Which of the following salts produces an acidic solution when dissolved?",
-    "correct_answer": "NH₄NO₃",
-    "incorrect_answers": [
-      "NaCl",
-      "KBr",
-      "Ba(NO₃)₂",
-      "K₂SO₄",
-      "CaCl₂"
-    ]
-  },
-  {
-    "question": "What is the pH of a 0.25 M solution of a strong base?",
-    "correct_answer": "13.60",
-    "incorrect_answers": [
-      "0.40",
-      "10.40",
-      "1.60",
-      "2.40",
-      "12.00"
-    ]
-  },
-  {
-    "question": "Find [H⁺] if pH = 5.50.",
-    "correct_answer": "3.16 × 10⁻⁶ M",
-    "incorrect_answers": [
-      "5.50 M",
-      "2.00 × 10⁻⁷ M",
-      "5.00 × 10⁻⁶ M",
-      "1.00 × 10⁻⁵ M",
-      "3.16 × 10⁻⁵ M"
-    ]
-  },
-  {
-    "question": "Which titration curve shows an initial pH above 7?",
-    "correct_answer": "Weak base titrated with strong acid",
-    "incorrect_answers": [
-      "Strong acid with strong base",
-      "Strong base with strong acid",
-      "Weak acid with weak base",
-      "Strong acid with weak base",
-      "Neutral salt titration"
-    ]
-  },
-  {
-    "question": "During hydrolysis of NaF, the pH is:",
-    "correct_answer": "Basic",
-    "incorrect_answers": [
-      "Acidic",
-      "Neutral",
-      "Cannot determine",
-      "Always 7",
-      "Always 0"
-    ]
-  },
-  {
-    "question": "A solution of 0.010 M acetic acid has a pH of 3.42. Calculate Ka.",
-    "correct_answer": "1.8 × 10⁻⁵",
-    "incorrect_answers": [
-      "1.0 × 10⁻⁷",
-      "3.42",
-      "0.010",
-      "1.8 × 10⁻³",
-      "4.18"
-    ]
-  },
-  {
-    "question": "What is the pH of a 1.00 × 10⁻⁸ M HCl solution?",
-    "correct_answer": "6.00",
-    "incorrect_answers": [
-      "8.00",
-      "7.00",
-      "1.00",
-      "2.00",
-      "6.80"
-    ]
-  },
-  {
-    "question": "Which indicator would be best for titrating a strong acid with a weak base?",
-    "correct_answer": "Methyl orange",
-    "incorrect_answers": [
-      "Phenolphthalein",
-      "Bromothymol blue",
-      "Litmus",
-      "Thymol blue",
-      "Cresol red"
-    ]
-  },
-  {
-    "question": "What is the percent ionisation of a 0.10 M NH₃ solution if [NH₄⁺] = 1.0 × 10⁻³ M at equilibrium?",
-    "correct_answer": "1.0%",
-    "incorrect_answers": [
-      "10.0%",
-      "0.1%",
-      "0.01%",
-      "100%",
-      "50%"
-    ]
-  },
-  {
-    "question": "Which salt solution of a strong acid and weak base gives an acidic pH?",
-    "correct_answer": "NH₄Cl",
-    "incorrect_answers": [
-      "NaCl",
-      "KBr",
-      "BaCl₂",
-      "LiNO₃",
-      "CaCl₂"
-    ]
-  },
-{ "question": "What is a reversible reaction?", "correct_answer": "A reaction where products can reform reactants", "incorrect_answers": [ "A reaction that only goes to completion", "A reaction that produces only one product", "A reaction that cannot reach equilibrium", "A reaction that is endothermic only", "A reaction with a catalyst only" ] }, 
-{ "question": "What defines dynamic equilibrium in a closed system?", "correct_answer": "Forward and reverse rates are equal", "incorrect_answers": [ "All reactants are consumed", "All products are consumed", "No reaction occurs", "Catalyst stops the reaction", "Temperature is zero" ] }, 
-{ "question": "According to Le Chatelier’s principle, increasing pressure shifts equilibrium towards the side with:", "correct_answer": "Fewer moles of gas", "incorrect_answers": [ "More moles of gas", "Equal moles of gas", "Higher temperature", "Lower Kc", "Higher activation energy" ] }, 
-{ "question": "For the reaction N₂ + 3H₂ ⇌ 2NH₃, what happens if temperature increases?", "correct_answer": "Equilibrium shifts left (endothermic direction)", "incorrect_answers": [ "Shifts right", "No shift", "Kc increases", "Kc remains same", "Amount of NH₃ increases" ] }, { "question": "Define the equilibrium constant Kc for a reaction aA + bB ⇌ cC + dD.", "correct_answer": "[C]^c[D]^d/[A]^a[B]^b", "incorrect_answers": [ "[A]^a[B]^b/[C]^c[D]^d", "[C]+[D]/[A]+[B]", "[A]^c[B]^d/[C]^a[D]^b", "([C][D])/([A][B])", "([A]^a+[B]^b)/([C]^c+[D]^d)" ] }, 
-{ "question": "For the reaction H₂ + I₂ ⇌ 2HI, Kc = 4.0. If [H₂]=1.0 and [I₂]=1.0, what is [HI] at equilibrium?", "correct_answer": "2.0 mol/dm³", "incorrect_answers": [ "1.0 mol/dm³", "4.0 mol/dm³", "0.5 mol/dm³", "8.0 mol/dm³", "0.25 mol/dm³" ] }, 
-{ "question": "Calculate Kc for N₂O₄ ⇌ 2NO₂ if at equilibrium [NO₂]=0.20 M and [N₂O₄]=0.10 M.", "correct_answer": "0.40", "incorrect_answers": [ "0.10", "0.20", "4.0", "2.0", "0.04" ] }, 
-{ "question": "What effect does adding a catalyst have on Kc?", "correct_answer": "No effect on Kc", "incorrect_answers": [ "Increases Kc", "Decreases Kc", "Shifts equilibrium right", "Shifts equilibrium left", "Doubles Kc" ] }, 
-{ "question": "If initial [A]=1.0 M for A ⇌ B and Kc=1.0, what are [A] and [B] at equilibrium?", "correct_answer": "0.5 M each", "incorrect_answers": [ "1.0 M each", "1.5 M A, 0.5 M B", "0.5 M A, 1.5 M B", "0 M each", "2.0 M each" ] }, 
-{ "question": "A reaction has Kc < 1. This implies at equilibrium:", "correct_answer": "Reactants are favored", "incorrect_answers": [ "Products are favored", "No reaction occurs", "Complete conversion to products", "Kc = 0", "Kc infinite" ] }, 
-{ "question": "For 2SO₂ + O₂ ⇌ 2SO₃, if [SO₂]=0.30, [O₂]=0.20, [SO₃]=0.10, calculate Qc and predict shift.", "correct_answer": "Qc = 0.10/(0.30²×0.20)=5.6, shift left", "incorrect_answers": [ "Qc=0.10/(0.09×0.20)=5.6, shift right", "Qc=0.10/(0.09×0.20)=5.6, no shift", "Qc=0.02, shift left", "Qc=5.6, shift right", "Qc=0.56, shift left" ] }, 
 
-{ "question": "Define reaction quotient Qc.", "correct_answer": "Same form as Kc but with non-equilibrium concentrations", "incorrect_answers": [ "Inverse of Kc", "Sum of concentrations", "Difference of concentrations", "Kc at equilibrium", "Product of concentrations" ] }, 
-{ "question": "Calculate equilibrium [NO] for N₂ + O₂ ⇌ 2NO, Kc=4.55×10^-31, [N₂]=[O₂]=1.0 initially.", "correct_answer": "≈4.8×10^-16 M", "incorrect_answers": [ "4.8×10^-8 M", "4.8×10^-22 M", "1.0 M", "0", "2.0 M" ] }, 
-{ "question": "How does increasing temperature affect Kc for exothermic reactions?", "correct_answer": "Kc decreases", "incorrect_answers": [ "Kc increases", "No change", "Shifts left always", "Shifts right always", "Kc becomes zero" ] }, 
-{ "question": "Le Chatelier: adding inert gas at constant volume shifts equilibrium:", "correct_answer": "No shift", "incorrect_answers": [ "Shift right", "Shift left", "Kc changes", "Equilibrium destroyed", "Pressure drops" ] }, 
-{ "question": "For reaction H₂O₂ ⇌ H₂O + ½O₂, Kc=1.0 at 300 K. If [H₂O₂]=0.50, find [O₂] at equilibrium.", "correct_answer": "[H₂O][O₂]^{1/2}/[H₂O₂]=1.0 → assume x dissociates → x√x/(0.50-x)=1 → x≈0.29 M", "incorrect_answers": [ "0.50 M", "0.21 M", "1.0 M", "0.75 M", "0.10 M" ] }, 
-{ "question": "What is the relationship between Kp and Kc for gases?", "correct_answer": "Kp = Kc(RT)^{Δn}", "incorrect_answers": [ "Kp = Kc/RT", "Kp = KcRT", "Kp = Kc^{Δn}", "Kp = RT/Kc", "Kp = Kc" ] }, { "question": "Calculate Kc if Kp=0.50 at 298 K for reaction Δn=1. (R=0.0831 bar·L/mol·K)", "correct_answer": "Kc = Kp/(RT)^{Δn} ≈0.50/(0.0831298)=0.0202", "incorrect_answers": [ "0.500.0831298=12.4", "0.50298/0.0831=1790", "0.50/(0.0831298)≈0.0202 shift left", "0.50/(RT)=???", "1.0" ] }, 
-{ "question": "For 2A ⇌ B + C, Kc=4, if [A]=1 M, find [B]=[C] at equilibrium.", "correct_answer": "Let x formed: Kc = x^2/(1-x)^2=4 → x/(1-x)=2 → x=2-2x →3x=2 →x=0.667 M", "incorrect_answers": [ "0.5 M", "1.0 M", "0.25 M", "0.8 M", "0.333 M" ] }, 
-{ "question": "Increasing concentration of reactants shifts equilibrium:", "correct_answer": "Right (toward products)", "incorrect_answers": [ "Left", "No shift", "Kc changes", "Equilibrium destroyed", "Pressure falls" ] }, 
-{ "question": "What is the effect of decreasing volume in gas-phase equilibrium on total pressure?", "correct_answer": "Shifts toward fewer moles of gas", "incorrect_answers": [ "Shifts toward more moles", "No shift", "Kc increases", "Temperature rises", "Pressure decreases" ] }, 
-{ "question": "For reaction CO + Cl₂ ⇌ COCl₂, Kc=6.4 at 500 K. If initially 1:1:0, find [COCl₂] at equilibrium.", "correct_answer": "Let x formed: Kc = x/(1-x)^2=6.4 → solve gives x≈0.80 M", "incorrect_answers": [ "0.50 M", "0.20 M", "1.0 M", "0.36 M", "0.64 M" ] }, 
-{ "question": "Which factor does NOT affect Kc?", "correct_answer": "Concentration changes of catalyst", "incorrect_answers": [ "Temperature", "ΔH", "Reaction mechanism", "Equilibrium position", "Pressure for gases" ] }, 
-
-{ "question": "In exothermic equilibrium, increasing temperature:", "correct_answer": "Shifts left, Kc decreases", "incorrect_answers": [ "Shifts right, Kc increases", "No shift, Kc same", "Shifts left, Kc increases", "Shifts right, Kc decreases", "Equilibrium lost" ] }, 
-{ "question": "Calculate Qc for A ⇌ 2B if [A]=0.2, [B]=0.6.", "correct_answer": "Qc = [B]^2/[A] =0.36/0.2=1.8", "incorrect_answers": [ "0.72", "3.6", "0.12", "1.0", "2.2" ] }, 
-
-{ "question": "For 3O₂ ⇌ 2O₃, Le Chatelier predicts that increasing O₃ pressure shifts:", "correct_answer": "Left", "incorrect_answers": [ "Right", "No shift", "Kc changes", "Reaction stops", "Kp changes" ] }, 
-{ "question": "Which expression gives Kc for aA + bB ⇌ cC + dD in terms of activities?", "correct_answer": "(a_C)^c (a_D)^d / (a_A)^a (a_B)^b", "incorrect_answers": [ "(a_A)^a (a_B)^b / (a_C)^c (a_D)^d", "a_C + a_D – a_A – a_B", "a_C^c + a_D^d / a_A^a + a_B^b", "a_C a_D / a_A a_B", "a_A^c a_B^d / a_C^a a_D^b" ] }, 
-{ "question": "At equilibrium, ΔG = 0. Relationship to K?", "correct_answer": "ΔG° = -RT ln K", "incorrect_answers": [ "ΔG° = RT ln K", "ΔG = K", "K = 0", "ΔG° = K", "ln K = 0" ] }
+  {
+    "question": "What is the general formula for alkanes?",
+    "correct_answer": "CₙH₂ₙ₊₂",
+    "incorrect_answers": [
+      "CₙH₂ₙ",
+      "CₙH₂ₙ₋₂",
+      "CₙHₙ",
+      "CₙH₂ₙ₊₁"
+    ]
+  },
+  {
+    "question": "What is the IUPAC name for CH₃CH=CH₂?",
+    "correct_answer": "Propene",
+    "incorrect_answers": [
+      "Propane",
+      "Propyne",
+      "Methene",
+      "Butene"
+    ]
+  },
+  {
+    "question": "What happens during combustion of hydrocarbons?",
+    "correct_answer": "CO₂ and H₂O are produced",
+    "incorrect_answers": [
+      "Alcohol is produced",
+      "Only water is produced",
+      "Ester is formed",
+      "Methane is formed"
+    ]
+  },
+  {
+    "question": "Which compound contains a halogen?",
+    "correct_answer": "CH₃Cl",
+    "incorrect_answers": [
+      "CH₄",
+      "CH₃OH",
+      "CH₃COOH",
+      "C₂H₄"
+    ]
+  },
+  {
+    "question": "What is the IUPAC name for CH₃COOH?",
+    "correct_answer": "Ethanoic acid",
+    "incorrect_answers": [
+      "Methanoic acid",
+      "Acetic acid",
+      "Propanoic acid",
+      "Formic acid"
+    ]
+  },
+  {
+    "question": "Which formula represents a primary alcohol?",
+    "correct_answer": "CH₃CH₂OH",
+    "incorrect_answers": [
+      "CH₃OH",
+      "CH₃CH(OH)CH₃",
+      "CH₃COOH",
+      "CH₃OCH₃"
+    ]
+  },
+  {
+    "question": "Which of the following is an unsaturated hydrocarbon?",
+    "correct_answer": "Alkene",
+    "incorrect_answers": [
+      "Alkane",
+      "Alcohol",
+      "Ketone",
+      "Carboxylic acid"
+    ]
+  },
+  {
+    "question": "What is a structural isomer?",
+    "correct_answer": "Compounds with same molecular formula but different structure",
+    "incorrect_answers": [
+      "Compounds with same structure and properties",
+      "Same number of atoms and bonds",
+      "Different molecular formulas",
+      "Same empirical formula"
+    ]
+  },
+  {
+    "question": "What reagent is needed to convert an alcohol to a carboxylic acid?",
+    "correct_answer": "Oxidizing agent",
+    "incorrect_answers": [
+      "Reducing agent",
+      "Catalyst",
+      "Water",
+      "Acid"
+    ]
+  },
+  {
+    "question": "Which organic compound has the highest boiling point?",
+    "correct_answer": "Carboxylic acid",
+    "incorrect_answers": [
+      "Alkane",
+      "Alkene",
+      "Alcohol",
+      "Ester"
+    ]
+  },
+{
+    "question": "Which type of reaction involves the breaking of a C=C double bond in an alkene?",
+    "correct_answer": "Addition reaction",
+    "incorrect_answers": [
+      "Elimination reaction",
+      "Substitution reaction",
+      "Combustion reaction",
+      "Oxidation reaction"
+    ]
+  },
+  {
+    "question": "Which compound can be classified as an alkene?",
+    "correct_answer": "C₂H₄",
+    "incorrect_answers": [
+      "C₂H₆",
+      "C₂H₂",
+      "CH₄",
+      "C₃H₈"
+    ]
+  },
+  {
+    "question": "What is the IUPAC name for CH≡CH?",
+    "correct_answer": "Ethyne",
+    "incorrect_answers": [
+      "Ethene",
+      "Ethane",
+      "Methyne",
+      "Acetylene"
+    ]
+  },
+  {
+    "question": "Which compound is a secondary alcohol?",
+    "correct_answer": "CH₃CH(OH)CH₃",
+    "incorrect_answers": [
+      "CH₃CH₂OH",
+      "CH₃OH",
+      "CH₃COOH",
+      "CH₃OCH₃"
+    ]
+  },
+  {
+    "question": "What is the suffix used for naming esters?",
+    "correct_answer": "-oate",
+    "incorrect_answers": [
+      "-ol",
+      "-al",
+      "-one",
+      "-ene"
+    ]
+  },
+  {
+    "question": "Which of the following is the correct name for an alkane with 4 carbon atoms?",
+    "correct_answer": "Butane",
+    "incorrect_answers": [
+      "Propane",
+      "Pentane",
+      "Ethane",
+      "Methane"
+    ]
+  },
+  {
+    "question": "What is the product of the reaction between an alcohol and a carboxylic acid?",
+    "correct_answer": "Ester",
+    "incorrect_answers": [
+      "Alkane",
+      "Ketone",
+      "Aldehyde",
+      "Ether"
+    ]
+  },
+  {
+    "question": "Which compound is commonly used as a fuel?",
+    "correct_answer": "Octane",
+    "incorrect_answers": [
+      "Ethanol",
+      "Methanoic acid",
+      "Ethene",
+      "Acetone"
+    ]
+  },
+  {
+    "question": "Which compound is an aldehyde?",
+    "correct_answer": "CH₃CHO",
+    "incorrect_answers": [
+      "CH₃COOH",
+      "CH₃CH₂OH",
+      "CH₃COCH₃",
+      "CH₄"
+    ]
+  },
+  {
+    "question": "Which functional group is present in esters?",
+    "correct_answer": "-COO-",
+    "incorrect_answers": [
+      "-OH",
+      "-COOH",
+      "-CHO",
+      "-NH₂"
+    ]
+  },
+  {
+    "question": "Which of the following is the molecular formula for ethanoic acid?",
+    "correct_answer": "CH₃COOH",
+    "incorrect_answers": [
+      "C₂H₅OH",
+      "CH₃CHO",
+      "CH₃OH",
+      "CH₄"
+    ]
+  },
+  {
+    "question": "What is the general formula for alkenes?",
+    "correct_answer": "CₙH₂ₙ",
+    "incorrect_answers": [
+      "CₙH₂ₙ₊₂",
+      "CₙH₂ₙ₋₂",
+      "CₙHₙ",
+      "CₙH₃ₙ"
+    ]
+  },
+  {
+    "question": "What type of reaction occurs when an alcohol is dehydrated?",
+    "correct_answer": "Elimination",
+    "incorrect_answers": [
+      "Addition",
+      "Substitution",
+      "Combustion",
+      "Oxidation"
+    ]
+  },
+  {
+    "question": "Which reagent is used to test for alkenes?",
+    "correct_answer": "Bromine water",
+    "incorrect_answers": [
+      "Limewater",
+      "Potassium dichromate",
+      "Fehling’s solution",
+      "Tollen’s reagent"
+    ]
+  },
+  {
+    "question": "What is a feature of homologous series?",
+    "correct_answer": "Successive members differ by –CH₂–",
+    "incorrect_answers": [
+      "Same density",
+      "Same mass",
+      "Different functional groups",
+      "Same IUPAC name"
+    ]
+  },
+  {
+    "question": "Which functional group is responsible for alcohols?",
+    "correct_answer": "-OH",
+    "incorrect_answers": [
+      "-COOH",
+      "-CHO",
+      "-COO-",
+      "-NH₂"
+    ]
+  },
+  {
+    "question": "Which of the following is a halogenated compound?",
+    "correct_answer": "CH₃Br",
+    "incorrect_answers": [
+      "CH₄",
+      "CH₃CH₂OH",
+      "CH₃COOH",
+      "CH₃CH=CH₂"
+    ]
+  },
+  {
+    "question": "What is the IUPAC name for isopropyl alcohol?",
+    "correct_answer": "Propan-2-ol",
+    "incorrect_answers": [
+      "Propan-1-ol",
+      "Methanol",
+      "Butan-2-ol",
+      "Propanal"
+    ]
+  },
+  {
+    "question": "What is the structure of ethene?",
+    "correct_answer": "CH₂=CH₂",
+    "incorrect_answers": [
+      "CH₃CH₃",
+      "CH≡CH",
+      "CH₄",
+      "CH₃CH₂CH₃"
+    ]
+  },
+  {
+    "question": "Which compound is used in vinegar?",
+    "correct_answer": "Ethanoic acid",
+    "incorrect_answers": [
+      "Ethanol",
+      "Methanoic acid",
+      "Methanol",
+      "Ethene"
+    ]
+  }
 ]
