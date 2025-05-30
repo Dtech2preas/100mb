@@ -1,1144 +1,497 @@
 [
   {
-    "question": "What structural feature allows DNA to store genetic information?",
-    "correct_answer": "The sequence of four different nitrogenous bases along each strand.",
+    "question": "Which structure produces sperm in the male reproductive system?",
+    "correct_answer": "Seminiferous tubules",
     "incorrect_answers": [
-      "The alternating arrangement of sugar and phosphate groups.",
-      "The uniform width maintained by phosphate backbone rigidity.",
-      "The twisting of two strands around a common axis.",
-      "The hydrogen bonding between sugar molecules.",
-      "The constant length of each helical turn."
+      "Vas deferens",
+      "Prostate gland",
+      "Epididymis",
+      "Urethra",
+      "Seminal vesicles"
     ]
   },
   {
-    "question": "Which component forms the backbone of the DNA double helix?",
-    "correct_answer": "Alternating sugar and phosphate groups linked by phosphodiester bonds.",
+    "question": "What is the function of the scrotum?",
+    "correct_answer": "Maintain testes at lower temperature",
     "incorrect_answers": [
-      "Nitrogenous bases joined by hydrogen bonds across strands.",
-      "Complementary base pairs forming the central ladder structure.",
-      "Hydrophobic interactions among stacked base pairs.",
-      "Hydrogen bonding within each sugar ring unit.",
-      "Van der Waals forces between adjacent phosphate groups."
+      "Produce testosterone",
+      "Store sperm indefinitely",
+      "Transport semen",
+      "Protect the bladder",
+      "Synthesize semen fluid"
     ]
   },
   {
-    "question": "How are the two strands of DNA oriented relative to each other?",
-    "correct_answer": "Antiparallel, running in opposite 5′→3′ directions.",
+    "question": "Which hormone triggers sperm production?",
+    "correct_answer": "Follicle-stimulating hormone (FSH)",
     "incorrect_answers": [
-      "Parallel, both running in the same 5′→3′ direction.",
-      "Perpendicular, forming right angles at each base pair.",
-      "Adjacent, lying side by side without helical twist.",
-      "Convergent, meeting at a common central axis.",
-      "Divergent, spreading outward from a central point."
+      "Progesterone",
+      "Luteinizing hormone (LH)",
+      "Prolactin",
+      "Estrogen",
+      "Oxytocin"
     ]
   },
   {
-    "question": "What type of bond connects complementary bases in DNA?",
-    "correct_answer": "Hydrogen bonds between the nitrogenous base pairs.",
+    "question": "Where does fertilization normally occur?",
+    "correct_answer": "Fallopian tube",
     "incorrect_answers": [
-      "Phosphodiester bonds linking deoxyribose sugars.",
-      "Peptide bonds between adjacent amino acids.",
-      "Ionic bonds between phosphate and sugar groups.",
-      "Glycosidic bonds between sugar and base units.",
-      "Disulfide bonds within the sugar-phosphate backbone."
+      "Uterus",
+      "Vagina",
+      "Ovary",
+      "Cervix",
+      "Endometrium"
     ]
   },
   {
-    "question": "Why is DNA described as a helical molecule?",
-    "correct_answer": "Because its two strands twist around each other forming a spiral.",
+    "question": "Which male gland adds fructose-rich fluid to semen?",
+    "correct_answer": "Seminal vesicles",
     "incorrect_answers": [
-      "Because its backbone consists of repeated helical amino acids.",
-      "Because its bases spiral around a central protein core.",
-      "Because its phosphates wind around sugar rings uniformly.",
-      "Because its nucleotides form concentric ring structures.",
-      "Because its strands loop in multiple nonhelical shapes."
+      "Prostate gland",
+      "Bulbourethral glands",
+      "Epididymis",
+      "Testes",
+      "Vas deferens"
     ]
   },
   {
-    "question": "Which bases are purines in DNA?",
-    "correct_answer": "Adenine and guanine, each containing a double-ring structure.",
+    "question": "Which part of the female reproductive system is shed during menstruation?",
+    "correct_answer": "Endometrium",
     "incorrect_answers": [
-      "Cytosine and thymine, each containing a single-ring structure.",
-      "Thymine and uracil, both with a double-ring configuration.",
-      "Adenine and cytosine, each lacking a ring nitrogen atom.",
-      "Guanine and thymine, each with a triple-ring arrangement.",
-      "Cytosine and uracil, both having two sugar attachments."
+      "Myometrium",
+      "Ovary cortex",
+      "Fallopian epithelium",
+      "Cervical mucus",
+      "Vaginal lining"
     ]
   },
   {
-    "question": "What role does the major groove play in DNA function?",
-    "correct_answer": "It provides accessibility for proteins to read specific base sequences.",
+    "question": "What is the primary site of oocyte development?",
+    "correct_answer": "Ovaries",
     "incorrect_answers": [
-      "It stabilizes the helix by forming additional covalent bonds.",
-      "It prevents access of enzymes to the minor groove entirely.",
-      "It restricts movement of phosphates along the backbone.",
-      "It binds histones for DNA packaging in eukaryotes.",
-      "It acts as an alternative replication origin site."
+      "Uterus",
+      "Fallopian tubes",
+      "Vagina",
+      "Cervix",
+      "Endometrium"
     ]
   },
   {
-    "question": "How does methylation of DNA affect gene expression?",
-    "correct_answer": "It often represses transcription by preventing transcription factor binding.",
+    "question": "Which hormone causes ovulation?",
+    "correct_answer": "Luteinizing hormone (LH)",
     "incorrect_answers": [
-      "It increases the rate of DNA replication by helicase recruitment.",
-      "It promotes RNA splicing by attracting spliceosome components.",
-      "It enhances ribosome assembly on mRNA transcripts.",
-      "It blocks phosphodiester bond formation during repair.",
-      "It converts DNA into a triple-stranded conformation."
+      "FSH",
+      "Progesterone",
+      "Estrogen",
+      "Prolactin",
+      "Oxytocin"
     ]
   },
   {
-    "question": "Why is DNA considered the code of life?",
-    "correct_answer": "Its specific base sequence encodes instructions for protein synthesis.",
+    "question": "Which phase of the menstrual cycle involves follicle growth?",
+    "correct_answer": "Follicular phase",
     "incorrect_answers": [
-      "Its sugar-phosphate backbone catalyzes metabolic reactions.",
-      "Its double helix generates energy for cellular processes.",
-      "Its nitrogenous bases act as cofactors for enzymes.",
-      "Its methyl groups bind directly to ribosomes in translation.",
-      "Its helix geometry stores electrical signals in neurons."
+      "Luteal phase",
+      "Secretory phase",
+      "Menstrual phase",
+      "Ovulatory phase",
+      "Proliferative phase"
     ]
   },
   {
-    "question": "What is the significance of complementary base pairing?",
-    "correct_answer": "It ensures accurate replication and stable double helix formation.",
+    "question": "What triggers the luteal phase?",
+    "correct_answer": "Ovulation",
     "incorrect_answers": [
-      "It increases mutation rates by mismatching strands randomly.",
-      "It creates single-stranded loops for mRNA binding exclusively.",
-      "It forms covalent bonds between phosphates across strands.",
-      "It triggers RNA polymerase to transcribe both strands.",
-      "It removes thymine bases during transcription processes."
+      "Menstruation",
+      "Follicle growth",
+      "Fertilization",
+      "Implantation",
+      "Fetal development"
     ]
   },
   {
-    "question": "Which enzyme initiates DNA unwinding at origins of replication?",
-    "correct_answer": "Helicase, by breaking hydrogen bonds to separate the two strands.",
+    "question": "During puberty, which hormone increases in males?",
+    "correct_answer": "Testosterone",
     "incorrect_answers": [
-      "Ligase, by sealing nicks and unwinding the helix structure.",
-      "Topoisomerase, by synthesizing RNA primers at origins.",
-      "Polymerase, by adding nucleotides to exposed single strands.",
-      "Primase, by proofreading newly synthesized DNA continuously.",
-      "Telomerase, by elongating replication forks at centromeres."
+      "Estrogen",
+      "Progesterone",
+      "Prolactin",
+      "Inhibin",
+      "Relaxin"
     ]
   },
   {
-    "question": "What is the role of DNA primase during replication?",
-    "correct_answer": "It synthesizes short RNA primers to provide initiation sites for DNA polymerase.",
+    "question": "Puberty in females is initiated by the release of which hormone?",
+    "correct_answer": "GnRH (Gonadotropin-releasing hormone)",
     "incorrect_answers": [
-      "It removes mismatched bases from the newly synthesized strand.",
-      "It joins Okazaki fragments by forming phosphodiester bonds.",
-      "It unwinds the DNA double helix ahead of the replication fork.",
-      "It adds deoxyribonucleotides without requiring an RNA primer.",
-      "It caps chromosome ends with repetitive telomeric sequences."
+      "FSH",
+      "LH",
+      "Estrogen",
+      "Progesterone",
+      "Prolactin"
     ]
   },
   {
-    "question": "On which strand are Okazaki fragments formed?",
-    "correct_answer": "The lagging strand, synthesized discontinuously in short segments.",
+    "question": "Which structure transports sperm from the epididymis to the urethra?",
+    "correct_answer": "Vas deferens",
     "incorrect_answers": [
-      "The leading strand, synthesized continuously toward the fork.",
-      "The template strand, which remains unused during replication.",
-      "The parental strand, which is degraded and replaced.",
-      "The coding strand, which directly binds DNA polymerase.",
-      "The noncoding strand, which is never replicated fully."
+      "Ureter",
+      "Ejaculatory duct",
+      "Seminal vesicle",
+      "Prostatic duct",
+      "Cowper’s duct"
     ]
   },
   {
-    "question": "How are RNA primers removed after elongation?",
-    "correct_answer": "DNA polymerase I removes RNA primers and replaces them with DNA nucleotides.",
+    "question": "Which female structure produces estrogen?",
+    "correct_answer": "Ovaries",
     "incorrect_answers": [
-      "RNA polymerase II degrades primers and synthesizes new ones.",
-      "DNA helicase unwinds primers and converts them to loops.",
-      "Ligase replaces primers by forming phosphodiester bonds.",
-      "Topoisomerase excises primers and seals resulting gaps.",
-      "Primase proofreads primers and extends them further."
+      "Uterus",
+      "Hypothalamus",
+      "Pituitary gland",
+      "Adrenal cortex",
+      "Placenta"
     ]
   },
   {
-    "question": "What function does DNA ligase perform?",
-    "correct_answer": "It seals nicks between Okazaki fragments by forming phosphodiester bonds.",
+    "question": "What is the first phase of the menstrual cycle?",
+    "correct_answer": "Menstrual phase",
     "incorrect_answers": [
-      "It unwinds DNA strands by breaking hydrogen bonds.",
-      "It synthesizes RNA primers at replication origins.",
-      "It removes RNA primers and replaces them with DNA.",
-      "It proofreads newly synthesized DNA for errors.",
-      "It elongates telomeres at chromosome termini."
-    ]
-  },
-  {
-    "question": "Why is replication described as semiconservative?",
-    "correct_answer": "Each daughter molecule retains one parental strand paired with one new strand.",
-    "incorrect_answers": [
-      "Both daughter molecules are composed entirely of new strands.",
-      "Only one daughter molecule contains parental DNA strands.",
-      "DNA is replicated randomly without preserving originals.",
-      "Replication produces single-stranded DNA exclusively.",
-      "Daughter strands share no similarity with parental strands."
-    ]
-  },
-  {
-    "question": "How do eukaryotic cells prevent loss of coding DNA at chromosome ends?",
-    "correct_answer": "Telomerase extends telomeres by adding repetitive sequences to chromosome termini.",
-    "incorrect_answers": [
-      "Ligase binds to ends and adds nucleotide caps permanently.",
-      "Primase synthesizes additional RNA primers at termini.",
-      "Helicase loops ends into protective hairpin structures.",
-      "Topoisomerase removes terminal nucleotides continuously.",
-      "Polymerase degrades telomeres to prevent shortening."
-    ]
-  },
-  {
-    "question": "Where does transcription take place in eukaryotic cells?",
-    "correct_answer": "Within the nucleus, where RNA polymerase II synthesizes pre-mRNA.",
-    "incorrect_answers": [
-      "On ribosomes in the cytoplasm during protein assembly.",
-      "Inside mitochondria associated with the electron transport chain.",
-      "In the Golgi apparatus during protein modification.",
-      "Within lysosomes during degradation processes.",
-      "On the rough endoplasmic reticulum surface exclusively."
-    ]
-  },
-  {
-    "question": "Which enzyme synthesizes mRNA from a DNA template?",
-    "correct_answer": "RNA polymerase II transcribes DNA into precursor mRNA in eukaryotes.",
-    "incorrect_answers": [
-      "DNA polymerase III copies DNA into mRNA transcripts.",
-      "Primase synthesizes mRNA primers for translation start.",
-      "Ligase joins mRNA segments into a continuous chain.",
-      "Helicase unwinds DNA and directly assembles mRNA.",
-      "Topoisomerase cleaves DNA to release mRNA transcripts."
-    ]
-  },
-  {
-    "question": "What modification is added to the 5′ end of eukaryotic pre-mRNA?",
-    "correct_answer": "A 7-methylguanosine cap to protect from exonuclease degradation and assist ribosome recognition.",
-    "incorrect_answers": [
-      "A poly(A) tail to signal termination and mRNA export.",
-      "A phosphate group to enable nuclear export.",
-      "A ribosomal binding site for translation initiation.",
-      "A peptide tag to direct mRNA to mitochondria.",
-      "A promoter sequence for transcription regulation."
-    ]
-  },
-  {
-    "question": "What process removes introns from pre-mRNA?",
-    "correct_answer": "The spliceosome excises introns and ligates exons to form mature mRNA.",
-    "incorrect_answers": [
-      "Ribosomes translate introns into polypeptide chains.",
-      "Ligase fuses introns to form continuous coding sequences.",
-      "Primase removes introns during primer synthesis.",
-      "Helicase unwinds intron loops before translation.",
-      "Polymerase degrades introns without splicing them."
-    ]
-  },
-  {
-    "question": "Where does translation occur in eukaryotic cells?",
-    "correct_answer": "On ribosomes located in the cytoplasm or attached to the rough endoplasmic reticulum.",
-    "incorrect_answers": [
-      "Inside the nucleus bound to chromatin fibers.",
-      "Within the Golgi apparatus vesicles.",
-      "Inside lysosomes during protein turnover.",
-      "On mitochondrial inner membranes only.",
-      "In peroxisomes during fatty acid oxidation."
-    ]
-  },
-  {
-    "question": "What is the primary role of mRNA?",
-    "correct_answer": "To carry genetic instructions from DNA to ribosomes for protein assembly.",
-    "incorrect_answers": [
-      "To transport amino acids to ribosomal sites directly.",
-      "To form the structural core of ribosomal subunits.",
-      "To catalyze peptide bond formation during translation.",
-      "To unwind DNA strands during replication processes.",
-      "To splice introns from pre-mRNA transcripts."
-    ]
-  },
-  {
-    "question": "How does tRNA ensure correct amino acid incorporation?",
-    "correct_answer": "By matching its anticodon sequence to the mRNA codon and carrying the corresponding amino acid.",
-    "incorrect_answers": [
-      "By catalyzing peptide bond formation between amino acids.",
-      "By binding to the DNA template during transcription.",
-      "By splicing introns out of mRNA before translation.",
-      "By unwinding the mRNA for ribosomal inspection.",
-      "By adding poly(A) tails to mRNA transcripts."
-    ]
-  },
-  {
-    "question": "What function does rRNA serve in the ribosome?",
-    "correct_answer": "It contributes to the ribosome’s structural framework and catalyzes peptide bond formation.",
-    "incorrect_answers": [
-      "It transports amino acids to the growing peptide chain.",
-      "It carries genetic code from DNA to the ribosome.",
-      "It splices introns during mRNA processing.",
-      "It unwinds the DNA double helix for transcription.",
-      "It adds methyl groups to tRNA molecules."
-    ]
-  },
-  {
-    "question": "How many nucleotides comprise a single codon?",
-    "correct_answer": "Three nucleotides, specifying one amino acid or a stop signal.",
-    "incorrect_answers": [
-      "Two nucleotides, forming a base pair unit.",
-      "Four nucleotides, allowing expanded coding capacity.",
-      "Five nucleotides, including a start and stop base.",
-      "One nucleotide, directly coding for amino acids.",
-      "Six nucleotides, encoding two amino acids sequentially."
-    ]
-  },
-  {
-    "question": "Which codon functions as the universal start signal?",
-    "correct_answer": "AUG, which codes for methionine and initiates translation.",
-    "incorrect_answers": [
-      "UAA, which also codes for methionine in some organisms.",
-      "UGA, commonly used to begin translation processes.",
-      "UAG, which functions only as a start in eukaryotes.",
-      "AAA, which is recognized by ribosomes to start.",
-      "GGA, which acts as an initiation signal in prokaryotes."
-    ]
-  },
-  {
-    "question": "Which codons are recognized as stop signals during translation?",
-    "correct_answer": "UAA, UAG, and UGA, which trigger release factors to end translation.",
-    "incorrect_answers": [
-      "AUG, AAA, and GGG, which all terminate polypeptide elongation.",
-      "UUU, CCC, and GGG, which code for chain termination.",
-      "UAC, UGC, and UCG, functioning as eukaryotic stop codons.",
-      "UUA, CUU, and AUU, acting in bacterial translation termination.",
-      "AGG, CCG, and GGA, stopping the ribosome at codon end."
-    ]
-  },
-  {
-    "question": "What is a missense mutation?",
-    "correct_answer": "A single base substitution that changes one amino acid in the protein sequence.",
-    "incorrect_answers": [
-      "A deletion mutation that removes a chromosomal segment entirely.",
-      "An insertion of three bases that does not alter reading frame.",
-      "A duplication of an entire gene leading to multiple copies.",
-      "A chromosomal translocation swapping two segments.",
-      "A silent alteration that keeps the same amino acid."
-    ]
-  },
-  {
-    "question": "How does a nonsense mutation affect the resulting protein?",
-    "correct_answer": "It converts a codon into a premature stop codon, truncating the protein.",
-    "incorrect_answers": [
-      "It changes one amino acid but does not stop translation.",
-      "It deletes multiple gene copies from a chromosome.",
-      "It inserts nucleotides in multiples of three, preserving frame.",
-      "It duplicates an intron sequence without effect on length.",
-      "It relocates promoter elements upstream of the gene."
-    ]
-  },
-  {
-    "question": "What characterizes a frameshift mutation?",
-    "correct_answer": "Insertion or deletion of bases not divisible by three, altering the reading frame.",
-    "incorrect_answers": [
-      "Point mutation changing one base to another without shift.",
-      "Duplication of gene sequences in tandem repeats.",
-      "Inversion of a DNA segment between two breakpoints.",
-      "Translocation of chromosomal fragments between chromosomes.",
-      "Silencing of gene expression by promoter methylation."
-    ]
-  },
-  {
-    "question": "What is a silent mutation?",
-    "correct_answer": "A base substitution that does not change the encoded amino acid.",
-    "incorrect_answers": [
-      "A change introducing a new start codon at the mutation site.",
-      "A deletion removing one or more entire exons from a gene.",
-      "A duplication event creating extra copies of a gene.",
-      "A mutation relocating an enhancer far from its gene target.",
-      "An inversion reversing the order of several codons."
-    ]
-  },
-  {
-    "question": "Which mutation type affects large segments of chromosomes?",
-    "correct_answer": "Chromosomal mutations such as deletions, duplications, inversions, and translocations.",
-    "incorrect_answers": [
-      "Point mutations changing single nucleotides only.",
-      "Silent mutations that leave amino acids unchanged.",
-      "Frameshift mutations altering reading frame locally.",
-      "Missense mutations substituting one amino acid.",
-      "Nonsense mutations creating premature stops."
-    ]
-  },
-  {
-    "question": "What effect does a chromosomal inversion have?",
-    "correct_answer": "A segment of chromosome is flipped in orientation within the same chromosome.",
-    "incorrect_answers": [
-      "A single nucleotide is substituted in the coding region.",
-      "A gene copy is lost due to a deletion event.",
-      "A new gene fusion occurs between two chromosomes.",
-      "An extra copy of a gene is inserted tandemly.",
-      "A phosphate group is removed from DNA backbone."
-    ]
-  },
-  {
-    "question": "How can duplication mutations contribute to evolutionary innovation?",
-    "correct_answer": "Extra gene copies can acquire new functions over time without losing the original function.",
-    "incorrect_answers": [
-      "By causing immediate extinction of organisms lacking the duplication.",
-      "By inhibiting transcription factor binding at promoters.",
-      "By preventing DNA replication from initiating properly.",
-      "By introducing stop codons randomly across the genome.",
-      "By converting mRNA into noncoding RNA molecules."
-    ]
-  },
-  {
-    "question": "What is a translocation mutation?",
-    "correct_answer": "Exchange of segments between nonhomologous chromosomes.",
-    "incorrect_answers": [
-      "Silent base change that does not affect amino acid.",
-      "Insertion of bases within a single codon region.",
-      "Deletion of an entire chromosome by nondisjunction.",
-      "Duplication of a gene within the same chromosome arm.",
-      "Inversion of a DNA segment within the same chromosome."
-    ]
-  },
-  {
-    "question": "Why is proofreading important during DNA replication?",
-    "correct_answer": "It corrects mispaired nucleotides immediately to reduce mutation rates.",
-    "incorrect_answers": [
-      "It ensures RNA primers are placed evenly along the strand.",
-      "It increases the rate of helicase unwinding ahead of forks.",
-      "It synthesizes Okazaki fragments continuously on both strands.",
-      "It converts all uracil bases to thymine post-replication.",
-      "It seals nicks created by ligase after replication."
-    ]
-  },
-  {
-    "question": "Which RNA type carries the genetic code from nucleus to ribosome?",
-    "correct_answer": "Messenger RNA, which delivers the codon sequence for protein assembly.",
-    "incorrect_answers": [
-      "Transfer RNA, which transports ribosomes to the nucleus.",
-      "Ribosomal RNA, which binds amino acids directly in cytoplasm.",
-      "Small nuclear RNA, which catalyzes peptide bond formation.",
-      "Micro RNA, which unwinds DNA during replication.",
-      "Signal recognition particle RNA, which splices introns."
-    ]
-  },{
-    "question": "What is meiosis?",
-    "correct_answer": "A specialized form of cell division that produces four genetically distinct haploid gametes from one diploid parent cell.",
-    "incorrect_answers": [
-      "A type of cell division that yields two identical diploid daughter cells for growth.",
-      "A process by which cells duplicate their DNA without dividing the nucleus.",
-      "A mechanism that repairs DNA damage during interphase before mitosis.",
-      "A cellular event that fuses two haploid cells into a single diploid zygote.",
-      "A form of programmed cell death removing unwanted cells in development."
-    ]
-  },
-  {
-    "question": "Why is meiosis important for sexual reproduction?",
-    "correct_answer": "It reduces chromosome number by half and generates genetic variation in gametes for offspring diversity.",
-    "incorrect_answers": [
-      "It duplicates chromosomes to ensure each daughter receives a full diploid set.",
-      "It repairs damaged DNA in gametes by copying from the homologous chromosome.",
-      "It selectively removes paternal chromosomes before fertilization occurs.",
-      "It produces identical gametes for asexual reproduction without variation.",
-      "It fuses two zygotes to increase genetic complexity of the embryo."
-    ]
-  },
-  {
-    "question": "During which stage of meiosis do homologous chromosomes pair and exchange segments?",
-    "correct_answer": "Prophase I, where synapsis and crossing over occur between non-sister chromatids.",
-    "incorrect_answers": [
-      "Metaphase I, when homologues align at the cell’s equator but do not exchange DNA.",
-      "Anaphase I, when sister chromatids separate and move toward poles.",
-      "Telophase I, when nuclear envelopes reform without chromosome pairing.",
-      "Prophase II, where chromatids condense again with no new pairing.",
-      "Metaphase II, when sister chromatids line up individually at the equator."
-    ]
-  },
-  {
-    "question": "What happens during Metaphase I of meiosis?",
-    "correct_answer": "Paired homologous chromosomes align at the metaphase plate in random orientation for independent assortment.",
-    "incorrect_answers": [
-      "Sister chromatids separate and migrate to opposite poles of the cell.",
-      "Nuclear envelope reassembles around chromosomes at each pole.",
-      "Chromosomes decondense and the cell enters interkinesis phase.",
-      "Spindle fibers disappear and cytokinesis immediately begins.",
-      "DNA is replicated to prepare for the second meiotic division."
-    ]
-  },
-  {
-    "question": "How does Anaphase I differ from Anaphase II in meiosis?",
-    "correct_answer": "In Anaphase I, homologous chromosomes separate; in Anaphase II, sister chromatids separate.",
-    "incorrect_answers": [
-      "In Anaphase I, sister chromatids separate; in Anaphase II, homologous chromosomes separate.",
-      "In Anaphase I, cytokinesis completes; in Anaphase II, only spindle fibers break down.",
-      "In Anaphase I, DNA condenses further; in Anaphase II, DNA is replicated again.",
-      "In Anaphase I, centrioles duplicate; in Anaphase II, new nuclear envelopes form.",
-      "In Anaphase I, chromosomes do not move; in Anaphase II, homologues line up but do not separate."
-    ]
-  },
-  {
-    "question": "What is the result of Telophase II and cytokinesis?",
-    "correct_answer": "Four haploid daughter cells, each genetically distinct and containing one set of chromosomes.",
-    "incorrect_answers": [
-      "Two diploid cells identical to the original parent cell.",
-      "One tetraploid cell with doubled chromosome number.",
-      "Four diploid cells with identical chromosome sets.",
-      "Two haploid cells that fuse back during interphase.",
-      "One haploid cell and one diploid cell per division."
-    ]
-  },
-  {
-    "question": "How does meiosis differ from mitosis in terms of chromosome reduction?",
-    "correct_answer": "Meiosis reduces chromosome number by half through two successive divisions, whereas mitosis maintains the same number in daughter cells.",
-    "incorrect_answers": [
-      "Mitosis reduces chromosome number by half, whereas meiosis doubles it.",
-      "Meiosis and mitosis both maintain chromosome number equally in daughter cells.",
-      "Mitosis involves two divisions, whereas meiosis involves only one division.",
-      "Meiosis maintains chromosome number, whereas mitosis reduces it by half.",
-      "Both processes produce four cells with varying chromosome numbers."
-    ]
-  },
-  {
-    "question": "What is independent assortment?",
-    "correct_answer": "Random orientation of maternal and paternal homologues at Metaphase I leading to varied combinations in gametes.",
-    "incorrect_answers": [
-      "Random separation of sister chromatids at Anaphase II producing variation.",
-      "Random distribution of spindle fibers to poles during Telophase I.",
-      "Random mutation of chromosomes prior to Prophase I pairing.",
-      "Random breakage and rejoining of DNA during crossing over.",
-      "Random loss of chromosomes during cytokinesis stages."
-    ]
-  },
-  {
-    "question": "What causes crossing over?",
-    "correct_answer": "Physical exchange of DNA segments between non-sister chromatids of homologous chromosomes during Prophase I.",
-    "incorrect_answers": [
-      "Random segregation of sister chromatids during Metaphase II alignment.",
-      "Independent assortment of homologues without physical contact.",
-      "Breakdown of the nuclear envelope in Telophase I.",
-      "Fusion of two non-homologous chromosomes before Metaphase I.",
-      "Replication errors in S phase before meiosis begins."
-    ]
-  },
-  {
-    "question": "Which phase immediately follows Telophase I in meiosis?",
-    "correct_answer": "Interkinesis, a brief resting period where chromosomes may partially decondense before Meiosis II.",
-    "incorrect_answers": [
-      "Prophase II, which starts the second meiotic division directly after Telophase I.",
-      "Anaphase II, where sister chromatids are pulled apart right after Telophase I.",
-      "Metaphase II, aligning sister chromatids immediately following Telophase I.",
-      "Interphase, where DNA replication occurs again before the second division.",
-      "Cytokinesis II, which completely splits the cells without further division."
-    ]
-  },
-  {
-    "question": "Why do homologous chromosomes pair during Meiosis I?",
-    "correct_answer": "To facilitate crossing over and ensure proper segregation of maternal and paternal chromosomes.",
-    "incorrect_answers": [
-      "To allow sister chromatids to exchange DNA segments randomly.",
-      "To enable the direct division of centrioles at the spindle poles.",
-      "To prepare for a single division that produces diploid cells.",
-      "To allow replication of homologues independently.",
-      "To fuse parental chromosomes into a single chromosome."
-    ]
-  },
-  {
-    "question": "What is the synaptonemal complex?",
-    "correct_answer": "A protein structure that holds homologous chromosomes together during Prophase I to promote recombination.",
-    "incorrect_answers": [
-      "A microtubule bundle that separates sister chromatids in Anaphase II.",
-      "An enzyme complex that degrades nuclear membrane in Prophase I.",
-      "A lipid-protein matrix forming between daughter cells during cytokinesis.",
-      "A DNA repair complex active only during S phase replication.",
-      "A ribonucleoprotein complex that processes pre-mRNA transcripts."
-    ]
-  },
-  {
-    "question": "How does nondisjunction during meiosis lead to Down syndrome?",
-    "correct_answer": "Failure of chromosome 21 homologues or sister chromatids to separate, resulting in gametes with an extra copy of chromosome 21.",
-    "incorrect_answers": [
-      "Duplication of all chromosomes except 21 in the gamete.",
-      "Deletion of the long arm of chromosome 21 before fertilization.",
-      "Translocation of chromosome 21 onto chromosome 14 in all cells.",
-      "Failure to replicate chromosome 21 during S phase prior to meiosis.",
-      "Excess crossing over events on chromosome 21 in Prophase I."
-    ]
-  },
-  {
-    "question": "Which abnormality can result from nondisjunction in Meiosis II?",
-    "correct_answer": "Two gametes with abnormal chromosome numbers (one with an extra chromatid, one missing one), and two normal gametes.",
-    "incorrect_answers": [
-      "Four gametes each with an extra complete chromosome.",
-      "Four haploid gametes all missing the same chromosome.",
-      "Only two gametes produced instead of four due to division failure.",
-      "Only diploid cells produced with double chromosome count.",
-      "Gametes with whole genome duplication before cell division."
-    ]
-  },
-  {
-    "question": "What is chiasma formation?",
-    "correct_answer": "The cytological manifestation of crossing over where homologous chromosomes remain attached.",
-    "incorrect_answers": [
-      "The stage where sister chromatids line up at the metaphase plate.",
-      "The breakdown of the nuclear envelope before Prophase I begins.",
-      "The attachment of spindle fibers to centromeres in Metaphase II.",
-      "The cytokinetic furrow that appears during Telophase I separation.",
-      "The formation of a single continuous chromosome from two chromatids."
-    ]
-  },
-  {
-    "question": "How does meiosis contribute to genetic diversity?",
-    "correct_answer": "By combining independent assortment and crossing over to shuffle alleles among gametes.",
-    "incorrect_answers": [
-      "By creating identical clones of parental cells through precise duplication.",
-      "By repairing DNA damage to maintain genetic uniformity among offspring.",
-      "By fusing sister chromatids to increase chromosome number randomly.",
-      "By preventing mutation accumulation in germline cells entirely.",
-      "By replicating only half of the genome before each cell division."
-    ]
-  },
-  {
-    "question": "Which stage is unique to meiosis and does not occur in mitosis?",
-    "correct_answer": "Synapsis of homologous chromosomes during Prophase I.",
-    "incorrect_answers": [
-      "Separation of sister chromatids during Anaphase.",
-      "Condensation of chromosomes prior to Metaphase.",
-      "Formation of a mitotic spindle from centrosomes.",
-      "Reformation of nuclear envelopes during Telophase.",
-      "Attachment of microtubules to kinetochores."
-    ]
-  },
-  {
-    "question": "What role do cohesin proteins play during meiosis?",
-    "correct_answer": "They hold sister chromatids together and enable proper chromosome segregation.",
-    "incorrect_answers": [
-      "They break down the nuclear membrane at the start of meiosis.",
-      "They catalyze the exchange of DNA between homologues.",
-      "They form the spindle fibers that move chromosomes.",
-      "They replicate DNA during the S phase before meiosis.",
-      "They attach chromosomes to the cell membrane."
-    ]
-  },
-  {
-    "question": "What is the end result of meiosis in human germ cells?",
-    "correct_answer": "Four haploid gametes (sperm or eggs), each with 23 unpaired chromosomes.",
-    "incorrect_answers": [
-      "Two diploid somatic cells, each with 46 chromosomes.",
-      "One tetraploid cell with 92 chromosomes.",
-      "Four diploid cells, each carrying two sets of 23 chromosomes.",
-      "Two haploid cells and two diploid cells depending on division.",
-      "One haploid cell and one diploid cell per meiotic division."
-    ]
-  },
-  {
-    "question": "How many total divisions occur during meiosis?",
-    "correct_answer": "Two sequential nuclear divisions (Meiosis I and Meiosis II).",
-    "incorrect_answers": [
-      "One division that splits both nucleus and cytoplasm simultaneously.",
-      "Three divisions that progressively reduce chromosome number.",
-      "Four divisions producing many small gametes from one cell.",
-      "No divisions; chromosomes halve by DNA degradation only.",
-      "One division in the nucleus followed by two in the cytoplasm."
-    ]
-  },
-  {
-    "question": "What distinguishes Prophase II from Prophase I?",
-    "correct_answer": "Chromosomes condense again without homolog pairing or crossing over in Prophase II.",
-    "incorrect_answers": [
-      "Chromosomes first pair and cross over in Prophase II only.",
-      "DNA replication occurs during Prophase II before condensation.",
-      "Nuclear envelope dissolves only after Prophase II completes.",
-      "Spindle fibers do not form in Prophase II at all.",
-      "Centromeres duplicate for the first time in Prophase II."
-    ]
-  },
-  {
-    "question": "Why does crossing over only occur in Meiosis I?",
-    "correct_answer": "Because only homologous chromosomes are paired and synapsed during Prophase I.",
-    "incorrect_answers": [
-      "Because sister chromatids exchange DNA in Meiosis II instead.",
-      "Because DNA replication prevents crossovers in Meiosis I.",
-      "Because spindle fibers inhibit recombination after Metaphase I.",
-      "Because crossing over requires separation of sister chromatids.",
-      "Because nuclear membranes remain intact through Meiosis II."
-    ]
-  },
-  {
-    "question": "How is the genetic content of gametes affected by independent assortment?",
-    "correct_answer": "Each gamete receives a random mix of maternal and paternal chromosomes.",
-    "incorrect_answers": [
-      "All gametes receive identical sets of chromosomes every time.",
-      "Gametes alternate between receiving only maternal or only paternal sets.",
-      "Each gamete ends up with chromosomes from one grandparent only.",
-      "Gametes are assigned chromosomes in numerical order only.",
-      "Gametes always inherit entire homologous pairs without variation."
-    ]
-  },
-  {
-    "question": "What is the role of spindle fibers in meiosis?",
-    "correct_answer": "They attach to kinetochores and pull homologues or chromatids toward opposite poles.",
-    "incorrect_answers": [
-      "They form the nuclear envelope around daughter nuclei.",
-      "They catalyze synthesis of new DNA strands during Prophase.",
-      "They join separated daughter cells together after division.",
-      "They degrade the cell wall to allow cytokinesis.",
-      "They replicate centrioles before chromosome segregation."
-    ]
-  },
-  {
-    "question": "Which event ensures each gamete is genetically unique?",
-    "correct_answer": "Combination of crossing over and independent assortment during meiosis.",
-    "incorrect_answers": [
-      "Synchronous division of two parental cells without variation.",
-      "Exact duplication of parental DNA without any mixing.",
-      "Selective degradation of mutated chromosomes only.",
-      "Uniform alignment of chromosomes in every nucleus.",
-      "Fusing of sister chromatids to increase similarity."
-    ]
-  },
-  {
-    "question": "How are homologous chromosomes distinguished during meiosis?",
-    "correct_answer": "By differences in parental origin and potential sequence variation.",
-    "incorrect_answers": [
-      "By unique centromere sequences found only on one pair.",
-      "By distinct sizes of sister chromatids after replication.",
-      "By specific histone modifications that label each homologue.",
-      "By only one homologue carrying a centromere region.",
-      "By alternating sugar-phosphate backbone patterns."
-    ]
-  },
-  {
-    "question": "What is the key outcome of crossing over?",
-    "correct_answer": "Exchange of genetic material that produces recombinant chromosomes with new allele combinations.",
-    "incorrect_answers": [
-      "Separation of sister chromatids without genetic exchange.",
-      "Duplication of entire chromosome arms prior to cell division.",
-      "Elimination of noncoding DNA segments between exons.",
-      "Stabilization of centromeres against spindle pulling forces.",
-      "Replication of homologues to produce identical copies."
-    ]
-  },
-  {
-    "question": "Which mistake during meiosis can lead to monosomy or trisomy?",
-    "correct_answer": "Nondisjunction of chromosomes during either Meiosis I or II.",
-    "incorrect_answers": [
-      "Unequal crossing over producing partial duplications only.",
-      "Translocation of nonhomologous segments between chromosomes.",
-      "Mutation of spindle assembly checkpoint genes exclusively.",
-      "Overproduction of cohesin proteins preventing separation.",
-      "Premature cytokinesis before chromosome condensation."
-    ]
-  },
-  {
-    "question": "How does trisomy 21 arise?",
-    "correct_answer": "A gamete carries two copies of chromosome 21 due to nondisjunction, leading to an embryo with three copies.",
-    "incorrect_answers": [
-      "A gamete loses chromosome 21 and the embryo fuses two paternal copies.",
-      "Crossing over duplicates the entire chromosome 21 in Meiosis I.",
-      "Translocation moves an extra chromosome 21 segment onto chromosome 14.",
-      "DNA replication error in S phase creates three copies before division.",
-      "Centromere misattachment creates three fragments of chromosome 21."
-    ]
-  },
-  {
-    "question": "Why is genetic variation crucial in meiosis?",
-    "correct_answer": "It provides diverse allele combinations that increase adaptability of populations.",
-    "incorrect_answers": [
-      "It ensures exact replication of parental genomes in offspring.",
-      "It repairs damaged DNA by random insertion of new sequences.",
-      "It prevents gamete formation in unfavorable environments.",
-      "It synchronizes cell cycles among all germ cells simultaneously.",
-      "It doubles genome size for enhanced metabolic capacity."
-    ]
-  },
-  {
-    "question": "What distinguishes meiosis in males from females in humans?",
-    "correct_answer": "Spermatogenesis yields four functional sperm per meiosis, whereas oogenesis yields one ovum and polar bodies.",
-    "incorrect_answers": [
-      "Oogenesis produces four ova while spermatogenesis yields one sperm only.",
-      "Spermatogenesis involves crossing over while oogenesis does not.",
-      "Oogenesis uses mitotic divisions instead of meiotic divisions.",
-      "Spermatogenesis occurs in the ovaries and oogenesis in the testes.",
-      "Oogenesis doubles chromosome number whereas spermatogenesis halves it."
-    ]
-  },
-  {
-    "question": "When does crossing over occur relative to replication?",
-    "correct_answer": "After DNA replication, during Prophase I when sister chromatids are already duplicated.",
-    "incorrect_answers": [
-      "Before DNA replication, to mark homologues for copying.",
-      "During Metaphase I, when chromosomes align at the plate.",
-      "During Telophase I, as cells re-form their nuclei.",
-      "After Meiosis II, just prior to gamete maturation.",
-      "During S phase, concomitant with DNA synthesis."
-    ]
-  },
-  {
-    "question": "What is a bivalent or tetrad?",
-    "correct_answer": "A paired set of homologous chromosomes, each consisting of two sister chromatids, formed in Prophase I.",
-    "incorrect_answers": [
-      "A single chromosome folded into two loops during Metaphase II.",
-      "A pair of sister chromatids after separation in Anaphase I.",
-      "A cluster of four daughter cells after Meiosis II completion.",
-      "A transient synaptic complex dissolving in Telophase I.",
-      "A spindle pole organizing microtubules in Prophase II."
-    ]
-  },
-  {
-    "question": "How many chromatids are present in a tetrad during Metaphase I?",
-    "correct_answer": "Four chromatids (two homologues each with two sister chromatids).",
-    "incorrect_answers": [
-      "Two chromatids, because sister chromatids have already separated.",
-      "Six chromatids, due to partial replication in Meiosis I.",
-      "Eight chromatids, as crossing over produces extra fragments.",
-      "One chromatid per homologue, since they pair singly.",
-      "Zero chromatids, as chromosomes are not condensed yet."
-    ]
-  },{
-    "question": "What does ovipary refer to in animal reproduction?",
-    "correct_answer": "Development of embryos outside the mother’s body in eggs with yolk for nourishment.",
-    "incorrect_answers": [
-      "Birth of live young after internal egg retention without yolk deposition.",
-      "Retention of eggs inside the mother until hatching within her body.",
-      "Production of eggs that develop inside water until fully mature.",
-      "Formation of external sperm packets for indirect fertilization of eggs.",
-      "Fusion of gametes outside the body in moist environments."
-    ]
-  },
-  {
-    "question": "How does ovovivipary differ from vivipary?",
-    "correct_answer": "Embryos develop in retained eggs within the mother, but receive no direct maternal nourishment.",
-    "incorrect_answers": [
-      "Embryos develop inside the mother with direct placental nutrient transfer.",
-      "Eggs are laid externally then guarded by the mother until hatching.",
-      "Fertilization occurs externally and larvae develop in water.",
-      "Eggs develop in aerial nests with parental feeding after hatching.",
-      "Embryos are born at larval stage and metamorphose outside the mother."
-    ]
-  },
-  {
-    "question": "What is vivipary in animal reproduction?",
-    "correct_answer": "Live birth of young after embryos develop within the uterus and receive nutrients via a placenta.",
-    "incorrect_answers": [
-      "Hatching of eggs in external environment without maternal care post-laying.",
-      "Release of larvae directly into water after internal fertilization.",
-      "Retention of eggs beneath skin until hatching with no placenta.",
-      "Eggs buried in soil with larvae digging out after development.",
-      "Production of jelly-coated eggs in jelly masses floating on water."
-    ]
-  },
-  {
-    "question": "Which reproductive strategy involves laying eggs in the environment?",
-    "correct_answer": "Ovipary, where animals deposit yolk-rich eggs externally for independent embryonic development.",
-    "incorrect_answers": [
-      "Ovovivipary, where eggs hatch inside the mother before live birth.",
-      "Vivipary, where embryos develop with placental connection inside the mother.",
-      "Paedogenesis, where larvae reproduce without reaching maturity.",
-      "Parthenogenesis, where eggs develop without fertilization by males.",
-      "Brood parasitism, where eggs are laid in other species’ nests."
-    ]
-  },
-  {
-    "question": "Which group commonly exhibits ovovivipary?",
-    "correct_answer": "Many sharks and some snakes retain eggs internally until embryos hatch live within mother.",
-    "incorrect_answers": [
-      "Most birds that incubate eggs in external nests until hatching.",
-      "All mammals that use a true placenta for nutrient transfer.",
-      "Amphibians that deposit eggs in aquatic environments for larval development.",
-      "Insects that lay large numbers of eggs on host plants.",
-      "Reptiles that bury eggs in sand without internal retention."
-    ]
-  },
-  {
-    "question": "What advantage does vivipary provide?",
-    "correct_answer": "Protection of embryos from environmental hazards and direct maternal nutrient support improves survival.",
-    "incorrect_answers": [
-      "Allows eggs to develop in aquatic environments with external feeding by parents.",
-      "Enables dispersal of eggs across wide areas to avoid predation.",
-      "Permits synchronous hatching of large clutches in tropical climates.",
-      "Ensures rapid metamorphosis through larval stages in water.",
-      "Allows external fertilization with greater gamete mixing."
-    ]
-  },
-  {
-    "question": "Which animals typically use external fertilization?",
-    "correct_answer": "Most fish and amphibians release eggs and sperm into water where fertilization occurs externally.",
-    "incorrect_answers": [
-      "All mammals that perform internal fertilization prior to live birth.",
-      "Birds that mate internally and lay fertilized eggs in nests.",
-      "Reptiles that incubate eggs on land after internal fertilization.",
-      "Insects that transfer sperm via spermatophores without water.",
-      "Mollusks that brood eggs internally until juveniles emerge."
-    ]
-  },
-  {
-    "question": "What characterizes internal fertilization?",
-    "correct_answer": "Fusion of sperm and egg within the female reproductive tract before embryo development begins internally.",
-    "incorrect_answers": [
-      "Release of gametes into water for external mixing and fertilization.",
-      "Dispersion of pollen grains that fertilize eggs in open environment.",
-      "Transfer of sperm packets to external egg masses laid on land.",
-      "Broadcast spawning of eggs and sperm in ocean currents.",
-      "Self-fertilization within egg cases outside the body."
-    ]
-  },
-  {
-    "question": "Why is internal fertilization advantageous on land?",
-    "correct_answer": "It prevents gamete desiccation and increases fertilization success in terrestrial environments.",
-    "incorrect_answers": [
-      "It allows eggs to float freely in water currents for dispersal.",
-      "It enables synchronous spawning events during rainy seasons.",
-      "It ensures larvae develop in pelagic zones away from predators.",
-      "It lets parents guard external nests against terrestrial threats.",
-      "It fixes gametes within sandy substrates to avoid drying."
-    ]
-  },
-  {
-    "question": "Which group uses internal fertilization and ovipary?",
-    "correct_answer": "Birds use internal fertilization then lay shelled eggs externally for developmental incubation.",
-    "incorrect_answers": [
-      "Most amphibians use internal fertilization and vivipary in aquatic habitats.",
-      "Many fish use internal fertilization and ovovivipary for live birth.",
-      "Mammals use internal fertilization and ovipary like monotremes only.",
-      "Reptiles use external fertilization and vivipary exclusively.",
-      "Insects use external fertilization and brood eggs internally."
-    ]
-  },
-  {
-    "question": "How does the male reptile’s reproductive tract differ from mammals?",
-    "correct_answer": "Male reptiles often have paired hemipenes rather than a single penis structure found in mammals.",
-    "incorrect_answers": [
-      "All mammals have paired hemipenes whereas reptiles have a single penis.",
-      "Mammals lack testes and instead use external gonads like reptiles.",
-      "Reptiles have internal placenta formation similar to mammals.",
-      "Mammals deposit eggs externally like reptiles during breeding season.",
-      "Reptiles use external fertilization unlike mammals which fertilize externally."
-    ]
-  },
-  {
-    "question": "What is unique about monotreme reproduction?",
-    "correct_answer": "Monotremes lay eggs like reptiles but nurse hatchlings with mammalian milk after hatching.",
-    "incorrect_answers": [
-      "They give live birth without any egg stage and lack lactation.",
-      "They use external fertilization and lay yolkless eggs in water.",
-      "They brood eggs internally then secrete milk through skin pores.",
-      "They lay eggs directly into mammary glands for incubation.",
-      "They develop embryos in brood pouches like marsupials."
-    ]
-  },
-  {
-    "question": "How do bird and reptile eggs differ structurally from mammalian eggs?",
-    "correct_answer": "Bird and reptile eggs have protective shells and yolk stores unlike small, non-yolky mammalian ova.",
-    "incorrect_answers": [
-      "Mammalian eggs have hard shells and large yolk reserves externally.",
-      "Reptile eggs lack shells and are laid as naked ova in water.",
-      "Bird eggs lack yolk and receive all nutrients from parents post-hatching.",
-      "Mammalian ova contain extensive shell membranes for gas exchange.",
-      "Reptiles incubate eggs internally without any shell formation."
-    ]
-  },
-  {
-    "question": "Which hormone triggers ovulation in mammals?",
-    "correct_answer": "Luteinizing hormone surge from the anterior pituitary stimulates follicle rupture and egg release.",
-    "incorrect_answers": [
-      "Progesterone secretion from the corpus luteum initiates ovulation directly.",
-      "Estrogen produced in the ovary immediately causes follicle release.",
-      "Follicle-stimulating hormone alone causes the oocyte to be released.",
-      "Oxytocin from the posterior pituitary induces ovulation reflexively.",
-      "Prolactin secretion during lactation triggers oocyte expulsion."
-    ]
-  },
-  {
-    "question": "What role does follicle-stimulating hormone play in female reproduction?",
-    "correct_answer": "It promotes growth and maturation of ovarian follicles prior to ovulation each cycle.",
-    "incorrect_answers": [
-      "It induces uterine contractions to expel the ovulated egg.",
-      "It causes the corpus luteum to produce estrogen post-ovulation.",
-      "It binds to endometrial cells to stimulate menstrual shedding.",
-      "It converts testosterone into estrogen in ovarian stromal cells.",
-      "It directs sperm capacitation in the female reproductive tract."
-    ]
-  },
-  {
-    "question": "How does progesterone prepare the uterus for pregnancy?",
-    "correct_answer": "It stimulates endometrial thickening and glandular secretion to support potential embryo implantation.",
-    "incorrect_answers": [
-      "It triggers follicle growth and oocyte maturation in ovaries directly.",
-      "It causes uterine contraction to move embryos toward the cervix.",
-      "It degrades the endometrium to prevent embryo implantation.",
-      "It sharpens LH surge timing by negative feedback on the pituitary.",
-      "It increases estrogen production by stimulating ovarian theca cells."
-    ]
-  },
-  {
-    "question": "What is the primary function of estrogen in reproductive physiology?",
-    "correct_answer": "To promote development of female secondary sexual characteristics and regulate menstrual cycle events.",
-    "incorrect_answers": [
-      "To induce milk let-down during lactation in mammals.",
-      "To cause uterine contractions during childbirth directly.",
-      "To stimulate spermatogenesis in male testes actively.",
-      "To inhibit gonadotropin release completely all cycle.",
-      "To harden the eggshell in oviparous species externally."
-    ]
-  },
-  {
-    "question": "How does testosterone influence male reproductive function?",
-    "correct_answer": "It stimulates spermatogenesis, maintains male secondary sexual features, and supports libido.",
-    "incorrect_answers": [
-      "It triggers ovulation and endometrial thickening in females.",
-      "It causes testosterone secretion by the anterior pituitary itself.",
-      "It converts into estrogen in the testes to regulate sperm release.",
-      "It prevents cholesterol formation needed for steroidogenesis.",
-      "It initiates lactation by stimulating mammary gland ducts."
+      "Follicular phase",
+      "Luteal phase",
+      "Ovulatory phase",
+      "Proliferative phase",
+      "Secretory phase"
     ]
   },
   {
     "question": "Which hormone maintains the corpus luteum after ovulation?",
-    "correct_answer": "Luteinizing hormone supports corpus luteum function and progesterone production in early luteal phase.",
+    "correct_answer": "LH (Luteinizing hormone)",
     "incorrect_answers": [
-      "Follicle-stimulating hormone maintains luteal cells for estrogen secretion.",
-      "Prolactin maintains the corpus luteum by direct pituitary feedback.",
-      "Oxytocin supports luteal survival by stimulating uterine blood flow.",
-      "Relaxin supports luteal cells by inhibiting prostaglandin release.",
-      "Inhibin maintains corpus luteum by suppressing GnRH pulses."
+      "FSH",
+      "Progesterone",
+      "Estrogen",
+      "hCG",
+      "Prolactin"
     ]
   },
   {
-    "question": "What is the effect of gonadotropin-releasing hormone (GnRH)?",
-    "correct_answer": "It stimulates the anterior pituitary to secrete LH and FSH in a pulsatile manner.",
+    "question": "The corpus luteum secretes:",
+    "correct_answer": "Progesterone",
     "incorrect_answers": [
-      "It directly triggers ovulation by causing follicle rupture.",
-      "It induces uterine contractions for menstrual shedding.",
-      "It inhibits the release of prolactin from the pituitary.",
-      "It stimulates testosterone conversion to DHT in peripheral tissues.",
-      "It binds to receptors on ovarian follicles to stop estrogen secretion."
+      "Testosterone",
+      "FSH",
+      "LH",
+      "Estrogen",
+      "Inhibin"
     ]
   },
   {
-    "question": "How does human chorionic gonadotropin support early pregnancy?",
-    "correct_answer": "It maintains corpus luteum progesterone production until placental takeover of hormone synthesis.",
+    "question": "Which hormone is detected by pregnancy tests?",
+    "correct_answer": "hCG (human chorionic gonadotropin)",
     "incorrect_answers": [
-      "It triggers labor by stimulating uterine contractions near term.",
-      "It inhibits FSH and LH throughout entire pregnancy term.",
-      "It converts endometrial glands back into primordial follicles.",
-      "It directly induces implantation by binding to endometrial receptors.",
-      "It stimulates growth of fetal gonads to produce sex hormones."
+      "Progesterone",
+      "Estrogen",
+      "LH",
+      "FSH",
+      "Prolactin"
     ]
   },
   {
-    "question": "What distinguishes reptile reproductive hormones from mammals?",
-    "correct_answer": "Reptiles rely more on seasonal temperature cues for hormone regulation of gametogenesis and mating behavior.",
+    "question": "During the menstrual cycle, rising estrogen causes:",
+    "correct_answer": "Endometrial thickening",
     "incorrect_answers": [
-      "Mammals use environmental temperatures to trigger estrus cycles exclusively.",
-      "Reptiles secrete chorionic gonadotropin to maintain pregnancy likewise mammals.",
-      "Mammals deposit yolk in eggs using progesterone like reptiles.",
-      "Reptiles have a placenta producing estrogen similar to eutherians.",
-      "Mammals ovulate only in response to prolactin peaks like reptiles."
+      "Endometrial shedding",
+      "Ovulation inhibition",
+      "Corpus luteum degradation",
+      "FSH decrease",
+      "LH decrease"
     ]
   },
   {
-    "question": "Which bird hormone controls egg formation and ovulation?",
-    "correct_answer": "Luteinizing hormone surge in birds induces ovarian follicle maturation and ovulation of yolk-containing ova.",
+    "question": "What marks the end of the follicular phase?",
+    "correct_answer": "LH surge",
     "incorrect_answers": [
-      "Prolactin surge that stimulates egg shell mineralization and oviduct secretion.",
-      "Thyroid hormone peak that triggers allantois formation around each yolk.",
-      "Melatonin release at night causing follicle collapse and egg laying.",
-      "Insulin secretion in response to dietary glucose controlling ovulation.",
-      "Corticosterone increase in stress responses leading to immediate egg release."
+      "FSH surge",
+      "Progesterone drop",
+      "Menstruation onset",
+      "Estrogen peak",
+      "hCG detection"
     ]
   },
   {
-    "question": "How do placental mammals differ hormonally from marsupials?",
-    "correct_answer": "Placental mammals maintain progesterone and estrogen via placenta, while marsupials have transient corpora lutea and short gestation.",
+    "question": "Which structure forms at the site of the released oocyte?",
+    "correct_answer": "Corpus luteum",
     "incorrect_answers": [
-      "Marsupials produce chorionic gonadotropin to maintain pregnancy longer than eutherians.",
-      "Placental mammals lack GnRH pulses and only use pituitary prolactin cycles.",
-      "Marsupials ovulate continuously without any hormonal regulation.",
-      "Placental mammals deposit eggs externally and rely on progesterone peaks.",
-      "Marsupials have no luteal phase and use testosterone for gestation."
+      "Graafian follicle",
+      "Zona pellucida",
+      "Ovum",
+      "Secondary follicle",
+      "Primordial follicle"
     ]
   },
   {
-    "question": "What triggers parturition in mammals hormonally?",
-    "correct_answer": "Rise in fetal cortisol leads to increased estrogen relative to progesterone, stimulating uterine contractions and labor.",
+    "question": "Which hormone levels drop just before menstruation?",
+    "correct_answer": "Progesterone",
     "incorrect_answers": [
-      "Drop in maternal testosterone triggers placental separation and labor onset.",
-      "Peak of prolactin immediately causes cervical dilation and fetal expulsion.",
-      "Spike in aldosterone increases uterine relaxation followed by contraction.",
-      "Decline in growth hormone initiates allantois rupture and labor.",
-      "Increase in melatonin resets circadian rhythm causing birth."
+      "FSH",
+      "LH",
+      "Estrogen",
+      "Inhibin",
+      "hCG"
     ]
   },
   {
-    "question": "Why is oxytocin important in reproduction?",
-    "correct_answer": "Oxytocin stimulates uterine smooth muscle contractions during labor and milk ejection during lactation.",
+    "question": "Which phase follows ovulation?",
+    "correct_answer": "Luteal phase",
     "incorrect_answers": [
-      "It initiates sperm capacitation within the female reproductive tract.",
-      "It triggers follicle rupture during ovulation in the ovary.",
-      "It inhibits uterine contractions to prevent premature labor.",
-      "It converts progesterone into estrogen in endometrial cells.",
-      "It degrades the corpus luteum after implantation occurs."
+      "Follicular phase",
+      "Menstrual phase",
+      "Secretory phase",
+      "Proliferative phase",
+      "Ovulatory phase"
     ]
   },
   {
-    "question": "How do reptiles typically regulate seasonal breeding?",
-    "correct_answer": "Through changes in environmental temperature and photoperiod influencing gonadotropin release and reproductive readiness.",
+    "question": "FSH in the female cycle stimulates:",
+    "correct_answer": "Follicle maturation",
     "incorrect_answers": [
-      "By lunar cycle phases directly controlling estrogen secretion levels.",
-      "Through rainfall events triggering immediate ovulation and mating.",
-      "Via daily humidity fluctuations that activate progesterone release.",
-      "By predator presence stimulating testosterone production exclusively.",
-      "Through tidal rhythms altering FSH pulses every two weeks."
+      "Corpus luteum formation",
+      "Menstruation",
+      "Ovulation directly",
+      "hCG production",
+      "Progesterone secretion"
     ]
   },
   {
-    "question": "What reproductive trait distinguishes birds hormonally?",
-    "correct_answer": "They deposit large yolk-rich ova under estrogen control and form eggshells in the oviduct prior to laying.",
+    "question": "Which hormone peaks to cause the endometrium to become secretory?",
+    "correct_answer": "Progesterone",
     "incorrect_answers": [
-      "They give live birth under influence of progesterone like mammals.",
-      "They brood embryos internally with placental nutrient support.",
-      "They produce milk from specialized organs instead of eggs.",
-      "They release larvae directly into the air after ovulation.",
-      "They reproduce by budding new individuals from adult tissues."
+      "Estrogen",
+      "FSH",
+      "LH",
+      "hCG",
+      "Prolactin"
     ]
   },
   {
-    "question": "Which hormone supports mammary gland development during pregnancy?",
-    "correct_answer": "Prolactin, along with estrogen and progesterone, stimulates mammary alveolar growth and lactogenic differentiation.",
+    "question": "Puberty in males typically begins around age:",
+    "correct_answer": "12–14 years",
     "incorrect_answers": [
-      "Oxytocin, which primarily prepares the uterus for implantation.",
-      "FSH, which directly causes milk protein synthesis in ducts.",
-      "Testosterone, which increases alveolar cell proliferation.",
-      "LH, which initiates colostrum ejection prior to birth.",
-      "Cortisol, which replaces prolactin in stimulating milk let-down."
+      "8–10 years",
+      "10–12 years",
+      "14–16 years",
+      "16–18 years",
+      "18–20 years"
     ]
   },
   {
-    "question": "How does independent assortment contribute to genetic diversity?",
-    "correct_answer": "Random orientation of chromosomes at metaphase I yields novel combinations of maternal and paternal alleles.",
+    "question": "In females, puberty signs include:",
+    "correct_answer": "Breast development and menarche",
     "incorrect_answers": [
-      "Crossing over within sister chromatids produces identical allele patterns.",
-      "Gene conversion events during replication restore original parental sequences.",
-      "Random chromatid breakage at telophases mixes allele frequencies.",
-      "Fertilization of diploid zygotes selects specific chromosome sets.",
-      "Partitioning of mitochondria alters nuclear gene combinations."
+      "Voice deepening and facial hair",
+      "Beard growth and erections",
+      "Facial hair and spermatogenesis",
+      "Spermarche and acne",
+      "Voice cracking and increased muscle mass"
     ]
   },
   {
-    "question": "What effect does inhibin have in the reproductive axis?",
-    "correct_answer": "It selectively suppresses FSH secretion from the anterior pituitary to regulate gametogenesis feedback.",
+    "question": "Which hormone initiates development of secondary sexual characteristics in girls?",
+    "correct_answer": "Estrogen",
     "incorrect_answers": [
-      "It directly stimulates LH release to trigger ovulation immediately.",
-      "It converts testosterone into estrogen within ovarian follicles.",
-      "It enhances prolactin action during mammary gland development.",
-      "It increases GnRH pulse frequency at the hypothalamus.",
-      "It signals the placenta to secrete human chorionic gonadotropin."
+      "Testosterone",
+      "FSH",
+      "LH",
+      "Progesterone",
+      "Prolactin"
     ]
   },
   {
-    "question": "Which endocrine organ releases gonadotropins in vertebrates?",
-    "correct_answer": "The anterior pituitary gland secretes LH and FSH under GnRH regulation from the hypothalamus.",
+    "question": "Seminal fluid pH is:",
+    "correct_answer": "Slightly alkaline",
     "incorrect_answers": [
-      "The thyroid gland produces TSH and T3 influencing gamete release.",
-      "The adrenal cortex secretes cortisol to maintain reproductive cycles.",
-      "The pineal gland releases melatonin directly stimulating the gonads.",
-      "The posterior pituitary releases vasopressin controlling gametogenesis.",
-      "The placenta alone secretes all gonadotropins after conception."
+      "Highly acidic",
+      "Neutral",
+      "Highly alkaline",
+      "Variable widely",
+      "Same as blood"
+    ]
+  },
+  {
+    "question": "Which cell type produces testosterone?",
+    "correct_answer": "Leydig cells",
+    "incorrect_answers": [
+      "Sertoli cells",
+      "Germ cells",
+      "Granulosa cells",
+      "Theca cells",
+      "Follicular cells"
+    ]
+  },
+  {
+    "question": "Menarche refers to:",
+    "correct_answer": "First menstrual period",
+    "incorrect_answers": [
+      "Ovulation",
+      "Pubic hair growth",
+      "Menopause",
+      "Luteal phase onset",
+      "hCG secretion"
+    ]
+  },
+  {
+    "question": "Which hormone prepares the breast for lactation?",
+    "correct_answer": "Prolactin",
+    "incorrect_answers": [
+      "Oxytocin",
+      "Estrogen",
+      "Progesterone",
+      "FSH",
+      "LH"
+    ]
+  },
+  {
+    "question": "What induces milk ejection during breastfeeding?",
+    "correct_answer": "Oxytocin",
+    "incorrect_answers": [
+      "Prolactin",
+      "Estrogen",
+      "Progesterone",
+      "FSH",
+      "LH"
+    ]
+  },
+  {
+    "question": "Which hormone is primarily responsible for the secretory phase of the endometrium?",
+    "correct_answer": "Progesterone",
+    "incorrect_answers": [
+      "Estrogen",
+      "FSH",
+      "LH",
+      "hCG",
+      "Prolactin"
+    ]
+  },
+  {
+    "question": "The placenta begins to secrete hCG around day:",
+    "correct_answer": "7–10 post-fertilization",
+    "incorrect_answers": [
+      "1–3",
+      "4–6",
+      "14–16",
+      "20–22",
+      "Post-menarche"
+    ]
+  },
+  {
+    "question": "Which structure houses the developing embryo until birth?",
+    "correct_answer": "Uterus",
+    "incorrect_answers": [
+      "Ovary",
+      "Fallopian tube",
+      "Vagina",
+      "Cervix",
+      "Placenta"
+    ]
+  },
+  {
+    "question": "During fetal development, the amniotic fluid is produced by:",
+    "correct_answer": "Fetal kidneys",
+    "incorrect_answers": [
+      "Maternal blood",
+      "Placental septa",
+      "Umbilical cord",
+      "Yolk sac",
+      "Endometrium"
+    ]
+  },
+  {
+    "question": "Which hormone relaxes the pelvic ligaments in preparation for birth?",
+    "correct_answer": "Relaxin",
+    "incorrect_answers": [
+      "Estrogen",
+      "Progesterone",
+      "Oxytocin",
+      "Prolactin",
+      "hCG"
+    ]
+  },
+  {
+    "question": "What is the role of the chorion?",
+    "correct_answer": "Contributes to placenta formation",
+    "incorrect_answers": [
+      "Forms the amniotic sac",
+      "Synthesizes oxytocin",
+      "Produces fetal blood cells",
+      "Transports sperm",
+      "Triggers menstruation"
+    ]
+  },
+  {
+    "question": "Which layer of the embryo gives rise to the nervous system?",
+    "correct_answer": "Ectoderm",
+    "incorrect_answers": [
+      "Mesoderm",
+      "Endoderm",
+      "Trophoblast",
+      "Hypoblast",
+      "Epiblast"
+    ]
+  },
+  {
+    "question": "The process of the embryo embedding into the uterine lining is called:",
+    "correct_answer": "Implantation",
+    "incorrect_answers": [
+      "Ovulation",
+      "Fertilization",
+      "Menstruation",
+      "Gastrulation",
+      "Neurulation"
+    ]
+  },
+  {
+    "question": "Which hormone maintains the uterine lining after implantation?",
+    "correct_answer": "hCG",
+    "incorrect_answers": [
+      "FSH",
+      "LH",
+      "Progesterone",
+      "Estrogen",
+      "Prolactin"
+    ]
+  },
+  {
+    "question": "Which fetal structure connects the fetus to the placenta?",
+    "correct_answer": "Umbilical cord",
+    "incorrect_answers": [
+      "Yolk sac",
+      "Amnion",
+      "Chorion",
+      "Allantois",
+      "Decidua"
+    ]
+  },
+  {
+    "question": "Meiosis in male testes produces:",
+    "correct_answer": "Spermatids",
+    "incorrect_answers": [
+      "Oocytes",
+      "Spermatozoa",
+      "Polar bodies",
+      "Sertoli cells",
+      "Leydig cells"
+    ]
+  },
+  {
+    "question": "Meiosis in female ovaries yields:",
+    "correct_answer": "One ovum and polar bodies",
+    "incorrect_answers": [
+      "Four ova",
+      "Two ova",
+      "Four polar bodies only",
+      "Spermatids",
+      "Oogonia"
     ]
   }
 ]
