@@ -1,1047 +1,520 @@
 [
   {
-    "question": "What is the common difference in the arithmetic sequence 5, 8, 11, 14, ...?",
-    "correct_answer": "3",
+    "question": "What is the simple interest on R8 000 at 7% per annum for 4 years?",
+    "correct_answer": "R2 240",
     "incorrect_answers": [
-      "5",
-      "8",
-      "11",
-      "2",
-      "4"
+      "R2 000",
+      "R2 400",
+      "R1 680",
+      "R1 920",
+      "R2 560"
     ]
   },
   {
-    "question": "What is the nth term of the arithmetic sequence with first term 2 and common difference 5?",
-    "correct_answer": "2 + (n - 1)·5",
+    "question": "Which formula gives the amount A after t years with simple interest?",
+    "correct_answer": "A = P(1 + rt)",
     "incorrect_answers": [
-      "5 + (n - 1)·2",
-      "2n + 5",
-      "5n - 2",
-      "2 + 5n",
-      "5 + 2n"
+      "A = P(1 + r)^t",
+      "A = P + rt",
+      "A = Prt",
+      "A = P(1 − rt)",
+      "A = P(1 + t)^r"
     ]
   },
   {
-    "question": "What is the sum of the first 10 terms of the arithmetic sequence 3, 7, 11, ...?",
-    "correct_answer": "550",
+    "question": "What will R5 000 grow to in 3 years at 6% compounded annually?",
+    "correct_answer": "R5 954.16",
     "incorrect_answers": [
-      "200",
-      "400",
-      "275",
-      "300",
-      "440"
+      "R5 800.00",
+      "R5 750.00",
+      "R6 000.00",
+      "R5 900.00",
+      "R5 850.00"
     ]
   },
   {
-    "question": "In sigma notation, what does \\\sum_{k=1}^n a_k\ represent?",
-    "correct_answer": "The sum of terms \a_1 + a_2 + ... + a_n\",
+    "question": "Which formula calculates compound amount?",
+    "correct_answer": "A = P(1 + r)^t",
     "incorrect_answers": [
-      "The product of those terms",
-      "Only the nth term",
-      "The difference of terms",
-      "The average of terms",
-      "The factorial of n"
+      "A = P + rt",
+      "A = P(1 + rt)",
+      "A = Prt",
+      "A = P(1 − r)^t",
+      "A = P e^{rt}"
     ]
   },
   {
-    "question": "What is the common ratio in the geometric sequence 2, 6, 18, 54, ...?",
-    "correct_answer": "3",
+    "question": "You borrow R10 000 at 12% per annum simple interest for 2 years. What is total repayment?",
+    "correct_answer": "R12 400",
     "incorrect_answers": [
-      "2",
-      "6",
-      "9",
-      "18",
-      "54"
+      "R11 200",
+      "R14 000",
+      "R12 000",
+      "R13 200",
+      "R12 600"
     ]
   },
   {
-    "question": "What is the nth term of the geometric sequence with first term 4 and common ratio 2?",
-    "correct_answer": "4·2^{n-1}",
+    "question": "A machine costing R50 000 depreciates 15% per annum on reducing balance. Value after 2 years?",
+    "correct_answer": "R36 125",
     "incorrect_answers": [
-      "2·4^{n-1}",
-      "4^n·2",
-      "2^{n}·4",
-      "4·2^n",
-      "2^{n-1}·4"
+      "R35 000",
+      "R37 000",
+      "R40 000",
+      "R31 500",
+      "R38 125"
     ]
   },
   {
-    "question": "What is the sum of the first 5 terms of the geometric sequence 1, 3, 9, 27, ...?",
-    "correct_answer": "121",
+    "question": "Which formula models reducing-balance depreciation at rate r?",
+    "correct_answer": "V = P(1 − r)^t",
     "incorrect_answers": [
-      "40",
-      "81",
-      "100",
-      "243",
-      "369"
+      "V = P − rt",
+      "V = P(1 + r)^t",
+      "V = P e^{−rt}",
+      "V = P/(1 + r)^t",
+      "V = P(1 − rt)"
     ]
   },
   {
-    "question": "Which formula gives the sum of the first n terms of an arithmetic sequence?",
-    "correct_answer": "S_n = n/2·(2a_1 + (n-1)d)",
+    "question": "If population grows 3% per annum, its value after t years is:",
+    "correct_answer": "P = P₀(1.03)^t",
     "incorrect_answers": [
-      "S_n = a_1 + nd",
-      "S_n = a_n·d",
-      "S_n = n·(a_1 + a_n)",
-      "S_n = n·a_1 + d",
-      "S_n = (a_n - a_1)/d"
+      "P = P₀ + 0.03t",
+      "P = P₀ e^{0.03t}",
+      "P = P₀(0.97)^t",
+      "P = P₀ t",
+      "P = P₀(1 + 0.3t)"
     ]
   },
   {
-    "question": "Which formula gives the sum of the first n terms of a geometric sequence (r ≠ 1)?",
-    "correct_answer": "S_n = a_1·(1 - r^n)/(1 - r)",
+    "question": "Doubling time at 5% per annum approximately equals:",
+    "correct_answer": "14 years",
     "incorrect_answers": [
-      "S_n = a_1·(1 - r^n)/(r - 1)",
-      "S_n = a_1·r^n",
-      "S_n = a_1 + r^n",
-      "S_n = n·a_1·r",
-      "S_n = (r^n - 1)/a_1"
+      "10 years",
+      "12 years",
+      "20 years",
+      "18 years",
+      "15 years"
     ]
   },
   {
-    "question": "What is the 12th term of the arithmetic sequence 7, 12, 17, ...?",
-    "correct_answer": "7 + 11·5 = 62",
+    "question": "Which formula gives continuous growth at rate r?",
+    "correct_answer": "P = P₀ e^{rt}",
     "incorrect_answers": [
-      "7 + 12·5 = 67",
-      "7 + 10·5 = 57",
-      "12 + 11·7 = 89",
-      "17 + 11·5 = 72",
-      "12 + 10·7 = 82"
+      "P = P₀(1 + r)^t",
+      "P = P₀ + rt",
+      "P = P₀ e^{−rt}",
+      "P = P₀ r^t",
+      "P = P₀/(1 + rt)"
     ]
   },
   {
-    "question": "What is the 8th term of the geometric sequence 5, 15, 45, ...?",
-    "correct_answer": "5·3^{7} = 5·2187 = 10935",
+    "question": "What is the present value of R1 000 in 4 years at 8% p.a.?",
+    "correct_answer": "R735.03",
     "incorrect_answers": [
-      "5·3^{8} = 5·6561",
-      "15·3^{7}",
-      "45·7",
-      "5·7",
-      "3^{8}"
+      "R850.00",
+      "R810.00",
+      "R760.00",
+      "R700.00",
+      "R780.00"
     ]
   },
   {
-    "question": "If S_n of an arithmetic sequence is 100 when n=10 and a_1=2, what is d?",
-    "correct_answer": "d = (2·100/10 - 2·2)/(10 - 1) = (20 - 4)/9 = 16/9",
+    "question": "Which formula gives present value PV of future sum A?",
+    "correct_answer": "PV = A/(1 + r)^t",
     "incorrect_answers": [
-      "1",
-      "2",
-      "4",
-      "16",
-      "8/9"
+      "PV = A(1 + r)^t",
+      "PV = A − rt",
+      "PV = A e^{−rt}",
+      "PV = A(1 − r)^t",
+      "PV = A r^t"
     ]
   },
   {
-    "question": "If S_n of a geometric sequence is 31 when a_1=1 and r=2, what is n?",
-    "correct_answer": "31 = (1 - 2^n)/(1 - 2) ⇒ 31 = 2^n - 1 ⇒ 2^n = 32 ⇒ n=5",
+    "question": "An annuity pays R1 000 annually for 5 years at 7%. PV is closest to:",
+    "correct_answer": "R4 100",
     "incorrect_answers": [
-      "n=4",
-      "n=6",
-      "n=10",
-      "n=3",
-      "n=8"
+      "R5 000",
+      "R3 800",
+      "R4 500",
+      "R3 500",
+      "R4 300"
     ]
   },
   {
-    "question": "What application uses arithmetic sequences to calculate loan repayments?",
-    "correct_answer": "Amortisation schedules",
+    "question": "Which formula gives future value of ordinary annuity?",
+    "correct_answer": "FV = R((1 + r)^n − 1)/r",
     "incorrect_answers": [
-      "Compound interest",
-      "Depreciation",
-      "Population growth",
-      "Radioactive decay",
-      "Signal attenuation"
+      "FV = R(1 + r)^n",
+      "FV = Rn",
+      "FV = R/( (1 + r)^n − 1)",
+      "FV = R((1 − r)^n)/r",
+      "FV = R((1 + r) − 1)/n"
     ]
   },
   {
-    "question": "What application uses geometric sequences to model population growth?",
-    "correct_answer": "Exponential growth models",
+    "question": "You borrow R20 000 at 10% repayable in 4 annual instalments. Which formula finds R?",
+    "correct_answer": "R = PV·r/[1 − (1 + r)^(−n)]",
     "incorrect_answers": [
-      "Linear depreciation",
-      "Arithmetic progression",
-      "Fourier series",
-      "Logistic regression",
-      "Binomial expansion"
+      "R = PV/n",
+      "R = PV(1 + r)^n",
+      "R = PV/(1 + r)^n",
+      "R = PV·n/r",
+      "R = PV·(1 − (1 + r)^(−n))/r"
     ]
   },
   {
-    "question": "Which of the following series diverges?",
-    "correct_answer": "Sum of 1 + 2 + 4 + 8 + ...",
+    "question": "What is the effective annual rate for 12% p.a. compounded monthly?",
+    "correct_answer": "12.68%",
     "incorrect_answers": [
-      "Sum of 1 - 1 + 1 - 1 + ...",
-      "Sum of 1/2^n from n=1 to ∞",
-      "Sum of 5 constant",
-      "Sum of an arithmetic series with d=0",
-      "Sum of a geometric series with |r|<1"
+      "12.00%",
+      "12.50%",
+      "13.00%",
+      "12.25%",
+      "12.80%"
     ]
   },
   {
-    "question": "What is the limit of the geometric series with a_1=3 and r=1/2 as n→∞?",
-    "correct_answer": "3/(1 - 1/2) = 6",
-    "incorrect_answers": [
-      "3/2",
-      "1.5",
-      "Infinity",
-      "0",
-      "3"
-    ]
-  },
-  {
-    "question": "Which arithmetic series has zero sum?",
-    "correct_answer": "Symmetric sequence about zero, e.g., -n to n",
-    "incorrect_answers": [
-      "Any with a_1>0",
-      "Any with d>0",
-      "Any with finite n",
-      "Harmonic series",
-      "Geometric series"
-    ]
-  },
-  {
-    "question": "What is the sum of the infinite geometric series 4 + 2 + 1 + ...?",
-    "correct_answer": "4/(1 - 1/2) = 8",
-    "incorrect_answers": [
-      "4",
-      "2",
-      "16",
-      "Infinity",
-      "1"
-    ]
-  },
-  {
-    "question": "How do you denote the sum of squares of first n integers in sigma notation?",
-    "correct_answer": "\\u03A3_{k=1}^n k^2",
-    "incorrect_answers": [
-      "\\u03A3_{k=1}^n k",
-      "\\u03A3_{k=1}^n k^3",
-      "n(n+1)/2",
-      "n^2",
-      "\\u03A3_{k=1}^n 2^k"
-    ]
-  },
-  {
-    "question": "What is the formula for \\u03A3_{k=1}^n k?",
-    "correct_answer": "n(n+1)/2",
-    "incorrect_answers": [
-      "n^2",
-      "n^2/2",
-      "n(n-1)/2",
-      "2n",
-      "n"
-    ]
-  },
-  {
-    "question": "What is the formula for \\u03A3_{k=1}^n k^2?",
-    "correct_answer": "n(n+1)(2n+1)/6",
-    "incorrect_answers": [
-      "n^3",
-      "n(n+1)/2",
-      "(n+1)(2n+1)",
-      "n^2(n+1)/2",
-      "n(2n+1)/3"
-    ]
-  },
-  {
-    "question": "Which series is represented by \\u03A3_{k=0}^{\\infty} r^k?",
-    "correct_answer": "Geometric series",
-    "incorrect_answers": [
-      "Arithmetic series",
-      "Harmonic series",
-      "Taylor series",
-      "Binomial series",
-      "Fourier series"
-    ]
-  },
-  {
-    "question": "What is the sum of the series \\u03A3_{k=0}^{3} 2^k?",
-    "correct_answer": "1 + 2 + 4 + 8 = 15",
-    "incorrect_answers": [
-      "7",
-      "14",
-      "16",
-      "12",
-      "8"
-    ]
-  },
-  {
-    "question": "A sequence defined by a_{n+1} = a_n + 4 with a_1=3 is:",
-    "correct_answer": "Arithmetic",
-    "incorrect_answers": [
-      "Geometric",
-      "Harmonic",
-      "Recursive geometric",
-      "Fibonacci",
-      "Nonlinear"
-    ]
-  },
-  {
-    "question": "A sequence defined by a_{n+1} = 3·a_n with a_1=2 is:",
-    "correct_answer": "Geometric",
-    "incorrect_answers": [
-      "Arithmetic",
-      "Harmonic",
-      "Linear",
-      "Quadratic",
-      "Exponential decay"
-    ]
-  },
-  {
-    "question": "Which application uses sigma notation to compute mean of n values x_i?",
-    "correct_answer": "(1/n)·\\u03A3_{i=1}^n x_i",
-    "incorrect_answers": [
-      "(1/2)·\\u03A3 x_i",
-      "\\u03A3 x_i",
-      "n·\\u03A3 x_i",
-      "\\u03A3 x_i / (n+1)",
-      "n/x_i"
-    ]
-  },
-  {
-    "question": "What is the 5th term of the arithmetic sequence whose first term is 10 and d=-2?",
-    "correct_answer": "10 + 4·(-2) = 2",
-    "incorrect_answers": [
-      "10 + 5·(-2) = 0",
-      "10 + (-2) = 8",
-      "10 - 10 = 0",
-      "10 + 3·(-2) = 4",
-      "8"
-    ]
-  },
-  {
-    "question": "What is the 4th term of the geometric sequence 81, 27, 9, ...?",
-    "correct_answer": "9/3 = 3",
-    "incorrect_answers": [
-      "9",
-      "1",
-      "27",
-      "81",
-      "0"
-    ]
-  },
-  {
-    "question": "Which series represents an arithmetic progression in sigma notation?",
-    "correct_answer": "\\u03A3_{k=1}^n (a + (k-1)d)",
-    "incorrect_answers": [
-      "\\u03A3_{k=1}^n ar^{k-1}",
-      "\\u03A3_{k=1}^n k^2",
-      "\\u03A3_{k=1}^n 1/k",
-      "\\u03A3_{k=1}^n k!",
-      "\\u03A3_{k=1}^n d^k"
-    ]
-  },
-  {
-    "question": "If an arithmetic series has S_n = 210 for n=20, a_1=2, find d.",
-    "correct_answer": "210 = 20/2[2·2 + 19d] ⇒ 21 = 4 + 19d ⇒ 19d = 17 ⇒ d=17/19",
-    "incorrect_answers": [
-      "1",
-      "2",
-      "17",
-      "19",
-      "17/20"
-    ]
-  },
-  {
-    "question": "Which series converges for |r|<1?",
-    "correct_answer": "Infinite geometric series",
-    "incorrect_answers": [
-      "Infinite arithmetic series",
-      "Harmonic series",
-      "p-series with p<1",
-      "Fibonacci series",
-      "Alternating arithmetic"
-    ]
-  },
-  {
-    "question": "What is the sum of \\u03A3_{k=1}^n 5?",
-    "correct_answer": "5n",
-    "incorrect_answers": [
-      "5/n",
-      "n/5",
-      "5 + n",
-      "5^n",
-      "n"
-    ]
-  },
-  {
-    "question": "Which sequence follows a quadratic pattern?",
-    "correct_answer": "a_n = an^2 + bn + c",
-    "incorrect_answers": [
-      "a_n = a + nd",
-      "a_n = ar^{n-1}",
-      "a_n = 1/n",
-      "a_n = k!",
-      "a_n = sin(n)"
-    ]
-  },
-  {
-    "question": "What is the 3rd partial sum of the series 1 + 4 + 9 + 16 + ...?",
-    "correct_answer": "1 + 4 + 9 = 14",
-    "incorrect_answers": [
-      "9",
-      "5",
-      "30",
-      "16",
-      "20"
-    ]
-  },
-  {
-    "question": "What is the relationship between arithmetic and geometric means for positive numbers?",
-    "correct_answer": "Arithmetic mean ≥ Geometric mean",
-    "incorrect_answers": [
-      "Arithmetic mean ≤ Geometric mean",
-      "They are equal always",
-      "Arithmetic mean = Product mean",
-      "No relation",
-      "Depends on sequence"
-    ]
-  },
-  {
-    "question": "Which practical application uses arithmetic series to calculate total depreciation?",
-    "correct_answer": "Straight-line depreciation",
-    "incorrect_answers": [
-      "Declining balance",
-      "Sum-of-years digits",
-      "Units of production",
-      "Accelerated depreciation",
-      "Deferred depreciation"
-    ]
-  },
-  {
-    "question": "Which practical application uses geometric series to calculate loan interest?",
-    "correct_answer": "Compound interest formula",
+    "question": "Which investment yields more for lender?",
+    "correct_answer": "High compounding frequency",
     "incorrect_answers": [
       "Simple interest",
-      "Depreciation",
-      "Population growth model",
-      "Linear regression",
-      "Logarithmic scale"
+      "Low compounding frequency",
+      "Zero interest",
+      "Negative rate",
+      "Fixed interest"
     ]
   },
   {
-    "question": "If a sequence has nth term 2n+3, is it arithmetic or geometric?",
-    "correct_answer": "Arithmetic",
+    "question": "Depreciation by reducing balance gives:",
+    "correct_answer": "Decreasing annual expense",
     "incorrect_answers": [
-      "Geometric",
-      "Harmonic",
-      "Quadratic",
-      "Exponential",
-      "None"
+      "Constant expense",
+      "Increasing expense",
+      "No expense",
+      "Negative expense",
+      "Linear growth"
     ]
   },
   {
-    "question": "If a sequence has nth term 3·2^{n-1}, is it arithmetic or geometric?",
-    "correct_answer": "Geometric",
+    "question": "Half-life of a decaying substance at rate 5% p.a. is:",
+    "correct_answer": "13.86 years",
     "incorrect_answers": [
-      "Arithmetic",
-      "Harmonic",
-      "Quadratic",
-      "Linear",
-      "None"
+      "10 years",
+      "14 years",
+      "12 years",
+      "20 years",
+      "5 years"
     ]
   },
   {
-    "question": "Which series represents the partial sums of a geometric sequence?",
-    "correct_answer": "(a(1 - r^n))/(1 - r)",
+    "question": "A perpetual annuity pays R500 at 6%. Its PV is:",
+    "correct_answer": "R8 333.33",
     "incorrect_answers": [
-      "n/2(2a + (n-1)d)",
-      "n(a + l)",
-      "n!",
-      "a^n + r^n",
-      "1/n"
+      "R7 500",
+      "R6 000",
+      "R10 000",
+      "R12 000",
+      "R9 000"
     ]
   },
   {
-    "question": "What is the 1st term of the harmonic sequence whose reciprocal sequence is arithmetic with a_1 = 1/2 and d = 1/2?",
-    "correct_answer": "2",
+    "question": "Loan amortisation schedule shows:",
+    "correct_answer": "Interest and principal breakdown",
     "incorrect_answers": [
-      "1",
-      "1/2",
-      "3/2",
-      "4",
-      "1/3"
-    ]
-  },
-{
-    "question": "What is the general form of a linear function?",
-    "correct_answer": "f(x) = mx + b",
-    "incorrect_answers": [
-      "f(x) = ax² + bx + c",
-      "f(x) = a·b^x",
-      "f(x) = mx² + b",
-      "f(x) = m/x + b",
-      "f(x) = m·e^{bx}"
+      "Only total due",
+      "Only interest",
+      "Only principal",
+      "Only dates",
+      "Only rates"
     ]
   },
   {
-    "question": "Which of the following is a quadratic function?",
-    "correct_answer": "f(x) = x² − 4x + 3",
+    "question": "Which rule estimates doubling time for small r%?",
+    "correct_answer": "Rule of 72",
     "incorrect_answers": [
-      "f(x) = 2x + 1",
-      "f(x) = 3^x",
-      "f(x) = x³",
-      "f(x) = 1/x",
-      "f(x) = e^x"
+      "Rule of 70",
+      "Rule of 75",
+      "Rule of 69",
+      "Rule of 100",
+      "Rule of 50"
     ]
   },
   {
-    "question": "What is the domain of f(x) = √(x − 2)?",
-    "correct_answer": "x ≥ 2",
+    "question": "If r increases, loan instalment R for fixed PV:",
+    "correct_answer": "Increases",
     "incorrect_answers": [
-      "x > 2",
-      "x ≤ 2",
-      "x < 2",
-      "All real x",
-      "x ≠ 2"
+      "Decreases",
+      "Stays same",
+      "Zero",
+      "Negative",
+      "Infinite"
     ]
   },
   {
-    "question": "What is the range of f(x) = x²?",
-    "correct_answer": "y ≥ 0",
+    "question": "Continuous compounding amount formula is:",
+    "correct_answer": "A = P e^{rt}",
     "incorrect_answers": [
-      "y > 0",
-      "y ≤ 0",
-      "All real y",
-      "y ≠ 0",
-      "y ≤ 1"
+      "A = P(1 + r)^t",
+      "A = P + rt",
+      "A = P(1 − r)^t",
+      "A = P/(1 + r t)",
+      "A = Prt"
     ]
   },
   {
-    "question": "Which graph has a horizontal asymptote at y = 0?",
-    "correct_answer": "f(x) = (1/2)·2^x as x → −∞",
+    "question": "A R100 000 loan at 9.5% over 20 years has EMI using formula, true or false?",
+    "correct_answer": "True",
     "incorrect_answers": [
-      "f(x) = x²",
-      "f(x) = 3x + 2",
-      "f(x) = x³",
-      "f(x) = ln(x)",
-      "f(x) = √x"
+      "False",
+      "Only with simple interest",
+      "Only at 10%",
+      "Only over 10 years",
+      "No EMI formula"
+    ]
+  },
+
+  {
+    "question": "Volume of a prism = base area × height. True or false?",
+    "correct_answer": "True",
+    "incorrect_answers": [
+      "False",
+      "Only for cylinders",
+      "Only for cones",
+      "Only for spheres",
+      "Only for cubes"
     ]
   },
   {
-    "question": "What is the y-intercept of f(x) = 2x + 5?",
-    "correct_answer": "(0, 5)",
+    "question": "What is the volume of a cylinder with r=3 cm, h=5 cm?",
+    "correct_answer": "45π cm³",
     "incorrect_answers": [
-      "(5, 0)",
-      "(0, 2)",
-      "(−5, 0)",
-      "(1, 7)",
-      "(−1, 3)"
+      "15π cm³",
+      "9π cm³",
+      "30π cm³",
+      "60π cm³",
+      "75π cm³"
     ]
   },
   {
-    "question": "Which transformation moves f(x) = x² up by 3 units?",
-    "correct_answer": "g(x) = x² + 3",
+    "question": "Surface area of sphere r=4 cm is:",
+    "correct_answer": "64π cm²",
     "incorrect_answers": [
-      "g(x) = x² − 3",
-      "g(x) = (x + 3)²",
-      "g(x) = (x − 3)²",
-      "g(x) = 3x²",
-      "g(x) = x²·3"
+      "48π cm²",
+      "32π cm²",
+      "16π cm²",
+      "128π cm²",
+      "256π cm²"
     ]
   },
   {
-    "question": "What is the inverse of f(x) = x + 4?",
-    "correct_answer": "f⁻¹(x) = x − 4",
+    "question": "Volume of cone r=2 cm, h=6 cm is:",
+    "correct_answer": "8π cm³",
     "incorrect_answers": [
-      "f⁻¹(x) = x + 4",
-      "f⁻¹(x) = 1/(x + 4)",
-      "f⁻¹(x) = 4 − x",
-      "f⁻¹(x) = x/4",
-      "f⁻¹(x) = x² − 4"
+      "12π cm³",
+      "24π cm³",
+      "4π cm³",
+      "16π cm³",
+      "6π cm³"
     ]
   },
   {
-    "question": "Which of these functions is its own inverse?",
-    "correct_answer": "f(x) = −x",
+    "question": "Convert 3 500 cm³ to litres:",
+    "correct_answer": "3.5 L",
     "incorrect_answers": [
-      "f(x) = x + 1",
-      "f(x) = 2x",
-      "f(x) = 1/x + 1",
-      "f(x) = x²",
-      "f(x) = x³"
+      "35 L",
+      "0.35 L",
+      "350 L",
+      "0.0035 L",
+      "3500 L"
     ]
   },
   {
-    "question": "What effect does f(x) → f(x − 2) have on the graph?",
-    "correct_answer": "Shift right by 2",
+    "question": "Surface area of a right circular cone (including base) is:",
+    "correct_answer": "πrℓ + πr²",
     "incorrect_answers": [
-      "Shift left by 2",
-      "Shift up by 2",
-      "Shift down by 2",
-      "Reflect across y-axis",
-      "Reflect across x-axis"
+      "πrℓ",
+      "2πr²",
+      "2πrℓ + πr²",
+      "πr²h",
+      "πrh"
     ]
   },
   {
-    "question": "What is the sum of the roots of f(x) = x² − 5x + 6?",
-    "correct_answer": "5",
+    "question": "Volume of a sphere with diameter 10 cm is:",
+    "correct_answer": "500/3 π cm³",
     "incorrect_answers": [
-      "6",
-      "−5",
-      "−6",
-      "1",
-      "2"
+      "400/3 π cm³",
+      "1000/3 π cm³",
+      "250/3 π cm³",
+      "200/3 π cm³",
+      "600/3 π cm³"
     ]
   },
   {
-    "question": "What is the product of the roots of f(x) = x² − 5x + 6?",
-    "correct_answer": "6",
+    "question": "Total surface area of a cube side 5 cm is:",
+    "correct_answer": "150 cm²",
     "incorrect_answers": [
-      "5",
-      "−5",
-      "−6",
-      "1",
-      "2"
+      "125 cm²",
+      "100 cm²",
+      "175 cm²",
+      "200 cm²",
+      "250 cm²"
     ]
   },
   {
-    "question": "What is the graph of f(x) = e^x for large positive x?",
-    "correct_answer": "Increasing rapidly",
+    "question": "Volume of a triangular prism with base area 12 cm² and height 4 cm is:",
+    "correct_answer": "48 cm³",
     "incorrect_answers": [
-      "Decreasing to zero",
-      "Linear growth",
-      "Oscillating",
-      "Constant",
-      "Parabolic shape"
+      "16 cm³",
+      "24 cm³",
+      "36 cm³",
+      "60 cm³",
+      "12 cm³"
     ]
   },
   {
-    "question": "Which function has a vertical asymptote at x = 2?",
-    "correct_answer": "f(x) = 1/(x − 2)",
+    "question": "Convert 0.002 m³ to cm³:",
+    "correct_answer": "2 000 cm³",
     "incorrect_answers": [
-      "f(x) = x − 2",
-      "f(x) = √(x − 2)",
-      "f(x) = (x − 2)²",
-      "f(x) = e^{x−2}",
-      "f(x) = ln(x + 2)"
+      "200 cm³",
+      "20 cm³",
+      "2 cm³",
+      "20 000 cm³",
+      "200 000 cm³"
     ]
   },
   {
-    "question": "Which graph represents an odd function?",
-    "correct_answer": "Symmetric about the origin",
+    "question": "Surface area of cylinder with r=2 cm and h=7 cm is:",
+    "correct_answer": "36π cm²",
     "incorrect_answers": [
-      "Symmetric about the y-axis",
-      "Symmetric about the x-axis",
-      "Has no symmetry",
-      "Periodic",
-      "Always positive"
+      "28π cm²",
+      "24π cm²",
+      "32π cm²",
+      "40π cm²",
+      "42π cm²"
     ]
   },
   {
-    "question": "What is the transformation of f(x) = x³ under y → −y?",
-    "correct_answer": "Reflection across the x-axis",
+    "question": "Volume of a right cone r=5 cm, h=9 cm:",
+    "correct_answer": "75π cm³",
     "incorrect_answers": [
-      "Reflection across the y-axis",
-      "Shift up",
-      "Shift down",
-      "Stretch vertically",
-      "Compress horizontally"
+      "45π cm³",
+      "125π cm³",
+      "150π cm³",
+      "100π cm³",
+      "60π cm³"
     ]
   },
   {
-    "question": "Which function is decreasing for all x?",
-    "correct_answer": "f(x) = −e^x",
+    "question": "Surface area of a hemisphere r=6 cm (excluding base) is:",
+    "correct_answer": "2πr² = 72π cm²",
     "incorrect_answers": [
-      "f(x) = e^x",
-      "f(x) = x²",
-      "f(x) = x³",
-      "f(x) = sin(x)",
-      "f(x) = ln(x)"
+      "4πr²",
+      "3πr²",
+      "πr²",
+      "6πr²",
+      "8πr²"
     ]
   },
   {
-    "question": "On which interval is f(x) = ln(x) defined?",
-    "correct_answer": "x > 0",
+    "question": "Volume of hemisphere r=4 cm is:",
+    "correct_answer": "128/3 π cm³",
     "incorrect_answers": [
-      "x ≥ 0",
-      "All real x",
-      "x < 0",
-      "x ≠ 1",
-      "x ≥ 1"
+      "64/3 π cm³",
+      "256/3 π cm³",
+      "32/3 π cm³",
+      "192/3 π cm³",
+      "100/3 π cm³"
     ]
   },
   {
-    "question": "Which is the domain of f(x) = 1/√(x + 3)?",
-    "correct_answer": "x > −3",
+    "question": "Convert 7.25 L to cm³:",
+    "correct_answer": "7 250 cm³",
     "incorrect_answers": [
-      "x ≥ −3",
-      "x < −3",
-      "All real x",
-      "x ≠ −3",
-      "x ≤ −3"
+      "725 cm³",
+      "72 500 cm³",
+      "725 000 cm³",
+      "72.5 cm³",
+      "0.725 cm³"
     ]
   },
   {
-    "question": "What is the range of f(x) = x³?",
-    "correct_answer": "All real y",
+    "question": "Total surface area of a rectangular prism l=3, w=4, h=5 cm is:",
+    "correct_answer": "94 cm²",
     "incorrect_answers": [
-      "y ≥ 0",
-      "y ≤ 0",
-      "y > 0",
-      "y < 0",
-      "None"
+      "60 cm²",
+      "80 cm²",
+      "100 cm²",
+      "120 cm²",
+      "75 cm²"
     ]
   },
   {
-    "question": "Which transformation is f(x) → 2·f(x)?",
-    "correct_answer": "Vertical stretch by factor 2",
+    "question": "Volume of cylinder r=2.5 cm, h=10 cm:",
+    "correct_answer": "62.5π cm³",
     "incorrect_answers": [
-      "Vertical compression by 2",
-      "Horizontal stretch by 2",
-      "Horizontal compression by 2",
-      "Reflection across x-axis",
-      "Reflection across y-axis"
+      "25π cm³",
+      "50π cm³",
+      "75π cm³",
+      "100π cm³",
+      "31.25π cm³"
     ]
   },
   {
-    "question": "Which curve has turning points?",
-    "correct_answer": "Quadratic",
+    "question": "Surface area of sphere r=3.5 cm is:",
+    "correct_answer": "49π cm²",
     "incorrect_answers": [
-      "Linear",
-      "Exponential",
-      "Logarithmic",
-      "Reciprocal",
-      "Constant"
+      "38.5π cm²",
+      "24.5π cm²",
+      "12.25π cm²",
+      "63π cm²",
+      "28π cm²"
     ]
   },
   {
-    "question": "What is the inverse of f(x) = 3x − 1?",
-    "correct_answer": "f⁻¹(x) = (x + 1)/3",
+    "question": "Volume of cone r=4 cm, h=12 cm:",
+    "correct_answer": "64π cm³",
     "incorrect_answers": [
-      "f⁻¹(x) = 3(x + 1)",
-      "f⁻¹(x) = x/3 − 1",
-      "f⁻¹(x) = 3x + 1",
-      "f⁻¹(x) = (x − 1)/3",
-      "f⁻¹(x) = x − 3"
+      "48π cm³",
+      "96π cm³",
+      "32π cm³",
+      "80π cm³",
+      "16π cm³"
     ]
   },
   {
-    "question": "Which function is bijective on all real numbers?",
-    "correct_answer": "f(x) = x³",
+    "question": "Convert 0.45 m³ to litres:",
+    "correct_answer": "450 L",
     "incorrect_answers": [
-      "f(x) = x²",
-      "f(x) = e^x",
-      "f(x) = sin(x)",
-      "f(x) = |x|",
-      "f(x) = ln(x)"
+      "45 L",
+      "4.5 L",
+      "4 500 L",
+      "0.45 L",
+      "45 000 L"
     ]
   },
   {
-    "question": "What is the x-intercept of f(x) = 2x − 4?",
-    "correct_answer": "(2, 0)",
+    "question": "Surface area of right circular cone r=3 cm, h=4 cm including base:",
+    "correct_answer": "21π cm²",
     "incorrect_answers": [
-      "(0, 4)",
-      "(−2, 0)",
-      "(4, 0)",
-      "(0, −4)",
-      "(1, 0)"
+      "12π cm²",
+      "15π cm²",
+      "27π cm²",
+      "18π cm²",
+      "24π cm²"
     ]
   },
   {
-    "question": "Which function has a minimum at x = 1?",
-    "correct_answer": "f(x) = (x − 1)²",
+    "question": "Volume of prism with triangular base area 8 cm² and height 7 cm:",
+    "correct_answer": "56 cm³",
     "incorrect_answers": [
-      "f(x) = x² + 1",
-      "f(x) = −x² + 1",
-      "f(x) = x³ − 1",
-      "f(x) = 1/x",
-      "f(x) = e^{x−1}"
-    ]
-  },
-  {
-    "question": "What is the vertex of f(x) = (x − 3)² + 2?",
-    "correct_answer": "(3, 2)",
-    "incorrect_answers": [
-      "(−3, 2)",
-      "(3, −2)",
-      "(−3, −2)",
-      "(0, 2)",
-      "(3, 0)"
-    ]
-  },
-  {
-    "question": "Which curve is monotonic increasing?",
-    "correct_answer": "f(x) = x³",
-    "incorrect_answers": [
-      "f(x) = x²",
-      "f(x) = −x",
-      "f(x) = sin(x)",
-      "f(x) = ln(−x)",
-      "f(x) = 1/x"
-    ]
-  },
-  {
-    "question": "What is the range of f(x) = −(x − 1)² + 4?",
-    "correct_answer": "y ≤ 4",
-    "incorrect_answers": [
-      "y ≥ 4",
-      "All real y",
-      "y > 0",
-      "y ≥ 0",
-      "y < 4"
-    ]
-  },
-  {
-    "question": "Which graph represents f(x) = 1−x?",
-    "correct_answer": "Line with slope −1 intercept 1",
-    "incorrect_answers": [
-      "Line slope 1 intercept 1",
-      "Parabola",
-      "Exponential",
-      "Reciprocal",
-      "Logarithm"
-    ]
-  },
-  {
-    "question": "Which function satisfies f(f(x)) = x?",
-    "correct_answer": "f(x) = −x",
-    "incorrect_answers": [
-      "f(x) = x + 1",
-      "f(x) = x²",
-      "f(x) = 2x",
-      "f(x) = x³",
-      "f(x) = |x|"
-    ]
-  },
-  {
-    "question": "What is the graph of f(x) = |x|?",
-    "correct_answer": "V-shaped",
-    "incorrect_answers": [
-      "U-shaped",
-      "Linear",
-      "Exponential",
-      "Parabolic",
-      "Bell-shaped"
-    ]
-  },
-  {
-    "question": "Which transformation maps f(x) to f(−x)?",
-    "correct_answer": "Reflect across the y-axis",
-    "incorrect_answers": [
-      "Reflect across the x-axis",
-      "Shift left",
-      "Shift right",
-      "Stretch vertically",
-      "Compress horizontally"
-    ]
-  },
-  {
-    "question": "Which function is even?",
-    "correct_answer": "f(x) = x²",
-    "incorrect_answers": [
-      "f(x) = x³",
-      "f(x) = x + 1",
-      "f(x) = e^x",
-      "f(x) = x³ + x",
-      "f(x) = ln(x)"
-    ]
-  },
-  {
-    "question": "Which function is odd?",
-    "correct_answer": "f(x) = x³",
-    "incorrect_answers": [
-      "f(x) = x²",
-      "f(x) = 1/x²",
-      "f(x) = |x|",
-      "f(x) = x² + 1",
-      "f(x) = cos(x)"
-    ]
-  },
-  {
-    "question": "What is the inverse of f(x) = 2^x?",
-    "correct_answer": "f⁻¹(x) = log₂(x)",
-    "incorrect_answers": [
-      "f⁻¹(x) = 2 log(x)",
-      "f⁻¹(x) = ln(x)/2",
-      "f⁻¹(x) = e^x",
-      "f⁻¹(x) = x²",
-      "f⁻¹(x) = 1/x"
-    ]
-  },
-  {
-    "question": "Which curve crosses the origin and goes through (1, 1)?",
-    "correct_answer": "f(x) = x³",
-    "incorrect_answers": [
-      "f(x) = x²",
-      "f(x) = e^x",
-      "f(x) = ln(x)",
-      "f(x) = x + 1",
-      "f(x) = 1/x"
-    ]
-  },
-  {
-    "question": "Which function is defined only for x ≥ 0?",
-    "correct_answer": "f(x) = √x",
-    "incorrect_answers": [
-      "f(x) = x³",
-      "f(x) = x²",
-      "f(x) = 1/x",
-      "f(x) = ln(x)",
-      "f(x) = e^x"
-    ]
-  },
-  {
-    "question": "What is the graph of f(x) = ln(x) shifted right by 2?",
-    "correct_answer": "ln(x − 2)",
-    "incorrect_answers": [
-      "ln(x + 2)",
-      "ln(x) + 2",
-      "ln(x) − 2",
-      "e^{x−2}",
-      "ln(2x)"
-    ]
-  },
-  {
-    "question": "Which quadratic opens downward?",
-    "correct_answer": "f(x) = −x² + 3x + 2",
-    "incorrect_answers": [
-      "f(x) = x² − 3x + 2",
-      "f(x) = x² + 3x + 2",
-      "f(x) = 3x² + 2",
-      "f(x) = x²",
-      "f(x) = e^x"
-    ]
-  },
-  {
-    "question": "What is the axis of symmetry of f(x) = (x − 2)² + 1?",
-    "correct_answer": "x = 2",
-    "incorrect_answers": [
-      "y = 1",
-      "x = 1",
-      "y = 2",
-      "x = 0",
-      "x = −2"
-    ]
-  },
-  {
-    "question": "Which of these graphs shows exponential decay?",
-    "correct_answer": "f(x) = (1/2)^x",
-    "incorrect_answers": [
-      "f(x) = 2^x",
-      "f(x) = e^x",
-      "f(x) = x^2",
-      "f(x) = ln(x)",
-      "f(x) = x^3"
-    ]
-  },
-  {
-    "question": "If f(x) = x² and g(x) = x + 1, what is (f ∘ g)(x)?",
-    "correct_answer": "(x + 1)²",
-    "incorrect_answers": [
-      "x² + 1",
-      "x² + x",
-      "x + 1²",
-      "x² ∘ (x+1)",
-      "x^3 + 1"
-    ]
-  },
-  {
-    "question": "Which function is neither even nor odd?",
-    "correct_answer": "f(x) = x + 1",
-    "incorrect_answers": [
-      "f(x) = x²",
-      "f(x) = x³",
-      "f(x) = 0",
-      "f(x) = e^x",
-      "f(x) = |x|"
-    ]
-  },
-  {
-    "question": "What is the effect of f(x) → f(x)/2?",
-    "correct_answer": "Vertical compression by factor 1/2",
-    "incorrect_answers": [
-      "Vertical stretch by 2",
-      "Horizontal stretch by 2",
-      "Horizontal compression by 1/2",
-      "Shift up by 2",
-      "Shift right by 2"
-    ]
-  },
-  {
-    "question": "What is the transformation of f(x) → f(x) + 4?",
-    "correct_answer": "Shift up by 4",
-    "incorrect_answers": [
-      "Shift down by 4",
-      "Shift right by 4",
-      "Shift left by 4",
-      "Vertical stretch by 4",
-      "Horizontal stretch by 4"
-    ]
-  },
-  {
-    "question": "Which of these is a cubic function?",
-    "correct_answer": "f(x) = x³ − x",
-    "incorrect_answers": [
-      "f(x) = x² − x",
-      "f(x) = x + 1",
-      "f(x) = e^x",
-      "f(x) = ln(x^2)",
-      "f(x) = 1/x"
-    ]
-  },
-  {
-    "question": "What is the end behavior of f(x) = x³?",
-    "correct_answer": "As x → ∞, f(x) → ∞; as x → −∞, f(x) → −∞",
-    "incorrect_answers": [
-      "Both → ∞",
-      "Both → −∞",
-      "As x → ∞, f(x) → −∞",
-      "As x → −∞, f(x) → ∞",
-      "Oscillates"
-    ]
-  },
-  {
-    "question": "Which function has no real inverse?",
-    "correct_answer": "f(x) = x²",
-    "incorrect_answers": [
-      "f(x) = x³",
-      "f(x) = x + 1",
-      "f(x) = e^x",
-      "f(x) = ln(x)",
-      "f(x) = x"
-    ]
-  },
-  {
-    "question": "What is the inverse of f(x) = ln(x)?",
-    "correct_answer": "f⁻¹(x) = e^x",
-    "incorrect_answers": [
-      "f⁻¹(x) = log(x)",
-      "f⁻¹(x) = ln(−x)",
-      "f⁻¹(x) = 1/ln(x)",
-      "f⁻¹(x) = ln(x)/x",
-      "f⁻¹(x) = x"
-    ]
-  },
-  {
-    "question": "What is f⁻¹(5) if f(x) = 2x + 3?",
-    "correct_answer": "1",
-    "incorrect_answers": [
-      "4",
-      "2",
-      "11",
-      "−1",
-      "5"
-    ]
-  },
-  {
-    "question": "Which function is one-to-one on ℝ?",
-    "correct_answer": "f(x) = x³ + x",
-    "incorrect_answers": [
-      "f(x) = x²",
-      "f(x) = |x|",
-      "f(x) = sin(x)",
-      "f(x) = x^4",
-      "f(x) = 2^x + 2"
-    ]
-  },
-  {
-    "question": "What is the slope of the tangent to f(x) = x² at x = 3?",
-    "correct_answer": "2·3 = 6",
-    "incorrect_answers": [
-      "3",
-      "2",
-      "9",
-      "1",
-      "0"
+      "32 cm³",
+      "15 cm³",
+      "64 cm³",
+      "49 cm³",
+      "48 cm³"
     ]
   }
 ]
