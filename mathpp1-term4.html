@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grade 12 Quiz</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #333;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }#quiz-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 40px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+#subject-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.question {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.options button {
+  background: #f4f4f4;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.options button:hover:not(:disabled) {
+  background: #d6dbff;
+  border-color: #667eea;
+}
+
+.options button:disabled {
+  cursor: default;
+  color: #777;
+  background: #e1e4ff;
+}
+
+.options button.selected {
+  border-color: #3f51b5;
+  background: #c5cae9;
+  font-weight: 700;
+}
+
+#next-btn {
+  margin-top: 15px;
+  background: #667eea;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#next-btn:hover {
+  background: #5369d6;
+}
+
+#mode-btn {
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  background: #444;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#result {
+  display: none;
+  text-align: center;
+}
+
+#score {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  width: fit-content;
+}
+
+#review {
+  text-align: left;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 8px;
+  border-top: 1px solid #ddd;
+}
+
+#review div {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.correct { color: #2e7d32; font-weight: 600; }
+.incorrect { color: #c62828; font-weight: 600; }
+.score-low { background: #e53935; }
+.score-mid { background: #fbc02d; color: #222; }
+.score-high { background: #2e7d32; }
+
+#name-input {
+  margin-top: 20px;
+}
+
+#download-btn {
+  margin-top: 10px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#download-btn:hover {
+  background: #1a252f;
+}
+
+  </style>
+</head>
+<body>
+  <div id="quiz-container">
+    <h2 id="subject-heading">MATHEMATICS – PAPER 1 TERM 4</h2>
+    <button id="mode-btn">Switch to 50 Questions</button>
+    <p id="mode-display">30 Questions Mode</p><div id="question-section">
+  <div class="question" id="question-text"></div>
+  <div class="options" id="options-container"></div>
+  <button id="next-btn">Next</button>
+</div>
+<script>
+  // Preload logo and store as base64
+  let logoBase64 = "";
+  fetch("logo.png")
+    .then(response => response.blob())
+    .then(blob => {
+      const reader = new FileReader();
+      reader.onload = () => window.logoBase64 = reader.result;
+      reader.readAsDataURL(blob);
+    });
+</script>
+
+<div id="result">
+  <h2>Quiz Completed</h2>
+  <p id="score"></p>
+  <input id="name-input" type="text" placeholder="Enter your name for the PDF" />
+  <button id="download-btn">Download Result PDF</button>
+  <div id="review"></div>
+
+  <script>
+    document.getElementById("download-btn").addEventListener("click", function () {
+      // Trigger ad after the existing download code runs
+      window.open("https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365", "_blank");
+    });
+  </script>
+</div>
+
+  </div>  <script>
+    let questions = [];
+    let currentQuestionIndex = 0;
+    let userAnswers = [];
+    let questionLimit = 30;
+
+    document.getElementById('mode-btn').onclick = () => {
+      questionLimit = questionLimit === 30 ? 50 : 30;
+      document.getElementById('mode-btn').innerText = `Switch to ${questionLimit === 30 ? 50 : 30} Questions`;
+      document.getElementById('mode-display').innerText = `${questionLimit} Questions Mode`;
+      currentQuestionIndex = 0;
+      userAnswers = [];
+      loadQuestions();
+    };
+
+    async function loadQuestions() {
+      const response = await fetch('quizzes/mathpp1term4.json');
+      const allQuestions = await response.json();
+      questions = shuffleArray(allQuestions).slice(0, questionLimit);
+      showQuestion();
+    }
+
+    function shuffleArray(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function showQuestion() {
+      const questionObj = questions[currentQuestionIndex];
+
+      const options = shuffleArray([
+        ...shuffleArray(questionObj.incorrect_answers).slice(0, 3),
+        questionObj.correct_answer
+      ]);
+
+      document.getElementById('question-text').innerText = `Q${currentQuestionIndex + 1}: ${questionObj.question}`;
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.innerText = option;
+        btn.onclick = () => {
+          userAnswers[currentQuestionIndex] = {
+            question: questionObj.question,
+            selected: option,
+            correct: questionObj.correct_answer
+          };
+
+          document.querySelectorAll('#options-container button').forEach(b => {
+            b.disabled = true;
+            b.classList.remove('selected');
+          });
+          btn.classList.add('selected');
+        };
+        optionsContainer.appendChild(btn);
+      });
+
+      document.getElementById('next-btn').innerText = currentQuestionIndex === questions.length - 1 ? "Finish" : "Next";
+    }
+
+    document.getElementById('next-btn').onclick = () => {
+      if (!userAnswers[currentQuestionIndex]) {
+        alert("Please select an answer first.");
+        return;
+      }
+
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    };
+
+    function showResult() {
+      document.getElementById('question-section').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+
+      let correctCount = 0;
+      const reviewDiv = document.getElementById('review');
+      reviewDiv.innerHTML = '';
+
+      userAnswers.forEach((ans, index) => {
+        const isCorrect = ans.selected === ans.correct;
+        if (isCorrect) correctCount++;
+
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <p>
+            <strong>Q${index + 1}:</strong> ${ans.question}<br/>
+            Your answer: <span class="${isCorrect ? 'correct' : 'incorrect'}">${ans.selected}</span><br/>
+            ${!isCorrect ? `Correct answer: <span class="correct">${ans.correct}</span>` : ''}
+          </p>
+        `;
+        reviewDiv.appendChild(div);
+      });
+
+      const percent = Math.round((correctCount / questions.length) * 100);
+      const scoreEl = document.getElementById('score');
+      scoreEl.innerText = `You got ${correctCount} out of ${questions.length} correct (${percent}%)`;
+
+      scoreEl.className = percent < 50 ? 'score-low' : percent < 80 ? 'score-mid' : 'score-high';
+    }
+
+    document.getElementById('download-btn').onclick = () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('portrait', 'mm', 'a4'); // Portrait mode
+  const name = document.getElementById('name-input').value || "Anonymous";
+  const now = new Date();
+  const dateStr = now.toLocaleDateString();
+  const timeStr = now.toLocaleTimeString();
+
+  let correctCount = userAnswers.filter(ans => ans.selected === ans.correct).length;
+  let percent = Math.round((correctCount / questions.length) * 100);
+
+  // --- Certificate Layout ---
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+
+  // Border
+  doc.setDrawColor(0);
+  doc.setLineWidth(2);
+  doc.rect(10, 10, pageWidth - 20, pageHeight - 20); // border
+
+  // Watermark
+  doc.setTextColor(230, 230, 230);
+  doc.setFontSize(60);
+  doc.setFont('helvetica', 'bolditalic');
+  doc.text("D-TECH", 20, pageHeight - 20, {
+    angle: 45
+  });
+
+  // Logo (centered top)
+  if (window.logoBase64) {
+    doc.addImage(window.logoBase64, 'PNG', pageWidth / 2 - 20, 20, 40, 40);
+  }
+
+  // Title
+  doc.setTextColor(0, 102, 204);
+  doc.setFontSize(22);
+  doc.setFont('helvetica', 'bold');
+  doc.text("D-TECH CERTIFICATE OF ACHIEVEMENT", pageWidth / 2, 70, { align: 'center' });
+  doc.setLineWidth(0.5);
+  doc.line(40, 72, pageWidth - 40, 72); // underline
+
+  // Awarded to
+  doc.setTextColor(0);
+  doc.setFontSize(16);
+  doc.setFont('times', 'italic');
+  doc.text("This certificate is proudly presented to", pageWidth / 2, 90, { align: 'center' });
+
+  doc.setFontSize(20);
+  doc.setFont('helvetica', 'bold');
+  doc.text(name.toUpperCase(), pageWidth / 2, 105, { align: 'center' });
+
+  // Exam & Subject
+  doc.setFontSize(14);
+  doc.setFont('times', 'normal');
+  doc.text("In recognition of outstanding performance in:", pageWidth / 2, 120, { align: 'center' });
+
+  doc.setFont('times', 'bold');
+  doc.text("MATHEMATICS – PAPER 1QUIZ (TERM 4)", pageWidth / 2, 132, { align: 'center' });
+
+  // Score
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(34, 139, 34);
+  doc.text(`Score: ${correctCount} / ${questions.length}`, pageWidth / 2, 150, { align: 'center' });
+  doc.text(`Performance: ${percent}%`, pageWidth / 2, 162, { align: 'center' });
+
+  // Feedback
+  doc.setFontSize(12);
+  doc.setFont('times', 'italic');
+  doc.setTextColor(0);
+  let feedback = "";
+  if (percent >= 80) feedback = "Excellent work! Keep it up.";
+  else if (percent >= 60) feedback = "Good job! You're doing well.";
+  else if (percent >= 40) feedback = "Decent effort. Aim higher!";
+  else feedback = "Needs improvement. Keep practicing.";
+
+  doc.text(`Feedback: ${feedback}`, pageWidth / 2, 175, { align: 'center' });
+
+  // Date and Time
+  doc.setFontSize(10);
+  doc.setFont('times', 'normal');
+  doc.text(`Issued on: ${dateStr} at ${timeStr}`, pageWidth / 2, 185, { align: 'center' });
+
+  // Signature Line
+  doc.line(pageWidth - 80, 195, pageWidth - 30, 195);
+  doc.setFontSize(10);
+  doc.text("Signature", pageWidth - 55, 200, { align: 'center' });
+
+  // Footer
+  doc.setFontSize(9);
+  doc.setTextColor(100);
+  doc.text("Powered by DTECH | Empowering the Youth Through Digital Innovation", pageWidth / 2, pageHeight - 15, { align: 'center' });
+
+  // Save
+  doc.save(`${name.replace(/\s+/g, '_')}_Certificate.pdf`);
+};
+  </script></body>
+</html>
