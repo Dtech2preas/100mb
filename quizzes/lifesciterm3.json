@@ -1,0 +1,1191 @@
+[
+  {
+    "question": "Which greenhouse gas is most abundant in Earth's atmosphere and contributes significantly to climate change?",
+    "correct_answer": "Carbon dioxide (CO₂)",
+    "incorrect_answers": [
+      "Methane (CH₄)",
+      "Ozone (O₃)",
+      "Nitrous oxide (N₂O)",
+      "Sulfur dioxide (SO₂)",
+      "Chlorofluorocarbons (CFCs)"
+    ]
+  },
+  {
+    "question": "What human activity is the primary source of increased atmospheric CO₂ levels?",
+    "correct_answer": "Burning fossil fuels for energy",
+    "incorrect_answers": [
+      "Clearing land for agriculture",
+      "Planting forests",
+      "Generating solar power",
+      "Using electric vehicles",
+      "Conserving wetlands"
+    ]
+  },
+  {
+    "question": "Which effect describes warming of ocean surfaces that disrupts fish migration and coral ecosystems?",
+    "correct_answer": "Ocean warming",
+    "incorrect_answers": [
+      "Stratospheric cooling",
+      "Ozone depletion",
+      "Acid rain",
+      "Smog formation",
+      "Thermal inversion"
+    ]
+  },
+  {
+    "question": "Rising global temperatures cause polar ice to melt, leading to:",
+    "correct_answer": "Sea level rise",
+    "incorrect_answers": [
+      "Increased freshwater supply",
+      "Expansion of polar habitats",
+      "Lower ocean salinity",
+      "Deeper clay deposits",
+      "Reduced tidal range"
+    ]
+  },
+  {
+    "question": "Which human activity contributes most to deforestation, reducing the planet’s carbon sink capacity?",
+    "correct_answer": "Clearing tropical forests for agriculture",
+    "incorrect_answers": [
+      "Replanting native trees",
+      "Building solar farms",
+      "Creating protected parks",
+      "Regulating cattle grazing",
+      "Restoring wetlands"
+    ]
+  },
+  {
+    "question": "Which phenomenon describes gradual increase in average global temperature due to greenhouse gas buildup?",
+    "correct_answer": "Global warming",
+    "incorrect_answers": [
+      "Thermal inversion",
+      "Urban heat island",
+      "Greenhouse cooling",
+      "El Niño",
+      "La Niña"
+    ]
+  },
+  {
+    "question": "Which international agreement aims to limit global warming by reducing greenhouse gas emissions?",
+    "correct_answer": "Paris Agreement",
+    "incorrect_answers": [
+      "Kyoto Protocol (but expired)",
+      "Montreal Protocol",
+      "Geneva Convention",
+      "Stockholm Convention",
+      "Basel Convention"
+    ]
+  },
+  {
+    "question": "Ocean acidification results from increased CO₂ dissolving in seawater, causing:",
+    "correct_answer": "Lower pH in marine ecosystems",
+    "incorrect_answers": [
+      "Higher pH in marine ecosystems",
+      "Increased salinity",
+      "Reduced water clarity",
+      "Decreased dissolved oxygen",
+      "Higher water temperature"
+    ]
+  },
+  {
+    "question": "Which region faces water scarcity due to over-extraction of groundwater?",
+    "correct_answer": "Northwestern India (e.g., Punjab)",
+    "incorrect_answers": [
+      "Amazon basin",
+      "British Columbia",
+      "Alaska",
+      "Greenland",
+      "Southeastern Brazil"
+    ]
+  },
+  {
+    "question": "What is the main factor reducing freshwater availability in arid regions?",
+    "correct_answer": "Overuse for irrigation",
+    "incorrect_answers": [
+      "Excessive rainfall",
+      "Natural glacial melt",
+      "Permafrost thaw",
+      "High-altitude springs",
+      "Ocean desalination"
+    ]
+  },
+  {
+    "question": "Which method can increase water availability in drought-prone areas?",
+    "correct_answer": "Rainwater harvesting",
+    "incorrect_answers": [
+      "Building ski resorts",
+      "Increasing deforestation",
+      "Constructing coal power plants",
+      "Discharging untreated wastewater",
+      "Chlorinating rivers"
+    ]
+  },
+  {
+    "question": "Which practice reduces aquifer recharge rates?",
+    "correct_answer": "Urbanization with impervious surfaces",
+    "incorrect_answers": [
+      "Maintaining wetlands",
+      "Installing permeable pavements",
+      "Reforesting riparian zones",
+      "Building check dams",
+      "Using drip irrigation"
+    ]
+  },
+  {
+    "question": "Which technology helps make seawater potable for human consumption?",
+    "correct_answer": "Reverse osmosis desalination",
+    "incorrect_answers": [
+      "Chlorine dosing only",
+      "Sedimentation alone",
+      "Ultraviolet pasteurization",
+      "Boiling without filtration",
+      "Aeration towers"
+    ]
+  },
+  {
+    "question": "Groundwater depletion primarily results in:",
+    "correct_answer": "Land subsidence and reduced well yields",
+    "incorrect_answers": [
+      "Increased river flow",
+      "Expansion of wetlands",
+      "Rising water tables",
+      "Improved crop yields",
+      "Enhanced fish populations"
+    ]
+  },
+  {
+    "question": "What is a major consequence of water scarcity for agriculture?",
+    "correct_answer": "Crop failures and food shortages",
+    "incorrect_answers": [
+      "Surplus food production",
+      "Reduced irrigation efficiency",
+      "Lower soil salinity",
+      "Higher pasture yields",
+      "More monsoon rains"
+    ]
+  },
+  {
+    "question": "Which contaminant commonly found in drinking water is especially harmful to infants’ nervous systems?",
+    "correct_answer": "Lead",
+    "incorrect_answers": [
+      "Calcium",
+      "Potassium",
+      "Nitrate (in moderation)",
+      "Magnesium",
+      "Chloride"
+    ]
+  },
+  {
+    "question": "What process causes an increase in algal blooms in freshwater bodies?",
+    "correct_answer": "Nutrient runoff (nitrogen and phosphorus) from agriculture",
+    "incorrect_answers": [
+      "Regular water aeration",
+      "Year-round cold temperatures",
+      "Low nutrient levels",
+      "Strong freshwater currents",
+      "Strict buffer zones"
+    ]
+  },
+  {
+    "question": "Which one of the following is a biological indicator of poor water quality?",
+    "correct_answer": "High populations of coliform bacteria",
+    "incorrect_answers": [
+      "Abundant trout species",
+      "Low concentrations of E. coli",
+      "Clear water with high oxygen",
+      "High populations of stonefly nymphs",
+      "Rich aquatic plant diversity"
+    ]
+  },
+  {
+    "question": "Industrial effluents often pollute rivers with:",
+    "correct_answer": "Heavy metals such as mercury and cadmium",
+    "incorrect_answers": [
+      "Dissolved oxygen and silica",
+      "Beneficial probiotics",
+      "nontoxic salts only",
+      "Potable water concentrations",
+      "Excess aquatic vegetation"
+    ]
+  },
+  {
+    "question": "What is one consequence of untreated sewage discharging into water bodies?",
+    "correct_answer": "Eutrophication and oxygen depletion",
+    "incorrect_answers": [
+      "Reduced algae growth",
+      "Decreased bacterial loads",
+      "Increased water clarity",
+      "Higher fish diversity",
+      "Lower nutrient levels"
+    ]
+  },
+  {
+    "question": "Which agricultural practice can help improve groundwater recharge?",
+    "correct_answer": "Crop rotation with cover crops",
+    "incorrect_answers": [
+      "Monocropping with heavy tillage",
+      "Permanent soil sealing",
+      "Continuous pesticide spraying",
+      "Excessive fertilizer application",
+      "Deforestation"
+    ]
+  },
+  {
+    "question": "Food security is primarily threatened by:",
+    "correct_answer": "Climate change–induced crop failures",
+    "incorrect_answers": [
+      "Excess global food surplus",
+      "Declining food prices",
+      "Overproduction of grains",
+      "Improved irrigation",
+      "Universal food subsidies"
+    ]
+  },
+  {
+    "question": "Which of the following practices can enhance food security?",
+    "correct_answer": "Sustainable intensification of agriculture",
+    "incorrect_answers": [
+      "Mono-cropping without fallow periods",
+      "Slash-and-burn farming",
+      "Clearing buffer strips",
+      "Deforestation for pasture",
+      "Subsidizing only luxury crops"
+    ]
+  },
+  {
+    "question": "What is a direct result of soil salinization on crop yields?",
+    "correct_answer": "Reduced plant growth and lower yields",
+    "incorrect_answers": [
+      "Increased grain protein content",
+      "Improved soil fertility",
+      "Higher resistance to drought",
+      "Greater carbon sequestration",
+      "Increased pest resistance"
+    ]
+  },
+  {
+    "question": "Which pest control method reduces chemical pesticide use and supports food security?",
+    "correct_answer": "Integrated pest management (IPM)",
+    "incorrect_answers": [
+      "Clear-cutting forests",
+      "Broad-spectrum pesticide spraying",
+      "Banning all crop pests",
+      "Continuous monocropping",
+      "Eliminating natural predators"
+    ]
+  },
+  {
+    "question": "Which practice conserves genetic diversity in crops to safeguard future food supplies?",
+    "correct_answer": "Maintaining seed banks and heirloom varieties",
+    "incorrect_answers": [
+      "Using only GM monocultures",
+      "Eradicating wild relatives",
+      "Planting a single cultivar globally",
+      "Blocking international seed exchange",
+      "Relying solely on imported seeds"
+    ]
+  },
+  {
+    "question": "Which factor is a major cause of biodiversity loss?",
+    "correct_answer": "Habitat destruction from urban expansion",
+    "incorrect_answers": [
+      "Protecting national parks",
+      "Reforestation efforts",
+      "Pollinator habitat creation",
+      "Establishing wildlife corridors",
+      "Climate-smart agriculture"
+    ]
+  },
+  {
+    "question": "Which invasive species can drastically reduce native biodiversity in freshwater systems?",
+    "correct_answer": "Zebra mussels",
+    "incorrect_answers": [
+      "Honey bees",
+      "Native trout",
+      "Mallard ducks",
+      "Bluegill sunfish (native)",
+      "Endangered salamanders"
+    ]
+  },
+  {
+    "question": "Which human activity contributes directly to overfishing and loss of marine biodiversity?",
+    "correct_answer": "Bottom trawling",
+    "incorrect_answers": [
+      "Marine protected areas",
+      "Catch-and-release programs",
+      "Sustainable aquaculture",
+      "Low-impact handline fishing",
+      "Catch quotas"
+    ]
+  },
+  {
+    "question": "Which of the following is a leading cause of deforestation and biodiversity loss in the Amazon?",
+    "correct_answer": "Clearing land for cattle ranching",
+    "incorrect_answers": [
+      "Urban green spaces",
+      "Restoring native forests",
+      "Ecotourism infrastructure",
+      "Rebuilding wetlands",
+      "Organic farming"
+    ]
+  },
+  {
+    "question": "Which pollutant from agriculture can lead to amphibian population declines and biodiversity loss?",
+    "correct_answer": "Pesticide runoff",
+    "incorrect_answers": [
+      "Biodegradable organic compost",
+      "Natural rainwater",
+      "Sunlight exposure",
+      "Beneficial microorganisms",
+      "Nitrogen-fixing cover crops"
+    ]
+  },
+  {
+    "question": "Which of the following practices helps maintain biodiversity?",
+    "correct_answer": "Establishing and managing protected areas",
+    "incorrect_answers": [
+      "Urban sprawl without planning",
+      "Widespread deforestation",
+      "Dumping waste in natural habitats",
+      "Promoting invasive species",
+      "Intensive monoculture farming"
+    ]
+  },
+  {
+    "question": "How does habitat restoration support biodiversity?",
+    "correct_answer": "Re-establishes native plant and animal communities",
+    "incorrect_answers": [
+      "Encourages exotic plantations",
+      "Reduces native pollinators",
+      "Constricts wildlife corridors",
+      "Maintains road networks",
+      "Removes buffer zones"
+    ]
+  },
+  {
+    "question": "Which conservation strategy focuses on reintroducing extirpated species to their historical range?",
+    "correct_answer": "Rewilding",
+    "incorrect_answers": [
+      "Monoculture reforestation",
+      "Clear-cut logging",
+      "Aquaculture expansion",
+      "Urban development",
+      "Pollinator exclusion"
+    ]
+  },
+  {
+    "question": "Which action helps maintain genetic diversity within populations?",
+    "correct_answer": "Facilitating wildlife corridors between fragmented habitats",
+    "incorrect_answers": [
+      "Fencing off small reserves",
+      "Localizing breeding within one population",
+      "Eradicating predators",
+      "Continuous pesticide spraying",
+      "Removing native vegetation"
+    ]
+  },
+  {
+    "question": "Which practice reduces biodiversity loss by limiting waste sent to landfills?",
+    "correct_answer": "Implementing comprehensive recycling programs",
+    "incorrect_answers": [
+      "Encouraging single-use plastics",
+      "Unregulated waste burning",
+      "Dumping in waterways",
+      "Illegal dumping in protected areas",
+      "Building more incinerators without filters"
+    ]
+  },
+  {
+    "question": "Which component of solid waste disposal involves sorting materials for reuse?",
+    "correct_answer": "Source separation",
+    "incorrect_answers": [
+      "Leachate generation",
+      "Tipping fees",
+      "Methane capture",
+      "Landfill compaction",
+      "Inert ash disposal"
+    ]
+  },
+  {
+    "question": "What is a major environmental risk associated with open dumpsites?",
+    "correct_answer": "Groundwater contamination from leachate",
+    "incorrect_answers": [
+      "Increased carbon sequestration",
+      "Enhanced soil fertility",
+      "Reduced air pollution",
+      "Improved wildlife habitat",
+      "Greater crop yields"
+    ]
+  },
+  {
+    "question": "Which of the following waste disposal methods generates energy from municipal waste combustion?",
+    "correct_answer": "Waste-to-energy incineration",
+    "incorrect_answers": [
+      "Open dumping",
+      "Unlined landfilling",
+      "Source separation",
+      "Composting only",
+      "Deep well injection"
+    ]
+  },
+  {
+    "question": "Which solid waste management practice reduces methane emissions from landfills?",
+    "correct_answer": "Capturing and flaring landfill gas",
+    "incorrect_answers": [
+      "Open burning of waste",
+      "Leachate recirculation",
+      "Burying waste without cover",
+      "Discharging untreated leachate",
+      "Stacking waste in unpaved areas"
+    ]
+  },
+  {
+    "question": "Which landfill design feature prevents leachate from polluting groundwater?",
+    "correct_answer": "Liner system of clay and geomembrane",
+    "incorrect_answers": [
+      "Open pit design",
+      "Uncontrolled tipping",
+      "No daily cover",
+      "No gas venting",
+      "Lack of stormwater control"
+    ]
+  },
+  {
+    "question": "What is the advantage of composting organic waste?",
+    "correct_answer": "Produces nutrient-rich soil amendment",
+    "incorrect_answers": [
+      "Generates toxic incinerator ash",
+      "Increases methane in atmosphere",
+      "Requires large landfill space",
+      "Elevates heavy metal leaching",
+      "Eliminates all biodegradable materials instantly"
+    ]
+  },
+  {
+    "question": "Which of the following is a benefit of reducing single-use plastic waste?",
+    "correct_answer": "Decreases marine plastic pollution",
+    "incorrect_answers": [
+      "Increases landfill volume",
+      "Boosts production of polyvinyl chloride (PVC)",
+      "Raises microplastic levels",
+      "Encourages overfishing",
+      "Depletes freshwater aquifers"
+    ]
+  },
+  {
+    "question": "Which practice diverts food waste from landfills and reduces greenhouse gas emissions?",
+    "correct_answer": "Anaerobic digestion to produce biogas",
+    "incorrect_answers": [
+      "Open burning of food scraps",
+      "Deep ocean disposal",
+      "Dredging landfills",
+      "Plastic incineration",
+      "Single-stream recycling"
+    ]
+  },
+  {
+    "question": "E-waste recycling helps prevent which type of pollution?",
+    "correct_answer": "Heavy metal contamination",
+    "incorrect_answers": [
+      "Increased soil fertility",
+      "Decreased marine debris",
+      "Enhanced groundwater recharge",
+      "Lower soot emissions",
+      "Improved ozone layer"
+    ]
+  },
+  {
+    "question": "Which of the following is a consequence of poor solid waste management in urban areas?",
+    "correct_answer": "Increased vector-borne diseases (e.g., mosquitoes)",
+    "incorrect_answers": [
+      "Lower incidence of respiratory illnesses",
+      "Higher crop productivity",
+      "Reduced water scarcity",
+      "Improved air quality",
+      "Stronger community cohesion"
+    ]
+  },
+  {
+    "question": "Which policy can reduce household waste generation at the source?",
+    "correct_answer": "Pay-as-you-throw (PAYT) waste collection fees",
+    "incorrect_answers": [
+      "Subsidizing single-use plastics",
+      "Mandating open dumping",
+      "Banning composting programs",
+      "Prohibiting recycling centers",
+      "Eliminating waste audits"
+    ]
+  },
+{
+    "question": "Which tissue is responsible for primary growth in plants?",
+    "correct_answer": "Apical meristem",
+    "incorrect_answers": [
+      "Lateral meristem",
+      "Cork cambium",
+      "Procambium",
+      "Ground meristem",
+      "Pericycle"
+    ]
+  },
+  {
+    "question": "What process in apical meristems leads to increase in root and shoot length?",
+    "correct_answer": "Cell division and elongation",
+    "incorrect_answers": [
+      "Secondary thickening",
+      "Lignification",
+      "Sclerenchyma formation",
+      "Phloem loading",
+      "Stomatal closure"
+    ]
+  },
+  {
+    "question": "Which hormone primarily regulates cell elongation in young shoots?",
+    "correct_answer": "Auxin",
+    "incorrect_answers": [
+      "Gibberellin",
+      "Abscisic acid",
+      "Cytokinin",
+      "Ethylene",
+      "Brassinosteroid"
+    ]
+  },
+  {
+    "question": "What is the function of the vascular cambium in woody plants?",
+    "correct_answer": "Secondary growth (increase in girth)",
+    "incorrect_answers": [
+      "Primary root formation",
+      "Flower initiation",
+      "Leaf abscission",
+      "Seed germination",
+      "Water absorption"
+    ]
+  },
+  {
+    "question": "Which region in roots is responsible for absorption of water and minerals?",
+    "correct_answer": "Zone of maturation",
+    "incorrect_answers": [
+      "Zone of elongation",
+      "Zone of cell division",
+      "Root cap",
+      "Zone of secondary thickening",
+      "Cortex"
+    ]
+  },
+  {
+    "question": "Photoperiodism in plants refers to response to:",
+    "correct_answer": "Length of day and night",
+    "incorrect_answers": [
+      "Soil pH variations",
+      "Wind direction",
+      "Soil moisture levels",
+      "Ambient CO₂ concentration",
+      "Gravity"
+    ]
+  },
+  {
+    "question": "Which hormone is primarily involved in promoting seed germination?",
+    "correct_answer": "Gibberellin",
+    "incorrect_answers": [
+      "Auxin",
+      "Cytokinin",
+      "Abscisic acid (ABA)",
+      "Ethylene",
+      "Brassinosteroid"
+    ]
+  },
+  {
+    "question": "What role does abscisic acid play in plant development?",
+    "correct_answer": "Inhibits germination and promotes dormancy",
+    "incorrect_answers": [
+      "Promotes cell elongation",
+      "Stimulates flowering",
+      "Enhances photosynthesis",
+      "Triggers senescence",
+      "Increases auxin synthesis"
+    ]
+  },
+  {
+    "question": "Which region of a seed contains the embryonic shoot?",
+    "correct_answer": "Plumule",
+    "incorrect_answers": [
+      "Radicle",
+      "Testa",
+      "Cotyledon",
+      "Endosperm",
+      "Hypocotyl"
+    ]
+  },
+  {
+    "question": "Which process describes differentiation of cells into specialized tissues?",
+    "correct_answer": "Cell differentiation",
+    "incorrect_answers": [
+      "Photosynthesis",
+      "Transpiration",
+      "Respiration",
+      "Guttation",
+      "Phototropism"
+    ]
+  },
+  {
+    "question": "Auxins are synthesized primarily in which part of the plant?",
+    "correct_answer": "Shoot tips and young leaves",
+    "incorrect_answers": [
+      "Root nodules",
+      "Mature leaves",
+      "Flower petals",
+      "Xylem vessels",
+      "Cortex of stems"
+    ]
+  },
+  {
+    "question": "During phototropism, auxin accumulates on which side of a horizontally placed stem?",
+    "correct_answer": "Shade side (far from light source)",
+    "incorrect_answers": [
+      "Light side (toward light source)",
+      "Upper side (away from earth)",
+      "Lower side (toward earth)",
+      "Middle region",
+      "Uniformly distributed"
+    ]
+  },
+  {
+    "question": "In geotropism, which direction do roots grow relative to gravity?",
+    "correct_answer": "Toward gravity (positive geotropism)",
+    "incorrect_answers": [
+      "Away from gravity (negative geotropism)",
+      "Horizontally regardless of gravity",
+      "Upright against gravity",
+      "Randomly without regard to gravity",
+      "Toward a light source"
+    ]
+  },
+  {
+    "question": "Which cellular component helps redistribute auxin during tropic responses?",
+    "correct_answer": "PIN proteins (auxin efflux carriers)",
+    "incorrect_answers": [
+      "Plasmodesmata",
+      "Rubisco enzymes",
+      "Chloroplasts",
+      "Mitochondria",
+      "Cellulose microfibrils"
+    ]
+  },
+  {
+    "question": "What effect does high auxin concentration have on root growth?",
+    "correct_answer": "Inhibits root elongation",
+    "incorrect_answers": [
+      "Promotes root elongation",
+      "Triggers leaf abscission",
+      "Stimulates flower opening",
+      "Induces stomatal closure",
+      "Increases chlorophyll synthesis"
+    ]
+  },
+  {
+    "question": "Which hormone works antagonistically to auxin during root growth?",
+    "correct_answer": "Cytokinin",
+    "incorrect_answers": [
+      "Gibberellin",
+      "Ethylene",
+      "Abscisic acid",
+      "Brassinosteroid",
+      "Salicylic acid"
+    ]
+  },
+  {
+    "question": "What is the main visible symptom of phototropism in shoots?",
+    "correct_answer": "Stem bending toward the light source",
+    "incorrect_answers": [
+      "Leaves dropping off",
+      "Roots growing upward",
+      "Stem thickening",
+      "Fruit ripening prematurely",
+      "Flowers closing"
+    ]
+  },
+  {
+    "question": "Which pigment acts as the light receptor in phototropism?",
+    "correct_answer": "Phototropin",
+    "incorrect_answers": [
+      "Phytochrome",
+      "Chlorophyll a",
+      "Carotenoid",
+      "Xanthophyll",
+      "Flavonoid"
+    ]
+  },
+  {
+    "question": "Which type of tropism is characterized by growth in response to mechanical stimulus?",
+    "correct_answer": "Thigmotropism",
+    "incorrect_answers": [
+      "Phototropism",
+      "Geotropism",
+      "Hydrotropism",
+      "Chemotropism",
+      "Thermotropism"
+    ]
+  },
+  {
+    "question": "Where are auxin concentrations highest in a bending shoot during phototropism?",
+    "correct_answer": "On the shaded side of the shoot",
+    "incorrect_answers": [
+      "On the illuminated side of the shoot",
+      "Uniformly throughout the shoot",
+      "At the base of the root",
+      "In the leaf tips",
+      "Only at the meristem"
+    ]
+  },
+  {
+    "question": "Which response describes negative phototropism?",
+    "correct_answer": "Growth away from light",
+    "incorrect_answers": [
+      "Growth toward gravity",
+      "Growth toward light",
+      "Growth away from gravity",
+      "Growth toward moisture",
+      "Growth away from chemicals"
+    ]
+  },
+  {
+    "question": "Which plant hormone mediates abscission (leaf drop) as a defense mechanism?",
+    "correct_answer": "Ethylene",
+    "incorrect_answers": [
+      "Auxin",
+      "Gibberellin",
+      "Cytokinin",
+      "Abscisic acid",
+      "Brassinosteroid"
+    ]
+  },
+  {
+    "question": "What is the role of salicylic acid in plant defense?",
+    "correct_answer": "Induces systemic acquired resistance (SAR)",
+    "incorrect_answers": [
+      "Promotes cell elongation",
+      "Triggers fruit ripening",
+      "Inhibits stomatal opening",
+      "Activates phototropism",
+      "Accelerates flowering"
+    ]
+  },
+  {
+    "question": "Which structural feature acts as the first line of defense against pathogens in plants?",
+    "correct_answer": "Cuticle and waxy epidermal layer",
+    "incorrect_answers": [
+      "Phloem sieve plates",
+      "Xylem vessels",
+      "Root hairs",
+      "Pith parenchyma",
+      "Medullary rays"
+    ]
+  },
+  {
+    "question": "What is the hypersensitive response in plant defense?",
+    "correct_answer": "Localized cell death to limit pathogen spread",
+    "incorrect_answers": [
+      "Widespread tissue necrosis",
+      "Global leaf abscission",
+      "Fruit drop",
+      "Root elongation",
+      "Flower shedding"
+    ]
+  },
+  {
+    "question": "Which compound is often produced by plants as an antimicrobial phytoalexin?",
+    "correct_answer": "Resveratrol",
+    "incorrect_answers": [
+      "Starch",
+      "Fructose",
+      "Chlorophyll",
+      "Cellulose",
+      "Sucrose"
+    ]
+  },
+  {
+    "question": "What defense mechanism involves strengthening of cell walls in infected areas?",
+    "correct_answer": "Callose deposition and lignification",
+    "incorrect_errors": [
+      "Chloroplast swelling",
+      "Vacuole collapse",
+      "Stomatal closure only",
+      "Seed germination",
+      "Phloem breakdown"
+    ]
+  },
+  {
+    "question": "Which molecule acts as a signaling compound for systemic acquired resistance?",
+    "correct_answer": "Methyl salicylate",
+    "incorrect_answers": [
+      "Methyl jasmonate",
+      "Ethylene",
+      "Auxin",
+      "Abscisic acid",
+      "Cytokinin"
+    ]
+  },
+  {
+    "question": "How do jasmonic acid and its derivatives contribute to plant defense?",
+    "correct_answer": "Activate production of protease inhibitors against herbivores",
+    "incorrect_answers": [
+      "Stimulate pollen production",
+      "Promote seed dormancy",
+      "Increase photosynthesis",
+      "Inhibit root growth",
+      "Enhance fruit sweetness"
+    ]
+  },
+  {
+    "question": "Which physical structure deters herbivores from consuming plant tissues?",
+    "correct_answer": "Thorns and spines",
+    "incorrect_answers": [
+      "Guard cells",
+      "Stomatal pores",
+      "Phloem fibers",
+      "Root nodules",
+      "Flower petals"
+    ]
+  },
+  {
+    "question": "Which secondary metabolite is toxic to many herbivores and pathogens?",
+    "correct_answer": "Alkaloids",
+    "incorrect_answers": [
+      "Cellulose",
+      "Glucose",
+      "Amino acids",
+      "Chlorophyll",
+      "Fructans"
+    ]
+  },
+  {
+    "question": "Which volatile organic compounds released by plants can attract predators of herbivores?",
+    "correct_answer": "Herbivore-induced plant volatiles (HIPVs)",
+    "incorrect_answers": [
+      "Ozone",
+      "Methane",
+      "Carbon dioxide",
+      "Nitrous oxide",
+      "Sulfur dioxide"
+    ]
+  },
+  {
+    "question": "What is systemic acquired resistance (SAR)?",
+    "correct_answer": "Plant-wide increased resistance following localized infection",
+    "incorrect_answers": [
+      "Localized cell death only",
+      "Enhanced flowering",
+      "Continued drought tolerance",
+      "Increased fruit production",
+      "Immediate stomatal opening"
+    ]
+  },
+  {
+    "question": "Which pathway is commonly activated by pathogen recognition in plants?",
+    "correct_answer": "MAP kinase signaling pathway",
+    "incorrect_answers": [
+      "Glycolysis pathway",
+      "Calvin cycle",
+      "Pentose phosphate pathway",
+      "Citric acid cycle",
+      "Fatty acid synthesis"
+    ]
+  },
+  {
+    "question": "What role do pathogen-associated molecular patterns (PAMPs) play in plant defense?",
+    "correct_answer": "Trigger PAMP-triggered immunity (PTI)",
+    "incorrect_answers": [
+      "Stimulate photosynthesis",
+      "Promote root elongation",
+      "Inhibit ethylene production",
+      "Enhance sugar transport",
+      "Activate stomatal opening"
+    ]
+  },
+  {
+    "question": "Which receptor-like proteins detect PAMPs in plant cells?",
+    "correct_answer": "Pattern recognition receptors (PRRs)",
+    "incorrect_answers": [
+      "Ribosomal proteins",
+      "Chloroplast translocases",
+      "Photosystem I complexes",
+      "Xylem parenchyma",
+      "Mitochondrial ATP synthase"
+    ]
+  },
+  {
+    "question": "Which molecule functions as a mobile signal to induce systemic resistance?",
+    "correct_answer": "Salicylic acid",
+    "incorrect_answers": [
+      "Sucrose",
+      "Cellulose",
+      "Ribulose bisphosphate",
+      "Fructose",
+      "Malate"
+    ]
+  },
+  {
+    "question": "What is the gene-for-gene relationship in plant-pathogen interactions?",
+    "correct_answer": "Presence of specific plant R gene and matching pathogen avirulence (Avr) gene",
+    "incorrect_answers": [
+      "Only dependent on environmental conditions",
+      "Random selection of defense genes",
+      "Exclusive to insect–plant interactions",
+      "Involves fungal symbionts only",
+      "Controlled solely by plant hormone levels"
+    ]
+  },
+  {
+    "question": "Which physical barrier is the first line of defense against pathogen entry?",
+    "correct_answer": "Cuticle",
+    "incorrect_answers": [
+      "Thylakoid membrane",
+      "Cell membrane",
+      "Mitochondrial envelope",
+      "Endoplasmic reticulum",
+      "Golgi apparatus"
+    ]
+  },
+  {
+    "question": "What is the function of phytoalexins in plant defense?",
+    "correct_answer": "Antimicrobial compounds synthesized after pathogen attack",
+    "incorrect_answers": [
+      "Energy storage molecules",
+      "Structural polysaccharides",
+      "Pigments for photosynthesis",
+      "Nutrient transporters",
+      "Auxin precursors"
+    ]
+  },
+  {
+    "question": "Which plant defense response involves closure of stomata to prevent bacterial entry?",
+    "correct_answer": "Stomatal immunity",
+    "incorrect_answers": [
+      "Hypersensitive response",
+      "Systemic acquired resistance",
+      "Phytoalexin secretion",
+      "Callose deposition",
+      "Leaf abscission"
+    ]
+  },
+  {
+    "question": "Which compound accumulates at wound sites to strengthen cell walls against pathogens?",
+    "correct_answer": "Callose (β-1,3-glucan)",
+    "incorrect_answers": [
+      "Sucrose",
+      "Chlorophyll",
+      "Starch",
+      "Ribulose bisphosphate",
+      "Vitamin C"
+    ]
+  },
+  {
+    "question": "Which hormone is involved in wound-induced systemic signaling in plants?",
+    "correct_answer": "Jasmonic acid",
+    "incorrect_answers": [
+      "Cytokinin",
+      "Auxin",
+      "Gibberellin",
+      "Salicylic acid",
+      "Abscisic acid"
+    ]
+  },
+  {
+    "question": "Which enzyme synthesizes reactive oxygen species (ROS) as a defense mechanism?",
+    "correct_answer": "NADPH oxidase",
+    "incorrect_answers": [
+      "Rubisco",
+      "ATP synthase",
+      "Cellulose synthase",
+      "Chitinase",
+      "Peroxidase only in chloroplasts"
+    ]
+  },
+  {
+    "question": "How do plants prevent self-toxicity when producing ROS for defense?",
+    "correct_answer": "Upregulating antioxidant enzymes (e.g., catalase, superoxide dismutase)",
+    "incorrect_answers": [
+      "Producing ROS only at night",
+      "Shutting down all mitochondria",
+      "Sequestering ROS in the nucleus",
+      "Converting ROS to sugar",
+      "Blocking all ion channels"
+    ]
+  },
+  {
+    "question": "Which signaling molecule mediates local defense by inducing stomatal closure?",
+    "correct_answer": "Abscisic acid (ABA)",
+    "incorrect_answers": [
+      "Gibberellin",
+      "Cytokinin",
+      "Ethylene",
+      "Auxin",
+      "Brassinosteroid"
+    ]
+  },
+  {
+    "question": "Which structural protein cross-links cell wall components during pathogen attack?",
+    "correct_answer": "Hydroxyproline-rich glycoprotein (HRGP)",
+    "incorrect_answers": [
+      "PSII reaction center",
+      "Ribosomal L protein",
+      "Pectin methylesterase",
+      "Stomatin",
+      "Aquaporin"
+    ]
+  },
+  {
+    "question": "Which volatile compound emitted by herbivore-damaged plants attracts parasitic wasps?",
+    "correct_answer": "Methyl jasmonate",
+    "incorrect_answers": [
+      "Ethane",
+      "Methane",
+      "Nitrous oxide",
+      "Sulfur dioxide",
+      "Carbon monoxide"
+    ]
+  },
+  {
+    "question": "What is the role of chitinases in plant defense?",
+    "correct_answer": "Degrade fungal cell walls",
+    "incorrect_answers": [
+      "Fix atmospheric nitrogen",
+      "Synthesize chlorophyll",
+      "Transport sugars",
+      "Strengthen cell membranes",
+      "Break down lignin"
+    ]
+  },
+  {
+    "question": "Which hormone combination often triggers leaf abscission during severe stress?",
+    "correct_answer": "High ethylene and low auxin",
+    "incorrect_answers": [
+      "High auxin and high gibberellin",
+      "Low ethylene and high cytokinin",
+      "High cytokinin and high auxin",
+      "Low abscisic acid and high auxin",
+      "High gibberellin and low auxin"
+    ]
+  },
+  {
+    "question": "Which pigment plays a key role in the rapid closure of Mimosa pudica leaves upon touch?",
+    "correct_answer": "Electrochemical signals moving K⁺ out of pulvini cells",
+    "incorrect_answers": [
+      "Chlorophyll a accumulation",
+      "Carotenoid fluorescence",
+      "Anthocyanin color change",
+      "Flavonoid diffusion",
+      "Xanthophyll cycle"
+    ]
+  },
+  {
+    "question": "What is the function of PR proteins in plant defense?",
+    "correct_answer": "Pathogenesis-related proteins that have antimicrobial activity",
+    "incorrect_answers": [
+      "Photosynthesis regulation",
+      "Sugar transport",
+      "Auxin signaling",
+      "DNA replication",
+      "Nitrogen fixation"
+    ]
+  },
+  {
+    "question": "Which defense strategy involves recruitment of beneficial microbes to roots?",
+    "correct_answer": "Induced systemic resistance (ISR)",
+    "incorrect_answers": [
+      "Systemic acquired resistance (SAR)",
+      "Hypersensitive response",
+      "Photoprotection",
+      "Guttation",
+      "Lenticel formation"
+    ]
+  },
+  {
+    "question": "How does silicon supplementation help plant defense?",
+    "correct_answer": "Strengthens cell walls by depositing silica",
+    "incorrect_answers": [
+      "Enhances chlorophyll synthesis",
+      "Increases transpiration rate",
+      "Stimulates root nodulation",
+      "Suppresses auxin production",
+      "Increases ethylene sensitivity"
+    ]
+  },
+  {
+    "question": "Which of the following is a chemical barrier produced in the bark to deter pathogens?",
+    "correct_answer": "Suberin",
+    "incorrect_answers": [
+      "Lignin",
+      "Cellulose",
+      "Pectin",
+      "Starch",
+      "Collagen"
+    ]
+  },
+  {
+    "question": "What is the role of phytochrome in plant defense?",
+    "correct_answer": "Regulates expression of defense genes in response to light signals",
+    "incorrect_answers": [
+      "Fixes nitrogen in roots",
+      "Produces lignin",
+      "Activates stomatal opening at night",
+      "Stores sugars in vacuoles",
+      "Synthesizes chlorophyll"
+    ]
+  },
+  {
+    "question": "Which plant defense response is triggered by recognition of specific effector proteins?",
+    "correct_answer": "Effector-triggered immunity (ETI)",
+    "incorrect_answers": [
+      "Photosynthetic immunity",
+      "Basal resistance",
+      "Transpiration immunity",
+      "Auxin-mediated immunity",
+      "Hydrotrophic immunity"
+    ]
+  },
+  {
+    "question": "Which process describes the reinforcement of cell walls at infection sites by cross-linking proteins?",
+    "correct_answer": "Oxidative cross-linking of cell wall proteins",
+    "incorrect_answers": [
+      "Phloem plugging",
+      "Xylem embolism",
+      "Chloroplast degradation",
+      "Mitochondrial fission",
+      "Golgi dispersal"
+    ]
+  },
+  {
+    "question": "Which RNA silencing mechanism targets viral RNA in plants?",
+    "correct_answer": "Post-transcriptional gene silencing (PTGS)",
+    "incorrect_answers": [
+      "Transcriptional bursting",
+      "Alternative splicing",
+      "RNA editing",
+      "Retrotransposon activation",
+      "Chromatin remodeling"
+    ]
+  },
+  {
+    "question": "Which metabolite accumulates in response to ozone exposure to protect plant cells?",
+    "correct_answer": "Phenolic compounds (e.g., flavonoids)",
+    "incorrect_answers": [
+      "Starch granules",
+      "Phospholipids",
+      "Lignin monomers",
+      "Cellulose microfibrils",
+      "Chitin"
+    ]
+  },
+  {
+    "question": "Which protein kinase family is central to PTI signaling in plant defense?",
+    "correct_answer": "Receptor-like cytoplasmic kinases (RLCKs)",
+    "incorrect_answers": [
+      "Receptor tyrosine kinases (RTKs)",
+      "Cyclin-dependent kinases (CDKs)",
+      "Mitogen-activated protein kinases (MAPKs) only",
+      "Glycogen synthase kinases",
+      "Calcium/calmodulin-dependent kinases"
+    ]
+  }
+]
+ 
