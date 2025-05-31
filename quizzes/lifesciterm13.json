@@ -647,12 +647,5 @@
       "CRISPR screening",
       "Epigenetic editing"
     ]
-  },
-  {
-    "question": "Which vector is often used to deliver genes to human cells in gene therapy trials?",
-    "correct_answer": "Adenovirus",
-    "incorrect_answers": [
-      "Bacteriophage lambda",
-      "Agrobacterium tumefaciens",
-      "Yeast artificial chromosome",
-  
+  }
+]
