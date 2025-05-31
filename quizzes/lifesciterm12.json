@@ -1,1 +1,684 @@
-h
+[
+  {
+    "question": "What is the basic structural unit of DNA and RNA?",
+    "correct_answer": "Nucleotide",
+    "incorrect_answers": [
+      "Amino acid",
+      "Polysaccharide",
+      "Fatty acid",
+      "Phospholipid",
+      "Monosaccharide"
+    ]
+  },
+  {
+    "question": "Which sugar is found in RNA nucleotides?",
+    "correct_answer": "Ribose",
+    "incorrect_answers": [
+      "Deoxyribose",
+      "Glucose",
+      "Fructose",
+      "Galactose",
+      "Sucrose"
+    ]
+  },
+  {
+    "question": "Which nitrogenous base is unique to RNA?",
+    "correct_answer": "Uracil",
+    "incorrect_answers": [
+      "Thymine",
+      "Guanine",
+      "Cytosine",
+      "Adenine",
+      "Hypoxanthine"
+    ]
+  },
+  {
+    "question": "How many hydrogen bonds form between guanine and cytosine in DNA?",
+    "correct_answer": "Three",
+    "incorrect_answers": [
+      "One",
+      "Two",
+      "Four",
+      "Five",
+      "Zero"
+    ]
+  },
+  {
+    "question": "What term describes the two strands of DNA running in opposite directions?",
+    "correct_answer": "Antiparallel",
+    "incorrect_answers": [
+      "Parallel",
+      "Helical",
+      "Biparallel",
+      "Orthogonal",
+      "Unidirectional"
+    ]
+  },
+  {
+    "question": "Which enzyme unwinds the DNA double helix during replication?",
+    "correct_answer": "Helicase",
+    "incorrect_answers": [
+      "Ligase",
+      "Polymerase",
+      "Topoisomerase",
+      "Primase",
+      "Nuclease"
+    ]
+  },
+  {
+    "question": "Which functional group is attached to the 5' carbon of a nucleotide in DNA?",
+    "correct_answer": "Phosphate group",
+    "incorrect_answers": [
+      "Amino group",
+      "Hydroxyl group",
+      "Carboxyl group",
+      "Methyl group",
+      "Formyl group"
+    ]
+  },
+  {
+    "question": "What type of bond links nucleotides together in a single DNA strand?",
+    "correct_answer": "Phosphodiester bond",
+    "incorrect_answers": [
+      "Peptide bond",
+      "Hydrogen bond",
+      "Glycosidic bond",
+      "Ester bond",
+      "Ionic bond"
+    ]
+  },
+  {
+    "question": "Which base pairing rule applies to DNA?",
+    "correct_answer": "Adenine pairs with thymine; cytosine pairs with guanine",
+    "incorrect_answers": [
+      "Adenine pairs with cytosine; guanine pairs with thymine",
+      "Adenine pairs with guanine; cytosine pairs with thymine",
+      "Uracil pairs with adenine; cytosine pairs with guanine",
+      "Adenine pairs with thymine only in RNA",
+      "Cytosine pairs with adenine; guanine pairs with uracil"
+    ]
+  },
+  {
+    "question": "Which structural feature differentiates RNA from DNA?",
+    "correct_answer": "RNA contains a hydroxyl group on the 2' carbon of the sugar",
+    "incorrect_answers": [
+      "RNA has thymine instead of uracil",
+      "RNA is double-stranded in cells",
+      "RNA lacks a phosphate backbone",
+      "RNA contains deoxyribose sugar",
+      "RNA has a methyl group on every nucleotide"
+    ]
+  },
+  {
+    "question": "During DNA replication, which strand is synthesized continuously?",
+    "correct_answer": "Leading strand",
+    "incorrect_answers": [
+      "Lagging strand",
+      "Template strand",
+      "Antisense strand",
+      "Coding strand",
+      "Primer strand"
+    ]
+  },
+  {
+    "question": "What name is given to the short DNA fragments synthesized on the lagging strand?",
+    "correct_answer": "Okazaki fragments",
+    "incorrect_answers": [
+      "Rossini fragments",
+      "Helical fragments",
+      "Klenow fragments",
+      "Sanger fragments",
+      "Messenger fragments"
+    ]
+  },
+  {
+    "question": "Which enzyme joins Okazaki fragments on the lagging strand?",
+    "correct_answer": "DNA ligase",
+    "incorrect_answers": [
+      "DNA polymerase I",
+      "Helicase",
+      "Primase",
+      "Topoisomerase II",
+      "Nuclease"
+    ]
+  },
+  {
+    "question": "What is the significance of DNA being semi-conservative during replication?",
+    "correct_answer": "Each daughter DNA molecule contains one parental and one newly synthesized strand",
+    "incorrect_answers": [
+      "Each daughter DNA is entirely newly synthesized",
+      "Each daughter DNA is entirely parental",
+      "DNA replicates without parental template",
+      "Only half of the genome is replicated",
+      "Parental strands remain unaltered"
+    ]
+  },
+  {
+    "question": "What role does DNA polymerase III play in prokaryotic replication?",
+    "correct_answer": "Adds nucleotides to the growing DNA strand",
+    "incorrect_answers": [
+      "Synthesizes RNA primers",
+      "Ligates DNA fragments",
+      "Unwinds the DNA helix",
+      "Removes RNA primers",
+      "Terminates replication"
+    ]
+  },
+  {
+    "question": "Which protein prevents single-stranded DNA from reannealing during replication?",
+    "correct_answer": "Single-strand binding proteins (SSBs)",
+    "incorrect_answers": [
+      "Helicase",
+      "DNA ligase",
+      "Topoisomerase",
+      "DNA polymerase I",
+      "Primase"
+    ]
+  },
+  {
+    "question": "Where does transcription occur in eukaryotic cells?",
+    "correct_answer": "Nucleus",
+    "incorrect_answers": [
+      "Cytoplasm",
+      "Ribosome",
+      "Mitochondria",
+      "Golgi apparatus",
+      "Endoplasmic reticulum"
+    ]
+  },
+  {
+    "question": "Which enzyme synthesizes RNA during transcription?",
+    "correct_answer": "RNA polymerase II",
+    "incorrect_answers": [
+      "DNA polymerase",
+      "Reverse transcriptase",
+      "Ligase",
+      "Topoisomerase",
+      "Helicase"
+    ]
+  },
+  {
+    "question": "Which region of DNA does RNA polymerase bind to initiate transcription?",
+    "correct_answer": "Promoter",
+    "incorrect_errors": [
+      "Terminator",
+      "Enhancer",
+      "Origin of replication",
+      "Operator",
+      "Shine-Dalgarno sequence"
+    ]
+  },
+  {
+    "question": "What is the primary transcript produced by RNA polymerase before processing in eukaryotes?",
+    "correct_answer": "Pre-mRNA",
+    "incorrect_answers": [
+      "tRNA",
+      "rRNA",
+      "mature mRNA",
+      "snRNA",
+      "miRNA"
+    ]
+  },
+  {
+    "question": "Which modification is added to the 5' end of eukaryotic pre-mRNA?",
+    "correct_answer": "5' cap (7-methylguanosine)",
+    "incorrect_answers": [
+      "Poly-A tail",
+      "Intron removal",
+      "5' UTR trimming",
+      "Branch point addition",
+      "3' cap"
+    ]
+  },
+  {
+    "question": "What is removed from pre-mRNA during RNA splicing?",
+    "correct_answer": "Introns",
+    "incorrect_answers": [
+      "Exons",
+      "5' cap",
+      "Poly-A tail",
+      "Start codon",
+      "3' UTR"
+    ]
+  },
+  {
+    "question": "Which sequence marks the end of transcription in prokaryotes?",
+    "correct_answer": "Terminator sequence",
+    "incorrect_answers": [
+      "Promoter sequence",
+      "Operator sequence",
+      "Enhancer sequence",
+      "TATA box",
+      "Shine-Dalgarno sequence"
+    ]
+  },
+  {
+    "question": "During translation, which site on the ribosome holds the growing polypeptide chain?",
+    "correct_answer": "P site (peptidyl site)",
+    "incorrect_answers": [
+      "A site (aminoacyl site)",
+      "E site (exit site)",
+      "T site (tRNA binding site)",
+      "M site (mRNA site)",
+      "S site (signal peptides site)"
+    ]
+  },
+  {
+    "question": "Which molecule carries amino acids to the ribosome during translation?",
+    "correct_answer": "tRNA (transfer RNA)",
+    "incorrect_answers": [
+      "mRNA (messenger RNA)",
+      "rRNA (ribosomal RNA)",
+      "siRNA (small interfering RNA)",
+      "miRNA (microRNA)",
+      "snRNA (small nuclear RNA)"
+    ]
+  },
+  {
+    "question": "Which sequence on mRNA specifies the first amino acid in most proteins?",
+    "correct_answer": "AUG (start codon)",
+    "incorrect_answers": [
+      "UAA",
+      "UAG",
+      "TAA",
+      "GCU",
+      "UGG"
+    ]
+  },
+  {
+    "question": "What is the role of the ribosome’s A site?",
+    "correct_answer": "Binding incoming aminoacyl-tRNA",
+    "incorrect_answers": [
+      "Release of deacylated tRNA",
+      "Formation of peptide bond",
+      "Termination of translation",
+      "Splicing of introns",
+      "Initiation complex formation"
+    ]
+  },
+  {
+    "question": "Which chemical bond forms between adjacent amino acids during translation?",
+    "correct_answer": "Peptide bond",
+    "incorrect_answers": [
+      "Phosphodiester bond",
+      "Hydrogen bond",
+      "Glycosidic bond",
+      "Disulfide bond",
+      "Van der Waals forces"
+    ]
+  },
+  {
+    "question": "Which factor recognizes stop codons during translation termination?",
+    "correct_answer": "Release factor",
+    "incorrect_answers": [
+      "tRNA",
+      "Aminoacyl-tRNA synthetase",
+      "Initiation factor",
+      "Elongation factor",
+      "RRF (ribosome recycling factor)"
+    ]
+  },
+  {
+    "question": "Where does translation occur in eukaryotic cells?",
+    "correct_answer": "Cytoplasm (on ribosomes)",
+    "incorrect_answers": [
+      "Nucleus",
+      "Mitochondrial matrix",
+      "Golgi apparatus",
+      "Endoplasmic reticulum lumen",
+      "Nucleolus"
+    ]
+  },
+  {
+    "question": "Which region of tRNA pairs with mRNA codons?",
+    "correct_answer": "Anticodon loop",
+    "incorrect_answers": [
+      "D loop",
+      "TψC loop",
+      "Variable loop",
+      "5' end",
+      "3' acceptor stem"
+    ]
+  },
+  {
+    "question": "Which enzyme charges tRNA with its corresponding amino acid?",
+    "correct_answer": "Aminoacyl-tRNA synthetase",
+    "incorrect_answers": [
+      "Peptidyl transferase",
+      "RNA polymerase",
+      "DNA ligase",
+      "Amino transferase",
+      "Ribosomal peptidase"
+    ]
+  },
+  {
+    "question": "Which modification is added to the 3' end of eukaryotic pre-mRNA?",
+    "correct_answer": "Poly-A tail",
+    "incorrect_answers": [
+      "5' cap",
+      "5' UTR trimming",
+      "Intron addition",
+      "Exon looping",
+      "Shine-Dalgarno sequence"
+    ]
+  },
+  {
+    "question": "Which term describes the process of copying DNA into mRNA?",
+    "correct_answer": "Transcription",
+    "incorrect_answers": [
+      "Translation",
+      "Replication",
+      "Reverse transcription",
+      "Post-transcriptional modification",
+      "RNA splicing"
+    ]
+  },
+  {
+    "question": "Which enzyme proofreads newly synthesized DNA to correct mismatched bases?",
+    "correct_answer": "DNA polymerase",
+    "incorrect_answers": [
+      "RNA polymerase",
+      "Ligase",
+      "Helicase",
+      "Topoisomerase",
+      "Primase"
+    ]
+  },
+  {
+    "question": "Which process uses DNA fragments to identify individuals based on genetic variation?",
+    "correct_answer": "DNA profiling (DNA fingerprinting)",
+    "incorrect_answers": [
+      "PCR cloning",
+      "Gene therapy",
+      "Southern blotting only",
+      "Northern blotting",
+      "Western blotting"
+    ]
+  },
+  {
+    "question": "Which technique amplifies a specific DNA segment exponentially?",
+    "correct_answer": "Polymerase chain reaction (PCR)",
+    "incorrect_answers": [
+      "Gel electrophoresis",
+      "Sanger sequencing",
+      "Southern blot",
+      "Western blot",
+      "ELISA"
+    ]
+  },
+  {
+    "question": "Which regions of DNA are highly variable and used in DNA profiling?",
+    "correct_answer": "Short tandem repeats (STRs)",
+    "incorrect_answers": [
+      "Exons",
+      "Promoters",
+      "Ribosomal RNA genes",
+      "5' UTRs",
+      "Telomeres"
+    ]
+  },
+  {
+    "question": "Which restriction enzymes are used to cut DNA at specific recognition sites for profiling?",
+    "correct_answer": "Type II restriction enzymes",
+    "incorrect_answers": [
+      "Type I restriction enzymes",
+      "Type III restriction enzymes",
+      "Ligases",
+      "Topoisomerases",
+      "Polymerases"
+    ]
+  },
+  {
+    "question": "Which method separates DNA fragments by size for profiling?",
+    "correct_answer": "Gel electrophoresis",
+    "incorrect_answers": [
+      "Chromatography",
+      "Centrifugation",
+      "Spectrophotometry",
+      "Mass spectrometry",
+      "Flow cytometry"
+    ]
+  },
+  {
+    "question": "Which step follows gel electrophoresis in a typical DNA profiling workflow?",
+    "correct_answer": "Southern blotting or visualization",
+    "incorrect_answers": [
+      "PCR amplification",
+      "Protein extraction",
+      "RNA isolation",
+      "DNA replication",
+      "Sequencing"
+    ]
+  },
+  {
+    "question": "Genetic markers used in forensic DNA profiling are typically:",
+    "correct_answer": "Noncoding repetitive sequences",
+    "incorrect_answers": [
+      "Protein-coding exons",
+      "rRNA genes",
+      "Mitochondrial coding regions",
+      "Promoter regions",
+      "tRNA genes"
+    ]
+  },
+  {
+    "question": "Which component is NOT directly required for PCR?",
+    "correct_answer": "Ribosome",
+    "incorrect_answers": [
+      "DNA polymerase",
+      "Template DNA",
+      "Primers",
+      "dNTPs",
+      "Buffer solution"
+    ]
+  },
+  {
+    "question": "Which type of RNA carries genetic information from DNA to the ribosome?",
+    "correct_answer": "mRNA (messenger RNA)",
+    "incorrect_answers": [
+      "tRNA (transfer RNA)",
+      "rRNA (ribosomal RNA)",
+      "siRNA (small interfering RNA)",
+      "snRNA (small nuclear RNA)",
+      "miRNA (microRNA)"
+    ]
+  },
+  {
+    "question": "Which event in translation requires GTP for energy?",
+    "correct_answer": "Translocation of the ribosome along mRNA",
+    "incorrect_answers": [
+      "Peptide bond formation",
+      "tRNA charging",
+      "Transcription initiation",
+      "Splicing of pre-mRNA",
+      "RNA capping"
+    ]
+  },
+  {
+    "question": "Which component of the ribosome is catalytic for peptide bond formation?",
+    "correct_answer": "rRNA (peptidyl transferase center)",
+    "incorrect_answers": [
+      "mRNA",
+      "tRNA",
+      "Ribosomal proteins only",
+      "Initiation factors",
+      "Release factors"
+    ]
+  },
+  {
+    "question": "What is the name of the small subunit in bacterial ribosomes?",
+    "correct_answer": "30S subunit",
+    "incorrect_answers": [
+      "50S subunit",
+      "40S subunit",
+      "60S subunit",
+      "20S subunit",
+      "80S subunit"
+    ]
+  },
+  {
+    "question": "What is the size of the large subunit in eukaryotic ribosomes?",
+    "correct_answer": "60S",
+    "incorrect_answers": [
+      "50S",
+      "40S",
+      "30S",
+      "70S",
+      "80S"
+    ]
+  },
+  {
+    "question": "Which process ensures that protein synthesis starts at the correct AUG codon in eukaryotes?",
+    "correct_answer": "Scanning by small ribosomal subunit from 5' cap",
+    "incorrect_answers": [
+      "Shine-Dalgarno alignment",
+      "IRES (internal ribosome entry site)",
+      "Hairpin loop formation",
+      "Poly-A tail binding",
+      "STOP codon recognition"
+    ]
+  },
+  {
+    "question": "During translation, which site on the ribosome does the deacylated tRNA exit?",
+    "correct_answer": "E site (exit site)",
+    "incorrect_answers": [
+      "A site (aminoacyl site)",
+      "P site (peptidyl site)",
+      "T site (termination site)",
+      "M site (mRNA binding)",
+      "S site (signal peptide site)"
+    ]
+  },
+  {
+    "question": "Which antibiotic inhibits bacterial protein synthesis by binding to the 30S subunit?",
+    "correct_answer": "Tetracycline",
+    "incorrect_answers": [
+      "Amoxicillin",
+      "Ciprofloxacin",
+      "Penicillin",
+      "Vancomycin",
+      "Streptomycin"
+    ]
+  },
+  {
+    "question": "What is the role of a promoter region in transcription?",
+    "correct_answer": "Binding site for RNA polymerase to initiate transcription",
+    "incorrect_answers": [
+      "Termination of transcription",
+      "Signal for ribosome assembly",
+      "Site of RNA splicing",
+      "Binding site for ribonucleases",
+      "Origin of DNA replication"
+    ]
+  },
+  {
+    "question": "Which factor is required for the formation of the transcription initiation complex in eukaryotes?",
+    "correct_answer": "Transcription factors (TFIID, etc.)",
+    "incorrect_answers": [
+      "DNA polymerase",
+      "Ribosome",
+      "tRNA synthetase",
+      "DNA ligase",
+      "RNase H"
+    ]
+  },
+  {
+    "question": "Which post-translational modification adds phosphate groups to proteins?",
+    "correct_answer": "Phosphorylation",
+    "incorrect_answers": [
+      "Acetylation",
+      "Methylation",
+      "Glycosylation",
+      "Ubiquitination",
+      "Hydroxylation"
+    ]
+  },
+  {
+    "question": "Which enzyme removes RNA primers during prokaryotic DNA replication?",
+    "correct_answer": "DNA polymerase I",
+    "incorrect_answers": [
+      "DNA polymerase III",
+      "DNA ligase",
+      "Primase",
+      "Helicase",
+      "Topoisomerase"
+    ]
+  },
+  {
+    "question": "Which protein complex holds DNA polymerase onto the DNA template during replication in prokaryotes?",
+    "correct_answer": "Sliding clamp (β clamp)",
+    "incorrect_answers": [
+      "Primase complex",
+      "Helicase loader",
+      "Clamp loader complex",
+      "Topoisomerase IV",
+      "Single-strand binding proteins"
+    ]
+  },
+  {
+    "question": "Which term describes the region where DNA replication begins in prokaryotes?",
+    "correct_answer": "Origin of replication (oriC)",
+    "incorrect_answers": [
+      "Promoter region",
+      "Operator site",
+      "Terminator sequence",
+      "Enhancer region",
+      "Telomere"
+    ]
+  },
+  {
+    "question": "Which type of RNA carries amino acids to the ribosome?",
+    "correct_answer": "tRNA (transfer RNA)",
+    "incorrect_answers": [
+      "mRNA (messenger RNA)",
+      "rRNA (ribosomal RNA)",
+      "snRNA (small nuclear RNA)",
+      "siRNA (small interfering RNA)",
+      "miRNA (microRNA)"
+    ]
+  },
+  {
+    "question": "Which genetic material contains introns and requires splicing?",
+    "correct_answer": "Eukaryotic pre-mRNA",
+    "incorrect_answers": [
+      "Prokaryotic mRNA",
+      "tRNA in bacteria",
+      "rRNA in mitochondria",
+      "Viral RNA in influenza",
+      "Mitochondrial DNA"
+    ]
+  },
+  {
+    "question": "Which protein unwinds negative supercoils ahead of the replication fork?",
+    "correct_answer": "Topoisomerase (gyrase in prokaryotes)",
+    "incorrect_answers": [
+      "DNA helicase",
+      "DNA ligase",
+      "DNA primase",
+      "RNase H",
+      "DNA polymerase III"
+    ]
+  },
+  {
+    "question": "Which region of DNA is NOT transcribed into mRNA in eukaryotes?",
+    "correct_answer": "Introns",
+    "incorrect_answers": [
+      "Exons",
+      "5' UTR",
+      "Promoter",
+      "3' UTR",
+      "Terminator"
+    ]
+  },
+  {
+    "question": "Which cellular compartment in eukaryotes processes and modifies pre-mRNA?",
+    "correct_answer": "Nucleus",
+    "incorrect_errors": [
+      "Rough endoplasmic reticulum",
+      "Mitochondria",
+      "Cytosol",
+      "Golgi apparatus",
+      "Lysosome"
+    ]
+  }
+]
