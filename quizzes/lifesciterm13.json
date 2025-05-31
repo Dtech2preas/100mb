@@ -1,1 +1,658 @@
-y
+[
+  {
+    "question": "What is a genotype?",
+    "correct_answer": "The genetic makeup of an organism",
+    "incorrect_answers": [
+      "The physical expression of traits",
+      "The environment's effect on a trait",
+      "The total number of chromosomes",
+      "The process of cell division",
+      "A type of protein"
+    ]
+  },
+  {
+    "question": "What is a phenotype?",
+    "correct_answer": "The observable characteristics of an organism",
+    "incorrect_answers": [
+      "The genetic makeup of an organism",
+      "A specific DNA sequence",
+      "The number of gametes produced",
+      "The rate of mutation",
+      "A type of dominance relationship"
+    ]
+  },
+  {
+    "question": "What does homozygous mean?",
+    "correct_answer": "Having two identical alleles for a gene",
+    "incorrect_answers": [
+      "Having one allele for a gene",
+      "Having two different genes",
+      "Having two different alleles for a gene",
+      "Having no alleles for a gene",
+      "Having extra chromosomes"
+    ]
+  },
+  {
+    "question": "What does heterozygous mean?",
+    "correct_answer": "Having two different alleles for a gene",
+    "incorrect_answers": [
+      "Having extra chromosomes",
+      "Having identical alleles for a gene",
+      "Lacking alleles for a gene",
+      "Having one allele for a gene",
+      "Having multiple gene copies"
+    ]
+  },
+  {
+    "question": "In complete dominance, how many phenotypes result from one gene?",
+    "correct_answer": "Two (dominant and recessive)",
+    "incorrect_answers": [
+      "Three (dominant, intermediate, recessive)",
+      "One (only dominant)",
+      "Four (two dominant, two recessive)",
+      "Five (including codominant)",
+      "Varies with environment"
+    ]
+  },
+  {
+    "question": "In a monohybrid cross of two heterozygotes (Aa × Aa) for a completely dominant trait, what is the phenotypic ratio?",
+    "correct_answer": "3:1 (dominant:recessive)",
+    "incorrect_answers": [
+      "1:2:1 (homozygous dominant:heterozygous:homozygous recessive)",
+      "2:1 (dominant:recessive)",
+      "1:1 (dominant:recessive)",
+      "4:0 (dominant:recessive)",
+      "No segregation occurs"
+    ]
+  },
+  {
+    "question": "Which term describes a cross between parents that differ in two traits?",
+    "correct_answer": "Dihybrid cross",
+    "incorrect_answers": [
+      "Monohybrid cross",
+      "Test cross",
+      "Backcross",
+      "Reciprocal cross",
+      "Sex-linkage cross"
+    ]
+  },
+  {
+    "question": "In incomplete dominance, what phenotype ratio appears for a heterozygous cross (Aa × Aa)?",
+    "correct_answer": "1:2:1 (AA: Aa: aa) with intermediate phenotype in heterozygote",
+    "incorrect_answers": [
+      "3:1 (dominant:recessive)",
+      "2:1 (intermediate:dominant)",
+      "1:1 (intermediate:dominant)",
+      "4:0 (all intermediate)",
+      "No variation"
+    ]
+  },
+  {
+    "question": "What is an example of codominance?",
+    "correct_answer": "AB blood type in humans",
+    "incorrect_answers": [
+      "Pea plant height (tall vs. short)",
+      "Red flower crossing with white to make pink",
+      "Skin color variation",
+      "Sex determination in humans",
+      "All-or-none trait expression"
+    ]
+  },
+  {
+    "question": "What is the genotype ratio in a codominant F₂ cross (IAIB × IAIB)?",
+    "correct_answer": "1:2:1 (IAIA: IAIB: IBIB)",
+    "incorrect_answers": [
+      "3:1 (IAIB: IAIA)",
+      "2:1 (IAIB: IAIA)",
+      "1:1:1:1 (four genotypes)",
+      "4:0:0:0",
+      "No segregation"
+    ]
+  },
+  {
+    "question": "Which chromosome pair determines biological sex in humans?",
+    "correct_answer": "23rd pair (X and Y chromosomes)",
+    "incorrect_answers": [
+      "1st pair (autosomes)",
+      "22nd pair",
+      "Mitochondrial DNA",
+      "X only",
+      "Y only"
+    ]
+  },
+  {
+    "question": "What is the result of an XX male due to sex reversal?",
+    "correct_answer": "An individual with male characteristics but two X chromosomes",
+    "incorrect_answers": [
+      "An individual with female characteristics but a single Y chromosome",
+      "An intersex individual with no sex chromosomes",
+      "A typical XY male",
+      "A typical XX female",
+      "A chimera"
+    ]
+  },
+  {
+    "question": "Which pattern of inheritance involves traits carried on the X chromosome?",
+    "correct_answer": "Sex-linked inheritance",
+    "incorrect_answers": [
+      "Autosomal inheritance",
+      "Mitochondrial inheritance",
+      "Y-linked inheritance",
+      "Polygenic inheritance",
+      "Incomplete dominance"
+    ]
+  },
+  {
+    "question": "What is an X-linked recessive disorder example?",
+    "correct_answer": "Hemophilia A",
+    "incorrect_answers": [
+      "Sickle cell anemia",
+      "Huntington’s disease",
+      "Cystic fibrosis",
+      "Down syndrome",
+      "Marfan syndrome"
+    ]
+  },
+  {
+    "question": "In humans, which parent can pass an X-linked recessive allele to a son?",
+    "correct_answer": "Mother",
+    "incorrect_answers": [
+      "Father",
+      "Both parents equally",
+      "Neither parent",
+      "Only if father is affected",
+      "Only if mother is affected"
+    ]
+  },
+  {
+    "question": "What is the phenotypic ratio expected from a dihybrid cross of two heterozygotes (AaBb × AaBb) assuming independent assortment?",
+    "correct_answer": "9:3:3:1",
+    "incorrect_answers": [
+      "3:1",
+      "1:2:1",
+      "1:1",
+      "12:4",
+      "16:1"
+    ]
+  },
+  {
+    "question": "Which principle states alleles for different genes segregate independently during gamete formation?",
+    "correct_answer": "Law of independent assortment",
+    "incorrect_answers": [
+      "Law of segregation",
+      "Law of dominance",
+      "Law of uniformity",
+      "Law of linkage",
+      "Law of recombination"
+    ]
+  },
+  {
+    "question": "What is a test cross used to determine?",
+    "correct_answer": "Whether an individual with a dominant phenotype is homozygous or heterozygous",
+    "incorrect_answers": [
+      "The sex of an organism",
+      "Linkage between two genes",
+      "Chromosome number",
+      "Mutation rate",
+      "Epistasis"
+    ]
+  },
+  {
+    "question": "Which type of mutation involves substitution of one base for another?",
+    "correct_answer": "Point mutation",
+    "incorrect_answers": [
+      "Frameshift mutation",
+      "Deletion mutation (large)",
+      "Chromosomal inversion",
+      "Translocation",
+      "Amplification"
+    ]
+  },
+  {
+    "question": "What is a frameshift mutation?",
+    "correct_answer": "Insertion or deletion of a nucleotide that shifts the reading frame",
+    "incorrect_answers": [
+      "A single base substitution",
+      "Duplication of a chromosome segment",
+      "Inversion of a gene",
+      "Translocation between chromosomes",
+      "Methylation of cytosine"
+    ]
+  },
+  {
+    "question": "Which mutation type changes a codon to a stop codon?",
+    "correct_answer": "Nonsense mutation",
+    "incorrect_answers": [
+      "Missense mutation",
+      "Silent mutation",
+      "Frameshift mutation",
+      "Insertion mutation (large)",
+      "Reverse mutation"
+    ]
+  },
+  {
+    "question": "Which mutation results in an amino acid change in the protein sequence?",
+    "correct_answer": "Missense mutation",
+    "incorrect_answers": [
+      "Nonsense mutation",
+      "Silent mutation",
+      "Frameshift mutation",
+      "Deletion of entire gene",
+      "Duplication mutation"
+    ]
+  },
+  {
+    "question": "Which type of mutation does NOT change the amino acid sequence?",
+    "correct_answer": "Silent mutation",
+    "incorrect_answers": [
+      "Missense mutation",
+      "Nonsense mutation",
+      "Frameshift mutation",
+      "Insertion mutation (single base)",
+      "Deletion mutation (large)"
+    ]
+  },
+  {
+    "question": "What does a pedigree diagram show?",
+    "correct_answer": "Family relationships and inheritance of a trait over generations",
+    "incorrect_answers": [
+      "Gene sequences in a population",
+      "Chromosome structure",
+      "DNA methylation patterns",
+      "Protein interactions",
+      "Environmental influences on phenotype"
+    ]
+  },
+  {
+    "question": "What symbol typically represents a female in a pedigree?",
+    "correct_answer": "Circle",
+    "incorrect_answers": [
+      "Square",
+      "Triangle",
+      "Diamond",
+      "Hexagon",
+      "Pentagon"
+    ]
+  },
+  {
+    "question": "What symbol typically represents an affected male in a pedigree?",
+    "correct_answer": "Filled square",
+    "incorrect_answers": [
+      "Open circle",
+      "Filled circle",
+      "Filled triangle",
+      "Open square",
+      "Shaded diamond"
+    ]
+  },
+  {
+    "question": "In a pedigree, what does a horizontal line between two symbols represent?",
+    "correct_answer": "Mating or marriage",
+    "incorrect_answers": [
+      "Sibling relationship",
+      "Parent-offspring relationship",
+      "Adoption",
+      "Divorce",
+      "Death"
+    ]
+  },
+  {
+    "question": "Which inheritance pattern is suggested if a trait appears in every generation equally in pedigrees?",
+    "correct_answer": "Autosomal dominant",
+    "incorrect_answers": [
+      "Autosomal recessive",
+      "X-linked recessive",
+      "Mitochondrial inheritance",
+      "Y-linked",
+      "Incomplete dominance"
+    ]
+  },
+  {
+    "question": "What pattern is suggested if a trait appears more frequently in males and is often transmitted by unaffected females?",
+    "correct_answer": "X-linked recessive",
+    "incorrect_answers": [
+      "Autosomal dominant",
+      "Autosomal recessive",
+      "Mitochondrial inheritance",
+      "Y-linked",
+      "Codominant"
+    ]
+  },
+  {
+    "question": "Which genetic engineering tool uses a guide RNA to target specific DNA sequences?",
+    "correct_answer": "CRISPR-Cas9",
+    "incorrect_answers": [
+      "Restriction enzymes only",
+      "Southern blotting",
+      "RNAi",
+      "Microinjection alone",
+      "PCR"
+    ]
+  },
+  {
+    "question": "Which enzyme is used to join DNA fragments during recombinant DNA technology?",
+    "correct_answer": "DNA ligase",
+    "incorrect_answers": [
+      "DNA polymerase",
+      "RNA polymerase",
+      "Helicase",
+      "Topoisomerase",
+      "Reverse transcriptase"
+    ]
+  },
+  {
+    "question": "What is a plasmid?",
+    "correct_answer": "A small circular DNA molecule in bacteria used as a cloning vector",
+    "incorrect_answers": [
+      "Linear chromosome in eukaryotes",
+      "Segment of mRNA",
+      "Type of lipid vesicle",
+      "A restriction enzyme",
+      "A DNA polymerase"
+    ]
+  },
+  {
+    "question": "Which process introduces foreign DNA into a bacterial cell?",
+    "correct_answer": "Transformation",
+    "incorrect_answers": [
+      "Transcription",
+      "Translation",
+      "Replication",
+      "Conjugation",
+      "Transposition"
+    ]
+  },
+  {
+    "question": "Which method separates DNA fragments by size using an electric field?",
+    "correct_answer": "Gel electrophoresis",
+    "incorrect_answers": [
+      "Liquid chromatography",
+      "Mass spectrometry",
+      "Northern blotting",
+      "Western blotting",
+      "PCR only"
+    ]
+  },
+  {
+    "question": "What is the purpose of a restriction enzyme in genetic engineering?",
+    "correct_answer": "To cut DNA at specific recognition sequences",
+    "incorrect_answers": [
+      "To synthesize RNA from DNA",
+      "To join DNA fragments",
+      "To replicate DNA",
+      "To degrade proteins",
+      "To methylate DNA"
+    ]
+  },
+  {
+    "question": "Which technique measures gene expression by quantifying mRNA levels?",
+    "correct_answer": "Northern blotting",
+    "incorrect_answers": [
+      "Southern blotting",
+      "Western blotting",
+      "PCR genotyping",
+      "ELISA",
+      "Sanger sequencing"
+    ]
+  },
+  {
+    "question": "What is gene therapy?",
+    "correct_answer": "Introduction of functional genes to correct genetic disorders",
+    "incorrect_answers": [
+      "Vaccination with dead organisms",
+      "Cloning an entire organism",
+      "Sequencing the entire genome",
+      "Treating infections with antibiotics",
+      "Transplanting organs between species"
+    ]
+  },
+  {
+    "question": "Which vector is commonly used in gene therapy for humans?",
+    "correct_answer": "Adeno-associated virus (AAV)",
+    "incorrect_answers": [
+      "Agrobacterium tumefaciens",
+      "Lambda bacteriophage",
+      "Golden rice plasmid",
+      "Ti plasmid (unmodified)",
+      "Yeast artificial chromosome"
+    ]
+  },
+  {
+    "question": "Which ethical concern is often associated with genetic counselling?",
+    "correct_answer": "Privacy and potential discrimination based on genetic information",
+    "incorrect_answers": [
+      "Ownership of nuclear power plants",
+      "Animal rights in agriculture",
+      "Copyright infringement of textbooks",
+      "Food labeling requirements",
+      "Internet censorship"
+    ]
+  },
+  {
+    "question": "What does nondisjunction cause in meiosis?",
+    "correct_answer": "Abnormal number of chromosomes in gametes",
+    "incorrect_answers": [
+      "Normal segregation of alleles",
+      "Uniform crossover events",
+      "Identical DNA replication",
+      "Increased genetic recombination",
+      "Loss of mitochondrial DNA"
+    ]
+  },
+  {
+    "question": "Which disorder results from trisomy of chromosome 21?",
+    "correct_answer": "Down syndrome",
+    "incorrect_answers": [
+      "Turner syndrome",
+      "Klinefelter syndrome",
+      "Cri-du-chat syndrome",
+      "Patau syndrome",
+      "Edward syndrome"
+    ]
+  },
+  {
+    "question": "What is a carrier in genetics?",
+    "correct_answer": "An individual heterozygous for a recessive allele but not showing the phenotype",
+    "incorrect_answers": [
+      "An individual showing the dominant phenotype only",
+      "A person with no alleles for the trait",
+      "An individual homozygous for dominance",
+      "An individual with extra chromosomes",
+      "A fully affected individual"
+    ]
+  },
+  {
+    "question": "Which type of genetic cross determines if an individual with a dominant phenotype is homozygous or heterozygous?",
+    "correct_answer": "Test cross with a homozygous recessive",
+    "incorrect_answers": [
+      "Backcross with heterozygote",
+      "Dihybrid cross",
+      "Reciprocal cross with dominant homozygote",
+      "Multiple marker cross",
+      "F₃ generation cross"
+    ]
+  },
+  {
+    "question": "What does a loss-of-function mutation typically produce?",
+    "correct_answer": "A nonfunctional or reduced-function protein",
+    "incorrect_answers": [
+      "An overactive protein",
+      "No change in protein function",
+      "A longer mRNA transcript",
+      "A fusion protein with new function",
+      "A new intron added"
+    ]
+  },
+  {
+    "question": "Which technique introduces foreign genes into plant genomes?",
+    "correct_answer": "Agrobacterium-mediated transformation",
+    "incorrect_answers": [
+      "Microarray analysis",
+      "Western blotting",
+      "PCR amplification",
+      "Northern blotting",
+      "Gel shift assay"
+    ]
+  },
+  {
+    "question": "Which procedure determines the probability of passing a recessive disorder to offspring?",
+    "correct_answer": "Pedigree analysis",
+    "incorrect_answers": [
+      "Western blot",
+      "Southern blot",
+      "Gel electrophoresis only",
+      "Northern blot",
+      "ELISA"
+    ]
+  },
+  {
+    "question": "Which genetic counselling step involves explaining inheritance patterns to prospective parents?",
+    "correct_answer": "Risk assessment and communication",
+    "incorrect_answers": [
+      "DNA sequencing only",
+      "Enzyme assays only",
+      "Pathogen exposure testing",
+      "Animal model research",
+      "Gene editing"
+    ]
+  },
+  {
+    "question": "Which molecular marker is often used in DNA fingerprinting for pedigree analysis?",
+    "correct_answer": "Short tandem repeats (STRs)",
+    "incorrect_answers": [
+      "Single nucleotide polymorphisms (SNPs)",
+      "Microsatellite-free sequences",
+      "rRNA gene sequences",
+      "Mitochondrial origin sequences",
+      "Chloroplast DNA only"
+    ]
+  },
+  {
+    "question": "Which term describes when two or more genes influence a single trait?",
+    "correct_answer": "Polygenic inheritance",
+    "incorrect_answers": [
+      "Monogenic inheritance",
+      "Pleiotropy",
+      "Linkage",
+      "Epistasis",
+      "Incomplete dominance"
+    ]
+  },
+  {
+    "question": "Which type of genetic cross can reveal linkage between two loci?",
+    "correct_answer": "Test cross with recombinant frequency analysis",
+    "incorrect_answers": [
+      "Simple monohybrid cross",
+      "Backcross with same genotype",
+      "Self-pollination of homozygous plants",
+      "Crossing with unrelated wild type",
+      "Cross with polyploid organism"
+    ]
+  },
+  {
+    "question": "Which term describes when one gene masks the expression of another gene?",
+    "correct_answer": "Epistasis",
+    "incorrect_answers": [
+      "Co-dominance",
+      "Linkage",
+      "Incomplete dominance",
+      "Polygenic inheritance",
+      "Sex linkage"
+    ]
+  },
+  {
+    "question": "Which technology uses short RNA molecules to silence specific genes?",
+    "correct_answer": "RNA interference (RNAi)",
+    "incorrect_answers": [
+      "CRISPR interference",
+      "Zinc finger nucleases",
+      "Microarray hybridization",
+      "Western blotting",
+      "Gel electrophoresis"
+    ]
+  },
+  {
+    "question": "Which type of mutagenic agent causes thymine dimers in DNA?",
+    "correct_answer": "Ultraviolet (UV) radiation",
+    "incorrect_answers": [
+      "X-rays",
+      "Gamma rays",
+      "Chemical alkylators",
+      "Ionizing radiation only",
+      "Heat shock"
+    ]
+  },
+  {
+    "question": "Which type of genetic cross involves crossing an F₁ hybrid with a parent to test genotype?",
+    "correct_answer": "Backcross",
+    "incorrect_answers": [
+      "Dihybrid cross",
+      "Reciprocal cross",
+      "Test cross",
+      "Self-cross",
+      "F₂ cross"
+    ]
+  },
+  {
+    "question": "Which genetic counseling measure helps reduce the incidence of hereditary disorders?",
+    "correct_answer": "Carrier screening and prenatal testing",
+    "incorrect_answers": [
+      "Vaccination programs",
+      "Antibiotic prophylaxis",
+      "Animal model development",
+      "Protein folding studies",
+      "Transgenic plant creation"
+    ]
+  },
+  {
+    "question": "What is germline genetic engineering?",
+    "correct_answer": "Modifying DNA in gametes or early embryos to affect future generations",
+    "incorrect_answers": [
+      "Altering only somatic cells in an individual",
+      "Changing mitochondrial DNA in adults",
+      "Cloning an entire organism",
+      "Inserting viral vectors into bacteria",
+      "Transient RNA interference"
+    ]
+  },
+  {
+    "question": "Which process is used to insert a gene into a bacterial chromosome?",
+    "correct_answer": "Homologous recombination",
+    "incorrect_answers": [
+      "Transcription",
+      "Translation",
+      "Polymerase chain reaction",
+      "Electrophoresis",
+      "Southern blot"
+    ]
+  },
+  {
+    "question": "Which method allows selection of genetically engineered bacteria on agar plates?",
+    "correct_answer": "Antibiotic resistance marker",
+    "incorrect_answers": [
+      "Blue-white screening only",
+      "PCR amplification",
+      "RNA sequencing",
+      "Northern blot",
+      "Protein gel electrophoresis"
+    ]
+  },
+  {
+    "question": "Which term describes the introduction of a functional gene into an adult patient’s somatic cells?",
+    "correct_answer": "Somatic gene therapy",
+    "incorrect_answers": [
+      "Germline gene therapy",
+      "Clonal expansion",
+      "Reproductive cloning",
+      "CRISPR screening",
+      "Epigenetic editing"
+    ]
+  },
+  {
+    "question": "Which vector is often used to deliver genes to human cells in gene therapy trials?",
+    "correct_answer": "Adenovirus",
+    "incorrect_answers": [
+      "Bacteriophage lambda",
+      "Agrobacterium tumefaciens",
+      "Yeast artificial chromosome",
+  
