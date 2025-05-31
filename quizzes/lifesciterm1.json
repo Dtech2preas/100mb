@@ -1,50 +1,1988 @@
 [
   {
-    "question": "Which structure produces sperm in the male reproductive system?",
-    "correct_answer": "Seminiferous tubules",
+    "question": "What is the primary purpose of meiosis?",
+    "correct_answer": "To produce haploid gametes with genetic variation",
+    "incorrect_answers": [
+      "To produce identical diploid somatic cells",
+      "To repair damaged DNA",
+      "To replicate the entire genome twice",
+      "To increase chromosome number in cells",
+      "To produce clones of the parent cell"
+    ]
+  },
+  {
+    "question": "How many rounds of cell division occur in meiosis?",
+    "correct_answer": "Two",
+    "incorrect_answers": [
+      "One",
+      "Three",
+      "Four",
+      "Five",
+      "Six"
+    ]
+  },
+  {
+    "question": "After meiosis is complete, the chromosome number of each gamete is:",
+    "correct_answer": "Half the original number (haploid)",
+    "incorrect_answers": [
+      "Double the original number (tetraploid)",
+      "The same as parent (diploid)",
+      "Zero",
+      "Triploid",
+      "Quadruple the original number"
+    ]
+  },
+  {
+    "question": "During which phase of meiosis I do homologous chromosomes pair up and exchange genetic material?",
+    "correct_answer": "Prophase I",
+    "incorrect_answers": [
+      "Metaphase I",
+      "Anaphase I",
+      "Telophase I",
+      "Prophase II",
+      "Metaphase II"
+    ]
+  },
+  {
+    "question": "What term describes the physical exchange of chromosome segments between homologous chromosomes?",
+    "correct_answer": "Crossing over",
+    "incorrect_answers": [
+      "Independent assortment",
+      "DNA replication",
+      "Sister chromatid cohesion",
+      "Cytokinesis",
+      "Synapsis"
+    ]
+  },
+  {
+    "question": "What structure holds homologous chromosomes together during prophase I?",
+    "correct_answer": "Synaptonemal complex",
+    "incorrect_answers": [
+      "Centromere",
+      "Kinetochore",
+      "Spindle fiber",
+      "Nucleolus",
+      "Telomere"
+    ]
+  },
+  {
+    "question": "Which event occurs during metaphase I?",
+    "correct_answer": "Homologous pairs align at the cell equator",
+    "incorrect_answers": [
+      "Sister chromatids separate",
+      "Crossing over begins",
+      "Nuclear envelope reforms",
+      "Chromosomes decondense",
+      "DNA is replicated"
+    ]
+  },
+  {
+    "question": "During anaphase I, which separation occurs?",
+    "correct_answer": "Homologous chromosomes separate to opposite poles",
+    "incorrect_answers": [
+      "Sister chromatids separate",
+      "Centromeres divide",
+      "Diploid cells form",
+      "DNA replicates",
+      "Nuclear envelope breaks down"
+    ]
+  },
+  {
+    "question": "What is the outcome of telophase I?",
+    "correct_answer": "Two haploid cells each with duplicated chromosomes",
+    "incorrect_answers": [
+      "Four haploid cells each with single chromosomes",
+      "Two diploid cells",
+      "One tetraploid cell",
+      "Four diploid cells",
+      "Cell death"
+    ]
+  },
+  {
+    "question": "At the end of meiosis I, how many chromosomes are in each daughter cell (in humans)?",
+    "correct_answer": "23 duplicated chromosomes",
+    "incorrect_answers": [
+      "46 duplicated chromosomes",
+      "23 single chromosomes",
+      "46 single chromosomes",
+      "92 duplicated chromosomes",
+      "92 single chromosomes"
+    ]
+  },
+  {
+    "question": "What phase follows telophase I to start meiosis II?",
+    "correct_answer": "Interkinesis (brief interphase without DNA replication)",
+    "incorrect_answers": [
+      "S phase (DNA replication)",
+      "G1 phase",
+      "Prophase I again",
+      "Metaphase I again",
+      "G2 phase"
+    ]
+  },
+  {
+    "question": "Which phase marks the beginning of the second meiotic division?",
+    "correct_answer": "Prophase II",
+    "incorrect_answers": [
+      "Prophase I",
+      "Anaphase I",
+      "Metaphase I",
+      "Telophase I",
+      "Interphase"
+    ]
+  },
+  {
+    "question": "During metaphase II, what lines up at the equator?",
+    "correct_answer": "Sister chromatids",
+    "incorrect_answers": [
+      "Homologous chromosome pairs",
+      "Tetrads",
+      "Centromeres only",
+      "Individual genes",
+      "Spindle poles"
+    ]
+  },
+  {
+    "question": "What occurs during anaphase II?",
+    "correct_answer": "Sister chromatids separate and move to opposite poles",
+    "incorrect_answers": [
+      "Homologous chromosomes pair up",
+      "Crossing over occurs",
+      "DNA replicates again",
+      "Nuclear envelope reforms",
+      "Chromosomes condense for the first time"
+    ]
+  },
+  {
+    "question": "At the end of telophase II, how many total gametes result from one original diploid cell?",
+    "correct_answer": "Four haploid gametes",
+    "incorrect_answers": [
+      "Two diploid gametes",
+      "Eight diploid gametes",
+      "Four diploid gametes",
+      "Two haploid gametes",
+      "Six haploid gametes"
+    ]
+  },
+  {
+    "question": "Which process during meiosis I helps ensure genetic variation among gametes?",
+    "correct_answer": "Independent assortment of homologous chromosomes",
+    "incorrect_answers": [
+      "Replication of centrioles",
+      "Formation of a cleavage furrow",
+      "Fusion of nuclear envelopes",
+      "Synthesis of spindle fibers",
+      "Formation of cell plate"
+    ]
+  },
+  {
+    "question": "Which term describes abnormal separation of chromosomes during meiosis?",
+    "correct_answer": "Nondisjunction",
+    "incorrect_answers": [
+      "Translocation",
+      "Inversion",
+      "Deletion",
+      "Duplication",
+      "Transcription"
+    ]
+  },
+  {
+    "question": "What condition can result from nondisjunction during meiosis in humans?",
+    "correct_answer": "Down syndrome (trisomy 21)",
+    "incorrect_answers": [
+      "Sickle cell anemia",
+      "Huntington’s disease",
+      "Cystic fibrosis",
+      "Hemophilia A",
+      "Phenylketonuria"
+    ]
+  },
+  {
+    "question": "Which of the following is NOT a sign of abnormal meiosis?",
+    "correct_answer": "Exact equal segregation of all chromosomes",
+    "incorrect_answers": [
+      "Aneuploid gametes",
+      "Monosomy in offspring",
+      "Trisomy in offspring",
+      "Misaligned chromosomes in metaphase I",
+      "Chromosome breakage in prophase I"
+    ]
+  },
+  {
+    "question": "Which event occurs only in meiosis I and not in meiosis II?",
+    "correct_answer": "Pairing of homologous chromosomes (synapsis)",
+    "incorrect_answers": [
+      "Separation of sister chromatids",
+      "Formation of spindle fibers",
+      "Condensation of chromosomes",
+      "Nuclear envelope breakdown",
+      "Cytokinesis"
+    ]
+  },
+  {
+    "question": "Which event is unique to meiosis II compared to meiosis I?",
+    "correct_answer": "Separation of sister chromatids",
+    "incorrect_answers": [
+      "Crossing over",
+      "Synapsis of homologous chromosomes",
+      "Homologous chromosome alignment",
+      "Independent assortment",
+      "Reductional division"
+    ]
+  },
+  {
+    "question": "How does meiosis I differ from meiosis II in terms of chromosome number? ",
+    "correct_answer": "Meiosis I reduces chromosome number, meiosis II does not",
+    "incorrect_answers": [
+      "Meiosis I does not reduce chromosome number, meiosis II does",
+      "Both meiosis I and II reduce chromosome numbers",
+      "Meiosis II doubles chromosome number",
+      "Neither division changes chromosome number",
+      "Both divisions increase chromosome number"
+    ]
+  },
+  {
+    "question": "Which division (I or II) is referred to as the reductional division?",
+    "correct_answer": "Meiosis I",
+    "incorrect_answers": [
+      "Meiosis II",
+      "Both I and II equally",
+      "Neither division",
+      "Mitosis",
+      "Interphase"
+    ]
+  },
+  {
+    "question": "Which division is referred to as the equational division?",
+    "correct_answer": "Meiosis II",
+    "incorrect_answers": [
+      "Meiosis I",
+      "Both I and II equally",
+      "Mitosis",
+      "Interphase",
+      "Cytokinesis"
+    ]
+  },
+  {
+    "question": "During which stage do homologous chromosomes align at the metaphase I plate? ",
+    "correct_answer": "Metaphase I",
+    "incorrect_answers": [
+      "Metaphase II",
+      "Anaphase I",
+      "Prophase I",
+      "Telophase I",
+      "Anaphase II"
+    ]
+  },
+  {
+    "question": "Which event occurs during prophase II? ",
+    "correct_answer": "Chromosomes condense and spindle re-forms without further DNA replication",
+    "incorrect_answers": [
+      "Homologous chromosomes pair up",
+      "Crossing over occurs",
+      "DNA replicates again",
+      "Nuclear envelope reforms",
+      "Spindle fibers break down"
+    ]
+  },
+  {
+    "question": "What is the ploidy of cells entering meiosis II compared to those entering meiosis I? ",
+    "correct_answer": "Cells entering meiosis II are haploid but have duplicated chromosomes",
+    "incorrect_answers": [
+      "Cells entering meiosis II are diploid with single chromosomes",
+      "Cells entering meiosis II are diploid with duplicated chromosomes",
+      "Cells entering meiosis II are haploid with single chromatids",
+      "Cells entering meiosis II are tetraploid",
+      "Cells entering meiosis II are triploid"
+    ]
+  },
+  {
+    "question": "Which process does NOT occur in meiosis II but occurs in meiosis I? ",
+    "correct_answer": "Independent assortment of homologous chromosomes",
+    "incorrect_answers": [
+      "Separation of sister chromatids",
+      "Chromosome condensation",
+      "Spindle formation",
+      "Nuclear envelope breakdown",
+      "Cytokinesis"
+    ]
+  },
+  {
+    "question": "During which phase do spindle fibers attach to kinetochores of sister chromatids in meiosis II? ",
+    "correct_answer": "Metaphase II",
+    "incorrect_answers": [
+      "Metaphase I",
+      "Anaphase II",
+      "Prophase II",
+      "Telophase II",
+      "Anaphase I"
+    ]
+  },
+  {
+    "question": "Which of the following best describes the significance of meiosis? ",
+    "correct_answer": "Creates genetic diversity and halves chromosome number for sexual reproduction",
+    "incorrect_answers": [
+      "Repairs damaged DNA in somatic cells",
+      "Produces identical somatic cells for growth",
+      "Duplicates chromosome number in sex cells",
+      "Synthesizes proteins for gametes",
+      "Maintains ploidy level in body cells"
+    ]
+  },
+  {
+    "question": "Which abnormal event during meiosis can lead to Turner syndrome (45,X)? ",
+    "correct_answer": "Nondisjunction of sex chromosomes resulting in monosomy X",
+    "incorrect_answers": [
+      "Crossing over between autosomes",
+      "Deletion of a portion of chromosome 21",
+      "Translocation between X and Y chromosomes",
+      "Multiplication of SRY gene",
+      "Fusion of haploid gametes"
+    ]
+  },
+  {
+    "question": "Which abnormality in meiosis can result in a gamete with three copies of chromosome 21? ",
+    "correct_answer": "Nondisjunction during anaphase I or II",
+    "incorrect_answers": [
+      "Deletion of chromosome 21",
+      "Crossing over failure in prophase II",
+      "Independent assortment error in metaphase II",
+      "Premature cytokinesis",
+      "Telophase I skipping"
+    ]
+  },
+  {
+    "question": "What is the result of nondisjunction during meiosis I? ",
+    "correct_answer": "Homologous chromosomes fail to separate, resulting in gametes with extra or missing chromosomes",
+    "incorrect_answers": [
+      "Sister chromatids fail to separate in meiosis II only",
+      "Chromosomes replicate more than once",
+      "Crossing over does not occur",
+      "Cytokinesis fails but chromosomes segregate correctly",
+      "Gametes are unaffected"
+    ]
+  },
+  {
+    "question": "Which syndrome results from an extra X chromosome in males (47,XXY)? ",
+    "correct_answer": "Klinefelter syndrome",
+    "incorrect_answers": [
+      "Turner syndrome",
+      "Down syndrome",
+      "Patau syndrome",
+      "Edward syndrome",
+      "Cri-du-chat syndrome"
+    ]
+  },
+  {
+    "question": "Which syndrome results from a missing sex chromosome in females (45,X)? ",
+    "correct_answer": "Turner syndrome",
+    "incorrect_answers": [
+      "Klinefelter syndrome",
+      "Triple X syndrome",
+      "Down syndrome",
+      "Edward syndrome",
+      "Patau syndrome"
+    ]
+  },
+  {
+    "question": "Which of the following is a key difference between meiosis I and meiosis II? ",
+    "correct_answer": "Meiosis I separates homologous chromosomes; meiosis II separates sister chromatids",
+    "incorrect_answers": [
+      "Meiosis I separates sister chromatids; meiosis II separates homologous chromosomes",
+      "Meiosis I occurs in somatic cells; meiosis II in germ cells",
+      "Meiosis I replicates DNA again; meiosis II does not",
+      "Meiosis I has no prophase stage; meiosis II does",
+      "Meiosis I produces four cells; meiosis II produces two cells"
+    ]
+  },
+  {
+    "question": "Which of the following is a similarity between meiosis I and meiosis II? ",
+    "correct_answer": "Both involve alignment of chromosomes at a metaphase plate",
+    "incorrect_answers": [
+      "Both involve pairing of homologous chromosomes",
+      "Both reduce chromosome number",
+      "Both replicate DNA beforehand",
+      "Both produce identical daughter cells",
+      "Both occur without spindle fibers"
+    ]
+  },
+  {
+    "question": "What happens to sister chromatids during meiosis I? ",
+    "correct_answer": "They remain attached at their centromeres",
+    "incorrect_answers": [
+      "They separate and move to opposite poles",
+      "They are degraded",
+      "They fuse to form homologous pairs",
+      "They invert orientation",
+      "They replicate again"
+    ]
+  },
+  {
+    "question": "Which phase of meiosis II resembles mitosis the most? ",
+    - A: Prophase II  
+    - B: Metaphase II  
+    - C: Anaphase II  
+    - D: Telophase II  
+    - Correct Answer: B  
+    - Incorrect Answers: ["Prophase I", "Anaphase I", "Metaphase I", "Telophase I", "Interkinesis"]
+
+Incorrect formatting detected—I'll correct and continue below:
+
+```json
+[
+  {
+    "question": "What is the primary purpose of meiosis?",
+    "correct_answer": "To produce haploid gametes with genetic variation",
+    "incorrect_answers": [
+      "To produce identical diploid somatic cells",
+      "To repair damaged DNA",
+      "To replicate the entire genome twice",
+      "To increase chromosome number in cells",
+      "To produce clones of the parent cell"
+    ]
+  },
+  {
+    "question": "How many rounds of cell division occur in meiosis?",
+    "correct_answer": "Two",
+    "incorrect_answers": [
+      "One",
+      "Three",
+      "Four",
+      "Five",
+      "Six"
+    ]
+  },
+  {
+    "question": "After meiosis is complete, the chromosome number of each gamete is:",
+    "correct_answer": "Half the original number (haploid)",
+    "incorrect_answers": [
+      "Double the original number (tetraploid)",
+      "The same as parent (diploid)",
+      "Zero",
+      "Triploid",
+      "Quadruple the original number"
+    ]
+  },
+  {
+    "question": "During which phase of meiosis I do homologous chromosomes pair up and exchange genetic material?",
+    "correct_answer": "Prophase I",
+    "incorrect_answers": [
+      "Metaphase I",
+      "Anaphase I",
+      "Telophase I",
+      "Prophase II",
+      "Metaphase II"
+    ]
+  },
+  {
+    "question": "What term describes the physical exchange of chromosome segments between homologous chromosomes?",
+    "correct_answer": "Crossing over",
+    "incorrect_answers": [
+      "Independent assortment",
+      "DNA replication",
+      "Sister chromatid cohesion",
+      "Cytokinesis",
+      "Synapsis"
+    ]
+  },
+  {
+    "question": "What structure holds homologous chromosomes together during prophase I?",
+    "correct_answer": "Synaptonemal complex",
+    "incorrect_answers": [
+      "Centromere",
+      "Kinetochore",
+      "Spindle fiber",
+      "Nucleolus",
+      "Telomere"
+    ]
+  },
+  {
+    "question": "Which event occurs during metaphase I?",
+    "correct_answer": "Homologous pairs align at the cell equator",
+    "incorrect_answers": [
+      "Sister chromatids separate",
+      "Crossing over begins",
+      "Nuclear envelope reforms",
+      "Chromosomes decondense",
+      "DNA is replicated"
+    ]
+  },
+  {
+    "question": "During anaphase I, which separation occurs?",
+    "correct_answer": "Homologous chromosomes separate to opposite poles",
+    "incorrect_answers": [
+      "Sister chromatids separate",
+      "Centromeres divide",
+      "Diploid cells form",
+      "DNA replicates",
+      "Nuclear envelope breaks down"
+    ]
+  },
+  {
+    "question": "What is the outcome of telophase I?",
+    "correct_answer": "Two haploid cells each with duplicated chromosomes",
+    "incorrect_answers": [
+      "Four haploid cells each with single chromosomes",
+      "Two diploid cells",
+      "One tetraploid cell",
+      "Four diploid cells",
+      "Cell death"
+    ]
+  },
+  {
+    "question": "At the end of meiosis I, how many chromosomes are in each daughter cell (in humans)?",
+    "correct_answer": "23 duplicated chromosomes",
+    "incorrect_answers": [
+      "46 duplicated chromosomes",
+      "23 single chromosomes",
+      "46 single chromosomes",
+      "92 duplicated chromosomes",
+      "92 single chromosomes"
+    ]
+  },
+  {
+    "question": "What phase follows telophase I to start meiosis II?",
+    "correct_answer": "Interkinesis (brief interphase without DNA replication)",
+    "incorrect_answers": [
+      "S phase (DNA replication)",
+      "G1 phase",
+      "Prophase I again",
+      "Metaphase I again",
+      "G2 phase"
+    ]
+  },
+  {
+    "question": "Which phase marks the beginning of the second meiotic division?",
+    "correct_answer": "Prophase II",
+    "incorrect_answers": [
+      "Prophase I",
+      "Anaphase I",
+      "Metaphase I",
+      "Telophase I",
+      "Interphase"
+    ]
+  },
+  {
+    "question": "During metaphase II, what lines up at the equator?",
+    "correct_answer": "Sister chromatids",
+    "incorrect_answers": [
+      "Homologous chromosome pairs",
+      "Tetrads",
+      "Centromeres only",
+      "Individual genes",
+      "Spindle poles"
+    ]
+  },
+  {
+    "question": "What occurs during anaphase II?",
+    "correct_answer": "Sister chromatids separate and move to opposite poles",
+    "incorrect_answers": [
+      "Homologous chromosomes pair up",
+      "Crossing over occurs",
+      "DNA replicates again",
+      "Nuclear envelope reforms",
+      "Chromosomes condense for the first time"
+    ]
+  },
+  {
+    "question": "At the end of telophase II, how many total gametes result from one original diploid cell?",
+    "correct_answer": "Four haploid gametes",
+    "incorrect_answers": [
+      "Two diploid gametes",
+      "Eight diploid gametes",
+      "Four diploid gametes",
+      "Two haploid gametes",
+      "Six haploid gametes"
+    ]
+  },
+  {
+    "question": "Which process during meiosis I helps ensure genetic variation among gametes?",
+    "correct_answer": "Independent assortment of homologous chromosomes",
+    "incorrect_answers": [
+      "Replication of centrioles",
+      "Formation of a cleavage furrow",
+      "Fusion of nuclear envelopes",
+      "Synthesis of spindle fibers",
+      "Formation of cell plate"
+    ]
+  },
+  {
+    "question": "Which term describes abnormal separation of chromosomes during meiosis?",
+    "correct_answer": "Nondisjunction",
+    "incorrect_answers": [
+      "Translocation",
+      "Inversion",
+      "Deletion",
+      "Duplication",
+      "Transcription"
+    ]
+  },
+  {
+    "question": "What condition can result from nondisjunction during meiosis in humans?",
+    "correct_answer": "Down syndrome (trisomy 21)",
+    "incorrect_answers": [
+      "Sickle cell anemia",
+      "Huntington’s disease",
+      "Cystic fibrosis",
+      "Hemophilia A",
+      "Phenylketonuria"
+    ]
+  },
+  {
+    "question": "Which of the following is NOT a sign of abnormal meiosis?",
+    "correct_answer": "Exact equal segregation of all chromosomes",
+    "incorrect_answers": [
+      "Aneuploid gametes",
+      "Monosomy in offspring",
+      "Trisomy in offspring",
+      "Misaligned chromosomes in metaphase I",
+      "Chromosome breakage in prophase I"
+    ]
+  },
+  {
+    "question": "Which event occurs only in meiosis I and not in meiosis II?",
+    "correct_answer": "Pairing of homologous chromosomes (synapsis)",
+    "incorrect_answers": [
+      "Separation of sister chromatids",
+      "Formation of spindle fibers",
+      "Condensation of chromosomes",
+      "Nuclear envelope breakdown",
+      "Cytokinesis"
+    ]
+  },
+  {
+    "question": "Which event is unique to meiosis II compared to meiosis I?",
+    "correct_answer": "Separation of sister chromatids",
+    "incorrect_answers": [
+      "Crossing over",
+      "Synapsis of homologous chromosomes",
+      "Homologous chromosome alignment",
+      "Independent assortment",
+      "Reductional division"
+    ]
+  },
+  {
+    "question": "How does meiosis I differ from meiosis II in terms of chromosome number? ",
+    "correct_answer": "Meiosis I reduces chromosome number, meiosis II does not",
+    "incorrect_answers": [
+      "Meiosis I does not reduce chromosome number, meiosis II does",
+      "Both meiosis I and II reduce chromosome numbers",
+      "Meiosis II doubles chromosome number",
+      "Neither division changes chromosome number",
+      "Both divisions increase chromosome number"
+    ]
+  },
+  {
+    "question": "Which division (I or II) is referred to as the reductional division?",
+    "correct_answer": "Meiosis I",
+    "incorrect_answers": [
+      "Meiosis II",
+      "Both I and II equally",
+      "Neither division",
+      "Mitosis",
+      "Interphase"
+    ]
+  },
+  {
+    "question": "Which division is referred to as the equational division?",
+    "correct_answer": "Meiosis II",
+    "incorrect_answers": [
+      "Meiosis I",
+      "Both I and II equally",
+      "Mitosis",
+      "Interphase",
+      "Cytokinesis"
+    ]
+  },
+  {
+    "question": "During which stage do homologous chromosomes align at the metaphase I plate?",
+    "correct_answer": "Metaphase I",
+    "incorrect_answers": [
+      "Metaphase II",
+      "Anaphase I",
+      "Prophase I",
+      "Telophase I",
+      "Anaphase II"
+    ]
+  },
+  {
+    "question": "Which event occurs during prophase II?",
+    "correct_answer": "Chromosomes condense and spindle re-forms without further DNA replication",
+    "incorrect_answers": [
+      "Homologous chromosomes pair up",
+      "Crossing over occurs",
+      "DNA replicates again",
+      "Nuclear envelope reforms",
+      "Spindle fibers break down"
+    ]
+  },
+  {
+    "question": "What is the ploidy of cells entering meiosis II compared to those entering meiosis I? ",
+    "correct_answer": "Cells entering meiosis II are haploid but have duplicated chromosomes",
+    "incorrect_answers": [
+      "Cells entering meiosis II are diploid with single chromosomes",
+      "Cells entering meiosis II are diploid with duplicated chromosomes",
+      "Cells entering meiosis II are haploid with single chromatids",
+      "Cells entering meiosis II are tetraploid",
+      "Cells entering meiosis II are triploid"
+    ]
+  },
+  {
+    "question": "Which process does NOT occur in meiosis II but occurs in meiosis I? ",
+    "correct_answer": "Independent assortment of homologous chromosomes",
+    "incorrect_answers": [
+      "Separation of sister chromatids",
+      "Chromosome condensation",
+      "Spindle formation",
+      "Nuclear envelope breakdown",
+      "Cytokinesis"
+    ]
+  },
+  {
+    "question": "During which phase do spindle fibers attach to kinetochores of sister chromatids in meiosis II? ",
+    "correct_answer": "Metaphase II",
+    "incorrect_answers": [
+      "Metaphase I",
+      "Anaphase II",
+      "Prophase II",
+      "Telophase II",
+      "Anaphase I"
+    ]
+  },
+  {
+    "question": "Which of the following best describes the significance of meiosis? ",
+    "correct_answer": "Creates genetic diversity and halves chromosome number for sexual reproduction",
+    "incorrect_answers": [
+      "Repairs damaged DNA in somatic cells",
+      "Produces identical somatic cells for growth",
+      "Duplicates chromosome number in sex cells",
+      "Synthesizes proteins for gametes",
+      "Maintains ploidy level in body cells"
+    ]
+  },
+  {
+    "question": "Which abnormal event during meiosis can lead to Turner syndrome (45,X)? ",
+    "correct_answer": "Nondisjunction of sex chromosomes resulting in monosomy X",
+    "incorrect_answers": [
+      "Crossing over between autosomes",
+      "Deletion of a portion of chromosome 21",
+      "Translocation between X and Y chromosomes",
+      "Multiplication of SRY gene",
+      "Fusion of haploid gametes"
+    ]
+  },
+  {
+    "question": "Which abnormality in meiosis can result in a gamete with three copies of chromosome 21? ",
+    "correct_answer": "Nondisjunction during anaphase I or II",
+    "incorrect_answers": [
+      "Deletion of chromosome 21",
+      "Crossing over failure in prophase II",
+      "Independent assortment error in metaphase II",
+      "Premature cytokinesis",
+      "Telophase I skipping"
+    ]
+  },
+  {
+    "question": "What is the result of nondisjunction during meiosis I? ",
+    "correct_answer": "Homologous chromosomes fail to separate, resulting in gametes with extra or missing chromosomes",
+    "incorrect_answers": [
+      "Sister chromatids fail to separate in meiosis II only",
+      "Chromosomes replicate more than once",
+      "Crossing over does not occur",
+      "Cytokinesis fails but chromosomes segregate correctly",
+      "Gametes are unaffected"
+    ]
+  },
+  {
+    "question": "Which syndrome results from an extra X chromosome in males (47,XXY)? ",
+    "correct_answer": "Klinefelter syndrome",
+    "incorrect_answers": [
+      "Turner syndrome",
+      "Triple X syndrome",
+      "Down syndrome",
+      "Edward syndrome",
+      "Patau syndrome"
+    ]
+  },
+  {
+    "question": "Which syndrome results from a missing sex chromosome in females (45,X)? ",
+    "correct_answer": "Turner syndrome",
+    "incorrect_answers": [
+      "Klinefelter syndrome",
+      "Triple X syndrome",
+      "Down syndrome",
+      "Edward syndrome",
+      "Patau syndrome"
+    ]
+  },
+  {
+    "question": "Which of the following is a key difference between meiosis I and meiosis II? ",
+    "correct_answer": "Meiosis I separates homologous chromosomes; meiosis II separates sister chromatids",
+    "incorrect_answers": [
+      "Meiosis I separates sister chromatids; meiosis II separates homologous chromosomes",
+      "Meiosis I occurs in somatic cells; meiosis II in germ cells",
+      "Meiosis I replicates DNA again; meiosis II does not",
+      "Meiosis I has no prophase stage; meiosis II does",
+      "Meiosis I produces four cells; meiosis II produces two cells"
+    ]
+  },
+  {
+    "question": "Which of the following is a similarity between meiosis I and meiosis II? ",
+    "correct_answer": "Both involve alignment of chromosomes at a metaphase plate",
+    "incorrect_answers": [
+      "Both involve pairing of homologous chromosomes",
+      "Both reduce chromosome number",
+      "Both replicate DNA beforehand",
+      "Both produce identical daughter cells",
+      "Both occur without spindle fibers"
+    ]
+  },
+  {
+    "question": "What happens to sister chromatids during meiosis I? ",
+    "correct_answer": "They remain attached at their centromeres",
+    "incorrect_answers": [
+      "They separate and move to opposite poles",
+      "They are degraded",
+      "They fuse to form homologous pairs",
+      "They invert orientation",
+      "They replicate again"
+    ]
+  },
+  {
+    "question": "Which phase of meiosis II resembles mitosis the most? ",
+    "correct_answer": "Metaphase II",
+    "incorrect_answers": [
+      "Prophase I",
+      "Anaphase I",
+      "Telophase I",
+      "Prophase II",
+      "Telophase II"
+    ]
+  },
+  {
+    "question": "During which phase do sister chromatids align at the cell equator in meiosis II? ",
+    "correct_answer": "Metaphase II",
+    "incorrect_answers": [
+      "Metaphase I",
+      "Anaphase II",
+      "Prophase II",
+      "Telophase II",
+      "Anaphase I"
+    ]
+  },
+  {
+    "question": "Why is meiosis called a reductional division?",
+    "correct_answer": "Because it reduces the chromosome number by half in daughter cells",
+    "incorrect_answers": [
+      "Because it reduces the cell volume by half",
+      "Because it halves the amount of cytoplasm",
+      "Because it halves the number of spindle fibers",
+      "Because it halves the number of centrosomes",
+      "Because it halves the size of chromosomes"
+    ]
+  },
+  {
+    "question": "Which phase does not occur in meiosis II? ",
+    "correct_answer": "Crossing over",
+    "incorrect_answers": [
+      "Spindle formation",
+      "Metaphase alignment",
+      "Chromosome condensation",
+      "Chromatid separation",
+      "Nuclear envelope breakdown"
+    ]
+  },
+  {
+    "question": "Which process in meiosis contributes directly to genetic recombination? ",
+    "correct_answer": "Crossing over",
+    "incorrect_answers": [
+      "DNA replication in S phase",
+      "Spindle fiber formation",
+      "Cytokinesis",
+      "Nuclear envelope reformation",
+      "Ligase activity"
+    ]
+  },
+  {
+    "question": "What is the significance of independent assortment during meiosis? ",
+    "correct_answer": "It results in different combinations of maternal and paternal chromosomes in gametes",
+    "incorrect_answers": [
+      "It ensures identical chromosomes in sister cells",
+      "It replicates the DNA twice",
+      "It reduces the nucleotide sequence errors",
+      "It helps in cytokinesis",
+      "It produces somatic cells"
+    ]
+  },
+  {
+    "question": "Which abnormal meiotic event can produce a gamete missing one chromosome? ",
+    "correct_answer": "Nondisjunction",
+    "incorrect_answers": [
+      "Synapsis failure",
+      "Crossing over",
+      "Independent assortment",
+      "DNA replication",
+      "Telomere fusion"
+    ]
+  },
+  {
+    "question": "An organism with a normal chromosome count of 2n = 46 produces a gamete with 24 chromosomes. What happened during meiosis? ",
+    "correct_answer": "Nondisjunction led to aneuploid gamete",
+    "incorrect_answers": [
+      "Crossing over added extra chromosomes",
+      "Independent assortment doubled chromosome number",
+      "DNA replication error caused extra chromosomes",
+      "Cytokinesis failure produced extra chromosomes",
+      "Synapsis did not occur"
+    ]
+  },
+  {
+    "question": "Which term describes cells that contain one set of chromosomes? ",
+    "correct_answer": "Haploid",
+    "incorrect_answers": [
+      "Diploid",
+      "Tetraploid",
+      "Triploid",
+      "Polyploid",
+      "Monoploid"
+    ]
+  },
+  {
+    "question": "Which term describes cells that contain two sets of chromosomes? ",
+    "correct_answer": "Diploid",
+    "incorrect_answers": [
+      "Haploid",
+      "Triploid",
+      "Tetraploid",
+      "Polyploid",
+      "Monoploid"
+    ]
+  },
+  {
+    "question": "Which process ensures that each gamete receives a random mix of maternal and paternal chromosomes? ",
+    "correct_answer": "Independent assortment",
+    "incorrect_answers": [
+      "Crossing over only",
+      "DNA replication",
+      "Chromosome condensation",
+      "Spindle fiber formation",
+      "Telophase I"
+    ]
+  },
+  {
+    "question": "What is the state of chromosomes at the start of prophase I? ",
+    "correct_answer": "Condensed and paired as homologous tetrads",
+    "incorrect_answers": [
+      "Fully separated chromatids",
+      "Single linear DNA molecules",
+      "Attached to spindle poles",
+      "Decondensed chromatin",
+      "Circular DNA molecules"
+    ]
+  },
+  {
+    "question": "During which phase of meiosis does the nuclear envelope break down for the first time? ",
+    "correct_answer": "Prophase I",
+    "incorrect_answers": [
+      "Prophase II",
+      "Metaphase I",
+      "Anaphase I",
+      "Telophase I",
+      "Metaphase II"
+    ]
+  },
+  {
+    "question": "Which protein structure holds sister chromatids together until anaphase II? ",
+    "correct_answer": "Cohesin complex",
+    "incorrect_answers": [
+      "Synaptonemal complex",
+      "Centrosome",
+      "Spindle microtubules",
+      "Kinetochore fibers",
+      "Histone octamers"
+    ]
+  },
+  {
+    "question": "Which stage directly follows metaphase I? ",
+    "correct_answer": "Anaphase I",
+    "incorrect_answers": [
+      "Telophase I",
+      "Prophase I",
+      "Metaphase II",
+      "Prophase II",
+      "Anaphase II"
+    ]
+  },
+  {
+    "question": "Which process correctly orders the events in meiosis I? ",
+    "correct_answer": "Prophase I → Metaphase I → Anaphase I → Telophase I",
+    "incorrect_answers": [
+      "Prophase I → Anaphase I → Metaphase I → Telophase I",
+      "Metaphase I → Prophase I → Anaphase I → Telophase I",
+      "Telophase I → Metaphase I → Anaphase I → Prophase I",
+      "Prophase I → Metaphase II → Anaphase II → Telophase II",
+      "Anaphase I → Prophase I → Metaphase I → Telophase I"
+    ]
+  },
+  {
+    "question": "Which of the following best describes telophase II? ",
+    "correct_answer": "Chromosomes decondense, nuclear envelopes re-form, and four haploid cells are present",
+    "incorrect_answers": [
+      "Homologous chromosomes pair and crossing over occurs",
+      "Sister chromatids align at the equator",
+      "Homologous chromosomes align at the equator",
+      "DNA replicates for a second time",
+      "Spindle fibers break down before cytokinesis"
+    ]
+  },
+  {
+    "question": "What critical event occurs during the pachytene stage of prophase I? ",
+    "correct_answer": "Crossing over between homologous chromosomes",
+    "incorrect_answers": [
+      "Separation of sister chromatids",
+      "Alignment at the metaphase plate",
+      "Nondisjunction of homologs",
+      "Replication of mitochondria",
+      "Cytokinesis begins"
+    ]
+  },
+  {
+    "question": "Which of the following describes diplotene of prophase I? ",
+    "correct_answer": "Homologous chromosomes begin to separate but remain attached at chiasmata",
+    "incorrect_answers": [
+      "Chromosomes condense but do not pair",
+      "Sister chromatids separate fully",
+      "Spindle fibers attach to kinetochores",
+      "DNA replication occurs",
+      "Nuclear envelope reforms"
+    ]
+  },
+  {
+    "question": "What is the key difference between metaphase I and metaphase II? ",
+    "correct_answer": "Metaphase I aligns homologous chromosome pairs; metaphase II aligns sister chromatids",
+    "incorrect_answers": [
+      "Metaphase I has no spindle fibers; metaphase II does",
+      "Metaphase I occurs in mitosis; metaphase II in meiosis",
+      "Metaphase I produces haploid cells; metaphase II produces diploid cells",
+      "Metaphase I aligns single chromatids; metaphase II aligns duplicated chromosomes",
+      "Metaphase I occurs after anaphase I; metaphase II occurs before prophase II"
+    ]
+  },
+  {
+    "question": "Which of the following does NOT occur during prophase II? ",
+    "correct_answer": "Pairing of homologous chromosomes",
+    "incorrect_answers": [
+      "Chromosome condensation",
+      "Spindle fiber formation",
+      "Nuclear envelope breakdown",
+      "Centrosome duplication",
+      "Re-formation of sister kinetochores"
+    ]
+  },
+  {
+    "question": "During anaphase II, what exactly separates? ",
+    "correct_answer": "Sister chromatids separate and move to opposite poles",
+    "incorrect_answers": [
+      "Homologous chromosomes separate",
+      "Centromeres replicate",
+      "Telomeres fuse",
+      "Spindle fibers form de novo",
+      "Kinetochore microtubules break down"
+    ]
+  },
+  {
+    "question": "Which of the following is true of telophase II? ",
+    "correct_answer": "Four genetically distinct haploid nuclei form",
+    "incorrect_answers": [
+      "Two identical diploid nuclei form",
+      "Homologous chromosomes pair up",
+      "Sister chromatids remain aligned",
+      "Crossing over occurs",
+      "DNA replicates again"
+    ]
+  },
+  {
+    "question": "What is the primary significance of meiosis? ",
+    "correct_answer": "Generating genetic diversity and halving chromosome number for sexual reproduction",
+    "incorrect_answers": [
+      "Repairing DNA damage in somatic cells",
+      "Increasing cell size",
+      "Producing energy for the cell",
+      "Synthesizing proteins for gametes",
+      "Replacing dead somatic cells"
+    ]
+  },
+  {
+    "question": "Which of the following best describes aneuploidy? ",
+    "correct_answer": "An abnormal number of chromosomes in a cell",
+    "incorrect_answers": [
+      "Loss of an entire chromosome set",
+      "Exact diploid chromosome count",
+      "Chromosomes with no centromeres",
+      "Chromosomal material missing telomeres only",
+      "Chromosomes with fused sister chromatids"
+    ]
+  },
+  {
+    "question": "Which of the following is a consequence of nondisjunction in meiosis II? ",
+    "correct_answer": "Two normal haploid and two aneuploid haploid gametes (one trisomic, one monosomic)",
+    "incorrect_answers": [
+      "Four normal haploid gametes",
+      "Two diploid gametes and two haploid gametes",
+      "Two haploid gametes and two tetraploid gametes",
+      "Four diploid gametes",
+      "One haploid, one diploid, one triploid, one tetraploid gamete"
+    ]
+  },
+  {
+    "question": "Which of the following statements is TRUE about meiosis II? ",
+    "correct_answer": "It is similar to mitosis but with haploid chromosome sets",
+    "incorrect_answers": [
+      "It includes pairing of homologous chromosomes and crossing over",
+      "It occurs before DNA replication",
+      "It produces diploid daughter cells",
+      "It results in chromosome doubling",
+      "It occurs only in somatic cells"
+    ]
+  },
+  {
+    "question": "Which event ensures that each gamete in meiosis I is unique? ",
+    "correct_answer": "Independent assortment of homologous chromosomes",
+    "incorrect_answers": [
+      "Formation of cell plate",
+      "Replication of centrosomes",
+      "Cytokinesis before anaphase",
+      "Spindle breakdown",
+      "Fusion of gametes"
+    ]
+  },
+  {
+    "question": "What is chiasma formation? ",
+    "correct_answer": "The physical point where crossing over occurs between homologous chromosomes",
+    "incorrect_answers": [
+      "Site of spindle attachment",
+      "Location of centromere duplication",
+      "Position of telomere shortening",
+      "Point of nuclear envelope reformation",
+      "Region where cytokinesis begins"
+    ]
+  },
+  {
+    "question": "Which process in meiosis contributes directly to genetic recombination? ",
+    "correct_answer": "Crossing over",
+    "incorrect_answers": [
+      "DNA replication in S phase",
+      "Spindle fiber formation",
+      "Cytokinesis",
+      "Nuclear envelope reformation",
+      "Ligase activity"
+    ]
+  },
+  {
+    "question": "What is synapsis? ",
+    "correct_answer": "The pairing of homologous chromosomes during prophase I",
+    "incorrect_answers": [
+      "The separation of sister chromatids",
+      "The alignment of single chromatids at the metaphase plate",
+      "The duplication of centrosomes",
+      "The formation of the nuclear envelope",
+      "The condensation of individual chromosomes"
+    ]
+  },
+  {
+    "question": "Which of the following occurs during pachytene? ",
+    "correct_answer": "Homologous chromosomes exchange segments of DNA (crossing over)",
+    "incorrect_answers": [
+      "Sister chromatids align at the equator",
+      "Nuclear envelope re-forms",
+      "Cytokinesis completes",
+      "DNA replicates again",
+      "Centromeres split"
+    ]
+  },
+  {
+    "question": "What is the main difference in chromosome movement between anaphase I and anaphase II? ",
+    "correct_answer": "Anaphase I separates homologous chromosomes; anaphase II separates sister chromatids",
+    "incorrect_answers": [
+      "Anaphase I separates sister chromatids; anaphase II separates homologous chromosomes",
+      "Anaphase I occurs in somatic cells; anaphase II occurs in germ cells",
+      "Anaphase I does not involve spindle fibers; anaphase II does",
+      "Anaphase I duplicates DNA; anaphase II halves DNA",
+      "Anaphase I forms four cells; anaphase II forms two"
+    ]
+  },
+  {
+    "question": "Which of the following is TRUE regarding telophase I? ",
+    "correct_answer": "Haploid cells form, each with duplicated chromosomes",
+    "incorrect_answers": [
+      "Diploid cells form with single chromosomes",
+      "Haploid cells form with single chromatids",
+      "Tetraploid cells form with duplicated chromosomes",
+      "Chromosomes are degraded",
+      "DNA replicates again"
+    ]
+  },
+  {
+    "question": "Why is meiosis II more similar to mitosis than meiosis I? ",
+    "correct_answer": "Because sister chromatids separate without further reduction in chromosome number",
+    "incorrect_answers": [
+      "Because homologous chromosomes pair again",
+      "Because DNA replicates again",
+      "Because cells become diploid again",
+      "Because no spindle fibers form",
+      "Because it produces somatic cells"
+    ]
+  },
+  {
+    "question": "Which of the following best describes chromatid behavior in meiosis II? ",
+    "correct_answer": "Sister chromatids separate into individual chromosomes",
+    "incorrect_answers": [
+      "Homologous chromosomes separate into sister chromatids",
+      "Chromatids fuse to form homologous pairs",
+      "Chromatids replicate again",
+      "Chromatids align with homologs at the equator",
+      "Chromatids form tetrads"
+    ]
+  },
+  {
+    "question": "What is the difference in ploidy between cells in metaphase I and metaphase II? ",
+    "correct_answer": "Metaphase I cells are diploid; metaphase II cells are haploid",
+    "incorrect_answers": [
+      "Metaphase I cells are haploid; metaphase II cells are diploid",
+      "Both are diploid",
+      "Both are haploid",
+      "Metaphase I cells are tetraploid; metaphase II cells are diploid",
+      "Metaphase I cells are triploid; metaphase II cells are haploid"
+    ]
+  },
+  {
+    "question": "Which of the following best describes the contents of a cell in anaphase II? ",
+    "correct_answer": "Individual chromosomes (formerly sister chromatids) moving to opposite poles",
+    "incorrect_answers": [
+      "Homologous chromosome pairs moving apart",
+      "Tetrads aligning at the equator",
+      "Chromosomes forming chiasmata",
+      "Single chromatids fusing into homologous pairs",
+      "DNA condensing for the first time"
+    ]
+  },
+  {
+    "question": "Which of the following terms refers specifically to the separation of sister chromatids? ",
+    "correct_answer": "Anaphase II",
+    "incorrect_answers": [
+      "Anaphase I",
+      "Metaphase I",
+      "Prophase I",
+      "Telophase I",
+      "Prophase II"
+    ]
+  },
+  {
+    "question": "Which phase of meiosis I is characterized by the disappearance of the nuclear envelope and formation of the spindle? ",
+    "correct_answer": "Prophase I",
+    "incorrect_answers": [
+      "Prophase II",
+      "Metaphase I",
+      "Anaphase I",
+      "Telophase I",
+      "Interphase"
+    ]
+  },
+  {
+    "question": "Which of the following is a similarity between meiosis I and meiosis II? ",
+    "correct_answer": "Both involve chromosome alignment at the metaphase plate",
+    "incorrect_answers": [
+      "Both involve homologous chromosome pairing",
+      "Both reduce chromosome number",
+      "Both occur without spindle formation",
+      "Both replicate DNA beforehand",
+      "Both produce identical daughter cells"
+    ]
+  },
+  {
+    "question": "What is the ploidy of cells that enter meiosis I compared to cells that enter meiosis II? ",
+    "correct_answer": "Cells entering meiosis I are diploid; cells entering meiosis II are haploid",
+    "incorrect_answers": [
+      "Cells entering meiosis I are haploid; cells entering meiosis II are diploid",
+      "Both are diploid",
+      "Both are haploid",
+      "Cells entering meiosis I are tetraploid; cells entering meiosis II are diploid",
+      "Cells entering meiosis I are triploid; cells entering meiosis II are haploid"
+    ]
+  },
+  {
+    "question": "Which abnormal meiotic outcome could produce a viable but aneuploid organism? ",
+    "correct_answer": "Trisomy 21 (Down syndrome)",
+    "incorrect_answers": [
+      "Trisomy 1",
+      "Monosomy 1",
+      "Tetrasomy 2",
+      "Monosomy 22",
+      "Trisomy 4"
+    ]
+  },
+  {
+    "question": "Which phase of meiosis I leads to a reduction in chromosome number? ",
+    "correct_answer": "Anaphase I (homologs separate)",
+    "incorrect_answers": [
+      "Anaphase II (sister chromatids separate)",
+      "Metaphase I (alignment)",
+      "Prophase I (pairing and condensation)",
+      "Telophase I (nuclear reformation)",
+      "Metaphase II (alignment of chromatids)"
+    ]
+  },
+  {
+    "question": "Which statement about prophase II is TRUE? ",
+    "correct_answer": "Chromosomes condense and the nuclear envelope breaks down again",
+    "incorrect_answers": [
+      "Homologous chromosomes pair up and crossing over occurs",
+      "DNA is replicated again",
+      "Nuclear envelope reforms permanently",
+      "Tetrads form for the first time",
+      "Sister chromatids fuse into homologs"
+    ]
+  },
+  {
+    "question": "Which event occurs during telophase II? ",
+    "correct_answer": "Chromosomes decondense, nuclear envelopes re-form, cytokinesis completes",
+    "incorrect_answers": [
+      "Homologous chromosomes align at the equator",
+      "Sister chromatids pair up",
+      "DNA replicates for a third time",
+      "Tetrads disassemble and fuse",
+      "Spindle fibers form for the first time"
+    ]
+  },
+  {
+    "question": "Which of the following is a major significance of meiosis? ",
+    "correct_answer": "Generates haploid gametes and increases genetic diversity",
+    "incorrect_answers": [
+      "Repairs DNA in somatic cells",
+      "Produces identical daughter cells for growth",
+      "Creates cells with increased chromosome number",
+      "Synthesizes proteins for gametes",
+      "Maintains genome stability in body cells"
+    ]
+  },
+  {
+    "question": "Which abnormal meiotic event leads to a cell with no copies of a particular chromosome? ",
+    "correct_answer": "Monosomy from nondisjunction",
+    "incorrect_answers": [
+      "Trisomy from independent assortment",
+      "Crossing over error",
+      "Synapsis failure",
+      "Telomere shortening",
+      "Centromere splitting"
+    ]
+  },
+  {
+    "question": "Which of the following is TRUE about the difference between meiosis I and meiosis II? ",
+    "correct_answer": "Meiosis I separates homologs; meiosis II separates sister chromatids",
+    "incorrect_answers": [
+      "Meiosis I separates sister chromatids; meiosis II separates homologs",
+      "Meiosis I does not involve spindle fibers; meiosis II does",
+      "Meiosis I occurs in somatic cells; meiosis II in germ cells",
+      "Meiosis I produces diploid cells; meiosis II produces tetraploid cells",
+      "Meiosis I occurs only in plants; meiosis II only in animals"
+    ]
+  },
+  {
+    "question": "Which of the following is a hallmark of prophase I? ",
+    "correct_answer": "Formation of tetrads and crossing over",
+    "incorrect_answers": [
+      "Alignment of tetrads at the equator",
+      "Separation of sister chromatids",
+      "Nuclear envelope reformation",
+      "Replication of DNA",
+      "Cytokinesis"
+    ]
+  },
+  {
+    "question": "Which checkpoint ensures that chromosomes are properly aligned before separation in meiosis I? ",
+    "correct_answer": "Spindle assembly checkpoint at metaphase I",
+    "incorrect_answers": [
+      "G1 checkpoint",
+      "DNA damage checkpoint in S phase",
+      "Spindle assembly checkpoint at metaphase II",
+      "G2/M checkpoint",
+      "Apoptosis checkpoint"
+    ]
+  },
+  {
+    "question": "Which of the following best defines the term 'bivalent' in meiosis? ",
+    "correct_answer": "A pair of homologous chromosomes aligned together during prophase I",
+    "incorrect_answers": [
+      "A pair of sister chromatids aligned at metaphase II",
+      "A pair of chromatids separated in anaphase I",
+      "A diploid gamete before division",
+      "A tetraploid cell before meiosis begins",
+      "A pair of unrelated chromosomes in a gamete"
+    ]
+  },
+  {
+    "question": "Which process during meiosis increases the chance of new allele combinations? ",
+    "correct_answer": "Independent assortment of homologous chromosomes",
+    "incorrect_answers": [
+      "DNA methylation",
+      "Telomere shortening",
+      "Spindle disassembly",
+      "Nuclear envelope formation",
+      "Centromere duplication"
+    ]
+  },
+  {
+    "question": "Which meiotic division is known as the reductional division? ",
+    "correct_answer": "Meiosis I",
+    "incorrect_answers": [
+      "Meiosis II",
+      "Both Meiosis I and II",
+      "Mitosis",
+      "Interphase",
+      "Cytokinesis"
+    ]
+  },
+  {
+    "question": "Which meiotic division is known as the equational division? ",
+    "correct_answer": "Meiosis II",
+    "incorrect_answers": [
+      "Meiosis I",
+      "Both Meiosis I and II",
+      "Mitosis",
+      "Interphase",
+      "Binary fission"
+    ]
+  },
+  {
+    "question": "Which event distinguishes prophase II from prophase I? ",
+    "correct_answer": "Absence of homolog pairing and no crossing over",
+    "incorrect_answers": [
+      "Formation of synaptonemal complex",
+      "Crossing over between homologs",
+      "DNA replication prior to prophase",
+      "Nondisjunction of sister chromatids",
+      "Recombination nodules"
+    ]
+  },
+  {
+    "question": "Which phase of meiosis is the shortest? ",
+    "correct_answer": "Metaphase II",
+    "incorrect_answers": [
+      "Prophase I",
+      "Anaphase I",
+      "Telophase I",
+      "Prophase II",
+      "Telophase II"
+    ]
+  },
+  {
+    "question": "During spermatogenesis, meiosis results in the formation of how many sperm cells from one spermatogonium? ",
+    "correct_answer": "Four",
+    "incorrect_answers": [
+      "One",
+      "Two",
+      "Three",
+      "Six",
+      "Eight"
+    ]
+  },
+  {
+    "question": "During oogenesis in humans, how many viable ova result from one primary oocyte? ",
+    "correct_answer": "One",
+    "incorrect_answers": [
+      "Two",
+      "Three",
+      "Four",
+      "Five",
+      "Six"
+    ]
+  },
+  {
+    "question": "Which event occurs during diplotene of prophase I? ",
+    "correct_answer": "Homologous chromosomes begin to separate but remain attached at chiasmata",
+    "incorrect_answers": [
+      "Spindle fibers attach to kinetochores",
+      "DNA replicates again",
+      "Chromosomes align at equator",
+      "Nuclear envelope reforms",
+      "Sister chromatids separate"
+    ]
+  },
+  {
+    "question": "Which checkpoint prevents cells with unpaired or misaligned chromosomes from proceeding through meiosis? ",
+    "correct_answer": "Spindle assembly checkpoint",
+    "incorrect_answers": [
+      "G1 checkpoint",
+      "DNA replication checkpoint",
+      "G2/M checkpoint",
+      "Apoptosis checkpoint",
+      "Cyclin D checkpoint"
+    ]
+  },
+  {
+    "question": "What is oogenesis? ",
+    "correct_answer": "The process of producing a single mature ovum from a primary oocyte",
+    "incorrect_answers": [
+      "The process of producing four spermatozoa from a spermatogonium",
+      "The pairing of homologous chromosomes in meiosis I",
+      "The separation of sister chromatids in meiosis II",
+      "The fusion of egg and sperm",
+      "The replication of oocyte DNA"
+    ]
+  },
+  {
+    "question": "What is spermatogenesis? ",
+    "correct_answer": "The process of producing four sperm cells from one spermatogonium",
+    "incorrect_answers": [
+      "The process of producing one ovum from a primary oocyte",
+      "The pairing of homologous chromosomes in meiosis I",
+      "The separation of sister chromatids in meiosis II",
+      "The fusion of egg and sperm",
+      "The formation of follicle cells"
+    ]
+  },
+  {
+    "question": "Which of the following is a feature unique to male meiosis (spermatogenesis) compared to female meiosis? ",
+    "correct_answer": "Continuous production of sperm throughout adulthood",
+    "incorrect_answers": [
+      "Formation of polar bodies",
+      "Arrest at diplotene stage until puberty",
+      "Production of one haploid gamete per germ cell",
+      "Completion of meiosis before birth",
+      "No crossing over occurs"
+    ]
+  },
+  {
+    "question": "Which of the following is a feature unique to female meiosis (oogenesis) compared to male meiosis? ",
+    "correct_answer": "Arrest of oocytes at prophase I until puberty",
+    "incorrect_answers": [
+      "Continuous production of gametes throughout adulthood",
+      "Production of four gametes per germ cell",
+      "Completion of meiosis without hormonal influence",
+      "No formation of polar bodies",
+      "No crossing over occurs"
+    ]
+  },
+  {
+    "question": "Which of the following results from abnormal meiosis leading to trisomy of chromosome 18? ",
+    "correct_answer": "Edward syndrome",
+    "incorrect_answers": [
+      "Down syndrome",
+      "Klinefelter syndrome",
+      "Turner syndrome",
+      "Patau syndrome",
+      "Cri-du-chat syndrome"
+    ]
+  },
+  {
+    "question": "Which of the following results from abnormal meiosis leading to trisomy of chromosome 13? ",
+    "correct_answer": "Patau syndrome",
+    "incorrect_answers": [
+      "Down syndrome",
+      "Edward syndrome",
+      "Klinefelter syndrome",
+      "Turner syndrome",
+      "Cri-du-chat syndrome"
+    ]
+  },
+  {
+    "question": "Which of the following results from abnormal meiosis leading to monosomy of the X chromosome in females? ",
+    "correct_answer": "Turner syndrome",
+    "incorrect_answers": [
+      "Klinefelter syndrome",
+      "Down syndrome",
+      "Edward syndrome",
+      "Patau syndrome",
+      "Cri-du-chat syndrome"
+    ]
+  },
+  {
+    "question": "Which condition results from an extra copy of the X chromosome in males? ",
+    "correct_answer": "Klinefelter syndrome (47,XXY)",
+    "incorrect_answers": [
+      "Turner syndrome",
+      "Triple X syndrome",
+      "Down syndrome",
+      "Edwards syndrome",
+      "Patau syndrome"
+    ]
+  },
+  {
+    "question": "Which of the following best describes how abnormal meiosis can contribute to miscarriage? ",
+    "correct_answer": "Aneuploid embryos often fail to develop properly",
+    "incorrect_answers": [
+      "Excess recombination leads to overexpressed genes",
+      "Cytokinesis is inhibited completely",
+      "Spindle fibers form but do not attach to kinetochores",
+      "Gametes remain diploid instead of haploid",
+      "Sister chromatids fuse before division"
+    ]
+  },
+  {
+    "question": "Which stage of meiosis I is characterized by chiasmata becoming visible? ",
+    "correct_answer": "Pachytene",
+    "incorrect_answers": [
+      "Leptotene",
+      "Zygotene",
+      "Diplotene",
+      "Diakinesis",
+      "Metaphase I"
+    ]
+  },
+  {
+    "question": "Which of the following correctly lists meiotic phases in order during meiosis I? ",
+    "correct_answer": "Leptotene → Zygotene → Pachytene → Diplotene → Diakinesis → Metaphase I → Anaphase I → Telophase I",
+    "incorrect_answers": [
+      "Zygotene → Leptotene → Diplotene → Pachytene → Diakinesis → Anaphase I → Metaphase I → Telophase I",
+      "Leptotene → Zygotene → Diplotene → Pachytene → Diakinesis → Metaphase I → Anaphase I → Telophase I",
+      "Pachytene → Leptotene → Zygotene → Diplotene → Diakinesis → Metaphase I → Anaphase I → Telophase I",
+      "Leptotene → Pachytene → Zygotene → Diplotene → Diakinesis → Metaphase I → Anaphase I → Telophase I",
+      "Leptotene → Zygotene → Pachytene → Diakinesis → Diplotene → Metaphase I → Anaphase I → Telophase I"
+    ]
+  },
+  {
+    "question": "Which of the following is NOT a difference between meiosis I and meiosis II? ",
+    "correct_answer": "DNA replication occurs between meiosis I and II",
+    "incorrect_answers": [
+      "Meiosis I separates homologs; meiosis II separates sister chromatids",
+      "Crossing over only happens in meiosis I",
+      "Chromosome number is halved in meiosis I but not in II",
+      "Meiosis II resembles mitosis",
+      "Cytokinesis occurs twice in meiosis"
+    ]
+  },
+  {
+    "question": "Which of the following phases is part of meiosis II but not meiosis I? ",
+    "correct_answer": "Prophase II",
+    "incorrect_answers": [
+      "Prophase I",
+      "Metaphase I",
+      "Anaphase I",
+      "Telophase I",
+      "Diakinesis"
+    ]
+  },
+  {
+    "question": "Which statement best explains why meiosis produces genetic variation? ",
+    "correct_answer": "Crossing over and independent assortment shuffle alleles",
+    "incorrect_answers": [
+      "Each division duplicates the genome twice",
+      "Nucleus reforms more quickly",
+      "Spindle fibers fail to attach",
+      "Cytokinesis happens only once",
+      "Chromosomes remain condensed throughout"
+    ]
+  },
+  {
+    "question": "Which abnormal meiotic event could produce a zygote with 45 chromosomes? ",
+    "correct_answer": "Fertilization involving a gamete missing a chromosome (monosomy)",
+    "incorrect_answers": [
+      "Fertilization involving two diploid gametes",
+      "Four haploid gametes fusing",
+      "Crossing over producing an extra chromosome",
+      "Independent assortment causing doubling of chromosomes",
+      "Meiosis skipping cytokinesis"
+    ]
+  },
+  {
+    "question": "Which of the following correctly matches the division and its outcome? ",
+    "correct_answer": "Meiosis I → two haploid cells; meiosis II → four haploid cells",
+    "incorrect_answers": [
+      "Meiosis I → four haploid cells; meiosis II → two haploid cells",
+      "Meiosis I → two diploid cells; meiosis II → two haploid cells",
+      "Meiosis I → four diploid cells; meiosis II → four haploid cells",
+      "Meiosis I → two haploid cells; meiosis II → two diploid cells",
+      "Meiosis I → one tetraploid cell; meiosis II → four diploid cells"
+    ]
+  },
+  {
+    "question": "Which of the following is a difference between metaphase I and metaphase II? ",
+    "correct_answer": "Metaphase I aligns homologous pairs; metaphase II aligns individual chromosomes",
+    "incorrect_answers": [
+      "Metaphase I has no spindle fibers; metaphase II does",
+      "Metaphase I occurs in mitosis; metaphase II in meiosis I",
+      "Metaphase I lines up sister chromatids; metaphase II lines up homologs",
+      "Metaphase I occurs after anaphase II; metaphase II occurs before anaphase I",
+      "Metaphase I has no nuclear envelope; metaphase II does"
+    ]
+  },
+  {
+    "question": "Which event directly follows diakinesis in meiosis I? ",
+    "correct_answer": "Nuclear envelope breakdown and spindle formation",
+    "incorrect_answers": [
+      "Crossing over begins",
+      "Sister chromatids pair up",
+      "DNA replication",
+      "Cytokinesis completes",
+      "Homologous chromosomes form"
+    ]
+  },
+  {
+    "question": "Which of the following best describes the synapsis event? ",
+    "correct_answer": "Pairing of homologous chromosomes in prophase I",
+    "incorrect_answers": [
+      "Alignment of sister chromatids at metaphase II",
+      "Separation of homologous chromosomes in anaphase I",
+      "Zygote formation after fertilization",
+      "DNA replication at S phase",
+      "Cytokinesis after telophase II"
+    ]
+  },
+  {
+    "question": "Which stage of meiosis is characterized by visible chiasmata? ",
+    "correct_answer": "Diplotene",
+    "incorrect_answers": [
+      "Leptotene",
+      "Zygotene",
+      "Prophase II",
+      "Metaphase I",
+      "Anaphase II"
+    ]
+  },
+  {
+    "question": "Which structure anchors spindle fibers to chromosomes during meiosis? ",
+    "correct_answer": "Kinetochore",
+    "incorrect_answers": [
+      "Centromere alone",
+      "Synaptonemal complex",
+      "Telomere",
+      "Nucleolus",
+      "Cohesin rings"
+    ]
+  },
+  {
+    "question": "Which of the following is a major difference between mitosis and meiosis I? ",
+    "correct_answer": "Meiosis I pairs homologous chromosomes; mitosis does not",
+    "incorrect_answers": [
+      "Mitosis reduces chromosome number; meiosis I does not",
+      "Meiosis I does not involve spindle fibers; mitosis does",
+      "Mitosis occurs only in germ cells; meiosis I occurs in somatic cells",
+      "Meiosis I produces identical daughter cells; mitosis does not",
+      "Mitosis has no cytokinesis; meiosis I does"
+    ]
+  },
+  {
+    "question": "Which is TRUE regarding the cells produced by meiosis? ",
+    "correct_answer": "They are haploid and genetically distinct",
+    "incorrect_answers": [
+      "They are diploid and genetically identical",
+      "They are haploid and genetically identical",
+      "They are diploid and genetically distinct",
+      "They are tetraploid and identical",
+      "They are haploid with identical DNA sequences"
+    ]
+  },
+  {
+    "question": "Which of the following correctly describes the synaptonemal complex? ",
+    "correct_answer": "A protein structure that holds homologous chromosomes together during crossing over",
+    "incorrect_answers": [
+      "A protein that separates sister chromatids in anaphase II",
+      "The region where spindle fibers anchor to microtubules",
+      "The site of cytokinesis formation in meiosis",
+      "The DNA sequence where homologs align",
+      "A membrane structure that encloses the nucleus during prophase"
+    ]
+  },
+  {
+    "question": "Which of the following best explains nondisjunction in meiosis? ",
+    "correct_answer": "Failure of chromosome pairs or sister chromatids to separate properly",
+    "incorrect_answers": [
+      "Over-replication of DNA",
+      "Failure of crossing over",
+      "Excessive spindle fiber formation",
+      "Premature cytokinesis",
+      "Fusion of non-homologous chromosomes"
+    ]
+  },
+  {
+    "question": "Which condition can arise from nondisjunction in meiosis II? ",
+    "correct_answer": "Two normal gametes and two aneuploid gametes (one with extra, one missing a chromosome)",
+    "incorrect_answers": [
+      "All four gametes aneuploid",
+      "All four gametes normal",
+      "Two diploid and two haploid gametes",
+      "One gamete with all chromosomes and three empty cells",
+      "Four haploid gametes with double chromosomes"
+    ]
+  },
+  {
+    "question": "Which of the following phases directly follows anaphase II? ",
+    "correct_answer": "Telophase II",
+    "incorrect_answers": [
+      "Metaphase II",
+      "Prophase II",
+      "Anaphase I",
+      "Telophase I",
+      "Metaphase I"
+    ]
+  },
+  {
+    "question": "Which component of the spindle attaches directly to chromosomes during meiosis? ",
+    "correct_answer": "Microtubules to kinetochores",
+    "incorrect_answers": [
+      "Synaptonemal proteins",
+      "Chromosomal DNA",
+      "Cohesin complexes",
+      "Nuclear envelope fragments",
+      "Chromatin fibers"
+    ]
+  },
+  {
+    "question": "Which of the following is NOT a direct result of meiosis? ",
+    "correct_answer": "Production of genetically identical diploid cells",
+    "incorrect_answers": [
+      "Halving of chromosome number",
+      "Formation of haploid gametes",
+      "Generation of genetic variation",
+      "Crossing over between homologs",
+      "Independent assortment of chromosomes"
+    ]
+  },
+  {
+    "question": "Which of the following describes diakinesis? ",
+    "correct_answer": "Final stage of prophase I where chromosomes fully condense and chiasmata are visible",
+    "incorrect_answers": [
+      "Stage when sister chromatids separate",
+      "Stage immediately after telophase II",
+      "Phase of metaphase II alignment",
+      "Anaphase I chromatid separation",
+      "Cytokinesis after meiosis II"
+    ]
+  },
+  {
+    "question": "Which of the following best describes diplotene? ",
+    "correct_answer": "Stage in prophase I where homologous chromosomes begin to separate but remain connected at chiasmata",
+    "incorrect_answers": [
+      "Stage where chromosomes align at equator",
+      "Stage where sister chromatids separate",
+      "Stage where DNA replication occurs",
+      "Stage where gametes fuse",
+      "Stage of spindle disassembly"
+    ]
+  },
+  {
+    "question": "Which of the following is true of metaphase I but not metaphase II? ",
+    "correct_answer": "Homologous pairs, rather than individual chromatids, align at the equator",
+    "incorrect_answers": [
+      "Chromosomes align at the equator",
+      "Spindle fibers attach to kinetochores",
+      "Centromeres split",
+      "DNA is replicated",
+      "Nuclear envelope reforms"
+    ]
+  },
+  {
+    "question": "Which of the following describes leptotene? ",
+    "correct_answer": "Initial stage of prophase I where chromosomes begin to condense",
+    "incorrect_answers": [
+      "Stage where homologous chromosomes pair",
+      "Stage of sister chromatid separation",
+      "Stage of metaphase alignment",
+      "Stage of telophase nuclear formation",
+      "Stage where DNA replicates"
+    ]
+  },
+  {
+    "question": "Which of the following describes zygotene? ",
+    "correct_answer": "Stage of prophase I when pairing (synapsis) of homologous chromosomes begins",
+    "incorrect_answers": [
+      "Stage of sister chromatid separation",
+      "Stage of chromosome decondensation",
+      "Stage of spindle disassembly",
+      "Stage of metaphase alignment",
+      "Stage of DNA replication"
+    ]
+  },
+  {
+    "question": "Which of the following describes pachytene? ",
+    "correct_answer": "Stage of prophase I where crossing over occurs and synapsis is complete",
+    "incorrect_answers": [
+      "Stage of sister chromatid separation",
+      "Stage of metaphase alignment",
+      "Stage of telophase nuclear reformation",
+      "Stage of spindle disassembly",
+      "Stage of DNA replication"
+    ]
+  },
+  {
+    "question": "Which of the following best describes the function of the cohesin complex during meiosis? ",
+    "correct_answer": "Maintains sister chromatid cohesion until anaphase II",
+    "incorrect_answers": [
+      "Forms chiasmata between homologs",
+      "Replicates DNA during S phase",
+      "Breaks down nuclear envelope",
+      "Synthesizes spindle microtubules",
+      "Fuses homologous chromosomes"
+    ]
+  },
+  {
+    "question": "Which of the following is true regarding telophase I? ",
+    "correct_answer": "Haploid daughter cells form but chromosomes remain duplicated",
+    "incorrect_answers": [
+      "Diploid daughter cells form with single chromatids",
+      "Four haploid cells form immediately",
+      "Chromosomes condense again",
+      "DNA replicates anew",
+      "Spindle fibers attach to homologs"
+    ]
+  },
+  {
+    "question": "Which of the following occurs during interkinesis between meiosis I and II? ",
+    "correct_answer": "Brief rest period without DNA replication",
+    "incorrect_answers": [
+      "DNA replication occurs again",
+      "Crossing over takes place",
+      "Spindle fibers assemble",
+      "Chromosomes pair as tetrads",
+      "Cytokinesis fails completely"
+    ]
+  },
+  {
+    "question": "Which of the following best defines the term 'tetrad' in meiosis? ",
+    "correct_answer": "A paired set of homologous chromosomes (four chromatids) during prophase I",
+    "incorrect_answers": [
+      "Two sister chromatids aligned at the equator in metaphase II",
+      "A set of four sister chromatids after anaphase II",
+      "A group of four haploid gametes after meiosis",
+      "A quadruple set of chromosomes in a tetraploid cell",
+      "A pairing of four non-homologous chromosomes"
+    ]
+  },
+  {
+    "question": "Which of the following is NOT a hallmark of meiosis? ",
+    "correct_answer": "Fusion of two gametes into a zygote",
+    "incorrect_answers": [
+      "Reduction of chromosome number",
+      "Crossing over between homologs",
+      "Independent assortment",
+      "Formation of haploid cells",
+      "Two successive cell divisions"
+    ]
+  },
+{
+    "question": "Which organ produces sperm in the male reproductive system?",
+    "correct_answer": "Testes",
+    "incorrect_answers": [
+      "Prostate gland",
+      "Seminal vesicles",
+      "Epididymis",
+      "Vas deferens",
+      "Penis"
+    ]
+  },
+  {
+    "question": "Where do sperm mature and are stored?",
+    "correct_answer": "Epididymis",
     "incorrect_answers": [
       "Vas deferens",
+      "Seminal vesicles",
+      "Testes",
       "Prostate gland",
-      "Epididymis",
-      "Urethra",
-      "Seminal vesicles"
+      "Urethra"
     ]
   },
   {
-    "question": "What is the function of the scrotum?",
-    "correct_answer": "Maintain testes at lower temperature",
-    "incorrect_answers": [
-      "Produce testosterone",
-      "Store sperm indefinitely",
-      "Transport semen",
-      "Protect the bladder",
-      "Synthesize semen fluid"
-    ]
-  },
-  {
-    "question": "Which hormone triggers sperm production?",
-    "correct_answer": "Follicle-stimulating hormone (FSH)",
-    "incorrect_answers": [
-      "Progesterone",
-      "Luteinizing hormone (LH)",
-      "Prolactin",
-      "Estrogen",
-      "Oxytocin"
-    ]
-  },
-  {
-    "question": "Where does fertilization normally occur?",
-    "correct_answer": "Fallopian tube",
-    "incorrect_answers": [
-      "Uterus",
-      "Vagina",
-      "Ovary",
-      "Cervix",
-      "Endometrium"
-    ]
-  },
-  {
-    "question": "Which male gland adds fructose-rich fluid to semen?",
+    "question": "Which gland adds a fructose-rich fluid to semen?",
     "correct_answer": "Seminal vesicles",
     "incorrect_answers": [
       "Prostate gland",
@@ -55,80 +1993,14 @@
     ]
   },
   {
-    "question": "Which part of the female reproductive system is shed during menstruation?",
-    "correct_answer": "Endometrium",
+    "question": "What is the function of the prostate gland?",
+    "correct_answer": "Secretes alkaline fluid to neutralize vaginal acidity",
     "incorrect_answers": [
-      "Myometrium",
-      "Ovary cortex",
-      "Fallopian epithelium",
-      "Cervical mucus",
-      "Vaginal lining"
-    ]
-  },
-  {
-    "question": "What is the primary site of oocyte development?",
-    "correct_answer": "Ovaries",
-    "incorrect_answers": [
-      "Uterus",
-      "Fallopian tubes",
-      "Vagina",
-      "Cervix",
-      "Endometrium"
-    ]
-  },
-  {
-    "question": "Which hormone causes ovulation?",
-    "correct_answer": "Luteinizing hormone (LH)",
-    "incorrect_answers": [
-      "FSH",
-      "Progesterone",
-      "Estrogen",
-      "Prolactin",
-      "Oxytocin"
-    ]
-  },
-  {
-    "question": "Which phase of the menstrual cycle involves follicle growth?",
-    "correct_answer": "Follicular phase",
-    "incorrect_answers": [
-      "Luteal phase",
-      "Secretory phase",
-      "Menstrual phase",
-      "Ovulatory phase",
-      "Proliferative phase"
-    ]
-  },
-  {
-    "question": "What triggers the luteal phase?",
-    "correct_answer": "Ovulation",
-    "incorrect_answers": [
-      "Menstruation",
-      "Follicle growth",
-      "Fertilization",
-      "Implantation",
-      "Fetal development"
-    ]
-  },
-  {
-    "question": "During puberty, which hormone increases in males?",
-    "correct_answer": "Testosterone",
-    "incorrect_answers": [
-      "Estrogen",
-      "Progesterone",
-      "Prolactin",
-      "Inhibin",
-      "Relaxin"
-    ]
-  },
-  {
-    "question": "Puberty in females is initiated by the release of which hormone?",
-    "correct_answer": "GnRH (Gonadotropin-releasing hormone)",
-    "incorrect_answers": [
-      "FSH",
-      "LH",
-      "Estrogen",
-      "Progesterone",
-      "Prolactin"
+      "Produces sperm cells",
+      "Stores urine",
+      "Propels sperm through ejaculation",
+      "Synthesizes testosterone",
+      "Holds the bladder"
     ]
   },
   {
@@ -136,223 +2008,344 @@
     "correct_answer": "Vas deferens",
     "incorrect_answers": [
       "Ureter",
+      "Seminal vesicle duct",
       "Ejaculatory duct",
-      "Seminal vesicle",
       "Prostatic duct",
-      "Cowper’s duct"
+      "Penile canal"
     ]
   },
   {
-    "question": "Which female structure produces estrogen?",
-    "correct_answer": "Ovaries",
+    "question": "Which hormone stimulates testosterone production in males?",
+    "correct_answer": "Luteinizing hormone (LH)",
+    "incorrect_answers": [
+      "Follicle-stimulating hormone (FSH)",
+      "Prolactin",
+      "Progesterone",
+      "Estrogen",
+      "Oxytocin"
+    ]
+  },
+  {
+    "question": "Where does spermatogenesis occur?",
+    "correct_answer": "Seminiferous tubules",
+    "incorrect_answers": [
+      "Prostate gland",
+      "Epididymis",
+      "Vas deferens",
+      "Seminal vesicles",
+      "Cowper’s glands"
+    ]
+  },
+  {
+    "question": "Which cells in the testes support and nourish developing sperm?",
+    "correct_answer": "Sertoli cells",
+    "incorrect_answers": [
+      "Leydig cells",
+      "Spermatogonia",
+      "Interstitial cells",
+      "Germ cells",
+      "Fibroblasts"
+    ]
+  },
+  {
+    "question": "Which hormone is secreted by Leydig cells?",
+    "correct_answer": "Testosterone",
+    "incorrect_answers": [
+      "Estrogen",
+      "FSH",
+      "LH",
+      "Prolactin",
+      "Oxytocin"
+    ]
+  },
+  {
+    "question": "What is the primary function of the female ovaries?",
+    "correct_answer": "Produce ova and secrete estrogen and progesterone",
+    "incorrect_answers": [
+      "Store fat",
+      "Filter blood",
+      "Secrete insulin",
+      "Synthesize testosterone",
+      "Generate red blood cells"
+    ]
+  },
+  {
+    "question": "Where does fertilization typically occur in the female reproductive tract?",
+    "correct_answer": "Fallopian tubes",
     "incorrect_answers": [
       "Uterus",
-      "Hypothalamus",
-      "Pituitary gland",
-      "Adrenal cortex",
+      "Ovaries",
+      "Cervix",
+      "Vagina",
       "Placenta"
     ]
   },
   {
-    "question": "What is the first phase of the menstrual cycle?",
-    "correct_answer": "Menstrual phase",
+    "question": "Which structure provides a pathway for the ovum to travel from ovary to uterus?",
+    "correct_answer": "Fallopian tube (oviduct)",
     "incorrect_answers": [
-      "Follicular phase",
-      "Luteal phase",
-      "Ovulatory phase",
-      "Proliferative phase",
-      "Secretory phase"
+      "Urethra",
+      "Vas deferens",
+      "Cervix",
+      "Vagina",
+      "Ovarian duct"
     ]
   },
   {
-    "question": "Which hormone maintains the corpus luteum after ovulation?",
+    "question": "Which layer of the uterus is shed during menstruation?",
+    "correct_answer": "Endometrium",
+    "incorrect_answers": [
+      "Myometrium",
+      "Perimetrium",
+      "Serosa",
+      "Epimetrium",
+      "Ectometrium"
+    ]
+  },
+  {
+    "question": "Which hormone triggers ovulation?",
+    "correct_answer": "Luteinizing hormone (LH)",
+    "incorrect_answers": [
+      "Progesterone",
+      "Estrogen",
+      "FSH",
+      "Testosterone",
+      "Prolactin"
+    ]
+  },
+  {
+    "question": "Which phase of the menstrual cycle follows ovulation?",
+    "correct_answer": "Luteal phase",
+    "incorrect_answers": [
+      "Follicular phase",
+      "Menstrual phase",
+      "Proliferative phase",
+      "Secretory phase",
+      "Pre-ovulatory phase"
+    ]
+  },
+  {
+    "question": "Which hormone maintains the corpus luteum during early pregnancy?",
+    "correct_answer": "Human chorionic gonadotropin (hCG)",
+    "incorrect_answers": [
+      "Progesterone",
+      "Estrogen",
+      "LH",
+      "FSH",
+      "Prolactin"
+    ]
+  },
+  {
+    "question": "What marks the beginning of the follicular phase?",
+    "correct_answer": "Onset of menstruation",
+    "incorrect_answers": [
+      "Ovulation",
+      "LH surge",
+      "Menopause",
+      "Luteal phase start",
+      "Follicle rupture"
+    ]
+  },
+  {
+    "question": "Which hormone peaks just before ovulation?",
     "correct_answer": "LH (Luteinizing hormone)",
     "incorrect_answers": [
       "FSH",
       "Progesterone",
       "Estrogen",
-      "hCG",
-      "Prolactin"
-    ]
-  },
-  {
-    "question": "The corpus luteum secretes:",
-    "correct_answer": "Progesterone",
-    "incorrect_answers": [
       "Testosterone",
-      "FSH",
-      "LH",
-      "Estrogen",
-      "Inhibin"
-    ]
-  },
-  {
-    "question": "Which hormone is detected by pregnancy tests?",
-    "correct_answer": "hCG (human chorionic gonadotropin)",
-    "incorrect_answers": [
-      "Progesterone",
-      "Estrogen",
-      "LH",
-      "FSH",
-      "Prolactin"
-    ]
-  },
-  {
-    "question": "During the menstrual cycle, rising estrogen causes:",
-    "correct_answer": "Endometrial thickening",
-    "incorrect_answers": [
-      "Endometrial shedding",
-      "Ovulation inhibition",
-      "Corpus luteum degradation",
-      "FSH decrease",
-      "LH decrease"
-    ]
-  },
-  {
-    "question": "What marks the end of the follicular phase?",
-    "correct_answer": "LH surge",
-    "incorrect_answers": [
-      "FSH surge",
-      "Progesterone drop",
-      "Menstruation onset",
-      "Estrogen peak",
-      "hCG detection"
-    ]
-  },
-  {
-    "question": "Which structure forms at the site of the released oocyte?",
-    "correct_answer": "Corpus luteum",
-    "incorrect_answers": [
-      "Graafian follicle",
-      "Zona pellucida",
-      "Ovum",
-      "Secondary follicle",
-      "Primordial follicle"
-    ]
-  },
-  {
-    "question": "Which hormone levels drop just before menstruation?",
-    "correct_answer": "Progesterone",
-    "incorrect_answers": [
-      "FSH",
-      "LH",
-      "Estrogen",
-      "Inhibin",
       "hCG"
     ]
   },
   {
-    "question": "Which phase follows ovulation?",
+    "question": "During puberty, which hormone surges in girls to initiate breast development?",
+    "correct_answer": "Estrogen",
+    "incorrect_answers": [
+      "Testosterone",
+      "Progesterone",
+      "LH",
+      "FSH",
+      "Prolactin"
+    ]
+  },
+  {
+    "question": "What is the first sign of puberty in boys?",
+    "correct_answer": "Enlargement of testes",
+    "incorrect_answers": [
+      "Deepening of voice",
+      "Facial hair growth",
+      "Erection capability",
+      "Increased height",
+      "Acne appearance"
+    ]
+  },
+  {
+    "question": "Which gland regulates puberty by releasing gonadotropin-releasing hormone (GnRH)?",
+    "correct_answer": "Hypothalamus",
+    "incorrect_answers": [
+      "Pituitary gland",
+      "Thyroid gland",
+      "Adrenal gland",
+      "Pineal gland",
+      "Parathyroid gland"
+    ]
+  },
+  {
+    "question": "Which hormone is responsible for the growth spurt during puberty?",
+    "correct_answer": "Growth hormone (GH)",
+    "incorrect_answers": [
+      "Insulin",
+      "Cortisol",
+      "TSH",
+      "Prolactin",
+      "ADH"
+    ]
+  },
+  {
+    "question": "Which hormone causes closing of epiphyseal plates at the end of puberty?",
+    "correct_answer": "Estrogen and testosterone",
+    "incorrect_answers": [
+      "Growth hormone",
+      "FSH",
+      "LH",
+      "Prolactin",
+      "Insulin-like growth factor"
+    ]
+  },
+  {
+    "question": "Which structure in males increases in size under FSH stimulation?",
+    "correct_answer": "Sertoli cells",
+    "incorrect_answers": [
+      "Leydig cells",
+      "Seminal vesicles",
+      "Prostate gland",
+      "Vas deferens",
+      "Epididymis"
+    ]
+  },
+  {
+    "question": "During puberty, which pubic hair pattern appears first in females?",
+    "correct_answer": "Sparse, lightly pigmented hair along labia majora",
+    "incorrect_answers": [
+      "Thick, curly hair covering thighs",
+      "No hair until adult stage",
+      "Hair on arms and legs then pubic",
+      "Facial hair before pubic hair",
+      "Chest hair before pubic hair"
+    ]
+  },
+  {
+    "question": "Which phase of the menstrual cycle is dominated by high progesterone levels?",
     "correct_answer": "Luteal phase",
     "incorrect_answers": [
       "Follicular phase",
       "Menstrual phase",
-      "Secretory phase",
       "Proliferative phase",
-      "Ovulatory phase"
+      "Ovulatory phase",
+      "Inhibitory phase"
     ]
   },
   {
-    "question": "FSH in the female cycle stimulates:",
-    "correct_answer": "Follicle maturation",
+    "question": "Which hormone peaks during the proliferative phase to rebuild the endometrium?",
+    "correct_answer": "Estrogen",
     "incorrect_answers": [
-      "Corpus luteum formation",
-      "Menstruation",
-      "Ovulation directly",
-      "hCG production",
-      "Progesterone secretion"
-    ]
-  },
-  {
-    "question": "Which hormone peaks to cause the endometrium to become secretory?",
-    "correct_answer": "Progesterone",
-    "incorrect_answers": [
-      "Estrogen",
-      "FSH",
+      "Progesterone",
       "LH",
+      "FSH",
       "hCG",
       "Prolactin"
     ]
   },
   {
-    "question": "Puberty in males typically begins around age:",
-    "correct_answer": "12–14 years",
+    "question": "Which phase of the menstrual cycle begins on day 1 of menstruation and ends at ovulation?",
+    "correct_answer": "Follicular phase",
     "incorrect_answers": [
-      "8–10 years",
-      "10–12 years",
-      "14–16 years",
-      "16–18 years",
-      "18–20 years"
+      "Luteal phase",
+      "Secretory phase",
+      "Proliferative phase",
+      "Menstrual phase",
+      "Ovulatory phase"
     ]
   },
   {
-    "question": "In females, puberty signs include:",
-    "correct_answer": "Breast development and menarche",
+    "question": "Which hormone initiates menstruation by dropping sharply if no pregnancy occurs?",
+    "correct_answer": "Progesterone",
     "incorrect_answers": [
-      "Voice deepening and facial hair",
-      "Beard growth and erections",
-      "Facial hair and spermatogenesis",
-      "Spermarche and acne",
-      "Voice cracking and increased muscle mass"
-    ]
-  },
-  {
-    "question": "Which hormone initiates development of secondary sexual characteristics in girls?",
-    "correct_answer": "Estrogen",
-    "incorrect_answers": [
-      "Testosterone",
-      "FSH",
+      "Estrogen",
       "LH",
-      "Progesterone",
+      "FSH",
+      "hCG",
       "Prolactin"
     ]
   },
   {
-    "question": "Seminal fluid pH is:",
-    "correct_answer": "Slightly alkaline",
+    "question": "Which cells secrete estrogen in the ovary?",
+    "correct_answer": "Granulosa cells of the follicle",
     "incorrect_answers": [
-      "Highly acidic",
-      "Neutral",
-      "Highly alkaline",
-      "Variable widely",
-      "Same as blood"
-    ]
-  },
-  {
-    "question": "Which cell type produces testosterone?",
-    "correct_answer": "Leydig cells",
-    "incorrect_answers": [
-      "Sertoli cells",
-      "Germ cells",
-      "Granulosa cells",
       "Theca cells",
-      "Follicular cells"
+      "Corpus luteum cells",
+      "Oocyte itself",
+      "Stromal cells",
+      "Leydig cells"
     ]
   },
   {
-    "question": "Menarche refers to:",
-    "correct_answer": "First menstrual period",
+    "question": "Which hormone triggers the development of the corpus luteum after ovulation?",
+    "correct_answer": "LH (Luteinizing hormone)",
     "incorrect_answers": [
-      "Ovulation",
-      "Pubic hair growth",
-      "Menopause",
-      "Luteal phase onset",
-      "hCG secretion"
+      "FSH",
+      "Estrogen",
+      "Progesterone",
+      "hCG",
+      "Prolactin"
     ]
   },
   {
-    "question": "Which hormone prepares the breast for lactation?",
+    "question": "During pregnancy, which hormone is produced to maintain the uterine lining?",
+    "correct_answer": "Progesterone",
+    "incorrect_answers": [
+      "Estrogen",
+      "FSH",
+      "LH",
+      "Oxytocin",
+      "Prolactin"
+    ]
+  },
+  {
+    "question": "Which structure forms the placenta and provides nutrients to the fetus?",
+    "correct_answer": "Chorion",
+    "incorrect_answers": [
+      "Amnion",
+      "Allantois",
+      "Yolk sac",
+      "Embryonic disc",
+      "Endometrium"
+    ]
+  },
+  {
+    "question": "Which fluid surrounds and cushions the developing fetus?",
+    "correct_answer": "Amniotic fluid",
+    "incorrect_answers": [
+      "Blood plasma",
+      "Cerebrospinal fluid",
+      "Synovial fluid",
+      "Peritoneal fluid",
+      "Interstitial fluid"
+    ]
+  },
+  {
+    "question": "Which hormone is responsible for milk production after birth?",
     "correct_answer": "Prolactin",
     "incorrect_answers": [
       "Oxytocin",
       "Estrogen",
       "Progesterone",
-      "FSH",
-      "LH"
+      "LH",
+      "FSH"
     ]
   },
   {
-    "question": "What induces milk ejection during breastfeeding?",
+    "question": "Which hormone causes uterine contractions during labor?",
     "correct_answer": "Oxytocin",
     "incorrect_answers": [
       "Prolactin",
@@ -363,135 +2356,180 @@
     ]
   },
   {
-    "question": "Which hormone is primarily responsible for the secretory phase of the endometrium?",
-    "correct_answer": "Progesterone",
+    "question": "By the end of the first trimester, the fetus is considered:",
+    "correct_answer": "A fetus (previously an embryo)",
     "incorrect_answers": [
-      "Estrogen",
-      "FSH",
-      "LH",
-      "hCG",
-      "Prolactin"
+      "A zygote",
+      "A morula",
+      "A blastocyst",
+      "An oocyte",
+      "A neonate"
     ]
   },
   {
-    "question": "The placenta begins to secrete hCG around day:",
-    "correct_answer": "7–10 post-fertilization",
+    "question": "Which structure delivers oxygen and nutrients from mother to fetus?",
+    "correct_answer": "Placenta",
     "incorrect_answers": [
-      "1–3",
-      "4–6",
-      "14–16",
-      "20–22",
-      "Post-menarche"
-    ]
-  },
-  {
-    "question": "Which structure houses the developing embryo until birth?",
-    "correct_answer": "Uterus",
-    "incorrect_answers": [
-      "Ovary",
-      "Fallopian tube",
-      "Vagina",
-      "Cervix",
-      "Placenta"
-    ]
-  },
-  {
-    "question": "During fetal development, the amniotic fluid is produced by:",
-    "correct_answer": "Fetal kidneys",
-    "incorrect_answers": [
-      "Maternal blood",
-      "Placental septa",
+      "Uterine wall",
       "Umbilical cord",
-      "Yolk sac",
-      "Endometrium"
-    ]
-  },
-  {
-    "question": "Which hormone relaxes the pelvic ligaments in preparation for birth?",
-    "correct_answer": "Relaxin",
-    "incorrect_answers": [
-      "Estrogen",
-      "Progesterone",
-      "Oxytocin",
-      "Prolactin",
-      "hCG"
-    ]
-  },
-  {
-    "question": "What is the role of the chorion?",
-    "correct_answer": "Contributes to placenta formation",
-    "incorrect_answers": [
-      "Forms the amniotic sac",
-      "Synthesizes oxytocin",
-      "Produces fetal blood cells",
-      "Transports sperm",
-      "Triggers menstruation"
-    ]
-  },
-  {
-    "question": "Which layer of the embryo gives rise to the nervous system?",
-    "correct_answer": "Ectoderm",
-    "incorrect_answers": [
-      "Mesoderm",
-      "Endoderm",
-      "Trophoblast",
-      "Hypoblast",
-      "Epiblast"
-    ]
-  },
-  {
-    "question": "The process of the embryo embedding into the uterine lining is called:",
-    "correct_answer": "Implantation",
-    "incorrect_answers": [
-      "Ovulation",
-      "Fertilization",
-      "Menstruation",
-      "Gastrulation",
-      "Neurulation"
-    ]
-  },
-  {
-    "question": "Which hormone maintains the uterine lining after implantation?",
-    "correct_answer": "hCG",
-    "incorrect_answers": [
-      "FSH",
-      "LH",
-      "Progesterone",
-      "Estrogen",
-      "Prolactin"
-    ]
-  },
-  {
-    "question": "Which fetal structure connects the fetus to the placenta?",
-    "correct_answer": "Umbilical cord",
-    "incorrect_answers": [
-      "Yolk sac",
-      "Amnion",
-      "Chorion",
+      "Amniotic sac",
       "Allantois",
+      "Chorionic villi"
+    ]
+  },
+  {
+    "question": "Which cells invade the uterine lining to form the placenta?",
+    "correct_answer": "Trophoblast cells",
+    "incorrect_answers": [
+      "Endometrial epithelial cells",
+      "Myometrial smooth muscle cells",
+      "Embryonic mesoderm cells",
+      "Chorionic endothelial cells",
+      "Amniotic ectoderm cells"
+    ]
+  },
+  {
+    "question": "Which process describes the formation of the blastula from the morula?",
+    "correct_answer": "Blastulation",
+    "incorrect_answers": [
+      "Gastrulation",
+      "Neurulation",
+      "Implantation",
+      "Organogenesis",
+      "Cleavage"
+    ]
+  },
+  {
+    "question": "During which week does the fetal heart begin beating?",
+    "correct_answer": "Week 4",
+    "incorrect_answers": [
+      "Week 2",
+      "Week 8",
+      "Week 6",
+      "Week 10",
+      "Week 12"
+    ]
+  },
+  {
+    "question": "Which stage of prenatal development follows the blastocyst stage and involves germ layer formation?",
+    "correct_answer": "Gastrulation",
+    "incorrect_answers": [
+      "Neurulation",
+      "Organogenesis",
+      "Implantation",
+      "Cleavage",
+      "Blastulation"
+    ]
+  },
+  {
+    "question": "Which hormone maintains the corpus luteum until the placenta takes over steroid production?",
+    "correct_answer": "hCG (human chorionic gonadotropin)",
+    "incorrect_answers": [
+      "Estrogen",
+      "Progesterone",
+      "Prolactin",
+      "FSH",
+      "LH"
+    ]
+  },
+  {
+    "question": "Which fetal membrane encloses the embryo in a fluid-filled sac?",
+    "correct_answer": "Amnion",
+    "incorrect_answers": [
+      "Chorion",
+      "Yolk sac",
+      "Allantois",
+      "Placenta",
       "Decidua"
     ]
   },
   {
-    "question": "Meiosis in male testes produces:",
-    "correct_answer": "Spermatids",
+    "question": "Which structure in the male reproductive system secretes alkaline fluid to help sperm viability?",
+    "correct_answer": "Prostate gland",
     "incorrect_answers": [
-      "Oocytes",
-      "Spermatozoa",
-      "Polar bodies",
-      "Sertoli cells",
-      "Leydig cells"
+      "Seminal vesicles",
+      "Cowper’s glands",
+      "Epididymis",
+      "Testes",
+      "Vas deferens"
     ]
   },
   {
-    "question": "Meiosis in female ovaries yields:",
-    "correct_answer": "One ovum and polar bodies",
+    "question": "Which structure in the female reproductive system provides passage from uterus to exterior?",
+    "correct_answer": "Vagina",
     "incorrect_answers": [
-      "Four ova",
-      "Two ova",
-      "Four polar bodies only",
-      "Spermatids",
-      "Oogonia"
+      "Fallopian tube",
+      "Urethra",
+      "Cervix",
+      "Ovary",
+      "Clitoris"
+    ]
+  },
+  {
+    "question": "Which phase of ovarian cycle overlaps with the proliferative phase of the uterine cycle?",
+    "correct_answer": "Follicular phase",
+    "incorrect_answers": [
+      "Luteal phase",
+      "Menstrual phase",
+      "Secretory phase",
+      "Ovulation phase",
+      "Postmenstrual phase"
+    ]
+  },
+  {
+    "question": "In males, which hormone feedback inhibits FSH production?",
+    "correct_answer": "Inhibin",
+    "incorrect_answers": [
+      "Testosterone",
+      "LH",
+      "Prolactin",
+      "Estrogen",
+      "GnRH"
+    ]
+  },
+  {
+    "question": "Which part of the male system is primarily responsible for storing mature sperm?",
+    "correct_answer": "Epididymis",
+    "incorrect_answers": [
+      "Testes",
+      "Prostate gland",
+      "Vas deferens",
+      "Seminal vesicles",
+      "Cowper’s glands"
+    ]
+  },
+  {
+    "question": "Which cells form the blood-testis barrier to protect developing sperm?",
+    "correct_answer": "Sertoli cells",
+    "incorrect_answers": [
+      "Leydig cells",
+      "Germ cells",
+      "Interstitial cells",
+      "Spermatogonia",
+      "Fibroblast cells"
+    ]
+  },
+  {
+    "question": "Which process describes the formation of sperm from spermatids?",
+    "correct_answer": "Spermiogenesis",
+    "incorrect_answers": [
+      "Spermatocytogenesis",
+      "Spermatogenesis",
+      "Oogenesis",
+      "Mitosis",
+      "Gametogenesis"
+    ]
+  },
+  {
+    "question": "Which stage of fetal development involves the folding of the neural tube?",
+    "correct_answer": "Neurulation",
+    "incorrect_answers": [
+      "Gastrulation",
+      "Blastulation",
+      "Organogenesis",
+      "Implantation",
+      "Cleavage"
     ]
   }
 ]
+
