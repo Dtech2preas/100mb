@@ -1,0 +1,1905 @@
+[
+  {
+    "question": "Which greenhouse gas is most abundant in Earth's atmosphere and contributes significantly to climate change?",
+    "correct_answer": "Carbon dioxide (CO₂)",
+    "incorrect_answers": [
+      "Methane (CH₄)",
+      "Ozone (O₃)",
+      "Nitrous oxide (N₂O)",
+      "Sulfur dioxide (SO₂)",
+      "Chlorofluorocarbons (CFCs)"
+    ]
+  },
+  {
+    "question": "What human activity is the primary source of increased atmospheric CO₂ levels?",
+    "correct_answer": "Burning fossil fuels for energy",
+    "incorrect_answers": [
+      "Clearing land for agriculture",
+      "Planting forests",
+      "Generating solar power",
+      "Using electric vehicles",
+      "Conserving wetlands"
+    ]
+  },
+  {
+    "question": "Which effect describes warming of ocean surfaces that disrupts fish migration and coral ecosystems?",
+    "correct_answer": "Ocean warming",
+    "incorrect_answers": [
+      "Stratospheric cooling",
+      "Ozone depletion",
+      "Acid rain",
+      "Smog formation",
+      "Thermal inversion"
+    ]
+  },
+  {
+    "question": "Rising global temperatures cause polar ice to melt, leading to:",
+    "correct_answer": "Sea level rise",
+    "incorrect_answers": [
+      "Increased freshwater supply",
+      "Expansion of polar habitats",
+      "Lower ocean salinity",
+      "Deeper clay deposits",
+      "Reduced tidal range"
+    ]
+  },
+  {
+    "question": "Which human activity contributes most to deforestation, reducing the planet’s carbon sink capacity?",
+    "correct_answer": "Clearing tropical forests for agriculture",
+    "incorrect_answers": [
+      "Replanting native trees",
+      "Building solar farms",
+      "Creating protected parks",
+      "Regulating cattle grazing",
+      "Restoring wetlands"
+    ]
+  },
+  {
+    "question": "Which phenomenon describes gradual increase in average global temperature due to greenhouse gas buildup?",
+    "correct_answer": "Global warming",
+    "incorrect_answers": [
+      "Thermal inversion",
+      "Urban heat island",
+      "Greenhouse cooling",
+      "El Niño",
+      "La Niña"
+    ]
+  },
+  {
+    "question": "Which international agreement aims to limit global warming by reducing greenhouse gas emissions?",
+    "correct_answer": "Paris Agreement",
+    "incorrect_answers": [
+      "Kyoto Protocol (but expired)",
+      "Montreal Protocol",
+      "Geneva Convention",
+      "Stockholm Convention",
+      "Basel Convention"
+    ]
+  },
+  {
+    "question": "Ocean acidification results from increased CO₂ dissolving in seawater, causing:",
+    "correct_answer": "Lower pH in marine ecosystems",
+    "incorrect_answers": [
+      "Higher pH in marine ecosystems",
+      "Increased salinity",
+      "Reduced water clarity",
+      "Decreased dissolved oxygen",
+      "Higher water temperature"
+    ]
+  },
+  {
+    "question": "Which region faces water scarcity due to over-extraction of groundwater?",
+    "correct_answer": "Northwestern India (e.g., Punjab)",
+    "incorrect_answers": [
+      "Amazon basin",
+      "British Columbia",
+      "Alaska",
+      "Greenland",
+      "Southeastern Brazil"
+    ]
+  },
+  {
+    "question": "What is the main factor reducing freshwater availability in arid regions?",
+    "correct_answer": "Overuse for irrigation",
+    "incorrect_answers": [
+      "Excessive rainfall",
+      "Natural glacial melt",
+      "Permafrost thaw",
+      "High-altitude springs",
+      "Ocean desalination"
+    ]
+  },
+  {
+    "question": "Which method can increase water availability in drought-prone areas?",
+    "correct_answer": "Rainwater harvesting",
+    "incorrect_answers": [
+      "Building ski resorts",
+      "Increasing deforestation",
+      "Constructing coal power plants",
+      "Discharging untreated wastewater",
+      "Chlorinating rivers"
+    ]
+  },
+  {
+    "question": "Which practice reduces aquifer recharge rates?",
+    "correct_answer": "Urbanization with impervious surfaces",
+    "incorrect_answers": [
+      "Maintaining wetlands",
+      "Installing permeable pavements",
+      "Reforesting riparian zones",
+      "Building check dams",
+      "Using drip irrigation"
+    ]
+  },
+  {
+    "question": "Which technology helps make seawater potable for human consumption?",
+    "correct_answer": "Reverse osmosis desalination",
+    "incorrect_answers": [
+      "Chlorine dosing only",
+      "Sedimentation alone",
+      "Ultraviolet pasteurization",
+      "Boiling without filtration",
+      "Aeration towers"
+    ]
+  },
+  {
+    "question": "Groundwater depletion primarily results in:",
+    "correct_answer": "Land subsidence and reduced well yields",
+    "incorrect_answers": [
+      "Increased river flow",
+      "Expansion of wetlands",
+      "Rising water tables",
+      "Improved crop yields",
+      "Enhanced fish populations"
+    ]
+  },
+  {
+    "question": "What is a major consequence of water scarcity for agriculture?",
+    "correct_answer": "Crop failures and food shortages",
+    "incorrect_answers": [
+      "Surplus food production",
+      "Reduced irrigation efficiency",
+      "Lower soil salinity",
+      "Higher pasture yields",
+      "More monsoon rains"
+    ]
+  },
+  {
+    "question": "Which contaminant commonly found in drinking water is especially harmful to infants’ nervous systems?",
+    "correct_answer": "Lead",
+    "incorrect_answers": [
+      "Calcium",
+      "Potassium",
+      "Nitrate (in moderation)",
+      "Magnesium",
+      "Chloride"
+    ]
+  },
+  {
+    "question": "What process causes an increase in algal blooms in freshwater bodies?",
+    "correct_answer": "Nutrient runoff (nitrogen and phosphorus) from agriculture",
+    "incorrect_answers": [
+      "Regular water aeration",
+      "Year-round cold temperatures",
+      "Low nutrient levels",
+      "Strong freshwater currents",
+      "Strict buffer zones"
+    ]
+  },
+  {
+    "question": "Which one of the following is a biological indicator of poor water quality?",
+    "correct_answer": "High populations of coliform bacteria",
+    "incorrect_answers": [
+      "Abundant trout species",
+      "Low concentrations of E. coli",
+      "Clear water with high oxygen",
+      "High populations of stonefly nymphs",
+      "Rich aquatic plant diversity"
+    ]
+  },
+  {
+    "question": "Industrial effluents often pollute rivers with:",
+    "correct_answer": "Heavy metals such as mercury and cadmium",
+    "incorrect_answers": [
+      "Dissolved oxygen and silica",
+      "Beneficial probiotics",
+      "nontoxic salts only",
+      "Potable water concentrations",
+      "Excess aquatic vegetation"
+    ]
+  },
+  {
+    "question": "What is one consequence of untreated sewage discharging into water bodies?",
+    "correct_answer": "Eutrophication and oxygen depletion",
+    "incorrect_answers": [
+      "Reduced algae growth",
+      "Decreased bacterial loads",
+      "Increased water clarity",
+      "Higher fish diversity",
+      "Lower nutrient levels"
+    ]
+  },
+  {
+    "question": "Which agricultural practice can help improve groundwater recharge?",
+    "correct_answer": "Crop rotation with cover crops",
+    "incorrect_answers": [
+      "Monocropping with heavy tillage",
+      "Permanent soil sealing",
+      "Continuous pesticide spraying",
+      "Excessive fertilizer application",
+      "Deforestation"
+    ]
+  },
+  {
+    "question": "Food security is primarily threatened by:",
+    "correct_answer": "Climate change–induced crop failures",
+    "incorrect_answers": [
+      "Excess global food surplus",
+      "Declining food prices",
+      "Overproduction of grains",
+      "Improved irrigation",
+      "Universal food subsidies"
+    ]
+  },
+  {
+    "question": "Which of the following practices can enhance food security?",
+    "correct_answer": "Sustainable intensification of agriculture",
+    "incorrect_answers": [
+      "Mono-cropping without fallow periods",
+      "Slash-and-burn farming",
+      "Clearing buffer strips",
+      "Deforestation for pasture",
+      "Subsidizing only luxury crops"
+    ]
+  },
+  {
+    "question": "What is a direct result of soil salinization on crop yields?",
+    "correct_answer": "Reduced plant growth and lower yields",
+    "incorrect_answers": [
+      "Increased grain protein content",
+      "Improved soil fertility",
+      "Higher resistance to drought",
+      "Greater carbon sequestration",
+      "Increased pest resistance"
+    ]
+  },
+  {
+    "question": "Which pest control method reduces chemical pesticide use and supports food security?",
+    "correct_answer": "Integrated pest management (IPM)",
+    "incorrect_answers": [
+      "Clear-cutting forests",
+      "Broad-spectrum pesticide spraying",
+      "Banning all crop pests",
+      "Continuous monocropping",
+      "Eliminating natural predators"
+    ]
+  },
+  {
+    "question": "Which practice conserves genetic diversity in crops to safeguard future food supplies?",
+    "correct_answer": "Maintaining seed banks and heirloom varieties",
+    "incorrect_answers": [
+      "Using only GM monocultures",
+      "Eradicating wild relatives",
+      "Planting a single cultivar globally",
+      "Blocking international seed exchange",
+      "Relying solely on imported seeds"
+    ]
+  },
+  {
+    "question": "Which factor is a major cause of biodiversity loss?",
+    "correct_answer": "Habitat destruction from urban expansion",
+    "incorrect_answers": [
+      "Protecting national parks",
+      "Reforestation efforts",
+      "Pollinator habitat creation",
+      "Establishing wildlife corridors",
+      "Climate-smart agriculture"
+    ]
+  },
+  {
+    "question": "Which invasive species can drastically reduce native biodiversity in freshwater systems?",
+    "correct_answer": "Zebra mussels",
+    "incorrect_answers": [
+      "Honey bees",
+      "Native trout",
+      "Mallard ducks",
+      "Bluegill sunfish (native)",
+      "Endangered salamanders"
+    ]
+  },
+  {
+    "question": "Which human activity contributes directly to overfishing and loss of marine biodiversity?",
+    "correct_answer": "Bottom trawling",
+    "incorrect_answers": [
+      "Marine protected areas",
+      "Catch-and-release programs",
+      "Sustainable aquaculture",
+      "Low-impact handline fishing",
+      "Catch quotas"
+    ]
+  },
+  {
+    "question": "Which of the following is a leading cause of deforestation and biodiversity loss in the Amazon?",
+    "correct_answer": "Clearing land for cattle ranching",
+    "incorrect_answers": [
+      "Urban green spaces",
+      "Restoring native forests",
+      "Ecotourism infrastructure",
+      "Rebuilding wetlands",
+      "Organic farming"
+    ]
+  },
+  {
+    "question": "Which pollutant from agriculture can lead to amphibian population declines and biodiversity loss?",
+    "correct_answer": "Pesticide runoff",
+    "incorrect_answers": [
+      "Biodegradable organic compost",
+      "Natural rainwater",
+      "Sunlight exposure",
+      "Beneficial microorganisms",
+      "Nitrogen-fixing cover crops"
+    ]
+  },
+  {
+    "question": "Which of the following practices helps maintain biodiversity?",
+    "correct_answer": "Establishing and managing protected areas",
+    "incorrect_answers": [
+      "Urban sprawl without planning",
+      "Widespread deforestation",
+      "Dumping waste in natural habitats",
+      "Promoting invasive species",
+      "Intensive monoculture farming"
+    ]
+  },
+  {
+    "question": "How does habitat restoration support biodiversity?",
+    "correct_answer": "Re-establishes native plant and animal communities",
+    "incorrect_answers": [
+      "Encourages exotic plantations",
+      "Reduces native pollinators",
+      "Constricts wildlife corridors",
+      "Maintains road networks",
+      "Removes buffer zones"
+    ]
+  },
+  {
+    "question": "Which conservation strategy focuses on reintroducing extirpated species to their historical range?",
+    "correct_answer": "Rewilding",
+    "incorrect_answers": [
+      "Monoculture reforestation",
+      "Clear-cut logging",
+      "Aquaculture expansion",
+      "Urban development",
+      "Pollinator exclusion"
+    ]
+  },
+  {
+    "question": "Which action helps maintain genetic diversity within populations?",
+    "correct_answer": "Facilitating wildlife corridors between fragmented habitats",
+    "incorrect_answers": [
+      "Fencing off small reserves",
+      "Localizing breeding within one population",
+      "Eradicating predators",
+      "Continuous pesticide spraying",
+      "Removing native vegetation"
+    ]
+  },
+  {
+    "question": "Which practice reduces biodiversity loss by limiting waste sent to landfills?",
+    "correct_answer": "Implementing comprehensive recycling programs",
+    "incorrect_answers": [
+      "Encouraging single-use plastics",
+      "Unregulated waste burning",
+      "Dumping in waterways",
+      "Illegal dumping in protected areas",
+      "Building more incinerators without filters"
+    ]
+  },
+  {
+    "question": "Which component of solid waste disposal involves sorting materials for reuse?",
+    "correct_answer": "Source separation",
+    "incorrect_answers": [
+      "Leachate generation",
+      "Tipping fees",
+      "Methane capture",
+      "Landfill compaction",
+      "Inert ash disposal"
+    ]
+  },
+  {
+    "question": "What is a major environmental risk associated with open dumpsites?",
+    "correct_answer": "Groundwater contamination from leachate",
+    "incorrect_answers": [
+      "Increased carbon sequestration",
+      "Enhanced soil fertility",
+      "Reduced air pollution",
+      "Improved wildlife habitat",
+      "Greater crop yields"
+    ]
+  },
+  {
+    "question": "Which of the following waste disposal methods generates energy from municipal waste combustion?",
+    "correct_answer": "Waste-to-energy incineration",
+    "incorrect_answers": [
+      "Open dumping",
+      "Unlined landfilling",
+      "Source separation",
+      "Composting only",
+      "Deep well injection"
+    ]
+  },
+  {
+    "question": "Which solid waste management practice reduces methane emissions from landfills?",
+    "correct_answer": "Capturing and flaring landfill gas",
+    "incorrect_answers": [
+      "Open burning of waste",
+      "Leachate recirculation",
+      "Burying waste without cover",
+      "Discharging untreated leachate",
+      "Stacking waste in unpaved areas"
+    ]
+  },
+  {
+    "question": "Which landfill design feature prevents leachate from polluting groundwater?",
+    "correct_answer": "Liner system of clay and geomembrane",
+    "incorrect_answers": [
+      "Open pit design",
+      "Uncontrolled tipping",
+      "No daily cover",
+      "No gas venting",
+      "Lack of stormwater control"
+    ]
+  },
+  {
+    "question": "What is the advantage of composting organic waste?",
+    "correct_answer": "Produces nutrient-rich soil amendment",
+    "incorrect_answers": [
+      "Generates toxic incinerator ash",
+      "Increases methane in atmosphere",
+      "Requires large landfill space",
+      "Elevates heavy metal leaching",
+      "Eliminates all biodegradable materials instantly"
+    ]
+  },
+  {
+    "question": "Which of the following is a benefit of reducing single-use plastic waste?",
+    "correct_answer": "Decreases marine plastic pollution",
+    "incorrect_answers": [
+      "Increases landfill volume",
+      "Boosts production of polyvinyl chloride (PVC)",
+      "Raises microplastic levels",
+      "Encourages overfishing",
+      "Depletes freshwater aquifers"
+    ]
+  },
+  {
+    "question": "Which practice diverts food waste from landfills and reduces greenhouse gas emissions?",
+    "correct_answer": "Anaerobic digestion to produce biogas",
+    "incorrect_answers": [
+      "Open burning of food scraps",
+      "Deep ocean disposal",
+      "Dredging landfills",
+      "Plastic incineration",
+      "Single-stream recycling"
+    ]
+  },
+  {
+    "question": "E-waste recycling helps prevent which type of pollution?",
+    "correct_answer": "Heavy metal contamination",
+    "incorrect_answers": [
+      "Increased soil fertility",
+      "Decreased marine debris",
+      "Enhanced groundwater recharge",
+      "Lower soot emissions",
+      "Improved ozone layer"
+    ]
+  },
+  {
+    "question": "Which of the following is a consequence of poor solid waste management in urban areas?",
+    "correct_answer": "Increased vector-borne diseases (e.g., mosquitoes)",
+    "incorrect_answers": [
+      "Lower incidence of respiratory illnesses",
+      "Higher crop productivity",
+      "Reduced water scarcity",
+      "Improved air quality",
+      "Stronger community cohesion"
+    ]
+  },
+  {
+    "question": "Which policy can reduce household waste generation at the source?",
+    "correct_answer": "Pay-as-you-throw (PAYT) waste collection fees",
+    "incorrect_answers": [
+      "Subsidizing single-use plastics",
+      "Mandating open dumping",
+      "Banning composting programs",
+      "Prohibiting recycling centers",
+      "Eliminating waste audits"
+    ]
+  },
+{
+    "question": "Which gland is often referred to as the 'master gland' of the endocrine system?",
+    "correct_answer": "Pituitary gland",
+    "incorrect_answers": [
+      "Thyroid gland",
+      "Adrenal gland",
+      "Pancreas",
+      "Pineal gland",
+      "Thymus gland"
+    ]
+  },
+  {
+    "question": "Which hormone is produced by the pancreas to lower blood glucose levels?",
+    "correct_answer": "Insulin",
+    "incorrect_answers": [
+      "Glucagon",
+      "Cortisol",
+      "Epinephrine",
+      "Thyroxine",
+      "Growth hormone"
+    ]
+  },
+  {
+    "question": "What type of feedback mechanism is used to regulate blood glucose by insulin and glucagon?",
+    "correct_answer": "Negative feedback",
+    "incorrect_answers": [
+      "Positive feedback",
+      "Feedforward regulation",
+      "Cytokine signaling",
+      "Autocrine signaling",
+      "Paracrine signaling"
+    ]
+  },
+  {
+    "question": "Which hormone secreted by the thyroid gland increases basal metabolic rate?",
+    "correct_answer": "Thyroxine (T4)",
+    "incorrect_answers": [
+      "Calcitonin",
+      "Triiodothyronine (T3)",
+      "Parathyroid hormone",
+      "Insulin",
+      "Glucagon"
+    ]
+  },
+  {
+    "question": "Which structure monitors blood osmolarity and releases antidiuretic hormone (ADH)?",
+    "correct_answer": "Hypothalamus",
+    "incorrect_answers": [
+      "Pineal gland",
+      "Pituitary gland",
+      "Adrenal cortex",
+      "Thalamus",
+      "Parathyroid glands"
+    ]
+  },
+  {
+    "question": "Which hormone stimulates the adrenal cortex to release cortisol?",
+    "correct_answer": "Adrenocorticotropic hormone (ACTH)",
+    "incorrect_answers": [
+      "Thyroid-stimulating hormone (TSH)",
+      "Follicle-stimulating hormone (FSH)",
+      "Luteinizing hormone (LH)",
+      "Growth hormone (GH)",
+      "Prolactin"
+    ]
+  },
+  {
+    "question": "Which endocrine gland secretes cortisol during stress response?",
+    "correct_answer": "Adrenal cortex",
+    "incorrect_answers": [
+      "Adrenal medulla",
+      "Pituitary gland",
+      "Thyroid gland",
+      "Pancreas",
+      "Pineal gland"
+    ]
+  },
+  {
+    "question": "What is the primary function of parathyroid hormone (PTH)?",
+    "correct_answer": "Increase blood calcium levels",
+    "incorrect_answers": [
+      "Decrease blood glucose",
+      "Increase basal metabolic rate",
+      "Stimulate milk production",
+      "Promote water retention",
+      "Decrease blood calcium levels"
+    ]
+  },
+  {
+    "question": "Which hormone from the anterior pituitary stimulates growth of bone and muscle?",
+    "correct_answer": "Growth hormone (GH)",
+    "incorrect_answers": [
+      "Prolactin",
+      "Thyroid-stimulating hormone (TSH)",
+      "Adrenocorticotropic hormone (ACTH)",
+      "Follicle-stimulating hormone (FSH)",
+      "Luteinizing hormone (LH)"
+    ]
+  },
+  {
+    "question": "Which gland releases melatonin to regulate sleep-wake cycles?",
+    "correct_answer": "Pineal gland",
+    "incorrect_answers": [
+      "Pituitary gland",
+      "Thyroid gland",
+      "Adrenal gland",
+      "Pancreas",
+      "Hypothalamus"
+    ]
+  },
+  {
+    "question": "Which hormone is secreted by the posterior pituitary to promote water reabsorption in kidney tubules?",
+    "correct_answer": "Antidiuretic hormone (ADH)",
+    "incorrect_answers": [
+      "Oxytocin",
+      "Prolactin",
+      "Thyroxine",
+      "Cortisol",
+      "Aldosterone"
+    ]
+  },
+  {
+    "question": "Which hormone is released by the posterior pituitary to induce uterine contractions during labor?",
+    "correct_answer": "Oxytocin",
+    "incorrect_answers": [
+      "Antidiuretic hormone (ADH)",
+      "Prolactin",
+      "Thyroid-stimulating hormone (TSH)",
+      "Epinephrine",
+      "Glucagon"
+    ]
+  },
+  {
+    "question": "In a negative feedback loop controlling thyroid hormone, what triggers the hypothalamus to release TRH?",
+    "correct_answer": "Low levels of circulating T3 and T4",
+    "incorrect_answers": [
+      "High levels of circulating cortisol",
+      "High blood glucose levels",
+      "Low blood calcium levels",
+      "High levels of TSH",
+      "Low ACTH levels"
+    ]
+  },
+  {
+    "question": "Which hormone does TRH (thyrotropin-releasing hormone) stimulate the anterior pituitary to produce?",
+    "correct_answer": "Thyroid-stimulating hormone (TSH)",
+    "incorrect_answers": [
+      "Adrenocorticotropic hormone (ACTH)",
+      "Growth hormone (GH)",
+      "Prolactin",
+      "Luteinizing hormone (LH)",
+      "Follicle-stimulating hormone (FSH)"
+    ]
+  },
+  {
+    "question": "What triggers the anterior pituitary to release ACTH in the stress response?",
+    "correct_answer": "Corticotropin-releasing hormone (CRH) from hypothalamus",
+    "incorrect_answers": [
+      "Thyrotropin-releasing hormone (TRH)",
+      "Gonadotropin-releasing hormone (GnRH)",
+      "Growth hormone-releasing hormone (GHRH)",
+      "Somatostatin",
+      "Prolactin-inhibiting factor"
+    ]
+  },
+  {
+    "question": "Which hormone increases blood glucose by promoting gluconeogenesis and lipolysis?",
+    "correct_answer": "Cortisol",
+    "incorrect_answers": [
+      "Insulin",
+      "Epinephrine",
+      "Thyroxine",
+      "Growth hormone",
+      "Glucagon"
+    ]
+  },
+  {
+    "question": "Which cells in the pancreas produce glucagon?",
+    "correct_answer": "Alpha cells",
+    "incorrect_answers": [
+      "Beta cells",
+      "Delta cells",
+      "PP cells (F cells)",
+      "Acinar cells",
+      "D cells"
+    ]
+  },
+  {
+    "question": "Which cells in the pancreas produce insulin?",
+    "correct_answer": "Beta cells",
+    "incorrect_answers": [
+      "Alpha cells",
+      "Delta cells",
+      "PP cells (F cells)",
+      "Acinar cells",
+      "D cells"
+    ]
+  },
+  {
+    "question": "Which hormone directly lowers blood calcium by promoting bone formation?",
+    "correct_answer": "Calcitonin",
+    "incorrect_answers": [
+      "Parathyroid hormone (PTH)",
+      "Calcitriol",
+      "Thyroxine",
+      "Cortisol",
+      "Insulin"
+    ]
+  },
+  {
+    "question": "What is the general sequence of events in a negative feedback mechanism?",
+    "correct_answer": "Stimulus → Sensor → Control center → Effector → Response",
+    "incorrect_answers": [
+      "Response → Sensor → Effector → Control center → Stimulus",
+      "Sensor → Stimulus → Effector → Control center → Response",
+      "Effector → Response → Sensor → Control center → Stimulus",
+      "Sensor → Control center → Stimulus → Response → Effector",
+      "Stimulus → Effector → Control center → Sensor → Response"
+    ]
+  },
+  {
+    "question": "In the blood glucose negative feedback loop, what acts as the sensor?",
+    "correct_answer": "Pancreatic islet cells",
+    "incorrect_answers": [
+      "Hypothalamus",
+      "Liver",
+      "Adrenal medulla",
+      "Pituitary gland",
+      "Skeletal muscle"
+    ]
+  },
+  {
+    "question": "What is the effector in the blood glucose negative feedback loop when blood glucose is high?",
+    "correct_answer": "Beta cells secreting insulin",
+    "incorrect_answers": [
+      "Alpha cells secreting glucagon",
+      "Liver producing glucose",
+      "Skeletal muscles using glucose",
+      "Kidneys excreting glucose",
+      "Adipose cells storing fatty acids"
+    ]
+  },
+  {
+    "question": "What response occurs when insulin binds to its receptor on target cells?",
+    "correct_answer": "Increased glucose uptake and glycogen synthesis",
+    "incorrect_answers": [
+      "Increased gluconeogenesis",
+      "Increased lipolysis",
+      "Increased blood glucose",
+      "Decreased glycogen synthesis",
+      "Decreased glucose uptake"
+    ]
+  },
+  {
+    "question": "When blood calcium levels drop, which gland’s activity increases to restore balance?",
+    "correct_answer": "Parathyroid glands",
+    "incorrect_answers": [
+      "Thyroid gland",
+      "Adrenal cortex",
+      "Pituitary gland",
+      "Pancreas",
+      "Pineal gland"
+    ]
+  },
+  {
+    "question": "What hormone do the parathyroid glands release in response to low blood calcium?",
+    "correct_answer": "Parathyroid hormone (PTH)",
+    "incorrect_answers": [
+      "Calcitonin",
+      "Calcitriol",
+      "Thyroxine",
+      "Insulin",
+      "Glucagon"
+    ]
+  },
+  {
+    "question": "How does PTH (parathyroid hormone) increase blood calcium?",
+    "correct_answer": "By stimulating bone resorption and increasing renal reabsorption of calcium",
+    "incorrect_answers": [
+      "By increasing calcitonin release",
+      "By decreasing vitamin D activation",
+      "By stimulating insulin secretion",
+      "By decreasing osteoclast activity",
+      "By increasing urinary calcium excretion"
+    ]
+  },
+  {
+    "question": "Which vitamin’s activation is stimulated by PTH to increase intestinal calcium absorption?",
+    "correct_answer": "Vitamin D (to calcitriol)",
+    "incorrect_answers": [
+      "Vitamin C",
+      "Vitamin K",
+      "Vitamin B12",
+      "Vitamin A",
+      "Vitamin E"
+    ]
+  },
+  {
+    "question": "What happens to PTH secretion when blood calcium level becomes too high?",
+    "correct_answer": "PTH secretion decreases",
+    "incorrect_answers": [
+      "PTH secretion increases",
+      "Calcitonin secretion decreases",
+      "Insulin secretion increases",
+      "Glucagon secretion decreases",
+      "ACTH secretion increases"
+    ]
+  },
+  {
+    "question": "Which hormone directly increases blood sodium and water reabsorption in kidney distal tubules?",
+    "correct_answer": "Aldosterone",
+    "incorrect_answers": [
+      "Antidiuretic hormone (ADH)",
+      "Parathyroid hormone (PTH)",
+      "Insulin",
+      "Cortisol",
+      "Thyroxine"
+    ]
+  },
+  {
+    "question": "What triggers aldosterone release from the adrenal cortex?",
+    "correct_answer": "Low blood pressure or low sodium via renin-angiotensin system",
+    "incorrect_answers": [
+      "High blood pressure",
+      "High potassium levels",
+      "Low potassium levels",
+      "High blood glucose",
+      "High cortisol levels"
+    ]
+  },
+  {
+    "question": "Which hormone promotes uterine lining development and is part of the menstrual cycle negative feedback?",
+    "correct_answer": "Progesterone",
+    "incorrect_answers": [
+      "Estrogen",
+      "Testosterone",
+      "Oxytocin",
+      "Prolactin",
+      "Cortisol"
+    ]
+  },
+  {
+    "question": "Which hormone surge triggers ovulation as part of a positive feedback loop?",
+    "correct_answer": "Luteinizing hormone (LH)",
+    "incorrect_answers": [
+      "Follicle-stimulating hormone (FSH)",
+      "Progesterone",
+      "Estrogen",
+      "Prolactin",
+      "Human chorionic gonadotropin (hCG)"
+    ]
+  },
+  {
+    "question": "After ovulation, high progesterone and estrogen inhibit which hormones via negative feedback?",
+    "correct_answer": "FSH and LH",
+    "incorrect_answers": [
+      "TSH and ACTH",
+      "Growth hormone and prolactin",
+      "ADH and oxytocin",
+      "Insulin and glucagon",
+      "PTH and calcitonin"
+    ]
+  },
+  {
+    "question": "Which hormone secreted by the anterior pituitary directly stimulates testosterone production in Leydig cells?",
+    "correct_answer": "Luteinizing hormone (LH)",
+    "incorrect_answers": [
+      "Follicle-stimulating hormone (FSH)",
+      "Prolactin",
+      "Growth hormone",
+      "Thyroid-stimulating hormone (TSH)",
+      "Adrenocorticotropic hormone (ACTH)"
+    ]
+  },
+  {
+    "question": "Which hormone from the anterior pituitary stimulates sperm production in Sertoli cells indirectly?",
+    "correct_answer": "Follicle-stimulating hormone (FSH)",
+    "incorrect_answers": [
+      "Luteinizing hormone (LH)",
+      "Testosterone",
+      "Prolactin",
+      "Progesterone",
+      "Oxytocin"
+    ]
+  },
+  {
+    "question": "Which part of the adrenal gland produces epinephrine and norepinephrine?",
+    "correct_answer": "Adrenal medulla",
+    "incorrect_answers": [
+      "Adrenal cortex",
+      "Zona glomerulosa",
+      "Zona fasciculata",
+      "Zona reticularis",
+      "Pineal gland"
+    ]
+  },
+  {
+    "question": "Which hormone maintains blood pressure by vasoconstriction and increasing heart rate?",
+    "correct_answer": "Epinephrine",
+    "incorrect_answers": [
+      "Insulin",
+      "Glucagon",
+      "Cortisol",
+      "Thyroxine",
+      "Aldosterone"
+    ]
+  },
+  {
+    "question": "What is a key difference between peptide hormones and steroid hormones?",
+    "correct_answer": "Peptide hormones bind to cell surface receptors; steroids cross cell membranes",
+    "incorrect_answers": [
+      "Peptide hormones are lipid-soluble; steroids are water-soluble",
+      "Peptide hormones are produced in adrenal cortex; steroids in anterior pituitary",
+      "Peptide hormones are stored in vesicles; steroids are stored in granules",
+      "Peptide hormones directly alter DNA; steroids don't",
+      "Peptide hormones act slower than steroids"
+    ]
+  },
+  {
+    "question": "Which hormone’s secretion is inhibited by somatostatin as part of a local negative feedback?",
+    "correct_answer": "Growth hormone (GH)",
+    "incorrect_answers": [
+      "Thyroid-stimulating hormone (TSH)",
+      "Insulin",
+      "Cortisol",
+      "Prolactin",
+      "Aldosterone"
+    ]
+  },
+  {
+    "question": "Which hormone produced by the ovaries provides negative feedback to the hypothalamus and pituitary during the luteal phase?",
+    "correct_answer": "Progesterone",
+    "incorrect_answers": [
+      "Inhibin",
+      "Relaxin",
+      "Human chorionic gonadotropin (hCG)",
+      "Testosterone",
+      "Oxytocin"
+    ]
+  },
+  {
+    "question": "What triggers the release of prolactin-inhibiting factor (PIF) from the hypothalamus?",
+    "correct_answer": "Dopamine",
+    "incorrect_answers": [
+      "Thyrotropin-releasing hormone (TRH)",
+      "Corticotropin-releasing hormone (CRH)",
+      "Growth hormone-releasing hormone (GHRH)",
+      "Somatostatin",
+      "Oxytocin"
+    ]
+  },
+  {
+    "question": "Which hormone is primarily responsible for milk synthesis in mammary glands?",
+    "correct_answer": "Prolactin",
+    "incorrect_answers": [
+      "Oxytocin",
+      "Estrogen",
+      "Progesterone",
+      "LH",
+      "FSH"
+    ]
+  },
+  {
+    "question": "Which hormone acts via negative feedback to reduce GnRH secretion from the hypothalamus?",
+    "correct_answer": "Testosterone",
+    "incorrect_answers": [
+      "Insulin",
+      "Cortisol",
+      "Thyroxine",
+      "Prolactin",
+      "Growth hormone"
+    ]
+  },
+  {
+    "question": "Which endocrine organ secretes both endocrine hormones and digestive enzymes?",
+    "correct_answer": "Pancreas",
+    "incorrect_answers": [
+      "Thyroid gland",
+      "Adrenal gland",
+      "Pituitary gland",
+      "Pineal gland",
+      "Parathyroid glands"
+    ]
+  },
+  {
+    "question": "Which hormone does the renin-angiotensin-aldosterone system (RAAS) ultimately increase?",
+    "correct_answer": "Aldosterone",
+    "incorrect_answers": [
+      "Antidiuretic hormone (ADH)",
+      "Cortisol",
+      "Corticotropin-releasing hormone (CRH)",
+      "Thyroid-stimulating hormone (TSH)",
+      "Insulin"
+    ]
+  },
+  {
+    "question": "What is the trigger for renin release from the kidneys?",
+    "correct_answer": "Low blood pressure or low sodium in distal tubule",
+    "incorrect_answers": [
+      "High blood pressure",
+      "High sodium in distal tubule",
+      "High blood calcium",
+      "Low blood calcium",
+      "High blood glucose"
+    ]
+  },
+  {
+    "question": "In the RAAS, angiotensin II stimulates the adrenal cortex to release which hormone?",
+    "correct_answer": "Aldosterone",
+    "incorrect_answers": [
+      "Cortisol",
+      "Epinephrine",
+      "Nitric oxide",
+      "ADH",
+      "Atrial natriuretic peptide"
+    ]
+  },
+  {
+    "question": "Which organ converts angiotensin I to angiotensin II via angiotensin-converting enzyme?",
+    "correct_answer": "Lungs",
+    "incorrect_answers": [
+      "Liver",
+      "Kidneys",
+      "Spleen",
+      "Heart",
+      "Adrenal glands"
+    ]
+  },
+  {
+    "question": "Which hormone is released by the atria of the heart to lower blood pressure by increasing sodium excretion?",
+    "correct_answer": "Atrial natriuretic peptide (ANP)",
+    "incorrect_answers": [
+      "Aldosterone",
+      "Antidiuretic hormone (ADH)",
+      "Renin",
+      "Angiotensin II",
+      "Epinephrine"
+    ]
+  },
+  {
+    "question": "Which endocrine organ secretes somatostatin to inhibit both insulin and glucagon?",
+    "correct_answer": "Delta cells of pancreatic islets",
+    "incorrect_answers": [
+      "Alpha cells of pancreatic islets",
+      "Beta cells of pancreatic islets",
+      "Thyroid gland",
+      "Hypothalamus",
+      "Pineal gland"
+    ]
+  },
+  {
+    "question": "The general sequence in a negative feedback mechanism begins with:",
+    "correct_answer": "Change in internal environment (stimulus)",
+    "incorrect_answers": [
+      "Response by effector",
+      "Release of hormone",
+      "Action of control center",
+      "Activation of sensor",
+      "Inhibition of pituitary"
+    ]
+  },
+  {
+    "question": "Which hormone’s secretion is regulated by blood osmolality via negative feedback?",
+    "correct_answer": "Antidiuretic hormone (ADH)",
+    "incorrect_answers": [
+      "Growth hormone (GH)",
+      "Thyroxine (T4)",
+      "Cortisol",
+      "Parathyroid hormone (PTH)",
+      "Insulin"
+    ]
+  },
+  {
+    "question": "What triggers ADH release from the posterior pituitary?",
+    "correct_answer": "High blood osmolarity detected by osmoreceptors",
+    "incorrect_answers": [
+      "Low blood glucose",
+      "High blood calcium",
+      "Low thyroid hormone",
+      "High blood pressure",
+      "Low cortisol"
+    ]
+  },
+  {
+    "question": "Which organ acts as the control center in most endocrine negative feedback loops?",
+    "correct_answer": "Hypothalamus",
+    "incorrect_answers": [
+      "Pituitary gland",
+      "Thyroid gland",
+      "Adrenal gland",
+      "Pancreas",
+      "Pineal gland"
+    ]
+  },
+  {
+    "question": "In thyroid hormone regulation, elevated T4 and T3 inhibit which hormone release from the pituitary?",
+    "correct_answer": "TSH (thyroid-stimulating hormone)",
+    "incorrect_answers": [
+      "ACTH (adrenocorticotropic hormone)",
+      "GH (growth hormone)",
+      "FSH (follicle-stimulating hormone)",
+      "LH (luteinizing hormone)",
+      "Prolactin"
+    ]
+  },
+  {
+    "question": "Which hormone’s release is directly inhibited by high levels of cortisol?",
+    "correct_answer": "ACTH (adrenocorticotropic hormone)",
+    "incorrect_answers": [
+      "TSH (thyroid-stimulating hormone)",
+      "LH (luteinizing hormone)",
+      "FSH (follicle-stimulating hormone)",
+      "GH (growth hormone)",
+      "Prolactin"
+    ]
+  },
+  {
+    "question": "Which endocrine gland is directly regulated by hypothalamic releasing and inhibiting hormones?",
+    "correct_answer": "Anterior pituitary",
+    "incorrect_answers": [
+      "Thyroid gland",
+      "Adrenal cortex",
+      "Pancreas",
+      "Pineal gland",
+      "Gonads"
+    ]
+  },
+  {
+    "question": "Which hormone stimulates milk ejection (let-down) during breastfeeding?",
+    "correct_answer": "Oxytocin",
+    "incorrect_answers": [
+      "Prolactin",
+      "Estrogen",
+      "Progesterone",
+      "GhRH",
+      "ADH"
+    ]
+  },
+  {
+    "question": "Which endocrine organ produces both endocrine and exocrine secretions critical for digestion and blood sugar regulation?",
+    "correct_answer": "Pancreas",
+    "incorrect_answers": [
+      "Pituitary gland",
+      "Thyroid gland",
+      "Adrenal gland",
+      "Thymus",
+      "Pineal gland"
+    ]
+  },
+  {
+    "question": "Which hormone acts on bone to increase blood calcium concentration?",
+    "correct_answer": "Parathyroid hormone (PTH)",
+    "incorrect_answers": [
+      "Calcitonin",
+      "Insulin",
+      "Estrogen",
+      "Thyroxine",
+      "Growth hormone"
+    ]
+  },
+  {
+    "question": "Which part of the brain is responsible for coordinating voluntary movements and balance?",
+    "correct_answer": "Cerebellum",
+    "incorrect_answers": [
+      "Medulla oblongata",
+      "Hypothalamus",
+      "Thalamus",
+      "Pons",
+      "Corpus callosum"
+    ]
+  },
+  {
+    "question": "What is the primary function of the frontal lobe?",
+    "correct_answer": "Controls voluntary muscle movements and decision-making",
+    "incorrect_answers": [
+      "Regulates heart rate",
+      "Processes visual information",
+      "Coordinates balance",
+      "Controls breathing",
+      "Processes auditory information"
+    ]
+  },
+  {
+    "question": "Which structure connects the two cerebral hemispheres?",
+    "correct_answer": "Corpus callosum",
+    "incorrect_answers": [
+      "Optic chiasm",
+      "Pons",
+      "Medulla oblongata",
+      "Pituitary gland",
+      "Thalamus"
+    ]
+  },
+  {
+    "question": "Which part of the brain controls autonomic functions like heart rate and breathing?",
+    "correct_answer": "Medulla oblongata",
+    "incorrect_answers": [
+      "Cerebellum",
+      "Occipital lobe",
+      "Hippocampus",
+      "Corpus callosum",
+      "Parietal lobe"
+    ]
+  },
+  {
+    "question": "Where is the hypothalamus located?",
+    "correct_answer": "Below the thalamus in the diencephalon",
+    "incorrect_answers": [
+      "In the occipital lobe",
+      "Within the cerebellum",
+      "In the medulla oblongata",
+      "At the base of the cerebellum",
+      "Outside the cranial cavity"
+    ]
+  },
+  {
+    "question": "Which brain region is primarily responsible for processing visual information?",
+    "correct_answer": "Occipital lobe",
+    "incorrect_answers": [
+      "Temporal lobe",
+      "Frontal lobe",
+      "Parietal lobe",
+      "Cerebellum",
+      "Brainstem"
+    ]
+  },
+  {
+    "question": "What is the primary role of the parietal lobe?",
+    "correct_answer": "Processes sensory information such as touch and temperature",
+    "incorrect_answers": [
+      "Regulates heart rate",
+      "Coordinates balance",
+      "Initiates voluntary muscle movement",
+      "Processes language production",
+      "Controls circadian rhythms"
+    ]
+  },
+  {
+    "question": "Which structure in the brain is involved in memory formation?",
+    "correct_answer": "Hippocampus",
+    "incorrect_answers": [
+      "Pons",
+      "Cerebellum",
+      "Medulla oblongata",
+      "Occipital lobe",
+      "Pituitary gland"
+    ]
+  },
+  {
+    "question": "Which area of the brain is involved in language production?",
+    "correct_answer": "Broca’s area",
+    "incorrect_answers": [
+      "Wernicke’s area",
+      "Visual cortex",
+      "Motor cortex",
+      "Somatosensory cortex",
+      "Hippocampus"
+    ]
+  },
+  {
+    "question": "Which part of the brainstem acts as a relay between the cerebrum and cerebellum?",
+    "correct_answer": "Pons",
+    "incorrect_answers": [
+      "Medulla oblongata",
+      "Midbrain",
+      "Thalamus",
+      "Hypothalamus",
+      "Corpus callosum"
+    ]
+  },
+  {
+    "question": "Neurons that carry impulses toward the central nervous system are called:",
+    "correct_answer": "Sensory neurons",
+    "incorrect_answers": [
+      "Motor neurons",
+      "Interneurons",
+      "Glial cells",
+      "Efferent neurons",
+      "Myelinated neurons"
+    ]
+  },
+  {
+    "question": "Which type of neuron connects sensory and motor neurons within the central nervous system?",
+    "correct_answer": "Interneurons",
+    "incorrect_answers": [
+      "Sensory neurons",
+      "Motor neurons",
+      "Unipolar neurons",
+      "Efferent neurons",
+      "Afferent neurons"
+    ]
+  },
+  {
+    "question": "Neurons that carry impulses away from the central nervous system are called:",
+    "correct_answer": "Motor neurons",
+    "incorrect_answers": [
+      "Sensory neurons",
+      "Interneurons",
+      "Unipolar neurons",
+      "Efferent neurons",
+      "Afferent neurons"
+    ]
+  },
+  {
+    "question": "Which part of a neuron receives incoming signals?",
+    "correct_answer": "Dendrites",
+    "incorrect_answers": [
+      "Axon terminal",
+      "Cell body",
+      "Myelin sheath",
+      "Axon hillock",
+      "Node of Ranvier"
+    ]
+  },
+  {
+    "question": "Where is the axon hillock located?",
+    "correct_answer": "At the junction of the cell body and axon",
+    "incorrect_answers": [
+      "At the tip of dendrites",
+      "Between myelin segments",
+      "At the axon terminal",
+      "Within the nucleus",
+      "At the synaptic cleft"
+    ]
+  },
+  {
+    "question": "Myelin sheath in peripheral neurons is produced by:",
+    "correct_answer": "Schwann cells",
+    "incorrect_answers": [
+      "Oligodendrocytes",
+      "Astrocytes",
+      "Microglia",
+      "Ependymal cells",
+      "Satellite cells"
+    ]
+  },
+  {
+    "question": "The gap between myelinated segments of an axon is called:",
+    "correct_answer": "Node of Ranvier",
+    "incorrect_answers": [
+      "Axon hillock",
+      "Synaptic cleft",
+      "Dendritic spine",
+      "Neurilemma",
+      "Axon terminal"
+    ]
+  },
+  {
+    "question": "Which cells form myelin in the central nervous system?",
+    "correct_answer": "Oligodendrocytes",
+    "incorrect_answers": [
+      "Schwann cells",
+      "Astrocytes",
+      "Microglia",
+      "Ependymal cells",
+      "Satellite cells"
+    ]
+  },
+  {
+    "question": "What is the resting membrane potential of a typical neuron?",
+    "correct_answer": "Approximately -70 mV",
+    "incorrect_answers": [
+      "0 mV",
+      "+40 mV",
+      "-30 mV",
+      "+70 mV",
+      "-90 mV"
+    ]
+  },
+  {
+    "question": "During an action potential, which ion rushes into the neuron during the depolarization phase?",
+    "correct_answer": "Sodium (Na⁺)",
+    "incorrect_answers": [
+      "Potassium (K⁺)",
+      "Calcium (Ca²⁺)",
+      "Chloride (Cl⁻)",
+      "Magnesium (Mg²⁺)",
+      "Sodium and potassium equally"
+    ]
+  },
+  {
+    "question": "Which ion is primarily responsible for repolarizing the neuron during an action potential?",
+    "correct_answer": "Potassium (K⁺)",
+    "incorrect_answers": [
+      "Sodium (Na⁺)",
+      "Calcium (Ca²⁺)",
+      "Chloride (Cl⁻)",
+      "Magnesium (Mg²⁺)",
+      "Chloride and sodium equally"
+    ]
+  },
+  {
+    "question": "What is the refractory period in a neuron?",
+    "correct_answer": "Time during which a neuron cannot fire another action potential",
+    "incorrect_answers": [
+      "Time during which a neuron is hyperpolarized",
+      "Time during which Na⁺ channels open continuously",
+      "Time during which K⁺ channels stay closed",
+      "Time during which the cell is at resting potential",
+      "Time when neurotransmitters are released"
+    ]
+  },
+  {
+    "question": "Which structure forms the synaptic connection between neurons?",
+    "correct_answer": "Synapse",
+    "incorrect_answers": [
+      "Axon hillock",
+      "Dendrite",
+      "Myelin sheath",
+      "Node of Ranvier",
+      "Nucleus"
+    ]
+  },
+  {
+    "question": "In a reflex arc, which neuron carries the impulse from the receptor to the spinal cord?",
+    "correct_answer": "Sensory neuron",
+    "incorrect_answers": [
+      "Motor neuron",
+      "Interneuron",
+      "Efferent neuron",
+      "Afferent neuron",
+      "Glial cell"
+    ]
+  },
+  {
+    "question": "Which neuron transmits the impulse from the spinal cord to an effector muscle in a reflex arc?",
+    "correct_answer": "Motor neuron",
+    "incorrect_answers": [
+      "Sensory neuron",
+      "Interneuron",
+      "Afferent neuron",
+      "Efferent neuron",
+      "Glial cell"
+    ]
+  },
+  {
+    "question": "What is the function of an interneuron in a reflex arc?",
+    "correct_answer": "Connects sensory and motor neurons within the CNS",
+    "incorrect_answers": [
+      "Inhibits motor responses",
+      "Generates action potentials in muscles",
+      "Forms the blood-brain barrier",
+      "Stores reflex memories",
+      "Myelinates peripheral axons"
+    ]
+  },
+  {
+    "question": "Which structure serves as the receptor in the patellar (knee-jerk) reflex?",
+    "correct_answer": "Muscle spindle in the quadriceps",
+    "incorrect_answers": [
+      "Golgi tendon organ in the hamstring",
+      "Pain receptors in the skin",
+      "Retina in the eye",
+      "Inner ear hair cells",
+      "Nociceptors in the knee"
+    ]
+  },
+  {
+    "question": "Which part of the eye contains photoreceptor cells?",
+    "correct_answer": "Retina",
+    "incorrect_answers": [
+      "Cornea",
+      "Lens",
+      "Iris",
+      "Sclera",
+      "Choroid"
+    ]
+  },
+  {
+    "question": "Which structure controls the amount of light entering the eye?",
+    "correct_answer": "Iris",
+    "incorrect_answers": [
+      "Cornea",
+      "Lens",
+      "Retina",
+      "Optic nerve",
+      "Sclera"
+    ]
+  },
+  {
+    "question": "What is the function of the lens during accommodation?",
+    "correct_answer": "Changes shape to focus light on the retina",
+    "incorrect_answers": [
+      "Blocks excess light",
+      "Produces aqueous humor",
+      "Contains photoreceptors",
+      "Drains tears",
+      "Connects to the optic nerve"
+    ]
+  },
+  {
+    "question": "Which muscle controls lens shape during accommodation?",
+    "correct_answer": "Ciliary muscle",
+    "incorrect_answers": [
+      "Iris sphincter muscle",
+      "Orbicularis oculi",
+      "Levator palpebrae",
+      "Rectus abdominis",
+      "Superior oblique"
+    ]
+  },
+  {
+    "question": "What happens to the lens when focusing on a near object?",
+    "correct_answer": "Becomes more rounded (thicker)",
+    "incorrect_answers": [
+      "Becomes flatter",
+      "Moves forward",
+      "Becomes opaque",
+      "Detaches from the ciliary body",
+      "Stretches"
+    ]
+  },
+  {
+    "question": "Which reflex controls pupil size in bright light?",
+    "correct_answer": "Pupillary light reflex",
+    "incorrect_answers": [
+      "Accommodation reflex",
+      "Vestibulo-ocular reflex",
+      "Blink reflex",
+      "Corneal reflex",
+      "Gag reflex"
+    ]
+  },
+  {
+    "question": "Which muscle constricts the pupil in bright light?",
+    "correct_answer": "Sphincter pupillae",
+    "incorrect_answers": [
+      "Dilator pupillae",
+      "Rectus abdominis",
+      "Ciliary muscle",
+      "Orbicularis oculi",
+      "Levator palpebrae"
+    ]
+  },
+  {
+    "question": "Myopia (nearsightedness) occurs when the eyeball is:",
+    "correct_answer": "Too long, focusing images in front of the retina",
+    "incorrect_answers": [
+      "Too short, focusing images behind the retina",
+      "Astigmatic, with uneven corneal curvature",
+      "Missing photoreceptor cells",
+      "Lacking vitreous humor",
+      "Lens is too thin"
+    ]
+  },
+  {
+    "question": "Hyperopia (farsightedness) occurs when the eyeball is:",
+    "correct_answer": "Too short, focusing images behind the retina",
+    "incorrect_answers": [
+      "Too long, focusing images in front of the retina",
+      "Astigmatic, with uneven lens curvature",
+      "Lacking photoreceptor cells",
+      "Missing vitreous humor",
+      "Lens is too thick"
+    ]
+  },
+  {
+    "question": "Which condition results from irregular curvature of the cornea or lens?",
+    "correct_answer": "Astigmatism",
+    "incorrect_answers": [
+      "Myopia",
+      "Hyperopia",
+      "Presbyopia",
+      "Cataract",
+      "Glaucoma"
+    ]
+  },
+  {
+    "question": "Presbyopia is caused by:",
+    "correct_answer": "Loss of lens elasticity with age, impairing near focus",
+    "incorrect_answers": [
+      "Excessive curvature of the eyeball",
+      "Damage to the optic nerve",
+      "Irregular corneal shape",
+      "Loss of rod cells in retina",
+      "Increased intraocular pressure"
+    ]
+  },
+  {
+    "question": "Which structure in the eye drains aqueous humor to regulate intraocular pressure?",
+    "correct_answer": "Canal of Schlemm",
+    "incorrect_answers": [
+      "Optic nerve",
+      "Retinal vein",
+      "Scleral venous sinus",
+      "Iris stroma",
+      "Vitreous chamber"
+    ]
+  },
+  {
+    "question": "Which photoreceptors are responsible for color vision?",
+    "correct_answer": "Cones",
+    "incorrect_answers": [
+      "Rods",
+      "Bipolar cells",
+      "Ganglion cells",
+      "Amacrine cells",
+      "Horizontal cells"
+    ]
+  },
+  {
+    "question": "Which photoreceptors are responsible for vision in low light?",
+    "correct_answer": "Rods",
+    "incorrect_answers": [
+      "Cones",
+      "Bipolar cells",
+      "Ganglion cells",
+      "Amacrine cells",
+      "Horizontal cells"
+    ]
+  },
+  {
+    "question": "The optic disc corresponds to which of the following?",
+    "correct_answer": "Blind spot, where the optic nerve exits the retina",
+    "incorrect_answers": [
+      "Central point of color vision",
+      "Area of highest visual acuity",
+      "Site of photoreceptor regeneration",
+      "Opening for accommodation",
+      "Location of conjunctiva attachment"
+    ]
+  },
+  {
+    "question": "Which part of the ear collects sound waves?",
+    "correct_answer": "Pinna (auricle)",
+    "incorrect_answers": [
+      "Cochlea",
+      "Eustachian tube",
+      "Oval window",
+      "Tympanic membrane",
+      "Vestibule"
+    ]
+  },
+  {
+    "question": "Which structure vibrates in response to sound waves entering the ear?",
+    "correct_answer": "Tympanic membrane (eardrum)",
+    "incorrect_answers": [
+      "Oval window",
+      "Round window",
+      "Cochlear duct",
+      "Semicircular canals",
+      "Pinna"
+    ]
+  },
+  {
+    "question": "Which ossicle is directly attached to the tympanic membrane?",
+    "correct_answer": "Malleus",
+    "incorrect_answers": [
+      "Incus",
+      "Stapes",
+      "Hammer",
+      "Anvil",
+      "Stirrup"
+    ]
+  },
+  {
+    "question": "Which ossicle connects the incus to the oval window?",
+    "correct_answer": "Stapes",
+    "incorrect_answers": [
+      "Malleus",
+      "Tympanum",
+      "Cochlea",
+      "Utricle",
+      "Saccule"
+    ]
+  },
+  {
+    "question": "Which fluid-filled structure in the inner ear detects sound vibrations?",
+    "correct_answer": "Cochlea",
+    "incorrect_answers": [
+      "Saccule",
+      "Utricle",
+      "Semicircular canals",
+      "Vestibular duct",
+      "Endolymphatic sac"
+    ]
+  },
+  {
+    "question": "Which cells in the cochlea convert mechanical vibrations into electrical signals?",
+    "correct_answer": "Hair cells (inner ear)",
+    "incorrect_answers": [
+      "Rod cells",
+      "Cone cells",
+      "Bipolar neurons",
+      "Glial cells",
+      "Stereocilia"
+    ]
+  },
+  {
+    "question": "Which structure transmits auditory signals from the cochlea to the brain?",
+    "correct_answer": "Auditory (cochlear) nerve",
+    "incorrect_answers": [
+      "Vestibular nerve",
+      "Optic nerve",
+      "Olfactory nerve",
+      "Vagus nerve",
+      "Facial nerve"
+    ]
+  },
+  {
+    "question": "Which part of the ear is responsible for maintaining equilibrium when moving?",
+    "correct_answer": "Semicircular canals",
+    "incorrect_answers": [
+      "Cochlea",
+      "Tympanic membrane",
+      "Eustachian tube",
+      "Malleus",
+      "Utricle"
+    ]
+  },
+  {
+    "question": "Which fluid is found within the semicircular canals and helps detect head rotation?",
+    "correct_answer": "Endolymph",
+    "incorrect_answers": [
+      "Perilymph",
+      "Cerebrospinal fluid",
+      "Synovial fluid",
+      "Aqueous humor",
+      "Vitreous humor"
+    ]
+  },
+  {
+    "question": "What is the function of the eustachian (auditory) tube?",
+    "correct_answer": "Equalizes pressure between middle ear and atmosphere",
+    "incorrect_answers": [
+      "Transmits sound to cochlea",
+      "Drains perilymph",
+      "Controls endolymph flow",
+      "Anchors ossicles",
+      "Supports tympanic membrane"
+    ]
+  },
+  {
+    "question": "Which hearing defect is characterized by loss of hair cells in the cochlea?",
+    "correct_answer": "Sensorineural hearing loss",
+    "incorrect_answers": [
+      "Conductive hearing loss",
+      "Mixed hearing loss",
+      "Functional hearing loss",
+      "Central hearing loss",
+      "Otitis media"
+    ]
+  },
+  {
+    "question": "Which hearing defect can often be corrected by hearing aids?",
+    "correct_answer": "Conductive hearing loss",
+    "incorrect_answers": [
+      "Sensorineural hearing loss",
+      "Central hearing loss",
+      "Functional hearing loss",
+      "Mixed hearing loss",
+      "Tinnitus"
+    ]
+  },
+  {
+    "question": "Which condition involves ringing in the ears without external sound?",
+    "correct_answer": "Tinnitus",
+    "incorrect_answers": [
+      "Otitis externa",
+      "Meniere’s disease",
+      "Barotrauma",
+      "Conductive hearing loss",
+      "Presbycusis"
+    ]
+  },
+  {
+    "question": "Which structure in the vestibular apparatus detects linear acceleration?",
+    "correct_answer": "Utricle and saccule",
+    "incorrect_answers": [
+      "Cochlea",
+      "Tympanic membrane",
+      "Semicircular canals only",
+      "Oval window",
+      "Round window"
+    ]
+  },
+  {
+    "question": "Which portion of the vestibular system senses rotational movements?",
+    "correct_answer": "Semicircular canals",
+    "incorrect_answers": [
+      "Cochlea",
+      "Utricle",
+      "Saccule",
+      "Tympanic membrane",
+      "Eustachian tube"
+    ]
+  },
+  {
+    "question": "Which condition is caused by increased fluid pressure in the middle or inner ear leading to vertigo and tinnitus?",
+    "correct_answer": "Meniere’s disease",
+    "incorrect_answers": [
+      "Otitis media",
+      "Barotrauma",
+      "Tinnitus",
+      "Presbycusis",
+      "Acoustic neuroma"
+    ]
+  },
+  {
+    "question": "Which defect is characterized by hardening of the stapes footplate leading to conductive hearing loss?",
+    "correct_answer": "Otosclerosis",
+    "incorrect_answers": [
+      "Meniere’s disease",
+      "Presbycusis",
+      "Tinnitus",
+      "Acoustic neuroma",
+      "Barotrauma"
+    ]
+  },
+  {
+    "question": "Which part of the brain processes auditory information received from the cochlea?",
+    "correct_answer": "Temporal lobe",
+    "incorrect_answers": [
+      "Occipital lobe",
+      "Frontal lobe",
+      "Parietal lobe",
+      "Cerebellum",
+      "Medulla oblongata"
+    ]
+  },
+  {
+    "question": "Which structure in the brain regulates involuntary reflexes such as blinking and pupil constriction?",
+    "correct_answer": "Midbrain (specifically the superior colliculus and pretectal area)",
+    "incorrect_answers": [
+      "Hypothalamus",
+      "Hippocampus",
+      "Cerebellum",
+      "Cerebral cortex",
+      "Medulla oblongata"
+    ]
+  },
+  {
+    "question": "Which area of the brain interprets visual signals from the retina?",
+    "correct_answer": "Occipital lobe (visual cortex)",
+    "incorrect_answers": [
+      "Temporal lobe",
+      "Parietal lobe",
+      "Frontal lobe",
+      "Cerebellum",
+      "Thalamus"
+    ]
+  },
+  {
+    "question": "Which part of the brain controls vital reflexes such as swallowing and coughing?",
+    "correct_answer": "Medulla oblongata",
+    "incorrect_answers": [
+      "Cerebellum",
+      "Hypothalamus",
+      "Pons",
+      "Cerebral cortex",
+      "Corpus callosum"
+    ]
+  },
+  {
+    "question": "Which lobe of the brain processes taste sensations?",
+    "correct_answer": "Insular cortex (within temporal lobe region)",
+    "incorrect_answers": [
+      "Occipital lobe",
+      "Frontal lobe",
+      "Parietal lobe",
+      "Cerebellar lobe",
+      "Midbrain"
+    ]
+  },
+  {
+    "question": "Which part of the neuron releases neurotransmitters into the synaptic cleft?",
+    "correct_answer": "Axon terminal (synaptic knob)",
+    "incorrect_answers": [
+      "Dendritic spine",
+      "Cell body",
+      "Node of Ranvier",
+      "Nucleus",
+      "Axon hillock"
+    ]
+  },
+  {
+    "question": "Which neurotransmitter is primarily excitatory in the central nervous system?",
+    "correct_answer": "Glutamate",
+    "incorrect_answers": [
+      "GABA",
+      "Glycine",
+      "Serotonin",
+      "Dopamine",
+      "Acetylcholine"
+    ]
+  }
+]
