@@ -1,5 +1,4 @@
-[
-  {
+[{
     "question": "In a Venn diagram, A ∪ B represents:",
     "correct_answer": "All elements in A or B or both",
     "incorrect_answers": [
@@ -559,5 +558,4 @@
       "(4/52)(48/52)",
       "1 − 4/52"
     ]
-  }
-]
+  }]
