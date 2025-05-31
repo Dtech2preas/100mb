@@ -418,19 +418,6 @@
     ]
   },
   {
-    "question": "Which phase of meiosis II resembles mitosis the most? ",
-    - A: Prophase II  
-    - B: Metaphase II  
-    - C: Anaphase II  
-    - D: Telophase II  
-    - Correct Answer: B  
-    - Incorrect Answers: ["Prophase I", "Anaphase I", "Metaphase I", "Telophase I", "Interkinesis"]
-
-Incorrect formatting detected—I'll correct and continue below:
-
-```json
-[
-  {
     "question": "What is the primary purpose of meiosis?",
     "correct_answer": "To produce haploid gametes with genetic variation",
     "incorrect_answers": [
