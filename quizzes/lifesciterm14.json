@@ -592,8 +592,5 @@
       "Meiosis I has no prophase, meiosis II does",
       "Meiosis I aligns sister chromatids, meiosis II aligns homologs"
     ]
-  },
-  {
-    "question": "Which protein complex protects centromeric cohesin from separase during anaphase I?",
-    "correct_answer": "Shugoshin",
-    "i
+  }
+]
