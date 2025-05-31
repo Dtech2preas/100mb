@@ -1,0 +1,519 @@
+[
+  {
+    "question": "What type of evidence for evolution is provided by fossil remains?",
+    "correct_answer": "Paleontological evidence",
+    "incorrect_answers": [
+      "Embryological evidence",
+      "Biochemical evidence",
+      "Anatomical evidence",
+      "Behavioral evidence",
+      "Ecological evidence"
+    ]
+  },
+  {
+    "question": "Which anatomical feature indicates a common ancestor when it is present but nonfunctional in modern species?",
+    "correct_answer": "Vestigial structure",
+    "incorrect_answers": [
+      "Analogous structure",
+      "Homologous structure",
+      "Adaptive structure",
+      "Symbiotic structure",
+      "Epigenetic structure"
+    ]
+  },
+  {
+    "question": "What is an example of homologous structures in mammals?",
+    "correct_answer": "Forelimbs of humans, whales, and bats",
+    "incorrect_answers": [
+      "Wings of bats and insects",
+      "Fins of sharks and dolphins",
+      "Eyes of octopus and humans",
+      "Leaves of cacti and pine needles",
+      "Flower petals of orchids and roses"
+    ]
+  },
+  {
+    "question": "Which evidence for evolution examines similarities in developmental stages across species?",
+    "correct_answer": "Embryological evidence",
+    "incorrect_answers": [
+      "Fossil record",
+      "Biogeographical evidence",
+      "Molecular evidence",
+      "Behavioral evidence",
+      "Ecological evidence"
+    ]
+  },
+  {
+    "question": "Which source of variation arises from independent assortment and crossing over during meiosis?",
+    "correct_answer": "Genetic recombination",
+    "incorrect_answers": [
+      "Mutation",
+      "Genetic drift",
+      "Gene flow",
+      "Artificial selection",
+      "Natural selection"
+    ]
+  },
+  {
+    "question": "What is the primary source of new alleles in a population?",
+    "correct_answer": "Mutation",
+    "incorrect_answers": [
+      "Gene flow",
+      "Genetic drift",
+      "Independent assortment",
+      "Crossing over",
+      "Artificial selection"
+    ]
+  },
+  {
+    "question": "According to Lamarck’s theory, organisms evolve by:",
+    "correct_answer": "Inheritance of acquired characteristics",
+    "incorrect_answers": [
+      "Natural selection",
+      "Genetic drift",
+      "Gene flow",
+      "Random mutation",
+      "Environmental mutation"
+    ]
+  },
+  {
+    "question": "Which idea is central to Darwin’s theory of evolution?",
+    "correct_answer": "Survival of the fittest via natural selection",
+    "incorrect_answers": [
+      "Use and disuse of organs",
+      "Inheritance of acquired traits",
+      "Directed mutations",
+      "Transmutation by will",
+      "Spontaneous generation"
+    ]
+  },
+  {
+    "question": "How does Lamarck’s theory differ from Darwin’s?",
+    "correct_answer": "Lamarck proposed acquired traits are inherited, while Darwin proposed natural selection based on variation",
+    "incorrect_answers": [
+      "Lamarck proposed genetic drift, Darwin proposed gene flow",
+      "Lamarck emphasized mutations, Darwin emphasized environment",
+      "Lamarck described punctuated equilibrium, Darwin described gradualism",
+      "Lamarck focused on fossils, Darwin on living species",
+      "Lamarck denied evolution, Darwin accepted it"
+    ]
+  },
+  {
+    "question": "Which principle of Darwinian evolution applies when farmers breed only the cows that produce the most milk?",
+    "correct_answer": "Artificial selection",
+    "incorrect_answers": [
+      "Natural selection",
+      "Mutation",
+      "Genetic drift",
+      "Gene flow",
+      "Punctuated equilibrium"
+    ]
+  },
+  {
+    "question": "What is an example of artificial selection?",
+    "correct_answer": "Selective breeding of dogs for desired traits",
+    "incorrect_answers": [
+      "Butterfly wing color change in the wild",
+      "Adaption of bacteria to antibiotics",
+      "Random mutation of viruses",
+      "Speciation in islands",
+      "Natural migration of birds"
+    ]
+  },
+  {
+    "question": "Which concept describes long periods of stasis interrupted by rapid evolutionary change?",
+    "correct_answer": "Punctuated equilibrium",
+    "incorrect_answers": [
+      "Gradualism",
+      "Genetic drift",
+      "Convergent evolution",
+      "Adaptive radiation",
+      "Sympatric speciation"
+    ]
+  },
+  {
+    "question": "Which speciation mechanism occurs when a physical barrier divides a population?",
+    "correct_answer": "Allopatric speciation",
+    "incorrect_answers": [
+      "Sympatric speciation",
+      "Peripatric speciation",
+      "Parapatric speciation",
+      "Artificial speciation",
+      "Hybrid speciation"
+    ]
+  },
+  {
+    "question": "What type of speciation can result from a small population becoming isolated at the edge of a larger population?",
+    "correct_answer": "Peripatric speciation",
+    "incorrect_answers": [
+      "Allopatric speciation",
+      "Sympatric speciation",
+      "Parapatric speciation",
+      "Artificial speciation",
+      "Hybrid zone speciation"
+    ]
+  },
+  {
+    "question": "Which barrier prevents two species from interbreeding due to incompatible mating behaviors?",
+    "correct_answer": "Behavioral isolation",
+    "incorrect_answers": [
+      "Geographical isolation",
+      "Temporal isolation",
+      "Mechanical isolation",
+      "Habitat isolation",
+      "Gametic isolation"
+    ]
+  },
+  {
+    "question": "Which reproductive barrier occurs when species mate at different times of the day or year?",
+    "correct_answer": "Temporal isolation",
+    "incorrect_answers": [
+      "Behavioral isolation",
+      "Mechanical isolation",
+      "Geographical isolation",
+      "Ecological isolation",
+      "Gametic isolation"
+    ]
+  },
+  {
+    "question": "Which barrier prevents mating because anatomical differences make copulation impossible?",
+    "correct_answer": "Mechanical isolation",
+    "incorrect_answers": [
+      "Behavioral isolation",
+      "Temporal isolation",
+      "Geographical isolation",
+      "Ecological isolation",
+      "Gametic isolation"
+    ]
+  },
+  {
+    "question": "What evidence supports the Out of Africa hypothesis for human evolution?",
+    "correct_answer": "Genetic diversity is highest in African populations",
+    "incorrect_answers": [
+      "Fossils only found in Europe",
+      "All Homo sapiens fossils outside Africa are younger than 50,000 years",
+      "Language complexity originated in Asia",
+      "Early hominins in South America",
+      "No human fossils in Africa"
+    ]
+  },
+  {
+    "question": "Which characteristic is shared by humans and African apes?",
+    "correct_answer": "Opposable thumbs",
+    "incorrect_answers": [
+      "Prehensile tail",
+      "Wings for gliding",
+      "Hollow bones",
+      "Feathers",
+      "Fins"
+    ]
+  },
+  {
+    "question": "Which trait differentiates humans from African apes?",
+    "correct_answer": "Bipedal locomotion",
+    "incorrect_answers": [
+      "Opposable thumbs",
+      "Large brain size",
+      "DNA sequence similarity",
+      "Presence of viviparity",
+      "Lactation"
+    ]
+  },
+  {
+    "question": "Which hominid is considered the earliest known species to walk upright?",
+    "correct_answer": "Australopithecus afarensis",
+    "incorrect_answers": [
+      "Homo erectus",
+      "Paranthropus robustus",
+      "Homo habilis",
+      "Pan troglodytes",
+      "Sahelanthropus tchadensis"
+    ]
+  },
+  {
+    "question": "Which hominid species is thought to have used stone tools around 2.6 million years ago?",
+    "correct_answer": "Homo habilis",
+    "incorrect_answers": [
+      "Australopithecus afarensis",
+      "Paranthropus boisei",
+      "Homo erectus",
+      "Neanderthals",
+      "Sahelanthropus tchadensis"
+    ]
+  },
+  {
+    "question": "Which species is known for expanding into Eurasia approximately 1.8 million years ago?",
+    "correct_answer": "Homo erectus",
+    "incorrect_answers": [
+      "Homo sapiens",
+      "Homo habilis",
+      "Paranthropus boisei",
+      "Australopithecus africanus",
+      "Homo neanderthalensis"
+    ]
+  },
+  {
+    "question": "What is adaptive radiation?",
+    "correct_answer": "Rapid diversification of a lineage into multiple niches",
+    "incorrect_answers": [
+      "Long-term stasis of a single species",
+      "Predator-prey coevolution",
+      "Mutation accumulation without selection",
+      "Convergent evolution",
+      "Horizontal gene transfer"
+    ]
+  },
+  {
+    "question": "Which process leads to similar features in unrelated species living in similar environments?",
+    "correct_answer": "Convergent evolution",
+    "incorrect_answers": [
+      "Divergent evolution",
+      "Co-evolution",
+      "Adaptive radiation",
+      "Artificial selection",
+      "Punctuated equilibrium"
+    ]
+  },
+  {
+    "question": "Which process describes the gradual change of one species into another over time?",
+    "correct_answer": "Phyletic gradualism",
+    "incorrect_answers": [
+      "Punctuated equilibrium",
+      "Reproductive isolation",
+      "Hybrid speciation",
+      "Convergent evolution",
+      "Polyploidy"
+    ]
+  },
+  {
+    "question": "Which concept describes speciation with gene flow between diverging populations?",
+    "correct_answer": "Parapatric speciation",
+    "incorrect_answers": [
+      "Allopatric speciation",
+      "Sympatric speciation",
+      "Peripatric speciation",
+      "Artificial speciation",
+      "Punctuated speciation"
+    ]
+  },
+  {
+    "question": "Which species concept defines species based on the ability to interbreed and produce fertile offspring?",
+    "correct_answer": "Biological species concept",
+    "incorrect_answers": [
+      "Morphological species concept",
+      "Phylogenetic species concept",
+      "Ecological species concept",
+      "Evolutionary species concept",
+      "Genetic species concept"
+    ]
+  },
+  {
+    "question": "Which type of isolation occurs when populations occupy different ecological niches within the same region?",
+    "correct_answer": "Ecological isolation",
+    "incorrect_answers": [
+      "Behavioral isolation",
+      "Temporal isolation",
+      "Mechanical isolation",
+      "Geographical isolation",
+      "Gametic isolation"
+    ]
+  },
+  {
+    "question": "Which hominid species coexisted with early Homo sapiens and interbred with them?",
+    "correct_answer": "Homo neanderthalensis",
+    "incorrect_answers": [
+      "Australopithecus africanus",
+      "Homo habilis",
+      "Paranthropus robustus",
+      "Sahelanthropus tchadensis",
+      "Homo floresiensis"
+    ]
+  },
+  {
+    "question": "Which human-specific trait is linked to FOXP2 gene evolution?",
+    "correct_answer": "Complex speech and language ability",
+    "incorrect_answers": [
+      "Bipedalism",
+      "Opposable thumbs",
+      "Large cranium size",
+      "Tail loss",
+      "Reduced hair coverage"
+    ]
+  },
+  {
+    "question": "Which hypothesis suggests modern humans originated in Africa and migrated outwards?",
+    "correct_answer": "Out of Africa hypothesis",
+    "incorrect_answers": [
+      "Multiregional hypothesis",
+      "Assimilation hypothesis",
+      "Evolution in situ hypothesis",
+      "Parallel evolution hypothesis",
+      "Planck hypothesis"
+    ]
+  },
+  {
+    "question": "Which trait shows a difference between Homo sapiens and chimpanzees?",
+    "correct_answer": "Presence of a chin in Homo sapiens",
+    "incorrect_answers": [
+      "Opposable thumbs in chimpanzees",
+      "Forward-facing eyes in chimpanzees",
+      "Social structures in both species",
+      "Use of tools by chimpanzees only",
+      "Bipedalism in chimpanzees"
+    ]
+  },
+  {
+    "question": "Which method is used to reconstruct evolutionary relationships among species?",
+    "correct_answer": "Phylogenetic tree",
+    "incorrect_answers": [
+      "Karyotyping",
+      "Pedigree analysis",
+      "Genetic counseling",
+      "Paleontological map",
+      "Ecological network"
+    ]
+  },
+  {
+    "question": "What do branch points (nodes) on a phylogenetic tree represent?",
+    "correct_answer": "Common ancestors",
+    "incorrect_answers": [
+      "Individual organisms",
+      "Extant species only",
+      "Environmental changes",
+      "Geographical barriers",
+      "Random mutations"
+    ]
+  },
+  {
+    "question": "Which evidence supports the close evolutionary relationship between humans and chimpanzees?",
+    "correct_answer": "Similarity in DNA sequences (~98% identical)",
+    "incorrect_answers": [
+      "Same number of teeth",
+      "Identical brain size",
+      "Identical lifespan",
+      "Identical digestive tract length",
+      "Same bone density"
+    ]
+  },
+  {
+    "question": "Which era did the first hominids appear?",
+    "correct_answer": "Late Miocene (around 7–5 million years ago)",
+    "incorrect_answers": [
+      "Jurassic period",
+      "Triassic period",
+      "Pleistocene epoch",
+      "Cretaceous period",
+      "Holocene epoch"
+    ]
+  },
+  {
+    "question": "Which process can produce a new species without geographic isolation?",
+    "correct_answer": "Sympatric speciation",
+    "incorrect_answers": [
+      "Allopatric speciation",
+      "Peripatric speciation",
+      "Parapatric speciation",
+      "Artificial speciation",
+      "Hybrid speciation"
+    ]
+  },
+  {
+    "question": "Which evolutionary mechanism is most likely responsible for antibiotic resistance in bacteria?",
+    "correct_answer": "Natural selection acting on random mutations",
+    "incorrect_answers": [
+      "Lamarckian inheritance",
+      "Genetic drift only",
+      "Artificial selection",
+      "Punctuated equilibrium only",
+      "Gene flow only"
+    ]
+  },
+  {
+    "question": "What key concept did Darwin propose about species variation?",
+    "correct_answer": "Variation exists within populations and is heritable",
+    "incorrect_answers": [
+      "Variation arises solely from acquired traits",
+      "All individuals in a population are identical",
+      "Species do not change over time",
+      "Only sudden catastrophes create new species",
+      "Variation is nonheritable"
+    ]
+  },
+  {
+    "question": "Which principle explains why maladaptive traits are removed from a population over time?",
+    "correct_answer": "Natural selection",
+    "incorrect_answers": [
+      "Genetic drift",
+      "Mutation accumulation",
+      "Sexual reproduction only",
+      "Genetic linkage",
+      "Artificial selection"
+    ]
+  },
+  {
+    "question": "Which hominid species is believed to have been the first to use fire?",
+    "correct_answer": "Homo erectus",
+    "incorrect_answers": [
+      "Homo habilis",
+      "Homo neanderthalensis",
+      "Australopithecus afarensis",
+      "Sahelanthropus tchadensis",
+      "Paranthropus boisei"
+    ]
+  },
+  {
+    "question": "Which feature is a synapomorphy (shared derived trait) of primates?",
+    "correct_answer": "Nails instead of claws",
+    "incorrect_answers": [
+      "Scales covering skin",
+      "Feathers on body",
+      "Six legs",
+      "Bilaterally symmetrical eyes",
+      "Lack of vertebral column"
+    ]
+  },
+  {
+    "question": "Which pattern in the fossil record suggests punctuated equilibrium?",
+    "correct_answer": "Long periods of stasis followed by sudden appearance of new forms",
+    "incorrect_answers": [
+      "Gradual change over time",
+      "Continuous transitional forms for every species",
+      "No change at all",
+      "Species reappearing after extinction",
+      "Random fossils with no pattern"
+    ]
+  },
+  {
+    "question": "Which concept suggests that closely related species diverge quickly after a speciation event?",
+    "correct_answer": "Adaptive radiation",
+    "incorrect_answers": [
+      "Genetic drift",
+      "Convergent evolution",
+      "Stabilizing selection",
+      "Directional selection",
+      "Transmutation"
+    ]
+  },
+  {
+    "question": "Which isolated environment is a classic example of allopatric speciation?",
+    "correct_answer": "Galápagos Islands",
+    "incorrect_answers": [
+      "Sahara Desert (continuous with Africa)",
+      "Great Plains (connected grasslands)",
+      "Amazon Rainforest (continuous biome)",
+      "Tropical coral reef",
+      "Taiga forest"
+    ]
+  },
+  {
+    "question": "Which example best illustrates coevolution?",
+    "correct_answer": "Bees and flowering plants evolving mutually adapted traits",
+    "incorrect_answers": [
+      "Humans and computers coexisting",
+      "Elephants and rocks coexisting in habitat",
+      "Trees and rivers sharing water",
+      "Rabbits and hayfields coexisting",
+      "Birds and clouds coexisting"
+    ]
+  }
+]
