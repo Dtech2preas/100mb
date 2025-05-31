@@ -1,0 +1,561 @@
+[{
+    "question": "In a Venn diagram, A ∪ B represents:",
+    "correct_answer": "All elements in A or B or both",
+    "incorrect_answers": [
+      "Only elements in both A and B",
+      "Elements only in A",
+      "Elements only in B",
+      "Elements not in A or B",
+      "Elements in A but not B"
+    ]
+  },
+  {
+    "question": "If P(A) = 0.3 and P(B) = 0.4 and A and B are mutually exclusive, P(A ∪ B) =",
+    "correct_answer": "0.7",
+    "incorrect_answers": [
+      "0.12",
+      "0.1",
+      "0.3",
+      "0.4",
+      "0.9"
+    ]
+  },
+  {
+    "question": "In a contingency table, the entry in the bottom right cell is 10. It represents:",
+    "correct_answer": "Count of neither first nor second category",
+    "incorrect_answers": [
+      "Total sample size",
+      "Count of both categories",
+      "Count of first category only",
+      "Count of second category only",
+      "Count of at least one category"
+    ]
+  },
+  {
+    "question": "Two events A and B are independent if:",
+    "correct_answer": "P(A ∩ B) = P(A)·P(B)",
+    "incorrect_answers": [
+      "P(A ∩ B) = P(A) + P(B)",
+      "P(A ∩ B) = P(A) − P(B)",
+      "P(A | B) = 1 − P(B)",
+      "P(A ∪ B) = 1",
+      "P(A ∩ B) = 0"
+    ]
+  },
+  {
+    "question": "For dependent events, P(A ∩ B) =",
+    "correct_answer": "P(A)·P(B | A)",
+    "incorrect_answers": [
+      "P(A) + P(B)",
+      "P(A)·P(B)",
+      "P(A | B)",
+      "P(A ∪ B)",
+      "P(A) − P(B)"
+    ]
+  },
+  {
+    "question": "In a tree diagram, the branches represent:",
+    "correct_answer": "Possible outcomes and probabilities",
+    "incorrect_answers": [
+      "Only outcomes",
+      "Only probabilities",
+      "Sample means",
+      "Frequency counts",
+      "Mutually exclusive events"
+    ]
+  },
+  {
+    "question": "If two events cannot occur together, they are:",
+    "correct_answer": "Mutually exclusive",
+    "incorrect_answers": [
+      "Dependent",
+      "Complementary",
+      "Independent",
+      "Exhaustive",
+      "Conditional"
+    ]
+  },
+  {
+    "question": "In a Venn diagram, region only in A but not in B is labeled:",
+    "correct_answer": "A ∖ B",
+    "incorrect_answers": [
+      "A ∩ B",
+      "A ∪ B",
+      "B ∖ A",
+      "A′",
+      "B′"
+    ]
+  },
+  {
+    "question": "Probability of complementary event A' is:",
+    "correct_answer": "1 − P(A)",
+    "incorrect_answers": [
+      "P(A) + 1",
+      "P(A)",
+      "1/P(A)",
+      "P(A)/2",
+      "P(A) − 1"
+    ]
+  },
+  {
+    "question": "In a contingency table, row totals are called:",
+    "correct_answer": "Marginal totals",
+    "incorrect_answers": [
+      "Joint frequencies",
+      "Conditional frequencies",
+      "Expected counts",
+      "Cell frequencies",
+      "Grand totals"
+    ]
+  },
+  {
+    "question": "If P(A | B) = P(A), then A and B are:",
+    "correct_answer": "Independent",
+    "incorrect_answers": [
+      "Mutually exclusive",
+      "Dependent",
+      "Complementary",
+      "Identical",
+      "Disjoint"
+    ]
+  },
+  {
+    "question": "Probability of event A or B (general) is:",
+    "correct_answer": "P(A) + P(B) − P(A ∩ B)",
+    "incorrect_answers": [
+      "P(A)·P(B)",
+      "P(A) + P(B)",
+      "P(A ∩ B)",
+      "P(A) − P(B)",
+      "P(A ∪ B)"
+    ]
+  },
+  {
+    "question": "In a tree diagram, the probability along a path is found by:",
+    "correct_answer": "Multiplying branch probabilities",
+    "incorrect_answers": [
+      "Adding branch probabilities",
+      "Subtracting branch probabilities",
+      "Dividing branch probabilities",
+      "Taking square root of product",
+      "Averaging branch probabilities"
+    ]
+  },
+  {
+    "question": "If P(A ∩ B) = 0, A and B are:",
+    "correct_answer": "Mutually exclusive",
+    "incorrect_answers": [
+      "Independent",
+      "Complementary",
+      "Dependent",
+      "Exhaustive",
+      "Equally likely"
+    ]
+  },
+  {
+    "question": "A and A' are:",
+    "correct_answer": "Complementary",
+    "incorrect_answers": [
+      "Mutually exclusive but not exhaustive",
+      "Independent",
+      "Dependent",
+      "Mutually exclusive and exhaustive",
+      "Neither"
+    ]
+  },
+  {
+    "question": "When constructing a 2×2 contingency table, the sum of all cells equals:",
+    "correct_answer": "Total sample size",
+    "incorrect_answers": [
+      "Zero",
+      "One",
+      "Number of categories",
+      "Product of marginals",
+      "Difference of marginals"
+    ]
+  },
+  {
+    "question": "In probability tree, levels correspond to:",
+    "correct_answer": "Sequential stages",
+    "incorrect_answers": [
+      "Sample size",
+      "Category totals",
+      "Venn regions",
+      "Marginal frequencies",
+      "Complement events"
+    ]
+  },
+  {
+    "question": "Probability that both of two independent events occur is:",
+    "correct_answer": "Product of individual probabilities",
+    "incorrect_answers": [
+      "Sum of individual probabilities",
+      "Difference of individual probabilities",
+      "One minus product",
+      "Sum minus product",
+      "One plus product"
+    ]
+  },
+  {
+    "question": "In Venn diagrams, shaded region for A ∩ B shows:",
+    "correct_answer": "Elements common to A and B",
+    "incorrect_answers": [
+      "Elements only in A",
+      "Elements only in B",
+      "Elements outside both",
+      "Entire A circle",
+      "Entire B circle"
+    ]
+  },
+  {
+    "question": "Conditional probability P(B|A) is:",
+    "correct_answer": "P(A ∩ B)/P(A)",
+    "incorrect_answers": [
+      "P(A ∪ B)/P(A)",
+      "P(A)·P(B)",
+      "P(B)/P(A)",
+      "P(A)/P(B)",
+      "P(A ∩ B)·P(A)"
+    ]
+  },
+  {
+    "question": "Two events A and B satisfy P(A) = 0.5, P(B) = 0.5, P(A ∩ B) = 0.25. They are:",
+    "correct_answer": "Independent",
+    "incorrect_answers": [
+      "Mutually exclusive",
+      "Complementary",
+      "Dependent",
+      "Disjoint",
+      "Identical"
+    ]
+  },
+  {
+    "question": "In a Venn diagram with three sets, the region in all three is labelled:",
+    "correct_answer": "A ∩ B ∩ C",
+    "incorrect_answers": [
+      "A ∪ B ∪ C",
+      "A ∖ (B ∪ C)",
+      "(A ∩ B) ∖ C",
+      "A′ ∩ B′ ∩ C′",
+      "A ∩ B ∪ C"
+    ]
+  },
+  {
+    "question": "Probability tree for drawing two cards without replacement uses:",
+    "correct_answer": "Conditional probabilities on second draw",
+    "incorrect_answers": [
+      "Same probability for each draw",
+      "Independent probabilities",
+      "Marginal probabilities only",
+      "Venn diagram entries",
+      "Contingency counts"
+    ]
+  },
+  {
+    "question": "Mutually exclusive and exhaustive events A and B satisfy P(A) + P(B) =",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "0",
+      "0.5",
+      "P(A ∩ B)",
+      "P(A)·P(B)",
+      "2"
+    ]
+  },
+  {
+    "question": "In a two-way table, P(row i OR column j) is:",
+    "correct_answer": "P(row i) + P(column j) − P(cell i,j)",
+    "incorrect_answers": [
+      "P(row i)·P(column j)",
+      "P(cell i,j)",
+      "P(row i) − P(column j)",
+      "P(cell i,j)/P(row i)",
+      "P(row i) + P(cell i,j)"
+    ]
+  },
+  {
+    "question": "If events are dependent, P(A | B) ≠",
+    "correct_answer": "P(A)",
+    "incorrect_answers": [
+      "1 − P(A)",
+      "P(B)",
+      "0",
+      "1",
+      "P(A ∩ B)"
+    ]
+  },
+  {
+    "question": "Tree diagram branch probabilities from a node must sum to:",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "0",
+      "P(A)",
+      "P(B)",
+      "2",
+      "P(A∩B)"
+    ]
+  },
+  {
+    "question": "In probability, 'and' corresponds to which operation on probabilities for independent events?",
+    "correct_answer": "Multiplication",
+    "incorrect_answers": [
+      "Addition",
+      "Subtraction",
+      "Division",
+      "Complement",
+      "Union"
+    ]
+  },
+  {
+    "question": "For mutually exclusive events, P(A ∩ B) =",
+    "correct_answer": "0",
+    "incorrect_answers": [
+      "P(A)·P(B)",
+      "P(A) + P(B)",
+      "1",
+      "P(A ∪ B)",
+      "P(A | B)"
+    ]
+  },
+  {
+    "question": "In a tree diagram with two stages, total number of outcomes is:",
+    "correct_answer": "Product of number of branches each stage",
+    "incorrect_answers": [
+      "Sum of number of branches",
+      "Difference of branches",
+      "Maximum of branches",
+      "Minimum of branches",
+      "Number of first stage only"
+    ]
+  },
+  {
+    "question": "In contingency tables, expected cell count under independence is:",
+    "correct_answer": "(row total · column total)/grand total",
+    "incorrect_answers": [
+      "row total + column total",
+      "row total − column total",
+      "(row total + column total)/2",
+      "row total · column total · grand total",
+      "column total / row total"
+    ]
+  },
+  {
+    "question": "Probability that at least one of two independent events occurs is:",
+    "correct_answer": "1 − (1 − P(A))(1 − P(B))",
+    "incorrect_answers": [
+      "P(A) + P(B)",
+      "P(A) + P(B) − P(A)P(B)",
+      "P(A)P(B)",
+      "1 − P(A) − P(B)",
+      "P(A ∩ B)"
+    ]
+  },
+  {
+    "question": "In a Venn diagram, shading outside all circles indicates:",
+    "correct_answer": "No events occur",
+    "incorrect_answers": [
+      "Both events occur",
+      "Only first event",
+      "Only second event",
+      "At least one occurs",
+      "Intersection only"
+    ]
+  },
+  {
+    "question": "If P(A | B) = 0.2 and P(B) = 0.3, P(A ∩ B) =",
+    "correct_answer": "0.06",
+    "incorrect_answers": [
+      "0.5",
+      "0.24",
+      "0.2",
+      "0.3",
+      "0.14"
+    ]
+  },
+  {
+    "question": "Events A and B are independent. What is P(A | B)?",
+    "correct_answer": "P(A)",
+    "incorrect_answers": [
+      "P(B)",
+      "P(A ∩ B)",
+      "P(A ∪ B)",
+      "1 − P(A)",
+      "0"
+    ]
+  },
+  {
+    "question": "Tree diagram is most helpful for:",
+    "correct_answer": "Sequential probability calculations",
+    "incorrect_answers": [
+      "Venn diagram representations",
+      "Area calculations",
+      "Normalization of tables",
+      "Descriptive statistics",
+      "Regression analysis"
+    ]
+  },
+  {
+    "question": "In a two-stage experiment with dependent stages, branch probabilities use:",
+    "correct_answer": "Conditional probabilities",
+    "incorrect_answers": [
+      "Marginal probabilities",
+      "Uniform probabilities",
+      "Venn probabilities",
+      "Expected frequencies",
+      "Mutual exclusivity"
+    ]
+  },
+  {
+    "question": "Probability that neither of two independent events occurs is:",
+    "correct_answer": "(1 − P(A))(1 − P(B))",
+    "incorrect_answers": [
+      "1 − [P(A) + P(B)]",
+      "1 − P(A)P(B)",
+      "P(A ∪ B)",
+      "P(A ∩ B)",
+      "P(A) + P(B)"
+    ]
+  },
+  {
+    "question": "If P(A) = 0.6, P(B) = 0.5, P(A ∩ B) = 0.3, P(A | B) =",
+    "correct_answer": "0.6",
+    "incorrect_answers": [
+      "0.5",
+      "0.3",
+      "0.2",
+      "0.9",
+      "0.8"
+    ]
+  },
+  {
+    "question": "Mutually exclusive events are always:",
+    "correct_answer": "Dependent (unless probabilities zero)",
+    "incorrect_answers": [
+      "Independent",
+      "Complementary",
+      "Equally likely",
+      "Exhaustive",
+      "Disjoint"
+    ]
+  },
+  {
+    "question": "In a Venn diagram for two events, total shaded outside circles + inside covers:",
+    "correct_answer": "Entire sample space",
+    "incorrect_answers": [
+      "Only two events",
+      "Intersection only",
+      "Complement only",
+      "Mutually exclusive region",
+      "Empty set"
+    ]
+  },
+  {
+    "question": "Probability that exactly one of A or B occurs (independent) is:",
+    "correct_answer": "P(A)(1−P(B)) + (1−P(A))P(B)",
+    "incorrect_answers": [
+      "P(A)+P(B)",
+      "P(A)P(B)",
+      "1−P(A)P(B)",
+      "P(A ∩ B)",
+      "P(A∪B)"
+    ]
+  },
+  {
+    "question": "If events are exhaustive, their union equals:",
+    "correct_answer": "Sample space",
+    "incorrect_answers": [
+      "Empty set",
+      "Intersection only",
+      "Complement",
+      "Mutually exclusive portion",
+      "Venn region"
+    ]
+  },
+  {
+    "question": "Contingency table helps visualize:",
+    "correct_answer": "Relationship between two categorical variables",
+    "incorrect_answers": [
+      "Sequential probabilities",
+      "Continuous distributions",
+      "Tree branches",
+      "Venn lengths",
+      "Sampling error"
+    ]
+  },
+  {
+    "question": "Probability of drawing two red cards without replacement is:",
+    "correct_answer": "(26/52)·(25/51)",
+    "incorrect_answers": [
+      "(26/52)²",
+      "(25/52)·(26/51)",
+      "(26+25)/(52+51)",
+      "1/(52·51)",
+      "26/(51)"
+    ]
+  },
+  {
+    "question": "In a tree diagram the sum of probabilities of all root-to-leaf paths =",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "0",
+      "Number of outcomes",
+      "Sum of branch counts",
+      "Sum of marginals",
+      "Infinite"
+    ]
+  },
+  {
+    "question": "P(A ∪ B ∪ C) for three events is:",
+    "correct_answer": "Sum of single P’s − sum of P(pairwise) + P(all three)",
+    "incorrect_answers": [
+      "Sum of single P’s",
+      "Product of single P’s",
+      "1 − P(none)",
+      "Sum of pairwise P’s",
+      "P(all three)"
+    ]
+  },
+  {
+    "question": "Dependent events A and B satisfy P(B | A) = 0.8, P(A) = 0.5, find P(A ∩ B).",
+    "correct_answer": "0.4",
+    "incorrect_answers": [
+      "0.3",
+      "0.5",
+      "0.8",
+      "0.2",
+      "0.6"
+    ]
+  },
+  {
+    "question": "Which table cell entry equals P(A ∩ B)?",
+    "correct_answer": "Intersection cell count / grand total",
+    "incorrect_answers": [
+      "Row total / grand total",
+      "Column total / grand total",
+      "Sum of marginals",
+      "Difference of marginals",
+      "Product of marginals"
+    ]
+  },
+  {
+    "question": "An event with probability zero is:",
+    "correct_answer": "Impossible",
+    "incorrect_answers": [
+      "Certain",
+      "Mutually exclusive",
+      "Complementary",
+      "Dependent",
+      "Independent"
+    ]
+  },
+  {
+    "question": "Probability of drawing at least one ace in two draws with replacement is:",
+    "correct_answer": "1 − (48/52)²",
+    "incorrect_answers": [
+      "(4/52)²",
+      "2·(4/52)",
+      "1 − (4/52)²",
+      "(4/52)(48/52)",
+      "1 − 4/52"
+    ]
+  }]
