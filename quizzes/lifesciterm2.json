@@ -1,519 +1,892 @@
 [
   {
-    "question": "Which greenhouse gas is most abundant in Earth's atmosphere and contributes significantly to climate change?",
-    "correct_answer": "Carbon dioxide (CO₂)",
+    "question": "Which organ produces insulin in response to high blood glucose levels?",
+    "correct_answer": "Pancreas",
     "incorrect_answers": [
-      "Methane (CH₄)",
-      "Ozone (O₃)",
-      "Nitrous oxide (N₂O)",
-      "Sulfur dioxide (SO₂)",
-      "Chlorofluorocarbons (CFCs)"
+      "Liver",
+      "Adrenal gland",
+      "Kidney",
+      "Pituitary gland",
+      "Thyroid gland"
     ]
   },
   {
-    "question": "What human activity is the primary source of increased atmospheric CO₂ levels?",
-    "correct_answer": "Burning fossil fuels for energy",
+    "question": "What happens to blood glucose when insulin binds to its receptor?",
+    "correct_answer": "Cells increase uptake of glucose",
     "incorrect_answers": [
-      "Clearing land for agriculture",
-      "Planting forests",
-      "Generating solar power",
-      "Using electric vehicles",
-      "Conserving wetlands"
+      "Gluconeogenesis increases",
+      "Glucose is converted to triglycerides exclusively",
+      "Insulin receptors are degraded",
+      "Glucagon is secreted directly",
+      "Glycogenolysis is stimulated"
     ]
   },
   {
-    "question": "Which effect describes warming of ocean surfaces that disrupts fish migration and coral ecosystems?",
-    "correct_answer": "Ocean warming",
+    "question": "Which hormone is released by alpha cells of the pancreas to raise blood glucose?",
+    "correct_answer": "Glucagon",
     "incorrect_answers": [
-      "Stratospheric cooling",
-      "Ozone depletion",
-      "Acid rain",
-      "Smog formation",
-      "Thermal inversion"
+      "Insulin",
+      "Somatostatin",
+      "Cortisol",
+      "Epinephrine",
+      "Growth hormone"
     ]
   },
   {
-    "question": "Rising global temperatures cause polar ice to melt, leading to:",
-    "correct_answer": "Sea level rise",
+    "question": "During hypoglycemia, which process does glucagon stimulate in the liver?",
+    "correct_answer": "Glycogenolysis",
     "incorrect_answers": [
-      "Increased freshwater supply",
-      "Expansion of polar habitats",
-      "Lower ocean salinity",
-      "Deeper clay deposits",
-      "Reduced tidal range"
+      "Glycogenesis",
+      "Lipogenesis",
+      "Protein synthesis",
+      "Krebs cycle activation",
+      "ATP-consuming pathways"
     ]
   },
   {
-    "question": "Which human activity contributes most to deforestation, reducing the planet’s carbon sink capacity?",
-    "correct_answer": "Clearing tropical forests for agriculture",
+    "question": "Which of the following describes a negative feedback response to low blood glucose?",
+    "correct_answer": "Pancreas secretes glucagon to raise glucose",
     "incorrect_answers": [
-      "Replanting native trees",
-      "Building solar farms",
-      "Creating protected parks",
-      "Regulating cattle grazing",
-      "Restoring wetlands"
+      "Thyroid secretes thyroxine to raise glucose",
+      "Adrenal cortex secretes cortisol to lower glucose",
+      "Pituitary secretes GH to lower glucose",
+      "Kidney secretes erythropoietin to raise glucose",
+      "Receptors in hypothalamus secrete ADH to lower glucose"
     ]
   },
   {
-    "question": "Which phenomenon describes gradual increase in average global temperature due to greenhouse gas buildup?",
-    "correct_answer": "Global warming",
+    "question": "What cells in pancreatic islets secrete somatostatin to inhibit both insulin and glucagon?",
+    "correct_answer": "Delta cells",
     "incorrect_answers": [
-      "Thermal inversion",
-      "Urban heat island",
-      "Greenhouse cooling",
-      "El Niño",
-      "La Niña"
+      "Alpha cells",
+      "Beta cells",
+      "PP cells",
+      "Acinar cells",
+      "Ductal cells"
     ]
   },
   {
-    "question": "Which international agreement aims to limit global warming by reducing greenhouse gas emissions?",
-    "correct_answer": "Paris Agreement",
+    "question": "Carbon dioxide is primarily transported in blood as:",
+    "correct_answer": "Bicarbonate ions",
     "incorrect_answers": [
-      "Kyoto Protocol (but expired)",
-      "Montreal Protocol",
-      "Geneva Convention",
-      "Stockholm Convention",
-      "Basel Convention"
+      "Dissolved CO₂ gas",
+      "Carbaminohemoglobin",
+      "Carbonic acid",
+      "Oxygen",
+      "Carboxyhemoglobin"
     ]
   },
   {
-    "question": "Ocean acidification results from increased CO₂ dissolving in seawater, causing:",
-    "correct_answer": "Lower pH in marine ecosystems",
+    "question": "Which enzyme in red blood cells catalyzes the conversion of CO₂ to bicarbonate?",
+    "correct_answer": "Carbonic anhydrase",
     "incorrect_answers": [
-      "Higher pH in marine ecosystems",
-      "Increased salinity",
-      "Reduced water clarity",
-      "Decreased dissolved oxygen",
-      "Higher water temperature"
+      "Aldolase",
+      "Carboxylase",
+      "Phosphofructokinase",
+      "Cytochrome oxidase",
+      "Lactate dehydrogenase"
     ]
   },
   {
-    "question": "Which region faces water scarcity due to over-extraction of groundwater?",
-    "correct_answer": "Northwestern India (e.g., Punjab)",
+    "question": "An increase in carbon dioxide in the blood causes pH to:",
+    "correct_answer": "Decrease (more acidic)",
     "incorrect_answers": [
-      "Amazon basin",
-      "British Columbia",
-      "Alaska",
-      "Greenland",
-      "Southeastern Brazil"
+      "Increase (more alkaline)",
+      "Remain constant",
+      "Become neutral",
+      "Oscillate rapidly",
+      "Become unpredictable"
     ]
   },
   {
-    "question": "What is the main factor reducing freshwater availability in arid regions?",
-    "correct_answer": "Overuse for irrigation",
+    "question": "Which respiratory response reduces high CO₂ levels during hypercapnia?",
+    "correct_answer": "Increased ventilation rate",
     "incorrect_answers": [
-      "Excessive rainfall",
-      "Natural glacial melt",
-      "Permafrost thaw",
-      "High-altitude springs",
-      "Ocean desalination"
+      "Decreased tidal volume",
+      "Increased dead space",
+      "Bronchoconstriction",
+      "Reduced respiratory drive",
+      "Elevation of diaphragm"
     ]
   },
   {
-    "question": "Which method can increase water availability in drought-prone areas?",
-    "correct_answer": "Rainwater harvesting",
+    "question": "Which receptor type senses increased CO₂ and lowers blood pH?",
+    "correct_answer": "Central chemoreceptors in medulla",
     "incorrect_answers": [
-      "Building ski resorts",
-      "Increasing deforestation",
-      "Constructing coal power plants",
-      "Discharging untreated wastewater",
-      "Chlorinating rivers"
+      "Baroreceptors in aorta",
+      "Proprioceptors in muscles",
+      "Mechanoreceptors in skin",
+      "Photoreceptors in retina",
+      "Thermoreceptors in hypothalamus"
     ]
   },
   {
-    "question": "Which practice reduces aquifer recharge rates?",
-    "correct_answer": "Urbanization with impervious surfaces",
+    "question": "Which organ helps to regulate CO₂ by exhaling it?",
+    "correct_answer": "Lungs",
     "incorrect_answers": [
-      "Maintaining wetlands",
-      "Installing permeable pavements",
-      "Reforesting riparian zones",
-      "Building check dams",
-      "Using drip irrigation"
+      "Kidneys",
+      "Liver",
+      "Pancreas",
+      "Spleen",
+      "Skin"
     ]
   },
   {
-    "question": "Which technology helps make seawater potable for human consumption?",
-    "correct_answer": "Reverse osmosis desalination",
+    "question": "Which mechanism in the kidneys helps compensate for chronic respiratory acidosis?",
+    "correct_answer": "Increased bicarbonate reabsorption",
     "incorrect_answers": [
-      "Chlorine dosing only",
-      "Sedimentation alone",
-      "Ultraviolet pasteurization",
-      "Boiling without filtration",
-      "Aeration towers"
+      "Reduced sodium excretion",
+      "Elevated potassium uptake",
+      "Increased urea formation",
+      "Decreased urine volume only",
+      "Enhanced chloride secretion"
     ]
   },
   {
-    "question": "Groundwater depletion primarily results in:",
-    "correct_answer": "Land subsidence and reduced well yields",
+    "question": "Insensible water loss includes:",
+    "correct_answer": "Water vapor lost via respiration and skin",
     "incorrect_answers": [
-      "Increased river flow",
-      "Expansion of wetlands",
-      "Rising water tables",
-      "Improved crop yields",
-      "Enhanced fish populations"
+      "Urine output",
+      "Fecal water loss",
+      "Sweating heavily",
+      "Vomiting only",
+      "Water excreted in tears"
     ]
   },
   {
-    "question": "What is a major consequence of water scarcity for agriculture?",
-    "correct_answer": "Crop failures and food shortages",
+    "question": "Which hormone increases water reabsorption in the kidney collecting ducts?",
+    "correct_answer": "Antidiuretic hormone (ADH)",
     "incorrect_answers": [
-      "Surplus food production",
-      "Reduced irrigation efficiency",
-      "Lower soil salinity",
-      "Higher pasture yields",
-      "More monsoon rains"
+      "Aldosterone",
+      "Renin",
+      "Erythropoietin",
+      "Parathyroid hormone",
+      "Calcitonin"
     ]
   },
   {
-    "question": "Which contaminant commonly found in drinking water is especially harmful to infants’ nervous systems?",
-    "correct_answer": "Lead",
+    "question": "A dehydration state triggers ADH release via:",
+    "correct_answer": "Osmoreceptors in hypothalamus",
+    "incorrect_answers": [
+      "Baroreceptors in heart",
+      "Chemoreceptors in carotids",
+      "Thermoreceptors in skin",
+      "Nociceptors in kidney",
+      "Proprioceptors in muscle"
+    ]
+  },
+  {
+    "question": "The main effect of ADH on renal tubules is to:",
+    "correct_answer": "Increase permeability to water",
+    "incorrect_answers": [
+      "Increase secretion of sodium",
+      "Decrease urea reabsorption",
+      "Stimulate glucose filtration",
+      "Enhance phosphate excretion",
+      "Inhibit bicarbonate reabsorption"
+    ]
+  },
+  {
+    "question": "Which part of the nephron is impermeable to water unless ADH is present?",
+    "correct_answer": "Collecting duct",
+    "incorrect_answers": [
+      "Proximal convoluted tubule",
+      "Distal convoluted tubule",
+      "Descending loop of Henle",
+      "Ascending loop of Henle",
+      "Bowman's capsule"
+    ]
+  },
+  {
+    "question": "Which hormone promotes sodium reabsorption and indirectly water retention?",
+    "correct_answer": "Aldosterone",
+    "incorrect_errors": [
+      "ADH",
+      "PTH",
+      "Insulin",
+      "Glucagon",
+      "Calcitriol"
+    ]
+  },
+  {
+    "question": "Decrease in blood volume stimulates renin release from:",
+    "correct_answer": "Juxtaglomerular cells of kidney",
+    "incorrect_answers": [
+      "Liver hepatocytes",
+      "Adrenal medulla",
+      "Pancreas islets",
+      "Hypothalamic neurons",
+      "Pituitary lactotropes"
+    ]
+  },
+  {
+    "question": "Angiotensin II acts to increase blood pressure by:",
+    "correct_answer": "Vasoconstriction and aldosterone release",
+    "incorrect_answers": [
+      "Vasodilation solely",
+      "Inhibition of thirst",
+      "Stimulating insulin secretion",
+      "Inhibiting ADH",
+      "Dilating afferent arterioles"
+    ]
+  },
+  {
+    "question": "Which organ excretes excess salts to maintain salt balance?",
+    "correct_answer": "Kidney",
+    "incorrect_answers": [
+      "Liver",
+      "Heart",
+      "Lung",
+      "Skin",
+      "Spleen"
+    ]
+  },
+  {
+    "question": "Hypernatremia refers to:",
+    "correct_answer": "High blood sodium concentration",
+    "incorrect_answers": [
+      "Low blood potassium concentration",
+      "High blood calcium concentration",
+      "Low blood magnesium concentration",
+      "High blood phosphate concentration",
+      "Low blood chloride concentration"
+    ]
+  },
+  {
+    "question": "Which hormone does NOT directly regulate sodium balance?",
+    "correct_answer": "Calcitonin",
+    "incorrect_answers": [
+      "Aldosterone",
+      "Atrial natriuretic peptide (ANP)",
+      "ADH",
+      "Renin"
+    ]
+  },
+  {
+    "question": "What effect does ANP have on sodium excretion?",
+    "correct_answer": "Increases sodium excretion",
+    "incorrect_answers": [
+      "Decreases sodium excretion",
+      "No effect on sodium",
+      "Promotes potassium reabsorption",
+      "Inhibits water excretion",
+      "Stimulates glucose reabsorption"
+    ]
+  },
+  {
+    "question": "Which condition is caused by water intoxication and results in low blood sodium?",
+    "correct_answer": "Hyponatremia",
+    "incorrect_answers": [
+      "Hypokalemia",
+      "Hyperglycemia",
+      "Hypernatremia",
+      "Metabolic alkalosis",
+      "Hypocalcemia"
+    ]
+  },
+  {
+    "question": "During sweating, which electrolyte is primarily lost?",
+    "correct_answer": "Sodium",
     "incorrect_answers": [
       "Calcium",
-      "Potassium",
-      "Nitrate (in moderation)",
+      "Phosphate",
       "Magnesium",
-      "Chloride"
+      "Bicarbonate",
+      "Ammonium"
     ]
   },
   {
-    "question": "What process causes an increase in algal blooms in freshwater bodies?",
-    "correct_answer": "Nutrient runoff (nitrogen and phosphorus) from agriculture",
+    "question": "Which hormone reduces water loss by increasing thirst and water intake?",
+    "correct_answer": "ADH indirectly via hypothalamic osmoreceptors",
     "incorrect_answers": [
-      "Regular water aeration",
-      "Year-round cold temperatures",
-      "Low nutrient levels",
-      "Strong freshwater currents",
-      "Strict buffer zones"
+      "Insulin",
+      "Cortisol",
+      "Thyroxine",
+      "Aldosterone",
+      "Prolactin"
     ]
   },
   {
-    "question": "Which one of the following is a biological indicator of poor water quality?",
-    "correct_answer": "High populations of coliform bacteria",
+    "question": "What is the primary thermostat location in the brain?",
+    "correct_answer": "Hypothalamus",
     "incorrect_answers": [
-      "Abundant trout species",
-      "Low concentrations of E. coli",
-      "Clear water with high oxygen",
-      "High populations of stonefly nymphs",
-      "Rich aquatic plant diversity"
+      "Pituitary gland",
+      "Medulla oblongata",
+      "Cerebellum",
+      "Thalamus",
+      "Pons"
     ]
   },
   {
-    "question": "Industrial effluents often pollute rivers with:",
-    "correct_answer": "Heavy metals such as mercury and cadmium",
+    "question": "Which mechanism increases heat loss when body temperature is high?",
+    "correct_answer": "Vasodilation of skin blood vessels",
     "incorrect_answers": [
-      "Dissolved oxygen and silica",
-      "Beneficial probiotics",
-      "nontoxic salts only",
-      "Potable water concentrations",
-      "Excess aquatic vegetation"
+      "Shivering",
+      "Vasoconstriction of skin vessels",
+      "Increased thyroxine release",
+      "Increased metabolic rate",
+      "Piloerection"
     ]
   },
   {
-    "question": "What is one consequence of untreated sewage discharging into water bodies?",
-    "correct_answer": "Eutrophication and oxygen depletion",
+    "question": "Which process generates heat via muscle contractions?",
+    "correct_answer": "Shivering thermogenesis",
     "incorrect_answers": [
-      "Reduced algae growth",
-      "Decreased bacterial loads",
-      "Increased water clarity",
-      "Higher fish diversity",
-      "Lower nutrient levels"
+      "Sweating",
+      "Vasodilation",
+      "Nonshivering thermogenesis",
+      "Cutaneous vasoconstriction",
+      "Saliva secretion"
     ]
   },
   {
-    "question": "Which agricultural practice can help improve groundwater recharge?",
-    "correct_answer": "Crop rotation with cover crops",
+    "question": "Which tissue primarily carries out nonshivering thermogenesis?",
+    "correct_answer": "Brown adipose tissue (brown fat)",
     "incorrect_answers": [
-      "Monocropping with heavy tillage",
-      "Permanent soil sealing",
-      "Continuous pesticide spraying",
-      "Excessive fertilizer application",
-      "Deforestation"
+      "White adipose tissue",
+      "Skeletal muscle at rest",
+      "Liver parenchyma",
+      "Cardiac muscle",
+      "Pancreatic islets"
     ]
   },
   {
-    "question": "Food security is primarily threatened by:",
-    "correct_answer": "Climate change–induced crop failures",
+    "question": "What is the function of sweat glands in thermoregulation?",
+    "correct_answer": "Evaporative cooling",
     "incorrect_answers": [
-      "Excess global food surplus",
-      "Declining food prices",
-      "Overproduction of grains",
-      "Improved irrigation",
-      "Universal food subsidies"
+      "Reducing cutaneous blood flow",
+      "Generating heat via sweat production",
+      "Stimulating brown fat activity",
+      "Enhancing thyroid hormone release",
+      "Increasing metabolic rate"
     ]
   },
   {
-    "question": "Which of the following practices can enhance food security?",
-    "correct_answer": "Sustainable intensification of agriculture",
+    "question": "Which term describes a fever-induced increase in hypothalamic set point?",
+    "correct_answer": "Pyrexia",
     "incorrect_answers": [
-      "Mono-cropping without fallow periods",
-      "Slash-and-burn farming",
-      "Clearing buffer strips",
-      "Deforestation for pasture",
-      "Subsidizing only luxury crops"
+      "Hypothermia",
+      "Hyperhidrosis",
+      "Euthermia",
+      "Hypernatremia",
+      "Apyrexia"
     ]
   },
   {
-    "question": "What is a direct result of soil salinization on crop yields?",
-    "correct_answer": "Reduced plant growth and lower yields",
+    "question": "Which cytokine acts as an endogenous pyrogen to raise body temperature?",
+    "correct_answer": "Interleukin-1 (IL-1)",
     "incorrect_answers": [
-      "Increased grain protein content",
-      "Improved soil fertility",
-      "Higher resistance to drought",
-      "Greater carbon sequestration",
-      "Increased pest resistance"
+      "Insulin",
+      "Epinephrine",
+      "Growth hormone",
+      "Thyrotropin",
+      "Parathyroid hormone"
     ]
   },
   {
-    "question": "Which pest control method reduces chemical pesticide use and supports food security?",
-    "correct_answer": "Integrated pest management (IPM)",
+    "question": "When core temperature falls, which response conserves heat?",
+    "correct_answer": "Vasoconstriction of skin blood vessels",
     "incorrect_answers": [
-      "Clear-cutting forests",
-      "Broad-spectrum pesticide spraying",
-      "Banning all crop pests",
-      "Continuous monocropping",
-      "Eliminating natural predators"
+      "Vasodilation of skin blood vessels",
+      "Increased sweating",
+      "Decreased metabolic rate",
+      "Shivering suppression",
+      "Inhibition of thyroid hormone"
     ]
   },
   {
-    "question": "Which practice conserves genetic diversity in crops to safeguard future food supplies?",
-    "correct_answer": "Maintaining seed banks and heirloom varieties",
+    "question": "Which of the following provides insulation to minimize heat loss?",
+    "correct_answer": "Subcutaneous fat layer",
     "incorrect_answers": [
-      "Using only GM monocultures",
-      "Eradicating wild relatives",
-      "Planting a single cultivar globally",
-      "Blocking international seed exchange",
-      "Relying solely on imported seeds"
+      "Epidermal keratin layer",
+      "Dermal sweat ducts",
+      "Epidermal melanocytes",
+      "Hair follicles only",
+      "Sebaceous glands"
     ]
   },
   {
-    "question": "Which factor is a major cause of biodiversity loss?",
-    "correct_answer": "Habitat destruction from urban expansion",
+    "question": "Which process describes temperature regulation via behavioral changes (e.g., seeking shade)?",
+    "correct_answer": "Thermoregulatory behavior",
     "incorrect_answers": [
-      "Protecting national parks",
-      "Reforestation efforts",
-      "Pollinator habitat creation",
-      "Establishing wildlife corridors",
-      "Climate-smart agriculture"
+      "Metabolic thermogenesis",
+      "Cutaneous vasomotor response",
+      "Piloerection",
+      "Shivering",
+      "Fever"
     ]
   },
   {
-    "question": "Which invasive species can drastically reduce native biodiversity in freshwater systems?",
-    "correct_answer": "Zebra mussels",
+    "question": "Which hypothalamic nucleus senses blood temperature for homeostasis?",
+    "correct_answer": "Preoptic area (POA)",
     "incorrect_answers": [
-      "Honey bees",
-      "Native trout",
-      "Mallard ducks",
-      "Bluegill sunfish (native)",
-      "Endangered salamanders"
+      "Suprachiasmatic nucleus",
+      "Arcuate nucleus",
+      "Ventromedial nucleus",
+      "Dorsomedial nucleus",
+      "Paraventricular nucleus"
     ]
   },
   {
-    "question": "Which human activity contributes directly to overfishing and loss of marine biodiversity?",
-    "correct_answer": "Bottom trawling",
+    "question": "Which molecule increases heat production by uncoupling proton gradient in mitochondria?",
+    "correct_answer": "Uncoupling protein 1 (UCP1)",
     "incorrect_answers": [
-      "Marine protected areas",
-      "Catch-and-release programs",
-      "Sustainable aquaculture",
-      "Low-impact handline fishing",
-      "Catch quotas"
+      "ATP synthase",
+      "Cytochrome c oxidase",
+      "Nicotinamide adenine dinucleotide (NAD⁺)",
+      "Glucose-6-phosphatase",
+      "Hexokinase"
     ]
   },
   {
-    "question": "Which of the following is a leading cause of deforestation and biodiversity loss in the Amazon?",
-    "correct_answer": "Clearing land for cattle ranching",
+    "question": "Which adrenal hormone increases metabolic heat production during stress?",
+    "correct_answer": "Thyroxine (T4) indirectly via increased BMR",
     "incorrect_answers": [
-      "Urban green spaces",
-      "Restoring native forests",
-      "Ecotourism infrastructure",
-      "Rebuilding wetlands",
-      "Organic farming"
+      "Cortisol directly",
+      "Aldosterone",
+      "Epinephrine alone",
+      "Insulin",
+      "Prolactin"
     ]
   },
   {
-    "question": "Which pollutant from agriculture can lead to amphibian population declines and biodiversity loss?",
-    "correct_answer": "Pesticide runoff",
+    "question": "During hyperthermia, which compensatory mechanism can fail and lead to heat stroke?",
+    "correct_answer": "Sweating and vasodilation",
     "incorrect_answers": [
-      "Biodegradable organic compost",
-      "Natural rainwater",
-      "Sunlight exposure",
-      "Beneficial microorganisms",
-      "Nitrogen-fixing cover crops"
+      "Shivering and vasoconstriction",
+      "Brown fat activation",
+      "Thyroid hormone secretion",
+      "ADH release",
+      "Aldosterone production"
     ]
   },
   {
-    "question": "Which of the following practices helps maintain biodiversity?",
-    "correct_answer": "Establishing and managing protected areas",
+    "question": "Which of the following promotes heat retention in cold environments?",
+    "correct_answer": "Piloerection",
     "incorrect_answers": [
-      "Urban sprawl without planning",
-      "Widespread deforestation",
-      "Dumping waste in natural habitats",
-      "Promoting invasive species",
-      "Intensive monoculture farming"
+      "Sweating",
+      "Vasodilation",
+      "Reduced metabolism",
+      "Fever",
+      "Peripheral hyperthermia"
     ]
   },
   {
-    "question": "How does habitat restoration support biodiversity?",
-    "correct_answer": "Re-establishes native plant and animal communities",
+    "question": "Which negative feedback loop helps maintain blood pH when CO₂ levels rise?",
+    "correct_answer": "Increased ventilation to expel CO₂",
     "incorrect_answers": [
-      "Encourages exotic plantations",
-      "Reduces native pollinators",
-      "Constricts wildlife corridors",
-      "Maintains road networks",
-      "Removes buffer zones"
+      "Decreased heart rate to retain CO₂",
+      "Increased renal phosphate excretion",
+      "Enhanced bone resorption",
+      "Lowered ADH secretion",
+      "Increased insulin release"
     ]
   },
   {
-    "question": "Which conservation strategy focuses on reintroducing extirpated species to their historical range?",
-    "correct_answer": "Rewilding",
+    "question": "How does the kidney compensate for chronic respiratory alkalosis?",
+    "correct_answer": "Excretes bicarbonate and retains H⁺",
     "incorrect_answers": [
-      "Monoculture reforestation",
-      "Clear-cut logging",
-      "Aquaculture expansion",
-      "Urban development",
-      "Pollinator exclusion"
+      "Excretes H⁺ and retains bicarbonate",
+      "Increases ADH production only",
+      "Decreases urine output only",
+      "Stimulates shivering",
+      "Inhibits aldosterone"
     ]
   },
   {
-    "question": "Which action helps maintain genetic diversity within populations?",
-    "correct_answer": "Facilitating wildlife corridors between fragmented habitats",
+    "question": "What is the main site of central control for osmoregulation?",
+    "correct_answer": "Hypothalamus",
     "incorrect_answers": [
-      "Fencing off small reserves",
-      "Localizing breeding within one population",
-      "Eradicating predators",
-      "Continuous pesticide spraying",
-      "Removing native vegetation"
+      "Medulla oblongata",
+      "Cerebellum",
+      "Cortex",
+      "Pituitary only",
+      "Adrenal cortex"
     ]
   },
   {
-    "question": "Which practice reduces biodiversity loss by limiting waste sent to landfills?",
-    "correct_answer": "Implementing comprehensive recycling programs",
+    "question": "Which hormone promotes excretion of excess water?",
+    "correct_answer": "Atrial natriuretic peptide (ANP)",
     "incorrect_answers": [
-      "Encouraging single-use plastics",
-      "Unregulated waste burning",
-      "Dumping in waterways",
-      "Illegal dumping in protected areas",
-      "Building more incinerators without filters"
+      "ADH",
+      "Aldosterone",
+      "Glucagon",
+      "Insulin",
+      "Cortisol"
     ]
   },
   {
-    "question": "Which component of solid waste disposal involves sorting materials for reuse?",
-    "correct_answer": "Source separation",
+    "question": "Which process in the nephron is most affected by aldosterone?",
+    "correct_answer": "Sodium reabsorption in distal tubule",
     "incorrect_answers": [
-      "Leachate generation",
-      "Tipping fees",
-      "Methane capture",
-      "Landfill compaction",
-      "Inert ash disposal"
+      "Filtration in Bowman’s capsule",
+      "Glucose reabsorption in proximal tubule",
+      "Water reabsorption in descending loop of Henle",
+      "Urea reabsorption in collecting duct",
+      "Calcium reabsorption in proximal tubule"
     ]
   },
   {
-    "question": "What is a major environmental risk associated with open dumpsites?",
-    "correct_answer": "Groundwater contamination from leachate",
+    "question": "Which of the following is not part of a typical negative feedback loop?",
+    "correct_answer": "Positive reinforcement of original stimulus",
     "incorrect_answers": [
-      "Increased carbon sequestration",
-      "Enhanced soil fertility",
-      "Reduced air pollution",
-      "Improved wildlife habitat",
-      "Greater crop yields"
+      "Sensor that detects change",
+      "Control center that processes information",
+      "Effector that counteracts change",
+      "Set point or target value",
+      "Feedback signal indicating outcome"
     ]
   },
   {
-    "question": "Which of the following waste disposal methods generates energy from municipal waste combustion?",
-    "correct_answer": "Waste-to-energy incineration",
+    "question": "Which brain region integrates temperature signals to coordinate responses?",
+    "correct_answer": "Hypothalamus",
     "incorrect_answers": [
-      "Open dumping",
-      "Unlined landfilling",
-      "Source separation",
-      "Composting only",
-      "Deep well injection"
+      "Medulla oblongata",
+      "Cerebellum",
+      "Cerebral cortex",
+      "Pons",
+      "Thalamus"
     ]
   },
   {
-    "question": "Which solid waste management practice reduces methane emissions from landfills?",
-    "correct_answer": "Capturing and flaring landfill gas",
+    "question": "Which blood parameter is directly controlled by ventilation rate?",
+    "correct_answer": "Partial pressure of CO₂ (pCO₂)",
     "incorrect_answers": [
-      "Open burning of waste",
-      "Leachate recirculation",
-      "Burying waste without cover",
-      "Discharging untreated leachate",
-      "Stacking waste in unpaved areas"
+      "Blood glucose concentration",
+      "Serum sodium",
+      "Plasma protein levels",
+      "Blood calcium",
+      "Hematocrit"
     ]
   },
   {
-    "question": "Which landfill design feature prevents leachate from polluting groundwater?",
-    "correct_answer": "Liner system of clay and geomembrane",
+    "question": "Which mechanism prevents sudden drops in core temperature during cold exposure?",
+    "correct_answer": "Peripheral vasoconstriction",
     "incorrect_answers": [
-      "Open pit design",
-      "Uncontrolled tipping",
-      "No daily cover",
-      "No gas venting",
-      "Lack of stormwater control"
+      "Peripheral vasodilation",
+      "Increased sweating",
+      "Inhibition of shivering",
+      "Enhanced cutaneous blood flow",
+      "Suppressed thyroid function"
     ]
   },
   {
-    "question": "What is the advantage of composting organic waste?",
-    "correct_answer": "Produces nutrient-rich soil amendment",
+    "question": "What is the first response to a sudden increase in arterial blood CO₂?",
+    "correct_answer": "Increased respiratory rate",
     "incorrect_answers": [
-      "Generates toxic incinerator ash",
-      "Increases methane in atmosphere",
-      "Requires large landfill space",
-      "Elevates heavy metal leaching",
-      "Eliminates all biodegradable materials instantly"
+      "Decreased heart rate",
+      "Reduced renal bicarbonate excretion",
+      "Vasoconstriction of cerebral vessels",
+      "Lowered metabolic rate",
+      "Increased insulin release"
     ]
   },
   {
-    "question": "Which of the following is a benefit of reducing single-use plastic waste?",
-    "correct_answer": "Decreases marine plastic pollution",
+    "question": "Which of the following helps maintain stable intracellular fluid osmolality?",
+    "correct_answer": "Na⁺/K⁺ ATPase pump",
     "incorrect_answers": [
-      "Increases landfill volume",
-      "Boosts production of polyvinyl chloride (PVC)",
-      "Raises microplastic levels",
-      "Encourages overfishing",
-      "Depletes freshwater aquifers"
+      "Glucose transporter",
+      "Aquaporin channels in mitochondria",
+      "Proton pump in lysosomes",
+      "Chloride-bicarbonate exchanger in endoplasmic reticulum",
+      "Fructose-1,6-bisphosphatase"
     ]
   },
   {
-    "question": "Which practice diverts food waste from landfills and reduces greenhouse gas emissions?",
-    "correct_answer": "Anaerobic digestion to produce biogas",
+    "question": "During prolonged sweating, what imbalance may occur if only water is consumed?",
+    "correct_answer": "Hyponatremia (low blood sodium)",
     "incorrect_answers": [
-      "Open burning of food scraps",
-      "Deep ocean disposal",
-      "Dredging landfills",
-      "Plastic incineration",
-      "Single-stream recycling"
+      "Hypernatremia (high blood sodium)",
+      "Hypokalemia (low blood potassium)",
+      "Hypercalcemia (high blood calcium)",
+      "Hypoglycemia (low blood glucose)",
+      "Hypermagnesemia (high blood magnesium)"
     ]
   },
   {
-    "question": "E-waste recycling helps prevent which type of pollution?",
-    "correct_answer": "Heavy metal contamination",
+    "question": "Which structure in the kidney detects changes in blood pressure to regulate salt balance?",
+    "correct_answer": "Macula densa in juxtaglomerular apparatus",
     "incorrect_answers": [
-      "Increased soil fertility",
-      "Decreased marine debris",
-      "Enhanced groundwater recharge",
-      "Lower soot emissions",
-      "Improved ozone layer"
+      "Bowman's capsule",
+      "Proximal tubule cells",
+      "Podocytes",
+      "Glomerular endothelial cells",
+      "Collecting duct principal cells"
     ]
   },
   {
-    "question": "Which of the following is a consequence of poor solid waste management in urban areas?",
-    "correct_answer": "Increased vector-borne diseases (e.g., mosquitoes)",
+    "question": "Which hormone directly increases thirst sensation when water balance is low?",
+    "correct_answer": "ADH (indirectly via hypothalamic osmoreceptors)",
     "incorrect_answers": [
-      "Lower incidence of respiratory illnesses",
-      "Higher crop productivity",
-      "Reduced water scarcity",
-      "Improved air quality",
-      "Stronger community cohesion"
+      "Insulin",
+      "Aldosterone",
+      "Epinephrine",
+      "Calcitonin",
+      "Cortisol"
     ]
   },
   {
-    "question": "Which policy can reduce household waste generation at the source?",
-    "correct_answer": "Pay-as-you-throw (PAYT) waste collection fees",
+    "question": "Which ion primarily determines extracellular fluid osmolality?",
+    "correct_answer": "Sodium (Na⁺)",
     "incorrect_answers": [
-      "Subsidizing single-use plastics",
-      "Mandating open dumping",
-      "Banning composting programs",
-      "Prohibiting recycling centers",
-      "Eliminating waste audits"
+      "Potassium (K⁺)",
+      "Calcium (Ca²⁺)",
+      "Magnesium (Mg²⁺)",
+      "Chloride (Cl⁻)",
+      "Phosphate (PO₄³⁻)"
+    ]
+  },
+  {
+    "question": "Which term describes body’s regulation of internal conditions around a set point?",
+    "correct_answer": "Homeostasis",
+    "incorrect_answers": [
+      "Allostasis",
+      "Anabolism",
+      "Catabolism",
+      "Differentiation",
+      "Apoptosis"
+    ]
+  },
+  {
+    "question": "Which process prevents blood pH from falling too low during exercise?",
+    "correct_answer": "Increased ventilation to blow off CO₂",
+    "incorrect_answers": [
+      "Decreased heart rate to retain CO₂",
+      "Increased bicarbonate excretion by kidneys immediately",
+      "Inhibition of ADH release",
+      "Promoting lactic acid production",
+      "Stimulating insulin secretion"
+    ]
+  },
+  {
+    "question": "Which of the following triggers sweating in response to high body temperature?",
+    "correct_answer": "Activation of sympathetic cholinergic fibers",
+    "incorrect_answers": [
+      "Release of aldosterone",
+      "Vasoconstriction of skin vessels",
+      "Inhibition of hypothalamus",
+      "Increased thyroid secretion",
+      "Shivering activation"
+    ]
+  },
+  {
+    "question": "Which of the following is NOT part of maintaining calcium homeostasis?",
+    "correct_answer": "Insulin",
+    "incorrect_answers": [
+      "Parathyroid hormone",
+      "Calcitonin",
+      "Vitamin D (calcitriol)",
+      "PTH-related peptide",
+      "Phosphate regulation"
+    ]
+  },
+  {
+    "question": "Which of these buffers acts rapidly in blood to prevent pH changes?",
+    "correct_answer": "Bicarbonate buffer system",
+    "incorrect_answers": [
+      "Hemoglobin buffer system",
+      "Phosphate buffer system",
+      "Protein buffer system only",
+      "Cellulose buffer system",
+      "DNA buffer system"
+    ]
+  },
+  {
+    "question": "Which of the following describes an effector in a temperature regulatory negative feedback loop?",
+    "correct_answer": "Sweat glands and skin blood vessels",
+    "incorrect_answers": [
+      "Hypothalamic osmoreceptors",
+      "Renal glomeruli",
+      "Pancreatic alpha cells",
+      "Adrenal medulla",
+      "Pituitary somatotrophs"
+    ]
+  },
+  {
+    "question": "An increase in core body temperature results in which hypothalamic response?",
+    "correct_answer": "Activating heat loss mechanisms",
+    "incorrect_answers": [
+      "Activating shivering",
+      "Increasing thyroid hormone release",
+      "Stimulating aldosterone release",
+      "Reducing respiratory rate",
+      "Inhibiting sweat production"
+    ]
+  },
+  {
+    "question": "Which structural adaptation helps desert animals conserve water?",
+    "correct_answer": "Thick epidermis with reduced sweat glands",
+    "incorrect_answers": [
+      "High density of sweat glands",
+      "Large blood vessel network in skin",
+      "Thin epidermal layer",
+      "High metabolic rate",
+      "Open pores for water loss"
+    ]
+  },
+  {
+    "question": "Which of the following signals triggers ADH release?",
+    "correct_answer": "Increased plasma osmolality",
+    "incorrect_answers": [
+      "Low blood uric acid",
+      "High blood pH",
+      "Low blood potassium",
+      "High blood oxygen",
+      "Low blood pressure only"
+    ]
+  },
+  {
+    "question": "Which homeostatic imbalance results when body temperature falls below normal?",
+    "correct_answer": "Hypothermia",
+    "incorrect_answers": [
+      "Hyperthermia",
+      "Heat stroke",
+      "Fever",
+      "Pyrexia",
+      "Hyperflexia"
+    ]
+  },
+  {
+    "question": "Which enzyme in red blood cells helps convert bicarbonate back to CO₂ in lungs?",
+    "correct_answer": "Carbonic anhydrase",
+    "incorrect_answers": [
+      "Lactate dehydrogenase",
+      "Aldolase",
+      "Transaminase",
+      "Polynucleotide phosphorylase",
+      "Phosphofructokinase"
+    ]
+  },
+  {
+    "question": "Which kidney structure senses reduced sodium delivery and triggers RAAS?",
+    "correct_answer": "Macula densa",
+    "incorrect_answers": [
+      "Podocytes",
+      "Bowman's space",
+      "Proximal tubule",
+      "Loop of Henle epithelium",
+      "Collecting duct principal cells"
+    ]
+  },
+  {
+    "question": "Which is a long-term regulator of blood pressure via homeostasis?",
+    "correct_answer": "Renin-angiotensin-aldosterone system (RAAS)",
+    "incorrect_answers": [
+      "Baroreceptor reflex",
+      "Chemoreceptor reflex",
+      "Somatic pain reflex",
+      "Iris light reflex",
+      "Pupil constriction reflex"
+    ]
+  },
+  {
+    "question": "What is the main effect of sympathetic activation on thermoregulation during fight-or-flight?",
+    "correct_answer": "Peripheral vasoconstriction to conserve heat",
+    "incorrect_answers": [
+      "Massive sweating to cool body",
+      "Stimulated salivation",
+      "Increased digestive activity",
+      "Enhanced renal excretion",
+      "Reduced heart rate"
+    ]
+  },
+  {
+    "question": "Which of the following is NOT typically regulated by homeostasis?",
+    "correct_answer": "Blood type",
+    "incorrect_answers": [
+      "Body temperature",
+      "Blood pH",
+      "Blood glucose",
+      "Blood CO₂",
+      "Plasma osmolality"
+    ]
+  },
+  {
+    "question": "Which part of the nephron is impermeable to water, concentrating the filtrate?",
+    "correct_answer": "Ascending limb of loop of Henle",
+    "incorrect_answers": [
+      "Descending limb of loop of Henle",
+      "Proximal convoluted tubule",
+      "Distal convoluted tubule",
+      "Bowman’s capsule",
+      "Collecting duct"
+    ]
+  },
+  {
+    "question": "Which structure in the brain receives afferent temperature signals from skin?",
+    "correct_answer": "Preoptic area of hypothalamus",
+    "incorrect_answers": [
+      "Medullary respiratory center",
+      "Cerebellum",
+      "Pons",
+      "Thalamic cortex",
+      "Basal ganglia"
+    ]
+  },
+  {
+    "question": "During hyperventilation, blood CO₂ levels:",
+    "correct_answer": "Decrease, causing respiratory alkalosis",
+    "incorrect_answers": [
+      "Increase, causing respiratory acidosis",
+      "Remain unchanged",
+      "Increase, causing metabolic alkalosis",
+      "Decrease, causing metabolic acidosis",
+      "Fluctuate randomly"
+    ]
+  },
+  {
+    "question": "Which process describes water movement from high osmotic pressure?",
+    "correct_answer": "Osmosis through semipermeable membranes",
+    "incorrect_answers": [
+      "Diffusion of solutes",
+      "Active transport of water",
+      "Filtration through fenestrations",
+      "Facilitated glucose transport",
+      "Bulk flow by pressure gradient"
+    ]
+  },
+  {
+    "question": "Which of the following is an intrinsic kidney mechanism to maintain GFR?",
+    "correct_answer": "Myogenic response of afferent arteriole",
+    "incorrect_answers": [
+      "Sympathetic vasoconstriction",
+      "RAAS activation",
+      "ADH release",
+      "ANP secretion",
+      "Parathyroid hormone effect"
+    ]
+  },
+  {
+    "question": "Which homeostatic mechanism involves the thyroid gland to regulate metabolic rate?",
+    "correct_answer": "Negative feedback via TSH and T3/T4 levels",
+    "incorrect_answers": [
+      "Positive feedback via insulin",
+      "RAAS activation",
+      "Sympathetic reflex in medulla",
+      "ADH-mediated thirst response",
+      "Parathyroid hormone loop"
+    ]
+  },
+  {
+    "question": "Which condition results if core temperature remains elevated despite sweating?",
+    "correct_answer": "Heat stroke",
+    "incorrect_answers": [
+      "Heat exhaustion",
+      "Hypothermia",
+      "Frostbite",
+      "Chill blains",
+      "Hypernatremia"
+    ]
+  },
+  {
+    "question": "Which of the following describes primary thermoregulation in humans?",
+    "correct_answer": "Behavioral adjustments plus autonomic responses",
+    "incorrect_answers": [
+      "Relying solely on thyroid hormone",
+      "Muscle hypertrophy",
+      "Liver glycogen breakdown",
+      "Skin pigmentation change only",
+      "Bone remodeling"
     ]
   },
 {
