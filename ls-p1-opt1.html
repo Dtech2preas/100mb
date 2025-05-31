@@ -202,7 +202,7 @@
     };
 
     async function loadQuestions() {
-      const response = await fetch('quizzes/lifesciterm1.json');
+      const response = await fetch('quizzes/lifesciterm1.json.json');
       const allQuestions = await response.json();
       questions = shuffleArray(allQuestions).slice(0, questionLimit);
       showQuestion();
