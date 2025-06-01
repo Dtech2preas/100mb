@@ -245,10 +245,10 @@
           return res.json();
         })
         .then((data) => {
-          document.getElementById("visitor-btn").textContent = `👁️ Visitors: ${data.count}`;
+          document.getElementById("visitor-btn").textContent = `👁️ NUM OF USERS: ${data.count}`;
         })
         .catch(() => {
-          document.getElementById("visitor-btn").textContent = `👁️ Visitors: error`;
+          document.getElementById("visitor-btn").textContent = `👁️ NUM OF USERS: error`;
         });
     </script>
   </body>
