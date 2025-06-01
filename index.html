@@ -52,12 +52,13 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DTECH Hub</title>
+
+  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-  <!-- GoatCounter tracking script (optional, for analytics only) -->
+  <!-- GoatCounter tracking script (logs each visit) -->
   <script data-goatcounter="https://d-tech.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+          src="//gc.zgo.at/count.js"></script>
 
   <style>
     body {
@@ -139,21 +140,23 @@
     .btn8 { background: linear-gradient(to right, #3b82f6, #1e3a8a); }
     .btn9 { background: linear-gradient(to right, #6b7280, #111827); }
 
-    /* Styles for the visitor-count button */
-    #visitor-btn {
-      display: block;
+    /* Styles for the visitor-count container */
+    #visitor-container {
       margin: 1rem auto;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      color: #00ffea;
+    }
+    #visitor-container div {
+      display: inline-block;
       padding: 0.5rem 1rem;
       background: #1e293b;
-      color: #00ffea;
       border: 1px solid #00ffea;
       border-radius: 0.5rem;
-      font-family: 'Courier New', monospace;
       cursor: default;
-      font-size: 0.9rem;
       transition: background 0.2s ease, transform 0.2s ease;
     }
-    #visitor-btn:hover {
+    #visitor-container div:hover {
       background: #111827;
       transform: scale(1.02);
     }
@@ -187,27 +190,20 @@
     Powered by Preasx24 • DTECH 2025
   </footer>
 
-  <!-- Visitor Count Button (below footer) -->
-  <button id="visitor-btn">👁️ Visitors: loading...</button>
+  <!-- Visitor Count Placeholder -->
+  <div id="visitor-container">
+    <!-- GoatCounter will append the live count here -->
+  </div>
 
   <script>
-    // CountAPI endpoint (namespace "preasx24.co.za", key "visits")
-    // Each load of this script will increment by 1.
-    var apiURL = "https://api.countapi.xyz/hit/preasx24.co.za/visits";
-
-    fetch(apiURL)
-      .then(res => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
-      })
-      .then(data => {
-        // data.value holds the new (incremented) count
-        document.getElementById("visitor-btn").textContent = `👁️ Visitors: ${data.value}`;
-      })
-      .catch(() => {
-        document.getElementById("visitor-btn").textContent = `👁️ Visitors: error`;
-      });
+    // Poll until GoatCounter's visit_count function is available
+    let t = setInterval(() => {
+      if (window.goatcounter && window.goatcounter.visit_count) {
+        clearInterval(t);
+        // Append the (updated) visit count into our #visitor-container
+        window.goatcounter.visit_count({ append: '#visitor-container' });
+      }
+    }, 100);
   </script>
-
 </body>
 </html>
