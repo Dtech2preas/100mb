@@ -137,52 +137,6 @@
         font-size: 0.75rem;
         color: #94a3b8;
       }
-
-      /* Different background styles */
-      .btn1 {
-        background: linear-gradient(to right, #2563eb, #1e40af);
-      }
-      .btn2 {
-        background: linear-gradient(to right, #7c3aed, #4c1d95);
-      }
-      .btn3 {
-        background: linear-gradient(to right, #db2777, #831843);
-      }
-      .btn4 {
-        background: linear-gradient(to right, #059669, #065f46);
-      }
-      .btn5 {
-        background: linear-gradient(to right, #f59e0b, #92400e);
-      }
-      .btn6 {
-        background: linear-gradient(to right, #6366f1, #3730a3);
-      }
-      .btn7 {
-        background: linear-gradient(to right, #ef4444, #7f1d1d);
-      }
-      .btn8 {
-        background: linear-gradient(to right, #3b82f6, #1e3a8a);
-      }
-      .btn9 {
-        background: linear-gradient(to right, #6b7280, #111827);
-      }
-
-      /* Styles for the visitor-count button */
-      #visitor-btn {
-        background: #1e293b;
-        color: #00ffea;
-        border: 1px solid #00ffea;
-        border-radius: 0.5rem;
-        font-family: "Courier New", monospace;
-        cursor: default;
-        font-size: 0.9rem;
-        transition: background 0.2s ease, transform 0.2s ease;
-        padding: 0.5rem 1rem;
-      }
-      #visitor-btn:hover {
-        background: #111827;
-        transform: scale(1.02);
-      }
     </style>
   </head>
 
@@ -211,25 +165,32 @@
 
     <footer>Powered by Preasx24 • DTECH 2025</footer>
 
-    <!-- Visitor Counters (GitHub Badge + GoatCounter) -->
-    <div
-      style="
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        align-items: center;
-        margin-top: 1rem;
-      "
-    >
-      <!-- GitHub Visitor Badge -->
-      <img
-        src="https://visitor-badge.laobi.icu/badge?page_id=dtech2preas.100mb"
-        alt="GitHub Visitor Counter"
-        style="height: 28px;"
-      />
+    <!-- =============================
+         Visitor Counters Section
+         ============================= -->
+    <div class="flex justify-center items-center gap-6 mt-8 px-4">
+      <!-- GitHub Visitor Badge Card -->
+      <div
+        class="flex items-center space-x-2 bg-gray-800 border border-gray-600 rounded-lg px-4 py-2"
+      >
+        <img
+          src="https://visitor-badge.laobi.icu/badge?page_id=dtech2preas.100mb"
+          alt="GitHub Visitor Counter"
+          class="h-6"
+        />
+        <span class="text-gray-300 text-sm font-medium">Visitors</span>
+      </div>
 
-      <!-- GoatCounter Visitor Button -->
-      <button id="visitor-btn">👁️ Visitors: loading...</button>
+      <!-- Active Users (GoatCounter) Card -->
+      <div
+        id="active-users"
+        class="flex items-center space-x-2 bg-gray-800 border border-gray-600 rounded-lg px-4 py-2"
+      >
+        <span class="text-gray-300 text-sm font-medium"
+          >Active Users:
+          <span id="active-count" class="text-green-400">loading...</span>
+        </span>
+      </div>
     </div>
 
     <script>
@@ -245,10 +206,11 @@
           return res.json();
         })
         .then((data) => {
-          document.getElementById("visitor-btn").textContent = `👁️ Visitors: ${data.count}`;
+          // Display "Active Users" instead of just "Visitors"
+          document.getElementById("active-count").textContent = data.count;
         })
         .catch(() => {
-          document.getElementById("visitor-btn").textContent = `👁️ Visitors: error`;
+          document.getElementById("active-count").textContent = "error";
         });
     </script>
   </body>
