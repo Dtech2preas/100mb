@@ -55,7 +55,7 @@
   <title>DTECH Hub</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-  <!-- GoatCounter tracking script -->
+  <!-- GoatCounter tracking script (optional, for analytics only) -->
   <script data-goatcounter="https://d-tech.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 
@@ -191,19 +191,18 @@
   <button id="visitor-btn">👁️ Visitors: loading...</button>
 
   <script>
-    // Construct the GoatCounter JSON URL using the current path
-    var path = location.pathname; // e.g., "/" or "/somepage.html"
-    var counterURL = "https://d-tech.goatcounter.com/counter" + path + ".json";
+    // CountAPI endpoint (namespace "preasx24.co.za", key "visits")
+    // Each load of this script will increment by 1.
+    var apiURL = "https://api.countapi.xyz/hit/preasx24.co.za/visits";
 
-    fetch(counterURL)
+    fetch(apiURL)
       .then(res => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
+        if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
       })
       .then(data => {
-        document.getElementById("visitor-btn").textContent = `👁️ Visitors: ${data.count}`;
+        // data.value holds the new (incremented) count
+        document.getElementById("visitor-btn").textContent = `👁️ Visitors: ${data.value}`;
       })
       .catch(() => {
         document.getElementById("visitor-btn").textContent = `👁️ Visitors: error`;
