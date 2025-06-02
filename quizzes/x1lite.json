@@ -574,8 +574,7 @@
       "Graph scale is incorrect",
       "Point should be (5, 10)"
     ]
-  }
-][
+  },
   {
     "question": "Using a calculator, what is (7² + 3) × √16?",
     "correct_answer": "208",
