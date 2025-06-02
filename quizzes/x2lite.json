@@ -1,0 +1,2291 @@
+[
+  {
+    "question": "A map uses a scale of 1:50 000. If two towns are 5 cm apart on the map, what is the actual distance in kilometers?",
+    "correct_answer": "2.5 km",
+    "incorrect_answers": [
+      "250 km",
+      "0.25 km",
+      "25 km",
+      "5 km",
+      "50 km",
+      "100 km",
+      "10 km"
+    ]
+  },
+  {
+    "question": "On a plan drawn to scale 1:100, what does 3 m in real life correspond to on the plan?",
+    "correct_answer": "3 cm",
+    "incorrect_answers": [
+      "30 cm",
+      "0.3 cm",
+      "1 cm",
+      "10 cm",
+      "0.03 cm",
+      "300 cm",
+      "5 cm"
+    ]
+  },
+  {
+    "question": "A model car is built on a scale of 1:24. If the real car is 4.8 m long, how long is the model?",
+    "correct_answer": "20 cm",
+    "incorrect_answers": [
+      "2 cm",
+      "200 cm",
+      "8 cm",
+      "24 cm",
+      "10 cm",
+      "48 cm",
+      "12 cm"
+    ]
+  },
+  {
+    "question": "A representation uses a scale of 1 cm : 2 km. If a river measures 7 cm on the representation, what is its real length?",
+    "correct_answer": "14 km",
+    "incorrect_answers": [
+      "3.5 km",
+      "70 km",
+      "1.4 km",
+      "28 km",
+      "7 km",
+      "0.14 km",
+      "21 km"
+    ]
+  },
+  {
+    "question": "On a floor plan drawn at 1:50, a wall is 5 cm long on the plan. What is its real length in meters?",
+    "correct_answer": "2.5 m",
+    "incorrect_answers": [
+      "25 m",
+      "0.25 m",
+      "15 m",
+      "1 m",
+      "50 m",
+      "5 m",
+      "10 m"
+    ]
+  },
+  {
+    "question": "A scale bar on a map shows 1 cm equals 1 km. If the straight-line distance between two points is 8 km, how many centimeters apart are they on the map?",
+    "correct_answer": "8 cm",
+    "incorrect_answers": [
+      "0.8 cm",
+      "80 cm",
+      "4 cm",
+      "16 cm",
+      "2 cm",
+      "10 cm",
+      "20 cm"
+    ]
+  },
+  {
+    "question": "If a map has a scale of 1:25 000 and you measure 12 cm between two features, what is the real distance in kilometers?",
+    "correct_answer": "3 km",
+    "incorrect_answers": [
+      "0.3 km",
+      "30 km",
+      "1.2 km",
+      "6 km",
+      "2.5 km",
+      "12 km",
+      "4.8 km"
+    ]
+  },
+  {
+    "question": "A model house is built at a scale of 1:100. The actual house is 9 m tall. How tall is the model in centimeters?",
+    "correct_answer": "9 cm",
+    "incorrect_answers": [
+      "90 cm",
+      "0.9 cm",
+      "45 cm",
+      "18 cm",
+      "900 cm",
+      "1 cm",
+      "99 cm"
+    ]
+  },
+  {
+    "question": "A map’s legend shows a representative fraction of 1/200 000. How many meters on the ground does 1 cm on the map represent?",
+    "correct_answer": "2 km",
+    "incorrect_answers": [
+      "200 m",
+      "20 km",
+      "0.2 km",
+      "2000 m",
+      "0.02 km",
+      "20 m",
+      "20000 m"
+    ]
+  },
+  {
+    "question": "A blueprint uses a scale 1:500. If a doorway measures 2 cm wide on the blueprint, what is its real width in meters?",
+    "correct_answer": "10 m",
+    "incorrect_answers": [
+      "1 m",
+      "100 m",
+      "0.4 m",
+      "5 m",
+      "20 m",
+      "0.2 m",
+      "50 m"
+    ]
+  },
+  {
+    "question": "On a model railway built to 1:87 scale, a track segment measures 45 cm. What is its real-world length in meters?",
+    "correct_answer": "39.15 m",
+    "incorrect_answers": [
+      "4.35 m",
+      "391.5 m",
+      "5 m",
+      "87 m",
+      "0.45 m",
+      "87 cm",
+      "10.5 m"
+    ]
+  },
+  {
+    "question": "A plan’s written scale is 1 cm = 5 m. If a garden measures 16 m in real life, how long will it be on the plan in centimeters?",
+    "correct_answer": "3.2 cm",
+    "incorrect_answers": [
+      "32 cm",
+      "8 cm",
+      "0.32 cm",
+      "10 cm",
+      "5 cm",
+      "1.6 cm",
+      "16 cm"
+    ]
+  },
+  {
+    "question": "A relief model uses vertical exaggeration of 5×. If a hill 200 m high appears as 1 cm on the model, what is the horizontal scale if it’s 1:10 000?",
+    "correct_answer": "1:10 000 remains horizontal scale; vertical is 1:20 000",
+    "incorrect_answers": [
+      "Horizontal scale becomes 1:50 000",
+      "Vertical scale 1:50 000",
+      "Horizontal scale 1:5 000",
+      "Vertical scale 1:2 000",
+      "Horizontal scale 1:40 000",
+      "Vertical scale 1:10 000",
+      "Horizontal scale 1:20 000"
+    ]
+  },
+  {
+    "question": "On a map with a scale of 1:100 000, a highway measures 3.5 cm. How far is this in kilometers?",
+    "correct_answer": "35 km",
+    "incorrect_answers": [
+      "3.5 km",
+      "350 km",
+      "0.35 km",
+      "7 km",
+      "17.5 km",
+      "70 km",
+      "10 km"
+    ]
+  },
+  {
+    "question": "A scale drawing of a garden uses 1:200. The garden’s lawn is 6 m long. What is its length on the drawing in centimeters?",
+    "correct_answer": "3 cm",
+    "incorrect_answers": [
+      "12 cm",
+      "0.3 cm",
+      "30 cm",
+      "1.2 cm",
+      "6 cm",
+      "20 cm",
+      "2 cm"
+    ]
+  },
+  {
+    "question": "A model airplane is built at 1:72 scale. If the wingspan of the real plane is 36 m, what is the model’s wingspan in centimeters?",
+    "correct_answer": "50 cm",
+    "incorrect_answers": [
+      "5 cm",
+      "20 cm",
+      "500 cm",
+      "100 cm",
+      "25 cm",
+      "72 cm",
+      "10 cm"
+    ]
+  },
+  {
+    "question": "A plan shows a rectangle 8 cm by 5 cm at a scale of 1:250. What are the real dimensions in meters?",
+    "correct_answer": "20 m by 12.5 m",
+    "incorrect_answers": [
+      "2 m by 1.25 m",
+      "200 m by 125 m",
+      "0.8 m by 0.5 m",
+      "10 m by 6 m",
+      "25 m by 15 m",
+      "30 m by 18 m",
+      "16 m by 10 m"
+    ]
+  },
+  {
+    "question": "On a contour map with a scale of 1:25 000, two points are 4 cm apart. What is the actual distance between them in kilometers?",
+    "correct_answer": "1 km",
+    "incorrect_answers": [
+      "0.1 km",
+      "10 km",
+      "0.4 km",
+      "4 km",
+      "40 km",
+      "2 km",
+      "5 km"
+    ]
+  },
+  {
+    "question": "A model of a building is made at 1:200 scale. The real building’s height is 60 m. How tall is the model in centimeters?",
+    "correct_answer": "30 cm",
+    "incorrect_answers": [
+      "3 cm",
+      "300 cm",
+      "6 cm",
+      "60 cm",
+      "120 cm",
+      "15 cm",
+      "1.5 m"
+    ]
+  },
+  {
+    "question": "A blueprint shows a staircase riser height as 2 cm at scale 1:40. What is the actual riser height in meters?",
+    "correct_answer": "0.8 m",
+    "incorrect_answers": [
+      "0.08 m",
+      "8 m",
+      "1 m",
+      "0.2 m",
+      "2 m",
+      "0.4 m",
+      "4 m"
+    ]
+  },
+  {
+    "question": "If a model topography uses vertical exaggeration of 10× and a hill is 150 m high, how high is it on the model in centimeters?",
+    "correct_answer": "15 cm",
+    "incorrect_answers": [
+      "1.5 cm",
+      "150 cm",
+      "0.15 cm",
+      "30 cm",
+      "75 cm",
+      "3 cm",
+      "50 cm"
+    ]
+  },
+  {
+    "question": "A scale of 1:5 000 is written as what representative fraction?",
+    "correct_answer": "1/5 000",
+    "incorrect_answers": [
+      "1/500",
+      "5 000/1",
+      "1/50 000",
+      "1/500 000",
+      "5 000:1",
+      "1:50 000",
+      "1/500 000 000"
+    ]
+  },
+  {
+    "question": "On a town plan, each grid square represents 200 m. If a school is located two squares right and three squares up from the origin, what is its real displacement in meters?",
+    "correct_answer": "(400 m, 600 m)",
+    "incorrect_answers": [
+      "(200 m, 300 m)",
+      "(600 m, 400 m)",
+      "(2 m, 3 m)",
+      "(100 m, 150 m)",
+      "(800 m, 1200 m)",
+      "(40 m, 60 m)",
+      "(2 km, 3 km)"
+    ]
+  },
+  {
+    "question": "A map’s scale bar shows 0–5 km with 5 equal divisions. How many kilometers does each division represent?",
+    "correct_answer": "1 km",
+    "incorrect_answers": [
+      "5 km",
+      "0.5 km",
+      "2 km",
+      "0.2 km",
+      "10 km",
+      "0.1 km",
+      "4 km"
+    ]
+  },
+  {
+    "question": "On a floor plan, the symbol for a sink is shown. Which feature does this represent in reality?",
+    "correct_answer": "A basin for washing",
+    "incorrect_answers": [
+      "A door opening",
+      "A window",
+      "A staircase",
+      "A fireplace",
+      "A radiator",
+      "An electrical outlet",
+      "A ceiling fan"
+    ]
+  },
+  {
+    "question": "A map uses North-South-East-West grid lines. If a feature lies two grid squares east and one grid square north of the grid origin, what is its grid reference?",
+    "correct_answer": "(2, 1)",
+    "incorrect_answers": [
+      "(1, 2)",
+      "(2, –1)",
+      "(–2, 1)",
+      "(–2, –1)",
+      "(1, –2)",
+      "(–1, 2)",
+      "(0, 0)"
+    ]
+  },
+  {
+    "question": "On a contour map, contour lines are marked 100 m, 200 m, 300 m. If a point lies between the 200 m and 300 m lines halfway, what is its approximate elevation?",
+    "correct_answer": "250 m",
+    "incorrect_answers": [
+      "200 m",
+      "300 m",
+      "225 m",
+      "275 m",
+      "100 m",
+      "350 m",
+      "150 m"
+    ]
+  },
+  {
+    "question": "Which map symbol typically indicates a church?",
+    "correct_answer": "A cross symbol",
+    "incorrect_answers": [
+      "A blue circle",
+      "A green square",
+      "A black triangle",
+      "A red star",
+      "A purple line",
+      "A yellow diamond",
+      "A blue wave"
+    ]
+  },
+  {
+    "question": "On a road map, what does a thick red line usually represent?",
+    "correct_answer": "Major highway",
+    "incorrect_answers": [
+      "Footpath",
+      "Railway line",
+      "River",
+      "Boundary line",
+      "Minor road",
+      "Cycle path",
+      "Contour line"
+    ]
+  },
+  {
+    "question": "Which direction is indicated by 225° on a compass rose?",
+    "correct_answer": "Southwest",
+    "incorrect_answers": [
+      "Northeast",
+      "Southeast",
+      "Northwest",
+      "South",
+      "East",
+      "West",
+      "North"
+    ]
+  },
+  {
+    "question": "A map shows a blue line with hachures (small lines) on the downstream side. What does this symbolize?",
+    "correct_answer": "River with direction of flow",
+    "incorrect_answers": [
+      "Road under construction",
+      "Railway with bridge",
+      "Pipeline carrying gas",
+      "Electric cable route",
+      "Footpath up a hill",
+      "Boundary fence",
+      "Sea coastline"
+    ]
+  },
+  {
+    "question": "On a topographic map, closely spaced contour lines represent what terrain characteristic?",
+    "correct_answer": "Steep slope",
+    "incorrect_answers": [
+      "Flat terrain",
+      "Valley bottom",
+      "River channel",
+      "Plateau",
+      "Gently rolling terrain",
+      "Depression",
+      "Coastal beach"
+    ]
+  },
+  {
+    "question": "Which map projection maintains accurate shapes of small areas but distorts sizes?",
+    "correct_answer": "Mercator projection",
+    "incorrect_answers": [
+      "Equal-area projection",
+      "Azimuthal equidistant projection",
+      "Robinson projection",
+      "Conic projection",
+      "Orthographic projection",
+      "Lambert conformal conic",
+      "Mollweide projection"
+    ]
+  },
+  {
+    "question": "A map uses a legend with colors: green for forest, blue for water, yellow for open fields. If you see a patch of yellow, what does it represent?",
+    "correct_answer": "Open fields",
+    "incorrect_answers": [
+      "Forest",
+      "Water body",
+      "Urban area",
+      "Desert",
+      "Wetlands",
+      "Mountains",
+      "Swamp"
+    ]
+  },
+  {
+    "question": "On a map, a dashed line usually indicates what feature?",
+    "correct_answer": "Footpath or trail",
+    "incorrect_answers": [
+      "Main road",
+      "River boundary",
+      "Railway track",
+      "Power line",
+      "National boundary",
+      "Contour line",
+      "Pipeline"
+    ]
+  },
+  {
+    "question": "What does a north arrow on a map indicate?",
+    "correct_answer": "Direction of true north on the map",
+    "incorrect_answers": [
+      "Direction of east on the map",
+      "Direction of gravity",
+      "Magnetic declination",
+      "Location of the map’s origin",
+      "Direction of wind flow",
+      "Direction of travel",
+      "Location of the user"
+    ]
+  },
+  {
+    "question": "A map uses grid references. If a feature is located at grid square B4, what does this tell you?",
+    "correct_answer": "Column B and row 4 intersection on the grid",
+    "incorrect_answers": [
+      "It is 4 km east of column B",
+      "It is at coordinates (4, B)",
+      "It is 4 km north of row B",
+      "It is 4° latitude south of row B",
+      "It lies between B and 4 on the axis",
+      "It is the 4th feature in column B",
+      "It is 4 m above sea level in column B"
+    ]
+  },
+  {
+    "question": "Which model representation shows a building in three dimensions, including height and depth?",
+    "correct_answer": "Isometric model",
+    "incorrect_answers": [
+      "Floor plan",
+      "Elevation view",
+      "Sectional drawing",
+      "Plan view",
+      "Contour map",
+      "Perspective photograph",
+      "Road map"
+    ]
+  },
+  {
+    "question": "On an architectural plan, what does a thick continuous line typically represent?",
+    "correct_answer": "Load-bearing wall",
+    "incorrect_answers": [
+      "Window outline",
+      "Furniture outline",
+      "Electrical wiring",
+      "Roof outline",
+      "Landscaping feature",
+      "Contour line",
+      "Plumbing pipe"
+    ]
+  },
+  {
+    "question": "A plan view of a building shows circles with an X inside at several points. What do these symbols usually indicate?",
+    "correct_answer": "Ceiling lights or fixtures",
+    "incorrect_answers": [
+      "Smoke detectors",
+      "Floor drains",
+      "Doors",
+      "Windows",
+      "Columns",
+      "Stairs",
+      "Fire extinguishers"
+    ]
+  },
+  {
+    "question": "Which representation uses successive horizontal slices to depict interior features?",
+    "correct_answer": "Sectional drawing",
+    "incorrect_answers": [
+      "Plan view",
+      "Elevation view",
+      "Perspective drawing",
+      "Site plan",
+      "Contour map",
+      "Axonometric view",
+      "Isometric drawing"
+    ]
+  },
+  {
+    "question": "A plan of a park shows a dashed circle around a group of trees. What might this represent?",
+    "correct_answer": "Canopy spread of the trees",
+    "incorrect_answers": [
+      "Fence location",
+      "Walking path",
+      "Picnic area boundary",
+      "Flower bed",
+      "Underground cables",
+      "Water mains",
+      "Parking area"
+    ]
+  },
+  {
+    "question": "In a scale model of a bridge, the deck is 2 m long in reality and 4 cm on the model. What is the scale?",
+    "correct_answer": "1:50",
+    "incorrect_answers": [
+      "1:20",
+      "1:10",
+      "1:100",
+      "1:25",
+      "1:75",
+      "1:40",
+      "1:200"
+    ]
+  },
+  {
+    "question": "On a city map, what does a purple shading typically represent?",
+    "correct_answer": "Urban or built-up area",
+    "incorrect_answers": [
+      "Forest cover",
+      "Water bodies",
+      "Agricultural land",
+      "Protected park",
+      "Flood zone",
+      "Industrial area",
+      "Wetlands"
+    ]
+  },
+  {
+    "question": "Which type of plan shows the arrangement of rooms within a building when viewed from above?",
+    "correct_answer": "Floor plan",
+    "incorrect_answers": [
+      "Elevation view",
+      "Sectional drawing",
+      "Site plan",
+      "Contour map",
+      "Perspective view",
+      "Isometric drawing",
+      "Block diagram"
+    ]
+  },
+  {
+    "question": "A map’s grid reference is given as 45 E, 32 N. What does the letter E signify?",
+    "correct_answer": "Column letter (eastward grid line)",
+    "incorrect_answers": [
+      "Elevation in meters",
+      "East longitude coordinate",
+      "East side of map margin",
+      "Epoch year",
+      "Engineering reference",
+      "Easting in UTM without numbers",
+      "Error in grid"
+    ]
+  },
+  {
+    "question": "Which model type is best for visually assessing the sunlight exposure on a building?",
+    "correct_answer": "Physical architectural model with sunlight analysis",
+    "incorrect_answers": [
+      "Flat site plan",
+      "Contour map",
+      "Floor plan",
+      "Elevation drawing",
+      "Compass rose",
+      "Grid reference map",
+      "Street map"
+    ]
+  },
+  {
+    "question": "On a maritime chart, what does a series of blue contours with depth numbers indicate?",
+    "correct_answer": "Depth contours of the seabed",
+    "incorrect_answers": [
+      "Elevation contours of mountains",
+      "Political boundaries",
+      "Road networks",
+      "River flow directions",
+      "Population density",
+      "Temperature gradients",
+      "Vegetation zones"
+    ]
+  },
+  {
+    "question": "Which plan representation shows the footprint of a building including its walls and openings?",
+    "correct_answer": "Ground-floor plan (plan view)",
+    "incorrect_answers": [
+      "Elevation view",
+      "Section view",
+      "Perspective rendering",
+      "Isometric model",
+      "Contour map",
+      "Axonometric drawing",
+      "Site elevation"
+    ]
+  },
+  {
+    "question": "What does a scale of 1:1 000 000 mean on a world map?",
+    "correct_answer": "1 cm on map equals 10 km in reality",
+    "incorrect_answers": [
+      "1 cm on map equals 1 km",
+      "1 cm on map equals 100 m",
+      "1 cm on map equals 100 km",
+      "1 m on map equals 10 km",
+      "1 cm on map equals 1 m",
+      "1 cm on map equals 1000 km",
+      "1 cm on map equals 0.1 km"
+    ]
+  },
+  {
+    "question": "A plan shows a stairwell marked with triangular arrows pointing upward. What does this symbol indicate?",
+    "correct_answer": "Direction of upward movement on stairs",
+    "incorrect_answers": [
+      "Location of windows",
+      "Ventilation ducts",
+      "Fire escape route",
+      "Electric conduit",
+      "Elevator shaft",
+      "Downward movement direction",
+      "Emergency exits"
+    ]
+  },
+  {
+    "question": "On a relief map, shaded relief is used. What does this technique illustrate?",
+    "correct_answer": "Terrain shape and shadows to show elevation changes",
+    "incorrect_answers": [
+      "Political boundaries",
+      "Population density",
+      "Land use categories",
+      "Road networks",
+      "Climate zones",
+      "Vegetation types",
+      "Soil composition"
+    ]
+  },
+  {
+    "question": "Which of these is a common symbol for a spot height on a topographic map?",
+    "correct_answer": "A small dot with its elevation number",
+    "incorrect_answers": [
+      "A large circle shaded",
+      "A small triangle without number",
+      "A shaded area with contour lines",
+      "A cross symbol",
+      "A dashed square",
+      "A blue line",
+      "A compass rose"
+    ]
+  },
+  {
+    "question": "A site plan shows property boundaries as solid black lines. What do dashed lines inside the boundaries usually indicate?",
+    "correct_answer": "Proposed or existing fences/hedges",
+    "incorrect_answers": [
+      "Utility lines underground",
+      "Water flow direction",
+      "Contour lines",
+      "Building footprints",
+      "Road centerlines",
+      "Grid references",
+      "North arrow direction"
+    ]
+  },
+  {
+    "question": "On an architectural plan, what does a double line parallel to a wall typically represent?",
+    "correct_answer": "An exterior wall with thickness",
+    "incorrect_answers": [
+      "A window opening",
+      "A door swing",
+      "Electrical conduit",
+      "A railing",
+      "A furniture outline",
+      "A roof overhang",
+      "A contour line"
+    ]
+  },
+  {
+    "question": "Which representation shows a building’s facade as seen from ground level?",
+    "correct_answer": "Elevation drawing",
+    "incorrect_answers": [
+      "Floor plan",
+      "Section drawing",
+      "Site plan",
+      "Contour map",
+      "Axonometric model",
+      "Perspective drawing",
+      "Isometric projection"
+    ]
+  },
+{
+    "question": "Convert 7 500 milliliters to liters.",
+    "correct_answer": "7.5 L",
+    "incorrect_answers": [
+      "750 L",
+      "0.75 L",
+      "75 L",
+      "0.075 L",
+      "7 500 L",
+      "7500 L",
+      "0.0075 L"
+    ]
+  },
+  {
+    "question": "How many centimeters are there in 3.2 meters?",
+    "correct_answer": "320 cm",
+    "incorrect_answers": [
+      "32 cm",
+      "3 200 cm",
+      "0.32 cm",
+      "2 000 cm",
+      "3200 cm",
+      "3.02 cm",
+      "302 cm"
+    ]
+  },
+  {
+    "question": "Convert 0.045 kilograms to grams.",
+    "correct_answer": "45 g",
+    "incorrect_answers": [
+      "0.45 g",
+      "450 g",
+      "4.5 g",
+      "0.0045 g",
+      "4500 g",
+      "0.00045 g",
+      "405 g"
+    ]
+  },
+  {
+    "question": "Express 150 centimeters in meters.",
+    "correct_answer": "1.5 m",
+    "incorrect_answers": [
+      "15 m",
+      "0.015 m",
+      "1500 m",
+      "0.15 m",
+      "0.0015 m",
+      "15000 m",
+      "1 500 m"
+    ]
+  },
+  {
+    "question": "How many milligrams are in 0.3 grams?",
+    "correct_answer": "300 mg",
+    "incorrect_answers": [
+      "3 mg",
+      "30 mg",
+      "0.3 mg",
+      "3 000 mg",
+      "0.03 mg",
+      "30 000 mg",
+      "3000 mg"
+    ]
+  },
+  {
+    "question": "Convert 5 kilometers to meters.",
+    "correct_answer": "5 000 m",
+    "incorrect_answers": [
+      "500 m",
+      "50 000 m",
+      "0.5 m",
+      "500 000 m",
+      "0.005 m",
+      "5 m",
+      "5 000 000 m"
+    ]
+  },
+  {
+    "question": "Express 2.75 liters in milliliters.",
+    "correct_answer": "2 750 mL",
+    "incorrect_answers": [
+      "275 mL",
+      "27.5 mL",
+      "0.275 mL",
+      "27 500 mL",
+      "0.0275 mL",
+      "2750 L",
+      "275000 mL"
+    ]
+  },
+  {
+    "question": "Convert 8 200 grams to kilograms.",
+    "correct_answer": "8.2 kg",
+    "incorrect_answers": [
+      "0.82 kg",
+      "82 kg",
+      "820 kg",
+      "0.0082 kg",
+      "8200 kg",
+      "0.00082 kg",
+      "8 200 kg"
+    ]
+  },
+  {
+    "question": "How many milliliters are there in 0.0065 kiloliters?",
+    "correct_answer": "6 500 mL",
+    "incorrect_answers": [
+      "650 mL",
+      "65 mL",
+      "0.65 mL",
+      "65 000 mL",
+      "0.0065 mL",
+      "650 000 mL",
+      "6.5 mL"
+    ]
+  },
+  {
+    "question": "Convert 450 centimeters to millimeters.",
+    "correct_answer": "4 500 mm",
+    "incorrect_answers": [
+      "4500 cm",
+      "45 mm",
+      "0.45 mm",
+      "450 mm",
+      "45000 mm",
+      "0.045 mm",
+      "4.05 mm"
+    ]
+  },
+  {
+    "question": "If a race is 10 km long, how many meters do runners run?",
+    "correct_answer": "10 000 m",
+    "incorrect_answers": [
+      "1 000 m",
+      "100 m",
+      "100 000 m",
+      "1000 km",
+      "10 m",
+      "1 000 km",
+      "100 km"
+    ]
+  },
+  {
+    "question": "Express 0.002 cubic meters in cubic centimeters (cm³).",
+    "correct_answer": "2 000 cm³",
+    "incorrect_answers": [
+      "20 cm³",
+      "200 cm³",
+      "0.2 cm³",
+      "2000 m³",
+      "0.0002 cm³",
+      "20 000 cm³",
+      "20000 m³"
+    ]
+  },
+  {
+    "question": "Convert 0.25 hours to minutes.",
+    "correct_answer": "15 minutes",
+    "incorrect_answers": [
+      "0.25 minutes",
+      "250 minutes",
+      "2.5 minutes",
+      "150 minutes",
+      "1.5 minutes",
+      "1500 minutes",
+      "25 minutes"
+    ]
+  },
+  {
+    "question": "How many seconds are there in 3 minutes and 20 seconds?",
+    "correct_answer": "200 seconds",
+    "incorrect_answers": [
+      "320 seconds",
+      "180 seconds",
+      "240 seconds",
+      "160 seconds",
+      "220 seconds",
+      "300 seconds",
+      "140 seconds"
+    ]
+  },
+  {
+    "question": "Convert 90 milliliters to liters.",
+    "correct_answer": "0.09 L",
+    "incorrect_answers": [
+      "9 L",
+      "0.009 L",
+      "900 L",
+      "0.0009 L",
+      "90 L",
+      "0.9 L",
+      "0.00009 L"
+    ]
+  },
+  {
+    "question": "Express 12.5 kilometers in meters.",
+    "correct_answer": "12 500 m",
+    "incorrect_answers": [
+      "125 m",
+      "1 250 m",
+      "0.125 m",
+      "125 000 m",
+      "0.0125 m",
+      "12.5 m",
+      "12500 km"
+    ]
+  },
+  {
+    "question": "Convert 2500 grams to kilograms.",
+    "correct_answer": "2.5 kg",
+    "incorrect_answers": [
+      "0.25 kg",
+      "25 kg",
+      "250 kg",
+      "0.025 kg",
+      "2500 kg",
+      "0.0025 kg",
+      "20.5 kg"
+    ]
+  },
+  {
+    "question": "How many minutes are there in 2.75 hours?",
+    "correct_answer": "165 minutes",
+    "incorrect_answers": [
+      "275 minutes",
+      "120 minutes",
+      "180 minutes",
+      "200 minutes",
+      "100 minutes",
+      "150 minutes",
+      "210 minutes"
+    ]
+  },
+  {
+    "question": "Convert 5 500 milligrams to grams.",
+    "correct_answer": "5.5 g",
+    "incorrect_answers": [
+      "0.55 g",
+      "55 g",
+      "550 g",
+      "0.0055 g",
+      "5500 g",
+      "0.00055 g",
+      "50.5 g"
+    ]
+  },
+  {
+    "question": "Express 0.75 meters in centimeters.",
+    "correct_answer": "75 cm",
+    "incorrect_answers": [
+      "7.5 cm",
+      "750 cm",
+      "0.075 cm",
+      "0.0075 cm",
+      "7500 cm",
+      "0.00075 cm",
+      "700 cm"
+    ]
+  },
+  {
+    "question": "Convert 3 200 milliliters to liters.",
+    "correct_answer": "3.2 L",
+    "incorrect_answers": [
+      "32 L",
+      "0.32 L",
+      "320 L",
+      "0.032 L",
+      "3200 L",
+      "0.0032 L",
+      "3.02 L"
+    ]
+  },
+  {
+    "question": "How many hours are there in 360 minutes?",
+    "correct_answer": "6 hours",
+    "incorrect_answers": [
+      "3 hours",
+      "60 hours",
+      "0.6 hours",
+      "36 hours",
+      "0.36 hours",
+      "600 hours",
+      "30 hours"
+    ]
+  },
+  {
+    "question": "Convert 0.005 kilometers to meters.",
+    "correct_answer": "5 m",
+    "incorrect_answers": [
+      "0.5 m",
+      "50 m",
+      "500 m",
+      "0.05 m",
+      "5000 m",
+      "0.005 m",
+      "0.0005 m"
+    ]
+  },
+  {
+    "question": "Express 4 500 grams in kilograms.",
+    "correct_answer": "4.5 kg",
+    "incorrect_answers": [
+      "0.45 kg",
+      "45 kg",
+      "450 kg",
+      "0.045 kg",
+      "4500 kg",
+      "0.0045 kg",
+      "40.5 kg"
+    ]
+  },
+  {
+    "question": "Convert 0.2 liters to milliliters.",
+    "correct_answer": "200 mL",
+    "incorrect_answers": [
+      "20 mL",
+      "2 mL",
+      "2000 mL",
+      "0.002 mL",
+      "0.02 mL",
+      "20 000 mL",
+      "0.0002 mL"
+    ]
+  },
+  {
+    "question": "How many seconds are in 1 hour, 15 minutes, and 30 seconds?",
+    "correct_answer": "4 530 seconds",
+    "incorrect_answers": [
+      "4 350 seconds",
+      "4 800 seconds",
+      "4 650 seconds",
+      "4 530 minutes",
+      "3 600 seconds",
+      "5 400 seconds",
+      "4 530 hours"
+    ]
+  },
+  {
+    "question": "Convert 9 000 milliliters to liters.",
+    "correct_answer": "9 L",
+    "incorrect_answers": [
+      "0.9 L",
+      "90 L",
+      "900 L",
+      "0.09 L",
+      "9000 L",
+      "0.009 L",
+      "19 L"
+    ]
+  },
+  {
+    "question": "Express 6.75 kilometers in meters.",
+    "correct_answer": "6 750 m",
+    "incorrect_answers": [
+      "675 m",
+      "67.5 m",
+      "0.675 m",
+      "67 500 m",
+      "0.0675 m",
+      "6750 km",
+      "6000 m"
+    ]
+  },
+  {
+    "question": "Convert 2.4 hours to minutes.",
+    "correct_answer": "144 minutes",
+    "incorrect_answers": [
+      "24 minutes",
+      "2 400 minutes",
+      "1440 minutes",
+      "14.4 minutes",
+      "0.24 minutes",
+      "240 minutes",
+      "4 minutes"
+    ]
+  },
+  {
+    "question": "How many grams are in 0.005 kilograms?",
+    "correct_answer": "5 g",
+    "incorrect_answers": [
+      "0.5 g",
+      "50 g",
+      "500 g",
+      "0.05 g",
+      "5000 g",
+      "0.005 g",
+      "0.0005 g"
+    ]
+  },
+  {
+    "question": "Convert 450 centimeters to meters.",
+    "correct_answer": "4.5 m",
+    "incorrect_answers": [
+      "45 m",
+      "0.45 m",
+      "4500 m",
+      "0.045 m",
+      "450 m",
+      "0.0045 m",
+      "40.5 m"
+    ]
+  },
+  {
+    "question": "Express 0.35 liters in milliliters.",
+    "correct_answer": "350 mL",
+    "incorrect_answers": [
+      "35 mL",
+      "3.5 mL",
+      "3500 mL",
+      "0.035 mL",
+      "0.0035 mL",
+      "35 000 mL",
+      "0.00350 mL"
+    ]
+  },
+  {
+    "question": "How many hours are there in 540 minutes?",
+    "correct_answer": "9 hours",
+    "incorrect_answers": [
+      "5 hours",
+      "90 hours",
+      "0.9 hours",
+      "54 hours",
+      "0.54 hours",
+      "900 hours",
+      "6 hours"
+    ]
+  },
+  {
+    "question": "Convert 3 200 grams to kilograms.",
+    "correct_answer": "3.2 kg",
+    "incorrect_answers": [
+      "0.32 kg",
+      "32 kg",
+      "320 kg",
+      "0.032 kg",
+      "3200 kg",
+      "0.0032 kg",
+      "30.2 kg"
+    ]
+  },
+  {
+    "question": "Express 12.5 milliliters in liters.",
+    "correct_answer": "0.0125 L",
+    "incorrect_answers": [
+      "1.25 L",
+      "0.125 L",
+      "0.00125 L",
+      "12.5 L",
+      "0.000125 L",
+      "125 L",
+      "0.0000125 L"
+    ]
+  },
+  {
+    "question": "How many minutes are in 2 hours and 10 minutes?",
+    "correct_answer": "130 minutes",
+    "incorrect_answers": [
+      "120 minutes",
+      "210 minutes",
+      "220 minutes",
+      "112 minutes",
+      "100 minutes",
+      "240 minutes",
+      "150 minutes"
+    ]
+  },
+  {
+    "question": "Convert 0.008 kilometers to meters.",
+    "correct_answer": "8 m",
+    "incorrect_answers": [
+      "0.8 m",
+      "80 m",
+      "800 m",
+      "0.08 m",
+      "8000 m",
+      "0.0008 m",
+      "0.00008 m"
+    ]
+  },
+  {
+    "question": "Express 7 500 milligrams in grams.",
+    "correct_answer": "7.5 g",
+    "incorrect_answers": [
+      "0.75 g",
+      "75 g",
+      "750 g",
+      "0.075 g",
+      "7500 g",
+      "0.0075 g",
+      "70.5 g"
+    ]
+  },
+  {
+    "question": "Convert 1.25 meters to centimeters.",
+    "correct_answer": "125 cm",
+    "incorrect_answers": [
+      "12.5 cm",
+      "1250 cm",
+      "1.25 cm",
+      "0.125 cm",
+      "12 500 cm",
+      "0.0125 cm",
+      "120 cm"
+    ]
+  },
+  {
+    "question": "How many seconds are in 2 hours and 45 minutes?",
+    "correct_answer": "9 900 seconds",
+    "incorrect_answers": [
+      "2 700 seconds",
+      "16 200 seconds",
+      "8 700 seconds",
+      "1 650 seconds",
+      "9 000 seconds",
+      "10 800 seconds",
+      "7 500 seconds"
+    ]
+  },
+  {
+    "question": "Convert 4.8 liters to milliliters.",
+    "correct_answer": "4 800 mL",
+    "incorrect_answers": [
+      "480 mL",
+      "48 mL",
+      "0.48 mL",
+      "48 000 mL",
+      "0.0048 mL",
+      "4800 L",
+      "0.00048 mL"
+    ]
+  },
+  {
+    "question": "Express 5 000 grams in kilograms.",
+    "correct_answer": "5 kg",
+    "incorrect_answers": [
+      "0.5 kg",
+      "50 kg",
+      "500 kg",
+      "0.05 kg",
+      "5000 kg",
+      "0.005 kg",
+      "4.5 kg"
+    ]
+  },
+  {
+    "question": "How many minutes are in 3 hours, 5 minutes, and 20 seconds?",
+    "correct_answer": "185 minutes and 20 seconds",
+    "incorrect_answers": [
+      "185 minutes",
+      "185 seconds",
+      "3 320 minutes",
+      "3 200 seconds",
+      "180 minutes and 20 seconds",
+      "175 minutes and 20 seconds",
+      "190 minutes and 20 seconds"
+    ]
+  },
+  {
+    "question": "Convert 0.045 kilograms to grams.",
+    "correct_answer": "45 g",
+    "incorrect_answers": [
+      "0.45 g",
+      "450 g",
+      "4.5 g",
+      "0.0045 g",
+      "4500 g",
+      "0.00045 g",
+      "405 g"
+    ]
+  },
+  {
+    "question": "Express 2.3 kilometers in meters.",
+    "correct_answer": "2 300 m",
+    "incorrect_answers": [
+      "230 m",
+      "23 m",
+      "0.23 m",
+      "23 000 m",
+      "0.023 m",
+      "2300 km",
+      "2000 m"
+    ]
+  },
+  {
+    "question": "How many seconds are in 4 minutes and 15 seconds?",
+    "correct_answer": "255 seconds",
+    "incorrect_answers": [
+      "240 seconds",
+      "270 seconds",
+      "215 seconds",
+      "200 seconds",
+      "300 seconds",
+      "250 seconds",
+      "265 seconds"
+    ]
+  },
+  {
+    "question": "Convert 3 600 milliliters to liters.",
+    "correct_answer": "3.6 L",
+    "incorrect_answers": [
+      "36 L",
+      "0.36 L",
+      "360 L",
+      "0.036 L",
+      "3600 L",
+      "0.0036 L",
+      "3.06 L"
+    ]
+  },
+  {
+    "question": "Express 125 centimeters in meters.",
+    "correct_answer": "1.25 m",
+    "incorrect_answers": [
+      "0.125 m",
+      "12.5 m",
+      "1250 m",
+      "0.0125 m",
+      "125 m",
+      "0.00125 m",
+      "10.25 m"
+    ]
+  },
+  {
+    "question": "How many minutes are there in 1 hour, 45 minutes, and 55 seconds?",
+    "correct_answer": "105 minutes and 55 seconds",
+    "incorrect_answers": [
+      "105 minutes",
+      "105 seconds",
+      "107 minutes and 55 seconds",
+      "100 minutes and 55 seconds",
+      "110 minutes and 55 seconds",
+      "95 minutes and 55 seconds",
+      "115 minutes and 55 seconds"
+    ]
+  },
+  {
+    "question": "Convert 0.002 metric tons to kilograms.",
+    "correct_answer": "2 kg",
+    "incorrect_answers": [
+      "0.2 kg",
+      "20 kg",
+      "200 kg",
+      "0.02 kg",
+      "2000 kg",
+      "0.002 kg",
+      "2 000 kg"
+    ]
+  },
+  {
+    "question": "Express 7 200 milligrams in grams.",
+    "correct_answer": "7.2 g",
+    "incorrect_answers": [
+      "0.72 g",
+      "72 g",
+      "720 g",
+      "0.072 g",
+      "7200 g",
+      "0.0072 g",
+      "70.2 g"
+    ]
+  },
+  {
+    "question": "Convert 4.25 meters to centimeters.",
+    "correct_answer": "425 cm",
+    "incorrect_answers": [
+      "42.5 cm",
+      "4 250 cm",
+      "0.425 cm",
+      "0.0425 cm",
+      "4250 cm",
+      "0.00425 cm",
+      "40.5 cm"
+    ]
+  },
+  {
+    "question": "How many seconds are in 2 hours, 30 minutes, and 10 seconds?",
+    "correct_answer": "9 010 seconds",
+    "incorrect_answers": [
+      "9 100 seconds",
+      "8 410 seconds",
+      "9 600 seconds",
+      "8 800 seconds",
+      "9 000 seconds",
+      "10 003 seconds",
+      "9 300 seconds"
+    ]
+  },
+  {
+    "question": "Convert 0.065 kilograms to grams.",
+    "correct_answer": "65 g",
+    "incorrect_answers": [
+      "6.5 g",
+      "650 g",
+      "0.65 g",
+      "65 000 g",
+      "0.0065 g",
+      "6500 g",
+      "60.5 g"
+    ]
+  },
+  {
+    "question": "Express 9.1 kilometers in meters.",
+    "correct_answer": "9 100 m",
+    "incorrect_answers": [
+      "910 m",
+      "91 m",
+      "0.91 m",
+      "91 000 m",
+      "0.091 m",
+      "9100 km",
+      "9000 m"
+    ]
+  },
+  {
+    "question": "How many minutes are there in 5 hours, 20 minutes, and 45 seconds?",
+    "correct_answer": "320 minutes and 45 seconds",
+    "incorrect_answers": [
+      "320 minutes",
+      "321 minutes and 45 seconds",
+      "315 minutes and 45 seconds",
+      "330 minutes and 45 seconds",
+      "300 minutes and 45 seconds",
+      "310 minutes and 45 seconds",
+      "325 minutes and 45 seconds"
+    ]
+  },
+  {
+    "question": "Convert 3 400 milliliters to liters.",
+    "correct_answer": "3.4 L",
+    "incorrect_answers": [
+      "34 L",
+      "0.34 L",
+      "340 L",
+      "0.034 L",
+      "3400 L",
+      "0.0034 L",
+      "3.04 L"
+    ]
+  },
+  {
+    "question": "Express 250 centimeters in meters.",
+    "correct_answer": "2.5 m",
+    "incorrect_answers": [
+      "25 m",
+      "0.25 m",
+      "2500 m",
+      "0.025 m",
+      "250 m",
+      "0.0025 m",
+      "2.05 m"
+    ]
+  },
+  {
+    "question": "How many seconds are in 3 hours, 10 minutes, and 5 seconds?",
+    "correct_answer": "11 405 seconds",
+    "incorrect_answers": [
+      "11 600 seconds",
+      "10 805 seconds",
+      "11 300 seconds",
+      "11 605 seconds",
+      "11 200 seconds",
+      "12 005 seconds",
+      "10 000 seconds"
+    ]
+  },
+  {
+    "question": "Convert 0.055 kilograms to grams.",
+    "correct_answer": "55 g",
+    "incorrect_answers": [
+      "5.5 g",
+      "550 g",
+      "0.55 g",
+      "55 000 g",
+      "0.0055 g",
+      "5500 g",
+      "50.5 g"
+    ]
+  },
+  {
+    "question": "Express 6.3 kilometers in meters.",
+    "correct_answer": "6 300 m",
+    "incorrect_answers": [
+      "630 m",
+      "63 m",
+      "0.63 m",
+      "63 000 m",
+      "0.063 m",
+      "6300 km",
+      "6000 m"
+    ]
+  },
+  {
+    "question": "How many minutes are there in 4 hours, 5 minutes, and 20 seconds?",
+    "correct_answer": "245 minutes and 20 seconds",
+    "incorrect_answers": [
+      "245 minutes",
+      "240 minutes and 20 seconds",
+      "250 minutes and 20 seconds",
+      "235 minutes and 20 seconds",
+      "245 seconds",
+      "225 minutes and 20 seconds",
+      "255 minutes and 20 seconds"
+    ]
+  },
+  {
+    "question": "Convert 2 150 milliliters to liters.",
+    "correct_answer": "2.15 L",
+    "incorrect_answers": [
+      "21.5 L",
+      "0.215 L",
+      "215 L",
+      "0.0215 L",
+      "2150 L",
+      "0.00215 L",
+      "2.05 L"
+    ]
+  },
+  {
+    "question": "Express 7 800 grams in kilograms.",
+    "correct_answer": "7.8 kg",
+    "incorrect_answers": [
+      "0.78 kg",
+      "78 kg",
+      "780 kg",
+      "0.0078 kg",
+      "7800 kg",
+      "0.00078 kg",
+      "7.0 kg"
+    ]
+  },
+  {
+    "question": "How many seconds are in 6 minutes and 45 seconds?",
+    "correct_answer": "405 seconds",
+    "incorrect_answers": [
+      "645 seconds",
+      "360 seconds",
+      "450 seconds",
+      "400 seconds",
+      "600 seconds",
+      "405 minutes",
+      "350 seconds"
+    ]
+  },
+  {
+    "question": "Convert 5.5 meters to centimeters.",
+    "correct_answer": "550 cm",
+    "incorrect_answers": [
+      "55 cm",
+      "5 500 cm",
+      "0.55 cm",
+      "0.0055 cm",
+      "5500 m",
+      "0.00055 cm",
+      "545 cm"
+    ]
+  },
+  {
+    "question": "Express 1 250 milliliters in liters.",
+    "correct_answer": "1.25 L",
+    "incorrect_answers": [
+      "12.5 L",
+      "0.125 L",
+      "125 L",
+      "0.0125 L",
+      "1250 L",
+      "0.00125 L",
+      "1.05 L"
+    ]
+  },
+  {
+    "question": "How many minutes are there in 3 hours and 7 minutes?",
+    "correct_answer": "187 minutes",
+    "incorrect_answers": [
+      "307 minutes",
+      "180 minutes",
+      "197 minutes",
+      "170 minutes",
+      "207 minutes",
+      "157 minutes",
+      "200 minutes"
+    ]
+  },
+  {
+    "question": "Convert 0.009 kilometers to meters.",
+    "correct_answer": "9 m",
+    "incorrect_answers": [
+      "0.9 m",
+      "90 m",
+      "900 m",
+      "0.09 m",
+      "9000 m",
+      "0.0009 m",
+      "0.00009 m"
+    ]
+  },
+{
+    "question": "Which document shows a company’s assets, liabilities, and equity at a specific point in time?",
+    "correct_answer": "Balance sheet",
+    "incorrect_answers": [
+      "Income statement",
+      "Cash flow statement",
+      "Budget report",
+      "Invoice",
+      "Receipt",
+      "Statement of changes in equity",
+      "Purchase order"
+    ]
+  },
+  {
+    "question": "What financial document details the amounts owed by customers to a business?",
+    "correct_answer": "Accounts receivable ledger",
+    "incorrect_answers": [
+      "Accounts payable ledger",
+      "Bank statement",
+      "Income statement",
+      "Cash flow statement",
+      "Budget forecast",
+      "Purchase order",
+      "Invoice register"
+    ]
+  },
+  {
+    "question": "When a business issues an invoice, which information must it include?",
+    "correct_answer": "Description of goods/services, quantity, unit price, total amount, date, and unique invoice number",
+    "incorrect_answers": [
+      "Employee pay rates, tax code, insurance details",
+      "Bank account balances, interest rate, transaction history",
+      "Projected sales, forecasted expenses, budget variance",
+      "Asset valuation, depreciation schedules, equity balances",
+      "Customer credit score, stock market indices, supplier ratings",
+      "Board minutes, shareholder names, dividend history",
+      "Insurance policy terms, claim amounts, premium schedule"
+    ]
+  },
+  {
+    "question": "Which document confirms payment has been received for goods or services rendered?",
+    "correct_answer": "Receipt",
+    "incorrect_answers": [
+      "Invoice",
+      "Purchase order",
+      "Statement of account",
+      "Credit note",
+      "Delivery note",
+      "Packing slip",
+      "Quotation"
+    ]
+  },
+  {
+    "question": "Which financial document summarizes all transactions between a customer and a supplier over a period?",
+    "correct_answer": "Statement of account",
+    "incorrect_answers": [
+      "Purchase order",
+      "Balance sheet",
+      "Income statement",
+      "Cash flow statement",
+      "Invoice",
+      "Receipt",
+      "Bank statement"
+    ]
+  },
+  {
+    "question": "What is the primary purpose of a purchase order?",
+    "correct_answer": "To formally request goods or services from a supplier",
+    "incorrect_answers": [
+      "To record payment received",
+      "To provide a summary of all transactions",
+      "To show a company’s financial position",
+      "To calculate net profit",
+      "To confirm delivery of goods",
+      "To request a refund",
+      "To allocate budget amounts"
+    ]
+  },
+  {
+    "question": "Which document shows expected revenues and expenses over a future period?",
+    "correct_answer": "Budget",
+    "incorrect_answers": [
+      "Income statement",
+      "Cash flow statement",
+      "Balance sheet",
+      "Invoice",
+      "Receipt",
+      "Bank statement",
+      "Purchase order"
+    ]
+  },
+  {
+    "question": "What does a budget surplus indicate?",
+    "correct_answer": "Planned income exceeds planned expenditure",
+    "incorrect_answers": [
+      "Planned expenditure exceeds planned income",
+      "Actual expenditure equals actual income",
+      "Actual income exceeds planned income",
+      "Actual expenditure exceeds planned expenditure",
+      "Planned and actual amounts are equal",
+      "No income or expenditure planned",
+      "Only capital expenditures included"
+    ]
+  },
+  {
+    "question": "If a household’s monthly income is R12,000 and total expenses are R9,500, what is the budget result?",
+    "correct_answer": "Surplus of R2,500",
+    "incorrect_answers": [
+      "Deficit of R2,500",
+      "Break-even",
+      "Surplus of R9,500",
+      "Deficit of R12,000",
+      "Surplus of R21,500",
+      "Deficit of R7,500",
+      "Break-even at R0"
+    ]
+  },
+  {
+    "question": "Which part of an income and expenditure statement shows total inflows and outflows over a period?",
+    "correct_answer": "Net surplus or deficit",
+    "incorrect_answers": [
+      "Gross profit",
+      "Cost of goods sold",
+      "Total assets",
+      "Fixed liabilities",
+      "Equity balance",
+      "Depreciation expense",
+      "Accounts receivable"
+    ]
+  },
+  {
+    "question": "On an income and expenditure statement, which of the following is considered an expenditure?",
+    "correct_answer": "Rent paid for office space",
+    "incorrect_answers": [
+      "Sales revenue from products",
+      "Interest earned on bank deposits",
+      "Dividend received",
+      "Loan repayment principal",
+      "Proceeds from sale of equipment",
+      "Depreciation adjustment",
+      "Revaluation gain"
+    ]
+  },
+  {
+    "question": "Which document would a business use to track money paid to suppliers for raw materials?",
+    "correct_answer": "Accounts payable ledger",
+    "incorrect_answers": [
+      "Accounts receivable ledger",
+      "Bank statement",
+      "Sales invoice register",
+      "Budget report",
+      "Income statement",
+      "Cash flow forecast",
+      "Fixed asset register"
+    ]
+  },
+  {
+    "question": "Which banking document lists all transactions in a bank account over a given period?",
+    "correct_answer": "Bank statement",
+    "incorrect_answers": [
+      "Balance sheet",
+      "Income statement",
+      "Budget",
+      "Invoice",
+      "Receipt",
+      "Purchase order",
+      "Credit note"
+    ]
+  },
+  {
+    "question": "If a savings account pays 6% annual simple interest, how much interest does R10,000 earn in one year?",
+    "correct_answer": "R600",
+    "incorrect_answers": [
+      "R60",
+      "R6,000",
+      "R1,600",
+      "R6000",
+      "R100",
+      "R10,600",
+      "R160"
+    ]
+  },
+  {
+    "question": "What is compound interest?",
+    "correct_answer": "Interest calculated on both the initial principal and accumulated interest",
+    "incorrect_answers": [
+      "Interest calculated only on the initial principal",
+      "A flat fee charged by the bank",
+      "Interest charged on loans only",
+      "Interest based on predicted inflation",
+      "A tax paid on savings",
+      "Interest charged by insurance companies",
+      "Interest calculated on dividends"
+    ]
+  },
+  {
+    "question": "If R5,000 is invested at 5% per year compound interest, what is the amount at the end of two years?",
+    "correct_answer": "R5,512.50",
+    "incorrect_answers": [
+      "R5,250.00",
+      "R5,500.00",
+      "R5,025.00",
+      "R5,625.00",
+      "R5,102.50",
+      "R5,750.00",
+      "R6,000.00"
+    ]
+  },
+  {
+    "question": "Which tax is levied on the income individuals earn?",
+    "correct_answer": "Income tax (PAYE)",
+    "incorrect_answers": [
+      "Value-Added Tax (VAT)",
+      "Capital gains tax",
+      "Customs duty",
+      "Transfer duty",
+      "Corporation tax",
+      "Estate duty",
+      "Dividend withholding tax"
+    ]
+  },
+  {
+    "question": "A salary of R240,000 per year falls into a 25% tax bracket. How much tax is owed?",
+    "correct_answer": "R60,000",
+    "incorrect_answers": [
+      "R24,000",
+      "R12,000",
+      "R36,000",
+      "R48,000",
+      "R75,000",
+      "R30,000",
+      "R15,000"
+    ]
+  },
+  {
+    "question": "What is Value-Added Tax (VAT) currently charged at in South Africa?",
+    "correct_answer": "15%",
+    "incorrect_answers": [
+      "10%",
+      "12%",
+      "14%",
+      "16%",
+      "18%",
+      "20%",
+      "17%"
+    ]
+  },
+  {
+    "question": "If an item costs R200 before VAT, what is its price after adding 15% VAT?",
+    "correct_answer": "R230",
+    "incorrect_answers": [
+      "R215",
+      "R250",
+      "R245",
+      "R220",
+      "R260",
+      "R240",
+      "R235"
+    ]
+  },
+  {
+    "question": "Which bank product typically offers higher interest rates but allows limited withdrawals?",
+    "correct_answer": "Fixed deposit account",
+    "incorrect_answers": [
+      "Current account",
+      "Cheque account",
+      "Cheque book account",
+      "Credit card account",
+      "Debit card account",
+      "Overdraft account",
+      "Pure savings account"
+    ]
+  },
+  {
+    "question": "What is the main purpose of a budget?",
+    "correct_answer": "To plan and control income and expenditure",
+    "incorrect_answers": [
+      "To calculate tax owed",
+      "To record past transactions only",
+      "To determine credit score",
+      "To pay dividends",
+      "To set interest rates",
+      "To issue invoices",
+      "To reconcile bank accounts"
+    ]
+  },
+  {
+    "question": "What does inflation measure?",
+    "correct_answer": "The rate at which general price levels increase over time",
+    "incorrect_answers": [
+      "The rate at which incomes increase",
+      "The exchange rate fluctuations",
+      "The difference between budgeted and actual spending",
+      "The interest rate charged by banks",
+      "The decrease in currency supply",
+      "The ratio of imports to exports",
+      "The change in unemployment rate"
+    ]
+  },
+  {
+    "question": "If the CPI was 150 last year and 157.5 this year, what is the inflation rate?",
+    "correct_answer": "5%",
+    "incorrect_answers": [
+      "3%",
+      "4%",
+      "6%",
+      "7.5%",
+      "10%",
+      "2.5%",
+      "8%"
+    ]
+  },
+  {
+    "question": "Which document summarizes a person’s earnings, deductions, and net pay for a pay period?",
+    "correct_answer": "Payslip",
+    "incorrect_answers": [
+      "Bank statement",
+      "Balance sheet",
+      "Income statement",
+      "Invoice",
+      "Receipt",
+      "Tax return",
+      "Budget report"
+    ]
+  },
+  {
+    "question": "On a payslip, which deduction is contributed to by both employer and employee to provide short-term relief during unemployment or illness?",
+    "correct_answer": "Unemployment Insurance Fund (UIF)",
+    "incorrect_answers": [
+      "Value-Added Tax (VAT)",
+      "Income Tax",
+      "Medical Aid",
+      "Pension Fund",
+      "Skills Development Levy (SDL)",
+      "Local Municipality Rates",
+      "SARS Penalty"
+    ]
+  },
+  {
+    "question": "If an employee’s gross pay is R12,000 per month and UIF deduction is 1% of gross, how much UIF is deducted?",
+    "correct_answer": "R120",
+    "incorrect_answers": [
+      "R12",
+      "R1,200",
+      "R240",
+      "R60",
+      "R600",
+      "R180",
+      "R100"
+    ]
+  },
+  {
+    "question": "What is the purpose of the Skills Development Levy (SDL) on a payslip?",
+    "correct_answer": "To fund employee training and development programs",
+    "incorrect_answers": [
+      "To pay medical aid contributions",
+      "To fund unemployment benefits",
+      "To finance housing projects",
+      "To pay income tax",
+      "To cover pension fund contributions",
+      "To pay for employee transportation",
+      "To fund social grants"
+    ]
+  },
+  {
+    "question": "Which tax is levied on goods and services at the point of sale?",
+    "correct_answer": "Value-Added Tax (VAT)",
+    "incorrect_answers": [
+      "Income Tax",
+      "Capital Gains Tax",
+      "Estate Duty",
+      "Donation Tax",
+      "Transfer Duty",
+      "Skills Development Levy",
+      "Unemployment Insurance Fund (UIF)"
+    ]
+  },
+  {
+    "question": "A household’s monthly budget shows income of R15,000 and expenditures of R14,200. What is the surplus or deficit?",
+    "correct_answer": "Surplus of R800",
+    "incorrect_answers": [
+      "Deficit of R800",
+      "Surplus of R14,200",
+      "Break-even",
+      "Deficit of R15,000",
+      "Surplus of R29,200",
+      "Deficit of R14,200",
+      "Surplus of R15,800"
+    ]
+  },
+  {
+    "question": "Which document would be used to apply for a mortgage from a bank?",
+    "correct_answer": "Loan application form",
+    "incorrect_answers": [
+      "Invoice",
+      "Budget report",
+      "Payslip",
+      "Statement of account",
+      "Purchase order",
+      "Balance sheet",
+      "Tax invoice"
+    ]
+  },
+  {
+    "question": "If the prime interest rate is 10% and a bank charges prime plus 3% for a personal loan, what is the annual interest rate?",
+    "correct_answer": "13%",
+    "incorrect_answers": [
+      "7%",
+      "10%",
+      "3%",
+      "15%",
+      "12%",
+      "8%",
+      "5%"
+    ]
+  },
+  {
+    "question": "Which tax-exempt threshold means individuals earning below this amount do not pay income tax?",
+    "correct_answer": "Tax threshold",
+    "incorrect_answers": [
+      "Standard rate",
+      "Capital gains rate",
+      "VAT threshold",
+      "Dividend withholding rate",
+      "Donations exemption",
+      "Estate duty threshold",
+      "Skills levy threshold"
+    ]
+  },
+  {
+    "question": "What does CPI stand for in finance?",
+    "correct_answer": "Consumer Price Index",
+    "incorrect_answers": [
+      "Consumer Profit Index",
+      "Capital Production Index",
+      "Cost Price Index",
+      "Corporate Profit Index",
+      "Currency Price Index",
+      "Consumer Product Information",
+      "Capital Pricing Index"
+    ]
+  },
+  {
+    "question": "If a bank account earns 4% per annum, paid monthly, what is the monthly interest rate?",
+    "correct_answer": "0.333% per month",
+    "incorrect_answers": [
+      "4% per month",
+      "0.04% per month",
+      "1% per month",
+      "0.8% per month",
+      "0.5% per month",
+      "3.67% per month",
+      "2% per month"
+    ]
+  },
+  {
+    "question": "Which financial document is used to reconcile a company’s cash transactions with the bank’s record?",
+    "correct_answer": "Bank reconciliation statement",
+    "incorrect_answers": [
+      "Balance sheet",
+      "Cash flow statement",
+      "Income statement",
+      "Accounts receivable ledger",
+      "Accounts payable ledger",
+      "Budget report",
+      "Invoice register"
+    ]
+  },
+  {
+    "question": "What is the effect of inflation on purchasing power?",
+    "correct_answer": "Purchasing power decreases as price levels rise",
+    "incorrect_answers": [
+      "Purchasing power increases as price levels rise",
+      "Purchasing power remains constant regardless of inflation",
+      "Purchasing power only changes with tax adjustments",
+      "Purchasing power is unaffected by currency devaluation",
+      "Purchasing power only changes with interest rates",
+      "Purchasing power increases with wage growth automatically",
+      "Purchasing power decreases only during economic recessions"
+    ]
+  },
+  {
+    "question": "If inflation is 7% and a product costs R100 this year, what is its expected cost next year?",
+    "correct_answer": "R107",
+    "incorrect_answers": [
+      "R100",
+      "R117",
+      "R97",
+      "R107.50",
+      "R110",
+      "R106",
+      "R113"
+    ]
+  },
+  {
+    "question": "Which payslip detail indicates the employee’s contribution to the pension or retirement fund?",
+    "correct_answer": "Pension fund deduction",
+    "incorrect_answers": [
+      "Housing allowance",
+      "Medical aid contribution",
+      "Unemployment Insurance Fund (UIF) deduction",
+      "Value-Added Tax (VAT)",
+      "Income tax (PAYE)",
+      "Skills Development Levy (SDL)",
+      "Travel allowance"
+    ]
+  },
+  {
+    "question": "What is PAYE?",
+    "correct_answer": "Pay As You Earn (income tax deducted at source)",
+    "incorrect_answers": [
+      "Payment After Year-End",
+      "Personal Asset Yield Estimate",
+      "Profit After Expenses",
+      "Price At Year-End",
+      "Purchasing Agreement Yield Estimate",
+      "Public Assistance Yield Estimate",
+      "Percentage Annual Yield Estimate"
+    ]
+  },
+  {
+    "question": "Which tax is calculated on the profit a business makes after expenses?",
+    "correct_answer": "Corporate tax",
+    "incorrect_answers": [
+      "Value-Added Tax (VAT)",
+      "Capital gains tax",
+      "Income tax (PAYE)",
+      "Estate duty",
+      "Transfer duty",
+      "Capital transfer tax",
+      "Skills Development Levy (SDL)"
+    ]
+  },
+  {
+    "question": "In budgeting, what term describes money set aside for unexpected costs?",
+    "correct_answer": "Contingency fund",
+    "incorrect_answers": [
+      "Fixed expense",
+      "Variable expense",
+      "Capital expense",
+      "Revenue surplus",
+      "Operating budget",
+      "Depreciation expense",
+      "Variable income"
+    ]
+  },
+  {
+    "question": "Which document would show a business’s cash inflows from operations, investing, and financing?",
+    "correct_answer": "Cash flow statement",
+    "incorrect_answers": [
+      "Balance sheet",
+      "Income statement",
+      "Budget report",
+      "Invoice register",
+      "Purchase order",
+      "Bank statement",
+      "Statement of changes in equity"
+    ]
+  },
+  {
+    "question": "What is a tax deduction?",
+    "correct_answer": "An expense subtracted from taxable income",
+    "incorrect_answers": [
+      "A penalty added to tax owed",
+      "A fee charged by the tax authority",
+      "The total tax payable",
+      "A credit applied after tax calculation",
+      "The base amount for VAT",
+      "A withheld tax percentage",
+      "A capital gain liability"
+    ]
+  },
+  {
+    "question": "Which financial ratio measures a company’s ability to meet short-term obligations?",
+    "correct_answer": "Current ratio",
+    "incorrect_answers": [
+      "Debt-to-equity ratio",
+      "Return on equity (ROE)",
+      "Gross profit margin",
+      "Price-to-earnings ratio",
+      "Quick ratio",
+      "Inventory turnover ratio",
+      "Earnings per share (EPS)"
+    ]
+  },
+  {
+    "question": "If a loan of R50,000 has an annual interest rate of 12% simple interest, what is the interest owed after one year?",
+    "correct_answer": "R6,000",
+    "incorrect_answers": [
+      "R600",
+      "R5,000",
+      "R12,000",
+      "R3,000",
+      "R10,000",
+      "R8,000",
+      "R1,200"
+    ]
+  },
+  {
+    "question": "What does the term 'net pay' refer to on a payslip?",
+    "correct_answer": "Gross pay minus all deductions",
+    "incorrect_answers": [
+      "Total allowances before deductions",
+      "Gross pay plus bonuses",
+      "Total tax payable",
+      "Gross pay minus pension only",
+      "Gross pay before tax",
+      "Total deductions only",
+      "Employer contributions to benefits"
+    ]
+  },
+  {
+    "question": "Which financial document outlines a business’s planned capital expenditures for the next year?",
+    "correct_answer": "Capital budget",
+    "incorrect_answers": [
+      "Operating budget",
+      "Cash flow statement",
+      "Income statement",
+      "Balance sheet",
+      "Invoice register",
+      "Statement of changes in equity",
+      "Expense report"
+    ]
+  },
+  {
+    "question": "What is inflation targeting?",
+    "correct_answer": "A central bank policy to maintain inflation around a set target",
+    "incorrect_answers": [
+      "Setting interest rates solely based on unemployment",
+      "Maintaining currency value constant against the dollar",
+      "Ensuring no change in price levels",
+      "Setting tax rates according to inflation",
+      "Fixed exchange rate policy",
+      "Maintaining interest rates at zero",
+      "Setting government spending based on inflation"
+    ]
+  },
+  {
+    "question": "On a payslip, which deduction is specifically earmarked for employee’s future retirement benefits?",
+    "correct_answer": "Pension/provident fund contribution",
+    "incorrect_answers": [
+      "Unemployment Insurance Fund (UIF) deduction",
+      "Income tax (PAYE)",
+      "Value-Added Tax (VAT)",
+      "Skills Development Levy (SDL)",
+      "Medical aid contribution",
+      "Housing allowance",
+      "Transport allowance"
+    ]
+  },
+  {
+    "question": "Which ratio measures profitability by comparing net income to revenue?",
+    "correct_answer": "Net profit margin",
+    "incorrect_answers": [
+      "Current ratio",
+      "Debt-to-equity ratio",
+      "Quick ratio",
+      "Gross profit margin",
+      "Return on assets (ROA)",
+      "Inventory turnover",
+      "Price-to-earnings (P/E) ratio"
+    ]
+  }
+]
+      
