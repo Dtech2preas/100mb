@@ -3032,18 +3032,6 @@
     ]
   },
   {
-    "question": "Find the area of a regular hexagon with side length 6 cm. (Use formula: A = \frac{3\sqrt{3}}{2}a^2, √3 ≈ 1.732)",
-    "correct_answer": "93.53 cm²",
-    "incorrect_answers": [
-      "62.35 cm²",
-      "108 cm²",
-      "54 cm²",
-      "124 cm²",
-      "77.94 cm²",
-      "36 cm²"
-    ]
-  },
-  {
     "question": "Convert 15.5 m to yards. (1 m ≈ 1.0936 yd)",
     "correct_answer": "16.95 yd",
     "incorrect_answers": [
