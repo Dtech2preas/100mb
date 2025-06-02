@@ -1439,3 +1439,576 @@
       "Evening start"
     ]
   },
+  {
+    "question": "A company’s revenue graph shows a flat line at R50 000 from month 1 to month 3, then rises sharply to R80 000 by month 4. What story does this graph tell?",
+    "correct_answer": "Revenue stayed constant for first three months, then increased significantly in the fourth month",
+    "incorrect_answers": [
+      "Revenue decreased in the first three months, then plateaued",
+      "Revenue increased steadily throughout all four months",
+      "Revenue was unstable with random fluctuations",
+      "Revenue decreased sharply in the fourth month",
+      "Revenue remained at R80 000 throughout",
+      "Revenue peaked at R50 000 in month 4",
+      "Revenue declined after month 2 and then rose"
+    ]
+  },
+  {
+    "question": "A line graph of temperature vs time starts at (0, 15°C) and ends at (6, 27°C). What kind of story is being told?",
+    "correct_answer": "Temperature increased steadily by 2°C per hour",
+    "incorrect_answers": [
+      "Temperature decreased by 2°C per hour",
+      "Temperature remained constant at 15°C",
+      "Temperature fluctuated randomly",
+      "Temperature peaked at 27°C midway then dropped",
+      "Temperature dropped to 15°C at hour 6",
+      "Temperature doubled every hour",
+      "Temperature oscillated between 15°C and 27°C"
+    ]
+  },
+  {
+    "question": "On a graph showing daily website visits, point (7, 350) is plotted. What does this point represent?",
+    "correct_answer": "On day 7, there were 350 visits",
+    "incorrect_answers": [
+      "On day 350, there were 7 visits",
+      "Average visits per day was 350 over 7 days",
+      "Total visits for 7 days was 350",
+      "350 visits happened every 7 hours",
+      "Website visits decreased from 350 to 7",
+      "Visits on day 7 decreased by 350",
+      "Peak visits reached 7 on day 350"
+    ]
+  },
+  {
+    "question": "A graph’s line touches the y-axis at (0, 5). In a cost vs quantity context, what does 5 represent?",
+    "correct_answer": "Fixed cost of R5 when quantity is zero",
+    "incorrect_answers": [
+      "Variable cost per unit",
+      "Total cost for one unit",
+      "Profit when zero units sold",
+      "Break-even point",
+      "Marginal cost at zero quantity",
+      "Average cost for five units",
+      "Revenue at zero units"
+    ]
+  },
+  {
+    "question": "A line on a stock price graph goes down from left to right. What does this indicate?",
+    "correct_answer": "Stock price decreased over time",
+    "incorrect_answers": [
+      "Stock price increased over time",
+      "Stock price remained constant",
+      "Stock price fluctuated randomly",
+      "Volume of shares traded decreased",
+      "Market capitalization rose",
+      "Stock price doubled",
+      "No correlation between time and price"
+    ]
+  },
+  {
+    "question": "A scatter plot shows isolated points at (1, 3), (2, 6), (3, 9). Which graph type is this?",
+    "correct_answer": "Discrete graph",
+    "incorrect_answers": [
+      "Continuous graph connecting points",
+      "Bar graph",
+      "Pie chart",
+      "Histogram",
+      "Line graph with solid line",
+      "Box plot",
+      "Area chart"
+    ]
+  },
+  {
+    "question": "Plot the point (−2, −5). In which quadrant does this point lie?",
+    "correct_answer": "Quadrant III",
+    "incorrect_answers": [
+      "Quadrant I",
+      "Quadrant II",
+      "Quadrant IV",
+      "On the x-axis",
+      "On the y-axis",
+      "At the origin",
+      "Between Quadrants II and III"
+    ]
+  },
+  {
+    "question": "On a graph, one line represents Jane’s savings over time, another line represents Bob’s. If Jane’s line is steeper, what does this imply?",
+    "correct_answer": "Jane’s savings grew faster than Bob’s",
+    "incorrect_answers": [
+      "Bob’s savings grew faster than Jane’s",
+      "Both saved at same rate",
+      "Jane saved money, Bob lost money",
+      "Bob saved money, Jane lost money",
+      "Jane’s savings remained constant",
+      "Bob’s savings remained constant",
+      "They had equal total savings"
+    ]
+  },
+  {
+    "question": "A graph of y vs x passes through points (0, 0) and (4, 16). Which type of relationship is shown if the curve is a straight line?",
+    "correct_answer": "Direct proportionality with slope 4",
+    "incorrect_answers": [
+      "Inverse proportionality",
+      "Quadratic relationship",
+      "Exponential growth",
+      "Constant relationship",
+      "Logarithmic relationship",
+      "Negative correlation",
+      "Nonlinear relationship"
+    ]
+  },
+  {
+    "question": "Which graph shape indicates an exponential relationship?",
+    "correct_answer": "Curve that becomes steeper as x increases",
+    "incorrect_answers": [
+      "Straight line through origin",
+      "Horizontal line",
+      "Parabola opening downward",
+      "Hyperbola approaching axes",
+      "Circle with center at origin",
+      "Sine wave oscillating",
+      "Linear decreasing line"
+    ]
+  },
+  {
+    "question": "On a line graph of speed vs time, the line is horizontal at 60 km/h from t=0 to t=5. How would you interpret this?",
+    "correct_answer": "Speed remained constant at 60 km/h for first 5 hours",
+    "incorrect_answers": [
+      "Speed increased from 0 to 60 km/h over 5 hours",
+      "Speed decreased from 60 km/h to 0 over 5 hours",
+      "Distance traveled was 60 km in 5 hours",
+      "Acceleration was 60 km/h²",
+      "Speed fluctuated between 0 and 60 km/h",
+      "Vehicle stopped after 5 hours",
+      "Speed doubled after 5 hours"
+    ]
+  },
+  {
+    "question": "A graph shows production (y) vs workers (x). It’s a straight line through the origin. What does this indicate?",
+    "correct_answer": "Production is directly proportional to number of workers",
+    "incorrect_answers": [
+      "Production is inversely proportional to workers",
+      "No relationship between production and workers",
+      "Production is constant regardless of workers",
+      "Production increases then decreases",
+      "Production is exponential with workers",
+      "Production is quadratic in workers",
+      "Production decreases as workers increase"
+    ]
+  },
+  {
+    "question": "Plotting (3, 0) on a graph means the point lies on which axis?",
+    "correct_answer": "x-axis",
+    "incorrect_answers": [
+      "y-axis",
+      "Both axes",
+      "Origin",
+      "Line y=3",
+      "Line x=0",
+      "Second quadrant",
+      "Fourth quadrant"
+    ]
+  },
+  {
+    "question": "In a graph of distance vs time, the line from (0, 0) to (5, 100) is straight. What does the slope represent?",
+    "correct_answer": "Average speed of 20 km/h",
+    "incorrect_answers": [
+      "Total distance of 5 km",
+      "Time taken of 100 h",
+      "Acceleration of 20 km/h²",
+      "Distance decreases by 20 km/h",
+      "Speed fluctuates between 5 and 100 km/h",
+      "No movement occurred",
+      "Instantaneous speed at t=0"
+    ]
+  },
+  {
+    "question": "A graph shows two intersecting lines: one rising, one falling. What does their intersection point represent?",
+    "correct_answer": "Point where both variables have equal value",
+    "incorrect_answers": [
+      "Maximum of both variables",
+      "Minimum of both variables",
+      "Where both graphs are parallel",
+      "Where both graphs are discontinuous",
+      "Where both variables are independent",
+      "Maximum difference between variables",
+      "Where one variable is zero"
+    ]
+  },
+  {
+    "question": "A graph’s line crosses the x-axis at (8, 0). What does this indicate in a profit vs units sold graph?",
+    "correct_answer": "Break-even point at 8 units sold",
+    "incorrect_answers": [
+      "Maximum profit at 8 units",
+      "No profit or loss at 0 units",
+      "Loss of 8 units at zero profit",
+      "Profit of zero at infinite units",
+      "Revenue equals cost at 0 units",
+      "Units sold decreases to zero",
+      "Graph is invalid"
+    ]
+  },
+  {
+    "question": "Which graph best represents inverse proportionality between x and y?",
+    "correct_answer": "Hyperbola approaching axes but never touching",
+    "incorrect_answers": [
+      "Straight line through origin",
+      "Parabola opening upward",
+      "Horizontal line",
+      "Vertical line",
+      "Circle",
+      "Sine wave",
+      "U-shaped curve"
+    ]
+  },
+  {
+    "question": "A pattern is defined by aₙ = 2ⁿ. What is a₄?",
+    "correct_answer": "16",
+    "incorrect_answers": [
+      "8",
+      "4",
+      "32",
+      "2",
+      "64",
+      "10",
+      "12"
+    ]
+  },
+  {
+    "question": "Plot the point (−5, 3). How far is it from the y-axis?",
+    "correct_answer": "5 units",
+    "incorrect_answers": [
+      "3 units",
+      "√34 units",
+      "2 units",
+      "8 units",
+      "0 units",
+      "1 unit",
+      "15 units"
+    ]
+  },
+  {
+    "question": "On a graph, y increases by 4 units for each 1 unit increase in x. What is the slope?",
+    "correct_answer": "4",
+    "incorrect_answers": [
+      "1",
+      "0.25",
+      "−4",
+      "−1",
+      "8",
+      "2",
+      "0"
+    ]
+  },
+  {
+    "question": "A graph’s y-axis shows 0, 10, 20, 30 in equal intervals. What is the scale per division?",
+    "correct_answer": "10 units",
+    "incorrect_answers": [
+      "5 units",
+      "20 units",
+      "15 units",
+      "30 units",
+      "2 units",
+      "1 unit",
+      "0 units"
+    ]
+  },
+  {
+    "question": "Which graph shows a continuous function?",
+    "correct_answer": "Line drawn without breaks",
+    "incorrect_answers": [
+      "Series of isolated points",
+      "Bar graph",
+      "Pie chart",
+      "Histograms with gaps",
+      "Stem-and-leaf plot",
+      "Scatter plot without connecting lines",
+      "Discrete frequency table"
+    ]
+  },
+  {
+    "question": "A car travels, stops for 2 hours, then travels again. On a distance vs time graph, what does the flat horizontal segment represent?",
+    "correct_answer": "Car was stationary (distance constant)",
+    "incorrect_answers": [
+      "Car was accelerating",
+      "Car was reversing",
+      "Car traveled at constant speed",
+      "Car traveled at increasing speed",
+      "Car traveled at decreasing speed",
+      "Graph error",
+      "Distance was decreasing"
+    ]
+  },
+  {
+    "question": "Which graph would you use to plot the number of students having birthdays on each day of a month?",
+    "correct_answer": "Discrete bar graph with individual bars for each day",
+    "incorrect_answers": [
+      "Continuous line graph",
+      "Pie chart (for each day)",
+      "Scatter plot with connecting lines",
+      "Histogram with equal intervals of 7 days",
+      "Area chart",
+      "Stem-and-leaf plot",
+      "Exponential curve plot"
+    ]
+  },
+  {
+    "question": "A graph shows a line rising, then flattening out at y=100 from x=5 to x=10. What story is told?",
+    "correct_answer": "Value increased up to 100 by x=5, then remained constant until x=10",
+    "incorrect_answers": [
+      "Value decreased from 100 to lower after x=5",
+      "Value remained zero until x=5 then rose to 100 at x=10",
+      "Value oscillated around 100 between x=5 and x=10",
+      "Value increased past 100 after x=10",
+      "Value dropped to zero after x=5",
+      "Graph is depicting a negative trend",
+      "Graph shows exponential growth"
+    ]
+  },
+  {
+    "question": "Given two straight lines on the same graph: y=2x and y=2x+5, what is their relationship?",
+    "correct_answer": "They are parallel (same slope, different intercepts)",
+    "incorrect_answers": [
+      "They intersect at the origin",
+      "They are perpendicular",
+      "They represent inverse proportion",
+      "They form a hyperbola",
+      "They coincide (same line)",
+      "One is exponential, one is linear",
+      "They intersect at x=5"
+    ]
+  },
+  {
+    "question": "Which graph indicates direct proportion: y= kx?",
+    "correct_answer": "Straight line through origin",
+    "incorrect_answers": [
+      "Curve that flattens as x increases",
+      "Horizontal line",
+      "Vertical line",
+      "Parabola",
+      "Hyperbola",
+      "Oscillating sine wave",
+      "U-shaped curve"
+    ]
+  },
+  {
+    "question": "A graph of y vs x passes through (0, 10) and has a negative slope. What relationship is this?",
+    "correct_answer": "Linear decreasing relationship with intercept 10",
+    "incorrect_answers": [
+      "Direct proportionality",
+      "Inverse proportionality",
+      "Constant function",
+      "Exponential decay",
+      "Quadratic function",
+      "Logarithmic increase",
+      "Hyperbola"
+    ]
+  },
+  {
+    "question": "Plot the coordinates (2, 5) and (2, 10) on a graph. What do these points share?",
+    "correct_answer": "Same x-coordinate (vertical alignment)",
+    "incorrect_answers": [
+      "Same y-coordinate (horizontal alignment)",
+      "Both lie on y-axis",
+      "Both lie on x-axis",
+      "They form a horizontal line",
+      "They are equidistant from origin diagonally",
+      "They lie on y = x line",
+      "They form a 45° angle with axis"
+    ]
+  },
+  {
+    "question": "On a graph showing weight vs age for children, points are scattered. How do you identify trend?",
+    "correct_answer": "Draw a line of best fit through the cluster of points",
+    "incorrect_answers": [
+      "Connect all points in sequential order",
+      "Draw a horizontal line at average weight",
+      "Use a bar graph instead",
+      "Plot a pie chart of ages",
+      "Draw a vertical line at average age",
+      "Ignore outliers and plot them separately",
+      "Assume no trend exists"
+    ]
+  },
+  {
+    "question": "A graph’s y-axis goes from 0 to 100 in increments of 20, and x-axis from 0 to 10 in increments of 2. Which point cannot be plotted accurately without interpolation: (3, 25), (4, 40), (6, 80)?",
+    "correct_answer": "(3, 25)",
+    "incorrect_answers": [
+      "(4, 40)",
+      "(6, 80)",
+      "(2, 20)",
+      "(5, 60)",
+      "(0, 0)",
+      "(10, 100)",
+      "(8, 90)"
+    ]
+  },
+  {
+    "question": "Which graph type would best show how population grows each year from 2000 to 2020?",
+    "correct_answer": "Continuous line graph plotting each year",
+    "incorrect_answers": [
+      "Pie chart of population years",
+      "Histogram with 5-year bins",
+      "Scatter plot of random points",
+      "Bar graph without connecting lines",
+      "Box plot of population distribution",
+      "Stem-and-leaf plot",
+      "Hyperbolic graph"
+    ]
+  },
+  {
+    "question": "If a graph’s line for sales goes from (1, 50) to (2, 50) to (3, 80), what happened between month 1 and 2?",
+    "correct_answer": "Sales remained constant at 50",
+    "incorrect_answers": [
+      "Sales decreased from 50 to 0",
+      "Sales increased from 50 to 80",
+      "Sales fluctuated randomly",
+      "Sales dropped below 50 then rose",
+      "Sales doubled",
+      "Sales tripled",
+      "No data was recorded"
+    ]
+  },
+  {
+    "question": "A graph shows fuel consumption vs distance: y = 10 + 0.5x. What does the constant 10 represent?",
+    "correct_answer": "Fixed fuel consumption regardless of distance (base consumption)",
+    "incorrect_answers": [
+      "Fuel consumption per kilometer",
+      "Maximum fuel capacity",
+      "Distance traveled without fuel",
+      "Fuel efficiency index",
+      "Half the distance traveled",
+      "Variable fuel consumption per km",
+      "Break-even consumption point"
+    ]
+  },
+  {
+    "question": "Which graph best represents a quantity that doubles every hour starting at 1?",
+    "correct_answer": "Exponential curve passing through (0,1), (1,2), (2,4), (3,8)",
+    "incorrect_answers": [
+      "Straight line through origin",
+      "Horizontal line at y=1",
+      "Parabolic curve y=x²",
+      "Hyperbola y=1/x",
+      "Logarithmic curve",
+      "Oscillating sine wave",
+      "Linear decreasing line"
+    ]
+  },
+  {
+    "question": "Plot (0, 0.5) on a graph where x-axis is time in years and y-axis is interest rate. What does 0.5 represent?",
+    "correct_answer": "Interest rate of 0.5% at time zero",
+    "incorrect_answers": [
+      "Interest rate of 50% at time zero",
+      "Half a year has passed",
+      "Zero interest rate after 0.5 years",
+      "Principal amount in thousands",
+      "Rate increased by 0.5 units per year",
+      "Balance after 0.5 years",
+      "Interest rate will be 0.5% after 1 year"
+    ]
+  },
+  {
+    "question": "On a graph with two lines, one is y=3x, the other y=−3x+9. Where do they intersect?",
+    "correct_answer": "(1.5, 4.5)",
+    "incorrect_answers": [
+      "(3, 0)",
+      "(0, 9)",
+      "(1, 3)",
+      "(2, 6)",
+      "(−1.5, 4.5)",
+      "(0, 0)",
+      "(1.5, −4.5)"
+    ]
+  },
+  {
+    "question": "A graph of y vs x has a curve that flattens as x increases. What type of relationship might this be?",
+    "correct_answer": "Logarithmic growth",
+    "incorrect_answers": [
+      "Linear proportional",
+      "Inverse proportional",
+      "Quadratic growth",
+      "Exponential decay",
+      "Constant function",
+      "Sinusoidal relationship",
+      "Hyperbolic increase"
+    ]
+  },
+  {
+    "question": "Which graph indicates that growth rate is slowing down over time?",
+    "correct_answer": "Curve rising but with decreasing slope",
+    "incorrect_answers": [
+      "Straight line with constant slope",
+      "Hyperbola with increasing curvature",
+      "Curve with increasing steepness",
+      "Horizontal line",
+      "Vertical line",
+      "Oscillating wave",
+      "Parabola opening downward"
+    ]
+  },
+  {
+    "question": "Plot the points (2, 8) and (4, 16). If you draw a straight line between them, what does that imply about the relationship?",
+    "correct_answer": "It suggests a linear relationship between x and y",
+    "incorrect_answers": [
+      "It implies an exponential relationship",
+      "It indicates no relationship",
+      "It indicates an inverse relationship",
+      "It indicates a quadratic relationship",
+      "It indicates a logarithmic relationship",
+      "It indicates a constant relationship",
+      "It indicates a sinusoidal relationship"
+    ]
+  },
+  {
+    "question": "A graph’s y-axis spans 0 to 100, x-axis spans 0 to 20. If a point is at (10, 50), where would it lie on the grid?",
+    "correct_answer": "Midpoint horizontally, midpoint vertically",
+    "incorrect_answers": [
+      "Quarter point horizontally, midpoint vertically",
+      "Midpoint horizontally, quarter point vertically",
+      "Three-quarters horizontally, midpoint vertically",
+      "Midpoint horizontally, three-quarters vertically",
+      "At origin",
+      "Top right corner",
+      "Bottom left corner"
+    ]
+  },
+  {
+    "question": "Which graph shows decreasing speed over time until coming to rest?",
+    "correct_answer": "Straight line sloping downward to x-axis",
+    "incorrect_answers": [
+      "Straight line sloping upward from origin",
+      "Horizontal line above x-axis",
+      "Hyperbola above x-axis",
+      "Parabola opening upward",
+      "Curve oscillating around x-axis",
+      "Vertical line",
+      "Curve rising exponentially"
+    ]
+  },
+  {
+    "question": "On a distance vs time graph, the line goes up then flattens at y=30. What does the flat portion indicate?",
+    "correct_answer": "Object stopped moving at 30 km",
+    "incorrect_answers": [
+      "Object moving away at constant speed",
+      "Object reversing direction",
+      "Object accelerating at 30 km/h²",
+      "Object moving at increasing speed",
+      "Object moved back to origin",
+      "Object moved faster than before",
+      "Object’s distance decreased to 30 km"
+    ]
+  },
+  {
+    "question": "What does a point sitting exactly on the y-axis tell you about its x-coordinate?",
+    "correct_answer": "x-coordinate is zero",
+    "incorrect_answers": [
+      "y-coordinate is zero",
+      "Both x and y are zero",
+      "x-coordinate equals y-coordinate",
+      "Point lies in Quadrant I",
+      "x-coordinate equals 1",
+      "x-coordinate equals −1",
+      "Point lies on diagonal"
+    ]
+  }
+]
