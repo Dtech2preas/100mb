@@ -1,66 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Under Development</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DTECH Mathematical Literacy Quizzes</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: #ccc;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 3rem 1rem;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 1.5rem;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      margin-bottom: 1.5rem;
+      color: #00ffff;
+      font-size: 1.8rem;
+    }
+    .btn-group {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      color: #333;
-      text-align: center;
+      gap: 0.8rem;
     }
-
-    .container {
-      padding: 2rem;
+    a {
+      text-decoration: none;
+      background: #00ffff;
+      color: #000;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: background 0.3s;
     }
-
-    h1 {
-      font-size: 2.5rem;
-      color: #0066cc;
+    a:hover {
+      background: #00dddd;
     }
-
-    p {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-    }
-
-    .loader {
-      border: 8px solid #f3f3f3;
-      border-top: 8px solid #0066cc;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      margin: 2rem auto;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
     footer {
-      position: absolute;
-      bottom: 20px;
+      text-align: center;
+      padding: 1rem;
       font-size: 0.9rem;
-      color: #888;
+      color: #aaa;
+      background-color: #111;
     }
   </style>
 </head>
 <body>
+
+  <header>
+    <h1>DTECH Mathematical Literacy Quizzes</h1>
+    <div class="tagline">Choose your topic to start</div>
+  </header>
+
   <div class="container">
-    <h1>🚧 Page Under Development</h1>
-    <div class="loader"></div>
-    <p>We're working hard to bring you something amazing. Please check back soon!</p>
+    <div class="card">
+      <h2>Topics</h2>
+      <div class="btn-group">
+        <a href="x1lite.html">
+          Numbers and Calculations &amp; Patterns and Graphs
+        </a>
+        <a href="x2lite.html">
+          Finance &amp; Measurement &amp; Maps, Plans and Other Representations of the Physical World
+        </a>
+        <a href="x3lite.html">
+          Data Handling &amp; Probability
+        </a>
+      </div>
+    </div>
   </div>
-  <footer>&copy; 2025 DTECH | Powered by Preasx24</footer>
+
+  <footer>
+    © 2025 DTECH • Powered by Preasx24
+  </footer>
+
 </body>
 </html>
