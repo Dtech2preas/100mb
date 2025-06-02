@@ -1,5 +1,582 @@
 [
   {
+    "question": "A graph shows the number of books sold over 12 months, rising steadily from 50 to 200. What type of graph story is being told?",
+    "correct_answer": "Increasing trend in sales",
+    "incorrect_answers": [
+      "Fluctuating sales",
+      "Decreasing trend in sales",
+      "Constant sales",
+      "Seasonal dip in sales",
+      "Random sales pattern",
+      "Cyclical sales with peaks"
+    ]
+  },
+  {
+    "question": "A line graph starts at (0, 0) and ends at (10, 50). How would you describe the story it tells?",
+    "correct_answer": "Sales increased by 5 units per time period",
+    "incorrect_answers": [
+      "Sales decreased over time",
+      "Sales remained constant",
+      "Sales fluctuated randomly",
+      "Sales peaked then declined",
+      "Sales had no clear pattern",
+      "Sales increased then plateaued"
+    ]
+  },
+  {
+    "question": "What does a bar graph showing test scores of two classes side by side tell you?",
+    "correct_answer": "Comparison of performance between classes",
+    "incorrect_answers": [
+      "Trend of scores over time",
+      "Exact distribution of individual scores",
+      "Correlation between subjects",
+      "Detailed frequency distribution",
+      "Average score improvement",
+      "Cumulative total of scores"
+    ]
+  },
+  {
+    "question": "If a pie chart shows that 40% of respondents prefer coffee, what story is being told?",
+    "correct_answer": "Distribution of preferences among choices",
+    "incorrect_answers": [
+      "Change in preference over time",
+      "Exact number of respondents",
+      "Ranking of choices by popularity",
+      "Correlation between age and preference",
+      "Frequency of purchases per day",
+      "Trend of coffee consumption"
+    ]
+  },
+  {
+    "question": "Plot the point (−3, 4) on a Cartesian plane. Which quadrant does it lie in?",
+    "correct_answer": "Quadrant II",
+    "incorrect_answers": [
+      "Quadrant I",
+      "Quadrant III",
+      "Quadrant IV",
+      "On the x-axis",
+      "On the y-axis",
+      "At the origin"
+    ]
+  },
+  {
+    "question": "What are the coordinates of the point located 5 units to the right of the origin and 2 units down?",
+    "correct_answer": "(5, −2)",
+    "incorrect_answers": [
+      "(−5, 2)",
+      "(2, −5)",
+      "(5, 2)",
+      "(−5, −2)",
+      "(2, 5)",
+      "(−2, 5)"
+    ]
+  },
+  {
+    "question": "A point lies on the x-axis at 7. What are its coordinates?",
+    "correct_answer": "(7, 0)",
+    "incorrect_answers": [
+      "(0, 7)",
+      "(-7, 0)",
+      "(7, 7)",
+      "(0, −7)",
+      "(−7, −7)",
+      "(7, −7)"
+    ]
+  },
+  {
+    "question": "Which coordinate pair represents a point in Quadrant IV?",
+    "correct_answer": "(4, −3)",
+    "incorrect_answers": [
+      "(−4, 3)",
+      "(−4, −3)",
+      "(3, 4)",
+      "(−3, 4)",
+      "(3, −4)",
+      "(−3, −4)"
+    ]
+  },
+  {
+    "question": "On a line graph, the point (8, 12) is plotted. What does the x-value represent if the graph shows time vs distance?",
+    "correct_answer": "Time (e.g., 8 hours)",
+    "incorrect_answers": [
+      "Speed at that point",
+      "Distance travelled",
+      "Rate of change",
+      "Initial position",
+      "Maximum height",
+      "Average velocity"
+    ]
+  },
+  {
+    "question": "A graph of temperature vs time has a point at (6, 22). What does 22 represent?",
+    "correct_answer": "Temperature (°C) at 6 hours",
+    "incorrect_answers": [
+      "Time in minutes",
+      "Temperature in Fahrenheit",
+      "Average daily temperature",
+      "Rate of temperature change",
+      "Humidity level",
+      "Wind speed"
+    ]
+  },
+  {
+    "question": "Given a line graph with y-axis labeled ‘Revenue (R)’ and x-axis labeled ‘Months’, how would you read the point (4, 5000)?",
+    "correct_answer": "In month 4, revenue was R5000",
+    "incorrect_answers": [
+      "Revenue increased by R5000 in 4 months",
+      "Total revenue over 4 months is R5000",
+      "Average revenue is R5000 per month",
+      "Revenue will be R5000 next month",
+      "Revenue dropped to R5000 in month 4",
+      "Cumulative revenue up to month 4 is R5000"
+    ]
+  },
+  {
+    "question": "A graph shows population vs time with a point at (1950, 2.5). What information is in the y-axis?",
+    "correct_answer": "Population in billions in 1950",
+    "incorrect_answers": [
+      "Rate of population growth",
+      "Population density",
+      "Birth rate",
+      "Population change from previous year",
+      "Percent increase in population",
+      "Number of births per 1000"
+    ]
+  },
+  {
+    "question": "If a graph intersects the x-axis at (3, 0), what does that point indicate in context of profit vs units sold?",
+    "correct_answer": "Break-even at 3 units sold",
+    "incorrect_answers": [
+      "Maximum profit at 3 units",
+      "Zero units sold",
+      "Maximum loss at 3 units",
+      "First sale occurs at 3 units",
+      "Profit is highest at 3 units",
+      "No relationship at 3 units"
+    ]
+  },
+  {
+    "question": "When a line touches the y-axis at (0, 8) on a cost vs quantity graph, what does y-intercept signify?",
+    "correct_answer": "Fixed cost of 8 when quantity is zero",
+    "incorrect_answers": [
+      "Variable cost per unit",
+      "Total cost when one unit is produced",
+      "Profit at zero quantity",
+      "Break-even point",
+      "Marginal cost",
+      "Average cost"
+    ]
+  },
+  {
+    "question": "A graph shows a line going up from left to right. What does this tell you about the relationship between variables?",
+    "correct_answer": "As x increases, y increases (positive correlation)",
+    "incorrect_answers": [
+      "As x increases, y decreases",
+      "No correlation between x and y",
+      "y remains constant when x changes",
+      "x decreases as y increases",
+      "Variables are independent",
+      "y decreases then increases"
+    ]
+  },
+  {
+    "question": "In a distance vs time graph, a downward sloping line indicates what?",
+    "correct_answer": "Object returning towards start (decreasing distance)",
+    "incorrect_answers": [
+      "Object speeding up",
+      "Object stationary",
+      "Object moving away at constant speed",
+      "Time reversing",
+      "Distance remains constant",
+      "Object oscillating"
+    ]
+  },
+  {
+    "question": "A graph has points (1, 2), (2, 4), (3, 6). Is this increasing or decreasing?",
+    "correct_answer": "Increasing",
+    "incorrect_answers": [
+      "Decreasing",
+      "Constant",
+      "Fluctuating",
+      "Plateauing",
+      "No trend",
+      "Exponential"
+    ]
+  },
+  {
+    "question": "Which graph type represents data where x can take any real value and y is defined continuously?",
+    "correct_answer": "Continuous graph",
+    "incorrect_answers": [
+      "Discrete graph",
+      "Bar graph",
+      "Pie chart",
+      "Histogram",
+      "Scatter plot without lines",
+      "Stem-and-leaf plot"
+    ]
+  },
+  {
+    "question": "The number of students in a class plotted against age (in whole years) yields isolated points. What graph is this?",
+    "correct_answer": "Discrete graph",
+    "incorrect_answers": [
+      "Continuous graph",
+      "Line graph with continuous line",
+      "Histogram",
+      "Pie chart",
+      "Bar graph",
+      "Box plot"
+    ]
+  },
+  {
+    "question": "If you plot the attendance of people entering a store at each hour, forming separate dots, what best describes this graph?",
+    "correct_answer": "Discrete data representation",
+    "incorrect_answers": [
+      "Continuous line showing attendance",
+      "Histogram of attendance",
+      "Bar graph for attendance",
+      "Pie chart of attendance",
+      "Scatter plot of random data",
+      "Line of best fit"
+    ]
+  },
+  {
+    "question": "A graph shows two lines: line A rising, line B falling. What does this imply if A represents supply and B represents demand?",
+    "correct_answer": "Supply increases as demand decreases",
+    "incorrect_answers": [
+      "Supply decreases as demand increases",
+      "Both supply and demand increase",
+      "Both supply and demand decrease",
+      "Supply constant, demand fluctuates",
+      "Demand constant, supply fluctuates",
+      "Supply and demand independent"
+    ]
+  },
+  {
+    "question": "On a speed vs time graph, two lines represent two vehicles. If one line is steeper, what does this indicate?",
+    "correct_answer": "Vehicle with steeper line accelerates faster",
+    "incorrect_answers": [
+      "Vehicle travels slower",
+      "Vehicle is stationary",
+      "Vehicle decelerates",
+      "Vehicle travels constant speed",
+      "Vehicle travels backwards",
+      "Vehicle travels at variable speed"
+    ]
+  },
+  {
+    "question": "Two lines intersect at (5, 20) on a cost vs quantity graph. What situation does this represent for two suppliers?",
+    "correct_answer": "Both suppliers have same cost at quantity 5",
+    "incorrect_answers": [
+      "Both have maximum profit at that point",
+      "Both stop production at quantity 5",
+      "Both suppliers have zero cost",
+      "Both suppliers produce 20 units at quantity 5",
+      "Neither can produce beyond 5 units",
+      "Costs are unrelated"
+    ]
+  },
+  {
+    "question": "Which graph illustrates direct proportion between x and y?",
+    "correct_answer": "Straight line through origin",
+    "incorrect_answers": [
+      "Curve through origin",
+      "Horizontal line",
+      "Vertical line",
+      "Parabola",
+      "Exponential curve",
+      "Broken line segments"
+    ]
+  },
+  {
+    "question": "If y varies directly as x and y = 12 when x = 4, what is the equation?",
+    "correct_answer": "y = 3x",
+    "incorrect_answers": [
+      "y = 4x",
+      "y = x/3",
+      "y = x + 3",
+      "y = 12x",
+      "y = x²",
+      "y = 3/x"
+    ]
+  },
+  {
+    "question": "Which graph represents an inverse (indirect) proportion between x and y?",
+    "correct_answer": "Hyperbola decreasing as x increases",
+    "incorrect_answers": [
+      "Straight line through origin",
+      "Horizontal line",
+      "Vertical line",
+      "Parabola opening upward",
+      "Exponential growth curve",
+      "Circle"
+    ]
+  },
+  {
+    "question": "Given y = k/x and y = 6 when x = 2, what is k?",
+    "correct_answer": "12",
+    "incorrect_answers": [
+      "8",
+      "3",
+      "2",
+      "6",
+      "14",
+      "10"
+    ]
+  },
+  {
+    "question": "Identify the next three terms in the exponential pattern 3, 6, 12, 24, …",
+    "correct_answer": "48, 96, 192",
+    "incorrect_answers": [
+      "30, 36, 42",
+      "27, 54, 108",
+      "6, 12, 24",
+      "24, 48, 96",
+      "72, 144, 288",
+      "36, 48, 60"
+    ]
+  },
+  {
+    "question": "Plot the exponential pattern y = 2ⁿ for n = 0,1,2,3. Which point lies on the graph?",
+    "correct_answer": "(3, 8)",
+    "incorrect_answers": [
+      "(2, 4)",
+      "(1, 2)",
+      "(0, 1)",
+      "(4, 16)",
+      "(3, 6)",
+      "(2, 2)"
+    ]
+  },
+  {
+    "question": "A graph of y = 5 × 2ⁿ passes through (4, y). What is y?",
+    "correct_answer": "80",
+    "incorrect_answers": [
+      "40",
+      "20",
+      "160",
+      "10",
+      "400",
+      "5"
+    ]
+  },
+  {
+    "question": "Which graph pattern indicates doubling each step?",
+    "correct_answer": "Exponential growth",
+    "incorrect_answers": [
+      "Linear growth",
+      "Quadratic growth",
+      "Logarithmic growth",
+      "Sinusoidal pattern",
+      "Constant line",
+      "Decreasing line"
+    ]
+  },
+  {
+    "question": "How would you identify a quadratic relationship on a graph?",
+    "correct_answer": "Parabolic curve",
+    "incorrect_answers": [
+      "Straight line through origin",
+      "Horizontal line",
+      "Hyperbola",
+      "Horizontal parabola",
+      "Exponential curve",
+      "Circle"
+    ]
+  },
+  {
+    "question": "A graph of y vs x shows y = x². What is the shape of the curve?",
+    "correct_answer": "U-shaped parabola",
+    "incorrect_answers": [
+      "Straight line",
+      "Hyperbola",
+      "Circle",
+      "Sine wave",
+      "Exponential curve",
+      "Elliptical curve"
+    ]
+  },
+  {
+    "question": "When reading the scale on a graph, if the x-axis goes from 0 to 100 in 5 equal intervals, what is each interval length?",
+    "correct_answer": "20",
+    "incorrect_answers": [
+      "10",
+      "15",
+      "25",
+      "5",
+      "40",
+      "50"
+    ]
+  },
+  {
+    "question": "On a graph where the y-axis is labeled 0, 10, 20, 30, what is the scale per grid square?",
+    "correct_answer": "10 units",
+    "incorrect_answers": [
+      "5 units",
+      "20 units",
+      "15 units",
+      "30 units",
+      "25 units",
+      "1 unit"
+    ]
+  },
+  {
+    "question": "If the x-axis scale is 2 units per grid line and a point is at x = 6, how many grid lines to the right of origin?",
+    "correct_answer": "3",
+    "incorrect_answers": [
+      "2",
+      "4",
+      "5",
+      "1",
+      "6",
+      "0"
+    ]
+  },
+  {
+    "question": "A graph’s y-axis runs from 0 to 50 with tick marks at every 5. What does each tick represent?",
+    "correct_answer": "5 units",
+    "incorrect_answers": [
+      "10 units",
+      "1 unit",
+      "2 units",
+      "15 units",
+      "20 units",
+      "25 units"
+    ]
+  },
+  {
+    "question": "Which graph shows an indirect proportionality between speed and travel time?",
+    "correct_answer": "Curve that decreases as speed increases",
+    "incorrect_answers": [
+      "Straight line with positive slope",
+      "Line through origin",
+      "Horizontal line",
+      "Vertical line",
+      "Parabola opening upward",
+      "Sinusoidal wave"
+    ]
+  },
+  {
+    "question": "A company’s revenue graph has time on the x-axis and revenue on the y-axis. If revenue doubles every year, what pattern appears?",
+    "correct_answer": "Exponential growth curve",
+    "incorrect_answers": [
+      "Linear straight line",
+      "Logarithmic curve",
+      "Parabolic curve",
+      "Hyperbolic decay",
+      "Horizontal line",
+      "Sinusoidal wave"
+    ]
+  },
+  {
+    "question": "A graph shows population growth leveling off after rapid increase. What is this pattern called?",
+    "correct_answer": "Logistic growth curve",
+    "incorrect_answers": [
+      "Exponential growth",
+      "Linear growth",
+      "Quadratic growth",
+      "Hyperbolic decrease",
+      "Sinusoidal fluctuation",
+      "Constant trend"
+    ]
+  },
+  {
+    "question": "How can you tell if a graph represents discrete data rather than continuous?",
+    "correct_answer": "Points are isolated and not joined by lines",
+    "incorrect_answers": [
+      "Points form a smooth curve",
+      "Graph has bars instead of points",
+      "Graph uses pie slices",
+      "Points lie on a straight line",
+      "Graph shows a shaded area",
+      "Graph has a wavy line"
+    ]
+  },
+  {
+    "question": "When two lines on the same graph have different slopes, what does that indicate?",
+    "correct_answer": "Different rates of change for each data set",
+    "incorrect_answers": [
+      "Same rate of change",
+      "No relationship between data sets",
+      "Both data sets are constant",
+      "One data set is periodic",
+      "Both data sets have exponential growth",
+      "Both data sets intersect at origin"
+    ]
+  },
+  {
+    "question": "A graph has one line with positive slope and another with negative slope. At their intersection, what occurs?",
+    "correct_answer": "Both variables have equal values at that point",
+    "incorrect_answers": [
+      "Variables have maximum difference",
+      "Both graphs flatten out",
+      "Variables are inversely proportional at that point",
+      "Data sets become equal for all x-values",
+      "Point of discontinuity",
+      "Asymptote exists"
+    ]
+  },
+  {
+    "question": "Which graph type would you use to show continuous temperature changes over a day?",
+    "correct_answer": "Continuous line graph",
+    "incorrect_answers": [
+      "Bar graph",
+      "Discrete scatter plot",
+      "Pie chart",
+      "Histogram",
+      "Box plot",
+      "Stem-and-leaf plot"
+    ]
+  },
+  {
+    "question": "On a graph comparing two functions, y = 2x and y = x², at which x-value do they intersect besides zero?",
+    "correct_answer": "2",
+    "incorrect_answers": [
+      "1",
+      "4",
+      "3",
+      "−2",
+      "−1",
+      "0.5"
+    ]
+  },
+  {
+    "question": "A graph shows distance vs time for two runners. One line is flat, the other sloped. What does the flat line represent?",
+    "correct_answer": "Runner at rest (distance constant)",
+    "incorrect_answers": [
+      "Runner speeding up",
+      "Runner finishing race",
+      "Runner decelerating",
+      "Runner running backward",
+      "Runner running at constant speed",
+      "Runner changing direction"
+    ]
+  },
+  {
+    "question": "How do you distinguish direct proportion from linear but non-proportional on a graph?",
+    "correct_answer": "Direct proportion line passes through origin; linear non-proportional does not",
+    "incorrect_answers": [
+      "Direct proportional line is curved",
+      "Non-proportional line is horizontal",
+      "Non-proportional line crosses y-axis at zero",
+      "Direct proportion line is vertical",
+      "Non-proportional line is diagonal downward",
+      "Direct proportion is a parabola"
+    ]
+  },
+  {
+    "question": "A graph’s x-axis is marked every 2 units, and y-axis every 5 units. What is wrong with plotting a point at (3, 7)?",
+    "correct_answer": "Point falls between grid lines; requires interpolation",
+    "incorrect_answers": [
+      "Point is outside graph limits",
+      "Coordinates are reversed",
+      "Axes do not support those values",
+      "Point lies on axis, not grid",
+      "Graph scale is incorrect",
+      "Point should be (5, 10)"
+    ]
+  }
+][
+  {
     "question": "Using a calculator, what is (7² + 3) × √16?",
     "correct_answer": "208",
     "incorrect_answers": [
