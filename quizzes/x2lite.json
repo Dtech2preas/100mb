@@ -2286,6 +2286,858 @@
       "Inventory turnover",
       "Price-to-earnings (P/E) ratio"
     ]
+  },
+{
+    "question": "A map has a scale of 1:25 000. On the map, two points are 8 cm apart. What is the actual distance between them in kilometers?",
+    "correct_answer": "2 km",
+    "incorrect_answers": [
+      "0.2 km",
+      "20 km",
+      "200 km",
+      "0.8 km",
+      "8 km",
+      "4 km"
+    ]
+  },
+  {
+    "question": "On a plan drawn to scale 1:200, a building measures 15 cm by 10 cm. What are the real dimensions in meters?",
+    "correct_answer": "30 m by 20 m",
+    "incorrect_answers": [
+      "3 m by 2 m",
+      "150 m by 100 m",
+      "7.5 m by 5 m",
+      "300 m by 200 m",
+      "1.5 m by 1 m",
+      "75 m by 50 m"
+    ]
+  },
+  {
+    "question": "A contour map shows contour lines at 50 m intervals. If two adjacent lines are labeled 150 m and 200 m, what is the height of a point halfway between them?",
+    "correct_answer": "175 m",
+    "incorrect_answers": [
+      "150 m",
+      "200 m",
+      "162.5 m",
+      "125 m",
+      "100 m",
+      "180 m"
+    ]
+  },
+  {
+    "question": "Which map projection preserves area but distorts shape near the poles?",
+    "correct_answer": "Equal-area projection",
+    "incorrect_answers": [
+      "Mercator projection",
+      "Azimuthal projection",
+      "Robinson projection",
+      "Orthographic projection",
+      "Conformal projection",
+      "Plate Carrée projection"
+    ]
+  },
+  {
+    "question": "If a model of a mountain is built with vertical exaggeration of 4× and the actual mountain is 800 m tall, how tall is it on the model?",
+    "correct_answer": "200 cm",
+    "incorrect_answers": [
+      "20 cm",
+      "32 cm",
+      "100 cm",
+      "800 cm",
+      "4 cm",
+      "400 cm"
+    ]
+  },
+  {
+    "question": "On a topographic map, closely spaced contour lines indicate what feature?",
+    "correct_answer": "Steep slope",
+    "incorrect_answers": [
+      "Gentle slope",
+      "Flat area",
+      "Valley floor",
+      "River channel",
+      "Plateau",
+      "Depression"
+    ]
+  },
+  {
+    "question": "A map’s grid reference is given as 34C. What does 'C' represent?",
+    "correct_answer": "Column (east-west) grid line",
+    "incorrect_answers": [
+      "Contour interval",
+      "Scale factor",
+      "Latitude band",
+      "Elevation marker",
+      "Magnetic declination",
+      "Latitude quadrangle"
+    ]
+  },
+  {
+    "question": "A plan-view drawing shows a dashed rectangle inside the building outline. What is most likely indicated?",
+    "correct_answer": "Proposed extension",
+    "incorrect_answers": [
+      "Window location",
+      "Load-bearing wall",
+      "Furniture layout",
+      "Existing structure",
+      "Drainage line",
+      "Electrical conduit"
+    ]
+  },
+  {
+    "question": "Which symbol on a map indicates a cemetery?",
+    "correct_answer": "Crossed gravestones icon or cross symbol with black outline",
+    "incorrect_answers": [
+      "Blue wave symbol",
+      "Black triangle",
+      "Green tree icon",
+      "Red square",
+      "Black dashed line",
+      "Yellow star"
+    ]
+  },
+  {
+    "question": "If a scale bar on a map shows 5 cm = 10 km, what is the representative fraction?",
+    "correct_answer": "1:200 000",
+    "incorrect_answers": [
+      "1:500 000",
+      "1:20 000",
+      "1:2 000",
+      "1:100 000",
+      "1:50 000",
+      "1:250 000"
+    ]
+  },
+  {
+    "question": "On a map with scale 1:50 000, a forest area appears as a 4 cm² patch. What is the real-world area in hectares?",
+    "correct_answer": "1 ha",
+    "incorrect_answers": [
+      "0.4 ha",
+      "4 ha",
+      "10 ha",
+      "0.1 ha",
+      "40 ha",
+      "2 ha"
+    ]
+  },
+  {
+    "question": "A plan uses grid squares of 100 m per side. If a landmark is located two squares east and three squares north of the origin, what are its coordinates in meters?",
+    "correct_answer": "(200 m, 300 m)",
+    "incorrect_answers": [
+      "(2 m, 3 m)",
+      "(20 m, 30 m)",
+      "(300 m, 200 m)",
+      "(2000 m, 3000 m)",
+      "(100 m, 150 m)",
+      "(250 m, 350 m)"
+    ]
+  },
+  {
+    "question": "Which type of model uses layers of fixed-thickness sheets stacked to approximate terrain?",
+    "correct_answer": "Stacked contour model",
+    "incorrect_answers": [
+      "Wireframe model",
+      "3D printed model",
+      "Block diagram",
+      "Perspective drawing",
+      "Orthographic projection",
+      "Shade relief model"
+    ]
+  },
+  {
+    "question": "On a city plan, what does a solid black line typically represent?",
+    "correct_answer": "Boundary wall or major building outline",
+    "incorrect_answers": [
+      "Footpath",
+      "River",
+      "Contour line",
+      "Parking area",
+      "Underground utility",
+      "Greenbelt"
+    ]
+  },
+  {
+    "question": "If a model-building has a base length of 12 cm at 1:150 scale, what is the real base length in meters?",
+    "correct_answer": "18 m",
+    "incorrect_answers": [
+      "8 m",
+      "1.8 m",
+      "180 m",
+      "2.5 m",
+      "20 m",
+      "16 m"
+    ]
+  },
+  {
+    "question": "On a nautical chart, soundings are given as numbers. What do they represent?",
+    "correct_answer": "Depth of water at specific points (in meters or fathoms)",
+    "incorrect_answers": [
+      "Elevation of land features",
+      "Distance to shoreline",
+      "Wind speed",
+      "Wave height",
+      "Current strength",
+      "Magnetic variation"
+    ]
+  },
+  {
+    "question": "Which unit is appropriate for measuring the length of a football field?",
+    "correct_answer": "Meters",
+    "incorrect_answers": [
+      "Milliliters",
+      "Grams",
+      "Liters",
+      "Kilograms",
+      "Cubic centimeters",
+      "Milligrams"
+    ]
+  },
+  {
+    "question": "Convert 5.6 kilometers into meters.",
+    "correct_answer": "5 600 m",
+    "incorrect_answers": [
+      "560 m",
+      "56 000 m",
+      "0.56 m",
+      "5.06 m",
+      "50 600 m",
+      "5.006 m"
+    ]
+  },
+  {
+    "question": "A rectangular plot measures 120 m by 80 m. What is the perimeter in meters?",
+    "correct_answer": "400 m",
+    "incorrect_answers": [
+      "960 m",
+      "200 m",
+      "320 m",
+      "480 m",
+      "280 m",
+      "240 m"
+    ]
+  },
+  {
+    "question": "Find the area of a right-angled triangle with base 14 cm and height 9 cm.",
+    "correct_answer": "63 cm²",
+    "incorrect_answers": [
+      "126 cm²",
+      "23 cm²",
+      "63 m²",
+      "63 cm",
+      "41 cm²",
+      "105 cm²"
+    ]
+  },
+  {
+    "question": "Convert 250 g to kilograms.",
+    "correct_answer": "0.25 kg",
+    "incorrect_answers": [
+      "25 kg",
+      "2.5 kg",
+      "0.025 kg",
+      "2500 kg",
+      "0.0025 kg",
+      "1.25 kg"
+    ]
+  },
+  {
+    "question": "A cylinder has a radius of 3 cm and a height of 10 cm. What is its volume in cubic centimeters? (Use π ≈ 3.14)",
+    "correct_answer": "282.6 cm³",
+    "incorrect_answers": [
+      "188.4 cm³",
+      "314 cm³",
+      "94.2 cm³",
+      "94 cm³",
+      "3140 cm³",
+      "2826 cm³"
+    ]
+  },
+  {
+    "question": "How many milliliters are in 2.75 L?",
+    "correct_answer": "2750 mL",
+    "incorrect_answers": [
+      "275 mL",
+      "27.5 mL",
+      "0.275 mL",
+      "27 500 mL",
+      "2.75 mL",
+      "275 L"
+    ]
+  },
+  {
+    "question": "A rectangular prism measures 8 m by 5 m by 3 m. What is its volume in cubic meters?",
+    "correct_answer": "120 m³",
+    "incorrect_answers": [
+      "16 m³",
+      "240 m³",
+      "26 m³",
+      "80 m³",
+      "40 m³",
+      "15 m³"
+    ]
+  },
+  {
+    "question": "Convert 3 500 mL to liters and milliliters.",
+    "correct_answer": "3 L 500 mL",
+    "incorrect_answers": [
+      "350 L 0 mL",
+      "35 L 0 mL",
+      "0 L 350 mL",
+      "3.5 mL 0 L",
+      "0.35 L 0 mL",
+      "35 mL 0 L"
+    ]
+  },
+  {
+    "question": "Find the area of a circle with diameter 12 cm. (Use π ≈ 3.14)",
+    "correct_answer": "113.04 cm²",
+    "incorrect_answers": [
+      "75.36 cm²",
+      "150.72 cm²",
+      "38.48 cm²",
+      "226.08 cm²",
+      "36 cm²",
+      "44.88 cm²"
+    ]
+  },
+  {
+    "question": "A swimmer starts at 08:45 and finishes at 10:12. How much time elapsed?",
+    "correct_answer": "1 h 27 min",
+    "incorrect_answers": [
+      "1 h 47 min",
+      "2 h 27 min",
+      "1 h 22 min",
+      "2 h 12 min",
+      "1 h 37 min",
+      "1 h 17 min"
+    ]
+  },
+  {
+    "question": "Convert 1.25 kg to grams.",
+    "correct_answer": "1250 g",
+    "incorrect_answers": [
+      "125 g",
+      "12 500 g",
+      "0.125 g",
+      "1 g",
+      "2500 g",
+      "0.0125 g"
+    ]
+  },
+  {
+    "question": "A triangular prism has base area 24 cm² and height 10 cm. What is its volume?",
+    "correct_answer": "240 cm³",
+    "incorrect_answers": [
+      "34 cm³",
+      "48 cm³",
+      "120 cm³",
+      "60 cm³",
+      "2400 cm³",
+      "24 cm³"
+    ]
+  },
+  {
+    "question": "If 3 km of rope weighs 2.4 kg, what is the mass per meter?",
+    "correct_answer": "0.0008 kg/m",
+    "incorrect_answers": [
+      "0.008 kg/m",
+      "0.08 kg/m",
+      "0.00008 kg/m",
+      "0.0002 kg/m",
+      "0.0024 kg/m",
+      "0.024 kg/m"
+    ]
+  },
+  {
+    "question": "Calculate the perimeter of an equilateral triangle with side length 7 cm.",
+    "correct_answer": "21 cm",
+    "incorrect_answers": [
+      "14 cm",
+      "28 cm",
+      "10 cm",
+      "18 cm",
+      "24 cm",
+      "21 m"
+    ]
+  },
+  {
+    "question": "Convert 0.002 m³ to liters.",
+    "correct_answer": "2 L",
+    "incorrect_answers": [
+      "0.2 L",
+      "20 L",
+      "200 L",
+      "0.02 L",
+      "2000 L",
+      "0.002 L"
+    ]
+  },
+  {
+    "question": "A trapezoid has bases 8 m and 5 m, and height 4 m. What is its area?",
+    "correct_answer": "26 m²",
+    "incorrect_answers": [
+      "13 m²",
+      "52 m²",
+      "16 m²",
+      "20 m²",
+      "26 m",
+      "32 m²"
+    ]
+  },
+  {
+    "question": "Convert 250 mg to grams.",
+    "correct_answer": "0.25 g",
+    "incorrect_answers": [
+      "2.5 g",
+      "250 g",
+      "0.025 g",
+      "25 g",
+      "0.0025 g",
+      "2500 g"
+    ]
+  },
+  {
+    "question": "A right circular cone has radius 3 cm and height 8 cm. What is its volume? (Use π ≈ 3.14)",
+    "correct_answer": "75.36 cm³",
+    "incorrect_answers": [
+      "226.08 cm³",
+      "37.68 cm³",
+      "50.24 cm³",
+      "150.72 cm³",
+      "113.04 cm³",
+      "94.2 cm³"
+    ]
+  },
+  {
+    "question": "How many seconds are in 2 hours, 15 minutes, and 10 seconds?",
+    "correct_answer": "8 110 s",
+    "incorrect_answers": [
+      "8 150 s",
+      "7 510 s",
+      "9 000 s",
+      "7 600 s",
+      "8 650 s",
+      "6 900 s"
+    ]
+  },
+  {
+    "question": "Convert 3.6 m to centimeters.",
+    "correct_answer": "360 cm",
+    "incorrect_answers": [
+      "36 cm",
+      "3 600 cm",
+      "0.36 cm",
+      "3600 cm",
+      "0.036 cm",
+      "30 cm"
+    ]
+  },
+  {
+    "question": "Find the perimeter of a regular pentagon with side length 12 cm.",
+    "correct_answer": "60 cm",
+    "incorrect_answers": [
+      "48 cm",
+      "36 cm",
+      "72 cm",
+      "24 cm",
+      "120 cm",
+      "12 cm"
+    ]
+  },
+  {
+    "question": "Convert 0.45 L to milliliters.",
+    "correct_answer": "450 mL",
+    "incorrect_answers": [
+      "45 mL",
+      "4.5 mL",
+      "4500 mL",
+      "0.045 mL",
+      "0.0045 mL",
+      "45 L"
+    ]
+  },
+  {
+    "question": "A rectangular tank measures 2 m by 1.5 m by 1 m. How many liters can it hold when full?",
+    "correct_answer": "3000 L",
+    "incorrect_answers": [
+      "300 L",
+      "2000 L",
+      "1500 L",
+      "150 L",
+      "5000 L",
+      "30 L"
+    ]
+  },
+  {
+    "question": "If a map’s scale reads 1 cm:500 m, how many kilometers does 12 cm represent?",
+    "correct_answer": "6 km",
+    "incorrect_answers": [
+      "60 km",
+      "0.6 km",
+      "1.2 km",
+      "120 km",
+      "6 m",
+      "0.06 km"
+    ]
+  },
+  {
+    "question": "A cylinder’s volume is 314 cm³ and its height is 10 cm. What is its radius? (Use π ≈ 3.14)",
+    "correct_answer": "Radius = 3 cm",
+    "incorrect_answers": [
+      "Radius = 5 cm",
+      "Radius = 2 cm",
+      "Radius = 4 cm",
+      "Radius = 6 cm",
+      "Radius = 1 cm",
+      "Radius = 7 cm"
+    ]
+  },
+  {
+    "question": "Convert 0.2 km to meters.",
+    "correct_answer": "200 m",
+    "incorrect_answers": [
+      "20 m",
+      "2 m",
+      "2000 m",
+      "0.02 m",
+      "20000 m",
+      "2.0 m"
+    ]
+  },
+  {
+    "question": "Find the area of a trapezium with parallel sides 6 m and 10 m, and height 4 m.",
+    "correct_answer": "32 m²",
+    "incorrect_answers": [
+      "16 m²",
+      "40 m²",
+      "26 m²",
+      "24 m²",
+      "28 m²",
+      "20 m²"
+    ]
+  },
+  {
+    "question": "Convert 375 g to milligrams.",
+    "correct_answer": "375 000 mg",
+    "incorrect_answers": [
+      "37 500 mg",
+      "3 750 mg",
+      "0.375 mg",
+      "3 750 000 mg",
+      "375 mg",
+      "3 750 mg"
+    ]
+  },
+  {
+    "question": "A conical paper cup has a base diameter of 6 cm and height 8 cm. What is its volume? (Use π ≈ 3.14)",
+    "correct_answer": "75.36 cm³",
+    "incorrect_answers": [
+      "150.72 cm³",
+      "37.68 cm³",
+      "113.04 cm³",
+      "50.24 cm³",
+      "226.08 cm³",
+      "94.2 cm³"
+    ]
+  },
+  {
+    "question": "A marathon runner starts at 06:00 AM and finishes at 09:37 AM. How long did the race take?",
+    "correct_answer": "3 h 37 min",
+    "incorrect_answers": [
+      "2 h 37 min",
+      "3 h 27 min",
+      "4 h 37 min",
+      "3 h 47 min",
+      "2 h 47 min",
+      "4 h 27 min"
+    ]
+  },
+  {
+    "question": "Convert 4.2 m to millimeters.",
+    "correct_answer": "4200 mm",
+    "incorrect_answers": [
+      "420 mm",
+      "42 mm",
+      "0.42 mm",
+      "42000 mm",
+      "0.042 mm",
+      "4.02 mm"
+    ]
+  },
+  {
+    "question": "A rectangular garden is 12 m long and 8 m wide. What is its area?",
+    "correct_answer": "96 m²",
+    "incorrect_answers": [
+      "20 m²",
+      "100 m²",
+      "80 m²",
+      "48 m²",
+      "256 m²",
+      "40 m²"
+    ]
+  },
+  {
+    "question": "Convert 2.5 L to cubic centimeters.",
+    "correct_answer": "2500 cm³",
+    "incorrect_answers": [
+      "250 cm³",
+      "25 cm³",
+      "0.25 cm³",
+      "25000 cm³",
+      "0.0025 cm³",
+      "2000 cm³"
+    ]
+  },
+  {
+    "question": "Find the perimeter of a semicircle with radius 5 cm (include diameter). (Use π ≈ 3.14)",
+    "correct_answer": "5 cm × π + 10 cm ≈ 25.7 cm",
+    "incorrect_answers": [
+      "15.7 cm",
+      "20 cm",
+      "31.4 cm",
+      "40 cm",
+      "28.5 cm",
+      "35.7 cm"
+    ]
+  },
+  {
+    "question": "Convert 120 minutes to hours and minutes.",
+    "correct_answer": "2 h 0 min",
+    "incorrect_answers": [
+      "1 h 20 min",
+      "2 h 20 min",
+      "1 h 0 min",
+      "3 h 0 min",
+      "2 h 10 min",
+      "1 h 10 min"
+    ]
+  },
+  {
+    "question": "A model train is built at scale 1:87. If the real track is 435 m long, how long is the model track in centimeters?",
+    "correct_answer": "500 cm",
+    "incorrect_answers": [
+      "50 cm",
+      "5000 cm",
+      "5 cm",
+      "435 cm",
+      "87 cm",
+      "870 cm"
+    ]
+  },
+  {
+    "question": "Find the surface area of a cube with edge length 4 cm.",
+    "correct_answer": "96 cm²",
+    "incorrect_answers": [
+      "48 cm²",
+      "64 cm²",
+      "24 cm²",
+      "32 cm²",
+      "128 cm²",
+      "16 cm²"
+    ]
+  },
+  {
+    "question": "Convert 0.087 kg to grams.",
+    "correct_answer": "87 g",
+    "incorrect_answers": [
+      "8.7 g",
+      "870 g",
+      "0.87 g",
+      "8700 g",
+      "0.0087 g",
+      "87 kg"
+    ]
+  },
+  {
+    "question": "A triangular plot has sides 5 m, 6 m, and 7 m. What is its perimeter?",
+    "correct_answer": "18 m",
+    "incorrect_answers": [
+      "12 m",
+      "30 m",
+      "36 m",
+      "13 m",
+      "24 m",
+      "20 m"
+    ]
+  },
+  {
+    "question": "If 2.2 L of paint covers 33 m², how many liters are required to cover 220 m² (assuming same rate)?",
+    "correct_answer": "14.67 L",
+    "incorrect_answers": [
+      "10 L",
+      "22 L",
+      "13 L",
+      "11 L",
+      "15 L",
+      "16 L"
+    ]
+  },
+  {
+    "question": "A rectangular box is 2 m by 1.5 m by 1 m. What is its surface area in square meters?",
+    "correct_answer": "11 m²",
+    "incorrect_answers": [
+      "6.5 m²",
+      "9 m²",
+      "8 m²",
+      "14 m²",
+      "10 m²",
+      "12.5 m²"
+    ]
+  },
+  {
+    "question": "Convert 0.00045 km² to square meters.",
+    "correct_answer": "450 m²",
+    "incorrect_answers": [
+      "45 m²",
+      "4 50 m²",
+      "0.45 m²",
+      "4 500 m²",
+      "0.045 m²",
+      "4500 m²"
+    ]
+  },
+  {
+    "question": "Find the volume of a sphere with radius 7 cm. (Use π ≈ 3.14)",
+    "correct_answer": "1436.03 cm³",
+    "incorrect_answers": [
+      "615.44 cm³",
+      "2142.5 cm³",
+      "770 cm³",
+      "1795.2 cm³",
+      "1029.5 cm³",
+      "2156 cm³"
+    ]
+  },
+  {
+    "question": "Convert 4500 s to hours, minutes, and seconds.",
+    "correct_answer": "1 h 15 min 0 s",
+    "incorrect_answers": [
+      "1 h 10 min 0 s",
+      "2 h 15 min 0 s",
+      "1 h 20 min 0 s",
+      "0 h 75 min 0 s",
+      "1 h 14 min 0 s",
+      "1 h 30 min 0 s"
+    ]
+  },
+  {
+    "question": "On a map, a dashed blue line usually indicates what feature?",
+    "correct_answer": "Intermittent stream",
+    "incorrect_answers": [
+      "Footpath",
+      "Boundary",
+      "Road under construction",
+      "Railway line",
+      "Pipe network",
+      "Electric line"
+    ]
+  },
+  {
+    "question": "Find the area of a regular hexagon with side length 6 cm. (Use formula: A = \frac{3\sqrt{3}}{2}a^2, √3 ≈ 1.732)",
+    "correct_answer": "93.53 cm²",
+    "incorrect_answers": [
+      "62.35 cm²",
+      "108 cm²",
+      "54 cm²",
+      "124 cm²",
+      "77.94 cm²",
+      "36 cm²"
+    ]
+  },
+  {
+    "question": "Convert 15.5 m to yards. (1 m ≈ 1.0936 yd)",
+    "correct_answer": "16.95 yd",
+    "incorrect_answers": [
+      "14.18 yd",
+      "17.05 yd",
+      "15.50 yd",
+      "17.93 yd",
+      "18.50 yd",
+      "16.00 yd"
+    ]
+  },
+  {
+    "question": "A prism with triangular base area 10 cm² and length 12 cm has what volume?",
+    "correct_answer": "120 cm³",
+    "incorrect_answers": [
+      "22 cm³",
+      "1200 cm³",
+      "36 cm³",
+      "60 cm³",
+      "100 cm³",
+      "240 cm³"
+    ]
+  },
+  {
+    "question": "How many liters of water fill a cube of side 50 cm?",
+    "correct_answer": "125 L",
+    "incorrect_answers": [
+      "0.125 L",
+      "12.5 L",
+      "1250 L",
+      "25 L",
+      "50 L",
+      "625 L"
+    ]
+  },
+  {
+    "question": "Convert 2 days, 5 hours, and 30 minutes into total minutes.",
+    "correct_answer": "3 330 min",
+    "incorrect_answers": [
+      "2 330 min",
+      "3 120 min",
+      "2 550 min",
+      "3 450 min",
+      "2 500 min",
+      "3 600 min"
+    ]
+  },
+  {
+    "question": "On an architectural plan, which symbol typically indicates a window?",
+    "correct_answer": "Thin line break in wall with perpendicular short lines",
+    "incorrect_answers": [
+      "Filled black rectangle",
+      "Circle with X",
+      "Dashed diagonal line",
+      "Arrow pointing outwards",
+      "Solid triangle",
+      "Crossed square"
+    ]
+  },
+  {
+    "question": "Find the perimeter of a circle (circumference) with radius 9 m. (Use π ≈ 3.14)",
+    "correct_answer": "56.52 m",
+    "incorrect_answers": [
+      "113.04 m",
+      "28.26 m",
+      "36 m",
+      "47.12 m",
+      "62.8 m",
+      "18 m"
+    ]
+  },
+  {
+    "question": "Convert 0.0035 km² to hectares. (1 ha = 0.01 km²)",
+    "correct_answer": "0.35 ha",
+    "incorrect_answers": [
+      "35 ha",
+      "3.5 ha",
+      "0.0035 ha",
+      "0.035 ha",
+      "3.5 km²",
+      "35 km²"
+    ]
+  },
+  {
+    "question": "A rectangular swimming pool is 25 m long, 10 m wide, and 2 m deep. What is its volume in cubic meters?",
+    "correct_answer": "500 m³",
+    "incorrect_answers": [
+      "250 m³",
+      "1000 m³",
+      "50 m³",
+      "125 m³",
+      "200 m³",
+      "750 m³"
+    ]
   }
 ]
       
