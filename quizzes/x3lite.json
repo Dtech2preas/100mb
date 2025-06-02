@@ -1,0 +1,1998 @@
+[
+  {
+    "question": "On a probability scale from 0 to 1, what does a probability of 0.75 represent?",
+    "correct_answer": "An event that is likely to occur (75% chance)",
+    "incorrect_answers": [
+      "An impossible event",
+      "An event that is certain to occur",
+      "An event that is unlikely (25% chance)",
+      "An event with no information",
+      "An event that must not occur",
+      "An event that occurs exactly half the time"
+    ]
+  },
+  {
+    "question": "If an event has probability 0, what does this indicate?",
+    "correct_answer": "The event cannot happen (impossible)",
+    "incorrect_answers": [
+      "The event is certain to happen",
+      "The event has a 50% chance of happening",
+      "The event is unlikely but possible",
+      "The event happens always but not observable",
+      "The event’s probability is unknown",
+      "The event is conditional on another event"
+    ]
+  },
+  {
+    "question": "Which value on the probability scale represents an event that must happen?",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "0.5",
+      "0.75",
+      "0",
+      "0.25",
+      "0.99",
+      "0.01"
+    ]
+  },
+  {
+    "question": "What is the probability of drawing a red card from a standard deck of 52 cards?",
+    "correct_answer": "0.5",
+    "incorrect_answers": [
+      "0.75",
+      "0.25",
+      "0.4",
+      "0.52",
+      "0.48",
+      "0.6"
+    ]
+  },
+  {
+    "question": "A die is fair. What is the probability of rolling an even number?",
+    "correct_answer": "0.5",
+    "incorrect_answers": [
+      "1/6",
+      "1/3",
+      "2/3",
+      "1/2",
+      "0.25",
+      "0.75"
+    ]
+  },
+  {
+    "question": "Two coins are tossed. What is the probability of getting two heads?",
+    "correct_answer": "0.25",
+    "incorrect_answers": [
+      "0.5",
+      "0.75",
+      "0.125",
+      "0.33",
+      "0.66",
+      "1"
+    ]
+  },
+  {
+    "question": "A spinner has 4 equal sections. What is the probability of landing on any one section?",
+    "correct_answer": "0.25",
+    "incorrect_answers": [
+      "0.5",
+      "0.125",
+      "0.75",
+      "0.333",
+      "1",
+      "0.2"
+    ]
+  },
+  {
+    "question": "What is the probability scale for any event?",
+    "correct_answer": "From 0 (impossible) to 1 (certain)",
+    "incorrect_answers": [
+      "From –1 to 1",
+      "From 0 to 100",
+      "From 1 to 10",
+      "From –0.5 to 0.5",
+      "From 0.1 to 0.9",
+      "From 0 to ∞"
+    ]
+  },
+  {
+    "question": "A game has a 20% chance of winning. How would you express this probability as a fraction?",
+    "correct_answer": "1/5",
+    "incorrect_answers": [
+      "1/4",
+      "2/5",
+      "1/6",
+      "1/10",
+      "3/5",
+      "1/8"
+    ]
+  },
+  {
+    "question": "If the probability of rain today is 0.2, what is the probability it does not rain?",
+    "correct_answer": "0.8",
+    "incorrect_answers": [
+      "0.2",
+      "0.4",
+      "0.6",
+      "0.5",
+      "0.75",
+      "0.9"
+    ]
+  },
+  {
+    "question": "In a lottery with 100 tickets and 1 winning ticket, what is the probability of winning if you buy one ticket?",
+    "correct_answer": "0.01",
+    "incorrect_answers": [
+      "0.1",
+      "0.001",
+      "0.1",
+      "0.05",
+      "0.02",
+      "0.5"
+    ]
+  },
+  {
+    "question": "You roll two dice. What is the probability of obtaining a sum of 7?",
+    "correct_answer": "1/6",
+    "incorrect_answers": [
+      "1/12",
+      "1/3",
+      "1/36",
+      "1/2",
+      "1/9",
+      "1/18"
+    ]
+  },
+  {
+    "question": "A jar contains 3 red, 2 blue, and 5 green marbles. What is the probability of drawing a blue marble?",
+    "correct_answer": "2/10",
+    "incorrect_answers": [
+      "3/10",
+      "5/10",
+      "2/8",
+      "1/5",
+      "2/9",
+      "1/2"
+    ]
+  },
+  {
+    "question": "If two independent events each have probability 0.4, what is the probability both occur?",
+    "correct_answer": "0.16",
+    "incorrect_answers": [
+      "0.8",
+      "0.4",
+      "0.2",
+      "0.56",
+      "0.24",
+      "0.64"
+    ]
+  },
+  {
+    "question": "A fair six-sided die is rolled twice. What is the probability of rolling a 4 both times?",
+    "correct_answer": "1/36",
+    "incorrect_answers": [
+      "1/6",
+      "1/12",
+      "1/18",
+      "1/24",
+      "1/48",
+      "1/72"
+    ]
+  },
+  {
+    "question": "Using a tree diagram, what is the probability of flipping one head and one tail in two coin tosses (order doesn’t matter)?",
+    "correct_answer": "0.5",
+    "incorrect_answers": [
+      "0.25",
+      "0.75",
+      "0.125",
+      "1",
+      "0.66",
+      "0.33"
+    ]
+  },
+  {
+    "question": "A tree diagram shows two stages: first drawing a red or blue ball, then flipping a coin. How many total outcomes are there?",
+    "correct_answer": "4",
+    "incorrect_answers": [
+      "2",
+      "6",
+      "8",
+      "3",
+      "5",
+      "9"
+    ]
+  },
+  {
+    "question": "In a tree diagram with events A (P=0.3) and B (P=0.7) branching into C (P=0.5) and D (P=0.5), what is P(A and D)?",
+    "correct_answer": "0.15",
+    "incorrect_answers": [
+      "0.35",
+      "0.5",
+      "0.85",
+      "0.3",
+      "0.7",
+      "0.25"
+    ]
+  },
+  {
+    "question": "A tree diagram is often used to represent:",
+    "correct_answer": "Sequential probability outcomes",
+    "incorrect_answers": [
+      "Geographic relationships",
+      "Financial cash flows",
+      "Network connectivity",
+      "Hierarchical business structure",
+      "Statistical regression models",
+      "Linear equations"
+    ]
+  },
+  {
+    "question": "If an event has P=0.2 in one branch of a tree and P=0.5 in its sub-branch, what is the combined probability?",
+    "correct_answer": "0.1",
+    "incorrect_answers": [
+      "0.7",
+      "0.3",
+      "0.2",
+      "0.5",
+      "0.01",
+      "0.4"
+    ]
+  },
+  {
+    "question": "In a two-way table showing coin flips versus die rolls, how many total combined outcomes exist?",
+    "correct_answer": "12",
+    "incorrect_answers": [
+      "6",
+      "8",
+      "10",
+      "4",
+      "2",
+      "18"
+    ]
+  },
+  {
+    "question": "A two-way table displays results of drawing a card (heart or not) and rolling a 3 or not. How many cells are in the table?",
+    "correct_answer": "4",
+    "incorrect_answers": [
+      "2",
+      "3",
+      "5",
+      "6",
+      "1",
+      "8"
+    ]
+  },
+  {
+    "question": "Using a two-way table for dice outcomes (even/odd) vs coin flips (heads/tails), what is P(even and heads)?",
+    "correct_answer": "1/4",
+    "incorrect_answers": [
+      "1/2",
+      "1/6",
+      "1/8",
+      "1/3",
+      "1/12",
+      "1/5"
+    ]
+  },
+  {
+    "question": "In predictions, if an event’s probability is 0.9, how would you interpret this forecast?",
+    "correct_answer": "The event is very likely to occur",
+    "incorrect_answers": [
+      "The event is impossible",
+      "The event is equally likely to occur or not",
+      "The event is unlikely",
+      "The event will not happen",
+      "The event is certain to not occur",
+      "No conclusion can be drawn"
+    ]
+  },
+  {
+    "question": "What is a false positive in context of medical testing?",
+    "correct_answer": "Test indicates disease present when it is absent",
+    "incorrect_answers": [
+      "Test indicates disease absent when it is present",
+      "Test indicates disease present when it is present",
+      "Test indicates disease absent when it is absent",
+      "Test result is unreadable",
+      "Test indicates unclear result",
+      "Test was not administered properly"
+    ]
+  },
+  {
+    "question": "What is a false negative in medical testing?",
+    "correct_answer": "Test indicates disease absent when it is present",
+    "incorrect_answers": [
+      "Test indicates disease present when it is absent",
+      "Test indicates disease absent when it is absent",
+      "Test indicates disease present when it is present",
+      "Test result is unreadable",
+      "Test indicates unclear result",
+      "Test was not administered properly"
+    ]
+  },
+  {
+    "question": "A test has 95% sensitivity and 90% specificity. What does 95% sensitivity mean?",
+    "correct_answer": "95% of diseased individuals test positive",
+    "incorrect_answers": [
+      "95% of healthy individuals test negative",
+      "95% of tests are accurate",
+      "95% of tests yield false positives",
+      "95% of tests yield false negatives",
+      "95% of population will get tested",
+      "95% of tests are invalid"
+    ]
+  },
+  {
+    "question": "A two-way table shows 8 true positives, 2 false negatives, 1 false positive, and 9 true negatives. What is the sensitivity?",
+    "correct_answer": "8/(8+2) = 0.8",
+    "incorrect_answers": [
+      "9/(9+1) = 0.9",
+      "8/(8+1) = 0.888",
+      "9/(9+2) = 0.818",
+      "8/(8+9) = 0.471",
+      "8/(2+9) = 0.533",
+      "1/(1+9) = 0.1"
+    ]
+  },
+  {
+    "question": "In a game of chance, rolling an odd number or drawing a spade from a deck are examples of:",
+    "correct_answer": "Independent events",
+    "incorrect_answers": [
+      "Mutually exclusive events",
+      "Complementary events",
+      "Dependent events",
+      "Exhaustive events",
+      "Unknown events",
+      "Disjoint events"
+    ]
+  },
+  {
+    "question": "A standard deck card is drawn. What is P(heart or face card)?",
+    "correct_answer": "13/52 + 12/52 – 3/52 = 22/52",
+    "incorrect_answers": [
+      "25/52",
+      "15/52",
+      "12/52",
+      "10/52",
+      "1/2",
+      "11/52"
+    ]
+  },
+  {
+    "question": "In a tree diagram, branching probabilities from root sum to:",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "0",
+      "0.5",
+      "Greater than 1",
+      "Negative",
+      "2",
+      "Undefined"
+    ]
+  },
+  {
+    "question": "A two-way table shows gender (M/F) vs smoking status (smoker/non-smoker). How do you calculate P(smoker | male)?",
+    "correct_answer": "Smokers among males ÷ total males",
+    "incorrect_answers": [
+      "Total smokers ÷ total non-smokers",
+      "Smokers among females ÷ total females",
+      "Non-smokers among males ÷ total non-smokers",
+      "Total males ÷ total smokers",
+      "Total smokers ÷ total males",
+      "Smokers among males ÷ total smokers"
+    ]
+  },
+  {
+    "question": "Predictions based on probability are often expressed as:",
+    "correct_answer": "Percent chance or likelihood",
+    "incorrect_answers": [
+      "Exact outcomes",
+      "Fixed truths",
+      "Random guesses",
+      "Absolute certainties",
+      "No information",
+      "Conditional falsehoods"
+    ]
+  },
+  {
+    "question": "In a diagnostic test context, what does specificity measure?",
+    "correct_answer": "Proportion of healthy individuals correctly identified as negative",
+    "incorrect_answers": [
+      "Proportion of diseased individuals correctly identified as positive",
+      "Overall accuracy of test",
+      "Proportion of positive tests among diseased",
+      "Proportion of false positives",
+      "Proportion of false negatives",
+      "Prevalence of disease"
+    ]
+  },
+  {
+    "question": "Given P(A) = 0.3 and P(B|A) = 0.5, what is P(A and B)?",
+    "correct_answer": "0.15",
+    "incorrect_answers": [
+      "0.3",
+      "0.5",
+      "0.8",
+      "0.2",
+      "0.65",
+      "0.1"
+    ]
+  },
+  {
+    "question": "If P(A and B) = 0.12 and P(A) = 0.4, what is P(B|A)?",
+    "correct_answer": "0.3",
+    "incorrect_answers": [
+      "0.48",
+      "0.1",
+      "0.6",
+      "0.12",
+      "0.4",
+      "0.02"
+    ]
+  },
+  {
+    "question": "A two-way table shows 20 males, 15 females; among males, 8 are smokers; among females, 5 are smokers. What is P(smoker)?",
+    "correct_answer": "13/35",
+    "incorrect_answers": [
+      "8/20",
+      "5/15",
+      "13/20",
+      "13/15",
+      "20/35",
+      "15/35"
+    ]
+  },
+  {
+    "question": "In a game of chance with an event of probability 0.4, what is the complementary probability?",
+    "correct_answer": "0.6",
+    "incorrect_answers": [
+      "0.4",
+      "0.5",
+      "0.3",
+      "1.4",
+      "–0.4",
+      "0.2"
+    ]
+  },
+  {
+    "question": "Using a tree diagram, what is P(at least one head) when tossing two fair coins?",
+    "correct_answer": "0.75",
+    "incorrect_answers": [
+      "0.5",
+      "0.25",
+      "1",
+      "0.66",
+      "0.33",
+      "0.6"
+    ]
+  },
+  {
+    "question": "In a two-way table, if P(A|B) = P(A), what does this indicate about A and B?",
+    "correct_answer": "A and B are independent",
+    "incorrect_answers": [
+      "A and B are mutually exclusive",
+      "A and B cannot happen together",
+      "B causes A",
+      "A causes B",
+      "A and B are complementary",
+      "No relationship can be determined"
+    ]
+  },
+  {
+    "question": "A disease test has 98% sensitivity and 90% specificity. In a population with 5% prevalence, what is the approximate false positive rate?",
+    "correct_answer": "10%",
+    "incorrect_answers": [
+      "2%",
+      "5%",
+      "92%",
+      "98%",
+      "12%",
+      "8%"
+    ]
+  },
+  {
+    "question": "What is the positive predictive value (PPV) in a medical test context?",
+    "correct_answer": "Probability that a person has the disease given a positive test",
+    "incorrect_answers": [
+      "Probability of a false positive",
+      "Proportion of all tests that are positive",
+      "Probability of a negative test given no disease",
+      "Probability of disease given a negative test",
+      "Probability of no disease given a negative test",
+      "Probability of a false negative"
+    ]
+  },
+  {
+    "question": "If P(Disease) = 0.1, sensitivity = 0.9, specificity = 0.8, what is P(test positive)?",
+    "correct_answer": "0.1×0.9 + 0.9×0.2 = 0.09 + 0.18 = 0.27",
+    "incorrect_answers": [
+      "0.9",
+      "0.8",
+      "0.18",
+      "0.09",
+      "0.2",
+      "0.3"
+    ]
+  },
+  {
+    "question": "Which branch of a tree diagram represents a combined outcome of sequential events?",
+    "correct_answer": "A path from root to a leaf node showing probabilities multiplied",
+    "incorrect_answers": [
+      "A single event occurrence alone",
+      "An event outside the sample space",
+      "A complementary event",
+      "A marginal event",
+      "An impossible branch",
+      "A union of events"
+    ]
+  },
+  {
+    "question": "When constructing a two-way table for rolling a die (even/odd) and drawing a card (red/black), what is P(odd and black)?",
+    "correct_answer": "3/6 × 26/52 = 0.25",
+    "incorrect_answers": [
+      "0.5",
+      "0.75",
+      "0.125",
+      "0.2",
+      "0.33",
+      "0.4"
+    ]
+  },
+  {
+    "question": "In a prediction scenario, what is a key assumption when using past frequency to estimate probability?",
+    "correct_answer": "Future trials resemble past trials (stability)",
+    "incorrect_answers": [
+      "Random events never repeat",
+      "Past outcomes do not influence future",
+      "All events are independent of context",
+      "Outcomes are always equally likely",
+      "No need for large sample size",
+      "Outcomes follow a normal distribution"
+    ]
+  },
+  {
+    "question": "What is a Type I error (false positive) in hypothesis testing?",
+    "correct_answer": "Rejecting a true null hypothesis",
+    "incorrect_answers": [
+      "Failing to reject a false null hypothesis",
+      "Accepting a false alternative hypothesis",
+      "Accepting a false null hypothesis",
+      "Rejecting a false alternative hypothesis",
+      "Failing to accept a true alternative hypothesis",
+      "Type II error"
+    ]
+  },
+  {
+    "question": "What is a Type II error (false negative) in hypothesis testing?",
+    "correct_answer": "Failing to reject a false null hypothesis",
+    "incorrect_answers": [
+      "Rejecting a true null hypothesis",
+      "Accepting a false alternative hypothesis",
+      "Accepting a false null hypothesis",
+      "Rejecting a false alternative hypothesis",
+      "Failing to accept a true alternative hypothesis",
+      "Type I error"
+    ]
+  },
+  {
+    "question": "A deck of cards is shuffled. What is the probability of drawing a King or a heart?",
+    "correct_answer": "4/52 + 13/52 – 1/52 = 16/52",
+    "incorrect_answers": [
+      "17/52",
+      "15/52",
+      "13/52",
+      "4/52",
+      "1/52",
+      "12/52"
+    ]
+  },
+  {
+    "question": "Using a tree diagram, if first draw from a bag is red (P=0.3) then blue (P=0.7), and if red leads to P(next blue)=0.4, what is P(red then blue)?",
+    "correct_answer": "0.3 × 0.4 = 0.12",
+    "incorrect_answers": [
+      "0.3 + 0.4 = 0.7",
+      "0.3 × 0.7 = 0.21",
+      "0.7 × 0.4 = 0.28",
+      "0.12 × 0.3 = 0.036",
+      "0.12 + 0.3 = 0.42",
+      "0.42"
+    ]
+  },
+  {
+    "question": "In a two-way table for disease vs test result, if 90% of diseased test positive and 10% of healthy test positive, what is the false positive rate?",
+    "correct_answer": "10%",
+    "incorrect_answers": [
+      "90%",
+      "100%",
+      "0%",
+      "50%",
+      "20%",
+      "80%"
+    ]
+  },
+  {
+    "question": "A spinner with three equal sections: red, blue, green. What is P(not green)?",
+    "correct_answer": "2/3",
+    "incorrect_answers": [
+      "1/3",
+      "1/2",
+      "3/3",
+      "1",
+      "1/6",
+      "4/3"
+    ]
+  },
+  {
+    "question": "What is the probability of drawing at least one ace when drawing two cards from a standard deck without replacement?",
+    "correct_answer": "1 – (48/52 × 47/51) ≈ 0.147",
+    "incorrect_answers": [
+      "1/13",
+      "4/52",
+      "0.0769",
+      "0.25",
+      "0.5",
+      "0.2"
+    ]
+  },
+  {
+    "question": "Using a two-way table, if P(smoker) = 0.3 and P(male|smoker) = 0.6, what is P(male and smoker)?",
+    "correct_answer": "0.18",
+    "incorrect_answers": [
+      "0.12",
+      "0.5",
+      "0.3",
+      "0.6",
+      "0.36",
+      "0.42"
+    ]
+  },
+  {
+    "question": "In a prediction context, what does a high positive predictive value (PPV) indicate?",
+    "correct_answer": "Most positive test results are true positives",
+    "incorrect_answers": [
+      "Most negative test results are true negatives",
+      "Test has high sensitivity",
+      "Test has high specificity",
+      "Test is equally likely to be wrong",
+      "Prevalence is low",
+      "False negatives are high"
+    ]
+  },
+  {
+    "question": "If P(disease) = 0.02, sensitivity = 0.95, specificity = 0.9, what is the probability of a true negative?",
+    "correct_answer": "0.98 × 0.9 = 0.882",
+    "incorrect_answers": [
+      "0.02 × 0.95 = 0.019",
+      "0.02 × 0.9 = 0.018",
+      "0.95 × 0.9 = 0.855",
+      "0.9 × 0.02 = 0.018",
+      "0.95 × 0.02 = 0.019",
+      "0.882 + 0.1 = 0.982"
+    ]
+  },
+  {
+    "question": "A football team wins 60% of its games. What is the probability it wins at least one of next two games?",
+    "correct_answer": "1 – (0.4 × 0.4) = 0.84",
+    "incorrect_answers": [
+      "0.6 × 0.6 = 0.36",
+      "0.6 + 0.6 = 1.2",
+      "0.4 + 0.4 = 0.8",
+      "0.6 × 0.4 = 0.24",
+      "0.16",
+      "0.48"
+    ]
+  },
+  {
+    "question": "In a gambling game, probability of winning is 0.2. If you play 3 times, what is P(win exactly once)?",
+    "correct_answer": "3 × 0.2 × 0.8² = 0.384",
+    "incorrect_answers": [
+      "0.2 × 0.8 × 0.8 = 0.128",
+      "0.2³ = 0.008",
+      "0.8³ = 0.512",
+      "3 × 0.2³ = 0.024",
+      "0.384 + 0.2 = 0.584",
+      "1 – 0.384 = 0.616"
+    ]
+  },
+  {
+    "question": "What is the probability of picking two red balls without replacement from a bag containing 5 red and 5 blue balls?",
+    "correct_answer": "5/10 × 4/9 = 0.222",
+    "incorrect_answers": [
+      "5/10 + 4/9 = 0.944",
+      "5/10 × 5/9 = 0.278",
+      "4/10 × 5/9 = 0.222",
+      "5/10 × 5/10 = 0.25",
+      "4/10 × 3/9 = 0.133",
+      "5/9 × 4/9 = 0.247"
+    ]
+  },
+  {
+    "question": "In a two-way table, if P(A and B) = 0.12 and P(A) = 0.3, what is P(B|A)?",
+    "correct_answer": "0.4",
+    "incorrect_answers": [
+      "0.12",
+      "0.3",
+      "0.36",
+      "0.6",
+      "0.2",
+      "0.5"
+    ]
+  },
+{
+    "question": "Which of the following is an example of a good research question for a survey on student study habits?",
+    "correct_answer": "How many hours per week do high school students spend studying outside of class?",
+    "incorrect_answers": [
+      "Do students like studying?",
+      "Is studying important?",
+      "Why do students study?",
+      "What is the school’s opinion on studying?",
+      "When did studying start?",
+      "Where should students study?",
+      "Who invented studying?"
+    ]
+  },
+  {
+    "question": "What type of research question is: 'What factors influence teenagers’ choice of extracurricular activities?'",
+    "correct_answer": "Open-ended exploratory question",
+    "incorrect_answers": [
+      "Closed binary question",
+      "Yes/no question",
+      "Descriptive single-variable question",
+      "Hypothesis-testing question",
+      "Rhetorical question",
+      "Quantitative-only question",
+      "Statistical significance question"
+    ]
+  },
+  {
+    "question": "Which sampling method involves selecting every 5th person from a school roster?",
+    "correct_answer": "Systematic sampling",
+    "incorrect_answers": [
+      "Simple random sampling",
+      "Stratified sampling",
+      "Cluster sampling",
+      "Convenience sampling",
+      "Snowball sampling",
+      "Quota sampling",
+      "Judgmental sampling"
+    ]
+  },
+  {
+    "question": "What is convenience sampling?",
+    "correct_answer": "Selecting participants based on ease of access",
+    "incorrect_answers": [
+      "Randomly selecting participants from a population",
+      "Dividing population into subgroups and sampling each",
+      "Selecting entire clusters randomly",
+      "Ensuring equal representation from each subgroup",
+      "Selecting participants who volunteer without bias",
+      "Using only statistical methods",
+      "Choosing participants by lottery"
+    ]
+  },
+  {
+    "question": "Which data collection method involves participants remembering past behaviors?",
+    "correct_answer": "Retrospective self-report survey",
+    "incorrect_answers": [
+      "Prospective cohort study",
+      "Direct observation",
+      "Experimental manipulation",
+      "Secondary data analysis",
+      "Longitudinal tracking",
+      "Case study",
+      "Cross-sectional assessment"
+    ]
+  },
+  {
+    "question": "Which is a qualitative data collection technique?",
+    "correct_answer": "Focus group discussion",
+    "incorrect_answers": [
+      "Online checkbox survey",
+      "Automated sensor measurement",
+      "Structured numerical questionnaire",
+      "Counting occurrences in a log",
+      "Recording temperature readings",
+      "Measuring weight with a scale",
+      "Tallying yes/no responses"
+    ]
+  },
+  {
+    "question": "A researcher records individual students’ favorite school subjects. What level of measurement is this variable?",
+    "correct_answer": "Nominal",
+    "incorrect_answers": [
+      "Ordinal",
+      "Interval",
+      "Ratio",
+      "Continuous",
+      "Discrete numeric",
+      "Likert scale",
+      "Binary"
+    ]
+  },
+  {
+    "question": "Which variable type can be ranked but does not have consistent intervals between ranks?",
+    "correct_answer": "Ordinal",
+    "incorrect_answers": [
+      "Nominal",
+      "Interval",
+      "Ratio",
+      "Continuous numeric",
+      "Binary",
+      "Geospatial",
+      "Categorical"
+    ]
+  },
+  {
+    "question": "When organizing survey responses into age groups (10–19, 20–29, 30–39), what process is being done?",
+    "correct_answer": "Classifying data into categories",
+    "incorrect_answers": [
+      "Collecting raw data",
+      "Summarizing with mean",
+      "Calculating standard deviation",
+      "Computing probability",
+      "Conducting factor analysis",
+      "Plotting a histogram",
+      "Performing regression"
+    ]
+  },
+  {
+    "question": "A teacher tallies the number of students who scored A, B, C, D, or F. Which table is appropriate for organizing this data?",
+    "correct_answer": "Frequency distribution table",
+    "incorrect_answers": [
+      "Scatter plot matrix",
+      "Cross-tabulation table",
+      "Pie chart table",
+      "Box-and-whisker table",
+      "Time-series table",
+      "Correlation matrix",
+      "Regression output table"
+    ]
+  },
+  {
+    "question": "What is the purpose of a data codebook?",
+    "correct_answer": "Define variable names, labels, and permissible values",
+    "incorrect_answers": [
+      "Compute descriptive statistics automatically",
+      "Generate pie charts and graphs",
+      "Store raw unstructured text responses",
+      "Create probability distributions",
+      "Perform statistical tests",
+      "Encrypt sensitive data",
+      "Design survey questions"
+    ]
+  },
+  {
+    "question": "Which summary measure is most appropriate for skewed numeric data?",
+    "correct_answer": "Median",
+    "incorrect_answers": [
+      "Mean",
+      "Mode",
+      "Standard deviation",
+      "Range",
+      "Percentage",
+      "Interquartile range",
+      "Variance"
+    ]
+  },
+  {
+    "question": "How do you calculate the mode of the dataset: [3, 5, 3, 8, 5, 3, 9]?",
+    "correct_answer": "3",
+    "incorrect_answers": [
+      "5",
+      "8",
+      "9",
+      "3 and 5",
+      "None (no mode)",
+      "Average of 3 and 5",
+      "6"
+    ]
+  },
+  {
+    "question": "Which measure of central tendency is sensitive to outliers?",
+    "correct_answer": "Mean",
+    "incorrect_answers": [
+      "Median",
+      "Mode",
+      "IQR",
+      "Range",
+      "Count",
+      "Frequency",
+      "Mode frequency"
+    ]
+  },
+  {
+    "question": "What does the range of a dataset represent?",
+    "correct_answer": "Difference between maximum and minimum values",
+    "incorrect_answers": [
+      "Sum of all values",
+      "Average of all values",
+      "Most frequent value",
+      "Product of maximum and minimum",
+      "Standard deviation squared",
+      "Median of the dataset",
+      "Interquartile spread"
+    ]
+  },
+  {
+    "question": "A box plot displays a box from Q1 to Q3 with a line at the median. What does the length of the box represent?",
+    "correct_answer": "Interquartile range (IQR)",
+    "incorrect_answers": [
+      "Total range",
+      "Upper whisker length",
+      "Distance between min and max",
+      "Standard deviation",
+      "Variance",
+      "Mode frequency",
+      "Mean absolute deviation"
+    ]
+  },
+  {
+    "question": "Which graphic is best for showing the distribution of a single continuous variable’s frequency?",
+    "correct_answer": "Histogram",
+    "incorrect_answers": [
+      "Pie chart",
+      "Scatter plot",
+      "Box plot",
+      "Bar chart for categories",
+      "Line chart for time series",
+      "Two-way table",
+      "Dot plot"
+    ]
+  },
+  {
+    "question": "When presenting proportions of categories, which visual is most appropriate?",
+    "correct_answer": "Pie chart",
+    "incorrect_answers": [
+      "Line graph",
+      "Histogram",
+      "Scatter plot",
+      "Box plot",
+      "Stem-and-leaf plot",
+      "Heat map",
+      "Tree diagram"
+    ]
+  },
+  {
+    "question": "Which graph would you use to compare two categorical variables simultaneously?",
+    "correct_answer": "Clustered bar chart",
+    "incorrect_answers": [
+      "Histogram",
+      "Scatter plot",
+      "Pie chart",
+      "Box plot",
+      "Line graph",
+      "Dot plot",
+      "Box-and-whisker chart"
+    ]
+  },
+  {
+    "question": "What does a scatter plot display?",
+    "correct_answer": "Relationship between two quantitative variables",
+    "incorrect_answers": [
+      "Distribution of a single categorical variable",
+      "Frequency of a single continuous variable",
+      "Summation of values over time",
+      "Proportions of categories",
+      "Rank ordering of ordinal data",
+      "Hierarchical clustering",
+      "Probability distribution"
+    ]
+  },
+  {
+    "question": "If a dataset has a mean of 50 and a standard deviation of 0, what can you conclude?",
+    "correct_answer": "All values are equal to 50",
+    "incorrect_answers": [
+      "Data is uniformly distributed",
+      "Data has extreme skewness",
+      "Data contains outliers",
+      "Some values are negative",
+      "All values are spread evenly around 50",
+      "Half the values are above 50"
+    ]
+  },
+  {
+    "question": "Which measure indicates the average squared deviation from the mean?",
+    "correct_answer": "Variance",
+    "incorrect_answers": [
+      "Mean",
+      "Median",
+      "Standard deviation",
+      "Mode",
+      "Range",
+      "Interquartile range",
+      "Mean absolute deviation"
+    ]
+  },
+  {
+    "question": "What is the main issue with using misleading scales in bar charts?",
+    "correct_answer": "It exaggerates or minimizes differences between categories",
+    "incorrect_answers": [
+      "It changes the categories’ labels",
+      "It alters the data values",
+      "It removes all gridlines",
+      "It makes bars the wrong colors",
+      "It adds extra data points",
+      "It transposes rows and columns"
+    ]
+  },
+  {
+    "question": "A line graph’s y-axis starts at 50 instead of 0 and goes to 60. What effect does this have?",
+    "correct_answer": "It exaggerates small changes, making trends appear larger",
+    "incorrect_answers": [
+      "It hides all trends completely",
+      "It makes trends appear smaller than they are",
+      "It normalizes the data automatically",
+      "It displays more data points",
+      "It improves accuracy of interpretation",
+      "It removes outliers from view"
+    ]
+  },
+  {
+    "question": "Which type of bias occurs when participants know they are being observed and alter their behavior?",
+    "correct_answer": "Hawthorne effect",
+    "incorrect_answers": [
+      "Selection bias",
+      "Recall bias",
+      "Confirmation bias",
+      "Observer bias",
+      "Survivorship bias",
+      "Publication bias",
+      "Attrition bias"
+    ]
+  },
+  {
+    "question": "If survey questions are worded to favor a certain answer, this is an example of what?",
+    "correct_answer": "Leading question bias",
+    "incorrect_answers": [
+      "Sampling bias",
+      "Response bias due to anonymity",
+      "Measurement error",
+      "Instrument reliability error",
+      "Nonresponse bias",
+      "Hawthorne effect",
+      "Observer bias"
+    ]
+  },
+  {
+    "question": "What is the first step in summarizing a dataset?",
+    "correct_answer": "Compute basic descriptive statistics (mean, median, mode, range)",
+    "incorrect_answers": [
+      "Plot a 3D graph",
+      "Perform significance testing",
+      "Create a predictive model",
+      "Convert all data to categorical form",
+      "Scatter plot every pair of variables",
+      "Apply a logarithmic transformation",
+      "Exclude all missing values"
+    ]
+  },
+  {
+    "question": "Which statistic best summarizes a skewed distribution’s center?",
+    "correct_answer": "Median",
+    "incorrect_answers": [
+      "Mean",
+      "Mode",
+      "Range",
+      "Standard deviation",
+      "Variance",
+      "Interquartile range",
+      "Coefficient of variation"
+    ]
+  },
+  {
+    "question": "A researcher computes the frequency of each response category. What type of summary is this?",
+    "correct_answer": "Frequency distribution",
+    "incorrect_answers": [
+      "Cross-tabulation",
+      "Regression analysis",
+      "Correlation matrix",
+      "Time-series decomposition",
+      "ANOVA summary",
+      "Cluster analysis"
+    ]
+  },
+  {
+    "question": "Which graphical representation can highlight outliers in a dataset?",
+    "correct_answer": "Box plot",
+    "incorrect_answers": [
+      "Pie chart",
+      "Histogram",
+      "Bar chart",
+      "Line graph",
+      "Scatter plot without trend line",
+      "Frequency polygon",
+      "Area chart"
+    ]
+  },
+  {
+    "question": "What is the purpose of a cumulative frequency graph?",
+    "correct_answer": "Show how frequencies accumulate over classes",
+    "incorrect_answers": [
+      "Display individual data points only",
+      "Compare two categorical variables",
+      "Show the relationship between two quantitative variables",
+      "Highlight the largest data value",
+      "Illustrate a probability distribution function",
+      "Depict a correlation coefficient",
+      "Show a time series pattern"
+    ]
+  },
+  {
+    "question": "Which summary measure indicates the middle 50% spread of numerical data?",
+    "correct_answer": "Interquartile range (IQR)",
+    "incorrect_answers": [
+      "Range",
+      "Variance",
+      "Standard deviation",
+      "Mean deviation",
+      "Mode frequency",
+      "Mean",
+      "Median"
+    ]
+  },
+  {
+    "question": "A stem-and-leaf plot is most useful for which purpose?",
+    "correct_answer": "Showing exact values while displaying distribution shape",
+    "incorrect_answers": [
+      "Comparing two categorical variables",
+      "Calculating correlation coefficients",
+      "Displaying proportions of a whole",
+      "Representing hierarchical data",
+      "Showing geographic distributions",
+      "Performing regression analysis",
+      "Testing hypotheses"
+    ]
+  },
+  {
+    "question": "In a two-way frequency table, what does each cell represent?",
+    "correct_answer": "Count of observations for a specific combination of two categorical variables",
+    "incorrect_answers": [
+      "Average value of a continuous variable",
+      "Standard deviation for one category",
+      "Cumulative percentage up to that cell",
+      "Rank order of responses",
+      "Probability of a single event",
+      "Mean difference between groups",
+      "Total population size"
+    ]
+  },
+  {
+    "question": "Which graphical tool misleads when using non-uniform bin widths on a histogram?",
+    "correct_answer": "A histogram with irregular class intervals",
+    "incorrect_answers": [
+      "Pie chart with too many slices",
+      "Line graph with missing data points",
+      "Scatter plot with overlapping points",
+      "Box plot with whiskers truncated",
+      "Bar chart with categories out of order",
+      "Stem-and-leaf plot with missing leaves"
+    ]
+  },
+  {
+    "question": "What is the median of the dataset: [12, 15, 22, 5, 18] after sorting?",
+    "correct_answer": "15",
+    "incorrect_answers": [
+      "12",
+      "18",
+      "22",
+      "10",
+      "17",
+      "5",
+      "20"
+    ]
+  },
+  {
+    "question": "A researcher groups ages into intervals 0–9, 10–19, 20–29, etc. This process is known as:",
+    "correct_answer": "Creating a grouped frequency distribution",
+    "incorrect_answers": [
+      "Calculating a stem-and-leaf plot",
+      "Performing random sampling",
+      "Computing a two-way table",
+      "Applying a logarithmic transform",
+      "Running a regression analysis",
+      "Conducting a hypothesis test"
+    ]
+  },
+  {
+    "question": "Which summary measure is the point that divides a sorted dataset into two equal halves?",
+    "correct_answer": "Median",
+    "incorrect_answers": [
+      "Mode",
+      "Mean",
+      "Range",
+      "Standard deviation",
+      "First quartile",
+      "Third quartile",
+      "Interquartile range"
+    ]
+  },
+  {
+    "question": "If a bar chart’s bars are drawn in 3D perspective, what is a potential issue?",
+    "correct_answer": "It can distort apparent heights, misleading interpretation",
+    "incorrect_answers": [
+      "It makes values easier to compare accurately",
+      "It always improves readability",
+      "It changes the underlying data values",
+      "It increases the number of categories",
+      "It normalizes the distribution",
+      "It affects the mean and median calculations",
+      "It alters sampling methods"
+    ]
+  },
+  {
+    "question": "A researcher uses leading questions in a survey. What type of bias might this introduce?",
+    "correct_answer": "Response bias",
+    "incorrect_answers": [
+      "Sampling bias",
+      "Measurement precision",
+      "Random error",
+      "Processing error",
+      "Observer bias",
+      "Publication bias",
+      "Selection bias"
+    ]
+  },
+  {
+    "question": "Which measure would best compare distributions with different units or scales?",
+    "correct_answer": "Standardized z-scores",
+    "incorrect_answers": [
+      "Raw frequencies",
+      "Median values only",
+      "Mode counts",
+      "Interquartile range in original units",
+      "Sum of values",
+      "Categorical labels",
+      "Absolute deviations"
+    ]
+  },
+  {
+    "question": "In a frequency polygon, how are class midpoints used?",
+    "correct_answer": "Plot points at frequencies corresponding to class midpoints, then connect them",
+    "incorrect_answers": [
+      "Use midpoints as labels for pie chart wedges",
+      "Ignore midpoints when drawing histogram bars",
+      "Multiply midpoints by frequencies to get area",
+      "Use midpoints to compute variance only",
+      "Midpoints are only for calculating mode",
+      "Use midpoints to determine sample size",
+      "Plot midpoints as cumulative counts"
+    ]
+  },
+  {
+    "question": "Which descriptive measure indicates how a distribution’s values spread around the mean?",
+    "correct_answer": "Standard deviation",
+    "incorrect_answers": [
+      "Median",
+      "Mode",
+      "Range",
+      "Quartile deviation",
+      "Sum of values",
+      "Coefficient of determination",
+      "Z-score"
+    ]
+  },
+  {
+    "question": "In data classification, what is a “class boundary”?",
+    "correct_answer": "The dividing line between two adjacent class intervals",
+    "incorrect_answers": [
+      "The midpoint of a class interval",
+      "The frequency count for a class",
+      "The maximum data value",
+      "The average of all class midpoints",
+      "The sum of frequencies up to that class",
+      "The label of a categorical variable",
+      "The range of the dataset"
+    ]
+  },
+  {
+    "question": "Which plot can visualize both the distribution’s central tendency and variability at a glance?",
+    "correct_answer": "Box plot",
+    "incorrect_answers": [
+      "Pie chart",
+      "Scatter plot",
+      "Histogram",
+      "Bar chart",
+      "Line graph",
+      "Stem-and-leaf plot",
+      "Dot plot"
+    ]
+  },
+  {
+    "question": "When summarizing data, what does a cumulative frequency table display?",
+    "correct_answer": "The running total of frequencies up to each class",
+    "incorrect_answers": [
+      "Average frequency per class",
+      "Difference between successive frequencies",
+      "Percentage of values in each class only",
+      "Midpoint values for each class",
+      "Standard deviation for each class",
+      "Mean for each class",
+      "Mode for each class"
+    ]
+  },
+  {
+    "question": "Which is a sign of misleading data in a published bar chart?",
+    "correct_answer": "Non-zero baseline on the y-axis that exaggerates differences",
+    "incorrect_answers": [
+      "Clear axis labels",
+      "Appropriate bar widths",
+      "Consistent spacing between bars",
+      "Use of gridlines",
+      "Legible font size",
+      "Proper category ordering"
+    ]
+  },
+  {
+    "question": "What is data skimming bias when collecting data?",
+    "correct_answer": "Collecting only easily accessible or prominent data points",
+    "incorrect_answers": [
+      "Randomly selecting participants",
+      "Ensuring equal representation of groups",
+      "Collecting complete population data",
+      "Validating data through triangulation",
+      "Using stratified sampling correctly",
+      "Drawing a comprehensive sampling frame"
+    ]
+  },
+  {
+    "question": "A researcher reports average income but uses mean when distribution is highly skewed. Which is more appropriate?",
+    "correct_answer": "Median",
+    "incorrect_answers": [
+      "Mode",
+      "Mean absolute deviation",
+      "Standard deviation",
+      "Range",
+      "Variance",
+      "Interquartile range",
+      "Geometric mean"
+    ]
+  },
+{
+    "question": "On the probability scale, what value represents an impossible event?",
+    "correct_answer": "0",
+    "incorrect_answers": [
+      "0.5",
+      "1",
+      "-1",
+      "100",
+      "0.25",
+      "NaN"
+    ]
+  },
+  {
+    "question": "What probability value indicates an event that is certain to occur?",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "0",
+      "0.5",
+      "0.75",
+      "2",
+      "-1",
+      "Infinity"
+    ]
+  },
+  {
+    "question": "A fair six-sided die is rolled. What is the probability of rolling a number greater than 6?",
+    "correct_answer": "0",
+    "incorrect_answers": [
+      "1/6",
+      "5/6",
+      "1",
+      "1/3",
+      "2/3",
+      "0.5"
+    ]
+  },
+  {
+    "question": "If a spinner is divided into 8 equal sections, what is the probability of landing on any one section?",
+    "correct_answer": "1/8",
+    "incorrect_answers": [
+      "1/4",
+      "1/6",
+      "1/2",
+      "2/8",
+      "1/7",
+      "3/8"
+    ]
+  },
+  {
+    "question": "In a standard deck of 52 cards, what is the probability of drawing a club?",
+    "correct_answer": "1/4",
+    "incorrect_answers": [
+      "1/13",
+      "1/2",
+      "1/3",
+      "3/4",
+      "1/52",
+      "2/13"
+    ]
+  },
+  {
+    "question": "When playing a fair coin flipping game, what is the probability of getting heads on a single toss?",
+    "correct_answer": "0.5",
+    "incorrect_answers": [
+      "0.25",
+      "1",
+      "0",
+      "0.75",
+      "0.33",
+      "0.66"
+    ]
+  },
+  {
+    "question": "What is a mutually exclusive event pair?",
+    "correct_answer": "Rolling a 2 and rolling a 5 on one die roll",
+    "incorrect_answers": [
+      "Drawing a red or black card (but only one suit)",
+      "Flipping heads and tails in one flip",
+      "Drawing a face card and a number card from two draws without replacement",
+      "Getting an even number and an odd number in two separate rolls",
+      "Rolling a number less than 4 and rolling a number greater than 4",
+      "Drawing a spade or a heart from one card draw",
+      "Flipping heads twice in a row"
+    ]
+  },
+  {
+    "question": "What is the complementary probability of an event with probability 0.3?",
+    "correct_answer": "0.7",
+    "incorrect_answers": [
+      "0.3",
+      "1.3",
+      "0.4",
+      "0.45",
+      "0.2",
+      "0.5"
+    ]
+  },
+  {
+    "question": "Which game of chance involves drawing with replacement?",
+    "correct_answer": "Drawing a marble from a bag and then replacing it before the next draw",
+    "incorrect_answers": [
+      "Drawing two cards without putting back the first",
+      "Rolling two dice once",
+      "Flipping two coins simultaneously",
+      "Spinning a spinner once",
+      "Rolling a die and discarding it",
+      "Drawing cards until the deck is finished",
+      "Shuffling cards and dealing all at once"
+    ]
+  },
+  {
+    "question": "Which game scenario shows changing probabilities after each draw?",
+    "correct_answer": "Drawing cards from a deck without replacement",
+    "incorrect_answers": [
+      "Flipping a fair coin repeatedly",
+      "Rolling a fair die with replacement",
+      "Spinning a spinner with fixed sectors",
+      "Rolling two dice independently",
+      "Drawing marbles but replacing them each time",
+      "Drawing from an infinite population",
+      "Rolling a die and discarding it after each roll"
+    ]
+  },
+  {
+    "question": "In a tree diagram for two coin flips, how many outcome branches are there?",
+    "correct_answer": "4",
+    "incorrect_answers": [
+      "2",
+      "6",
+      "8",
+      "3",
+      "5",
+      "1",
+      "10"
+    ]
+  },
+  {
+    "question": "Using a tree diagram, what is the probability of getting head then tail in two flips?",
+    "correct_answer": "1/4",
+    "incorrect_answers": [
+      "1/2",
+      "1/3",
+      "1/6",
+      "1/8",
+      "2/4",
+      "3/4"
+    ]
+  },
+  {
+    "question": "In a probability tree for rolling a die and then flipping a coin, how many combined outcomes exist?",
+    "correct_answer": "12",
+    "incorrect_answers": [
+      "6",
+      "8",
+      "4",
+      "10",
+      "14",
+      "18",
+      "24"
+    ]
+  },
+  {
+    "question": "A two-way table shows outcomes of rolling a die (even/odd) vs. flipping a coin (H/T). What is P(odd and H)?",
+    "correct_answer": "1/4",
+    "incorrect_answers": [
+      "1/2",
+      "1/6",
+      "1/3",
+      "1/8",
+      "1/12",
+      "1/5"
+    ]
+  },
+  {
+    "question": "Which two-way table would represent drawing a red or black card vs. even or odd value?",
+    "correct_answer": "Rows: Red/Black, Columns: Even/Odd, entries: counts of cards",
+    "incorrect_answers": [
+      "Rows: Even/Odd, Columns: Hearts/Spades, entries: counts",
+      "Rows: Suits, Columns: Colors, entries: total cards",
+      "Rows: Faces/Numbers, Columns: Red/Black, entries: probabilities",
+      "Rows: Even/Multiples of 3, Columns: Black/Red, entries: counts",
+      "Rows: High/Low cards, Columns: Suits, entries: frequencies",
+      "Rows: Odd/Prime, Columns: Colors, entries: sums"
+    ]
+  },
+  {
+    "question": "Using predictions, if a fair coin will be flipped 100 times, what is the expected number of heads?",
+    "correct_answer": "50",
+    "incorrect_answers": [
+      "100",
+      "25",
+      "75",
+      "40",
+      "60",
+      "45",
+      "55"
+    ]
+  },
+  {
+    "question": "In a game where winning probability is 0.2, what is the expected number of wins in 50 plays?",
+    "correct_answer": "10",
+    "incorrect_answers": [
+      "20",
+      "5",
+      "15",
+      "8",
+      "12",
+      "25",
+      "0"
+    ]
+  },
+  {
+    "question": "What is a false positive in medical testing?",
+    "correct_answer": "A healthy person tests positive incorrectly",
+    "incorrect_answers": [
+      "A sick person tests negative incorrectly",
+      "A healthy person tests negative correctly",
+      "A sick person tests positive correctly",
+      "A test fails to run",
+      "A test result is unreadable",
+      "Both tests are positive"
+    ]
+  },
+  {
+    "question": "What is a false negative?",
+    "correct_answer": "A sick person tests negative incorrectly",
+    "incorrect_answers": [
+      "A healthy person tests positive incorrectly",
+      "A healthy person tests negative correctly",
+      "A sick person tests positive correctly",
+      "A test result is too faint",
+      "A test is invalid",
+      "A test is inconclusive"
+    ]
+  },
+  {
+    "question": "In research question development, what characterizes a well-defined question?",
+    "correct_answer": "Clearly specifies population, variables, and assumed relationship",
+    "incorrect_answers": [
+      "Always begins with 'Why' without details",
+      "Includes multiple unrelated variables",
+      "Uses vague terms like 'many' or 'few'",
+      "Assumes conclusions before data collection",
+      "Focuses only on researcher’s opinion",
+      "Targets no specific population",
+      "Confuses variables and outcomes"
+    ]
+  },
+  {
+    "question": "Which data collection method captures behaviors in real time without participant recall?",
+    "correct_answer": "Direct observation",
+    "incorrect_answers": [
+      "Retrospective survey",
+      "Focus group",
+      "Historical data review",
+      "Self-administered questionnaire",
+      "Telephone interview",
+      "Email survey",
+      "Secondary data analysis"
+    ]
+  },
+  {
+    "question": "What is sampling bias?",
+    "correct_answer": "When some members of the population are less likely to be included than others",
+    "incorrect_answers": [
+      "When variables are measured incorrectly",
+      "When data is summarized with the wrong statistic",
+      "When charts are drawn with incorrect scales",
+      "When respondents refuse to participate",
+      "When analysis is conducted by untrained personnel",
+      "When graphs are embellished",
+      "When data is misclassified"
+    ]
+  },
+  {
+    "question": "If a researcher weights survey responses to reflect population demographics, this is an example of:",
+    "correct_answer": "Post-stratification adjustment",
+    "incorrect_answers": [
+      "Convenience sampling",
+      "Cluster sampling",
+      "Simple random sampling",
+      "Systematic sampling",
+      "Snowball sampling",
+      "Quota sampling",
+      "Double-blind control"
+    ]
+  },
+  {
+    "question": "Which classification level is used when grouping ages into '0–9', '10–19', '20–29'?",
+    "correct_answer": "Interval grouping",
+    "incorrect_answers": [
+      "Nominal categorization",
+      "Ordinal ranking",
+      "Ratio measurement",
+      "Binary classification",
+      "Continuous scale",
+      "Qualitative grouping",
+      "Hierarchical clustering"
+    ]
+  },
+  {
+    "question": "When organizing data into a frequency distribution, what is the first step?",
+    "correct_answer": "Determine class intervals or categories",
+    "incorrect_answers": [
+      "Compute standard deviation",
+      "Calculate z-scores",
+      "Plot a scatter diagram",
+      "Perform a chi-square test",
+      "Create a box plot",
+      "Calculate the mean",
+      "Compute correlation"
+    ]
+  },
+  {
+    "question": "Which summary measure is most appropriate for nominal data?",
+    "correct_answer": "Mode",
+    "incorrect_answers": [
+      "Median",
+      "Mean",
+      "Standard deviation",
+      "Variance",
+      "Range",
+      "Interquartile range",
+      "Skewness"
+    ]
+  },
+  {
+    "question": "How do you calculate relative frequency?",
+    "correct_answer": "Divide each class frequency by total number of observations",
+    "incorrect_answers": [
+      "Multiply each frequency by total observations",
+      "Subtract frequency from total observations",
+      "Add all frequencies and divide by two",
+      "Take square root of frequency",
+      "Sum frequencies and multiply by class width",
+      "Divide total observations by frequency",
+      "Compute log of frequency"
+    ]
+  },
+  {
+    "question": "What is a cumulative frequency table used for?",
+    "correct_answer": "Showing how the frequencies accumulate across classes",
+    "incorrect_answers": [
+      "Displaying nominal categories only",
+      "Comparing two unrelated variables",
+      "Reporting summary statistics like mean",
+      "Plotting a histogram directly",
+      "Calculating correlation coefficients",
+      "Performing regression analysis",
+      "Presenting summary of counts only"
+    ]
+  },
+  {
+    "question": "Which graph best shows the trend of data over time?",
+    "correct_answer": "Line graph",
+    "incorrect_answers": [
+      "Pie chart",
+      "Bar chart for categories",
+      "Histogram",
+      "Box plot of distribution",
+      "Scatter plot for two variables",
+      "Stem-and-leaf plot",
+      "Pareto chart"
+    ]
+  },
+  {
+    "question": "A dataset has mean 30, median 32, and mode 35. What does this indicate about the distribution?",
+    "correct_answer": "Left-skewed (negatively skewed)",
+    "incorrect_answers": [
+      "Right-skewed (positively skewed)",
+      "Symmetric distribution",
+      "Uniform distribution",
+      "Bimodal distribution",
+      "Multimodal distribution",
+      "Normal distribution",
+      "Platykurtic distribution"
+    ]
+  },
+  {
+    "question": "Which plot can display both individual data points and summary statistics like mean and quartiles?",
+    "correct_answer": "Box plot overlaid with jittered points",
+    "incorrect_answers": [
+      "Pie chart",
+      "Histogram with frequency polygon",
+      "Scatter plot without annotations",
+      "Bar chart with error bars only",
+      "Line graph of summary statistics",
+      "Pareto chart",
+      "Stem-and-leaf plot"
+    ]
+  },
+  {
+    "question": "What is an outlier?",
+    "correct_answer": "An observation markedly different from the rest of the dataset",
+    "incorrect_answers": [
+      "The most frequent value in the dataset",
+      "The average of all observations",
+      "A missing value placeholder",
+      "A predicted value from regression",
+      "The minimum value only",
+      "A measure of spread",
+      "A category label"
+    ]
+  },
+  {
+    "question": "If misleading data shows a truncated y-axis on a bar chart, what might be the effect?",
+    "correct_answer": "Overstating differences between bars",
+    "incorrect_answers": [
+      "Understating differences between bars",
+      "Hiding differences between bars",
+      "Reverse the order of categories",
+      "Change data values displayed",
+      "Add nonexistent categories",
+      "Normalize frequencies",
+      "Remove all labels"
+    ]
+  },
+  {
+    "question": "Which summarizing technique reports the middle 50% of values?",
+    "correct_answer": "Interquartile range (IQR)",
+    "incorrect_answers": [
+      "Range",
+      "Standard deviation",
+      "Variance",
+      "Mean",
+      "Median",
+      "Mode",
+      "Sum"
+    ]
+  },
+  {
+    "question": "When representing categorical data, which chart can be misleading if slices are too small to see?",
+    "correct_answer": "Pie chart",
+    "incorrect_answers": [
+      "Line graph",
+      "Histogram",
+      "Scatter plot",
+      "Box plot",
+      "Bar chart",
+      "Stem-and-leaf plot",
+      "Pareto chart"
+    ]
+  },
+  {
+    "question": "A researcher classifies survey respondents by income brackets. What type of data classification is this?",
+    "correct_answer": "Grouped ordinal data",
+    "incorrect_answers": [
+      "Discrete ratio data",
+      "Nominal data without order",
+      "Continuous interval data",
+      "Binary data",
+      "Qualitative unstructured data",
+      "Time-series data",
+      "Spatial data"
+    ]
+  },
+  {
+    "question": "Which descriptive statistic is NOT influenced by the shape of distribution?",
+    "correct_answer": "Mode",
+    "incorrect_answers": [
+      "Mean",
+      "Median",
+      "Skewness",
+      "Kurtosis",
+      "Standard deviation",
+      "Range",
+      "Interquartile range"
+    ]
+  },
+  {
+    "question": "What is a bivariate dataset?",
+    "correct_answer": "Data involving two variables measured on the same subjects",
+    "incorrect_answers": [
+      "Data collected from two separate experiments",
+      "Data where variables cannot be paired",
+      "Data with only one variable measured multiple times",
+      "Categorical data with more than two categories",
+      "Time-series data with periodic measurements",
+      "Spatial coordinates only",
+      "Qualitative interview transcripts"
+    ]
+  },
+  {
+    "question": "Which measure summarizes how much two quantitative variables co-vary?",
+    "correct_answer": "Covariance",
+    "incorrect_answers": [
+      "Mean",
+      "Median",
+      "Mode",
+      "Range",
+      "IQR",
+      "Kurtosis",
+      "Probability"
+    ]
+  },
+  {
+    "question": "If data is gathered via self-reported questionnaires, which bias is most likely?",
+    "correct_answer": "Response bias",
+    "incorrect_answers": [
+      "Selection bias",
+      "Observer bias",
+      "Sampling bias",
+      "Instrumentation bias",
+      "Publication bias",
+      "Recall bias",
+      "Survivorship bias"
+    ]
+  },
+  {
+    "question": "Which table type is used to show joint frequencies of two categorical variables?",
+    "correct_answer": "Contingency table (two-way table)",
+    "incorrect_answers": [
+      "Stem-and-leaf table",
+      "Frequency distribution table",
+      "Regression coefficient table",
+      "Time-series table",
+      "Cross-correlation table",
+      "ANOVA table",
+      "Histogram table"
+    ]
+  },
+  {
+    "question": "A dataset has these values: [2, 2, 3, 5, 9, 10, 15]. What is the mode?",
+    "correct_answer": "2",
+    "incorrect_answers": [
+      "3",
+      "5",
+      "9",
+      "10",
+      "15",
+      "No mode",
+      "7"
+    ]
+  },
+  {
+    "question": "During data collection, validating entries against known ranges helps address which issue?",
+    "correct_answer": "Data entry errors",
+    "incorrect_answers": [
+      "Sampling bias",
+      "Observer bias",
+      "Instrument calibration",
+      "Misleading graphics",
+      "Poor research question design",
+      "Incorrect hypothesis formulation",
+      "Regression assumptions"
+    ]
+  },
+  {
+    "question": "What is the primary goal of summarizing data with descriptive statistics?",
+    "correct_answer": "Provide a concise overview of key characteristics (e.g., center, spread)",
+    "incorrect_answers": [
+      "Prove causation between variables",
+      "Predict future values precisely",
+      "Eliminate all variability",
+      "Display every raw data point",
+      "Make data collection unnecessary",
+      "Show spatial relationships",
+      "Derive complex mathematical models"
+    ]
+  },
+  {
+    "question": "Which graph can highlight skewness and outliers simultaneously?",
+    "correct_answer": "Box plot",
+    "incorrect_answers": [
+      "Pie chart",
+      "Bar chart",
+      "Simple line graph",
+      "Scatter plot without regression line",
+      "Histogram with equal bins",
+      "Stem-and-leaf plot"      
+    ]
+  },
+  {
+    "question": "When interpreting a scatter plot, what indicates a strong linear relationship?",
+    "correct_answer": "Points closely clustered around a straight line",
+    "incorrect_answers": [
+      "Points randomly scattered",
+      "Points forming a U-shape",
+      "Points forming a circle",
+      "Points forming a horizontal line without variation",
+      "Points forming a vertical line without variation",
+      "Points forming a scattered cloud with no pattern"
+    ]
+  },
+  {
+    "question": "Which summarizing technique is best for very large datasets where listing each value is impractical?",
+    "correct_answer": "Grouped frequency distribution",
+    "incorrect_answers": [
+      "Raw data listing",
+      "Stem-and-leaf plot",
+      "Box-and-whisker plot",
+      "Pie chart of individual values",
+      "Simple list of values",
+      "Ungrouped bar chart"
+    ]
+  },
+  {
+    "question": "If a histogram’s bars do not touch, what is implied about the data?",
+    "correct_answer": "Data is categorical or discrete",
+    "incorrect_answers": [
+      "Data is continuous",
+      "Outliers are present",
+      "Data is skewed",
+      "Data is normally distributed",
+      "Data is missing values",
+      "Data is ordinal",
+      "Data is nominal"
+    ]
+  },
+  {
+    "question": "A survey question asks: 'Do you like apples?' What is the main flaw if the research question is about dietary habits?",
+    "correct_answer": "It is too narrow and not representative of overall dietary habits",
+    "incorrect_answers": [
+      "It uses a reliable measurement tool",
+      "It gathers all necessary information",
+      "It is too broad and covers too many foods",
+      "It correctly addresses a subset of diet",
+      "It is a closed question which is always good",
+      "It includes irrelevant categories",
+      "It is quantitative rather than qualitative"
+    ]
+  },
+  {
+    "question": "Which type of misleading data presentation occurs when the graph’s baseline is not zero?",
+    "correct_answer": "Truncated axis effect",
+    "incorrect_answers": [
+      "Pie chart distortion",
+      "3D perspective distortion",
+      "Misleading legend placement",
+      "Excessive decimal precision",
+      "Rotated labels error",
+      "Incorrect font size"
+    ]
+  },
+  {
+    "question": "What does a completion rate of 80% for a survey imply in data handling?",
+    "correct_answer": "20% of respondents did not finish the survey",
+    "incorrect_answers": [
+      "All respondents answered correctly",
+      "80% answered all questions incorrectly",
+      "The survey was only 80% reliable",
+      "80% of questions were skipped",
+      "20% of questions were invalid",
+      "80% of data entries are duplicates",
+      "20% of data is qualitative"
+    ]
+  }
+]
