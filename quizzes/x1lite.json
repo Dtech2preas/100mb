@@ -1,0 +1,865 @@
+[
+  {
+    "question": "Using a calculator, what is (7² + 3) × √16?",
+    "correct_answer": "208",
+    "incorrect_answers": [
+      "112",
+      "196",
+      "240",
+      "164",
+      "256",
+      "180"
+    ]
+  },
+  {
+    "question": "What is the value of 5! (factorial of 5) when calculated on a scientific calculator?",
+    "correct_answer": "120",
+    "incorrect_answers": [
+      "60",
+      "720",
+      "24",
+      "150",
+      "100",
+      "600"
+    ]
+  },
+  {
+    "question": "A calculator shows “E” after you press 1 ÷ 0. What does this indicate?",
+    "correct_answer": "Division by zero error",
+    "incorrect_answers": [
+      "Memory overflow",
+      "Invalid function",
+      "Battery low",
+      "Syntax error",
+      "Exponent overflow",
+      "Decimal point error"
+    ]
+  },
+  {
+    "question": "On a basic calculator, pressing 3 + 4 × 2 yields 14. Which feature ensures this correct order?",
+    "correct_answer": "Order of operations (PEMDAS/BODMAS)",
+    "incorrect_answers": [
+      "Parentheses key",
+      "Memory recall",
+      "Percentage function",
+      "Sign change key",
+      "Square root function",
+      "Exponent key"
+    ]
+  },
+  {
+    "question": "Using a scientific calculator, what is sin(30°) + cos(60°)?",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "0.5",
+      "0",
+      "1.5",
+      "0.866",
+      "0.707",
+      "2"
+    ]
+  },
+  {
+    "question": "If you store 25 in memory (M+) and then store 10 and press M+, what is the memory recall (MR)?",
+    "correct_answer": "35",
+    "incorrect_answers": [
+      "15",
+      "25",
+      "10",
+      "250",
+      "5",
+      "30"
+    ]
+  },
+  {
+    "question": "A calculator displays “OVERFLOW” when evaluating a number. What does this mean?",
+    "correct_answer": "The result exceeds the calculator’s maximum display limit",
+    "incorrect_answers": [
+      "Low battery",
+      "Incorrect key sequence",
+      "Division by zero",
+      "Memory full",
+      "Parenthesis error",
+      "Decimal error"
+    ]
+  },
+  {
+    "question": "What is log₁₀(1000) when computed on a scientific calculator?",
+    "correct_answer": "3",
+    "incorrect_answers": [
+      "2",
+      "4",
+      "1",
+      "0.001",
+      "10",
+      "5"
+    ]
+  },
+  {
+    "question": "Simplify the common fraction 56/98 to its lowest terms.",
+    "correct_answer": "4/7",
+    "incorrect_answers": [
+      "8/14",
+      "28/49",
+      "2/7",
+      "7/4",
+      "14/24",
+      "6/9"
+    ]
+  },
+  {
+    "question": "Add the fractions 3/8 + 5/12 and simplify.",
+    "correct_answer": "11/12",
+    "incorrect_answers": [
+      "8/20",
+      "1/2",
+      "2/3",
+      "1/4",
+      "7/8",
+      "5/6"
+    ]
+  },
+  {
+    "question": "Subtract 7/9 − 2/3 and express the answer as a simplified fraction.",
+    "correct_answer": "1/9",
+    "incorrect_answers": [
+      "5/9",
+      "1/3",
+      "3/9",
+      "7/27",
+      "2/9",
+      "4/9"
+    ]
+  },
+  {
+    "question": "Multiply the fractions 4/5 × 15/8 and reduce to simplest form.",
+    "correct_answer": "3/2",
+    "incorrect_answers": [
+      "60/40",
+      "11/8",
+      "3/8",
+      "4/3",
+      "5/6",
+      "2/3"
+    ]
+  },
+  {
+    "question": "Divide 5/6 ÷ 10/3 and simplify.",
+    "correct_answer": "1/4",
+    "incorrect_answers": [
+      "3/20",
+      "5/16",
+      "1/6",
+      "3/10",
+      "1/2",
+      "2/3"
+    ]
+  },
+  {
+    "question": "Convert the fraction 7/25 into a decimal.",
+    "correct_answer": "0.28",
+    "incorrect_answers": [
+      "0.72",
+      "0.028",
+      "2.8",
+      "0.208",
+      "0.25",
+      "0.7"
+    ]
+  },
+  {
+    "question": "Express 0.375 as a common fraction in simplest form.",
+    "correct_answer": "3/8",
+    "incorrect_answers": [
+      "37/100",
+      "75/200",
+      "1/4",
+      "2/5",
+      "5/16",
+      "7/16"
+    ]
+  },
+  {
+    "question": "Add 0.63 + 0.087 and give the exact decimal result.",
+    "correct_answer": "0.717",
+    "incorrect_answers": [
+      "0.700",
+      "0.750",
+      "0.617",
+      "0.803",
+      "0.697",
+      "0.737"
+    ]
+  },
+  {
+    "question": "Multiply 2.5 × 0.04 and write the decimal answer.",
+    "correct_answer": "0.10",
+    "incorrect_answers": [
+      "0.1000",
+      "0.25",
+      "0.010",
+      "1.0",
+      "0.001",
+      "0.004"
+    ]
+  },
+  {
+    "question": "Subtract 4.005 − 0.875 and express the result as a decimal.",
+    "correct_answer": "3.130",
+    "incorrect_answers": [
+      "3.140",
+      "3.120",
+      "2.130",
+      "3.900",
+      "3.000",
+      "3.050"
+    ]
+  },
+  {
+    "question": "Convert 45% into a decimal.",
+    "correct_answer": "0.45",
+    "incorrect_answers": [
+      "4.5",
+      "0.045",
+      "45.0",
+      "0.0045",
+      "1.45",
+      "0.5"
+    ]
+  },
+  {
+    "question": "What is 250 as a percentage of 200?",
+    "correct_answer": "125%",
+    "incorrect_answers": [
+      "75%",
+      "120%",
+      "135%",
+      "110%",
+      "100%",
+      "150%"
+    ]
+  },
+  {
+    "question": "Increase 80 by 15%. What is the new value?",
+    "correct_answer": "92",
+    "incorrect_answers": [
+      "88",
+      "100",
+      "89",
+      "94",
+      "106",
+      "90"
+    ]
+  },
+  {
+    "question": "A price of R120 is decreased by 20%. What is the sale price?",
+    "correct_answer": "R96",
+    "incorrect_answers": [
+      "R100",
+      "R92",
+      "R98",
+      "R102",
+      "R94",
+      "R90"
+    ]
+  },
+  {
+    "question": "If a quantity x is directly proportional to y and y = 15 when x = 5, what is y when x = 8?",
+    "correct_answer": "24",
+    "incorrect_answers": [
+      "20",
+      "30",
+      "18",
+      "12",
+      "40",
+      "22"
+    ]
+  },
+  {
+    "question": "If 6 workers can complete a job in 10 days, how many days for 15 workers (assuming direct proportion)?",
+    "correct_answer": "4 days",
+    "incorrect_answers": [
+      "5 days",
+      "3 days",
+      "6 days",
+      "8 days",
+      "10 days",
+      "2 days"
+    ]
+  },
+  {
+    "question": "Divide 24 apples in the ratio 3 : 5 between A and B. How many apples does B get?",
+    "correct_answer": "15",
+    "incorrect_answers": [
+      "9",
+      "5",
+      "18",
+      "12",
+      "8",
+      "6"
+    ]
+  },
+  {
+    "question": "A map uses a scale of 1 : 50 000. If two towns are 3 cm apart on the map, what is the actual distance in kilometers?",
+    "correct_answer": "1.5 km",
+    "incorrect_answers": [
+      "0.15 km",
+      "15 km",
+      "1 km",
+      "5 km",
+      "0.5 km",
+      "3 km"
+    ]
+  },
+  {
+    "question": "If a car travels 360 km in 4 hours, what is its average speed in km/h?",
+    "correct_answer": "90 km/h",
+    "incorrect_answers": [
+      "75 km/h",
+      "80 km/h",
+      "85 km/h",
+      "95 km/h",
+      "100 km/h",
+      "92 km/h"
+    ]
+  },
+  {
+    "question": "Round off 12.748 to two decimal places.",
+    "correct_answer": "12.75",
+    "incorrect_answers": [
+      "12.74",
+      "12.70",
+      "12.76",
+      "12.72",
+      "12.80",
+      "12.73"
+    ]
+  },
+  {
+    "question": "Round 0.00486 to three significant figures.",
+    "correct_answer": "0.00486",
+    "incorrect_answers": [
+      "0.005",
+      "0.0049",
+      "0.00480",
+      "0.004",
+      "0.00485",
+      "0.00488"
+    ]
+  },
+  {
+    "question": "In a clinical trial, 3.687 mg was measured. Round to one decimal place as required by the context.",
+    "correct_answer": "3.7 mg",
+    "incorrect_answers": [
+      "3.6 mg",
+      "3.8 mg",
+      "4.0 mg",
+      "3.68 mg",
+      "3.69 mg",
+      "3.70 mg"
+    ]
+  },
+  {
+    "question": "Round 5.999 to the nearest whole number.",
+    "correct_answer": "6",
+    "incorrect_answers": [
+      "5",
+      "5.9",
+      "5.99",
+      "7",
+      "5.5",
+      "6.0"
+    ]
+  },
+  {
+    "question": "What is the square of 17?",
+    "correct_answer": "289",
+    "incorrect_answers": [
+      "256",
+      "307",
+      "272",
+      "324",
+      "300",
+      "270"
+    ]
+  },
+  {
+    "question": "What is the cube of 6?",
+    "correct_answer": "216",
+    "incorrect_answers": [
+      "36",
+      "128",
+      "156",
+      "312",
+      "196",
+      "180"
+    ]
+  },
+  {
+    "question": "Find √529.",
+    "correct_answer": "23",
+    "incorrect_answers": [
+      "22",
+      "24",
+      "21",
+      "20",
+      "25",
+      "26"
+    ]
+  },
+  {
+    "question": "What is 8³ + 3²?",
+    "correct_answer": "515",
+    "incorrect_answers": [
+      "512",
+      "521",
+      "519",
+      "529",
+      "498",
+      "530"
+    ]
+  },
+  {
+    "question": "Express 5² × 5³ as a single power of 5.",
+    "correct_answer": "5⁵",
+    "incorrect_answers": [
+      "5⁶",
+      "5⁴",
+      "5³",
+      "5⁸",
+      "5⁹",
+      "5²"
+    ]
+  },
+  {
+    "question": "Convert 150 minutes into hours and minutes.",
+    "correct_answer": "2 hours 30 minutes",
+    "incorrect_answers": [
+      "1 hour 50 minutes",
+      "3 hours",
+      "2 hours 15 minutes",
+      "2 hours 45 minutes",
+      "1 hour 30 minutes",
+      "2 hours 0 minutes"
+    ]
+  },
+  {
+    "question": "If a train departs at 14:45 and travels for 3 hours 20 minutes, what is the arrival time?",
+    "correct_answer": "18:05",
+    "incorrect_answers": [
+      "17:55",
+      "17:05",
+      "18:25",
+      "19:05",
+      "17:30",
+      "18:15"
+    ]
+  },
+  {
+    "question": "A movie starts at 7:15 PM and lasts 2 hours 45 minutes. What time does it end?",
+    "correct_answer": "10:00 PM",
+    "incorrect_answers": [
+      "9:45 PM",
+      "10:15 PM",
+      "10:30 PM",
+      "9:15 PM",
+      "9:30 PM",
+      "10:05 PM"
+    ]
+  },
+  {
+    "question": "How many seconds are there in 2 hours 15 minutes?",
+    "correct_answer": "8100",
+    "incorrect_answers": [
+      "7200",
+      "9000",
+      "7500",
+      "8400",
+      "6000",
+      "10800"
+    ]
+  },
+  {
+    "question": "A flight departs at 23:50 and the flight duration is 4 hours 30 minutes. What local time does it arrive (24-hour clock)?",
+    "correct_answer": "04:20",
+    "incorrect_answers": [
+      "03:20",
+      "05:20",
+      "04:50",
+      "04:30",
+      "02:20",
+      "04:00"
+    ]
+  },
+  {
+    "question": "Express ⅞ as a percentage to the nearest tenth. ",
+    "correct_answer": "87.5%",
+    "incorrect_answers": [
+      "85.7%",
+      "92.5%",
+      "80%",
+      "78.5%",
+      "88.8%",
+      "90%"
+    ]
+  },
+  {
+    "question": "What is 15% of 360?",
+    "correct_answer": "54",
+    "incorrect_answers": [
+      "48",
+      "60",
+      "45",
+      "72",
+      "36",
+      "66"
+    ]
+  },
+  {
+    "question": "If a quantity increases from 250 to 300, what is the percentage increase?",
+    "correct_answer": "20%",
+    "incorrect_answers": [
+      "17%",
+      "25%",
+      "15%",
+      "30%",
+      "10%",
+      "22%"
+    ]
+  },
+  {
+    "question": "Convert 0.04 to a percentage.",
+    "correct_answer": "4%",
+    "incorrect_answers": [
+      "0.4%",
+      "40%",
+      "0.04%",
+      "400%",
+      "0.004%",
+      "4.0%"
+    ]
+  },
+  {
+    "question": "Simplify the ratio 45 : 60 to its lowest terms.",
+    "correct_answer": "3 : 4",
+    "incorrect_answers": [
+      "9 : 12",
+      "15 : 20",
+      "2 : 3",
+      "4 : 5",
+      "3 : 5",
+      "5 : 6"
+    ]
+  },
+  {
+    "question": "If 5 : k = 15 : 45, what is k?",
+    "correct_answer": "5",
+    "incorrect_answers": [
+      "3",
+      "10",
+      "15",
+      "25",
+      "45",
+      "9"
+    ]
+  },
+  {
+    "question": "A recipe calls for sugar and flour in the ratio 2 : 5. If you use 400 g of flour, how much sugar is needed?",
+    "correct_answer": "160 g",
+    "incorrect_answers": [
+      "100 g",
+      "200 g",
+      "250 g",
+      "320 g",
+      "180 g",
+      "400 g"
+    ]
+  },
+  {
+    "question": "If x : y = 4 : 7 and x + y = 44, what is x?",
+    "correct_answer": "16",
+    "incorrect_answers": [
+      "28",
+      "12",
+      "20",
+      "24",
+      "32",
+      "18"
+    ]
+  },
+  {
+    "question": "A car’s distance to fuel consumption is 15 km per liter. How many liters are needed for 180 km?",
+    "correct_answer": "12 L",
+    "incorrect_answers": [
+      "15 L",
+      "10 L",
+      "20 L",
+      "14 L",
+      "18 L",
+      "9 L"
+    ]
+  },
+  {
+    "question": "Round 47.2856 to three decimal places.",
+    "correct_answer": "47.286",
+    "incorrect_answers": [
+      "47.285",
+      "47.280",
+      "47.290",
+      "47.287",
+      "47.284",
+      "47.300"
+    ]
+  },
+  {
+    "question": "Round 0.9994 to two decimal places.",
+    "correct_answer": "1.00",
+    "incorrect_answers": [
+      "0.99",
+      "0.98",
+      "1.01",
+      "0.995",
+      "0.999",
+      "0.90"
+    ]
+  },
+  {
+    "question": "Industry tolerance requires drilling to 3 decimal places. Round 12.34567 accordingly.",
+    "correct_answer": "12.346",
+    "incorrect_answers": [
+      "12.345",
+      "12.340",
+      "12.350",
+      "12.344",
+      "12.300",
+      "12.347"
+    ]
+  },
+  {
+    "question": "Compute 14² + 2³.",
+    "correct_answer": "200",
+    "incorrect_answers": [
+      "196",
+      "216",
+      "204",
+      "180",
+      "210",
+      "198"
+    ]
+  },
+  {
+    "question": "What is 9³ − 5²?",
+    "correct_answer": "704",
+    "incorrect_answers": [
+      "676",
+      "691",
+      "728",
+      "681",
+      "720",
+      "700"
+    ]
+  },
+  {
+    "question": "Evaluate (−4)² and (−4)³ separately and give both results.",
+    "correct_answer": "16 and −64",
+    "incorrect_answers": [
+      "16 and 64",
+      "−16 and 64",
+      "−16 and −64",
+      "16 and 4",
+      "−64 and 16",
+      "64 and −64"
+    ]
+  },
+  {
+    "question": "If the time now is 08:20 and you wait 1 hour 45 minutes, what time will it be?",
+    "correct_answer": "10:05",
+    "incorrect_answers": [
+      "09:55",
+      "10:15",
+      "09:05",
+      "11:05",
+      "10:00",
+      "08:45"
+    ]
+  },
+  {
+    "question": "Convert 3 days 4 hours 30 minutes into total hours.",
+    "correct_answer": "76.5 hours",
+    "incorrect_answers": [
+      "75 hours",
+      "78 hours",
+      "70.5 hours",
+      "80 hours",
+      "72 hours",
+      "74.5 hours"
+    ]
+  },
+  {
+    "question": "A meeting starts at 16:30 and lasts 2 hours 50 minutes. What time does it finish?",
+    "correct_answer": "19:20",
+    "incorrect_answers": [
+      "19:10",
+      "19:00",
+      "19:30",
+      "18:20",
+      "18:40",
+      "20:00"
+    ]
+  },
+  {
+    "question": "How many minutes are there between 05:15 and 07:45?",
+    "correct_answer": "150",
+    "incorrect_answers": [
+      "120",
+      "135",
+      "160",
+      "140",
+      "170",
+      "145"
+    ]
+  },
+  {
+    "question": "A bus travels 80 km at 40 km/h and then 120 km at 60 km/h. What is the total travel time?",
+    "correct_answer": "4 hours",
+    "incorrect_answers": [
+      "3 hours",
+      "5 hours",
+      "4.5 hours",
+      "3.5 hours",
+      "4.2 hours",
+      "5.2 hours"
+    ]
+  },
+  {
+    "question": "Express 7/16 as a decimal to three decimal places.",
+    "correct_answer": "0.438",
+    "incorrect_answers": [
+      "0.437",
+      "0.440",
+      "0.4380",
+      "0.435",
+      "0.445",
+      "0.430"
+    ]
+  },
+  {
+    "question": "Convert 0.875 into a common fraction.",
+    "correct_answer": "7/8",
+    "incorrect_answers": [
+      "875/1000",
+      "3/4",
+      "5/6",
+      "7/16",
+      "8/9",
+      "1/2"
+    ]
+  },
+  {
+    "question": "What percentage of 450 is 135?",
+    "correct_answer": "30%",
+    "incorrect_answers": [
+      "25%",
+      "35%",
+      "20%",
+      "40%",
+      "15%",
+      "10%"
+    ]
+  },
+  {
+    "question": "Reduce the fraction 121/242 to lowest terms.",
+    "correct_answer": "1/2",
+    "incorrect_answers": [
+      "11/22",
+      "121/121",
+      "1/3",
+      "22/44",
+      "2/3",
+      "11/12"
+    ]
+  },
+  {
+    "question": "Calculate 12.005 + 0.995 and give the exact decimal.",
+    "correct_answer": "13.000",
+    "incorrect_answers": [
+      "12.999",
+      "13.005",
+      "12.000",
+      "13.100",
+      "12.995",
+      "13.050"
+    ]
+  },
+  {
+    "question": "If y is inversely proportional to x and y = 4 when x = 2, what is y when x = 8?",
+    "correct_answer": "1",
+    "incorrect_answers": [
+      "2",
+      "0.5",
+      "16",
+      "8",
+      "4",
+      "32"
+    ]
+  },
+  {
+    "question": "A cylinder of water empties at a rate of 2 liters per minute. How many minutes to empty 15 liters?",
+    "correct_answer": "7.5 minutes",
+    "incorrect_answers": [
+      "6 minutes",
+      "8 minutes",
+      "10 minutes",
+      "12.5 minutes",
+      "5 minutes",
+      "9 minutes"
+    ]
+  },
+  {
+    "question": "Round 1234.567 to the nearest ten.",
+    "correct_answer": "1230",
+    "incorrect_answers": [
+      "1240",
+      "1235",
+      "1200",
+      "1000",
+      "1250",
+      "1232"
+    ]
+  },
+  {
+    "question": "What is 11² + 11³?",
+    "correct_answer": "11² + 11³ = 121 + 1331 = 1452",
+    "incorrect_answers": [
+      "1453",
+      "1442",
+      "1352",
+      "1500",
+      "1462",
+      "1542"
+    ]
+  },
+  {
+    "question": "Convert 2 hours 45 minutes into total minutes.",
+    "correct_answer": "165 minutes",
+    "incorrect_answers": [
+      "150 minutes",
+      "170 minutes",
+      "160 minutes",
+      "180 minutes",
+      "175 minutes",
+      "155 minutes"
+    ]
+  },
+  {
+    "question": "A digital clock shows 24-hour time. If it reads 00:00, what does this represent?",
+    "correct_answer": "Midnight",
+    "incorrect_answers": [
+      "Noon",
+      "Midday",
+      "12:00 PM",
+      "12:00 AM",
+      "Morning start",
+      "Evening start"
+    ]
+  },
