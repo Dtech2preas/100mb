@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DTECH Smart Notes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    html, body { height: 100%; margin: 0; overflow: hidden; }
+    /* Container fixed full viewport */
+    #notesPage { height: 100vh; display: flex; flex-direction: column; }
+    /* Header fixed, content and nav fixed positions */
+    header { flex: 0 0 auto; }
+    #notesArea {
+      flex: 1 1 auto;
+      background-color: #fdfdfd;
+      padding: 2rem;
+      overflow-y: auto;
+      outline: none;
+      line-height: 1.6;
+      font-family: 'Georgia', serif;
+      color: #333;
+      border: 1px solid #e2e8f0;
+    }
+    .definition { background: rgba(59,130,246,0.1); border-left:4px solid #3b82f6;
+      padding:.5rem 1rem; margin:1rem 0; border-radius:.25rem; }
+h1 {
+  display: inline-block;       /* shrink to text width */
+  margin: 0.75rem 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.25rem;
+}
+
+h2 {
+  display: inline-block;       /* shrink to text width */
+  margin: 0.5rem 0;
+  font-weight: bold;
+  text-transform: none;
+  color: #333;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.25rem;
+}    
+.highlight { background-color: rgba(251,191,36,0.4); }
+    /* SideMenu full height */
+    #sideMenu { height: 100vh; }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Subject Selection --><div id="subjectPage" class="w-full h-screen flex flex-col justify-start items-center bg-white shadow-lg p-8">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">📘 DTECH Smart Notes</h1>
+    <label class="block text-gray-700 mb-2">Choose a Subject:</label>
+    <select id="subjectSelect" class="w-full p-3 border rounded mb-6 focus:outline-none focus:ring-2 focus:ring-blue-400">
+      <option value="" disabled selected>-- Select --</option>
+      <option value="maths">Mathematics</option>
+      <option value="lifeSci">Life Sciences</option>
+      <option value="geo">Geography</option>
+      <option value="business">Business Studies</option>
+      <option value="history">History</option>
+    </select>
+    <button id="startBtn" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">Start Notes</button>
+  </div>  <!-- Notes Page -->  <div id="notesPage" class="hidden bg-white shadow-lg rounded-lg mx-auto w-full max-w-4xl">
+    <header class="flex justify-between items-center p-4 border-b bg-white">
+      <h2 id="subjectTitle" class="text-2xl font-semibold text-gray-700"></h2>
+      <button id="menuBtn" class="p-2 hover:bg-gray-200 rounded focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </header>
+    <div id="notesArea" contenteditable="true"></div>
+    <!-- Page Navigation -->
+    <div class="absolute bottom-4 right-4 flex space-x-2">
+      <button id="prevPageBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-3 rounded">◀</button>
+      <span id="pageIndicator" class="self-center text-sm text-gray-600"></span>
+      <button id="nextPageBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-3 rounded">▶</button>
+    </div>
+    <!-- Side Menu -->
+    <div id="sideMenu" class="fixed top-0 right-0 w-64 bg-white shadow-lg transform translate-x-full transition-transform">
+      <div class="flex justify-between items-center p-4 border-b">
+        <h3 class="text-lg font-medium">Tools</h3>
+        <button id="closeMenuBtn" class="p-2 hover:bg-gray-200 rounded focus:outline-none">✕</button>
+      </div>
+      <nav class="p-4 space-y-4">
+        <button id="addTitleBtn" class="w-full text-left bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition">
+          📝 Add Title
+        </button>
+        <button id="addSubtitleBtn" class="w-full text-left bg-pink-500 text-white py-2 px-4 rounded-lg hover:bg-pink-600 transition">
+          ✒️ Add Subtitle
+        </button>
+        <button id="addDefBtn" class="w-full text-left bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition">
+          ➕ Add Definition
+        </button>
+        <button id="highlightBtn" class="w-full text-left bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition">
+          🔦 Highlight
+        </button>
+        <button id="downloadPdfBtn" class="w-full text-left bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">
+          📄 Download All Term PDF
+        </button>
+        <hr>
+        <h4 class="font-semibold">Folders</h4>
+        <ul id="folderList" class="max-h-40 overflow-auto space-y-2"></ul>
+        <button id="addFolderBtn" class="w-full text-left bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition">
+          📁 Add Folder
+        </button>
+      </nav>
+    </div>
+  </div>  <script>
+    // Elements
+    const subjectPage = document.getElementById('subjectPage'), notesPage = document.getElementById('notesPage');
+    const subjectSelect = document.getElementById('subjectSelect'), startBtn = document.getElementById('startBtn');
+    const subjectTitle = document.getElementById('subjectTitle'), notesArea = document.getElementById('notesArea');
+    const menuBtn = document.getElementById('menuBtn'), sideMenu = document.getElementById('sideMenu'), closeMenuBtn = document.getElementById('closeMenuBtn');
+    const addTitleBtn = document.getElementById('addTitleBtn'), addSubtitleBtn = document.getElementById('addSubtitleBtn');
+    const addDefBtn = document.getElementById('addDefBtn'), highlightBtn = document.getElementById('highlightBtn');
+    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+    const addFolderBtn = document.getElementById('addFolderBtn'), folderList = document.getElementById('folderList');
+    const prevPageBtn = document.getElementById('prevPageBtn'), nextPageBtn = document.getElementById('nextPageBtn');
+    const pageIndicator = document.getElementById('pageIndicator');
+
+    let folders = {}, currentFolderId = null, idCounter = 0;
+    let pages = [], currentPage = 0;
+
+    function getSubjName(code){ return { maths:'Mathematics', lifeSci:'Life Sciences', geo:'Geography', business:'Business Studies', history:'History' }[code]||'Notes'; }
+    function subj(){ return subjectSelect.value; }
+    function folderKey(){ return `notes_${subj()}_${currentFolderId}`; }
+    function pagesKey(){ return `pages_${subj()}_${currentFolderId}`; }
+
+    function savePages(){ localStorage.setItem(pagesKey(), JSON.stringify(pages)); }
+    function loadPages(){ pages = JSON.parse(localStorage.getItem(pagesKey())||'[]'); if(!pages.length) pages=['']; }
+    function renderPage(){ notesArea.innerHTML = pages[currentPage]||''; pageIndicator.textContent = `${currentPage+1}/${pages.length}`; }
+    function saveCurrent(){ pages[currentPage] = notesArea.innerHTML; savePages(); }
+
+    function initSubject(){ if(!folders[subj()]){ folders[subj()]=[]; ['Term 1','Term 2','Term 3','Term 4'].forEach(n=>folders[subj()].push({name:n,id:idCounter++})); } renderFolders(); currentFolderId = folders[subj()][0].id; selectFolder(); }
+    function renderFolders(){ folderList.innerHTML=''; folders[subj()].forEach(f=>{ let btn=document.createElement('button'); btn.className='w-full text-left hover:text-blue-600'; btn.textContent=f.name; btn.onclick=()=>{ saveCurrent(); currentFolderId=f.id; selectFolder(); }; folderList.appendChild(btn); }); }
+    function selectFolder(){ subjectTitle.textContent=`${getSubjName(subj())} - ${folders[subj()].find(f=>f.id===currentFolderId).name}`; loadPages(); currentPage=0; renderPage(); }
+
+    // Events
+    startBtn.onclick = ()=>{ if(!subj()) return alert('Select a subject'); subjectPage.classList.add('hidden'); notesPage.classList.remove('hidden'); initSubject(); notesArea.focus(); };
+    menuBtn.onclick = ()=> sideMenu.classList.remove('translate-x-full'); closeMenuBtn.onclick = ()=> sideMenu.classList.add('translate-x-full');
+    notesArea.addEventListener('input', saveCurrent);
+    prevPageBtn.onclick = ()=>{ saveCurrent(); if(currentPage>0) currentPage--; renderPage(); };
+    nextPageBtn.onclick = ()=>{ saveCurrent(); if(currentPage<pages.length-1) currentPage++; else{ pages.push(''); currentPage=pages.length-1; } renderPage(); };
+
+    function insertAtCursor(html){ let sel=window.getSelection(); if(!sel.rangeCount) return; let range=sel.getRangeAt(0); range.collapse(false); let frag=document.createRange().createContextualFragment(html); range.insertNode(frag); range.setStartAfter(frag.lastChild); sel.removeAllRanges(); sel.addRange(range); saveCurrent(); }
+    addTitleBtn.onclick = () => {
+      const t = prompt('Enter Title:'); if (!t) return;
+      insertAtCursor(`<h1>${t}</h1><p></p>`);
+    };
+    addSubtitleBtn.onclick = () => {
+      const s = prompt('Enter Subtitle:'); if (!s) return;
+      insertAtCursor(`<h2>${s}</h2><p></p>`);
+    };
+    addDefBtn.onclick = ()=>{ let term=prompt('Term:'); if(!term) return; let def=prompt(`${term} definition:`); if(def===null) return; insertAtCursor(`<div class="definition"><strong>${term}:</strong> ${def}</div><p>d</p>`); };
+    highlightBtn.onclick = ()=>{ let sel=window.getSelection(); if(!sel.rangeCount) return; let range=sel.getRangeAt(0); let span=document.createElement('span'); span.className='highlight'; range.surroundContents(span); sel.removeAllRanges(); saveCurrent(); };
+downloadPdfBtn.onclick = () => {
+  saveCurrent();
+
+  // 1) Open the external PDF link in a new tab:
+  window.open(
+    'https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365',
+    '_blank'
+  );
+
+  // 2) Generate & download your own notes‐PDF:
+  let container = document.createElement('div');
+  pages.forEach(p => {
+    let pg = document.createElement('div');
+    pg.style.padding = '2rem';
+    pg.innerHTML = p;
+    container.appendChild(pg);
+  });
+  document.body.appendChild(container);
+
+  html2pdf()
+    .set({
+      margin: 0.5,
+      filename: `${getSubjName(subj())}_${folders[subj()].find(f=>f.id===currentFolderId).name}.pdf`,
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter' }
+    })
+    .from(container)
+    .save()
+    .then(() => container.remove());
+};    addFolderBtn.onclick = ()=>{ let n=prompt('Folder name:'); if(!n) return; folders[subj()].push({name:n,id:idCounter++}); renderFolders(); };
+  </script></body>
+</html>
