@@ -1,14 +1,386 @@
-[
+[   
     {
-        "quote": "The web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past.",
-        "author": "Tim Berners-Lee"
+    "quote": "Education is the most powerful weapon which you can use to change the world.",
+    "author": "Nelson Mandela"
     },
     {
-        "quote": "Digital design is like painting, except the paint never dries.",
-        "author": "Neville Brody"
+        "quote": "If I have seen further it is by standing on the shoulders of giants.",
+        "author": "Isaac Newton"
     },
     {
-        "quote": "The computer was born to solve problems that did not exist before.",
-        "author": "Bill Gates"
+        "quote": "Somewhere, something incredible is waiting to be known.",
+        "author": "Carl Sagan"
+    },
+    {
+        "quote": "Don’t watch the clock; do what it does. Keep going.",
+        "author": "Sam Levenson"
+    },
+    {
+        "quote": "Life is like riding a bicycle. To keep your balance you must keep moving.",
+        "author": "Albert Einstein"
+    },
+    {
+        "quote": "You miss 100% of the shots you don’t take.",
+        "author": "Wayne Gretzky"
+    },
+    {
+        "quote": "Research is what I’m doing when I don’t know what I’m doing.",
+        "author": "Wernher von Braun"
+    },
+    {
+        "quote": "The only way to do great work is to love what you do.",
+        "author": "Steve Jobs"
+    },
+    {
+        "quote": "Nothing in life is to be feared; it is only to be understood.",
+        "author": "Marie Curie"
+    },
+    {
+        "quote": "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away.",
+        "author": "Antoine de Saint-Exupéry"
+    },
+    {
+        "quote": "Failure is simply the opportunity to begin again, this time more intelligently.",
+        "author": "Henry Ford"
+    },
+    {
+        "quote": "The important thing is not to stop questioning. Curiosity has its own reason for existing.",
+        "author": "Albert Einstein"
+    },
+    {
+        "quote": "Science knows no country, because knowledge belongs to humanity.",
+        "author": "Louis Pasteur"
+    },
+    {
+        "quote": "Believe you can and you’re halfway there.",
+        "author": "Theodore Roosevelt"
+    },
+    {
+        "quote": "Research is formalized curiosity. It is poking and prying with a purpose.",
+        "author": "Zora Neale Hurston"
+    },
+    {
+        "quote": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        "author": "Winston Churchill"
+    },
+{
+        "quote": "In the middle of every difficulty lies opportunity.",
+        "author": "Albert Einstein"
+    },
+    {
+        "quote": "Science is the great antidote to the poison of enthusiasm and superstition.",
+        "author": "Adam Smith"
+    },
+    {
+        "quote": "Innovation distinguishes between a leader and a follower.",
+        "author": "Steve Jobs"
+    },
+    {
+        "quote": "The good thing about science is that it's true whether or not you believe in it.",
+        "author": "Neil deGrasse Tyson"
+    },
+    {
+        "quote": "It always seems impossible until it's done.",
+        "author": "Nelson Mandela"
+    },
+    {
+        "quote": "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge.",
+        "author": "Stephen Hawking"
+    },
+    {
+        "quote": "Success usually comes to those who are too busy to be looking for it.",
+        "author": "Henry David Thoreau"
+    },
+    {
+        "quote": "There is no substitute for hard work.",
+        "author": "Thomas Edison"
+    },
+    {
+        "quote": "Be less curious about people and more curious about ideas.",
+        "author": "Marie Curie"
+    },
+    {
+        "quote": "Act as if what you do makes a difference. It does.",
+        "author": "William James"
+    },
+    {
+        "quote": "Technology is best when it brings people together.",
+        "author": "Matt Mullenweg"
+    },
+    {
+        "quote": "Start where you are. Use what you have. Do what you can.",
+        "author": "Arthur Ashe"
+    },
+    {
+        "quote": "Science is a way of thinking much more than it is a body of knowledge.",
+        "author": "Carl Sagan"
+    },
+    {
+        "quote": "Don't limit yourself. Many people limit themselves to what they think they can do.",
+        "author": "Mary Kay Ash"
+    },
+    {
+        "quote": "Sometimes it is the people no one can imagine anything of who do the things no one can imagine.",
+        "author": "Alan Turing"
+    },
+    {
+        "quote": "Success is not how high you have climbed, but how you make a positive difference to the world.",
+        "author": "Roy T. Bennett"
+    },
+    {
+        "quote": "The most damaging phrase in the language is: ‘It’s always been done that way.’",
+        "author": "Grace Hopper"
+    },
+    {
+        "quote": "Courage is not the absence of fear, but the triumph over it.",
+        "author": "Nelson Mandela"
+    },
+    {
+        "quote": "To invent, you need a good imagination and a pile of junk.",
+        "author": "Thomas Edison"
+    },
+    {
+        "quote": "You can’t use up creativity. The more you use, the more you have.",
+        "author": "Maya Angelou"
+    },
+    {
+        "quote": "What you do makes a difference, and you have to decide what kind of difference you want to make.",
+        "author": "Jane Goodall"
+    },
+    {
+        "quote": "You don't have to be great to start, but you have to start to be great.",
+        "author": "Zig Ziglar"
+    },
+    {
+        "quote": "I never dreamed about success. I worked for it.",
+        "author": "Estée Lauder"
+    },
+    {
+        "quote": "Imagination is more important than knowledge.",
+        "author": "Albert Einstein"
+    },
+    {
+        "quote": "Work hard in silence. Let success make the noise.",
+        "author": "Frank Ocean"
+    },
+    {
+        "quote": "A person who never made a mistake never tried anything new.",
+        "author": "Albert Einstein"
+    },
+    {
+        "quote": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure.",
+        "author": "Colin Powell"
+    },
+    {
+        "quote": "The future belongs to those who believe in the beauty of their dreams.",
+        "author": "Eleanor Roosevelt"
+    },
+    {
+        "quote": "I have not failed. I've just found 10,000 ways that won't work.",
+        "author": "Thomas Edison"
+    },
+    {
+        "quote": "Push yourself, because no one else is going to do it for you.",
+        "author": "Unknown"
+    },
+    {
+        "quote": "The only limit to our realization of tomorrow will be our doubts of today.",
+        "author": "Franklin D. Roosevelt"
+    },
+    {
+        "quote": "The science of today is the technology of tomorrow.",
+        "author": "Edward Teller"
+    },
+    {
+        "quote": "Technology is a useful servant but a dangerous master.",
+        "author": "Christian Lous Lange"
+    },
+    {
+        "quote": "The only thing that overcomes hard luck is hard work.",
+        "author": "Harry Golden"
+    },
+    {
+        "quote": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+        "author": "Aristotle"
+    },
+    {
+        "quote": "Big ideas often start small.",
+        "author": "Unknown"
+    },
+    {
+        "quote": "There’s no shortage of remarkable ideas, what’s missing is the will to execute them.",
+        "author": "Seth Godin"
+    },
+    {
+        "quote": "Everything is theoretically impossible, until it is done.",
+        "author": "Robert A. Heinlein"
+    },
+    {
+        "quote": "Hardships often prepare ordinary people for an extraordinary destiny.",
+        "author": "C.S. Lewis"
+    },
+    {
+        "quote": "Dream big. Start small. Act now.",
+        "author": "Robin Sharma"
+    },
+{
+        "quote": "Science is not only a disciple of reason but also one of romance and passion.",
+        "author": "Stephen Hawking"
+    },
+    {
+        "quote": "Great things never came from comfort zones.",
+        "author": "Unknown"
+    },
+    {
+        "quote": "Technology like art is a soaring exercise of the human imagination.",
+        "author": "Daniel Bell"
+    },
+    {
+        "quote": "Keep your face always toward the sunshine—and shadows will fall behind you.",
+        "author": "Walt Whitman"
+    },
+    {
+        "quote": "Your time is limited, so don’t waste it living someone else’s life.",
+        "author": "Steve Jobs"
+    },
+    {
+        "quote": "Curiosity is the essence of our existence.",
+        "author": "Gene Cernan"
+    },
+    {
+        "quote": "The universe doesn’t allow perfection.",
+        "author": "Stephen Hawking"
+    },
+    {
+        "quote": "Don't count the days, make the days count.",
+        "author": "Muhammad Ali"
+    },
+    {
+        "quote": "Technology is nothing. What’s important is that you have a faith in people.",
+        "author": "Steve Jobs"
+    },
+    {
+        "quote": "Never let the fear of striking out keep you from playing the game.",
+        "author": "Babe Ruth"
+    },
+    {
+        "quote": "Equipped with his five senses, man explores the universe around him.",
+        "author": "Edwin Hubble"
+    },
+    {
+        "quote": "Success is walking from failure to failure with no loss of enthusiasm.",
+        "author": "Winston Churchill"
+    },
+    {
+        "quote": "The real problem is not whether machines think but whether men do.",
+        "author": "B.F. Skinner"
+    },
+    {
+        "quote": "It’s not about ideas. It’s about making ideas happen.",
+        "author": "Scott Belsky"
+    },
+    {
+        "quote": "Every great advance in science has issued from a new audacity of imagination.",
+        "author": "John Dewey"
+    },
+    {
+        "quote": "Dreams don’t work unless you do.",
+        "author": "John C. Maxwell"
+    },
+    {
+        "quote": "Science is magic that works.",
+        "author": "Kurt Vonnegut"
+    },
+    {
+        "quote": "Technology is best used when it enhances human potential.",
+        "author": "Unknown"
+    },
+    {
+        "quote": "Believe in yourself and all that you are.",
+        "author": "Christian D. Larson"
+    },
+    {
+        "quote": "You are never too old to set another goal or to dream a new dream.",
+        "author": "C.S. Lewis"
+    },
+    {
+        "quote": "What new technology does is create new opportunities to do a job that customers want done.",
+        "author": "Tim O’Reilly"
+    },
+    {
+        "quote": "The beginning of knowledge is the discovery of something we do not understand.",
+        "author": "Frank Herbert"
+    },
+    {
+        "quote": "If opportunity doesn’t knock, build a door.",
+        "author": "Milton Berle"
+    },
+    {
+        "quote": "Science and everyday life cannot and should not be separated.",
+        "author": "Rosalind Franklin"
+    },
+    {
+        "quote": "The secret of getting ahead is getting started.",
+        "author": "Mark Twain"
+    },
+    {
+        "quote": "If something is important enough, even if the odds are against you, you should still do it.",
+        "author": "Elon Musk"
+    },
+    {
+        "quote": "Motivation is what gets you started. Habit is what keeps you going.",
+        "author": "Jim Ryun"
+    },
+    {
+        "quote": "Exploration is in our nature. We began as wanderers, and we are wanderers still.",
+        "author": "Carl Sagan"
+    },
+    {
+        "quote": "Technology over technique produces emotionless design.",
+        "author": "Daniel Mall"
+    },
+    {
+        "quote": "Don’t be afraid to give up the good to go for the great.",
+        "author": "John D. Rockefeller"
+    },
+    {
+        "quote": "Science is the poetry of reality.",
+        "author": "Richard Dawkins"
+    },
+    {
+        "quote": "A goal without a plan is just a wish.",
+        "author": "Antoine de Saint-Exupéry"
+    },
+    {
+        "quote": "We live in a society exquisitely dependent on science and technology.",
+        "author": "Carl Sagan"
+    },
+    {
+        "quote": "The best way to predict the future is to create it.",
+        "author": "Peter Drucker"
+    },
+    {
+        "quote": "Science is the key to our future, and if you don’t believe in science, then you’re holding everybody back.",
+        "author": "Bill Nye"
+    },
+    {
+        "quote": "Make each day your masterpiece.",
+        "author": "John Wooden"
+    },
+    {
+        "quote": "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+        "author": "Nelson Mandela"
+    },
+    {
+        "quote": "Computers are useless. They can only give you answers.",
+        "author": "Pablo Picasso"
+    },
+    {
+        "quote": "Do not go where the path may lead, go instead where there is no path and leave a trail.",
+        "author": "Ralph Waldo Emerson"
+    },
+    {
+        "quote": "The sky is not the limit — it's only the beginning.",
+        "author": "Unknown"
     }
 ]
