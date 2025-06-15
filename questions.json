@@ -1,32 +1,1002 @@
 [
-    {
-        "question": "What is the primary advantage of using React for frontend development?",
-        "options": [
-            "Built-in database management",
-            "Virtual DOM for efficient updates",
-            "Native mobile app capabilities",
-            "No need for JavaScript knowledge"
-        ],
-        "answer": 1
-    },
-    {
-        "question": "Which CSS feature enables responsive design without media queries?",
-        "options": [
-            "Flexbox",
-            "CSS Grid",
-            "CSS Variables",
-            "All of the above"
-        ],
-        "answer": 3
-    },
-    {
-        "question": "What does API stand for in web development?",
-        "options": [
-            "Application Programming Interface",
-            "Automated Program Integration",
-            "Advanced Programming Instruction",
-            "Application Process Integration"
-        ],
-        "answer": 0
-    }
+  {
+    "question": "What part of the brain controls voluntary movements?",
+    "options": ["Cerebellum", "Medulla", "Cerebrum", "Hypothalamus"],
+    "answer": 2
+  },
+  {
+    "question": "Which country has the largest population in the world?",
+    "options": ["India", "China", "USA", "Indonesia"],
+    "answer": 0
+  },
+  {
+    "question": "What is the main purpose of red blood cells?",
+    "options": ["Fight infection", "Clot blood", "Carry oxygen", "Control temperature"],
+    "answer": 2
+  },
+  {
+    "question": "Which law explains why we need to wear seatbelts in a moving car?",
+    "options": ["Newton's First Law", "Newton's Second Law", "Law of Thermodynamics", "Archimedes' Principle"],
+    "answer": 0
+  },
+  {
+    "question": "What is the capital city of Canada?",
+    "options": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
+    "answer": 2
+  },
+  {
+    "question": "What is the chemical symbol for potassium?",
+    "options": ["P", "Pt", "Po", "K"],
+    "answer": 3
+  },
+  {
+    "question": "Which planet is known as the 'Red Planet'?",
+    "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+    "answer": 1
+  },
+  {
+    "question": "How many chromosomes are in a typical human cell?",
+    "options": ["23", "46", "22", "44"],
+    "answer": 1
+  },
+  {
+    "question": "Which process converts solar energy into chemical energy in plants?",
+    "options": ["Respiration", "Glycolysis", "Photosynthesis", "Fermentation"],
+    "answer": 2
+  },
+  {
+    "question": "In history, what was the Cold War mainly about?",
+    "options": ["Trade wars", "Territory disputes", "Ideological tension", "Oil resources"],
+    "answer": 2
+  },
+  {
+    "question": "What is the freezing point of water in Celsius?",
+    "options": ["0°C", "32°C", "100°C", "-1°C"],
+    "answer": 0
+  },
+  {
+    "question": "Which device is used to measure temperature?",
+    "options": ["Barometer", "Thermometer", "Hygrometer", "Ammeter"],
+    "answer": 1
+  },
+  {
+    "question": "Which ocean lies between Africa and Australia?",
+    "options": ["Atlantic", "Arctic", "Indian", "Pacific"],
+    "answer": 2
+  },
+  {
+    "question": "Which programming language is known for web development?",
+    "options": ["Python", "C++", "Java", "JavaScript"],
+    "answer": 3
+  },
+  {
+    "question": "Which of the following is NOT a renewable source of energy?",
+    "options": ["Solar", "Wind", "Coal", "Hydropower"],
+    "answer": 2
+  },
+  {
+    "question": "What is the longest river in the world?",
+    "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
+    "answer": 1
+  },
+  {
+    "question": "Which number system uses only 0 and 1?",
+    "options": ["Decimal", "Octal", "Binary", "Hexadecimal"],
+    "answer": 2
+  },
+  {
+    "question": "Which country invented paper?",
+    "options": ["Greece", "India", "China", "Egypt"],
+    "answer": 2
+  },
+  {
+    "question": "Which vitamin helps in calcium absorption?",
+    "options": ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+    "answer": 3
+  },
+  {
+    "question": "What is the main function of white blood cells?",
+    "options": ["Transport oxygen", "Fight infection", "Regulate temperature", "Digest food"],
+    "answer": 1
+  },
+  {
+    "question": "Which of the following is a programming loop?",
+    "options": ["if", "while", "print", "def"],
+    "answer": 1
+  },
+  {
+    "question": "Which instrument is used to see very small organisms?",
+    "options": ["Telescope", "Periscope", "Microscope", "Barometer"],
+    "answer": 2
+  },
+  {
+    "question": "What is the process of water changing into vapour called?",
+    "options": ["Condensation", "Evaporation", "Precipitation", "Sublimation"],
+    "answer": 1
+  },
+  {
+    "question": "Who discovered the law of gravity?",
+    "options": ["Albert Einstein", "Isaac Newton", "Galileo", "Stephen Hawking"],
+    "answer": 1
+  },
+  {
+    "question": "What is the boiling point of water in Celsius?",
+    "options": ["90°C", "95°C", "100°C", "110°C"],
+    "answer": 2
+  },
+  {
+    "question": "Which continent has the most countries?",
+    "options": ["Asia", "Europe", "Africa", "South America"],
+    "answer": 2
+  },
+  {
+    "question": "Which element is liquid at room temperature?",
+    "options": ["Mercury", "Iron", "Aluminium", "Sodium"],
+    "answer": 0
+  },
+  {
+    "question": "What is the square root of 144?",
+    "options": ["11", "12", "13", "14"],
+    "answer": 1
+  },
+  {
+    "question": "Which animal is known for changing its color to blend into surroundings?",
+    "options": ["Frog", "Lizard", "Chameleon", "Gecko"],
+    "answer": 2
+  },
+  {
+    "question": "Which country is famous for the Great Wall?",
+    "options": ["India", "China", "Japan", "South Korea"],
+    "answer": 1
+  },
+  {
+    "question": "Which gas do living beings exhale?",
+    "options": ["Oxygen", "Hydrogen", "Carbon Dioxide", "Nitrogen"],
+    "answer": 2
+  },
+  {
+    "question": "What is the capital city of Germany?",
+    "options": ["Munich", "Frankfurt", "Berlin", "Hamburg"],
+    "answer": 2
+  },
+  {
+    "question": "What causes tides in the ocean?",
+    "options": ["Sun's rotation", "Wind", "Earth's core", "Moon's gravity"],
+    "answer": 3
+  },
+  {
+    "question": "What is the name of the largest bone in the human body?",
+    "options": ["Femur", "Humerus", "Skull", "Tibia"],
+    "answer": 0
+  },
+  {
+    "question": "Which device is used to measure pressure?",
+    "options": ["Thermometer", "Barometer", "Altimeter", "Voltmeter"],
+    "answer": 1
+  },
+  {
+    "question": "Which is the largest organ in the human body?",
+    "options": ["Liver", "Skin", "Heart", "Lungs"],
+    "answer": 1
+  },
+  {
+    "question": "Which metal is liquid at room temperature and used in thermometers?",
+    "options": ["Silver", "Lead", "Mercury", "Zinc"],
+    "answer": 2
+  },
+  {
+    "question": "What is the closest planet to the sun?",
+    "options": ["Venus", "Earth", "Mercury", "Mars"],
+    "answer": 2
+  },
+  {
+    "question": "How many sides does a hexagon have?",
+    "options": ["5", "6", "7", "8"],
+    "answer": 1
+  },
+  {
+    "question": "What is H2O commonly known as?",
+    "options": ["Salt", "Acid", "Water", "Air"],
+    "answer": 2
+  },
+{
+    "question": "What is the approximate pH of neutral pure water?",
+    "options": [
+      "6.0",
+      "7.0",
+      "8.0",
+      "9.0"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Who proposed the theory of general relativity?",
+    "options": [
+      "Isaac Newton",
+      "Albert Einstein",
+      "Galileo Galilei",
+      "Niels Bohr"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the capital city of Canada?",
+    "options": [
+      "Toronto",
+      "Vancouver",
+      "Ottawa",
+      "Montreal"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which element has the atomic number 6?",
+    "options": [
+      "Oxygen",
+      "Carbon",
+      "Nitrogen",
+      "Helium"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the value of π (pi) rounded to two decimal places?",
+    "options": [
+      "3.12",
+      "3.14",
+      "3.16",
+      "3.18"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which country hosted the 2016 Summer Olympics?",
+    "options": [
+      "China",
+      "Brazil",
+      "United Kingdom",
+      "Russia"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What type of chemical bond involves the sharing of electron pairs between atoms?",
+    "options": [
+      "Ionic bond",
+      "Covalent bond",
+      "Hydrogen bond",
+      "Metallic bond"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "In computing, what does 'HTTP' stand for?",
+    "options": [
+      "Hypertext Transfer Protocol",
+      "High Throughput Transmission Program",
+      "Hyperlink Text Transfer Procedure",
+      "High Transfer Text Protocol"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the derivative of x^2 with respect to x?",
+    "options": [
+      "x",
+      "2x",
+      "x^2",
+      "2"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which organelle is the site of protein synthesis in a cell?",
+    "options": [
+      "Mitochondrion",
+      "Golgi apparatus",
+      "Ribosome",
+      "Endoplasmic reticulum"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which empire was ruled by Suleiman the Magnificent?",
+    "options": [
+      "Mughal Empire",
+      "Ottoman Empire",
+      "Roman Empire",
+      "Persian Empire"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the largest ocean on Earth?",
+    "options": [
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Arctic Ocean",
+      "Pacific Ocean"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Which mountain range forms the conventional boundary between Europe and Asia?",
+    "options": [
+      "Andes",
+      "Urals",
+      "Alps",
+      "Himalayas"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What phenomenon causes the sky to appear blue?",
+    "options": [
+      "Diffraction",
+      "Refraction",
+      "Rayleigh scattering",
+      "Absorption"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "In economics, what does a 'monopoly' describe?",
+    "options": [
+      "A market with many buyers and sellers",
+      "A market dominated by a single buyer",
+      "A market dominated by a single seller",
+      "A market with no barriers to entry"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What is a light-year a measure of?",
+    "options": [
+      "Time",
+      "Distance",
+      "Light intensity",
+      "Mass"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which statistical measure indicates the average deviation from the mean?",
+    "options": [
+      "Variance",
+      "Standard deviation",
+      "Mean absolute deviation",
+      "Range"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Who discovered penicillin?",
+    "options": [
+      "Louis Pasteur",
+      "Alexander Fleming",
+      "Marie Curie",
+      "Gregor Mendel"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the hardest naturally occurring substance on Earth?",
+    "options": [
+      "Graphite",
+      "Topaz",
+      "Corundum",
+      "Diamond"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Which planet in our solar system has the shortest day (rotation period)?",
+    "options": [
+      "Earth",
+      "Mars",
+      "Jupiter",
+      "Venus"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What is the chemical formula for carbon dioxide?",
+    "options": [
+      "CO",
+      "CO₂",
+      "C₂O",
+      "O₂C"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which branch of mathematics primarily deals with limits, derivatives, and integrals?",
+    "options": [
+      "Algebra",
+      "Geometry",
+      "Statistics",
+      "Calculus"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Who wrote the philosophical work 'The Republic'?",
+    "options": [
+      "Aristotle",
+      "Plato",
+      "Socrates",
+      "Descartes"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What does 'opportunity cost' refer to in economics?",
+    "options": [
+      "The financial cost of an investment",
+      "The cost of manufacturing goods",
+      "The value of the next best alternative foregone",
+      "The cost of borrowing funds"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What is the term for animals that eat both plants and meat?",
+    "options": [
+      "Herbivores",
+      "Carnivores",
+      "Omnivores",
+      "Detritivores"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which treaty officially ended World War I in 1919?",
+    "options": [
+      "Treaty of Paris",
+      "Treaty of Versailles",
+      "Treaty of Ghent",
+      "Treaty of Tordesillas"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which gas is the primary contributor to the greenhouse effect?",
+    "options": [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon dioxide",
+      "Argon"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "In computer architecture, what does 'CPU' stand for?",
+    "options": [
+      "Control and Processing Unit",
+      "Central Processing Unit",
+      "Computer Performance Unit",
+      "Central Programming Unit"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What three-dimensional shape has six square faces?",
+    "options": [
+      "Cuboid",
+      "Cylinder",
+      "Cube",
+      "Tetrahedron"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What is a number called that cannot be expressed as a fraction of two integers?",
+    "options": [
+      "Rational",
+      "Real",
+      "Complex",
+      "Irrational"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Who was the first woman to win a Nobel Prize?",
+    "options": [
+      "Rosalind Franklin",
+      "Marie Curie",
+      "Dorothy Hodgkin",
+      "Ada Lovelace"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which ocean current helps keep Western Europe’s climate mild?",
+    "options": [
+      "California Current",
+      "Gulf Stream",
+      "Kuroshio Current",
+      "Labrador Current"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "How many molecules are contained in one mole of a substance (Avogadro’s number)?",
+    "options": [
+      "6.02 × 10²³",
+      "3.00 × 10⁸",
+      "1.60 × 10⁻¹⁹",
+      "9.81 × 10³"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "In literature, what is an oxymoron?",
+    "options": [
+      "A loving tribute",
+      "A figure of speech combining contradictory terms",
+      "An extended metaphor",
+      "An exaggerated statement"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the primary function of hemoglobin in the blood?",
+    "options": [
+      "Clotting blood",
+      "Fighting infection",
+      "Transporting oxygen",
+      "Regulating temperature"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What does DNA stand for?",
+    "options": [
+      "Deoxyribonucleic Acid",
+      "DiRNA Acid",
+      "Deoxyribonucleotide Array",
+      "Dynamic Nucleic Acid"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which war was fought between the North and South regions of the United States from 1861 to 1865?",
+    "options": [
+      "World War I",
+      "American Revolutionary War",
+      "American Civil War",
+      "War of 1812"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What scale is used to measure the magnitude of earthquakes?",
+    "options": [
+      "Beaufort scale",
+      "Richter scale",
+      "Fujita scale",
+      "Saffir–Simpson scale"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which instrument measures atmospheric pressure?",
+    "options": [
+      "Thermometer",
+      "Barometer",
+      "Hygrometer",
+      "Anemometer"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which physicist is known for formulating the uncertainty principle?",
+    "options": [
+      "Werner Heisenberg",
+      "Erwin Schrödinger",
+      "Max Planck",
+      "Paul Dirac"
+    ],
+    "answer": 0
+  },
+{
+    "question": "What is the most abundant gas in Earth's atmosphere?",
+    "options": [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon Dioxide",
+      "Argon"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which phenomenon explains the bending of light as it passes from one medium to another?",
+    "options": [
+      "Diffraction",
+      "Reflection",
+      "Refraction",
+      "Interference"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "In economics, what is 'elasticity' principally a measure of?",
+    "options": [
+      "Price change over time",
+      "Responsiveness of quantity demanded to price change",
+      "Rate of inflation",
+      "Change in income levels"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which mathematician is credited with the formulation of set theory?",
+    "options": [
+      "Carl Friedrich Gauss",
+      "Georg Cantor",
+      "Leonhard Euler",
+      "Bernhard Riemann"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the primary building block molecule in proteins?",
+    "options": [
+      "Nucleotides",
+      "Amino acids",
+      "Fatty acids",
+      "Monosaccharides"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which branch of biology studies the relationships between organisms and their environment?",
+    "options": [
+      "Genetics",
+      "Ecology",
+      "Anatomy",
+      "Physiology"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the term for a solid turning directly into a gas without becoming liquid?",
+    "options": [
+      "Condensation",
+      "Sublimation",
+      "Evaporation",
+      "Deposition"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which data structure follows Last-In, First-Out (LIFO) principle?",
+    "options": [
+      "Queue",
+      "Stack",
+      "Tree",
+      "Graph"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the value of the golden ratio (φ) approximately?",
+    "options": [
+      "1.41",
+      "1.62",
+      "2.71",
+      "3.14"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which continent hosts the driest desert on Earth, the Atacama?",
+    "options": [
+      "Africa",
+      "Asia",
+      "South America",
+      "Australia"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "In literature, which narrative perspective uses 'I' and 'we' pronouns?",
+    "options": [
+      "First person",
+      "Second person",
+      "Third person limited",
+      "Third person omniscient"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which molecule carries genetic information from DNA to ribosomes for protein synthesis?",
+    "options": [
+      "mRNA",
+      "tRNA",
+      "rRNA",
+      "ATP"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the net force on an object moving at constant velocity?",
+    "options": [
+      "Zero",
+      "Equal to mass × acceleration",
+      "Equal to weight",
+      "Equal to friction"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which chemical element is a halogen in the periodic table?",
+    "options": [
+      "Neon",
+      "Chlorine",
+      "Calcium",
+      "Iron"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What does the Richter scale measure?",
+    "options": [
+      "Wind speed",
+      "Rainfall intensity",
+      "Earthquake magnitude",
+      "Volcanic ash fall"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which principle states that no two electrons in an atom can have the same set of quantum numbers?",
+    "options": [
+      "Heisenberg uncertainty principle",
+      "Pauli exclusion principle",
+      "Hund's rule",
+      "Aufbau principle"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the term for inflation that is extremely high and typically accelerating?",
+    "options": [
+      "Stagflation",
+      "Hyperinflation",
+      "Deflation",
+      "Moderate inflation"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which Shakespeare play features the characters Rosencrantz and Guildenstern?",
+    "options": [
+      "Hamlet",
+      "Macbeth",
+      "Othello",
+      "King Lear"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the chemical process by which glucose is broken down to produce energy in cells?",
+    "options": [
+      "Photosynthesis",
+      "Glycolysis",
+      "Transpiration",
+      "Polymerization"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which law describes the relationship between pressure and volume of a gas at constant temperature?",
+    "options": [
+      "Charles's law",
+      "Boyle's law",
+      "Avogadro's law",
+      "Dalton's law"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the next prime number after 97?",
+    "options": [
+      "99",
+      "100",
+      "101",
+      "103"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which art movement is Pablo Picasso most associated with?",
+    "options": [
+      "Impressionism",
+      "Cubism",
+      "Surrealism",
+      "Baroque"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "In genetics, what is the term for an organism’s observable traits?",
+    "options": [
+      "Genotype",
+      "Phenotype",
+      "Allele",
+      "Genome"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which country is both a continent and a country?",
+    "options": [
+      "Russia",
+      "Australia",
+      "Greenland",
+      "Brazil"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which programming paradigm emphasizes objects and their interactions?",
+    "options": [
+      "Functional programming",
+      "Procedural programming",
+      "Object-oriented programming",
+      "Event-driven programming"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What is the chemical formula for sulfuric acid?",
+    "options": [
+      "HCl",
+      "H₂SO₄",
+      "HNO₃",
+      "CH₃COOH"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which gas law relates pressure, volume, and temperature of an ideal gas?",
+    "options": [
+      "Ideal gas law",
+      "Boyle’s law",
+      "Charles’s law",
+      "Hooke’s law"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What does the area under a velocity-time graph represent?",
+    "options": [
+      "Acceleration",
+      "Displacement",
+      "Force",
+      "Momentum"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which explorer is credited with circumnavigating the globe first?",
+    "options": [
+      "Christopher Columbus",
+      "Ferdinand Magellan",
+      "Marco Polo",
+      "Vasco da Gama"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which element is used as the standard for atomic weights?",
+    "options": [
+      "Carbon-12",
+      "Oxygen-16",
+      "Hydrogen-1",
+      "Nitrogen-14"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the literary term for a comparison using 'like' or 'as'?",
+    "options": [
+      "Metaphor",
+      "Hyperbole",
+      "Simile",
+      "Oxymoron"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which branch of mathematics deals with the study of shapes and their properties?",
+    "options": [
+      "Algebra",
+      "Geometry",
+      "Calculus",
+      "Statistics"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the powerhouse of the cell?",
+    "options": [
+      "Nucleus",
+      "Mitochondrion",
+      "Endoplasmic reticulum",
+      "Golgi apparatus"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which vitamin is essential for blood clotting?",
+    "options": [
+      "Vitamin A",
+      "Vitamin C",
+      "Vitamin D",
+      "Vitamin K"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "In finance, what is diversification intended to reduce?",
+    "options": [
+      "Liquidity",
+      "Risk",
+      "Returns",
+      "Capital"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the main function of roots in plants?",
+    "options": [
+      "Photosynthesis",
+      "Support and nutrient absorption",
+      "Reproduction",
+      "Respiration"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which ancient civilization built the Machu Picchu complex?",
+    "options": [
+      "Aztec",
+      "Mayan",
+      "Incan",
+      "Olmec"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What is the SI unit of electric current?",
+    "options": [
+      "Volt",
+      "Ohm",
+      "Ampere",
+      "Watt"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which geological era came before the Mesozoic?",
+    "options": [
+      "Cenozoic",
+      "Paleozoic",
+      "Precambrian",
+      "Neoproterozoic"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the phenomenon where a wave changes direction around an obstacle?",
+    "options": [
+      "Reflection",
+      "Diffraction",
+      "Refraction",
+      "Absorption"
+    ],
+    "answer": 1
+  }
 ]
