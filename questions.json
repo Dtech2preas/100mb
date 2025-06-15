@@ -1,0 +1,32 @@
+[
+    {
+        "question": "What is the primary advantage of using React for frontend development?",
+        "options": [
+            "Built-in database management",
+            "Virtual DOM for efficient updates",
+            "Native mobile app capabilities",
+            "No need for JavaScript knowledge"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Which CSS feature enables responsive design without media queries?",
+        "options": [
+            "Flexbox",
+            "CSS Grid",
+            "CSS Variables",
+            "All of the above"
+        ],
+        "answer": 3
+    },
+    {
+        "question": "What does API stand for in web development?",
+        "options": [
+            "Application Programming Interface",
+            "Automated Program Integration",
+            "Advanced Programming Instruction",
+            "Application Process Integration"
+        ],
+        "answer": 0
+    }
+]

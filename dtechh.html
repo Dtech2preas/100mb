@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTECH Daily</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Stage 1: Quiz -->
+    <div id="stage1" class="stage active">
+        <div class="quiz-card">
+            <h2 id="quiz-question">Loading question...</h2>
+            <form id="quiz-form">
+                <div id="quiz-options" class="options-container"></div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Stage 2: Quote -->
+    <div id="stage2" class="stage">
+        <div class="quote-container">
+            <p id="quote-text" class="quote-text"></p>
+            <p id="quote-author" class="quote-author"></p>
+            <button id="next-btn" class="next-btn">Next <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Stage 3: Video -->
+    <div id="stage3" class="stage">
+        <div class="video-prompt">
+            <button id="video-btn" class="video-btn">
+                <span id="video-title"></span>
+                <i class="fas fa-play"></i>
+            </button>
+            <p class="comeback-message">Come back tomorrow for more.</p>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="video-wrapper">
+                <iframe id="video-embed" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <button id="restart-btn" class="restart-btn">Start Over</button>
+        </div>
+    </div>
+
+    <!-- Watermark -->
+    <div class="watermark">DTECH</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

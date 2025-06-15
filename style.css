@@ -1,0 +1,444 @@
+:root {
+    --dtech-blue: #0056D6;
+    --dtech-black: #000000;
+    --dtech-white: #FFFFFF;
+    --dtech-gray: #1A1A1A;
+    --correct-green: #4CAF50;
+    --incorrect-red: #F44336;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glow-color: rgba(255, 255, 255, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--dtech-black), var(--dtech-blue));
+    color: var(--dtech-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.stage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1;
+}
+
+.stage.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Stage 1: Quiz */
+.quiz-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 8px 32px 0 rgba(0, 86, 214, 0.2);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 86, 214, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    z-index: -1;
+    transition: all 0.6s ease;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 86, 214, 0.3);
+}
+
+.quiz-card:hover::before {
+    animation: shine 1.5s;
+}
+
+@keyframes shine {
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+.quiz-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option:hover {
+    background: rgba(0, 86, 214, 0.2);
+    transform: translateX(5px);
+}
+
+.option input {
+    margin-right: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--dtech-blue);
+    color: var(--dtech-white);
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #0044b0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 86, 214, 0.4);
+}
+
+/* Stage 2: Quote */
+#stage2 {
+    background: var(--dtech-black);
+}
+
+.quote-container {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px var(--glow-color);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards 0.3s;
+}
+
+.quote-author {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards 1.5s;
+}
+
+.next-btn {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 25px;
+    background: transparent;
+    color: var(--dtech-white);
+    border: 1px solid var(--dtech-white);
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.5s ease;
+    animation: fadeIn 1s forwards 4s, glow 2s infinite 5s;
+}
+
+.next-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Stage 3: Video */
+.video-prompt {
+    text-align: center;
+}
+
+.video-btn {
+    padding: 20px 40px;
+    background: transparent;
+    color: var(--dtech-white);
+    border: 2px solid var(--dtech-white);
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    animation: glow 2s infinite alternate;
+}
+
+.video-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.video-btn i {
+    font-size: 1.5rem;
+}
+
+.comeback-message {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    animation: fadeIn 1s forwards 1s;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--dtech-gray);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    padding: 20px;
+    position: relative;
+    transform: scale(0.9);
+    animation: scaleIn 0.3s forwards;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dtech-white);
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    color: var(--dtech-blue);
+    transform: rotate(90deg);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+.restart-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background: var(--dtech-blue);
+    color: var(--dtech-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+    background: #0044b0;
+    transform: translateY(-2px);
+}
+
+/* Watermark */
+.watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(0, 86, 214, 0.5);
+    animation: glowPulse 3s infinite alternate;
+    z-index: 10;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px var(--glow-color);
+    }
+    100% {
+        box-shadow: 0 0 20px var(--glow-color);
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 5px rgba(0, 86, 214, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(0, 86, 214, 0.8);
+    }
+}
+
+@keyframes scaleIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes slideOutLeft {
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Feedback animations */
+.correct {
+    animation: correctFlash 0.5s;
+}
+
+.incorrect {
+    animation: incorrectFlash 0.5s;
+}
+
+@keyframes correctFlash {
+    0%, 100% {
+        background: var(--glass-bg);
+    }
+    50% {
+        background: rgba(76, 175, 80, 0.3);
+    }
+}
+
+@keyframes incorrectFlash {
+    0%, 100% {
+        background: var(--glass-bg);
+    }
+    50% {
+        background: rgba(244, 67, 54, 0.3);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .quiz-card {
+        padding: 20px;
+    }
+    
+    .quiz-card h2 {
+        font-size: 1.3rem;
+    }
+    
+    .quote-text {
+        font-size: 1.5rem;
+    }
+    
+    .quote-author {
+        font-size: 1rem;
+    }
+    
+    .video-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+}
