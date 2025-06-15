@@ -1,338 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- [Previous meta tags remain exactly the same] -->
-    
+    <!-- SEO & Metadata for Google (Preasx24) -->
+    <title>Preasx24 | Founder of DTECH | South African Tech Entrepreneur</title>
+    <meta
+      name="description"
+      content="Preasx24 is a South African tech entrepreneur and the founder of DTECH, a digital ecosystem empowering youth through education, innovation, and technology."
+    />
+    <meta
+      name="keywords"
+      content="Preasx24, DTECH, DTECH Services, South African entrepreneur, student tech founder, digital innovation, empowering youth, tech for students, DTECH Info, DTECH HQ, DTECH General"
+    />
+    <meta name="author" content="Preasx24" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://preasx24.co.za/" />
+
+    <!-- Open Graph (for Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="Preasx24 | Founder of DTECH" />
+    <meta
+      property="og:description"
+      content="Preasx24 is a South African tech founder empowering youth with the DTECH ecosystem: Services, Info, HQ, and more."
+    />
+    <meta property="og:image" content="https://preasx24.co.za/images/preasx24.jpg" />
+    <meta property="og:url" content="https://preasx24.co.za" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Who is Preasx24?" />
+    <meta
+      name="twitter:description"
+      content="Discover how Preasx24 is empowering youth through the DTECH ecosystem, using technology, education, and digital solutions."
+    />
+    <meta name="twitter:image" content="https://preasx24.co.za/images/preasx24.jpg" />
+
+    <!-- Structured Data (JSON-LD) to tell Google who you are -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Preasx24",
+        "alternateName": "Preasx24",
+        "description": "Preasx24 is a South African student tech entrepreneur and founder of DTECH, a multi-branch digital brand focused on youth empowerment, innovation, and education.",
+        "url": "https://preasx24.co.za",
+        "jobTitle": "Founder of DTECH",
+        "sameAs": [
+          "https://about.me/preasx24",
+          "https://www.instagram.com/preasx24",
+          "https://www.linkedin.com/in/d-tech-services-722b19363",
+          "https://facebook.com/D-techDestroyers-legion--100054886954297"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "DTECH",
+          "url": "https://www.dtech-services.co.za"
+        },
+        "nationality": {
+          "@type": "Country",
+          "name": "South Africa"
+        }
+      }
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>DTECH Hub</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- GoatCounter tracking script -->
+    <script
+      data-goatcounter="https://d-tech.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+
     <style>
-      :root {
-        --primary: #00f0ff;
-        --secondary: #7b2dff;
-        --dark: #0a0e17;
-        --darker: #050811;
-      }
-      
       body {
-        background: radial-gradient(circle at center, var(--darker), var(--dark));
-        color: #e2e8f0;
-        font-family: 'Poppins', sans-serif;
-        min-height: 100vh;
-        overflow-x: hidden;
+        background-color: #0b0f19;
+        color: #cbd5e1;
+        font-family: "Segoe UI", sans-serif;
       }
-      
-      /* Cosmic background effect */
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: 
-          radial-gradient(circle at 20% 30%, rgba(123, 45, 255, 0.15) 0%, transparent 25%),
-          radial-gradient(circle at 80% 70%, rgba(0, 240, 255, 0.15) 0%, transparent 25%),
-          radial-gradient(circle at 40% 60%, rgba(255, 45, 85, 0.1) 0%, transparent 25%);
-        z-index: -1;
-        pointer-events: none;
-      }
-      
-      /* Animated grid lines */
-      body::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-          linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-        background-size: 40px 40px;
-        z-index: -1;
-        pointer-events: none;
-        animation: gridMove 120s linear infinite;
-      }
-      
-      @keyframes gridMove {
-        0% { background-position: 0 0; }
-        100% { background-position: 1000px 1000px; }
-      }
-      
-      header {
-        background: rgba(10, 14, 23, 0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0, 240, 255, 0.2);
-        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-        padding: 1.2rem 2rem;
-        position: relative;
-        z-index: 10;
-      }
-      
-      header::after {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      }
-      
-      h1 {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 2rem;
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        letter-spacing: 2px;
-        text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-        animation: textGlow 3s ease-in-out infinite alternate;
-      }
-      
-      @keyframes textGlow {
-        0% { text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
-        100% { text-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 30px rgba(123, 45, 255, 0.4); }
-      }
-      
-      .subtext {
-        font-size: 0.85rem;
-        color: rgba(226, 232, 240, 0.7);
-        letter-spacing: 0.5px;
-      }
-      
-      .tight-section {
-        margin: 2.5rem auto;
-        max-width: 1200px;
-        padding: 0 1.5rem;
-      }
-      
-      .tight-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 1rem;
-      }
-      
       .grid-btn {
-        padding: 1.2rem 1rem;
-        border-radius: 12px;
+        padding: 0.8rem 1rem;
+        border-radius: 0.6rem;
         font-weight: 600;
         text-align: center;
-        font-size: 1rem;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: none;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        color: white;
+        font-size: 0.9rem;
+        transition: 0.2s ease;
+        border: 1px solid #1f2937;
+        background-size: 200% 200%;
       }
-      
-      .grid-btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
-        z-index: -1;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      
       .grid-btn:hover {
-        transform: translateY(-5px) scale(1.03);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        transform: scale(1.03);
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        color: #fff;
       }
-      
-      .grid-btn:hover::before {
-        opacity: 1;
+      .tight-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.7rem;
       }
-      
-      .grid-btn i {
-        margin-right: 8px;
-        font-size: 1.2em;
+      .tight-section {
+        margin: 1.5rem auto;
+        max-width: 1100px;
+        padding: 0 1rem;
       }
-      
-      /* Button color variations */
+      header {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #1e293b;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      header img {
+        height: 45px;
+        width: 45px;
+      }
+      h1 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #60a5fa;
+        letter-spacing: 0.05em;
+      }
+      footer {
+        padding: 0.8rem;
+        text-align: center;
+        border-top: 1px solid #1e293b;
+        font-size: 0.75rem;
+        color: #64748b;
+      }
+      .subtext {
+        font-size: 0.75rem;
+        color: #94a3b8;
+      }
+
+      /* Different background styles */
       .btn1 {
-        background: linear-gradient(135deg, #2563eb, #1e3b8a);
+        background: linear-gradient(to right, #2563eb, #1e40af);
       }
       .btn2 {
-        background: linear-gradient(135deg, #7c3aed, #5b21b6);
+        background: linear-gradient(to right, #7c3aed, #4c1d95);
       }
       .btn3 {
-        background: linear-gradient(135deg, #db2777, #9d174d);
+        background: linear-gradient(to right, #db2777, #831843);
       }
       .btn4 {
-        background: linear-gradient(135deg, #059669, #047857);
+        background: linear-gradient(to right, #059669, #065f46);
       }
       .btn5 {
-        background: linear-gradient(135deg, #f59e0b, #d97706);
+        background: linear-gradient(to right, #f59e0b, #92400e);
       }
       .btn6 {
-        background: linear-gradient(135deg, #6366f1, #4f46e5);
+        background: linear-gradient(to right, #6366f1, #3730a3);
       }
       .btn7 {
-        background: linear-gradient(135deg, #ef4444, #dc2626);
+        background: linear-gradient(to right, #ef4444, #7f1d1d);
       }
       .btn8 {
-        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        background: linear-gradient(to right, #3b82f6, #1e3a8a);
       }
       .btn9 {
-        background: linear-gradient(135deg, #6b7280, #4b5563);
+        background: linear-gradient(to right, #6b7280, #111827);
+      }
+
+      /* Styles for the visitor-count button */
+      #visitor-btn {
+        background: #1e293b;
+        color: #00ffea;
+        border: 1px solid #00ffea;
+        border-radius: 0.5rem;
+        font-family: "Courier New", monospace;
+        cursor: default;
+        font-size: 0.9rem;
+        transition: background 0.2s ease, transform 0.2s ease;
+        padding: 0.5rem 1rem;
+      }
+      #visitor-btn:hover {
+        background: #111827;
+        transform: scale(1.02);
       }
       
-      /* Daily Quiz Button - Special */
+      /* New extravagant button style */
       .daily-btn {
         grid-column: span 2;
-        background: linear-gradient(135deg, var(--secondary), var(--primary));
-        color: white;
+        padding: 1rem;
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        text-align: center;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        border: none;
+        border-radius: 0.8rem;
+        background: linear-gradient(45deg, #ff00cc, #3333ff, #00ccff, #ff00cc);
+        background-size: 300% 300%;
+        color: white;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         position: relative;
         overflow: hidden;
-        z-index: 1;
-        box-shadow: 0 5px 20px rgba(123, 45, 255, 0.4);
-        animation: pulse 2s infinite;
+        animation: gradientBG 6s ease infinite;
       }
-      
-      .daily-btn::before {
+      .daily-btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      }
+      .daily-btn:before {
         content: "";
         position: absolute;
         top: -50%;
         left: -50%;
         width: 200%;
         height: 200%;
-        background: linear-gradient(
-          to bottom right,
-          rgba(255,255,255,0) 0%,
-          rgba(255,255,255,0.1) 50%,
-          rgba(255,255,255,0) 100%
-        );
-        transform: rotate(30deg);
-        animation: shine 3s infinite;
-      }
-      
-      @keyframes shine {
-        0% { left: -50%; }
-        100% { left: 150%; }
-      }
-      
-      @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(123, 45, 255, 0.4); }
-        70% { box-shadow: 0 0 0 15px rgba(123, 45, 255, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(123, 45, 255, 0); }
-      }
-      
-      footer {
-        background: rgba(10, 14, 23, 0.8);
-        backdrop-filter: blur(10px);
-        border-top: 1px solid rgba(0, 240, 255, 0.2);
-        padding: 1.5rem;
-        margin-top: 3rem;
-        position: relative;
-      }
-      
-      footer::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      }
-      
-      /* Visitor counter styles */
-      .counter-container {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        align-items: center;
-        margin: 2rem 0;
-        flex-wrap: wrap;
-      }
-      
-      #visitor-btn {
-        background: rgba(30, 41, 59, 0.7);
-        color: var(--primary);
-        border: 1px solid var(--primary);
-        border-radius: 8px;
-        font-family: 'Courier New', monospace;
-        cursor: default;
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        position: relative;
-        overflow: hidden;
-      }
-      
-      #visitor-btn:hover {
-        background: rgba(17, 24, 39, 0.8);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 240, 255, 0.2);
-      }
-      
-      #visitor-btn::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(0, 240, 255, 0.1),
-          transparent
-        );
-        transform: translateX(-100%);
-        transition: transform 0.6s ease;
-      }
-      
-      #visitor-btn:hover::after {
-        transform: translateX(100%);
-      }
-      
-      /* Floating particles animation */
-      .particle {
-        position: fixed;
-        background: rgba(0, 240, 255, 0.5);
-        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        transform: rotate(45deg);
         pointer-events: none;
-        z-index: -1;
+        transition: all 0.3s ease;
       }
-      
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .tight-grid {
-          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        }
-        
-        h1 {
-          font-size: 1.6rem;
-        }
+      .daily-btn:hover:before {
+        left: 100%;
+      }
+      @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .daily-btn i {
+        margin-right: 8px;
+        font-size: 1.1em;
       }
     </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
 
   <body>
-    <!-- Floating particles -->
-    <div id="particles-js"></div>
-    
     <header>
-      <img src="logo.png" alt="DTECH Logo" class="rounded-full bg-white p-1 shadow-lg border-2 border-blue-400"/>
+      <img src="logo.png" alt="DTECH Logo" class="rounded-full bg-white p-1 shadow" />
       <div>
         <h1>DTECH Hub</h1>
         <div class="subtext">Empowering the Youth Through Digital Innovation</div>
@@ -341,95 +247,64 @@
 
     <main class="tight-section">
       <div class="tight-grid">
-        <a href="past-papers.html" class="grid-btn btn1"><i class="fas fa-book-open"></i> Past Papers</a>
-        <a href="study-guides.html" class="grid-btn btn2"><i class="fas fa-graduation-cap"></i> Study Guides</a>
-        <a href="learner-guide.html" class="grid-btn btn3"><i class="fas fa-video"></i> Vid &amp; Audio</a>
-        <a href="sba.html" class="grid-btn btn4"><i class="fas fa-file-alt"></i> SBA Guide</a>
-        <a href="pats.html" class="grid-btn btn5"><i class="fas fa-tools"></i> PATs</a>
-        <a href="https://uni.dtech24.co.za" class="grid-btn btn6"><i class="fas fa-chart-line"></i> Eligibility</a>
-        <a href="quizes.html" class="grid-btn btn7"><i class="fas fa-brain"></i> Quizzes</a>
-        <a href="nsfas.html" class="grid-btn btn8"><i class="fas fa-money-bill-wave"></i> NSFAS Info</a>
-        <a href="university-applications.html" class="grid-btn btn9"><i class="fas fa-university"></i> University</a>
-        <a href="note.html" class="grid-btn btn4"><i class="fas fa-sticky-note"></i> Notes</a>
+        <a href="past-papers.html" class="grid-btn btn1">📘 Past Papers</a>
+        <a href="study-guides.html" class="grid-btn btn2">📚 Study Guides</a>
+        <a href="learner-guide.html" class="grid-btn btn3">🎧 Vid &amp; Audio</a>
+        <a href="sba.html" class="grid-btn btn4">🧾 SBA Guide</a>
+        <a href="pats.html" class="grid-btn btn5">🛠 PATs</a>
+        <a href="https://uni.dtech24.co.za" class="grid-btn btn6">📊 Eligibility</a>
+        <a href="quizes.html" class="grid-btn btn7">🧠 Quizzes</a>
+        <a href="nsfas.html" class="grid-btn btn8">💰 NSFAS Info</a>
+        <a href="university-applications.html" class="grid-btn btn9">🎓 University</a>
+        <a href="note.html" class="grid-btn btn4">📝 Notes</a>
+        <!-- New extravagant button -->
         <a href="dtechh.html" class="daily-btn">
           <i class="fas fa-star"></i> Daily Quiz &amp; Quote
         </a>
       </div>
     </main>
 
-    <div class="counter-container">
+    <footer>Powered by Preasx24 • DTECH 2025</footer>
+
+    <!-- Visitor Counters (GitHub Badge + GoatCounter) -->
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        align-items: center;
+        margin-top: 1rem;
+      "
+    >
+      <!-- GitHub Visitor Badge -->
       <img
         src="https://visitor-badge.laobi.icu/badge?page_id=dtech2preas.100mb"
         alt="GitHub Visitor Counter"
-        style="height: 32px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"
+        style="height: 28px;"
       />
 
-      <button id="visitor-btn">👁️ VISITORS: loading...</button>
+      <!-- GoatCounter Visitor Button -->
+      <button id="visitor-btn">👁️ NUM OF USERS: loading...</button>
     </div>
 
-    <footer>Powered by Preasx24 • DTECH 2025</footer>
-
     <script>
-      // Visitor counter script
-      var path = location.pathname;
+      // Construct the GoatCounter JSON URL using the current path
+      var path = location.pathname; // e.g., "/" or "/somepage.html"
       var counterURL = "https://d-tech.goatcounter.com/counter" + path + ".json";
 
       fetch(counterURL)
         .then((res) => {
-          if (!res.ok) throw new Error("Network response was not ok");
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
           return res.json();
         })
         .then((data) => {
-          document.getElementById("visitor-btn").innerHTML = 
-            `<i class="fas fa-users"></i> VISITORS: ${data.count.toLocaleString()}`;
+          document.getElementById("visitor-btn").textContent = `👁️ NUM OF USERS: ${data.count}`;
         })
         .catch(() => {
-          document.getElementById("visitor-btn").innerHTML = 
-            `<i class="fas fa-exclamation-triangle"></i> VISITORS: error`;
+          document.getElementById("visitor-btn").textContent = `👁️ NUM OF USERS: error`;
         });
-
-      // Floating particles animation
-      function createParticles() {
-        const colors = ['rgba(0, 240, 255, 0.5)', 'rgba(123, 45, 255, 0.5)', 'rgba(255, 255, 255, 0.3)'];
-        
-        for (let i = 0; i < 50; i++) {
-          const particle = document.createElement('div');
-          particle.classList.add('particle');
-          
-          // Random properties
-          const size = Math.random() * 5 + 1;
-          const posX = Math.random() * window.innerWidth;
-          const posY = Math.random() * window.innerHeight;
-          const duration = Math.random() * 20 + 10;
-          const delay = Math.random() * 5;
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          
-          // Apply styles
-          particle.style.width = `${size}px`;
-          particle.style.height = `${size}px`;
-          particle.style.left = `${posX}px`;
-          particle.style.top = `${posY}px`;
-          particle.style.background = color;
-          particle.style.animation = `float ${duration}s linear ${delay}s infinite`;
-          
-          // Add to body
-          document.body.appendChild(particle);
-        }
-      }
-      
-      // Add keyframes for floating animation
-      const style = document.createElement('style');
-      style.innerHTML = `
-        @keyframes float {
-          0% { transform: translateY(0) translateX(0); opacity: 1; }
-          50% { transform: translateY(-100px) translateX(50px); opacity: 0.5; }
-          100% { transform: translateY(-200px) translateX(100px); opacity: 0; }
-        }
-      `;
-      document.head.appendChild(style);
-      
-      // Initialize particles
-      window.addEventListener('load', createParticles);
     </script>
   </body>
 </html>
