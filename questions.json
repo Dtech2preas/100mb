@@ -1,15 +1,5 @@
 [
   {
-    "question": "What part of the brain controls voluntary movements?",
-    "options": ["Cerebellum", "Medulla", "Cerebrum", "Hypothalamus"],
-    "answer": 2
-  },
-  {
-    "question": "Which country has the largest population in the world?",
-    "options": ["India", "China", "USA", "Indonesia"],
-    "answer": 0
-  },
-  {
     "question": "What is the main purpose of red blood cells?",
     "options": ["Fight infection", "Clot blood", "Carry oxygen", "Control temperature"],
     "answer": 2
