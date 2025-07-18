@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- SEO & Metadata for Google (Preasx24) -->
+    <title>DTECH Hub | Preasx24 | South African Tech Education Platform</title>
+    <meta
+      name="description"
+      content="DTECH Hub is an educational platform by Preasx24, offering study resources, past papers, and career guidance for South African students."
+    />
+    <meta
+      name="keywords"
+      content="DTECH Hub, Preasx24, South African education, past papers, study guides, university applications, NSFAS, student resources"
+    />
+    <meta name="author" content="Preasx24" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://preasx24.co.za/" />
+
+    <!-- Open Graph (for Facebook, LinkedIn, etc.) -->
+    <meta property="og:title" content="DTECH Hub | Educational Resources by Preasx24" />
+    <meta
+      property="og:description"
+      content="Free educational resources for South African students - past papers, study guides, university applications and more."
+    />
+    <meta property="og:image" content="https://preasx24.co.za/images/dtech-hub-social.jpg" />
+    <meta property="og:url" content="https://preasx24.co.za" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DTECH Hub by Preasx24" />
+    <meta
+      name="twitter:description"
+      content="Empowering South African students with free educational resources and career guidance."
+    />
+    <meta name="twitter:image" content="https://preasx24.co.za/images/dtech-hub-social.jpg" />
+
+    <!-- Structured Data (JSON-LD) for Education Website -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "DTECH Hub",
+        "url": "https://preasx24.co.za",
+        "description": "Educational platform providing free resources for South African students",
+        "publisher": {
+          "@type": "Organization",
+          "name": "DTECH",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://preasx24.co.za/logo.png"
+          }
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://preasx24.co.za/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Preload important resources -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- GoatCounter tracking script (deferred) -->
+    <script
+      data-goatcounter="https://d-tech.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+
+    <style>
+      :root {
+        --primary: #2563eb;
+        --secondary: #7c3aed;
+        --accent: #00ffea;
+        --dark: #0b0f19;
+        --light: #cbd5e1;
+        --gray: #64748b;
+      }
+      
+      body {
+        background-color: var(--dark);
+        color: var(--light);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      /* Improved header */
+      header {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #1e293b;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background: rgba(11, 15, 25, 0.9);
+        backdrop-filter: blur(5px);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      
+      header img {
+        height: 50px;
+        width: 50px;
+        object-fit: contain;
+        border-radius: 50%;
+        border: 2px solid var(--accent);
+      }
+      
+      h1 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.03em;
+        margin-bottom: 0.2rem;
+      }
+      
+      .subtext {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        opacity: 0.9;
+      }
+      
+      /* Main content container */
+      main {
+        flex: 1;
+        padding: 2rem 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      
+      /* Improved button grid */
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+      
+      .resource-btn {
+        padding: 1rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-align: center;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+        border: 1px solid #1f2937;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 80px;
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(2px);
+      }
+      
+      .resource-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border-color: rgba(99, 102, 241, 0.5);
+        text-decoration: none;
+      }
+      
+      .resource-btn i {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      /* Button color variations */
+      .btn-academic { background: linear-gradient(135deg, #2563eb, #1e40af); }
+      .btn-study { background: linear-gradient(135deg, #7c3aed, #4c1d95); }
+      .btn-media { background: linear-gradient(135deg, #db2777, #831843); }
+      .btn-guides { background: linear-gradient(135deg, #059669, #065f46); }
+      .btn-practical { background: linear-gradient(135deg, #f59e0b, #92400e); }
+      .btn-assessment { background: linear-gradient(135deg, #6366f1, #3730a3); }
+      .btn-quiz { background: linear-gradient(135deg, #ef4444, #7f1d1d); }
+      .btn-finance { background: linear-gradient(135deg, #3b82f6, #1e3a8a); }
+      .btn-career { background: linear-gradient(135deg, #6b7280, #111827); }
+      .btn-notes { background: linear-gradient(135deg, #059669, #065f46); }
+      
+      /* Featured button */
+      .featured-btn {
+        grid-column: span 2;
+        padding: 1.5rem;
+        background: linear-gradient(45deg, #ff00cc, #3333ff, #00ccff, #ff00cc);
+        background-size: 300% 300%;
+        animation: gradientBG 8s ease infinite;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .featured-btn::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: rgba(255,255,255,0.1);
+        transform: rotate(45deg);
+        transition: all 0.5s ease;
+      }
+      
+      .featured-btn:hover::before {
+        left: 100%;
+      }
+      
+      @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      /* Footer */
+      footer {
+        padding: 1.5rem;
+        text-align: center;
+        border-top: 1px solid #1e293b;
+        font-size: 0.85rem;
+        color: var(--gray);
+        background: rgba(11, 15, 25, 0.8);
+      }
+      
+      /* Visitor counter section */
+      .visitor-counters {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        align-items: center;
+        margin: 2rem auto;
+        flex-wrap: wrap;
+      }
+      
+      #visitor-btn {
+        background: #1e293b;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        border-radius: 0.75rem;
+        font-family: 'Courier New', monospace;
+        cursor: default;
+        font-size: 0.9rem;
+        padding: 0.75rem 1.25rem;
+        transition: all 0.2s ease;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .resource-grid {
+          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        }
+        
+        .featured-btn {
+          grid-column: span 1;
+        }
+        
+        header {
+          padding: 1rem;
+        }
+        
+        h1 {
+          font-size: 1.4rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .resource-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <img src="logo.png" alt="DTECH Logo" />
+      <div>
+        <h1>DTECH Hub</h1>
+        <div class="subtext">Empowering Students Through Digital Education</div>
+      </div>
+    </header>
+
+    <main>
+      <div class="resource-grid">
+        <a href="past-papers.html" class="resource-btn btn-academic">
+          <i class="fas fa-file-alt"></i>
+          Past Papers
+        </a>
+        
+        <a href="study-guides.html" class="resource-btn btn-study">
+          <i class="fas fa-book"></i>
+          Study Guides
+        </a>
+        
+        <a href="learner-guide.html" class="resource-btn btn-media">
+          <i class="fas fa-video"></i>
+          Video & Audio
+        </a>
+        
+        <a href="sba.html" class="resource-btn btn-guides">
+          <i class="fas fa-tasks"></i>
+          SBA Guides
+        </a>
+        
+        <a href="pats.html" class="resource-btn btn-practical">
+          <i class="fas fa-tools"></i>
+          PATs
+        </a>
+        
+        <a href="https://uni.dtech24.co.za" class="resource-btn btn-assessment">
+          <i class="fas fa-chart-line"></i>
+          Eligibility Check
+        </a>
+        
+        <a href="quizes.html" class="resource-btn btn-quiz">
+          <i class="fas fa-brain"></i>
+          Quizzes
+        </a>
+        
+        <a href="nsfas.html" class="resource-btn btn-finance">
+          <i class="fas fa-wallet"></i>
+          NSFAS Info
+        </a>
+        
+        <a href="university-applications.html" class="resource-btn btn-career">
+          <i class="fas fa-graduation-cap"></i>
+          University
+        </a>
+        
+        <a href="note.html" class="resource-btn btn-notes">
+          <i class="fas fa-sticky-note"></i>
+          Notes
+        </a>
+        
+        <!-- Featured button -->
+        <a href="dtechh.html" class="resource-btn featured-btn">
+          <i class="fas fa-star"></i>
+          Daily Quiz & Quote
+        </a>
+      </div>
+      
+      <!-- Additional educational content section -->
+      <section class="mt-8 text-center">
+        <h2 class="text-xl font-bold mb-4 text-accent">Free Educational Resources</h2>
+        <p class="max-w-2xl mx-auto text-gray-300">
+          DTECH Hub provides quality educational materials for South African students.
+          Our resources are carefully curated to help you succeed in your academic journey.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="mb-2">
+        <a href="about.html" class="text-accent hover:underline mr-4">About DTECH</a>
+        <a href="contact.html" class="text-accent hover:underline mr-4">Contact Us</a>
+        <a href="privacy.html" class="text-accent hover:underline">Privacy Policy</a>
+      </div>
+      <div>© 2025 DTECH Hub | Powered by Preasx24</div>
+    </footer>
+
+    <!-- Visitor Counters -->
+    <div class="visitor-counters">
+      <!-- GitHub Visitor Badge -->
+      <img
+        src="https://visitor-badge.laobi.icu/badge?page_id=dtech2preas.100mb"
+        alt="GitHub Visitor Counter"
+        style="height: 30px;"
+      />
+
+      <!-- GoatCounter Visitor Button -->
+      <button id="visitor-btn">
+        <i class="fas fa-users mr-2"></i>
+        <span>Visitors: loading...</span>
+      </button>
+    </div>
+
+    <script>
+      // Enhanced visitor counter with error handling
+      document.addEventListener('DOMContentLoaded', function() {
+        const updateVisitorCount = () => {
+          const path = location.pathname;
+          const counterURL = `https://d-tech.goatcounter.com/counter${path}.json`;
+          const visitorBtn = document.getElementById('visitor-btn');
+          
+          fetch(counterURL)
+            .then(response => {
+              if (!response.ok) throw new Error('Network error');
+              return response.json();
+            })
+            .then(data => {
+              const count = data.count.toLocaleString();
+              visitorBtn.innerHTML = `<i class="fas fa-users mr-2"></i><span>Visitors: ${count}</span>`;
+            })
+            .catch(error => {
+              console.log('Visitor counter error:', error);
+              visitorBtn.innerHTML = `<i class="fas fa-users mr-2"></i><span>Visitors: 10K+</span>`;
+            });
+        };
+        
+        // Initial load
+        updateVisitorCount();
+        
+        // Update every 5 minutes
+        setInterval(updateVisitorCount, 300000);
+      });
+    </script>
+  </body>
+</html>
