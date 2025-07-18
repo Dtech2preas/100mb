@@ -1,227 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>VIDEO & AUDIO LESSONS</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --primary: #00e5ff;
-      --primary-dark: #00bcd4;
-      --secondary: #2196f3;
-      --dark-bg: #0d0d0d;
-      --card-bg: #1a1a1a;
-      --text-light: #cfd8dc;
-      --text-muted: #aaa;
-    }
-    
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: radial-gradient(ellipse at top, var(--dark-bg), #000);
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(ellipse at top, #0d0d0d, #000);
       color: #ffffff;
-      line-height: 1.4;
+      overflow-x: hidden;
     }
-    
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      padding: 8px 15px;
-      box-shadow: 0 0 10px var(--secondary);
+      padding: 10px 20px;
+      box-shadow: 0 0 20px #2196f3;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 10;
     }
-    
+    header .left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
     .logo {
-      height: 35px;
-      filter: drop-shadow(0 0 5px var(--primary));
+      height: 45px;
+      filter: drop-shadow(0 0 8px #00e5ff);
     }
-    
     .slogan {
-      font-size: 12px;
-      color: var(--text-light);
-      text-shadow: 0 0 2px var(--primary);
-      margin-left: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #cfd8dc;
+      text-shadow: 0 0 4px #00e5ff;
     }
-    
-    .btn {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    .support-button, .question-button {
+      background: linear-gradient(135deg, #00e5ff, #1e88e5);
       color: white;
       border: none;
-      padding: 8px 14px;
-      border-radius: 20px;
+      padding: 10px 16px;
+      border-radius: 30px;
       cursor: pointer;
       text-decoration: none;
-      font-weight: 500;
-      font-size: 12px;
-      box-shadow: 0 0 8px var(--primary);
-      font-family: 'Orbitron', sans-serif;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+      font-weight: bold;
+      box-shadow: 0 0 15px #00e5ff;
+      transition: transform 0.2s, box-shadow 0.3s;
     }
-    
-    .btn i {
-      font-size: 12px;
+    .support-button:hover, .question-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00e5ff;
     }
-    
-    main {
-      padding: 15px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
     h1 {
       text-align: center;
-      color: var(--primary);
-      font-size: 22px;
-      margin: 15px 0;
-      text-shadow: 0 0 5px var(--secondary);
-      font-family: 'Orbitron', sans-serif;
+      margin-top: 40px;
+      color: #00e5ff;
+      font-size: 32px;
+      text-shadow: 0 0 10px #2196f3;
     }
-    
-    .content-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 12px;
-      margin: 20px 0;
+    .result {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
     }
-    
-    .card {
-      background: var(--card-bg);
-      border-left: 3px solid var(--primary);
-      padding: 12px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px #00e5ff55;
+    .paper {
+      background: #1a1a1a;
+      border-left: 6px solid #00e5ff;
+      padding: 20px;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #00e5ff55;
+      transition: transform 0.2s ease-in-out;
     }
-    
-    .card-title {
-      font-size: 14px;
-      margin-bottom: 5px;
+    .paper:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px #00e5ffaa;
     }
-    
-    .download-btn {
-      color: var(--primary);
+    .paper a {
+      color: #4fc3f7;
       text-decoration: none;
-      font-size: 13px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
     }
-    
-    .download-btn i {
-      font-size: 12px;
+    .paper a:hover {
+      text-decoration: underline;
+      color: #00bcd4;
     }
-    
-    .cta-section {
+    p {
       text-align: center;
-      margin: 20px 0;
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 8px;
+      color: #aaa;
     }
-    
-    .cta-title {
-      font-size: 16px;
-      margin-bottom: 8px;
-      color: var(--primary);
-    }
-    
-    footer {
-      background: linear-gradient(to right, #0f2027, #203a43);
-      padding: 12px;
+    .extra-button-container {
       text-align: center;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-    
-    @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        padding: 8px 10px;
-      }
-      
-      .slogan {
-        display: none;
-      }
-      
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
+      margin-bottom: 40px;
     }
   </style>
 </head>
 <body>
   <header>
-    <div style="display: flex; align-items: center;">
+    <div class="left">
       <img src="logo.png" alt="Logo" class="logo">
-      <span class="slogan">Empowering youth through digital innovation</span>
+      <span class="slogan">Empowering the youth through digital innovation</span>
     </div>
-    <a href="https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365" class="btn" target="_blank">
-      <i class="fas fa-heart"></i> Support
-    </a>
+    <a href="https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365" class="support-button" target="_blank">Support</a>
   </header>
 
-  <main>
-    <h1>VIDEO & AUDIO LESSONS</h1>
+  <h1>VIDEO & AUDIO LESSONS</h1>
 
-    <div class="content-grid" id="results">
-      <div style="text-align: center; grid-column: 1/-1;">
-        <div style="display: inline-block; width: 30px; height: 30px; border: 3px solid rgba(0,229,255,0.2); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;"></div>
-      </div>
-    </div>
+  <div class="result" id="results">Loading...</div>
 
-    <div class="cta-section">
-      <h2 class="cta-title">Need Help?</h2>
-      <a href="https://info.dtech24.co.za" class="btn" target="_blank">
-        <i class="fas fa-question-circle"></i> Get Help
-      </a>
-    </div>
-  </main>
-
-  <footer>
-    © 2023 Digital Learning Platform
-  </footer>
+  <div class="extra-button-container">
+    <a href="https://info.dtech24.co.za" class="question-button" target="_blank">Need Help or Can't Find a Paper?</a>
+  </div>
 
   <script>
     function handleDownload(fileUrl) {
-      const btn = event.target;
-      const originalHtml = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading';
-      
+      // Step 1: Open the file in the default browser
       window.location.href = fileUrl;
+
+      // Step 2: After 2 seconds, open the ad in a new tab
       setTimeout(() => {
         window.open("https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365", "_blank");
-        btn.innerHTML = originalHtml;
       }, 2000);
     }
 
     fetch('a.json')
       .then(res => res.json())
       .then(data => {
-        const results = data.map(item => `
-          <div class="card">
-            <div class="card-title">${item.name}</div>
-            <a href="#" onclick="handleDownload('${item.file}'); return false;" class="download-btn">
-              <i class="fas fa-download"></i> Download
-            </a>
+        const results = data.map(p => `
+          <div class="paper">
+            <strong>${p.name}</strong><br>
+            <a href="#" onclick="handleDownload('${p.file}'); return false;">Download PDF</a>
           </div>
         `).join("");
-        document.getElementById("results").innerHTML = results || "<div style='grid-column:1/-1;text-align:center;'>No resources found</div>";
+        document.getElementById("results").innerHTML = results || "<p>No papers found.</p>";
       })
       .catch(err => {
-        document.getElementById("results").innerHTML = `
-          <div style='grid-column:1/-1;text-align:center;padding:15px;'>
-            Error loading resources. <button onclick="window.location.reload()" style="background:none;border:none;color:var(--primary);cursor:pointer;">Try again</button>
-          </div>
-        `;
+        document.getElementById("results").innerHTML = "<p>Error loading SBA.json</p>";
         console.error(err);
       });
   </script>
