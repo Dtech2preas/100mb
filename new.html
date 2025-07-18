@@ -1,268 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- SEO & Metadata -->
-    <title>DTECH Hub | Educational Resources by Preasx24</title>
-    <meta name="description" content="DTECH Hub provides educational resources for South African students - past papers, study guides, university info and more.">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Tailwind -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>DTECH Hub | Student Resources</title>
+    <meta name="description" content="Free educational resources for South African students">
+    
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-      :root {
-        --primary: #4f46e5;
-        --primary-light: #6366f1;
-        --dark: #0f172a;
-        --darker: #020617;
-        --light: #f8fafc;
-        --gray: #64748b;
-      }
-      
-      body {
-        background-color: var(--darker);
-        color: var(--light);
-        font-family: 'Inter', sans-serif;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      
-      header {
-        background: var(--dark);
-        padding: 0.8rem 1.5rem;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-      }
-      
-      .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-      
-      .logo-img {
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid var(--primary);
-      }
-      
-      h1 {
-        font-size: 1.4rem;
-        font-weight: 600;
-        color: var(--primary-light);
-        margin-bottom: 0.1rem;
-      }
-      
-      .subtext {
-        font-size: 0.75rem;
-        color: var(--gray);
-      }
-      
-      main {
-        flex: 1;
-        padding: 1.5rem 1rem;
-        max-width: 1000px;
-        margin: 0 auto;
-        width: 100%;
-      }
-      
-      .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 0.8rem;
-      }
-      
-      .grid-btn {
-        padding: 0.9rem 0.5rem;
-        border-radius: 0.5rem;
-        font-weight: 500;
-        text-align: center;
-        font-size: 0.9rem;
-        transition: all 0.2s ease;
-        background: rgba(30, 41, 59, 0.7);
-        border: 1px solid rgba(255,255,255,0.05);
-        color: var(--light);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .grid-btn:hover {
-        background: rgba(55, 65, 81, 0.7);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      }
-      
-      .grid-btn i {
-        font-size: 1.2rem;
-        margin-bottom: 0.4rem;
-      }
-      
-      .featured-btn {
-        grid-column: span 2;
-        background: linear-gradient(135deg, var(--primary), #7c3aed);
-      }
-      
-      .featured-btn:hover {
-        background: linear-gradient(135deg, #7c3aed, var(--primary));
-      }
-      
-      .btn1 { color: #60a5fa; }
-      .btn2 { color: #a78bfa; }
-      .btn3 { color: #f472b6; }
-      .btn4 { color: #34d399; }
-      .btn5 { color: #fbbf24; }
-      .btn6 { color: #818cf8; }
-      .btn7 { color: #f87171; }
-      .btn8 { color: #38bdf8; }
-      .btn9 { color: #a1a1aa; }
-      
-      footer {
-        background: var(--dark);
-        padding: 1rem;
-        text-align: center;
-        font-size: 0.75rem;
-        color: var(--gray);
-        border-top: 1px solid rgba(255,255,255,0.05);
-      }
-      
-      .counters {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        align-items: center;
-        margin-top: 1.5rem;
-        font-size: 0.8rem;
-      }
-      
-      .visitor-btn {
-        background: rgba(30, 41, 59, 0.7);
-        color: #00ffea;
-        border: 1px solid rgba(0,255,234,0.2);
-        border-radius: 0.5rem;
-        padding: 0.5rem 0.8rem;
-      }
-      
-      @media (max-width: 640px) {
-        .grid-container {
-          grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        :root {
+            --primary: #4361ee;
+            --primary-light: #e0e7ff;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
         }
         
-        .grid-btn {
-          padding: 0.8rem 0.5rem;
-          font-size: 0.85rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .grid-btn i {
-          font-size: 1.1rem;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-      }
+        
+        /* Header */
+        header {
+            background: var(--card-bg);
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .logo {
+            height: 48px;
+            width: 48px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        
+        .header-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .header-text p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        /* Resource Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+        
+        .resource-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: var(--primary-light);
+        }
+        
+        .resource-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            background: var(--primary-light);
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .resource-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        
+        .resource-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* Featured Card */
+        .featured-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .featured-card .resource-icon {
+            color: white;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .featured-card h3,
+        .featured-card p {
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 2rem;
+            margin-top: auto;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .resource-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            header {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .resource-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            
+            .resource-card {
+                padding: 1.25rem 0.75rem;
+            }
+            
+            .resource-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
     </style>
-  </head>
-
-  <body>
+</head>
+<body>
+    <!-- Header -->
     <header>
-      <div class="logo-container">
-        <img src="logo.png" alt="DTECH Logo" class="logo-img">
-        <div>
-          <h1>DTECH Hub</h1>
-          <div class="subtext">Empowering through digital innovation</div>
+        <img src="logo.png" alt="DTECH Logo" class="logo">
+        <div class="header-text">
+            <h1>DTECH Hub</h1>
+            <p>Empowering students through education</p>
         </div>
-      </div>
     </header>
-
+    
+    <!-- Main Content -->
     <main>
-      <div class="grid-container">
-        <a href="past-papers.html" class="grid-btn btn1">
-          <i class="fas fa-file-alt"></i>
-          Past Papers
-        </a>
-        
-        <a href="study-guides.html" class="grid-btn btn2">
-          <i class="fas fa-book-open"></i>
-          Study Guides
-        </a>
-        
-        <a href="learner-guide.html" class="grid-btn btn3">
-          <i class="fas fa-video"></i>
-          Video & Audio
-        </a>
-        
-        <a href="sba.html" class="grid-btn btn4">
-          <i class="fas fa-clipboard-list"></i>
-          SBA Guide
-        </a>
-        
-        <a href="pats.html" class="grid-btn btn5">
-          <i class="fas fa-tools"></i>
-          PATs
-        </a>
-        
-        <a href="https://uni.dtech24.co.za" class="grid-btn btn6">
-          <i class="fas fa-chart-line"></i>
-          Eligibility
-        </a>
-        
-        <a href="quizes.html" class="grid-btn btn7">
-          <i class="fas fa-brain"></i>
-          Quizzes
-        </a>
-        
-        <a href="nsfas.html" class="grid-btn btn8">
-          <i class="fas fa-money-bill-wave"></i>
-          NSFAS Info
-        </a>
-        
-        <a href="university-applications.html" class="grid-btn btn9">
-          <i class="fas fa-graduation-cap"></i>
-          University
-        </a>
-        
-        <a href="note.html" class="grid-btn btn4">
-          <i class="fas fa-sticky-note"></i>
-          Notes
-        </a>
-        
-        <a href="dtechh.html" class="grid-btn featured-btn">
-          <i class="fas fa-star"></i>
-          Daily Quiz & Quote
-        </a>
-      </div>
-      
-      <div class="counters">
-        <img src="https://visitor-badge.laobi.icu/badge?page_id=dtech2preas.100mb" alt="Visitor counter" style="height:24px;">
-        <button id="visitor-btn" class="visitor-btn">
-          <i class="fas fa-users"></i> Visitors: loading...
-        </button>
-      </div>
+        <div class="container">
+            <section class="hero">
+                <h2>Your Academic Success Toolkit</h2>
+                <p>Free, high-quality resources to help South African students excel in their studies</p>
+            </section>
+            
+            <div class="resource-grid">
+                <!-- Resource Cards -->
+                <a href="past-papers.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Past Papers</h3>
+                    <p>Exam preparation materials</p>
+                </a>
+                
+                <a href="study-guides.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Study Guides</h3>
+                    <p>Comprehensive subject reviews</p>
+                </a>
+                
+                <a href="learner-guide.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Lessons</h3>
+                    <p>Visual learning resources</p>
+                </a>
+                
+                <a href="sba.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>SBA Guides</h3>
+                    <p>School-based assessment help</p>
+                </a>
+                
+                <a href="pats.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>PATs</h3>
+                    <p>Practical assessment tasks</p>
+                </a>
+                
+                <a href="https://uni.dtech24.co.za" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Eligibility Check</h3>
+                    <p>University requirements</p>
+                </a>
+                
+                <a href="quizes.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Quizzes</h3>
+                    <p>Test your knowledge</p>
+                </a>
+                
+                <a href="nsfas.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>NSFAS Info</h3>
+                    <p>Financial aid guidance</p>
+                </a>
+                
+                <a href="university-applications.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>University</h3>
+                    <p>Application resources</p>
+                </a>
+                
+                <a href="note.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-sticky-note"></i>
+                    </div>
+                    <h3>Study Notes</h3>
+                    <p>Condensed key concepts</p>
+                </a>
+                
+                <!-- Featured Card -->
+                <a href="dtechh.html" class="resource-card featured-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Daily Challenge</h3>
+                    <p>New quiz & motivation daily</p>
+                </a>
+            </div>
+        </div>
     </main>
-
+    
+    <!-- Footer -->
     <footer>
-      Powered by Preasx24 • DTECH 2025
+        <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+        <p class="copyright">© 2025 DTECH Hub | Created by Preasx24</p>
     </footer>
-
-    <script>
-      // Visitor counter script
-      var path = location.pathname;
-      var counterURL = "https://d-tech.goatcounter.com/counter" + path + ".json";
-
-      fetch(counterURL)
-        .then(res => res.ok ? res.json() : Promise.reject())
-        .then(data => {
-          document.getElementById('visitor-btn').innerHTML = 
-            `<i class="fas fa-users"></i> Visitors: ${data.count.toLocaleString()}`;
-        })
-        .catch(() => {
-          document.getElementById('visitor-btn').innerHTML = 
-            `<i class="fas fa-users"></i> Visitors: N/A`;
-        });
-    </script>
-  </body>
+</body>
 </html>
