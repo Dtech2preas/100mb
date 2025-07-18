@@ -1,413 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- SEO & Metadata for Google (Preasx24) -->
-    <title>Preasx24 | Founder of DTECH | South African Tech Entrepreneur</title>
-    <meta
-      name="description"
-      content="Preasx24 is a South African tech entrepreneur and the founder of DTECH, a digital ecosystem empowering youth through education, innovation, and technology."
-    />
-    <meta
-      name="keywords"
-      content="Preasx24, DTECH, DTECH Services, South African entrepreneur, student tech founder, digital innovation, empowering youth, tech for students, DTECH Info, DTECH HQ, DTECH General"
-    />
-    <meta name="author" content="Preasx24" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://preasx24.co.za/" />
-
-    <!-- Open Graph (for Facebook, LinkedIn, etc.) -->
-    <meta property="og:title" content="Preasx24 | Founder of DTECH" />
-    <meta
-      property="og:description"
-      content="Preasx24 is a South African tech founder empowering youth with the DTECH ecosystem: Services, Info, HQ, and more."
-    />
-    <meta property="og:image" content="https://preasx24.co.za/images/preasx24.jpg" />
-    <meta property="og:url" content="https://preasx24.co.za" />
-    <meta property="og:type" content="website" />
-
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Who is Preasx24?" />
-    <meta
-      name="twitter:description"
-      content="Discover how Preasx24 is empowering youth through the DTECH ecosystem, using technology, education, and digital solutions."
-    />
-    <meta name="twitter:image" content="https://preasx24.co.za/images/preasx24.jpg" />
-
-    <!-- Structured Data (JSON-LD) to tell Google who you are -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Preasx24",
-        "alternateName": "Preasx24",
-        "description": "Preasx24 is a South African student tech entrepreneur and founder of DTECH, a multi-branch digital brand focused on youth empowerment, innovation, and education.",
-        "url": "https://preasx24.co.za",
-        "jobTitle": "Founder of DTECH",
-        "sameAs": [
-          "https://about.me/preasx24",
-          "https://www.instagram.com/preasx24",
-          "https://www.linkedin.com/in/d-tech-services-722b19363",
-          "https://facebook.com/D-techDestroyers-legion--100054886954297"
-        ],
-        "worksFor": {
-          "@type": "Organization",
-          "name": "DTECH",
-          "url": "https://www.dtech-services.co.za"
-        },
-        "nationality": {
-          "@type": "Country",
-          "name": "South Africa"
-        }
-      }
-    </script>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>DTECH Hub</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTECH Hub | Student Resources Portal</title>
+    <meta name="description" content="Free educational resources for South African students - past papers, study guides, and career tools">
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- GoatCounter tracking script -->
-    <script
-      data-goatcounter="https://d-tech.goatcounter.com/count"
-      async
-      src="//gc.zgo.at/count.js"
-    ></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Modern CSS with variables -->
     <style>
-      :root {
-        --primary: #4f46e5;
-        --primary-dark: #4338ca;
-        --secondary: #10b981;
-        --accent: #f59e0b;
-        --dark: #0f172a;
-        --darker: #020617;
-        --light: #f8fafc;
-        --gray: #64748b;
-      }
-      
-      body {
-        background-color: var(--darker);
-        color: var(--light);
-        font-family: 'Poppins', sans-serif;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      
-      header {
-        background: rgba(15, 23, 42, 0.8);
-        backdrop-filter: blur(10px);
-        padding: 1rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        position: sticky;
-        top: 0;
-        z-index: 50;
-      }
-      
-      header img {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid var(--primary);
-        box-shadow: 0 0 15px rgba(79, 70, 229, 0.5);
-      }
-      
-      h1 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        background: linear-gradient(to right, #4f46e5, #a855f7);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: 0.05em;
-        margin-bottom: 0.25rem;
-      }
-      
-      .subtext {
-        font-size: 0.85rem;
-        color: var(--gray);
-        font-weight: 300;
-      }
-      
-      main {
-        flex: 1;
-        padding: 2rem 1rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        width: 100%;
-      }
-      
-      .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 1rem;
-        margin-bottom: 2rem;
-      }
-      
-      .grid-btn {
-        padding: 1.2rem 1rem;
-        border-radius: 0.75rem;
-        font-weight: 500;
-        text-align: center;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        border: none;
-        background: linear-gradient(145deg, #1e293b, #0f172a);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        color: var(--light);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .grid-btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-        transition: 0.5s;
-      }
-      
-      .grid-btn:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      }
-      
-      .grid-btn:hover::before {
-        left: 100%;
-      }
-      
-      .grid-btn i {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-      }
-      
-      .featured-btn {
-        grid-column: span 2;
-        background: linear-gradient(45deg, #4f46e5, #a855f7);
-        font-weight: 600;
-        padding: 1.5rem;
-        animation: pulse 2s infinite;
-      }
-      
-      .featured-btn:hover {
-        background: linear-gradient(45deg, #a855f7, #4f46e5);
-      }
-      
-      @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
-        70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
-      }
-      
-      .btn1 { color: #60a5fa; }
-      .btn2 { color: #a78bfa; }
-      .btn3 { color: #f472b6; }
-      .btn4 { color: #34d399; }
-      .btn5 { color: #fbbf24; }
-      .btn6 { color: #818cf8; }
-      .btn7 { color: #f87171; }
-      .btn8 { color: #38bdf8; }
-      .btn9 { color: #a1a1aa; }
-      
-      footer {
-        background: rgba(15, 23, 42, 0.8);
-        padding: 1.2rem;
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.8rem;
-        color: var(--gray);
-      }
-      
-      .counters {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        align-items: center;
-        margin-top: 1.5rem;
-        flex-wrap: wrap;
-      }
-      
-      .visitor-btn {
-        background: rgba(30, 41, 59, 0.7);
-        color: #00ffea;
-        border: 1px solid #00ffea;
-        border-radius: 0.75rem;
-        font-family: 'Courier New', monospace;
-        cursor: default;
-        font-size: 0.9rem;
-        padding: 0.75rem 1.25rem;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(5px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      
-      .visitor-btn:hover {
-        background: rgba(17, 24, 39, 0.8);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-      }
-      
-      .github-badge {
-        height: 32px;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
-      
-      .github-badge:hover {
-        transform: translateY(-2px);
-      }
-      
-      @media (max-width: 768px) {
-        .grid-container {
-          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
         }
         
-        .featured-btn {
-          grid-column: span 1;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
         header {
-          padding: 1rem;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
         
-        h1 {
-          font-size: 1.5rem;
+        .logo {
+            height: 48px;
+            width: 48px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--accent);
         }
-      }
+        
+        .header-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent), #f72585);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.25rem;
+        }
+        
+        .header-text p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--light), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Resource Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+        
+        .resource-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(4px);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: rgba(67, 97, 238, 0.3);
+        }
+        
+        .resource-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .resource-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-card p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        /* Featured Card */
+        .featured-card {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #7209b7, #4361ee);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-card::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0.1),
+                rgba(255,255,255,0)
+            );
+            transform: rotate(30deg);
+            animation: shine 6s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 2rem;
+            margin-top: auto;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .resource-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .featured-card {
+                grid-column: span 1;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
-  </head>
-
-  <body>
+</head>
+<body>
+    <!-- Header -->
     <header>
-      <img src="logo.png" alt="DTECH Logo" />
-      <div>
-        <h1>DTECH Hub</h1>
-        <div class="subtext">Empowering the Youth Through Digital Innovation</div>
-      </div>
+        <img src="logo.png" alt="DTECH Logo" class="logo">
+        <div class="header-text">
+            <h1>DTECH Hub</h1>
+            <p>Empowering students through digital education</p>
+        </div>
     </header>
-
+    
+    <!-- Main Content -->
     <main>
-      <div class="grid-container">
-        <a href="past-papers.html" class="grid-btn btn1">
-          <i class="fas fa-file-alt"></i>
-          Past Papers
-        </a>
-        
-        <a href="study-guides.html" class="grid-btn btn2">
-          <i class="fas fa-book-open"></i>
-          Study Guides
-        </a>
-        
-        <a href="learner-guide.html" class="grid-btn btn3">
-          <i class="fas fa-video"></i>
-          Video & Audio
-        </a>
-        
-        <a href="sba.html" class="grid-btn btn4">
-          <i class="fas fa-clipboard-list"></i>
-          SBA Guide
-        </a>
-        
-        <a href="pats.html" class="grid-btn btn5">
-          <i class="fas fa-tools"></i>
-          PATs
-        </a>
-        
-        <a href="https://uni.dtech24.co.za" class="grid-btn btn6">
-          <i class="fas fa-chart-line"></i>
-          Eligibility
-        </a>
-        
-        <a href="quizes.html" class="grid-btn btn7">
-          <i class="fas fa-brain"></i>
-          Quizzes
-        </a>
-        
-        <a href="nsfas.html" class="grid-btn btn8">
-          <i class="fas fa-money-bill-wave"></i>
-          NSFAS Info
-        </a>
-        
-        <a href="university-applications.html" class="grid-btn btn9">
-          <i class="fas fa-graduation-cap"></i>
-          University
-        </a>
-        
-        <a href="note.html" class="grid-btn btn4">
-          <i class="fas fa-sticky-note"></i>
-          Notes
-        </a>
-        
-        <!-- Featured Button -->
-        <a href="dtechh.html" class="grid-btn featured-btn">
-          <i class="fas fa-star"></i>
-          Daily Quiz & Quote
-        </a>
-      </div>
-      
-      <!-- Visitor Counters -->
-      <div class="counters">
-        <!-- GitHub Visitor Badge -->
-        <img
-          src="https://visitor-badge.laobi.icu/badge?page_id=dtech2preas.100mb"
-          alt="GitHub Visitor Counter"
-          class="github-badge"
-        />
-
-        <!-- GoatCounter Visitor Button -->
-        <button id="visitor-btn" class="visitor-btn">
-          <i class="fas fa-eye"></i> Visitors: loading...
-        </button>
-      </div>
+        <div class="container">
+            <section class="hero">
+                <h2>Your Academic Success Toolkit</h2>
+                <p>Free resources curated to help South African students excel in their studies and career planning</p>
+            </section>
+            
+            <div class="resource-grid">
+                <!-- Resource Cards -->
+                <a href="past-papers.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Past Papers</h3>
+                    <p>Exam preparation materials</p>
+                </a>
+                
+                <a href="study-guides.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Study Guides</h3>
+                    <p>Comprehensive subject reviews</p>
+                </a>
+                
+                <a href="learner-guide.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Lessons</h3>
+                    <p>Visual learning resources</p>
+                </a>
+                
+                <a href="sba.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>SBA Guides</h3>
+                    <p>School-based assessment help</p>
+                </a>
+                
+                <a href="pats.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>PATs</h3>
+                    <p>Practical assessment tasks</p>
+                </a>
+                
+                <a href="https://uni.dtech24.co.za" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Eligibility Check</h3>
+                    <p>University requirements</p>
+                </a>
+                
+                <a href="quizes.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Quizzes</h3>
+                    <p>Test your knowledge</p>
+                </a>
+                
+                <a href="nsfas.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>NSFAS Info</h3>
+                    <p>Financial aid guidance</p>
+                </a>
+                
+                <a href="university-applications.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>University</h3>
+                    <p>Application resources</p>
+                </a>
+                
+                <a href="note.html" class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-sticky-note"></i>
+                    </div>
+                    <h3>Study Notes</h3>
+                    <p>Condensed key concepts</p>
+                </a>
+                
+                <!-- Featured Card -->
+                <a href="dtechh.html" class="resource-card featured-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Daily Challenge</h3>
+                    <p>New quiz & motivation daily</p>
+                </a>
+            </div>
+        </div>
     </main>
-
+    
+    <!-- Footer -->
     <footer>
-      <div>Powered by Preasx24 • DTECH 2025</div>
-      <div class="mt-2 text-xs">
-        Empowering South African youth through technology and education
-      </div>
+        <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="https://dtech-services.co.za">DTECH Services</a>
+        </div>
+        <p class="copyright">© 2025 DTECH Hub | Created by Preasx24</p>
     </footer>
-
-    <script>
-      // Construct the GoatCounter JSON URL using the current path
-      var path = location.pathname; // e.g., "/" or "/somepage.html"
-      var counterURL = "https://d-tech.goatcounter.com/counter" + path + ".json";
-
-      fetch(counterURL)
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          document.getElementById("visitor-btn").innerHTML = 
-            `<i class="fas fa-eye"></i> Visitors: ${data.count.toLocaleString()}`;
-        })
-        .catch(() => {
-          document.getElementById("visitor-btn").innerHTML = 
-            `<i class="fas fa-eye-slash"></i> Visitor data unavailable`;
-        });
-    </script>
-  </body>
+    
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
 </html>
