@@ -2,332 +2,436 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📊 Advanced Stats Viewer - Gist Data Analysis</title>
+  <title>📊 JSON Data Visualizer</title>
   <style>
-    :root {
-      --primary: #00ffd5;
-      --secondary: #ff6bff;
-      --bg-dark: #111;
-      --card-bg: #1e1e1e;
-      --text-light: #f8f8f8;
-      --text-muted: #999;
-    }
-    
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-light);
       padding: 20px;
+      background: #f0f2f5;
+      color: #333;
       max-width: 1200px;
       margin: 0 auto;
-      line-height: 1.6;
     }
-    
-    h2 {
-      color: var(--primary);
-      border-bottom: 2px solid var(--secondary);
-      padding-bottom: 10px;
+    .container {
       display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .stats-container {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: 1fr 2fr;
-      margin-top: 20px;
-    }
-    
-    .summary-panel {
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
-    
-    .data-panel {
-      display: grid;
-      gap: 15px;
-    }
-    
-    .entry {
-      background: var(--card-bg);
-      border-left: 4px solid var(--primary);
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s;
-    }
-    
-    .entry:hover {
-      transform: translateY(-2px);
-    }
-    
-    .meta {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 20px;
     }
-    
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      flex: 1;
+      min-width: 300px;
+    }
+    .raw-json {
+      flex: 2;
+      min-width: 400px;
+    }
+    textarea {
+      width: 100%;
+      height: 400px;
+      font-family: 'Consolas', monospace;
+      font-size: 14px;
+      background: #f8f9fa;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      resize: vertical;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+    h2 {
+      color: #3498db;
+      margin-top: 0;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+    .stat {
+      margin: 15px 0;
+    }
+    .stat-title {
+      font-weight: bold;
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+    .stat-value {
+      font-size: 24px;
+      color: #2c3e50;
+    }
+    .bar-chart {
+      height: 20px;
+      background: #ecf0f1;
+      border-radius: 10px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+    .bar {
+      height: 100%;
+      background: linear-gradient(90deg, #3498db, #9b59b6);
+      border-radius: 10px;
+    }
     .data-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 14px;
+      margin: 15px 0;
     }
-    
-    .data-table th {
+    .data-table th, .data-table td {
+      padding: 10px;
       text-align: left;
-      background: rgba(0, 255, 213, 0.1);
-      padding: 8px 12px;
-      color: var(--primary);
+      border-bottom: 1px solid #eee;
     }
-    
-    .data-table td {
-      padding: 8px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    .data-table th {
+      background: #f8f9fa;
     }
-    
-    .data-table tr:last-child td {
-      border-bottom: none;
+    .data-table tr:hover {
+      background: #f5f7fa;
     }
-    
-    .stat-card {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 15px;
-    }
-    
-    .stat-card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: var(--secondary);
-      font-size: 16px;
-    }
-    
-    .stat-value {
-      font-size: 24px;
-      font-weight: bold;
-      color: var(--primary);
-    }
-    
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    .loading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100px;
-      color: var(--primary);
-      font-size: 18px;
-      gap: 10px;
-    }
-    
-    .loading:after {
-      content: "...";
-      animation: dots 1.5s steps(5, end) infinite;
-    }
-    
-    @keyframes dots {
-      0%, 20% { content: "."; }
-      40% { content: ".."; }
-      60%, 100% { content: "..."; }
-    }
-    
     .error {
-      color: #ff6b6b;
-      background: rgba(255, 0, 0, 0.1);
+      color: #e74c3c;
+      background: #fdecea;
       padding: 15px;
-      border-radius: 8px;
-      border-left: 4px solid #ff6b6b;
+      border-radius: 6px;
+      border-left: 4px solid #e74c3c;
     }
-    
-    .tag {
+    .loading {
+      color: #7f8c8d;
+      font-style: italic;
+    }
+    .user-info {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    .timeline {
+      margin-top: 20px;
+    }
+    .timeline-item {
+      padding: 10px;
+      border-left: 3px solid #3498db;
+      margin-bottom: 15px;
+      background: #f8fafc;
+    }
+    .timeline-date {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    .timeline-content {
+      margin-top: 5px;
+    }
+    .property-badge {
       display: inline-block;
-      background: rgba(0, 255, 213, 0.1);
-      color: var(--primary);
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 12px;
+      padding: 2px 8px;
+      background: #e0f7fa;
+      border-radius: 12px;
       margin-right: 5px;
-    }
-    
-    .function-tag {
-      background: rgba(255, 107, 255, 0.1);
-      color: var(--secondary);
-    }
-    
-    @media (max-width: 768px) {
-      .stats-container {
-        grid-template-columns: 1fr;
-      }
+      margin-bottom: 5px;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
-  <h2>📊 Gist Data Analytics Dashboard</h2>
-  <div id="stats">
-    <div class="loading">Loading data</div>
+  <h1>📊 JSON Data Visualizer</h1>
+  
+  <div id="userInfo" class="user-info loading">Loading user info from localStorage...</div>
+  
+  <div class="container">
+    <div class="card raw-json">
+      <h2>Raw JSON Data</h2>
+      <textarea readonly id="jsonViewer">Loading JSON data...</textarea>
+    </div>
+    
+    <div class="card">
+      <h2>📈 Data Statistics</h2>
+      <div id="statsContainer">
+        <div class="loading">Calculating statistics...</div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>🔍 Data Structure</h2>
+      <div id="structureContainer">
+        <div class="loading">Analyzing structure...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card timeline">
+    <h2>⏱️ Activity Timeline</h2>
+    <div id="timelineContainer">
+      <div class="loading">Building timeline...</div>
+    </div>
   </div>
 
   <script>
-    async function loadGistFromStorage() {
-      const statsDiv = document.getElementById("stats");
-      const logged = localStorage.getItem("loggedInUser");
+    // Get user info from localStorage
+    const userInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {};
+    let gistUrl = userInfo.gistUrl || "https://gist.github.com/Dtech2preas/baf8538c85354add526e6cb4c40dcd3a";
+    let gistId = userInfo.gistId || "baf8538c85354add526e6cb4c40dcd3a";
+    const filename = userInfo.username ? `${userInfo.username}.json` : "Data.json";
+    
+    // Extract owner and gistId from URL if available
+    if (gistUrl.includes('gist.github.com')) {
+      const urlParts = gistUrl.split('/');
+      if (urlParts.length >= 5) {
+        // The owner is the 4th part in the URL (github.com/[owner]/gist/[id])
+        const owner = urlParts[3];
+        gistId = urlParts[4];
+        gistUrl = `https://gist.github.com/${owner}/${gistId}`;
+      }
+    }
+    
+    // Update UI with user info
+    const userInfoElement = document.getElementById('userInfo');
+    if (userInfo.username) {
+      userInfoElement.innerHTML = `
+        <strong>👤 User:</strong> ${userInfo.username}<br>
+        <strong>📁 Filename:</strong> ${filename}<br>
+        <strong>🔗 Gist:</strong> <a href="${gistUrl}" target="_blank">${gistId}</a>
+      `;
+      userInfoElement.classList.remove('loading');
+    } else {
+      userInfoElement.textContent = "No user info found in localStorage. Using default Gist and filename.";
+      userInfoElement.classList.remove('loading');
+    }
+    
+    // Construct raw URL
+    const rawURL = `https://gist.githubusercontent.com/Dtech2preas/${gistId}/raw/${filename}`;
 
-      if (!logged) {
-        statsDiv.innerHTML = `<div class="error">❌ No 'loggedInUser' found in localStorage.</div>`;
+    async function loadGistJSON() {
+      try {
+        document.getElementById('jsonViewer').value = "Fetching data...";
+        
+        const response = await fetch(rawURL);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const text = await response.text();
+        let jsonData;
+        
+        try {
+          jsonData = JSON.parse(text);
+          const formatted = JSON.stringify(jsonData, null, 2);
+          document.getElementById('jsonViewer').value = formatted;
+          analyzeData(jsonData);
+        } catch (err) {
+          document.getElementById('jsonViewer').value = text;
+          throw new Error("Data is not valid JSON");
+        }
+      } catch (err) {
+        document.getElementById('jsonViewer').value = `❌ Error: ${err.message}`;
+        document.getElementById('statsContainer').innerHTML = `
+          <div class="error">Failed to load or parse data: ${err.message}</div>
+        `;
+      }
+    }
+    
+    function analyzeData(data) {
+      // Basic statistics
+      const statsContainer = document.getElementById('statsContainer');
+      const structureContainer = document.getElementById('structureContainer');
+      const timelineContainer = document.getElementById('timelineContainer');
+      
+      if (typeof data !== 'object' || data === null) {
+        statsContainer.innerHTML = `
+          <div class="error">Data is not an object. Cannot analyze.</div>
+        `;
         return;
       }
-
-      try {
-        const userData = JSON.parse(logged);
-        const username = userData.username;
-        const gistId = userData.gistId || extractGistId(userData.gistUrl);
-
-        if (!username || !gistId) {
-          statsDiv.innerHTML = `<div class="error">❌ Missing username or gistId in localStorage.</div>`;
-          return;
+      
+      // Calculate statistics
+      const isArray = Array.isArray(data);
+      const itemCount = isArray ? data.length : Object.keys(data).length;
+      const depth = calculateDepth(data);
+      
+      // Count timestamp entries
+      let timestampCount = 0;
+      let uniqueProperties = new Set();
+      let uniqueValues = {};
+      
+      for (const key in data) {
+        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
+          timestampCount++;
+          const entry = data[key];
+          for (const prop in entry) {
+            uniqueProperties.add(prop);
+            if (!uniqueValues[prop]) uniqueValues[prop] = new Set();
+            uniqueValues[prop].add(entry[prop]);
+          }
         }
-
-        const filename = `${username}.json`;
-        const rawURL = `https://gist.githubusercontent.com/${username}/${gistId}/raw/${filename}`;
-
-        const response = await fetch(rawURL);
-        if (!response.ok) throw new Error("Failed to fetch gist JSON file");
-
-        const data = await response.json();
-        displayStats(data, username);
-      } catch (err) {
-        statsDiv.innerHTML = `<div class="error">❌ Error: ${err.message}</div>`;
       }
-    }
-
-    function extractGistId(url) {
-      const match = url?.match(/gist\.github\.com\/[^/]+\/([a-f0-9]+)/i);
-      return match ? match[1] : null;
-    }
-
-    function displayStats(data, username) {
-      const statsDiv = document.getElementById("stats");
-      statsDiv.innerHTML = "";
       
-      // Create container for stats
-      const container = document.createElement("div");
-      container.className = "stats-container";
-      statsDiv.appendChild(container);
-      
-      // Create summary panel
-      const summaryPanel = document.createElement("div");
-      summaryPanel.className = "summary-panel";
-      container.appendChild(summaryPanel);
-      
-      // Create data panel
-      const dataPanel = document.createElement("div");
-      dataPanel.className = "data-panel";
-      container.appendChild(dataPanel);
-      
-      // Process data for statistics
-      const entries = Object.entries(data).filter(([key]) => key !== "username" && key !== "created");
-      const created = data.created ? new Date(data.created).toLocaleString() : "Unknown";
-      const lastEntry = entries.length > 0 ? new Date(entries[entries.length-1][0]).toLocaleString() : "None";
-      
-      // Count different functions
-      const functionCounts = {};
-      entries.forEach(([_, entry]) => {
-        const func = entry.authorise_function || "Unknown";
-        functionCounts[func] = (functionCounts[func] || 0) + 1;
-      });
-      
-      // Count different page URLs
-      const pageUrlCounts = {};
-      entries.forEach(([_, entry]) => {
-        const url = entry.page_url || "Unknown";
-        pageUrlCounts[url] = (pageUrlCounts[url] || 0) + 1;
-      });
-      
-      // Find most common numtype
-      const numtypeCounts = {};
-      entries.forEach(([_, entry]) => {
-        if (entry.numtype) {
-          numtypeCounts[entry.numtype] = (numtypeCounts[entry.numtype] || 0) + 1;
-        }
-      });
-      const mostCommonNumtype = Object.keys(numtypeCounts).length > 0 
-        ? Object.entries(numtypeCounts).sort((a, b) => b[1] - a[1])[0][0]
-        : "None";
-      
-      // Add summary cards
-      summaryPanel.innerHTML = `
-        <div class="stat-card">
-          <h3>User Profile</h3>
-          <div><strong>Username:</strong> ${username}</div>
-          <div><strong>First Record:</strong> ${created}</div>
-          <div><strong>Last Record:</strong> ${lastEntry}</div>
+      // Basic stats
+      let statsHTML = `
+        <div class="stat">
+          <div class="stat-title">Data Type</div>
+          <div class="stat-value">${isArray ? 'Array' : 'Object'}</div>
         </div>
         
-        <div class="stat-card">
-          <h3>Activity Summary</h3>
-          <div class="stat-value">${entries.length}</div>
-          <div class="stat-label">Total Entries</div>
+        <div class="stat">
+          <div class="stat-title">Total Items</div>
+          <div class="stat-value">${itemCount}</div>
         </div>
         
-        <div class="stat-card">
-          <h3>Most Common</h3>
-          <div><strong>Function:</strong> ${Object.keys(functionCounts).length > 0 
-            ? Object.entries(functionCounts).sort((a, b) => b[1] - a[1])[0][0] 
-            : 'None'}</div>
-          <div><strong>Numtype:</strong> ${mostCommonNumtype}</div>
+        <div class="stat">
+          <div class="stat-title">Timestamp Entries</div>
+          <div class="stat-value">${timestampCount}</div>
+          <div class="bar-chart">
+            <div class="bar" style="width: ${Math.min(timestampCount * 10, 100)}%"></div>
+          </div>
         </div>
         
-        <div class="stat-card">
-          <h3>Functions Used</h3>
-          ${Object.entries(functionCounts).map(([func, count]) => `
-            <div>${func}: <span class="tag function-tag">${count}</span></div>
-          `).join('')}
+        <div class="stat">
+          <div class="stat-title">Unique Properties</div>
+          <div class="stat-value">${uniqueProperties.size}</div>
+          <div>${Array.from(uniqueProperties).map(prop => 
+            `<span class="property-badge">${prop}</span>`
+          ).join('')}</div>
         </div>
       `;
       
-      // Add individual entries
-      entries.forEach(([timestamp, entry]) => {
-        const block = document.createElement("div");
-        block.className = "entry";
-        
-        // Format entry data as table rows
-        const tableRows = Object.entries(entry).map(([key, value]) => `
-          <tr>
-            <td><strong>${key}</strong></td>
-            <td>${typeof value === 'object' ? JSON.stringify(value) : value}</td>
-          </tr>
-        `).join('');
-        
-        block.innerHTML = `
-          <div class="meta">
-            <span>📅 ${new Date(timestamp).toLocaleString()}</span>
-            ${entry.authorise_function ? `<span class="tag function-tag">${entry.authorise_function}</span>` : ''}
-            ${entry.numtype ? `<span class="tag">${entry.numtype}</span>` : ''}
+      // Add unique value counts for each property
+      statsHTML += `<div class="stat-title">Unique Values per Property:</div>`;
+      for (const prop in uniqueValues) {
+        statsHTML += `
+          <div class="stat">
+            <div>${prop}: ${uniqueValues[prop].size} unique values</div>
+            <div class="bar-chart">
+              <div class="bar" style="width: ${Math.min(uniqueValues[prop].size * 5, 100)}%"></div>
+            </div>
           </div>
-          <table class="data-table">
-            ${tableRows}
-          </table>
         `;
-        dataPanel.appendChild(block);
-      });
+      }
+      
+      // Structure analysis
+      let structureHTML = '';
+      if (isArray) {
+        if (data.length > 0) {
+          const sampleItem = data[0];
+          structureHTML = `
+            <p>First item structure:</p>
+            <pre>${JSON.stringify(getStructure(sampleItem), null, 2)}</pre>
+          `;
+        }
+      } else {
+        // Show the main structure (non-timestamp properties)
+        const mainProperties = {};
+        for (const key in data) {
+          if (!key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
+            mainProperties[key] = typeof data[key];
+          }
+        }
+        
+        structureHTML = `
+          <p>Main properties:</p>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Type</th>
+                <th>Example Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${Object.entries(mainProperties).map(([key, type]) => `
+                <tr>
+                  <td>${key}</td>
+                  <td>${type}</td>
+                  <td>${truncate(JSON.stringify(data[key]), 50)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          
+          <p>Timestamp entry structure:</p>
+          <pre>${JSON.stringify(getTimestampEntryStructure(data), null, 2)}</pre>
+        `;
+      }
+      
+      // Build timeline
+      let timelineHTML = '';
+      const timestampEntries = [];
+      
+      for (const key in data) {
+        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
+          timestampEntries.push({
+            date: key,
+            data: data[key]
+          });
+        }
+      }
+      
+      // Sort by date (newest first)
+      timestampEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      timelineHTML = timestampEntries.map(entry => `
+        <div class="timeline-item">
+          <div class="timeline-date">${formatDate(entry.date)}</div>
+          <div class="timeline-content">
+            ${Object.entries(entry.data).map(([key, value]) => `
+              <div><strong>${key}:</strong> ${truncate(JSON.stringify(value), 100)}</div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+      
+      statsContainer.innerHTML = statsHTML;
+      structureContainer.innerHTML = structureHTML;
+      timelineContainer.innerHTML = timelineHTML;
     }
-
-    // Load data when page loads
-    document.addEventListener('DOMContentLoaded', loadGistFromStorage);
+    
+    // Helper functions
+    function calculateDepth(obj, currentDepth = 0) {
+      if (typeof obj !== 'object' || obj === null) return currentDepth;
+      
+      const isArray = Array.isArray(obj);
+      const entries = isArray ? obj : Object.values(obj);
+      
+      if (entries.length === 0) return currentDepth + 1;
+      
+      const depths = entries.map(item => calculateDepth(item, currentDepth + 1));
+      return Math.max(...depths);
+    }
+    
+    function getStructure(obj) {
+      if (typeof obj !== 'object' || obj === null) return typeof obj;
+      
+      if (Array.isArray(obj)) {
+        if (obj.length === 0) return 'array';
+        return [getStructure(obj[0])];
+      }
+      
+      const structure = {};
+      for (const key in obj) {
+        structure[key] = getStructure(obj[key]);
+      }
+      return structure;
+    }
+    
+    function getTimestampEntryStructure(data) {
+      for (const key in data) {
+        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
+          return getStructure(data[key]);
+        }
+      }
+      return "No timestamp entries found";
+    }
+    
+    function truncate(str, length) {
+      if (typeof str !== 'string') str = String(str);
+      return str.length > length ? str.substring(0, length) + '...' : str;
+    }
+    
+    function formatDate(isoString) {
+      const date = new Date(isoString);
+      return date.toLocaleString();
+    }
+    
+    // Load the data
+    loadGistJSON();
   </script>
 </body>
 </html>
