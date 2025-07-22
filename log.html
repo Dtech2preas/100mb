@@ -157,7 +157,7 @@ document.getElementById("login-btn").addEventListener("click", async () => {
     showInfo(info);
     localStorage.setItem("loggedInUser", JSON.stringify(info));
     await new Promise(res => setTimeout(res, 5000));
-    window.location.href = "next.html";
+    window.location.href = "nex.html";
   } catch (err) {
     errorMsg.textContent = "Login failed: " + err.message;
   }
