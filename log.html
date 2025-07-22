@@ -1,534 +1,809 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dtech Auth Portal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS AUTH PORTAL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0a192f;
-      --secondary: #172a45;
-      --accent: #64ffda;
-      --text-primary: #e6f1ff;
-      --text-secondary: #8892b0;
-      --highlight: rgba(100, 255, 218, 0.1);
-      --glow: 0 0 10px rgba(100, 255, 218, 0.5);
+      --space: #0f172a;
+      --deep-space: #020617;
+      --neon-blue: #3b82f6;
+      --electric-blue: #60a5fa;
+      --cyber-teal: #2dd4bf;
+      --plasma: #a855f7;
+      --warning: #f43f5e;
+      --success: #10b981;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --glow: 0 0 15px currentColor;
     }
-    
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    
+
     body {
-      font-family: 'Courier New', monospace;
-      background-color: var(--primary);
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--deep-space);
       color: var(--text-primary);
       min-height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      overflow-x: hidden;
+      perspective: 1000px;
       background-image: 
-        radial-gradient(circle at 25% 25%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(100, 255, 218, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(45, 212, 191, 0.15) 0%, transparent 25%);
     }
-    
-    .container {
+
+    /* 3D Grid Background */
+    .grid-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      max-width: 500px;
-      padding: 2rem;
-      background-color: var(--secondary);
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(100, 255, 218, 0.2);
+      height: 100%;
+      background: 
+        linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 0v100M20 0v100M40 0v100M60 0v100M80 0v100M100 0v100M0 0h100M0 20h100M0 40h100M0 60h100M0 80h100M0 100h100" stroke="%2323344e" stroke-width="0.5"/></svg>');
+      z-index: -1;
+      animation: gridMove 40s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
+    }
+
+    /* Main Container */
+    .portal {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      background: rgba(2, 6, 23, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+
+    .portal:hover {
+      transform: rotateY(1deg) rotateX(1deg);
+    }
+
+    /* Auth Section */
+    .auth-section {
+      flex: 1;
+      padding: 3rem;
       position: relative;
       overflow: hidden;
     }
-    
-    .container::before {
+
+    .auth-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+      animation: pulse 15s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(50px, 50px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    /* Info Section */
+    .info-section {
+      width: 400px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95));
+      padding: 3rem;
+      border-left: 1px solid rgba(59, 130, 246, 0.2);
+      position: relative;
+      overflow: hidden;
+      display: none;
+    }
+
+    .info-section::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), transparent);
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0 0h100v100H0z" fill="none"/><path d="M0 0v100M10 0v100M20 0v100M30 0v100M40 0v100M50 0v100M60 0v100M70 0v100M80 0v100M90 0v100M100 0v100M0 0h100M0 10h100M0 20h100M0 30h100M0 40h100M0 50h100M0 60h100M0 70h100M0 80h100M0 90h100M0 100h100" stroke="%2323344e" stroke-width="0.3"/></svg>');
+      opacity: 0.3;
+      z-index: -1;
     }
-    
-    h2, h3 {
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      font-weight: 500;
+
+    /* Typography */
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
       letter-spacing: 1px;
+      margin-bottom: 1.5rem;
     }
-    
-    h2 {
-      font-size: 1.8rem;
+
+    h1 {
+      color: var(--electric-blue);
+      font-size: 2.5rem;
+      text-shadow: var(--glow);
       position: relative;
       display: inline-block;
     }
-    
-    h2::after {
+
+    h1::after {
       content: '';
       position: absolute;
-      bottom: -8px;
+      bottom: -10px;
       left: 0;
-      width: 50px;
-      height: 2px;
-      background-color: var(--accent);
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-blue), transparent);
     }
-    
-    .input-group {
+
+    h2 {
+      color: var(--cyber-teal);
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      color: var(--electric-blue);
+      font-size: 1.3rem;
+    }
+
+    /* Form Elements */
+    .form-group {
       margin-bottom: 1.5rem;
       position: relative;
     }
-    
-    .input-group label {
+
+    label {
       display: block;
       margin-bottom: 0.5rem;
       color: var(--text-secondary);
+      font-weight: 500;
+      text-transform: uppercase;
       font-size: 0.9rem;
+      letter-spacing: 0.5px;
     }
-    
+
     input {
       width: 100%;
-      padding: 12px 15px;
-      background-color: rgba(10, 25, 47, 0.5);
-      border: 1px solid rgba(100, 255, 218, 0.2);
-      border-radius: 4px;
+      padding: 1rem;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 8px;
       color: var(--text-primary);
-      font-family: 'Courier New', monospace;
-      font-size: 1rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
       transition: all 0.3s ease;
     }
-    
+
     input:focus {
       outline: none;
-      border-color: var(--accent);
-      box-shadow: var(--glow);
+      border-color: var(--electric-blue);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
     }
-    
+
     input::placeholder {
       color: var(--text-secondary);
       opacity: 0.7;
     }
-    
+
+    /* Buttons */
     .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: transparent;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      border-radius: 4px;
-      font-family: 'Courier New', monospace;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
       font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       cursor: pointer;
       transition: all 0.3s ease;
-      text-align: center;
-      width: 100%;
-      margin-top: 1rem;
       position: relative;
       overflow: hidden;
+      z-index: 1;
     }
-    
-    .btn::before {
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--neon-blue), var(--plasma));
+      color: white;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+    }
+
+    .btn-primary::before {
       content: '';
       position: absolute;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
-      transition: all 0.5s ease;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+      z-index: -1;
     }
-    
-    .btn:hover {
-      background-color: var(--highlight);
-      box-shadow: var(--glow);
-    }
-    
-    .btn:hover::before {
+
+    .btn-primary:hover::before {
       left: 100%;
     }
-    
-    .btn-primary {
-      background-color: var(--highlight);
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--electric-blue);
+      border: 1px solid var(--neon-blue);
     }
-    
+
+    .btn-secondary:hover {
+      background: rgba(59, 130, 246, 0.1);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Status Messages */
+    .alert {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      display: none;
+    }
+
+    .alert-error {
+      background: rgba(244, 63, 94, 0.1);
+      border-left: 4px solid var(--warning);
+      color: var(--warning);
+    }
+
+    .alert-success {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--success);
+      color: var(--success);
+    }
+
+    /* Info Panel */
+    .info-panel {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      position: relative;
+    }
+
+    .info-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--neon-blue), var(--cyber-teal));
+      border-radius: 8px 0 0 8px;
+    }
+
+    .info-text {
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      background: rgba(2, 6, 23, 0.7);
+      padding: 1rem;
+      border-radius: 4px;
+      border-left: 3px solid var(--cyber-teal);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Divider */
     .divider {
       display: flex;
       align-items: center;
       margin: 2rem 0;
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
     }
-    
+
     .divider::before, .divider::after {
       content: '';
       flex: 1;
       height: 1px;
-      background-color: rgba(100, 255, 218, 0.2);
-      margin: 0 10px;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+      margin: 0 1rem;
     }
-    
-    .error {
-      color: #ff6b6b;
-      background-color: rgba(255, 107, 107, 0.1);
-      padding: 12px;
-      border-radius: 4px;
-      margin-bottom: 1.5rem;
-      border-left: 3px solid #ff6b6b;
-      font-size: 0.9rem;
+
+    /* Floating Particles */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
     }
-    
-    .success {
-      color: var(--accent);
-      background-color: var(--highlight);
-      padding: 12px;
-      border-radius: 4px;
-      margin-bottom: 1.5rem;
-      border-left: 3px solid var(--accent);
-      font-size: 0.9rem;
+
+    .particle {
+      position: absolute;
+      background: var(--electric-blue);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float linear infinite;
     }
-    
-    .info-panel {
-      display: none;
-      margin-top: 2rem;
-      padding: 1.5rem;
-      background-color: rgba(10, 25, 47, 0.5);
-      border-radius: 4px;
-      border: 1px solid rgba(100, 255, 218, 0.2);
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      50% { opacity: 0.5; }
+      100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
     }
-    
-    .info-panel h3 {
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-    }
-    
-    .info-panel h3::before {
-      content: '✓';
-      display: inline-block;
-      margin-right: 10px;
-      color: var(--accent);
-    }
-    
-    .info-text {
-      font-family: 'Courier New', monospace;
-      white-space: pre-wrap;
-      background-color: rgba(0, 0, 0, 0.3);
-      padding: 15px;
-      border-radius: 4px;
-      margin-bottom: 1.5rem;
-      border-left: 3px solid var(--accent);
-      overflow-x: auto;
-    }
-    
-    .action-buttons {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .action-buttons .btn {
-      margin-top: 0;
-      flex: 1;
-    }
-    
-    .terminal-effect {
+
+    /* Cyber Terminal Effect */
+    .cyber-terminal {
       position: relative;
     }
-    
-    .terminal-effect::after {
-      content: '|';
-      animation: blink 1s infinite;
+
+    .cyber-terminal::after {
+      content: '_';
+      animation: blink 1s step-end infinite;
       position: absolute;
-      right: 10px;
+      right: 1rem;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--accent);
+      color: var(--cyber-teal);
+      font-weight: bold;
     }
-    
+
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
-    
-    .logo {
-      text-align: center;
-      margin-bottom: 2rem;
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .portal {
+        flex-direction: column;
+      }
+      
+      .info-section {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid rgba(59, 130, 246, 0.2);
+      }
     }
-    
-    .logo span {
-      display: inline-block;
-      padding: 8px 15px;
-      background-color: var(--highlight);
-      color: var(--accent);
-      border-radius: 4px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      border: 1px solid var(--accent);
-      box-shadow: var(--glow);
-    }
-    
-    @media (max-width: 600px) {
-      .container {
-        padding: 1.5rem;
-        margin: 1rem;
+
+    @media (max-width: 576px) {
+      .auth-section, .info-section {
+        padding: 2rem 1.5rem;
       }
       
       .action-buttons {
         flex-direction: column;
       }
     }
+
+    /* Special Effects */
+    .cyber-glitch {
+      position: relative;
+    }
+
+    .cyber-glitch::before, .cyber-glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--deep-space);
+    }
+
+    .cyber-glitch::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00ff;
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+
+    .cyber-glitch::after {
+      left: -2px;
+      text-shadow: -2px 0 #00ffff;
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim2 5s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-anim {
+      0% { clip: rect(31px, 9999px, 94px, 0); }
+      10% { clip: rect(112px, 9999px, 76px, 0); }
+      20% { clip: rect(85px, 9999px, 77px, 0); }
+      30% { clip: rect(27px, 9999px, 97px, 0); }
+      40% { clip: rect(64px, 9999px, 98px, 0); }
+      50% { clip: rect(61px, 9999px, 85px, 0); }
+      60% { clip: rect(99px, 9999px, 114px, 0); }
+      70% { clip: rect(34px, 9999px, 115px, 0); }
+      80% { clip: rect(98px, 9999px, 129px, 0); }
+      90% { clip: rect(43px, 9999px, 96px, 0); }
+      100% { clip: rect(82px, 9999px, 64px, 0); }
+    }
+
+    @keyframes glitch-anim2 {
+      0% { clip: rect(65px, 9999px, 119px, 0); }
+      10% { clip: rect(79px, 9999px, 66px, 0); }
+      20% { clip: rect(101px, 9999px, 114px, 0); }
+      30% { clip: rect(105px, 9999px, 50px, 0); }
+      40% { clip: rect(38px, 9999px, 103px, 0); }
+      50% { clip: rect(105px, 9999px, 5px, 0); }
+      60% { clip: rect(17px, 9999px, 37px, 0); }
+      70% { clip: rect(115px, 9999px, 72px, 0); }
+      80% { clip: rect(46px, 9999px, 53px, 0); }
+      90% { clip: rect(50px, 9999px, 101px, 0); }
+      100% { clip: rect(68px, 9999px, 85px, 0); }
+    }
+
+    /* Holographic Effect */
+    .holographic {
+      position: relative;
+    }
+
+    .holographic::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.1) 0%,
+        rgba(45, 212, 191, 0.1) 50%,
+        rgba(168, 85, 247, 0.1) 100%
+      );
+      border-radius: inherit;
+      z-index: -1;
+      animation: hologram 8s ease infinite;
+    }
+
+    @keyframes hologram {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+      100% { opacity: 0.3; }
+    }
   </style>
 </head>
 <body>
+  <div class="grid-bg"></div>
+  <div class="particles" id="particles"></div>
 
-<div class="container">
-  <div class="logo">
-    <span>DTECH AUTH</span>
+  <div class="portal">
+    <!-- Auth Section -->
+    <div class="auth-section">
+      <h1 class="cyber-glitch" data-text="NEXUS AUTH">NEXUS AUTH</h1>
+      <p class="text-secondary" style="margin-bottom: 2rem;">Secure access to the DTECH network</p>
+
+      <div id="error-msg" class="alert alert-error"></div>
+
+      <h2>Login Sequence</h2>
+      <div class="form-group">
+        <label for="username">Access ID</label>
+        <input type="text" id="username" placeholder="Enter your access ID" autocomplete="username" class="cyber-terminal">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Encryption Key</label>
+        <input type="password" id="password" placeholder="Enter your encryption key" autocomplete="current-password" class="cyber-terminal">
+      </div>
+
+      <button id="login-btn" class="btn btn-primary">
+        <span style="margin-right: 8px;">🔐</span> INITIATE LOGIN
+      </button>
+
+      <div class="divider">Authentication Protocol</div>
+
+      <h3>New Connection Request</h3>
+      <button id="signup-btn" class="btn btn-secondary">
+        <span style="margin-right: 8px;">🛡️</span> REQUEST ACCESS
+      </button>
+      <div id="signup-msg" style="margin-top: 1.5rem;"></div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="info-section" id="login-info">
+      <div class="holographic">
+        <h2>Access Granted</h2>
+        <p class="text-secondary" style="margin-bottom: 1.5rem;">Secure these credentials for future access</p>
+
+        <div class="info-panel">
+          <div class="info-text" id="info-text"></div>
+          <div class="action-buttons">
+            <button onclick="copyInfo()" class="btn btn-primary">
+              <span style="margin-right: 8px;">📋</span> Copy Data
+            </button>
+            <button onclick="downloadInfo()" class="btn btn-secondary">
+              <span style="margin-right: 8px;">💾</span> Download
+            </button>
+          </div>
+        </div>
+
+        <div class="alert alert-success">
+          <strong>System:</strong> You will be redirected to the secure zone shortly...
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <h2>Login</h2>
-  <div id="error-msg" class="error" style="display: none;"></div>
-  
-  <div class="input-group">
-    <label for="username">USERNAME</label>
-    <input type="text" id="username" placeholder="Enter your username" autocomplete="username" class="terminal-effect" />
-  </div>
-  
-  <div class="input-group">
-    <label for="password">PASSWORD</label>
-    <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" class="terminal-effect" />
-  </div>
-  
-  <button id="login-btn" class="btn btn-primary">LOGIN</button>
-  
-  <div class="divider">OR</div>
-  
-  <h3>New to DTECH?</h3>
-  <button id="signup-btn" class="btn">SIGN UP & CREATE GIST</button>
-  <div id="signup-msg" style="margin-top: 1.5rem;"></div>
-</div>
 
-<div class="container info-panel" id="login-info">
-  <h3>Login Success! Save Your Credentials</h3>
-  <div class="info-text" id="info-text"></div>
-  <div class="action-buttons">
-    <button onclick="copyInfo()" class="btn">📋 COPY INFO</button>
-    <button onclick="downloadInfo()" class="btn">⬇ DOWNLOAD .TXT</button>
-  </div>
-</div>
+  <script>
+    const TOKEN_URL = "https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt";
 
-<script>
-const TOKEN_URL = "https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt";
+    const GISTS = [
+      { id: "5ddeaa7e65d1f9717c8ab83d5d2c7380", filename: "users_batch_1.json" },
+      { id: "22f888bd63529552025871b31f8e7007", filename: "users_batch_2.json" },
+      { id: "d9e162ec943e5f0b6bd8dd7ca7087d98", filename: "users_batch_3.json" },
+      { id: "a03a9e9cd52f25cd66c0765b731161e2", filename: "users_batch_4.json" },
+      { id: "463f4221a4468da4cdc239acdc932348", filename: "users_batch_5.json" }
+    ];
 
-const GISTS = [
-  { id: "5ddeaa7e65d1f9717c8ab83d5d2c7380", filename: "users_batch_1.json" },
-  { id: "22f888bd63529552025871b31f8e7007", filename: "users_batch_2.json" },
-  { id: "d9e162ec943e5f0b6bd8dd7ca7087d98", filename: "users_batch_3.json" },
-  { id: "a03a9e9cd52f25cd66c0765b731161e2", filename: "users_batch_4.json" },
-  { id: "463f4221a4468da4cdc239acdc932348", filename: "users_batch_5.json" }
-];
+    let GITHUB_TOKEN = null;
+    let allUsers = [];
 
-let GITHUB_TOKEN = null;
-let allUsers = [];
-
-async function getToken() {
-  const res = await fetch(TOKEN_URL);
-  if (!res.ok) throw new Error("Failed to fetch token");
-  return (await res.text()).trim();
-}
-
-async function fetchGist(gistId, filename, token) {
-  const res = await fetch(`https://api.github.com/gists/${gistId}`, {
-    headers: {
-      "Authorization": `token ${token}`
-    }
-  });
-  const gist = await res.json();
-  const content = gist.files[filename]?.content;
-  if (!content) throw new Error(`Missing file ${filename}`);
-  return { gist, usersData: JSON.parse(content) };
-}
-
-async function fetchAllUsers(token) {
-  const promises = GISTS.map(({id, filename}) => fetchGist(id, filename, token));
-  const results = await Promise.all(promises);
-  allUsers = [];
-  results.forEach(({gist, usersData}, i) => {
-    usersData.users.forEach(user => {
-      allUsers.push({
-        ...user,
-        gistId: GISTS[i].id,
-        filename: GISTS[i].filename
-      });
-    });
-  });
-}
-
-async function updateGist(gistId, filename, updatedUsers, token) {
-  const payload = {
-    files: {
-      [filename]: { content: JSON.stringify({ users: updatedUsers }, null, 2) }
-    }
-  };
-  await fetch(`https://api.github.com/gists/${gistId}`, {
-    method: "PATCH",
-    headers: {
-      "Authorization": `token ${token}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  });
-}
-
-async function getIP() {
-  const res = await fetch("https://api.ipify.org?format=json");
-  const data = await res.json();
-  return data.ip;
-}
-
-async function createPersonalGist(username, token) {
-  const payload = {
-    description: `User JSON for ${username}`,
-    public: false,
-    files: {
-      [`${username}.json`]: {
-        content: JSON.stringify({ username, created: new Date().toISOString() }, null, 2)
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size between 1px and 3px
+        const size = Math.random() * 2 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // Random animation duration
+        const duration = Math.random() * 20 + 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Random delay
+        particle.style.animationDelay = `${Math.random() * 10}s`;
+        
+        particlesContainer.appendChild(particle);
       }
     }
-  };
-  const res = await fetch("https://api.github.com/gists", {
-    method: "POST",
-    headers: {
-      "Authorization": `token ${token}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  });
-  return await res.json();
-}
 
-document.getElementById("login-btn").addEventListener("click", async () => {
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const errorMsg = document.getElementById("error-msg");
+    // Initialize particles
+    createParticles();
 
-  if (!username || !password) {
-    errorMsg.textContent = "Please enter username and password.";
-    errorMsg.style.display = "block";
-    return;
-  }
+    // Remove terminal effect when typing
+    document.getElementById("username").addEventListener('input', function() {
+      this.classList.remove("cyber-terminal");
+    });
 
-  try {
-    if (!GITHUB_TOKEN) GITHUB_TOKEN = await getToken();
-    if (allUsers.length === 0) await fetchAllUsers(GITHUB_TOKEN);
+    document.getElementById("password").addEventListener('input', function() {
+      this.classList.remove("cyber-terminal");
+    });
 
-    const user = allUsers.find(u => u.username === username && u.password === password && u.taken);
-    if (!user) {
-      errorMsg.textContent = "Invalid login credentials.";
-      errorMsg.style.display = "block";
-      return;
+    // Original functionality (unchanged)
+    async function getToken() {
+      const res = await fetch(TOKEN_URL);
+      if (!res.ok) throw new Error("Failed to fetch token");
+      return (await res.text()).trim();
     }
 
-    // Try restore personal gist
-    const stored = JSON.parse(localStorage.getItem("loggedInUser"));
-    const info = {
-      username: user.username,
-      password: user.password,
-      gistId: stored?.gistId || "Not set",
-      gistUrl: stored?.gistUrl || "Not saved"
-    };
-
-    showInfo(info);
-    localStorage.setItem("loggedInUser", JSON.stringify(info));
-    await new Promise(res => setTimeout(res, 5000));
-    window.location.href = "nex.html";
-  } catch (err) {
-    errorMsg.textContent = "Login failed: " + err.message;
-    errorMsg.style.display = "block";
-  }
-});
-
-document.getElementById("signup-btn").addEventListener("click", async () => {
-  const msg = document.getElementById("signup-msg");
-  msg.innerHTML = "<div class='success'>Creating account...</div>";
-
-  try {
-    if (!GITHUB_TOKEN) GITHUB_TOKEN = await getToken();
-    if (allUsers.length === 0) await fetchAllUsers(GITHUB_TOKEN);
-
-    const ip = await getIP();
-    const takenByIP = allUsers.filter(u => u.taken && u.ip === ip);
-    if (takenByIP.length >= 2) {
-      msg.innerHTML = `<div class="error">You already signed up twice on this IP.</div>`;
-      return;
+    async function fetchGist(gistId, filename, token) {
+      const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+        headers: {
+          "Authorization": `token ${token}`
+        }
+      });
+      const gist = await res.json();
+      const content = gist.files[filename]?.content;
+      if (!content) throw new Error(`Missing file ${filename}`);
+      return { gist, usersData: JSON.parse(content) };
     }
 
-    const availableUser = allUsers.find(u => !u.taken);
-    if (!availableUser) {
-      msg.innerHTML = `<div class="error">No accounts available.</div>`;
-      return;
+    async function fetchAllUsers(token) {
+      const promises = GISTS.map(({id, filename}) => fetchGist(id, filename, token));
+      const results = await Promise.all(promises);
+      allUsers = [];
+      results.forEach(({gist, usersData}, i) => {
+        usersData.users.forEach(user => {
+          allUsers.push({
+            ...user,
+            gistId: GISTS[i].id,
+            filename: GISTS[i].filename
+          });
+        });
+      });
     }
 
-    availableUser.taken = true;
-    availableUser.ip = ip;
+    async function updateGist(gistId, filename, updatedUsers, token) {
+      const payload = {
+        files: {
+          [filename]: { content: JSON.stringify({ users: updatedUsers }, null, 2) }
+        }
+      };
+      await fetch(`https://api.github.com/gists/${gistId}`, {
+        method: "PATCH",
+        headers: {
+          "Authorization": `token ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+    }
 
-    const batch = allUsers.filter(u => u.gistId === availableUser.gistId);
-    const idx = batch.findIndex(u => u.username === availableUser.username);
-    if (idx !== -1) batch[idx] = availableUser;
+    async function getIP() {
+      const res = await fetch("https://api.ipify.org?format=json");
+      const data = await res.json();
+      return data.ip;
+    }
 
-    await updateGist(availableUser.gistId, availableUser.filename, batch, GITHUB_TOKEN);
-    const gist = await createPersonalGist(availableUser.username, GITHUB_TOKEN);
+    async function createPersonalGist(username, token) {
+      const payload = {
+        description: `User JSON for ${username}`,
+        public: false,
+        files: {
+          [`${username}.json`]: {
+            content: JSON.stringify({ username, created: new Date().toISOString() }, null, 2)
+          }
+        }
+      };
+      const res = await fetch("https://api.github.com/gists", {
+        method: "POST",
+        headers: {
+          "Authorization": `token ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      return await res.json();
+    }
 
-    const info = {
-      username: availableUser.username,
-      password: availableUser.password,
-      gistId: gist.id,
-      gistUrl: gist.html_url
-    };
+    document.getElementById("login-btn").addEventListener("click", async () => {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorMsg = document.getElementById("error-msg");
 
-    localStorage.setItem("loggedInUser", JSON.stringify(info));
-    showInfo(info);
-    msg.innerHTML = `<div class="success">✅ Account created! Save your info below.</div>`;
-  } catch (err) {
-    msg.innerHTML = `<div class="error">Signup failed: ${err.message}</div>`;
-  }
-});
+      if (!username || !password) {
+        errorMsg.textContent = "Access ID and Encryption Key required.";
+        errorMsg.style.display = "block";
+        return;
+      }
 
-function showInfo(info) {
-  document.getElementById("info-text").textContent =
-    `Username: ${info.username}\nPassword: ${info.password}\nGist ID: ${info.gistId}\nGist URL: ${info.gistUrl}`;
-  document.getElementById("login-info").style.display = "block";
-}
+      try {
+        if (!GITHUB_TOKEN) GITHUB_TOKEN = await getToken();
+        if (allUsers.length === 0) await fetchAllUsers(GITHUB_TOKEN);
 
-function copyInfo() {
-  const text = document.getElementById("info-text").textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    alert("Credentials copied to clipboard!");
-  });
-}
+        const user = allUsers.find(u => u.username === username && u.password === password && u.taken);
+        if (!user) {
+          errorMsg.textContent = "Authentication failed. Invalid credentials.";
+          errorMsg.style.display = "block";
+          return;
+        }
 
-function downloadInfo() {
-  const text = document.getElementById("info-text").textContent;
-  const blob = new Blob([text], { type: "text/plain" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "dtech_credentials.txt";
-  a.click();
-}
+        // Try restore personal gist
+        const stored = JSON.parse(localStorage.getItem("loggedInUser"));
+        const info = {
+          username: user.username,
+          password: user.password,
+          gistId: stored?.gistId || "Not set",
+          gistUrl: stored?.gistUrl || "Not saved"
+        };
 
-// Remove terminal effect when typing
-document.getElementById("username").addEventListener("input", function() {
-  this.classList.remove("terminal-effect");
-});
+        showInfo(info);
+        localStorage.setItem("loggedInUser", JSON.stringify(info));
+        await new Promise(res => setTimeout(res, 5000));
+        window.location.href = "nex.html";
+      } catch (err) {
+        errorMsg.textContent = "System error: " + err.message;
+        errorMsg.style.display = "block";
+      }
+    });
 
-document.getElementById("password").addEventListener("input", function() {
-  this.classList.remove("terminal-effect");
-});
-</script>
+    document.getElementById("signup-btn").addEventListener("click", async () => {
+      const msg = document.getElementById("signup-msg");
+      msg.innerHTML = "<div class='alert alert-success'>Establishing secure connection...</div>";
 
+      try {
+        if (!GITHUB_TOKEN) GITHUB_TOKEN = await getToken();
+        if (allUsers.length === 0) await fetchAllUsers(GITHUB_TOKEN);
+
+        const ip = await getIP();
+        const takenByIP = allUsers.filter(u => u.taken && u.ip === ip);
+        if (takenByIP.length >= 2) {
+          msg.innerHTML = `<div class="alert alert-error">Connection limit reached (2 per node).</div>`;
+          return;
+        }
+
+        const availableUser = allUsers.find(u => !u.taken);
+        if (!availableUser) {
+          msg.innerHTML = `<div class="alert alert-error">No available access slots.</div>`;
+          return;
+        }
+
+        availableUser.taken = true;
+        availableUser.ip = ip;
+
+        const batch = allUsers.filter(u => u.gistId === availableUser.gistId);
+        const idx = batch.findIndex(u => u.username === availableUser.username);
+        if (idx !== -1) batch[idx] = availableUser;
+
+        await updateGist(availableUser.gistId, availableUser.filename, batch, GITHUB_TOKEN);
+        const gist = await createPersonalGist(availableUser.username, GITHUB_TOKEN);
+
+        const info = {
+          username: availableUser.username,
+          password: availableUser.password,
+          gistId: gist.id,
+          gistUrl: gist.html_url
+        };
+
+        localStorage.setItem("loggedInUser", JSON.stringify(info));
+        showInfo(info);
+        msg.innerHTML = `<div class="alert alert-success">✅ Access granted! Secure your credentials below.</div>`;
+      } catch (err) {
+        msg.innerHTML = `<div class="alert alert-error">Connection failed: ${err.message}</div>`;
+      }
+    });
+
+    function showInfo(info) {
+      document.getElementById("info-text").textContent =
+        `Access ID: ${info.username}\nEncryption Key: ${info.password}\nNode ID: ${info.gistId}\nNode URL: ${info.gistUrl}`;
+      document.getElementById("login-info").style.display = "block";
+    }
+
+    function copyInfo() {
+      const text = document.getElementById("info-text").textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = event.target.innerHTML;
+        event.target.innerHTML = '<span style="margin-right: 8px;">✅</span> Copied!';
+        setTimeout(() => {
+          event.target.innerHTML = originalText;
+        }, 2000);
+      });
+    }
+
+    function downloadInfo() {
+      const text = document.getElementById("info-text").textContent;
+      const blob = new Blob([text], { type: "text/plain" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "nexus_credentials.txt";
+      a.click();
+      
+      const originalText = event.target.innerHTML;
+      event.target.innerHTML = '<span style="margin-right: 8px;">✅</span> Downloaded!';
+      setTimeout(() => {
+        event.target.innerHTML = originalText;
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
