@@ -2,431 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📊 JSON Data Visualizer</title>
+  <title>📊 Stats Viewer - Gist Data</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: #f8f8f8;
       padding: 20px;
-      background: #f0f2f5;
-      color: #333;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      flex: 1;
-      min-width: 300px;
-    }
-    .raw-json {
-      flex: 2;
-      min-width: 400px;
-    }
-    textarea {
-      width: 100%;
-      height: 400px;
-      font-family: 'Consolas', monospace;
-      font-size: 14px;
-      background: #f8f9fa;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      resize: vertical;
-    }
-    h1 {
-      color: #2c3e50;
-      margin-bottom: 5px;
     }
     h2 {
-      color: #3498db;
-      margin-top: 0;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 10px;
+      color: #00ffd5;
     }
-    .stat {
-      margin: 15px 0;
-    }
-    .stat-title {
-      font-weight: bold;
-      color: #7f8c8d;
-      margin-bottom: 5px;
-    }
-    .stat-value {
-      font-size: 24px;
-      color: #2c3e50;
-    }
-    .bar-chart {
-      height: 20px;
-      background: #ecf0f1;
-      border-radius: 10px;
-      margin: 10px 0;
-      overflow: hidden;
-    }
-    .bar {
-      height: 100%;
-      background: linear-gradient(90deg, #3498db, #9b59b6);
-      border-radius: 10px;
-    }
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 15px 0;
-    }
-    .data-table th, .data-table td {
-      padding: 10px;
-      text-align: left;
-      border-bottom: 1px solid #eee;
-    }
-    .data-table th {
-      background: #f8f9fa;
-    }
-    .data-table tr:hover {
-      background: #f5f7fa;
-    }
-    .error {
-      color: #e74c3c;
-      background: #fdecea;
-      padding: 15px;
-      border-radius: 6px;
-      border-left: 4px solid #e74c3c;
-    }
-    .loading {
-      color: #7f8c8d;
-      font-style: italic;
-    }
-    .user-info {
-      background: #e3f2fd;
-      padding: 15px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-    }
-    .timeline {
+    #stats {
       margin-top: 20px;
+      display: grid;
+      gap: 15px;
     }
-    .timeline-item {
-      padding: 10px;
-      border-left: 3px solid #3498db;
-      margin-bottom: 15px;
-      background: #f8fafc;
+    .entry {
+      background: #1e1e1e;
+      border-left: 4px solid #00ffd5;
+      padding: 10px 15px;
+      border-radius: 8px;
     }
-    .timeline-date {
-      font-weight: bold;
-      color: #2c3e50;
+    .entry pre {
+      margin: 5px 0 0 0;
+      color: #ccc;
+      font-size: 14px;
     }
-    .timeline-content {
-      margin-top: 5px;
-    }
-    .property-badge {
-      display: inline-block;
-      padding: 2px 8px;
-      background: #e0f7fa;
-      border-radius: 12px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      font-size: 12px;
+    .meta {
+      font-size: 13px;
+      color: #999;
     }
   </style>
 </head>
 <body>
-  <h1>📊 JSON Data Visualizer</h1>
-  
-  <div id="userInfo" class="user-info loading">Loading user info from localStorage...</div>
-  
-  <div class="container">
-    <div class="card raw-json">
-      <h2>Raw JSON Data</h2>
-      <textarea readonly id="jsonViewer">Loading JSON data...</textarea>
-    </div>
-    
-    <div class="card">
-      <h2>📈 Data Statistics</h2>
-      <div id="statsContainer">
-        <div class="loading">Calculating statistics...</div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <h2>🔍 Data Structure</h2>
-      <div id="structureContainer">
-        <div class="loading">Analyzing structure...</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card timeline">
-    <h2>⏱️ Activity Timeline</h2>
-    <div id="timelineContainer">
-      <div class="loading">Building timeline...</div>
-    </div>
-  </div>
+  <h2>📁 Viewing Gist JSON File</h2>
+  <div id="stats">Loading...</div>
 
   <script>
-    // Get user info from localStorage
-    const userInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {};
-    const gistUrl = userInfo.gistUrl || "https://gist.github.com/Dtech2preas/baf8538c85354add526e6cb4c40dcd3a";
-    const gistId = userInfo.gistId || "baf8538c85354add526e6cb4c40dcd3a";
-    const filename = "Data.json";
-    
-    // Update UI with user info
-    const userInfoElement = document.getElementById('userInfo');
-    if (userInfo.username) {
-      userInfoElement.innerHTML = `
-        <strong>👤 User:</strong> ${userInfo.username}<br>
-        <strong>🔗 Gist:</strong> <a href="${gistUrl}" target="_blank">${gistId}</a>
-      `;
-      userInfoElement.classList.remove('loading');
-    } else {
-      userInfoElement.textContent = "No user info found in localStorage. Using default Gist.";
-      userInfoElement.classList.remove('loading');
-    }
-    
-    // Extract raw URL from Gist URL
-    let rawURL;
-    if (gistUrl.includes('gist.github.com')) {
-      const parts = gistUrl.split('/');
-      const gistIdFromUrl = parts[parts.length - 1];
-      rawURL = `https://gist.githubusercontent.com/${parts[3]}/${gistIdFromUrl}/raw/${filename}`;
-    } else {
-      rawURL = `https://gist.githubusercontent.com/Dtech2preas/${gistId}/raw/${filename}`;
-    }
+    async function loadGistFromStorage() {
+      const statsDiv = document.getElementById("stats");
+      const logged = localStorage.getItem("loggedInUser");
 
-    async function loadGistJSON() {
-      try {
-        document.getElementById('jsonViewer').value = "Fetching data...";
-        
-        const response = await fetch(rawURL);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
-        const text = await response.text();
-        let jsonData;
-        
-        try {
-          jsonData = JSON.parse(text);
-          const formatted = JSON.stringify(jsonData, null, 2);
-          document.getElementById('jsonViewer').value = formatted;
-          analyzeData(jsonData);
-        } catch (err) {
-          document.getElementById('jsonViewer').value = text;
-          throw new Error("Data is not valid JSON");
-        }
-      } catch (err) {
-        document.getElementById('jsonViewer').value = `❌ Error: ${err.message}`;
-        document.getElementById('statsContainer').innerHTML = `
-          <div class="error">Failed to load or parse data: ${err.message}</div>
-        `;
-      }
-    }
-    
-    function analyzeData(data) {
-      // Basic statistics
-      const statsContainer = document.getElementById('statsContainer');
-      const structureContainer = document.getElementById('structureContainer');
-      const timelineContainer = document.getElementById('timelineContainer');
-      
-      if (typeof data !== 'object' || data === null) {
-        statsContainer.innerHTML = `
-          <div class="error">Data is not an object. Cannot analyze.</div>
-        `;
+      if (!logged) {
+        statsDiv.innerHTML = "<p>❌ No 'loggedInUser' found in localStorage.</p>";
         return;
       }
-      
-      // Calculate statistics
-      const isArray = Array.isArray(data);
-      const itemCount = isArray ? data.length : Object.keys(data).length;
-      const depth = calculateDepth(data);
-      
-      // Count timestamp entries
-      let timestampCount = 0;
-      let uniqueProperties = new Set();
-      let uniqueValues = {};
-      
-      for (const key in data) {
-        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
-          timestampCount++;
-          const entry = data[key];
-          for (const prop in entry) {
-            uniqueProperties.add(prop);
-            if (!uniqueValues[prop]) uniqueValues[prop] = new Set();
-            uniqueValues[prop].add(entry[prop]);
-          }
+
+      try {
+        const userData = JSON.parse(logged);
+        const username = userData.username;
+        const gistId = userData.gistId || extractGistId(userData.gistUrl);
+
+        if (!username || !gistId) {
+          statsDiv.innerHTML = "<p>❌ Missing username or gistId in localStorage.</p>";
+          return;
         }
+
+        const filename = `${username}.json`;
+        const rawURL = `https://gist.githubusercontent.com/Dtech2preas/${gistId}/raw/${filename}`;
+
+        const response = await fetch(rawURL);
+        if (!response.ok) throw new Error("❌ Failed to fetch gist JSON file.");
+
+        const data = await response.json();
+        displayStats(data, username);
+      } catch (err) {
+        statsDiv.innerHTML = `<p>${err.message}</p>`;
       }
-      
-      // Basic stats
-      let statsHTML = `
-        <div class="stat">
-          <div class="stat-title">Data Type</div>
-          <div class="stat-value">${isArray ? 'Array' : 'Object'}</div>
-        </div>
-        
-        <div class="stat">
-          <div class="stat-title">Total Items</div>
-          <div class="stat-value">${itemCount}</div>
-        </div>
-        
-        <div class="stat">
-          <div class="stat-title">Timestamp Entries</div>
-          <div class="stat-value">${timestampCount}</div>
-          <div class="bar-chart">
-            <div class="bar" style="width: ${Math.min(timestampCount * 10, 100)}%"></div>
-          </div>
-        </div>
-        
-        <div class="stat">
-          <div class="stat-title">Unique Properties</div>
-          <div class="stat-value">${uniqueProperties.size}</div>
-          <div>${Array.from(uniqueProperties).map(prop => 
-            `<span class="property-badge">${prop}</span>`
-          ).join('')}</div>
-        </div>
-      `;
-      
-      // Add unique value counts for each property
-      statsHTML += `<div class="stat-title">Unique Values per Property:</div>`;
-      for (const prop in uniqueValues) {
-        statsHTML += `
-          <div class="stat">
-            <div>${prop}: ${uniqueValues[prop].size} unique values</div>
-            <div class="bar-chart">
-              <div class="bar" style="width: ${Math.min(uniqueValues[prop].size * 5, 100)}%"></div>
-            </div>
-          </div>
+    }
+
+    function extractGistId(url) {
+      const match = url?.match(/gist\.github\.com\/[^/]+\/([a-f0-9]+)/i);
+      return match ? match[1] : null;
+    }
+
+    function displayStats(data, username) {
+      const statsDiv = document.getElementById("stats");
+      statsDiv.innerHTML = "";
+
+      const created = data.created ? new Date(data.created).toLocaleString() : "Unknown";
+
+      const metaDiv = document.createElement("div");
+      metaDiv.className = "entry";
+      metaDiv.innerHTML = `<div class="meta">👤 <strong>${username}</strong> | 🕒 Created: ${created}</div>`;
+      statsDiv.appendChild(metaDiv);
+
+      Object.keys(data).forEach(key => {
+        if (key === "username" || key === "created") return;
+
+        const item = data[key];
+        const block = document.createElement("div");
+        block.className = "entry";
+        block.innerHTML = `
+          <div class="meta">📅 ${new Date(key).toLocaleString()}</div>
+          <pre>${JSON.stringify(item, null, 2)}</pre>
         `;
-      }
-      
-      // Structure analysis
-      let structureHTML = '';
-      if (isArray) {
-        if (data.length > 0) {
-          const sampleItem = data[0];
-          structureHTML = `
-            <p>First item structure:</p>
-            <pre>${JSON.stringify(getStructure(sampleItem), null, 2)}</pre>
-          `;
-        }
-      } else {
-        // Show the main structure (non-timestamp properties)
-        const mainProperties = {};
-        for (const key in data) {
-          if (!key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
-            mainProperties[key] = typeof data[key];
-          }
-        }
-        
-        structureHTML = `
-          <p>Main properties:</p>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Key</th>
-                <th>Type</th>
-                <th>Example Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${Object.entries(mainProperties).map(([key, type]) => `
-                <tr>
-                  <td>${key}</td>
-                  <td>${type}</td>
-                  <td>${truncate(JSON.stringify(data[key]), 50)}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-          
-          <p>Timestamp entry structure:</p>
-          <pre>${JSON.stringify(getTimestampEntryStructure(data), null, 2)}</pre>
-        `;
-      }
-      
-      // Build timeline
-      let timelineHTML = '';
-      const timestampEntries = [];
-      
-      for (const key in data) {
-        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
-          timestampEntries.push({
-            date: key,
-            data: data[key]
-          });
-        }
-      }
-      
-      // Sort by date (newest first)
-      timestampEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
-      
-      timelineHTML = timestampEntries.map(entry => `
-        <div class="timeline-item">
-          <div class="timeline-date">${formatDate(entry.date)}</div>
-          <div class="timeline-content">
-            ${Object.entries(entry.data).map(([key, value]) => `
-              <div><strong>${key}:</strong> ${truncate(JSON.stringify(value), 100)}</div>
-            `).join('')}
-          </div>
-        </div>
-      `).join('');
-      
-      statsContainer.innerHTML = statsHTML;
-      structureContainer.innerHTML = structureHTML;
-      timelineContainer.innerHTML = timelineHTML;
+        statsDiv.appendChild(block);
+      });
     }
-    
-    // Helper functions
-    function calculateDepth(obj, currentDepth = 0) {
-      if (typeof obj !== 'object' || obj === null) return currentDepth;
-      
-      const isArray = Array.isArray(obj);
-      const entries = isArray ? obj : Object.values(obj);
-      
-      if (entries.length === 0) return currentDepth + 1;
-      
-      const depths = entries.map(item => calculateDepth(item, currentDepth + 1));
-      return Math.max(...depths);
-    }
-    
-    function getStructure(obj) {
-      if (typeof obj !== 'object' || obj === null) return typeof obj;
-      
-      if (Array.isArray(obj)) {
-        if (obj.length === 0) return 'array';
-        return [getStructure(obj[0])];
-      }
-      
-      const structure = {};
-      for (const key in obj) {
-        structure[key] = getStructure(obj[key]);
-      }
-      return structure;
-    }
-    
-    function getTimestampEntryStructure(data) {
-      for (const key in data) {
-        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
-          return getStructure(data[key]);
-        }
-      }
-      return "No timestamp entries found";
-    }
-    
-    function truncate(str, length) {
-      if (typeof str !== 'string') str = String(str);
-      return str.length > length ? str.substring(0, length) + '...' : str;
-    }
-    
-    function formatDate(isoString) {
-      const date = new Date(isoString);
-      return date.toLocaleString();
-    }
-    
-    // Load the data
-    loadGistJSON();
+
+    loadGistFromStorage();
   </script>
 </body>
 </html>
