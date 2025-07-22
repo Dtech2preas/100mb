@@ -7,10 +7,11 @@
   <style>
     body { font-family: Arial, sans-serif; max-width: 500px; margin: 2rem auto; }
     input, button, textarea { width: 100%; margin: 0.5rem 0; padding: 0.5rem; font-size: 1rem; }
-    #signup-section { margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem; }
+    #signup-section, #login-info { margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem; }
     .error { color: red; }
     .success { color: green; }
-    pre { background: #eee; padding: 10px; overflow-x: auto; }
+    pre { background: #eee; padding: 10px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
+    #login-info { display: none; }
   </style>
 </head>
 <body>
@@ -25,6 +26,13 @@
   <h3>Don't have an account? Sign Up</h3>
   <button id="signup-btn">Sign Up & Create Gist</button>
   <div id="signup-msg"></div>
+</div>
+
+<div id="login-info">
+  <h3>✅ Login Success! Save Your Credentials</h3>
+  <pre id="info-text"></pre>
+  <button onclick="copyInfo()">📋 Copy Info</button>
+  <button onclick="downloadInfo()">⬇ Download .txt</button>
 </div>
 
 <script>
@@ -50,16 +58,13 @@ async function getToken() {
 async function fetchGist(gistId, filename, token) {
   const res = await fetch(`https://api.github.com/gists/${gistId}`, {
     headers: {
-      "Authorization": `token ${token}`,
-      "Accept": "application/vnd.github.v3+json"
+      "Authorization": `token ${token}`
     }
   });
-  if (!res.ok) throw new Error(`Failed to fetch gist ${gistId}`);
   const gist = await res.json();
   const content = gist.files[filename]?.content;
-  if (!content) throw new Error(`File ${filename} not found`);
-  const usersData = JSON.parse(content);
-  return { gist, usersData };
+  if (!content) throw new Error(`Missing file ${filename}`);
+  return { gist, usersData: JSON.parse(content) };
 }
 
 async function fetchAllUsers(token) {
@@ -79,11 +84,11 @@ async function fetchAllUsers(token) {
 
 async function updateGist(gistId, filename, updatedUsers, token) {
   const payload = {
-    files: {}
+    files: {
+      [filename]: { content: JSON.stringify({ users: updatedUsers }, null, 2) }
+    }
   };
-  payload.files[filename] = { content: JSON.stringify({users: updatedUsers}, null, 2) };
-
-  const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+  await fetch(`https://api.github.com/gists/${gistId}`, {
     method: "PATCH",
     headers: {
       "Authorization": `token ${token}`,
@@ -91,19 +96,17 @@ async function updateGist(gistId, filename, updatedUsers, token) {
     },
     body: JSON.stringify(payload)
   });
-  if (!res.ok) throw new Error("Failed to update gist");
-  return await res.json();
 }
 
 async function getIP() {
   const res = await fetch("https://api.ipify.org?format=json");
-  if (!res.ok) throw new Error("Failed to get IP");
-  return (await res.json()).ip;
+  const data = await res.json();
+  return data.ip;
 }
 
 async function createPersonalGist(username, token) {
   const payload = {
-    description: `User-specific JSON for ${username}`,
+    description: `User JSON for ${username}`,
     public: false,
     files: {
       [`${username}.json`]: {
@@ -119,15 +122,14 @@ async function createPersonalGist(username, token) {
     },
     body: JSON.stringify(payload)
   });
-  if (!res.ok) throw new Error("Failed to create personal gist");
   return await res.json();
 }
 
 document.getElementById("login-btn").addEventListener("click", async () => {
-  const errorMsg = document.getElementById("error-msg");
-  errorMsg.textContent = "";
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
+  const errorMsg = document.getElementById("error-msg");
+
   if (!username || !password) {
     errorMsg.textContent = "Please enter username and password.";
     return;
@@ -138,21 +140,32 @@ document.getElementById("login-btn").addEventListener("click", async () => {
     if (allUsers.length === 0) await fetchAllUsers(GITHUB_TOKEN);
 
     const user = allUsers.find(u => u.username === username && u.password === password && u.taken);
-    if (user) {
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
-      alert("Login successful!");
-      // window.location.href = "next.html";
-    } else {
-      errorMsg.textContent = "Invalid credentials or user not found.";
+    if (!user) {
+      errorMsg.textContent = "Invalid login.";
+      return;
     }
+
+    // Try restore personal gist
+    const stored = JSON.parse(localStorage.getItem("loggedInUser"));
+    const info = {
+      username: user.username,
+      password: user.password,
+      gistId: stored?.gistId || "Not set",
+      gistUrl: stored?.gistUrl || "Not saved"
+    };
+
+    showInfo(info);
+    localStorage.setItem("loggedInUser", JSON.stringify(info));
+    await new Promise(res => setTimeout(res, 5000));
+    window.location.href = "next.html";
   } catch (err) {
-    errorMsg.textContent = "Error: " + err.message;
+    errorMsg.textContent = "Login failed: " + err.message;
   }
 });
 
 document.getElementById("signup-btn").addEventListener("click", async () => {
-  const signupMsg = document.getElementById("signup-msg");
-  signupMsg.innerHTML = "Processing signup...";
+  const msg = document.getElementById("signup-msg");
+  msg.textContent = "Creating account...";
 
   try {
     if (!GITHUB_TOKEN) GITHUB_TOKEN = await getToken();
@@ -161,44 +174,60 @@ document.getElementById("signup-btn").addEventListener("click", async () => {
     const ip = await getIP();
     const takenByIP = allUsers.filter(u => u.taken && u.ip === ip);
     if (takenByIP.length >= 2) {
-      signupMsg.innerHTML = `<p class="error">You already claimed 2 accounts from this IP.</p>`;
+      msg.innerHTML = `<p class="error">You already signed up twice on this IP.</p>`;
       return;
     }
 
     const availableUser = allUsers.find(u => !u.taken);
     if (!availableUser) {
-      signupMsg.innerHTML = `<p class="error">No accounts available. Contact support.</p>`;
+      msg.innerHTML = `<p class="error">No accounts available.</p>`;
       return;
     }
 
     availableUser.taken = true;
     availableUser.ip = ip;
 
-    const batchUsers = allUsers.filter(u => u.gistId === availableUser.gistId);
-    const idx = batchUsers.findIndex(u => u.username === availableUser.username);
-    if (idx !== -1) batchUsers[idx] = availableUser;
+    const batch = allUsers.filter(u => u.gistId === availableUser.gistId);
+    const idx = batch.findIndex(u => u.username === availableUser.username);
+    if (idx !== -1) batch[idx] = availableUser;
 
-    await updateGist(availableUser.gistId, availableUser.filename, batchUsers, GITHUB_TOKEN);
-    
-    const userGist = await createPersonalGist(availableUser.username, GITHUB_TOKEN);
+    await updateGist(availableUser.gistId, availableUser.filename, batch, GITHUB_TOKEN);
+    const gist = await createPersonalGist(availableUser.username, GITHUB_TOKEN);
 
-    localStorage.setItem("loggedInUser", JSON.stringify({
-      ...availableUser,
-      gistUrl: userGist.html_url,
-      gistId: userGist.id
-    }));
+    const info = {
+      username: availableUser.username,
+      password: availableUser.password,
+      gistId: gist.id,
+      gistUrl: gist.html_url
+    };
 
-    signupMsg.innerHTML = `
-      <p class="success"><strong>✅ Account created!</strong></p>
-      <p><strong>Username:</strong> <code>${availableUser.username}</code></p>
-      <p><strong>Password:</strong> <code>${availableUser.password}</code></p>
-      <p><strong>Your JSON Gist:</strong> <a href="${userGist.html_url}" target="_blank">${userGist.html_url}</a></p>
-      <p>You can now log in above.</p>
-    `;
+    localStorage.setItem("loggedInUser", JSON.stringify(info));
+    showInfo(info);
+    msg.innerHTML = `<p class="success">✅ Account created! Save your info below.</p>`;
   } catch (err) {
-    signupMsg.innerHTML = `<p class="error">Signup failed: ${err.message}</p>`;
+    msg.innerHTML = `<p class="error">Signup failed: ${err.message}</p>`;
   }
 });
+
+function showInfo(info) {
+  document.getElementById("info-text").textContent =
+    `Username: ${info.username}\nPassword: ${info.password}\nGist ID: ${info.gistId}\nGist URL: ${info.gistUrl}`;
+  document.getElementById("login-info").style.display = "block";
+}
+
+function copyInfo() {
+  const text = document.getElementById("info-text").textContent;
+  navigator.clipboard.writeText(text).then(() => alert("Copied to clipboard!"));
+}
+
+function downloadInfo() {
+  const text = document.getElementById("info-text").textContent;
+  const blob = new Blob([text], { type: "text/plain" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "account_info.txt";
+  a.click();
+}
 </script>
 
 </body>
