@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src='//libtl.com/sdk.js' data-zone='9601506' data-sdk='show_9601506'></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Webpage Snatcher - Stage 1</title>
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #3f37c9;
+      --dark: #212529;
+      --light: #f8f9fa;
+      --success: #4cc9f0;
+      --warning: #f8961e;
+      --danger: #f72585;
+      --gray: #6c757d;
+      --gray-light: #e9ecef;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      line-height: 1.6;
+      background-color: #f5f7fa;
+      color: var(--dark);
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    header .icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-content {
+      padding: 2rem;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+
+    button {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-success {
+      background-color: var(--success);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background-color: #3ab4d9;
+    }
+
+    .btn-stage2 {
+      background-color: var(--warning);
+      color: white;
+    }
+
+    .btn-stage2:hover {
+      background-color: #e07e0c;
+    }
+
+    button:disabled {
+      background-color: var(--gray-light);
+      color: var(--gray);
+      cursor: not-allowed;
+    }
+
+    .options-panel {
+      background: var(--gray-light);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background: var(--gray-light);
+      border-radius: 4px;
+      margin: 1.5rem 0;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--success));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .log-container {
+      background: #2b2d42;
+      color: #f8f9fa;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.9rem;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    .log-entry {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .log-entry:before {
+      content: ">";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+    }
+
+    .log-entry.info {
+      color: #a7c6fa;
+    }
+
+    .log-entry.success {
+      color: #4cc9f0;
+    }
+
+    .log-entry.warning {
+      color: #f8961e;
+    }
+
+    .log-entry.error {
+      color: #f72585;
+    }
+
+    .output-container {
+      position: relative;
+    }
+
+    textarea {
+      width: 100%;
+      height: 400px;
+      padding: 1rem;
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.9rem;
+      resize: vertical;
+      background: #f8f9fa;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .output-container:hover .copy-btn {
+      opacity: 1;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .input-group {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+          <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </svg>
+      </div>
+      <h1>X24 WEB DUPLICATOR - Stage 1</h1>
+    </header>
+
+    <div class="main-content">
+      <div class="input-group">
+        <input type="text" id="urlInput" placeholder="Enter webpage URL (e.g. https://example.com or /local.html)">
+        <button class="btn-primary" onclick="fetchPage()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 0 1 9-9"></path>
+          </svg>
+          Fetch
+        </button>
+      </div>
+
+      <div class="options-panel">
+        <h3>Processing Options</h3>
+        <div class="options-grid">
+          <div class="option-item">
+            <input type="checkbox" id="inlineCSS" checked>
+            <label for="inlineCSS">Inline CSS</label>
+          </div>
+          <div class="option-item">
+            <input type="checkbox" id="inlineImages" checked>
+            <label for="inlineImages">Inline Images</label>
+          </div>
+          <div class="option-item">
+            <input type="checkbox" id="inlineScripts">
+            <label for="inlineScripts">Inline Scripts</label>
+          </div>
+          <div class="option-item">
+            <input type="checkbox" id="fixPaths" checked>
+            <label for="fixPaths">Fix Resource Paths</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="log-container" id="logContainer">
+        <div class="log-entry info">Ready to fetch webpage...</div>
+      </div>
+
+      <div class="output-container">
+        <textarea id="output" placeholder="Processed HTML will appear here..." spellcheck="false"></textarea>
+        <button class="copy-btn" onclick="copyToClipboard()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          Copy
+        </button>
+      </div>
+
+      <div class="button-group">
+        <button class="btn-success" id="downloadBtn" disabled onclick="downloadHTML()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download HTML
+        </button>
+
+        <button class="btn-stage2" id="stage2Btn" disabled onclick="goToStage2()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+          Go to Stage 2
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+   DTECH X24 GHOST LOGGER- Stage 1 &bull; Downloads complete webpages with all resources properly handled
+  </footer>
+
+  <script>
+    let processedHTML = '';
+    const proxy = "https://api.allorigins.win/raw?url=";
+
+    // Add log entry
+    function addLog(message, type = 'info') {
+      const logContainer = document.getElementById('logContainer');
+      const logEntry = document.createElement('div');
+      logEntry.className = `log-entry ${type}`;
+      logEntry.textContent = message;
+      logContainer.appendChild(logEntry);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    // Update progress bar
+    function updateProgress(percent) {
+      document.getElementById('progressBar').style.width = `${percent}%`;
+    }
+
+    // Show loading state
+    function setLoading(isLoading) {
+      const btn = document.querySelector('.btn-primary');
+      btn.disabled = isLoading;
+      if (isLoading) {
+        btn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+          </svg>
+          Fetching...
+        `;
+      } else {
+        btn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 0 1 9-9"></path>
+          </svg>
+          Fetch
+        `;
+      }
+    }
+
+    // Fetch content with error handling
+    async function fetchContent(url, options = {}) {
+      try {
+        // Try direct fetch first (works for local files if CORS allows)
+        addLog(`Fetching: ${url}`, 'info');
+        const response = await fetch(url, options);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return await response.text();
+      } catch (e) {
+        // Fall back to proxy for remote URLs if direct fetch fails
+        if (!url.startsWith('http')) {
+          throw new Error('Local file access blocked by CORS. Try running this tool locally.');
+        }
+        addLog(`Using proxy for: ${url}`, 'warning');
+        const proxyUrl = proxy + encodeURIComponent(url);
+        const response = await fetch(proxyUrl);
+        return await response.text();
+      }
+    }
+
+    // Fetch binary content (for images, fonts, etc.)
+    async function fetchBinary(url, options = {}) {
+      try {
+        addLog(`Fetching binary: ${url}`, 'info');
+        const response = await fetch(url, options);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return await response.blob();
+      } catch (e) {
+        if (!url.startsWith('http')) {
+          throw new Error('Local file access blocked by CORS.');
+        }
+        addLog(`Using proxy for binary: ${url}`, 'warning');
+        const proxyUrl = proxy + encodeURIComponent(url);
+        const response = await fetch(proxyUrl);
+        return await response.blob();
+      }
+    }
+
+    // Process CSS resources with @import handling
+    async function processCSS(doc, basePath) {
+      const stylesheets = Array.from(doc.querySelectorAll('link[rel="stylesheet"]'));
+      if (stylesheets.length === 0) {
+        addLog('No external CSS found', 'info');
+        return;
+      }
+
+      addLog(`Processing ${stylesheets.length} CSS files...`, 'info');
+      updateProgress(10);
+
+      for (const [index, link] of stylesheets.entries()) {
+        const href = link.getAttribute('href');
+        if (!href) continue;
+
+        try {
+          const cssUrl = href.startsWith('http') ? href : new URL(href, basePath).href;
+          addLog(`[${index+1}/${stylesheets.length}] Loading CSS: ${cssUrl}`, 'info');
+
+          let cssContent = await fetchContent(cssUrl);
+
+          // Process @import rules recursively
+          cssContent = await processImports(cssContent, cssUrl);
+
+          // Create style tag with the CSS content
+          const style = document.createElement('style');
+          style.textContent = `/* Inlined from ${cssUrl} */\n${cssContent}`;
+          link.replaceWith(style);
+
+          addLog(`[${index+1}/${stylesheets.length}] CSS inlined successfully`, 'success');
+          updateProgress(10 + ((index + 1) / stylesheets.length * 40));
+        } catch (e) {
+          addLog(`Failed to load CSS: ${href} - ${e.message}`, 'error');
+          // If we can't fetch, keep the original link but fix the path
+          if (document.getElementById('fixPaths').checked && !href.startsWith('http')) {
+            link.href = new URL(href, basePath).href;
+            addLog(`Kept original CSS link with fixed path: ${link.href}`, 'warning');
+          }
+        }
+      }
+    }
+
+    // Recursively process @import rules in CSS
+    async function processImports(cssContent, baseUrl) {
+      const importRegex = /@import\s+(url\()?['"]([^'"]+)['"]\)?[^;]*;/g;
+      let match;
+      let processedCSS = cssContent;
+
+      while ((match = importRegex.exec(cssContent)) !== null) {
+        const importPath = match[2];
+        try {
+          const importUrl = importPath.startsWith('http') ? importPath : new URL(importPath, baseUrl).href;
+          addLog(`Processing CSS import: ${importUrl}`, 'info');
+
+          const importedCSS = await fetchContent(importUrl);
+          const processedImport = await processImports(importedCSS, importUrl);
+
+          processedCSS = processedCSS.replace(match[0], processedImport);
+        } catch (e) {
+          addLog(`Failed to process CSS import: ${importPath} - ${e.message}`, 'error');
+          // If import fails, keep the original @import but fix the path if needed
+          if (document.getElementById('fixPaths').checked && !importPath.startsWith('http')) {
+            const fixedImport = match[0].replace(importPath, new URL(importPath, baseUrl).href);
+            processedCSS = processedCSS.replace(match[0], fixedImport);
+            addLog(`Kept original @import with fixed path`, 'warning');
+          }
+        }
+      }
+
+      return processedCSS;
+    }
+
+    // Process image resources with srcset handling
+    async function processImages(doc, basePath) {
+      const images = Array.from(doc.querySelectorAll('img, [style*="background-image"]'));
+      if (images.length === 0) {
+        addLog('No images found', 'info');
+        return;
+      }
+
+      addLog(`Processing ${images.length} images...`, 'info');
+      updateProgress(50);
+
+      for (const [index, element] of images.entries()) {
+        try {
+          // Handle regular img tags
+          if (element.tagName === 'IMG') {
+            await processImgElement(element, basePath);
+          } 
+          // Handle background images
+          else if (element.style.backgroundImage) {
+            await processBackgroundImage(element, basePath);
+          }
+
+          addLog(`[${index+1}/${images.length}] Image processed successfully`, 'success');
+          updateProgress(50 + ((index + 1) / images.length * 40));
+        } catch (e) {
+          addLog(`Failed to process image: ${e.message}`, 'error');
+        }
+      }
+    }
+
+    // Process a single img element
+    async function processImgElement(img, basePath) {
+      const src = img.getAttribute('src');
+      const srcset = img.getAttribute('srcset');
+
+      // Process src attribute
+      if (src && !src.startsWith('data:')) {
+        try {
+          const imgUrl = src.startsWith('http') ? src : new URL(src, basePath).href;
+          const blob = await fetchBinary(imgUrl);
+          img.src = await blobToDataURL(blob);
+        } catch (e) {
+          addLog(`Failed to inline image src: ${src} - ${e.message}`, 'error');
+          if (document.getElementById('fixPaths').checked && !src.startsWith('http')) {
+            img.src = new URL(src, basePath).href;
+            addLog(`Kept original src with fixed path: ${img.src}`, 'warning');
+          }
+        }
+      }
+
+      // Process srcset attribute
+      if (srcset) {
+        try {
+          const newSrcset = await processSrcset(srcset, basePath);
+          img.setAttribute('srcset', newSrcset);
+        } catch (e) {
+          addLog(`Failed to process srcset: ${srcset} - ${e.message}`, 'error');
+          if (document.getElementById('fixPaths').checked) {
+            const fixedSrcset = fixSrcsetPaths(srcset, basePath);
+            img.setAttribute('srcset', fixedSrcset);
+            addLog(`Kept original srcset with fixed paths`, 'warning');
+          }
+        }
+      }
+    }
+
+    // Process background images
+    async function processBackgroundImage(element, basePath) {
+      const bgImage = element.style.backgroundImage;
+      const urlMatch = bgImage.match(/url\(['"]?(.*?)['"]?\)/);
+
+      if (urlMatch && urlMatch[1]) {
+        const imageUrl = urlMatch[1];
+        if (!imageUrl.startsWith('data:')) {
+          try {
+            const fullUrl = imageUrl.startsWith('http') ? imageUrl : new URL(imageUrl, basePath).href;
+            const blob = await fetchBinary(fullUrl);
+            const dataUrl = await blobToDataURL(blob);
+            element.style.backgroundImage = `url("${dataUrl}")`;
+          } catch (e) {
+            addLog(`Failed to inline background image: ${imageUrl} - ${e.message}`, 'error');
+            if (document.getElementById('fixPaths').checked && !imageUrl.startsWith('http')) {
+              element.style.backgroundImage = `url("${new URL(imageUrl, basePath).href}")`;
+              addLog(`Kept original background image with fixed path`, 'warning');
+            }
+          }
+        }
+      }
+    }
+
+    // Process srcset attribute
+    async function processSrcset(srcset, basePath) {
+      const parts = srcset.split(',');
+      const processedParts = [];
+
+      for (const part of parts) {
+        const [url, descriptor] = part.trim().split(/\s+/);
+        if (!url) continue;
+
+        try {
+          const fullUrl = url.startsWith('http') ? url : new URL(url, basePath).href;
+          const blob = await fetchBinary(fullUrl);
+          const dataUrl = await blobToDataURL(blob);
+          processedParts.push(`${dataUrl}${descriptor ? ' ' + descriptor : ''}`);
+        } catch (e) {
+          addLog(`Failed to inline srcset image: ${url} - ${e.message}`, 'error');
+          if (document.getElementById('fixPaths').checked && !url.startsWith('http')) {
+            processedParts.push(`${new URL(url, basePath).href}${descriptor ? ' ' + descriptor : ''}`);
+            addLog(`Kept original srcset URL with fixed path`, 'warning');
+          } else {
+            processedParts.push(part.trim());
+          }
+        }
+      }
+
+      return processedParts.join(', ');
+    }
+
+    // Fix paths in srcset without inlining
+    function fixSrcsetPaths(srcset, basePath) {
+      return srcset.split(',').map(part => {
+        const [url, descriptor] = part.trim().split(/\s+/);
+        if (!url || url.startsWith('http') || url.startsWith('data:')) {
+          return part.trim();
+        }
+        return `${new URL(url, basePath).href}${descriptor ? ' ' + descriptor : ''}`;
+      }).join(', ');
+    }
+
+    // Convert blob to data URL
+    function blobToDataURL(blob) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    // Process script resources
+    async function processScripts(doc, basePath) {
+      if (!document.getElementById('inlineScripts').checked) {
+        // Just fix paths if inlining is disabled
+        if (document.getElementById('fixPaths').checked) {
+          const scripts = Array.from(doc.querySelectorAll('script[src]'));
+          for (const script of scripts) {
+            const src = script.getAttribute('src');
+            if (src && !src.startsWith('http')) {
+              script.src = new URL(src, basePath).href;
+            }
+          }
+        }
+        return;
+      }
+
+      const scripts = Array.from(doc.querySelectorAll('script[src]'));
+      if (scripts.length === 0) {
+        addLog('No external scripts found', 'info');
+        return;
+      }
+
+      addLog(`Processing ${scripts.length} scripts...`, 'info');
+
+      for (const [index, script] of scripts.entries()) {
+        const src = script.getAttribute('src');
+        if (!src) continue;
+
+        try {
+          const scriptUrl = src.startsWith('http') ? src : new URL(src, basePath).href;
+          addLog(`[${index+1}/${scripts.length}] Loading script: ${scriptUrl}`, 'info');
+
+          const scriptContent = await fetchContent(scriptUrl);
+
+          // Create new script tag with the content
+          const newScript = document.createElement('script');
+          newScript.textContent = `/* Inlined from ${scriptUrl} */\n${scriptContent}`;
+          script.replaceWith(newScript);
+
+          addLog(`[${index+1}/${scripts.length}] Script inlined successfully`, 'success');
+        } catch (e) {
+          addLog(`Failed to load script: ${src} - ${e.message}`, 'error');
+          // If we can't fetch, keep the original script but fix the path
+          if (document.getElementById('fixPaths').checked && !src.startsWith('http')) {
+            script.src = new URL(src, basePath).href;
+            addLog(`Kept original script with fixed path: ${script.src}`, 'warning');
+          }
+        }
+      }
+    }
+
+    // Process other resources (links, fonts, etc.)
+    async function processOtherResources(doc, basePath) {
+      // Process favicon
+      const favicon = doc.querySelector('link[rel*="icon"]');
+      if (favicon) {
+        const href = favicon.getAttribute('href');
+        if (href && !href.startsWith('data:')) {
+          try {
+            const iconUrl = href.startsWith('http') ? href : new URL(href, basePath).href;
+            const blob = await fetchBinary(iconUrl);
+            favicon.href = await blobToDataURL(blob);
+            addLog('Favicon inlined successfully', 'success');
+          } catch (e) {
+            addLog(`Failed to inline favicon: ${href} - ${e.message}`, 'error');
+            if (document.getElementById('fixPaths').checked && !href.startsWith('http')) {
+              favicon.href = new URL(href, basePath).href;
+              addLog(`Kept original favicon with fixed path: ${favicon.href}`, 'warning');
+            }
+          }
+        }
+      }
+
+      // Process stylesheet @import rules (already handled in processCSS)
+      // Process font-face src URLs in style tags
+      const styleTags = doc.querySelectorAll('style');
+      for (const styleTag of styleTags) {
+        const cssContent = styleTag.textContent;
+        const updatedContent = await processFontsInCSS(cssContent, basePath);
+        if (updatedContent !== cssContent) {
+          styleTag.textContent = updatedContent;
+        }
+      }
+    }
+
+    // Process @font-face rules in CSS
+    async function processFontsInCSS(cssContent, basePath) {
+      const fontFaceRegex = /(@font-face\s*\{[^}]+\})/g;
+      const srcRegex = /src:\s*(url\()?['"]([^'"]+)['"]\)?([^;]*);/g;
+      let processedCSS = cssContent;
+      let match;
+
+      while ((match = fontFaceRegex.exec(cssContent)) !== null) {
+        const fontFaceRule = match[1];
+        let processedRule = fontFaceRule;
+        let srcMatch;
+
+        while ((srcMatch = srcRegex.exec(fontFaceRule)) !== null) {
+          const fontUrl = srcMatch[2];
+          if (fontUrl.startsWith('data:')) continue;
+
+          try {
+            const fullFontUrl = fontUrl.startsWith('http') ? fontUrl : new URL(fontUrl, basePath).href;
+            const blob = await fetchBinary(fullFontUrl);
+            const dataUrl = await blobToDataURL(blob);
+            processedRule = processedRule.replace(srcMatch[0], `src: url("${dataUrl}")${srcMatch[3]};`);
+            addLog(`Inlined font: ${fontUrl}`, 'success');
+          } catch (e) {
+            addLog(`Failed to inline font: ${fontUrl} - ${e.message}`, 'error');
+            if (document.getElementById('fixPaths').checked && !fontUrl.startsWith('http')) {
+              processedRule = processedRule.replace(
+                srcMatch[0], 
+                `src: url("${new URL(fontUrl, basePath).href}")${srcMatch[3]};`
+              );
+              addLog(`Kept original font with fixed path`, 'warning');
+            }
+          }
+        }
+
+        processedCSS = processedCSS.replace(fontFaceRule, processedRule);
+      }
+
+      return processedCSS;
+    }
+
+    // Build final HTML document
+    function buildFinalHTML(doc) {
+      addLog('Building final HTML structure...', 'info');
+
+      // Ensure proper HTML structure
+      const html = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${doc.title || 'Downloaded Page'}</title>
+  ${getHeadContent(doc)}
+</head>
+<body>
+  ${getBodyContent(doc)}
+</body>
+</html>`;
+
+      return html;
+    }
+
+    function getHeadContent(doc) {
+      const head = doc.head;
+      let content = '';
+
+      // Copy all elements except title and viewport (we handle those separately)
+      for (const child of head.children) {
+        if (child.tagName !== 'TITLE' && child.getAttribute('name') !== 'viewport') {
+          content += child.outerHTML + '\n';
+        }
+      }
+
+      return content;
+    }
+
+    function getBodyContent(doc) {
+      return doc.body.innerHTML;
+    }
+
+    // Main function to fetch and process page
+    async function fetchPage() {
+      const url = document.getElementById('urlInput').value.trim();
+      if (!url) {
+        addLog('Please enter a URL', 'error');
+        return;
+      }
+
+      try {
+        // Reset UI
+        setLoading(true);
+        document.getElementById('output').value = '';
+        document.getElementById('downloadBtn').disabled = true;
+        document.getElementById('stage2Btn').disabled = true;
+        document.getElementById('logContainer').innerHTML = '';
+        updateProgress(0);
+        addLog(`Starting fetch for: ${url}`, 'info');
+
+        // Get the HTML content
+        const html = await fetchContent(url);
+        addLog('HTML content received, processing...', 'success');
+
+        // Parse the HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Get base path for relative URLs
+        const basePath = getBasePath(url);
+        addLog(`Using base path: ${basePath}`, 'info');
+
+        // Process resources based on options
+        if (document.getElementById('inlineCSS').checked) {
+          await processCSS(doc, basePath);
+        } else if (document.getElementById('fixPaths').checked) {
+          fixCSSPaths(doc, basePath);
+        }
+
+        if (document.getElementById('inlineImages').checked) {
+          await processImages(doc, basePath);
+        } else if (document.getElementById('fixPaths').checked) {
+          fixImagePaths(doc, basePath);
+        }
+
+        await processScripts(doc, basePath);
+        await processOtherResources(doc, basePath);
+
+        // Build final HTML
+        let finalHTML = buildFinalHTML(doc);
+        processedHTML = finalHTML;
+
+        // Save to localStorage
+        localStorage.setItem('data1step', finalHTML);
+        addLog('Saved processed HTML to localStorage as data1step', 'success');
+
+        // Update UI
+        document.getElementById('output').value = finalHTML;
+        document.getElementById('downloadBtn').disabled = false;
+        document.getElementById('stage2Btn').disabled = false;
+        updateProgress(100);
+        addLog('Page processed successfully! Ready for download or Stage 2.', 'success');
+      } catch (err) {
+        addLog(`Error: ${err.message}`, 'error');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    // Fix CSS paths without inlining
+    function fixCSSPaths(doc, basePath) {
+      const links = doc.querySelectorAll('link[rel="stylesheet"]');
+      for (const link of links) {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('http')) {
+          link.href = new URL(href, basePath).href;
+        }
+      }
+      addLog('Fixed CSS paths', 'success');
+    }
+
+    // Fix image paths without inlining
+    function fixImagePaths(doc, basePath) {
+      const images = doc.querySelectorAll('img');
+      for (const img of images) {
+        const src = img.getAttribute('src');
+        if (src && !src.startsWith('http') && !src.startsWith('data:')) {
+          img.src = new URL(src, basePath).href;
+        }
+
+        const srcset = img.getAttribute('srcset');
+        if (srcset) {
+          img.setAttribute('srcset', fixSrcsetPaths(srcset, basePath));
+        }
+      }
+      addLog('Fixed image paths', 'success');
+    }
+
+    // Helper function to get base path
+    function getBasePath(url) {
+      if (url.startsWith('http')) {
+        const urlObj = new URL(url);
+        return `${urlObj.protocol}//${urlObj.host}${urlObj.pathname.split('/').slice(0, -1).join('/')}/`;
+      }
+      // For local paths, get directory path
+      const lastSlash = url.lastIndexOf('/');
+      return lastSlash > 0 ? url.substring(0, lastSlash + 1) : './';
+    }
+
+    // Download HTML file
+    function downloadHTML() {
+      if (!processedHTML) return;
+
+      const blob = new Blob([processedHTML], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+
+      const filename = getDownloadFilename();
+      addLog(`Downloading: ${filename}`, 'info');
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      addLog('Download complete!', 'success');
+    }
+
+    // Generate download filename
+    function getDownloadFilename() {
+      const url = document.getElementById('urlInput').value.trim();
+      if (!url) return 'downloaded_page.html';
+
+      if (url.startsWith('http')) {
+        const domain = new URL(url).hostname.replace('www.', '');
+        const path = new URL(url).pathname.split('/').pop();
+        return path ? `${domain}_${path}` : `${domain}.html`;
+      }
+
+      // For local paths
+      const filename = url.split('/').pop();
+      return filename.endsWith('.html') ? filename : `${filename}.html`;
+    }
+
+    // Copy to clipboard
+    function copyToClipboard() {
+      const output = document.getElementById('output');
+      output.select();
+      document.execCommand('copy');
+
+      // Show temporary feedback
+      const copyBtn = document.querySelector('.copy-btn');
+      copyBtn.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Copied!
+      `;
+
+      setTimeout(() => {
+        copyBtn.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          Copy
+        `;
+      }, 2000);
+
+      addLog('HTML copied to clipboard', 'success');
+    }
+
+    // Go to Stage 2
+    function goToStage2() {
+      if (!processedHTML) {
+        addLog('No processed HTML available for Stage 2', 'error');
+        return;
+      }
+
+      // Save to localStorage again just in case
+      localStorage.setItem('data1step', processedHTML);
+      addLog('Navigating to Stage 2...', 'info');
+
+      // Redirect to step2.html
+      window.location.href = 'step2.html';
+    }
+  </script>
+</body>
+</html>
