@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JSON Data Dashboard</title>
+  <title>JSON Data Analytics Dashboard</title>
   <style>
     :root {
       --primary: #1a73e8;
       --primary-dark: #0d47a1;
       --primary-light: #e8f0fe;
-      --secondary: #202124;
-      --secondary-light: #3c4043;
-      --background: #f8f9fa;
+      --secondary: #0a0a0a;
+      --secondary-light: #2d2d2d;
+      --background: #f5f5f5;
       --card-bg: #ffffff;
       --text: #202124;
       --text-light: #5f6368;
-      --border: #dadce0;
+      --border: #e0e0e0;
       --success: #34a853;
       --warning: #f9ab00;
       --danger: #d93025;
@@ -39,7 +39,7 @@
     .header {
       background-color: var(--secondary);
       color: white;
-      padding: 1rem 2rem;
+      padding: 1rem;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       position: sticky;
       top: 0;
@@ -48,7 +48,7 @@
     }
     
     .header-content {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -57,8 +57,8 @@
     
     .main {
       flex: 1;
-      padding: 1.5rem;
-      max-width: 1400px;
+      padding: 1rem;
+      max-width: 1200px;
       margin: 0 auto;
       width: 100%;
       background-color: var(--background);
@@ -80,20 +80,25 @@
       margin-bottom: 1rem;
     }
     
-    .metrics-bar {
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .metrics-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
-      margin-bottom: 1.5rem;
-      background-color: var(--card-bg);
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
     }
     
-    .metric {
+    .metric-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       text-align: center;
-      padding: 0.5rem;
     }
     
     .metric-value {
@@ -108,19 +113,19 @@
       margin-top: 0.25rem;
     }
     
-    .content-grid {
+    .content-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 1.5rem;
     }
     
-    @media (max-width: 768px) {
-      .content-grid {
-        grid-template-columns: 1fr;
+    @media (min-width: 992px) {
+      .content-row {
+        grid-template-columns: 1fr 1fr;
       }
     }
     
-    .panel {
+    .data-panel {
       background-color: var(--card-bg);
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -139,7 +144,7 @@
     
     .panel-body {
       padding: 1rem;
-      max-height: 500px;
+      max-height: 400px;
       overflow-y: auto;
     }
     
@@ -157,36 +162,49 @@
       font-weight: 500;
       color: var(--primary-dark);
       margin-bottom: 0.25rem;
+      font-size: 0.9rem;
     }
     
     .entry-content {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     
-    .flag-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 1rem;
-    }
-    
-    .flag-item {
-      text-align: center;
-      padding: 0.75rem;
+    .property-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
       background-color: var(--primary-light);
-      border-radius: 6px;
-    }
-    
-    .flag-count {
-      font-size: 1.5rem;
-      font-weight: 700;
+      border-radius: 4px;
+      font-size: 0.75rem;
       color: var(--primary-dark);
     }
     
-    .flag-label {
-      font-size: 0.8rem;
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .stat-card {
+      background-color: var(--primary-light);
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .stat-title {
+      font-size: 0.9rem;
       color: var(--text-light);
-      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-value {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--secondary);
     }
     
     .btn {
@@ -234,15 +252,18 @@
       to { transform: rotate(360deg); }
     }
     
-    .property-badge {
-      display: inline-block;
-      padding: 0.25rem 0.5rem;
-      background-color: var(--primary-light);
+    .bar-chart {
+      height: 8px;
+      background-color: var(--border);
       border-radius: 4px;
-      font-size: 0.75rem;
-      color: var(--primary-dark);
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin: 0.5rem 0;
+      overflow: hidden;
+    }
+    
+    .bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 4px;
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -250,7 +271,7 @@
 <body>
   <header class="header">
     <div class="header-content">
-      <h1>📊 JSON Data Dashboard</h1>
+      <h1>📊 JSON Data Analytics</h1>
       <button id="downloadBtn" class="btn btn-primary">
         <span>⬇️ Download Data</span>
       </button>
@@ -258,28 +279,30 @@
   </header>
   
   <main class="main">
-    <div id="metricsBar" class="metrics-bar loading">
-      <div>Loading metrics...</div>
-    </div>
-    
-    <div class="content-grid">
-      <div class="panel">
-        <div class="panel-header">
-          <span>📅</span>
-          <span>Recent Entries</span>
-        </div>
-        <div class="panel-body" id="entriesContainer">
-          <div class="loading">Loading entries...</div>
-        </div>
+    <div class="dashboard-grid">
+      <div class="metrics-row" id="metricsBar">
+        <div class="loading">Loading metrics...</div>
       </div>
       
-      <div class="panel">
-        <div class="panel-header">
-          <span>🏷️</span>
-          <span>Flag Statistics</span>
+      <div class="content-row">
+        <div class="data-panel">
+          <div class="panel-header">
+            <span>📅</span>
+            <span>Recent Activity</span>
+          </div>
+          <div class="panel-body" id="entriesContainer">
+            <div class="loading">Loading entries...</div>
+          </div>
         </div>
-        <div class="panel-body" id="flagsContainer">
-          <div class="loading">Analyzing flags...</div>
+        
+        <div class="data-panel">
+          <div class="panel-header">
+            <span>📊</span>
+            <span>Data Insights</span>
+          </div>
+          <div class="panel-body" id="statsContainer">
+            <div class="loading">Analyzing data...</div>
+          </div>
         </div>
       </div>
     </div>
@@ -311,12 +334,19 @@
 
     async function loadGistJSON() {
       try {
+        // Create hidden textarea for download functionality
+        const textarea = document.createElement('textarea');
+        textarea.id = 'jsonViewer';
+        textarea.style.display = 'none';
+        document.body.appendChild(textarea);
+        
         const response = await fetch(rawURL);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
         const text = await response.text();
-        let jsonData;
+        textarea.value = text;
         
+        let jsonData;
         try {
           jsonData = JSON.parse(text);
           analyzeData(jsonData);
@@ -324,12 +354,7 @@
           throw new Error("Data is not valid JSON");
         }
       } catch (err) {
-        document.getElementById('metricsBar').innerHTML = `
-          <div class="metric">
-            <div class="metric-value">❌</div>
-            <div class="metric-label">Error loading data</div>
-          </div>
-        `;
+        showError("Error loading data: " + err.message);
       }
     }
     
@@ -339,10 +364,9 @@
         return;
       }
       
-      // Count timestamp entries and collect flags
+      // Count timestamp entries and collect statistics
       let timestampCount = 0;
       const timestampEntries = [];
-      const flagCounts = {};
       const today = new Date().toISOString().split('T')[0];
       const yesterday = new Date();
       yesterday.setDate(yesterday.getDate() - 1);
@@ -350,64 +374,96 @@
       let todayCount = 0;
       let yesterdayCount = 0;
       
+      // For property analysis
+      const propertyStats = {};
+      const valueStats = {};
+      const hourDistribution = Array(24).fill(0);
+      const dayDistribution = Array(7).fill(0);
+      
       for (const key in data) {
         if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
           timestampCount++;
           const entry = data[key];
+          const date = new Date(key);
           const dateStr = key.split('T')[0];
+          const hour = date.getHours();
+          const day = date.getDay();
           
           // Count today/yesterday entries
           if (dateStr === today) todayCount++;
           if (dateStr === yesterdayStr) yesterdayCount++;
+          
+          // Track hour and day distribution
+          hourDistribution[hour]++;
+          dayDistribution[day]++;
           
           timestampEntries.push({
             date: key,
             data: entry
           });
           
-          // Count flags
+          // Analyze properties and values
           for (const prop in entry) {
-            if (prop === 'flag' || prop === 'pin' || prop === 'NUM' || prop === 'Stu') {
-              const value = entry[prop];
-              if (!flagCounts[prop]) flagCounts[prop] = {};
-              flagCounts[prop][value] = (flagCounts[prop][value] || 0) + 1;
+            // Property frequency
+            propertyStats[prop] = (propertyStats[prop] || 0) + 1;
+            
+            // Value analysis (for string properties)
+            if (typeof entry[prop] === 'string') {
+              if (!valueStats[prop]) valueStats[prop] = {};
+              valueStats[prop][entry[prop]] = (valueStats[prop][entry[prop]] || 0) + 1;
             }
           }
         }
       }
       
-      // Calculate average per day
+      // Calculate time-based metrics
       let avgPerDay = 0;
+      let firstDate = null;
+      let lastDate = null;
+      let busiestHour = null;
+      let busiestDay = null;
+      
       if (timestampEntries.length > 0) {
-        const firstDate = new Date(timestampEntries[0].date);
-        const lastDate = new Date(timestampEntries[timestampEntries.length - 1].date);
-        const totalDays = Math.round((lastDate - firstDate) / (1000 * 60 * 60 * 24)) || 1;
+        // Sort entries by date
+        timestampEntries.sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        firstDate = new Date(timestampEntries[0].date);
+        lastDate = new Date(timestampEntries[timestampEntries.length - 1].date);
+        const totalDays = Math.max(Math.round((lastDate - firstDate) / (1000 * 60 * 60 * 24)), 1);
         avgPerDay = (timestampEntries.length / totalDays).toFixed(1);
+        
+        // Find busiest hour
+        const maxHourCount = Math.max(...hourDistribution);
+        busiestHour = hourDistribution.indexOf(maxHourCount);
+        
+        // Find busiest day
+        const maxDayCount = Math.max(...dayDistribution);
+        busiestDay = dayDistribution.indexOf(maxDayCount);
       }
       
       // Update metrics bar
       document.getElementById('metricsBar').innerHTML = `
-        <div class="metric">
+        <div class="metric-card">
           <div class="metric-value">${todayCount}</div>
           <div class="metric-label">Today</div>
         </div>
-        <div class="metric">
+        <div class="metric-card">
           <div class="metric-value">${yesterdayCount}</div>
           <div class="metric-label">Yesterday</div>
         </div>
-        <div class="metric">
+        <div class="metric-card">
           <div class="metric-value">${avgPerDay}</div>
           <div class="metric-label">Avg/Day</div>
         </div>
-        <div class="metric">
+        <div class="metric-card">
           <div class="metric-value">${timestampCount}</div>
           <div class="metric-label">Total Entries</div>
         </div>
       `;
       
       // Update recent entries (newest first)
-      timestampEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
-      const entriesHTML = timestampEntries.slice(0, 50).map(entry => `
+      const sortedEntries = [...timestampEntries].sort((a, b) => new Date(b.date) - new Date(a.date));
+      const entriesHTML = sortedEntries.slice(0, 50).map(entry => `
         <div class="entry-item">
           <div class="entry-date">${formatDate(entry.date)}</div>
           <div class="entry-content">
@@ -422,32 +478,106 @@
         <div class="loading">No entries found</div>
       `;
       
-      // Update flag statistics
-      let flagsHTML = '';
-      for (const flagType in flagCounts) {
-        flagsHTML += `<h3>${flagType}</h3><div class="flag-grid">`;
-        
-        const sortedFlags = Object.entries(flagCounts[flagType])
-          .sort((a, b) => b[1] - a[1]);
-        
-        flagsHTML += sortedFlags.map(([value, count]) => `
-          <div class="flag-item">
-            <div class="flag-count">${count}</div>
-            <div class="flag-label">${value || 'N/A'}</div>
+      // Update statistics panel
+      let statsHTML = '';
+      
+      if (firstDate && lastDate) {
+        statsHTML += `
+          <div class="stat-card">
+            <div class="stat-title">Time Range</div>
+            <div class="stat-value">${formatDate(firstDate)} to ${formatDate(lastDate)}</div>
+            <div class="stat-description">${timeAgo(firstDate)} to ${timeAgo(lastDate)}</div>
           </div>
-        `).join('');
-        
-        flagsHTML += `</div>`;
+        `;
       }
       
-      document.getElementById('flagsContainer').innerHTML = flagsHTML || `
-        <div class="loading">No flag data found</div>
+      if (busiestHour !== null) {
+        statsHTML += `
+          <div class="stat-card">
+            <div class="stat-title">Busiest Hour</div>
+            <div class="stat-value">${formatHour(busiestHour)}</div>
+            <div class="stat-description">${hourDistribution[busiestHour]} entries</div>
+            <div class="bar-chart">
+              <div class="bar" style="width: ${(hourDistribution[busiestHour]/Math.max(...hourDistribution))*100}%"></div>
+            </div>
+          </div>
+        `;
+      }
+      
+      if (busiestDay !== null) {
+        statsHTML += `
+          <div class="stat-card">
+            <div class="stat-title">Busiest Day</div>
+            <div class="stat-value">${formatDay(busiestDay)}</div>
+            <div class="stat-description">${dayDistribution[busiestDay]} entries</div>
+            <div class="bar-chart">
+              <div class="bar" style="width: ${(dayDistribution[busiestDay]/Math.max(...dayDistribution))*100}%"></div>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Add property statistics
+      const sortedProperties = Object.entries(propertyStats)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
+      
+      if (sortedProperties.length > 0) {
+        statsHTML += `
+          <div class="stat-card">
+            <div class="stat-title">Most Common Properties</div>
+            ${sortedProperties.map(([prop, count]) => `
+              <div style="margin: 0.5rem 0;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span>${prop}</span>
+                  <span>${count}</span>
+                </div>
+                <div class="bar-chart">
+                  <div class="bar" style="width: ${(count/timestampCount)*100}%"></div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+      
+      // Add value statistics for the most common property
+      if (sortedProperties.length > 0) {
+        const mostCommonProp = sortedProperties[0][0];
+        if (valueStats[mostCommonProp]) {
+          const sortedValues = Object.entries(valueStats[mostCommonProp])
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5);
+          
+          statsHTML += `
+            <div class="stat-card">
+              <div class="stat-title">Most Common Values for "${mostCommonProp}"</div>
+              ${sortedValues.map(([value, count]) => `
+                <div style="margin: 0.5rem 0;">
+                  <div style="display: flex; justify-content: space-between;">
+                    <span>${truncate(value, 15)}</span>
+                    <span>${count}</span>
+                  </div>
+                  <div class="bar-chart">
+                    <div class="bar" style="width: ${(count/propertyStats[mostCommonProp])*100}%"></div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+      }
+      
+      document.getElementById('statsContainer').innerHTML = `
+        <div class="stat-grid">
+          ${statsHTML}
+        </div>
       `;
     }
     
     function showError(message) {
       document.getElementById('metricsBar').innerHTML = `
-        <div class="metric">
+        <div class="metric-card">
           <div class="metric-value">❌</div>
           <div class="metric-label">${message}</div>
         </div>
@@ -457,12 +587,42 @@
     function formatDate(dateStr) {
       const date = new Date(dateStr);
       return date.toLocaleString('en-US', {
-        year: 'numeric',
         month: 'short',
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit'
       });
+    }
+    
+    function timeAgo(date) {
+      if (!(date instanceof Date)) date = new Date(date);
+      const seconds = Math.floor((new Date() - date) / 1000);
+      
+      let interval = Math.floor(seconds / 31536000);
+      if (interval >= 1) return `${interval}y ago`;
+      
+      interval = Math.floor(seconds / 2592000);
+      if (interval >= 1) return `${interval}mo ago`;
+      
+      interval = Math.floor(seconds / 86400);
+      if (interval >= 1) return `${interval}d ago`;
+      
+      interval = Math.floor(seconds / 3600);
+      if (interval >= 1) return `${interval}h ago`;
+      
+      interval = Math.floor(seconds / 60);
+      if (interval >= 1) return `${interval}m ago`;
+      
+      return `${Math.floor(seconds)}s ago`;
+    }
+    
+    function formatHour(hour) {
+      return `${hour}:00 - ${hour + 1}:00`;
+    }
+    
+    function formatDay(dayIndex) {
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      return days[dayIndex];
     }
     
     function truncate(str, length) {
