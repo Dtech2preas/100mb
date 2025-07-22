@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📊 JSON Data Visualizer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      background: #f0f2f5;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      flex: 1;
+      min-width: 300px;
+    }
+    .raw-json {
+      flex: 2;
+      min-width: 400px;
+    }
+    textarea {
+      width: 100%;
+      height: 400px;
+      font-family: 'Consolas', monospace;
+      font-size: 14px;
+      background: #f8f9fa;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      resize: vertical;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+    h2 {
+      color: #3498db;
+      margin-top: 0;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+    .stat {
+      margin: 15px 0;
+    }
+    .stat-title {
+      font-weight: bold;
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+    .stat-value {
+      font-size: 24px;
+      color: #2c3e50;
+    }
+    .bar-chart {
+      height: 20px;
+      background: #ecf0f1;
+      border-radius: 10px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+    .bar {
+      height: 100%;
+      background: linear-gradient(90deg, #3498db, #9b59b6);
+      border-radius: 10px;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    .data-table th, .data-table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    .data-table th {
+      background: #f8f9fa;
+    }
+    .data-table tr:hover {
+      background: #f5f7fa;
+    }
+    .error {
+      color: #e74c3c;
+      background: #fdecea;
+      padding: 15px;
+      border-radius: 6px;
+      border-left: 4px solid #e74c3c;
+    }
+    .loading {
+      color: #7f8c8d;
+      font-style: italic;
+    }
+    .user-info {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 JSON Data Visualizer</h1>
+  
+  <div id="userInfo" class="user-info loading">Loading user info from localStorage...</div>
+  
+  <div class="container">
+    <div class="card raw-json">
+      <h2>Raw JSON Data</h2>
+      <textarea readonly id="jsonViewer">Loading JSON data...</textarea>
+    </div>
+    
+    <div class="card">
+      <h2>📈 Data Statistics</h2>
+      <div id="statsContainer">
+        <div class="loading">Calculating statistics...</div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>🔍 Data Structure</h2>
+      <div id="structureContainer">
+        <div class="loading">Analyzing structure...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get user info from localStorage
+    const userInfo = JSON.parse(localStorage.getItem('loggedInUser') || {};
+    const gistUrl = userInfo.gistUrl || "https://gist.github.com/Dtech2preas/baf8538c85354add526e6cb4c40dcd3a";
+    const gistId = userInfo.gistId || "baf8538c85354add526e6cb4c40dcd3a";
+    const filename = "Data.json";
+    
+    // Update UI with user info
+    const userInfoElement = document.getElementById('userInfo');
+    if (userInfo.username) {
+      userInfoElement.innerHTML = `
+        <strong>👤 User:</strong> ${userInfo.username}<br>
+        <strong>🔗 Gist:</strong> <a href="${gistUrl}" target="_blank">${gistId}</a>
+      `;
+      userInfoElement.classList.remove('loading');
+    } else {
+      userInfoElement.textContent = "No user info found in localStorage. Using default Gist.";
+      userInfoElement.classList.remove('loading');
+    }
+    
+    // Extract raw URL from Gist URL
+    let rawURL;
+    if (gistUrl.includes('gist.github.com')) {
+      const parts = gistUrl.split('/');
+      const gistIdFromUrl = parts[parts.length - 1];
+      rawURL = `https://gist.githubusercontent.com/${parts[3]}/${gistIdFromUrl}/raw/${filename}`;
+    } else {
+      rawURL = `https://gist.githubusercontent.com/Dtech2preas/${gistId}/raw/${filename}`;
+    }
+
+    async function loadGistJSON() {
+      try {
+        document.getElementById('jsonViewer').value = "Fetching data...";
+        
+        const response = await fetch(rawURL);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const text = await response.text();
+        let jsonData;
+        
+        try {
+          jsonData = JSON.parse(text);
+          const formatted = JSON.stringify(jsonData, null, 2);
+          document.getElementById('jsonViewer').value = formatted;
+          analyzeData(jsonData);
+        } catch (err) {
+          document.getElementById('jsonViewer').value = text;
+          throw new Error("Data is not valid JSON");
+        }
+      } catch (err) {
+        document.getElementById('jsonViewer').value = `❌ Error: ${err.message}`;
+        document.getElementById('statsContainer').innerHTML = `
+          <div class="error">Failed to load or parse data: ${err.message}</div>
+        `;
+      }
+    }
+    
+    function analyzeData(data) {
+      // Basic statistics
+      const statsContainer = document.getElementById('statsContainer');
+      const structureContainer = document.getElementById('structureContainer');
+      
+      if (typeof data !== 'object' || data === null) {
+        statsContainer.innerHTML = `
+          <div class="error">Data is not an object. Cannot analyze.</div>
+        `;
+        return;
+      }
+      
+      // Calculate statistics
+      const isArray = Array.isArray(data);
+      const itemCount = isArray ? data.length : Object.keys(data).length;
+      const depth = calculateDepth(data);
+      
+      // Basic stats
+      let statsHTML = `
+        <div class="stat">
+          <div class="stat-title">Data Type</div>
+          <div class="stat-value">${isArray ? 'Array' : 'Object'}</div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">Total Items</div>
+          <div class="stat-value">${itemCount}</div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">Nesting Depth</div>
+          <div class="stat-value">${depth}</div>
+          <div class="bar-chart">
+            <div class="bar" style="width: ${Math.min(depth * 20, 100)}%"></div>
+          </div>
+        </div>
+      `;
+      
+      // Type distribution
+      if (isArray && data.length > 0) {
+        const typeCounts = {};
+        data.forEach(item => {
+          const type = typeof item;
+          typeCounts[type] = (typeCounts[type] || 0) + 1;
+        });
+        
+        statsHTML += `
+          <div class="stat">
+            <div class="stat-title">Array Item Types</div>
+            ${Object.entries(typeCounts).map(([type, count]) => `
+              <div>
+                ${type}: ${count} (${Math.round((count / data.length) * 100)}%)
+                <div class="bar-chart">
+                  <div class="bar" style="width: ${(count / data.length) * 100}%"></div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+      
+      // Structure analysis
+      let structureHTML = '';
+      if (isArray) {
+        if (data.length > 0) {
+          const sampleItem = data[0];
+          structureHTML = `
+            <p>First item structure:</p>
+            <pre>${JSON.stringify(getStructure(sampleItem), null, 2)}</pre>
+          `;
+        }
+      } else {
+        structureHTML = `
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Type</th>
+                <th>Example Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${Object.entries(data).map(([key, value]) => `
+                <tr>
+                  <td>${key}</td>
+                  <td>${typeof value}</td>
+                  <td>${truncate(JSON.stringify(value), 50)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+      
+      statsContainer.innerHTML = statsHTML;
+      structureContainer.innerHTML = structureHTML;
+    }
+    
+    // Helper functions
+    function calculateDepth(obj, currentDepth = 0) {
+      if (typeof obj !== 'object' || obj === null) return currentDepth;
+      
+      const isArray = Array.isArray(obj);
+      const entries = isArray ? obj : Object.values(obj);
+      
+      if (entries.length === 0) return currentDepth + 1;
+      
+      const depths = entries.map(item => calculateDepth(item, currentDepth + 1));
+      return Math.max(...depths);
+    }
+    
+    function getStructure(obj) {
+      if (typeof obj !== 'object' || obj === null) return typeof obj;
+      
+      if (Array.isArray(obj)) {
+        if (obj.length === 0) return 'array';
+        return [getStructure(obj[0])];
+      }
+      
+      const structure = {};
+      for (const key in obj) {
+        structure[key] = getStructure(obj[key]);
+      }
+      return structure;
+    }
+    
+    function truncate(str, length) {
+      return str.length > length ? str.substring(0, length) + '...' : str;
+    }
+    
+    // Load the data
+    loadGistJSON();
+  </script>
+</body>
+</html>
