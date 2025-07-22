@@ -189,6 +189,11 @@ const CONFIG = {
                 })
             });
 
+            if (updateRes.ok) {
+                // Redirect to www.dtech24.co.za after successful upload
+                window.location.href = 'https://www.dtech24.co.za';
+            }
+
             return updateRes.ok;
         } catch (err) {
             log('Gist upload failed: ' + err.message, 'error');
