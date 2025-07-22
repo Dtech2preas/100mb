@@ -5,182 +5,263 @@
   <title>📊 Advanced JSON Data Visualizer</title>
   <style>
     :root {
-      --primary: #3498db;
-      --secondary: #9b59b6;
-      --success: #2ecc71;
-      --danger: #e74c3c;
-      --light: #ecf0f1;
-      --dark: #2c3e50;
-      --gray: #95a5a6;
+      --primary: #1a73e8;
+      --primary-dark: #0d47a1;
+      --primary-light: #e8f0fe;
+      --secondary: #202124;
+      --secondary-light: #3c4043;
+      --background: #f8f9fa;
+      --card-bg: #ffffff;
+      --text: #202124;
+      --text-light: #5f6368;
+      --border: #dadce0;
+      --success: #34a853;
+      --warning: #f9ab00;
+      --danger: #d93025;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 20px;
-      background: #f5f7fa;
-      color: var(--dark);
+      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 0;
+    }
+    
+    .header {
+      background-color: var(--secondary);
+      color: white;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
       max-width: 1400px;
       margin: 0 auto;
-      line-height: 1.6;
-    }
-    
-    .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    
-    @media (max-width: 1200px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      padding: 25px;
-      margin-bottom: 20px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .card:hover {
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      transform: translateY(-2px);
-    }
-    
-    .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
     }
     
-    .raw-json {
-      grid-column: 1 / -1;
-    }
-    
-    textarea {
+    .main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
       width: 100%;
-      height: 500px;
-      font-family: 'Fira Code', 'Consolas', monospace;
-      font-size: 14px;
-      background: #f8f9fa;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      resize: vertical;
-      line-height: 1.5;
-      white-space: pre;
-      overflow-x: auto;
     }
     
     h1 {
-      color: var(--dark);
-      margin-bottom: 10px;
-      font-size: 2.2rem;
+      font-size: 1.5rem;
+      font-weight: 500;
       display: flex;
       align-items: center;
       gap: 10px;
     }
     
     h2 {
-      color: var(--primary);
-      margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--secondary);
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .card:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .card-header {
+      background-color: var(--primary-light);
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .card-body {
+      padding: 1rem;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    
+    .full-width {
+      grid-column: 1 / -1;
+    }
+    
+    .btn {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.2s;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary-light);
+    }
+    
+    .btn-sm {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.875rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      resize: none;
+      background-color: var(--background);
+      color: var(--text);
     }
     
     .stat-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
+      gap: 1rem;
     }
     
     .stat {
-      background: white;
-      padding: 15px;
+      background-color: var(--primary-light);
+      padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       border-left: 4px solid var(--primary);
     }
     
     .stat-title {
-      font-weight: 600;
-      color: var(--gray);
-      margin-bottom: 5px;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-size: 0.875rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
     }
     
     .stat-value {
-      font-size: 1.8rem;
-      color: var(--dark);
-      font-weight: 700;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--secondary);
     }
     
     .stat-description {
-      font-size: 0.85rem;
-      color: var(--gray);
-      margin-top: 5px;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
     }
     
     .bar-chart {
-      height: 8px;
-      background: var(--light);
-      border-radius: 4px;
-      margin: 10px 0;
+      height: 6px;
+      background-color: var(--border);
+      border-radius: 3px;
+      margin: 0.5rem 0;
       overflow: hidden;
     }
     
     .bar {
       height: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      border-radius: 3px;
     }
     
     .data-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 15px 0;
-      font-size: 0.95rem;
+      font-size: 0.875rem;
     }
     
     .data-table th, .data-table td {
-      padding: 12px 15px;
+      padding: 0.75rem;
       text-align: left;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border);
     }
     
     .data-table th {
-      background: #f8f9fa;
-      font-weight: 600;
-      color: var(--dark);
+      background-color: var(--primary-light);
+      font-weight: 500;
+      color: var(--secondary);
     }
     
     .data-table tr:hover {
-      background: #f5f7fa;
+      background-color: var(--primary-light);
     }
     
-    .error {
+    .alert {
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    
+    .alert-error {
+      background-color: #fce8e6;
       color: var(--danger);
-      background: #fdecea;
-      padding: 15px;
-      border-radius: 6px;
       border-left: 4px solid var(--danger);
     }
     
+    .alert-info {
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+      border-left: 4px solid var(--primary);
+    }
+    
     .loading {
-      color: var(--gray);
-      font-style: italic;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.5rem;
+      color: var(--text-light);
+      padding: 1rem;
     }
     
     .loading::after {
@@ -198,235 +279,232 @@
       to { transform: rotate(360deg); }
     }
     
-    .user-info {
-      background: #e3f2fd;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
-    }
-    
-    .info-item {
-      background: white;
-      padding: 12px 15px;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    
-    .info-label {
-      font-weight: 600;
-      color: var(--gray);
-      font-size: 0.85rem;
-      margin-bottom: 5px;
-    }
-    
-    .info-value {
-      font-size: 1.1rem;
-      color: var(--dark);
-      word-break: break-all;
-    }
-    
-    .copy-btn {
-      background: var(--light);
-      border: none;
-      padding: 2px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      margin-left: 5px;
-      transition: background 0.2s;
-    }
-    
-    .copy-btn:hover {
-      background: #d5dbdb;
-    }
-    
-    .copy-btn.copied {
-      background: var(--success);
-      color: white;
-    }
-    
     .timeline {
       position: relative;
-      padding-left: 30px;
+      padding-left: 2rem;
     }
     
     .timeline::before {
       content: "";
       position: absolute;
-      left: 10px;
+      left: 7px;
       top: 0;
       bottom: 0;
       width: 2px;
-      background: var(--light);
+      background-color: var(--border);
     }
     
     .timeline-item {
       position: relative;
-      padding-bottom: 20px;
-      padding-left: 20px;
-    }
-    
-    .timeline-item:last-child {
-      padding-bottom: 0;
+      padding-bottom: 1.5rem;
     }
     
     .timeline-dot {
       position: absolute;
       left: 0;
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
-      background: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 0.7rem;
+      background-color: var(--primary);
+      transform: translateX(-50%);
     }
     
     .timeline-date {
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 5px;
+      font-weight: 500;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
     }
     
     .timeline-content {
-      background: white;
-      padding: 15px;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    
-    .property-badge {
-      display: inline-block;
-      padding: 3px 10px;
-      background: #e0f7fa;
-      border-radius: 12px;
-      margin-right: 8px;
-      margin-bottom: 8px;
-      font-size: 0.8rem;
-      color: #00838f;
-    }
-    
-    .time-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .time-stat {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    
-    .url-display {
-      background: #f8f9fa;
-      padding: 10px;
-      border-radius: 6px;
-      font-family: monospace;
-      word-break: break-all;
-      margin: 10px 0;
-      position: relative;
-    }
-    
-    .url-display .copy-btn {
-      position: absolute;
-      right: 10px;
-      top: 10px;
+      background-color: var(--card-bg);
+      padding: 1rem;
+      border-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
     
     .pill {
       display: inline-block;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
       font-weight: 500;
-      margin-right: 5px;
     }
     
-    .pill.primary {
-      background: #e3f2fd;
-      color: #1976d2;
+    .pill-primary {
+      background-color: #e8f0fe;
+      color: var(--primary-dark);
     }
     
-    .pill.success {
-      background: #e8f5e9;
-      color: #388e3c;
+    .pill-success {
+      background-color: #e6f4ea;
+      color: var(--success);
     }
     
-    .pill.warning {
-      background: #fff8e1;
-      color: #ffa000;
+    .pill-warning {
+      background-color: #fef7e0;
+      color: var(--warning);
+    }
+    
+    .url-display {
+      background-color: var(--background);
+      padding: 0.75rem;
+      border-radius: 4px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      word-break: break-all;
+    }
+    
+    .url-display .btn {
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
+    }
+    
+    .user-info {
+      background-color: var(--primary-light);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    
+    .info-item {
+      background-color: var(--card-bg);
+      padding: 0.75rem;
+      border-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .info-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+    
+    .info-value {
+      font-size: 0.875rem;
+      color: var(--text);
+      word-break: break-word;
+    }
+    
+    .time-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .time-stat {
+      background-color: var(--primary-light);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    @media (max-width: 768px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .btn-group {
+        width: 100%;
+        display: flex;
+        gap: 0.5rem;
+      }
+      
+      .btn {
+        flex: 1;
+        justify-content: center;
+      }
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>📊 <span>Advanced JSON Data Visualizer</span></h1>
+  <header class="header">
+    <div class="header-content">
+      <h1>📊 Advanced JSON Data Visualizer</h1>
+      <div class="btn-group">
+        <button id="copyRawBtn" class="btn btn-outline btn-sm">
+          <span>📋 Copy JSON</span>
+        </button>
+        <button id="downloadBtn" class="btn btn-primary btn-sm">
+          <span>⬇️ Download</span>
+        </button>
+      </div>
+    </div>
+  </header>
   
-  <div id="userInfo" class="user-info loading">
-    <div class="loading">Loading user information...</div>
-  </div>
-  
-  <div class="container">
-    <div class="card raw-json">
-      <div class="card-header">
-        <h2>📄 Raw JSON Data</h2>
-        <button id="copyRawBtn" class="copy-btn">Copy</button>
+  <main class="main">
+    <div id="userInfo" class="user-info loading">
+      <div class="loading">Loading user information...</div>
+    </div>
+    
+    <div class="card-grid">
+      <div class="card full-width">
+        <div class="card-header">
+          <h2>📄 Raw JSON Data</h2>
+        </div>
+        <div class="card-body">
+          <textarea readonly id="jsonViewer">Loading JSON data...</textarea>
+        </div>
       </div>
-      <textarea readonly id="jsonViewer">Loading JSON data...</textarea>
+      
+      <div class="card">
+        <div class="card-header">
+          <h2>📈 Data Statistics</h2>
+        </div>
+        <div class="card-body" id="statsContainer">
+          <div class="loading">Calculating statistics...</div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <h2>🔍 Data Structure</h2>
+        </div>
+        <div class="card-body" id="structureContainer">
+          <div class="loading">Analyzing structure...</div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <h2>⏳ Time Analysis</h2>
+        </div>
+        <div class="card-body" id="timeContainer">
+          <div class="loading">Analyzing timestamps...</div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <h2>🔗 URL Information</h2>
+        </div>
+        <div class="card-body" id="urlContainer">
+          <div class="loading">Preparing URL information...</div>
+        </div>
+      </div>
     </div>
     
     <div class="card">
       <div class="card-header">
-        <h2>📈 Data Statistics</h2>
+        <h2>⏱️ Activity Timeline</h2>
       </div>
-      <div id="statsContainer">
-        <div class="loading">Calculating statistics...</div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-header">
-        <h2>🔍 Data Structure</h2>
-      </div>
-      <div id="structureContainer">
-        <div class="loading">Analyzing structure...</div>
+      <div class="card-body" id="timelineContainer">
+        <div class="loading">Building timeline...</div>
       </div>
     </div>
-    
-    <div class="card">
-      <div class="card-header">
-        <h2>⏳ Time Analysis</h2>
-      </div>
-      <div id="timeContainer">
-        <div class="loading">Analyzing timestamps...</div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-header">
-        <h2>🔗 URL Information</h2>
-      </div>
-      <div id="urlContainer">
-        <div class="loading">Preparing URL information...</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <h2>⏱️ Activity Timeline</h2>
-    </div>
-    <div id="timelineContainer">
-      <div class="loading">Building timeline...</div>
-    </div>
-  </div>
+  </main>
 
   <script>
     // Get user info from localStorage
@@ -439,7 +517,6 @@
     if (gistUrl.includes('gist.github.com')) {
       const urlParts = gistUrl.split('/');
       if (urlParts.length >= 5) {
-        // The owner is the 4th part in the URL (github.com/[owner]/gist/[id])
         const owner = urlParts[3];
         gistId = urlParts[4];
         gistUrl = `https://gist.github.com/${owner}/${gistId}`;
@@ -487,30 +564,31 @@
       `;
     }
     
-    // Setup copy buttons
-    function setupCopyButtons() {
-      document.querySelectorAll('.copy-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const targetId = this.getAttribute('data-target');
-          let textToCopy = '';
-          
-          if (targetId) {
-            textToCopy = document.getElementById(targetId).textContent;
-          } else if (this.id === 'copyRawBtn') {
-            textToCopy = document.getElementById('jsonViewer').value;
-          }
-          
-          navigator.clipboard.writeText(textToCopy).then(() => {
-            this.classList.add('copied');
-            this.textContent = 'Copied!';
-            setTimeout(() => {
-              this.classList.remove('copied');
-              this.textContent = 'Copy';
-            }, 2000);
-          });
-        });
+    // Setup copy button
+    document.getElementById('copyRawBtn').addEventListener('click', function() {
+      const textToCopy = document.getElementById('jsonViewer').value;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalText = this.innerHTML;
+        this.innerHTML = '<span>✓ Copied!</span>';
+        setTimeout(() => {
+          this.innerHTML = originalText;
+        }, 2000);
       });
-    }
+    });
+    
+    // Setup download button
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      const content = document.getElementById('jsonViewer').value;
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
 
     async function loadGistJSON() {
       try {
@@ -534,10 +612,8 @@
       } catch (err) {
         document.getElementById('jsonViewer').value = `❌ Error: ${err.message}`;
         document.getElementById('statsContainer').innerHTML = `
-          <div class="error">Failed to load or parse data: ${err.message}</div>
+          <div class="alert alert-error">Failed to load or parse data: ${err.message}</div>
         `;
-      } finally {
-        setupCopyButtons();
       }
     }
     
@@ -551,7 +627,7 @@
       
       if (typeof data !== 'object' || data === null) {
         statsContainer.innerHTML = `
-          <div class="error">Data is not an object. Cannot analyze.</div>
+          <div class="alert alert-error">Data is not an object. Cannot analyze.</div>
         `;
         return;
       }
@@ -654,7 +730,7 @@
           </div>
         `;
       } else {
-        timeStatsHTML = `<div class="error">No timestamp entries found for time analysis</div>`;
+        timeStatsHTML = `<div class="alert alert-error">No timestamp entries found for time analysis</div>`;
       }
       
       // URL information
@@ -665,13 +741,12 @@
           ${Array.from(allUrls).map(url => `
             <div class="url-display">
               ${url}
-              <button class="copy-btn" data-target="url-${url.hashCode()}">Copy</button>
-              <span id="url-${url.hashCode()}" style="display:none">${url}</span>
+              <button class="btn btn-outline btn-sm copy-btn" data-url="${url}">Copy</button>
             </div>
           `).join('')}
         `;
       } else {
-        urlHTML = `<div class="error">No URLs found in the data</div>`;
+        urlHTML = `<div class="alert alert-error">No URLs found in the data</div>`;
       }
       
       // Basic stats
@@ -780,7 +855,7 @@
           <div class="timeline">
             ${timestampEntries.slice(0, 50).map((entry, index) => `
               <div class="timeline-item">
-                <div class="timeline-dot">${index + 1}</div>
+                <div class="timeline-dot"></div>
                 <div class="timeline-date">${formatDate(entry.date)}</div>
                 <div class="timeline-content">
                   ${Object.entries(entry.data).map(([key, value]) => `
@@ -796,7 +871,7 @@
           timelineHTML += `<p style="text-align:center;margin-top:15px;">Showing 50 of ${timestampEntries.length} entries</p>`;
         }
       } else {
-        timelineHTML = `<div class="error">No timestamp entries found for timeline</div>`;
+        timelineHTML = `<div class="alert alert-error">No timestamp entries found for timeline</div>`;
       }
       
       statsContainer.innerHTML = statsHTML;
@@ -805,8 +880,19 @@
       timeContainer.innerHTML = timeStatsHTML;
       urlContainer.innerHTML = urlHTML;
       
-      // Re-setup copy buttons for the new elements
-      setupCopyButtons();
+      // Setup copy buttons for URLs
+      document.querySelectorAll('.copy-btn[data-url]').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const url = this.getAttribute('data-url');
+          navigator.clipboard.writeText(url).then(() => {
+            const originalText = this.innerHTML;
+            this.innerHTML = '✓ Copied!';
+            setTimeout(() => {
+              this.innerHTML = originalText;
+            }, 2000);
+          });
+        });
+      });
     }
     
     // Helper functions
@@ -858,8 +944,7 @@
         month: 'short',
         day: 'numeric',
         hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
+        minute: '2-digit'
       });
     }
     
@@ -894,23 +979,12 @@
     
     function getPillClass(type) {
       switch(type) {
-        case 'string': return 'primary';
-        case 'number': return 'success';
-        case 'boolean': return 'warning';
+        case 'string': return 'pill-primary';
+        case 'number': return 'pill-success';
+        case 'boolean': return 'pill-warning';
         default: return '';
       }
     }
-    
-    // Add hashCode function for strings
-    String.prototype.hashCode = function() {
-      let hash = 0;
-      for (let i = 0; i < this.length; i++) {
-        const char = this.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash; // Convert to 32bit integer
-      }
-      return hash;
-    };
     
     // Load the data
     loadGistJSON();
