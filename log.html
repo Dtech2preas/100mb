@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dtech Login + Personalized Gist</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 2rem auto; }
+    input, button, textarea { width: 100%; margin: 0.5rem 0; padding: 0.5rem; font-size: 1rem; }
+    #signup-section { margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem; }
+    .error { color: red; }
+    .success { color: green; }
+    pre { background: #eee; padding: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+<h2>Login</h2>
+<div id="error-msg" class="error"></div>
+<input type="text" id="username" placeholder="Username" autocomplete="username" />
+<input type="password" id="password" placeholder="Password" autocomplete="current-password" />
+<button id="login-btn">Login</button>
+
+<div id="signup-section">
+  <h3>Don't have an account? Sign Up</h3>
+  <button id="signup-btn">Sign Up & Create Gist</button>
+  <div id="signup-msg"></div>
+</div>
+
+<script>
+const TOKEN_URL = "https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt";
+
+const GISTS = [
+  { id: "5ddeaa7e65d1f9717c8ab83d5d2c7380", filename: "users_batch_1.json" },
+  { id: "22f888bd63529552025871b31f8e7007", filename: "users_batch_2.json" },
+  { id: "d9e162ec943e5f0b6bd8dd7ca7087d98", filename: "users_batch_3.json" },
+  { id: "a03a9e9cd52f25cd66c0765b731161e2", filename: "users_batch_4.json" },
+  { id: "463f4221a4468da4cdc239acdc932348", filename: "users_batch_5.json" }
+];
+
+let GITHUB_TOKEN = null;
+let allUsers = [];
+
+async function getToken() {
+  const res = await fetch(TOKEN_URL);
+  if (!res.ok) throw new Error("Failed to fetch token");
+  return (await res.text()).trim();
+}
+
+async function fetchGist(gistId, filename, token) {
+  const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+    headers: {
+      "Authorization": `token ${token}`,
+      "Accept": "application/vnd.github.v3+json"
+    }
+  });
+  if (!res.ok) throw new Error(`Failed to fetch gist ${gistId}`);
+  const gist = await res.json();
+  const content = gist.files[filename]?.content;
+  if (!content) throw new Error(`File ${filename} not found`);
+  const usersData = JSON.parse(content);
+  return { gist, usersData };
+}
+
+async function fetchAllUsers(token) {
+  const promises = GISTS.map(({id, filename}) => fetchGist(id, filename, token));
+  const results = await Promise.all(promises);
+  allUsers = [];
+  results.forEach(({gist, usersData}, i) => {
+    usersData.users.forEach(user => {
+      allUsers.push({
+        ...user,
+        gistId: GISTS[i].id,
+        filename: GISTS[i].filename
+      });
+    });
+  });
+}
+
+async function updateGist(gistId, filename, updatedUsers, token) {
+  const payload = {
+    files: {}
+  };
+  payload.files[filename] = { content: JSON.stringify({users: updatedUsers}, null, 2) };
+
+  const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+    method: "PATCH",
+    headers: {
+      "Authorization": `token ${token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error("Failed to update gist");
+  return await res.json();
+}
+
+async function getIP() {
+  const res = await fetch("https://api.ipify.org?format=json");
+  if (!res.ok) throw new Error("Failed to get IP");
+  return (await res.json()).ip;
+}
+
+async function createPersonalGist(username, token) {
+  const payload = {
+    description: `User-specific JSON for ${username}`,
+    public: false,
+    files: {
+      [`${username}.json`]: {
+        content: JSON.stringify({ username, created: new Date().toISOString() }, null, 2)
+      }
+    }
+  };
+  const res = await fetch("https://api.github.com/gists", {
+    method: "POST",
+    headers: {
+      "Authorization": `token ${token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error("Failed to create personal gist");
+  return await res.json();
+}
+
+document.getElementById("login-btn").addEventListener("click", async () => {
+  const errorMsg = document.getElementById("error-msg");
+  errorMsg.textContent = "";
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  if (!username || !password) {
+    errorMsg.textContent = "Please enter username and password.";
+    return;
+  }
+
+  try {
+    if (!GITHUB_TOKEN) GITHUB_TOKEN = await getToken();
+    if (allUsers.length === 0) await fetchAllUsers(GITHUB_TOKEN);
+
+    const user = allUsers.find(u => u.username === username && u.password === password && u.taken);
+    if (user) {
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      alert("Login successful!");
+      // window.location.href = "next.html";
+    } else {
+      errorMsg.textContent = "Invalid credentials or user not found.";
+    }
+  } catch (err) {
+    errorMsg.textContent = "Error: " + err.message;
+  }
+});
+
+document.getElementById("signup-btn").addEventListener("click", async () => {
+  const signupMsg = document.getElementById("signup-msg");
+  signupMsg.innerHTML = "Processing signup...";
+
+  try {
+    if (!GITHUB_TOKEN) GITHUB_TOKEN = await getToken();
+    if (allUsers.length === 0) await fetchAllUsers(GITHUB_TOKEN);
+
+    const ip = await getIP();
+    const takenByIP = allUsers.filter(u => u.taken && u.ip === ip);
+    if (takenByIP.length >= 2) {
+      signupMsg.innerHTML = `<p class="error">You already claimed 2 accounts from this IP.</p>`;
+      return;
+    }
+
+    const availableUser = allUsers.find(u => !u.taken);
+    if (!availableUser) {
+      signupMsg.innerHTML = `<p class="error">No accounts available. Contact support.</p>`;
+      return;
+    }
+
+    availableUser.taken = true;
+    availableUser.ip = ip;
+
+    const batchUsers = allUsers.filter(u => u.gistId === availableUser.gistId);
+    const idx = batchUsers.findIndex(u => u.username === availableUser.username);
+    if (idx !== -1) batchUsers[idx] = availableUser;
+
+    await updateGist(availableUser.gistId, availableUser.filename, batchUsers, GITHUB_TOKEN);
+    
+    const userGist = await createPersonalGist(availableUser.username, GITHUB_TOKEN);
+
+    localStorage.setItem("loggedInUser", JSON.stringify({
+      ...availableUser,
+      gistUrl: userGist.html_url,
+      gistId: userGist.id
+    }));
+
+    signupMsg.innerHTML = `
+      <p class="success"><strong>✅ Account created!</strong></p>
+      <p><strong>Username:</strong> <code>${availableUser.username}</code></p>
+      <p><strong>Password:</strong> <code>${availableUser.password}</code></p>
+      <p><strong>Your JSON Gist:</strong> <a href="${userGist.html_url}" target="_blank">${userGist.html_url}</a></p>
+      <p>You can now log in above.</p>
+    `;
+  } catch (err) {
+    signupMsg.innerHTML = `<p class="error">Signup failed: ${err.message}</p>`;
+  }
+});
+</script>
+
+</body>
+</html>
