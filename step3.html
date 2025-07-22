@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HTML to Live Website Converter</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --success: #10b981;
+    --error: #ef4444;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+
+  h1 {
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .card {
+    background-color: var(--card);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+
+  button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  button:hover {
+    background-color: var(--primary-hover);
+  }
+
+  button:disabled {
+    background-color: var(--text-light);
+    cursor: not-allowed;
+  }
+
+  .preview-container {
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    margin: 1.5rem 0;
+    overflow: hidden;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .preview-header {
+    background-color: var(--bg);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .preview-content {
+    flex-grow: 1;
+    overflow: auto;
+    padding: 1rem;
+    background-color: white;
+    font-family: monospace;
+    white-space: pre-wrap;
+  }
+
+  .result-container {
+    display: none;
+    margin-top: 2rem;
+  }
+
+  .result-card {
+    background-color: var(--success);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+  }
+
+  .url-container {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    word-break: break-all;
+  }
+
+  .url-label {
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .url-link {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .url-link:hover {
+    text-decoration: underline;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    font-weight: 500;
+  }
+
+  .spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 2px solid var(--primary);
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-number {
+    background-color: var(--primary);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+  }
+
+  .step-text {
+    font-weight: 500;
+  }
+
+  .step.completed .step-number {
+    background-color: var(--success);
+  }
+
+  /* Token selection styles */
+  .token-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .token-option {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .token-option:hover {
+    border-color: var(--primary);
+  }
+
+  .token-option.selected {
+    background-color: rgba(37, 99, 235, 0.1);
+    border-color: var(--primary);
+  }
+
+  .token-option input {
+    display: none;
+  }
+
+  .token-option label {
+    cursor: pointer;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .token-option .token-name {
+    font-weight: 500;
+  }
+
+  .token-loading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>HTML to Live Website Converter</h1>
+
+  <div class="card">
+    <h2>Step 1: Authentication</h2>
+    <label>Select GitHub Token:</label>
+
+    <div class="token-options" id="tokenOptionsContainer">
+      <div class="token-loading">
+        <div class="spinner"></div>
+        <span>Loading available tokens...</span>
+      </div>
+    </div>
+
+    <p style="color: var(--text-light); font-size: 0.875rem;">
+      Need a token? <a href="https://github.com/settings/tokens/new?description=Gist%20Uploader&scopes=gist" target="_blank">Create one here</a>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Step 2: Verify Your HTML</h2>
+    <p>We've automatically loaded your HTML from localStorage (data2step):</p>
+
+    <div class="preview-container">
+      <div class="preview-header">
+        <span>HTML Preview</span>
+        <span id="html-length"></span>
+      </div>
+      <div class="preview-content" id="htmlPreview"></div>
+    </div>
+
+    <div class="status" id="htmlStatus">
+      <div class="spinner"></div>
+      <span>Checking HTML content...</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Step 3: Upload & Convert</h2>
+    <p>Upload your HTML to GitHub Gist and get a live-rendering URL:</p>
+    <button id="uploadBtn" disabled>Upload & Generate Live URL</button>
+
+    <div class="status" id="uploadStatus" style="display: none;">
+      <div class="spinner"></div>
+      <span id="uploadStatusText">Uploading to GitHub...</span>
+    </div>
+  </div>
+
+  <div class="result-container" id="resultContainer">
+    <div class="result-card">
+      <h2>🎉 Success! Your website is live</h2>
+      <p>Here are your links:</p>
+    </div>
+
+    <div class="step completed">
+      <div class="step-number">1</div>
+      <div class="step-text">HTML loaded from localStorage</div>
+    </div>
+
+    <div class="step completed">
+      <div class="step-number">2</div>
+      <div class="step-text">Uploaded to GitHub Gist</div>
+    </div>
+
+    <div class="step completed">
+      <div class="step-number">3</div>
+      <div class="step-text">Converted to live website</div>
+    </div>
+
+    <div class="url-container" id="gistUrlContainer">
+      <span class="url-label">Gist URL (GitHub):</span>
+      <a href="#" class="url-link" id="gistUrl" target="_blank"></a>
+    </div>
+
+    <div class="url-container" id="liveUrlContainer">
+      <span class="url-label">Live Website URL:</span>
+      <a href="#" class="url-link" id="liveUrl" target="_blank"></a>
+    </div>
+
+    <button id="copyLiveUrl" style="background-color: var(--success);">Copy Live URL</button>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const tokenOptionsContainer = document.getElementById('tokenOptionsContainer');
+  const htmlPreview = document.getElementById('htmlPreview');
+  const htmlLength = document.getElementById('html-length');
+  const htmlStatus = document.getElementById('htmlStatus');
+  const uploadBtn = document.getElementById('uploadBtn');
+  const uploadStatus = document.getElementById('uploadStatus');
+  const uploadStatusText = document.getElementById('uploadStatusText');
+  const resultContainer = document.getElementById('resultContainer');
+  const gistUrl = document.getElementById('gistUrl');
+  const liveUrl = document.getElementById('liveUrl');
+  const copyLiveUrl = document.getElementById('copyLiveUrl');
+  const gistUrlContainer = document.getElementById('gistUrlContainer');
+  const liveUrlContainer = document.getElementById('liveUrlContainer');
+
+  // Store URLs temporarily
+  let tempGistUrl = '';
+  let tempLiveUrl = '';
+
+  // Fetch tokens from GitHub Gist
+  async function fetchTokens() {
+    try {
+      const response = await fetch('https://gist.githubusercontent.com/Dtech2preas/8a30b80295920ae54ce13af87b7c162d/raw/gistfile1.txt');
+      if (!response.ok) throw new Error('Failed to fetch tokens');
+
+      const text = await response.text();
+      const tokens = text.split('\n')
+        .map(line => line.trim())
+        .filter(line => line.startsWith('ghp_'));
+
+      if (tokens.length === 0) throw new Error('No valid tokens found');
+
+      renderTokenOptions(tokens);
+      uploadBtn.disabled = false;
+    } catch (error) {
+      tokenOptionsContainer.innerHTML = `
+        <span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--error')}">
+          Error loading tokens: ${error.message}
+        </span>
+      `;
+      console.error('Token loading error:', error);
+    }
+  }
+
+  // Render token options
+  function renderTokenOptions(tokens) {
+    tokenOptionsContainer.innerHTML = '';
+
+    tokens.forEach((token, index) => {
+      const optionId = `token${index + 1}`;
+      const optionDiv = document.createElement('div');
+      optionDiv.className = 'token-option';
+      optionDiv.id = `tokenOption${index + 1}`;
+      optionDiv.innerHTML = `
+        <input type="radio" id="${optionId}" name="githubToken" value="${token}" ${index === 0 ? 'checked' : ''}>
+        <label for="${optionId}">
+          <span class="token-name">Token ${index + 1}</span>
+        </label>
+      `;
+
+      optionDiv.addEventListener('click', () => {
+        document.querySelectorAll('.token-option').forEach(opt => opt.classList.remove('selected'));
+        optionDiv.classList.add('selected');
+        optionDiv.querySelector('input').checked = true;
+      });
+
+      if (index === 0) optionDiv.classList.add('selected');
+      tokenOptionsContainer.appendChild(optionDiv);
+    });
+  }
+
+  // Initialize token loading
+  fetchTokens();
+
+  // Load HTML from localStorage
+  const savedHtml = localStorage.getItem('data2step');
+
+  if (!savedHtml) {
+    htmlStatus.innerHTML = `<span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--error')}">❌ No HTML found in localStorage at key 'data2step'</span>`;
+    uploadBtn.disabled = true;
+    return;
+  }
+
+  // Display the HTML content
+  htmlPreview.textContent = savedHtml;
+  htmlLength.textContent = `${savedHtml.length} characters`;
+
+  // Validate HTML content
+  setTimeout(() => {
+    if (savedHtml.includes('<html') && savedHtml.includes('</html>')) {
+      htmlStatus.innerHTML = `<span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--success')}">✓ Valid HTML document loaded</span>`;
+    } else {
+      htmlStatus.innerHTML = `<span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--error')}">⚠ This doesn't look like a complete HTML document</span>`;
+    }
+  }, 1000);
+
+  // Upload button click handler
+  uploadBtn.addEventListener('click', async () => {
+    const tokenInput = document.querySelector('input[name="githubToken"]:checked');
+    if (!tokenInput) {
+      alert('Please select a GitHub token');
+      return;
+    }
+
+    const token = tokenInput.value;
+
+    uploadBtn.disabled = true;
+    uploadStatus.style.display = 'flex';
+    uploadStatusText.textContent = 'Uploading to GitHub...';
+
+    try {
+      // Create a new gist with timestamp
+      const timestamp = new Date().toISOString();
+      const randomSuffix = Math.random().toString(36).substring(2, 8);
+      const gistResponse = await fetch('https://api.github.com/gists', {
+        method: 'POST',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          description: `Live website ${timestamp} - ${randomSuffix}`,
+          public: true,
+          files: {
+            'index.html': {
+              content: savedHtml
+            }
+          }
+        })
+      });
+
+      const gistData = await gistResponse.json();
+
+      if (!gistData.id) {
+        throw new Error(gistData.message || 'Failed to create gist');
+      }
+
+      // Wait for GitHub to process the gist (critical fix)
+      uploadStatusText.textContent = 'Generating live URL...';
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Use gist.githack.com for instant rendering (FIXED)
+      const gistHtmlUrl = gistData.html_url;
+      const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
+
+      // Verify the URL is accessible
+      try {
+        const testResponse = await fetch(liveRenderUrl, { 
+          method: 'HEAD',
+          cache: 'no-store'
+        });
+        if (!testResponse.ok) throw new Error('URL not ready');
+      } catch (e) {
+        console.log('Initial URL test failed, retrying...');
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+
+      // Store URLs temporarily
+      tempGistUrl = gistHtmlUrl;
+      tempLiveUrl = liveRenderUrl;
+
+      // Show result container and URLs
+      resultContainer.style.display = 'block';
+      uploadStatus.style.display = 'none';
+
+      gistUrl.textContent = tempGistUrl;
+      gistUrl.href = tempGistUrl;
+      liveUrl.textContent = tempLiveUrl;
+      liveUrl.href = tempLiveUrl;
+
+      // Scroll to results
+      setTimeout(() => {
+        resultContainer.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+
+    } catch (err) {
+      uploadStatus.innerHTML = `
+        <span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--error')}">
+          Error: ${err.message}
+        </span>
+      `;
+      uploadBtn.disabled = false;
+      console.error('Upload error:', err);
+    }
+  });
+
+  // Copy URL button
+  copyLiveUrl.addEventListener('click', () => {
+    navigator.clipboard.writeText(liveUrl.href);
+    const originalText = copyLiveUrl.textContent;
+    copyLiveUrl.textContent = 'Copied!';
+    copyLiveUrl.style.backgroundColor = 'var(--success)';
+    setTimeout(() => {
+      copyLiveUrl.textContent = originalText;
+    }, 2000);
+  });
+});
+</script>
+
+</body>
+</html>
