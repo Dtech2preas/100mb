@@ -107,6 +107,31 @@
       border-radius: 6px;
       margin-bottom: 20px;
     }
+    .timeline {
+      margin-top: 20px;
+    }
+    .timeline-item {
+      padding: 10px;
+      border-left: 3px solid #3498db;
+      margin-bottom: 15px;
+      background: #f8fafc;
+    }
+    .timeline-date {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    .timeline-content {
+      margin-top: 5px;
+    }
+    .property-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #e0f7fa;
+      border-radius: 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
@@ -135,9 +160,16 @@
     </div>
   </div>
 
+  <div class="card timeline">
+    <h2>⏱️ Activity Timeline</h2>
+    <div id="timelineContainer">
+      <div class="loading">Building timeline...</div>
+    </div>
+  </div>
+
   <script>
     // Get user info from localStorage
-    const userInfo = JSON.parse(localStorage.getItem('loggedInUser') || {};
+    const userInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {};
     const gistUrl = userInfo.gistUrl || "https://gist.github.com/Dtech2preas/baf8538c85354add526e6cb4c40dcd3a";
     const gistId = userInfo.gistId || "baf8538c85354add526e6cb4c40dcd3a";
     const filename = "Data.json";
@@ -196,6 +228,7 @@
       // Basic statistics
       const statsContainer = document.getElementById('statsContainer');
       const structureContainer = document.getElementById('structureContainer');
+      const timelineContainer = document.getElementById('timelineContainer');
       
       if (typeof data !== 'object' || data === null) {
         statsContainer.innerHTML = `
@@ -208,6 +241,23 @@
       const isArray = Array.isArray(data);
       const itemCount = isArray ? data.length : Object.keys(data).length;
       const depth = calculateDepth(data);
+      
+      // Count timestamp entries
+      let timestampCount = 0;
+      let uniqueProperties = new Set();
+      let uniqueValues = {};
+      
+      for (const key in data) {
+        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
+          timestampCount++;
+          const entry = data[key];
+          for (const prop in entry) {
+            uniqueProperties.add(prop);
+            if (!uniqueValues[prop]) uniqueValues[prop] = new Set();
+            uniqueValues[prop].add(entry[prop]);
+          }
+        }
+      }
       
       // Basic stats
       let statsHTML = `
@@ -222,33 +272,31 @@
         </div>
         
         <div class="stat">
-          <div class="stat-title">Nesting Depth</div>
-          <div class="stat-value">${depth}</div>
+          <div class="stat-title">Timestamp Entries</div>
+          <div class="stat-value">${timestampCount}</div>
           <div class="bar-chart">
-            <div class="bar" style="width: ${Math.min(depth * 20, 100)}%"></div>
+            <div class="bar" style="width: ${Math.min(timestampCount * 10, 100)}%"></div>
           </div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">Unique Properties</div>
+          <div class="stat-value">${uniqueProperties.size}</div>
+          <div>${Array.from(uniqueProperties).map(prop => 
+            `<span class="property-badge">${prop}</span>`
+          ).join('')}</div>
         </div>
       `;
       
-      // Type distribution
-      if (isArray && data.length > 0) {
-        const typeCounts = {};
-        data.forEach(item => {
-          const type = typeof item;
-          typeCounts[type] = (typeCounts[type] || 0) + 1;
-        });
-        
+      // Add unique value counts for each property
+      statsHTML += `<div class="stat-title">Unique Values per Property:</div>`;
+      for (const prop in uniqueValues) {
         statsHTML += `
           <div class="stat">
-            <div class="stat-title">Array Item Types</div>
-            ${Object.entries(typeCounts).map(([type, count]) => `
-              <div>
-                ${type}: ${count} (${Math.round((count / data.length) * 100)}%)
-                <div class="bar-chart">
-                  <div class="bar" style="width: ${(count / data.length) * 100}%"></div>
-                </div>
-              </div>
-            `).join('')}
+            <div>${prop}: ${uniqueValues[prop].size} unique values</div>
+            <div class="bar-chart">
+              <div class="bar" style="width: ${Math.min(uniqueValues[prop].size * 5, 100)}%"></div>
+            </div>
           </div>
         `;
       }
@@ -264,7 +312,16 @@
           `;
         }
       } else {
+        // Show the main structure (non-timestamp properties)
+        const mainProperties = {};
+        for (const key in data) {
+          if (!key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
+            mainProperties[key] = typeof data[key];
+          }
+        }
+        
         structureHTML = `
+          <p>Main properties:</p>
           <table class="data-table">
             <thead>
               <tr>
@@ -274,20 +331,51 @@
               </tr>
             </thead>
             <tbody>
-              ${Object.entries(data).map(([key, value]) => `
+              ${Object.entries(mainProperties).map(([key, type]) => `
                 <tr>
                   <td>${key}</td>
-                  <td>${typeof value}</td>
-                  <td>${truncate(JSON.stringify(value), 50)}</td>
+                  <td>${type}</td>
+                  <td>${truncate(JSON.stringify(data[key]), 50)}</td>
                 </tr>
               `).join('')}
             </tbody>
           </table>
+          
+          <p>Timestamp entry structure:</p>
+          <pre>${JSON.stringify(getTimestampEntryStructure(data), null, 2)}</pre>
         `;
       }
       
+      // Build timeline
+      let timelineHTML = '';
+      const timestampEntries = [];
+      
+      for (const key in data) {
+        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
+          timestampEntries.push({
+            date: key,
+            data: data[key]
+          });
+        }
+      }
+      
+      // Sort by date (newest first)
+      timestampEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      timelineHTML = timestampEntries.map(entry => `
+        <div class="timeline-item">
+          <div class="timeline-date">${formatDate(entry.date)}</div>
+          <div class="timeline-content">
+            ${Object.entries(entry.data).map(([key, value]) => `
+              <div><strong>${key}:</strong> ${truncate(JSON.stringify(value), 100)}</div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+      
       statsContainer.innerHTML = statsHTML;
       structureContainer.innerHTML = structureHTML;
+      timelineContainer.innerHTML = timelineHTML;
     }
     
     // Helper functions
@@ -318,8 +406,23 @@
       return structure;
     }
     
+    function getTimestampEntryStructure(data) {
+      for (const key in data) {
+        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
+          return getStructure(data[key]);
+        }
+      }
+      return "No timestamp entries found";
+    }
+    
     function truncate(str, length) {
+      if (typeof str !== 'string') str = String(str);
       return str.length > length ? str.substring(0, length) + '...' : str;
+    }
+    
+    function formatDate(isoString) {
+      const date = new Date(isoString);
+      return date.toLocaleString();
     }
     
     // Load the data
