@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📊 Advanced JSON Data Visualizer</title>
+  <title>JSON Data Dashboard</title>
   <style>
     :root {
       --primary: #1a73e8;
@@ -28,23 +28,23 @@
     
     body {
       font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background);
+      background-color: var(--secondary);
       color: var(--text);
       line-height: 1.6;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      padding: 0;
     }
     
     .header {
       background-color: var(--secondary);
       color: white;
       padding: 1rem 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       position: sticky;
       top: 0;
       z-index: 100;
+      border-bottom: 2px solid var(--primary);
     }
     
     .header-content {
@@ -57,15 +57,17 @@
     
     .main {
       flex: 1;
-      padding: 2rem;
+      padding: 1.5rem;
       max-width: 1400px;
       margin: 0 auto;
       width: 100%;
+      background-color: var(--background);
     }
     
     h1 {
       font-size: 1.5rem;
       font-weight: 500;
+      color: white;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -76,48 +78,115 @@
       font-weight: 500;
       color: var(--secondary);
       margin-bottom: 1rem;
+    }
+    
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      background-color: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .metric {
+      text-align: center;
+      padding: 0.5rem;
+    }
+    
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .metric-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .panel {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .panel-header {
+      background-color: var(--primary);
+      color: white;
+      padding: 0.75rem 1rem;
+      font-weight: 500;
       display: flex;
       align-items: center;
       gap: 8px;
     }
     
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .card {
-      background-color: var(--card-bg);
-      border-radius: 8px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .card:hover {
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transform: translateY(-2px);
-    }
-    
-    .card-header {
-      background-color: var(--primary-light);
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .card-body {
+    .panel-body {
       padding: 1rem;
       max-height: 500px;
       overflow-y: auto;
     }
     
-    .full-width {
-      grid-column: 1 / -1;
+    .entry-item {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.2s;
+    }
+    
+    .entry-item:hover {
+      background-color: var(--primary-light);
+    }
+    
+    .entry-date {
+      font-weight: 500;
+      color: var(--primary-dark);
+      margin-bottom: 0.25rem;
+    }
+    
+    .entry-content {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    
+    .flag-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+    
+    .flag-item {
+      text-align: center;
+      padding: 0.75rem;
+      background-color: var(--primary-light);
+      border-radius: 6px;
+    }
+    
+    .flag-count {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+    
+    .flag-label {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
     }
     
     .btn {
@@ -141,127 +210,12 @@
       background-color: var(--primary-dark);
     }
     
-    .btn-outline {
-      background-color: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-    }
-    
-    .btn-outline:hover {
-      background-color: var(--primary-light);
-    }
-    
-    .btn-sm {
-      padding: 0.25rem 0.5rem;
-      font-size: 0.875rem;
-    }
-    
-    textarea {
-      width: 100%;
-      height: 100%;
-      min-height: 400px;
-      font-family: 'Roboto Mono', monospace;
-      font-size: 0.875rem;
-      padding: 1rem;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      resize: none;
-      background-color: var(--background);
-      color: var(--text);
-    }
-    
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    
-    .stat {
-      background-color: var(--primary-light);
-      padding: 1rem;
-      border-radius: 8px;
-      border-left: 4px solid var(--primary);
-    }
-    
-    .stat-title {
-      font-size: 0.875rem;
-      color: var(--text-light);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    
-    .stat-value {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--secondary);
-    }
-    
-    .stat-description {
-      font-size: 0.75rem;
-      color: var(--text-light);
-      margin-top: 0.25rem;
-    }
-    
-    .bar-chart {
-      height: 6px;
-      background-color: var(--border);
-      border-radius: 3px;
-      margin: 0.5rem 0;
-      overflow: hidden;
-    }
-    
-    .bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      border-radius: 3px;
-    }
-    
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.875rem;
-    }
-    
-    .data-table th, .data-table td {
-      padding: 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-    
-    .data-table th {
-      background-color: var(--primary-light);
-      font-weight: 500;
-      color: var(--secondary);
-    }
-    
-    .data-table tr:hover {
-      background-color: var(--primary-light);
-    }
-    
-    .alert {
-      padding: 1rem;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-    }
-    
-    .alert-error {
-      background-color: #fce8e6;
-      color: var(--danger);
-      border-left: 4px solid var(--danger);
-    }
-    
-    .alert-info {
-      background-color: var(--primary-light);
-      color: var(--primary-dark);
-      border-left: 4px solid var(--primary);
-    }
-    
     .loading {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      padding: 2rem;
       color: var(--text-light);
-      padding: 1rem;
     }
     
     .loading::after {
@@ -273,235 +227,60 @@
       border-radius: 50%;
       border-top-color: var(--primary);
       animation: spin 1s ease-in-out infinite;
+      margin-left: 0.5rem;
     }
     
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
     
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-    
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 7px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background-color: var(--border);
-    }
-    
-    .timeline-item {
-      position: relative;
-      padding-bottom: 1.5rem;
-    }
-    
-    .timeline-dot {
-      position: absolute;
-      left: 0;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background-color: var(--primary);
-      transform: translateX(-50%);
-    }
-    
-    .timeline-date {
-      font-weight: 500;
-      color: var(--secondary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-content {
-      background-color: var(--card-bg);
-      padding: 1rem;
-      border-radius: 4px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
-    
-    .pill {
+    .property-badge {
       display: inline-block;
       padding: 0.25rem 0.5rem;
-      border-radius: 12px;
+      background-color: var(--primary-light);
+      border-radius: 4px;
       font-size: 0.75rem;
-      font-weight: 500;
-    }
-    
-    .pill-primary {
-      background-color: #e8f0fe;
       color: var(--primary-dark);
-    }
-    
-    .pill-success {
-      background-color: #e6f4ea;
-      color: var(--success);
-    }
-    
-    .pill-warning {
-      background-color: #fef7e0;
-      color: var(--warning);
-    }
-    
-    .url-display {
-      background-color: var(--background);
-      padding: 0.75rem;
-      border-radius: 4px;
-      font-family: 'Roboto Mono', monospace;
-      font-size: 0.875rem;
+      margin-right: 0.5rem;
       margin-bottom: 0.5rem;
-      position: relative;
-      word-break: break-all;
-    }
-    
-    .url-display .btn {
-      position: absolute;
-      right: 0.5rem;
-      top: 0.5rem;
-    }
-    
-    .user-info {
-      background-color: var(--primary-light);
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    
-    .info-item {
-      background-color: var(--card-bg);
-      padding: 0.75rem;
-      border-radius: 4px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    }
-    
-    .info-label {
-      font-size: 0.75rem;
-      color: var(--text-light);
-      margin-bottom: 0.25rem;
-      font-weight: 500;
-    }
-    
-    .info-value {
-      font-size: 0.875rem;
-      color: var(--text);
-      word-break: break-word;
-    }
-    
-    .time-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    
-    .time-stat {
-      background-color: var(--primary-light);
-      padding: 1rem;
-      border-radius: 8px;
-    }
-    
-    @media (max-width: 768px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .header-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-      
-      .btn-group {
-        width: 100%;
-        display: flex;
-        gap: 0.5rem;
-      }
-      
-      .btn {
-        flex: 1;
-        justify-content: center;
-      }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
     <div class="header-content">
-      <h1>📊 Advanced JSON Data Visualizer</h1>
-      <div class="btn-group">
-        <button id="copyRawBtn" class="btn btn-outline btn-sm">
-          <span>📋 Copy JSON</span>
-        </button>
-        <button id="downloadBtn" class="btn btn-primary btn-sm">
-          <span>⬇️ Download</span>
-        </button>
-      </div>
+      <h1>📊 JSON Data Dashboard</h1>
+      <button id="downloadBtn" class="btn btn-primary">
+        <span>⬇️ Download Data</span>
+      </button>
     </div>
   </header>
   
   <main class="main">
-    <div id="userInfo" class="user-info loading">
-      <div class="loading">Loading user information...</div>
+    <div id="metricsBar" class="metrics-bar loading">
+      <div>Loading metrics...</div>
     </div>
     
-    <div class="card-grid">
-      <div class="card full-width">
-        <div class="card-header">
-          <h2>📄 Raw JSON Data</h2>
+    <div class="content-grid">
+      <div class="panel">
+        <div class="panel-header">
+          <span>📅</span>
+          <span>Recent Entries</span>
         </div>
-        <div class="card-body">
-          <textarea readonly id="jsonViewer">Loading JSON data...</textarea>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <h2>📈 Data Statistics</h2>
-        </div>
-        <div class="card-body" id="statsContainer">
-          <div class="loading">Calculating statistics...</div>
+        <div class="panel-body" id="entriesContainer">
+          <div class="loading">Loading entries...</div>
         </div>
       </div>
       
-      <div class="card">
-        <div class="card-header">
-          <h2>🔍 Data Structure</h2>
+      <div class="panel">
+        <div class="panel-header">
+          <span>🏷️</span>
+          <span>Flag Statistics</span>
         </div>
-        <div class="card-body" id="structureContainer">
-          <div class="loading">Analyzing structure...</div>
+        <div class="panel-body" id="flagsContainer">
+          <div class="loading">Analyzing flags...</div>
         </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <h2>⏳ Time Analysis</h2>
-        </div>
-        <div class="card-body" id="timeContainer">
-          <div class="loading">Analyzing timestamps...</div>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <h2>🔗 URL Information</h2>
-        </div>
-        <div class="card-body" id="urlContainer">
-          <div class="loading">Preparing URL information...</div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-header">
-        <h2>⏱️ Activity Timeline</h2>
-      </div>
-      <div class="card-body" id="timelineContainer">
-        <div class="loading">Building timeline...</div>
       </div>
     </div>
   </main>
@@ -513,72 +292,12 @@
     let gistId = userInfo.gistId || "baf8538c85354add526e6cb4c40dcd3a";
     const filename = userInfo.username ? `${userInfo.username}.json` : "Data.json";
     
-    // Extract owner and gistId from URL if available
-    if (gistUrl.includes('gist.github.com')) {
-      const urlParts = gistUrl.split('/');
-      if (urlParts.length >= 5) {
-        const owner = urlParts[3];
-        gistId = urlParts[4];
-        gistUrl = `https://gist.github.com/${owner}/${gistId}`;
-      }
-    }
-    
     // Construct raw URL
     const rawURL = `https://gist.githubusercontent.com/Dtech2preas/${gistId}/raw/${filename}`;
     
-    // Update UI with user info
-    const userInfoElement = document.getElementById('userInfo');
-    if (userInfo.username) {
-      userInfoElement.innerHTML = `
-        <div class="info-item">
-          <div class="info-label">👤 Username</div>
-          <div class="info-value">${userInfo.username}</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">📁 Filename</div>
-          <div class="info-value">${filename}</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">🔗 Gist URL</div>
-          <div class="info-value">${gistUrl}</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">🆔 Gist ID</div>
-          <div class="info-value">${gistId}</div>
-        </div>
-      `;
-    } else {
-      userInfoElement.innerHTML = `
-        <div class="info-item">
-          <div class="info-label">⚠️ Notice</div>
-          <div class="info-value">No user info found in localStorage. Using default Gist.</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">📁 Filename</div>
-          <div class="info-value">${filename}</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">🔗 Gist URL</div>
-          <div class="info-value">${gistUrl}</div>
-        </div>
-      `;
-    }
-    
-    // Setup copy button
-    document.getElementById('copyRawBtn').addEventListener('click', function() {
-      const textToCopy = document.getElementById('jsonViewer').value;
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        const originalText = this.innerHTML;
-        this.innerHTML = '<span>✓ Copied!</span>';
-        setTimeout(() => {
-          this.innerHTML = originalText;
-        }, 2000);
-      });
-    });
-    
     // Setup download button
     document.getElementById('downloadBtn').addEventListener('click', function() {
-      const content = document.getElementById('jsonViewer').value;
+      const content = document.getElementById('jsonViewer')?.value || '';
       const blob = new Blob([content], { type: 'text/plain' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -592,8 +311,6 @@
 
     async function loadGistJSON() {
       try {
-        document.getElementById('jsonViewer').value = "Fetching data...";
-        
         const response = await fetch(rawURL);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
@@ -602,343 +319,143 @@
         
         try {
           jsonData = JSON.parse(text);
-          const formatted = JSON.stringify(jsonData, null, 2);
-          document.getElementById('jsonViewer').value = formatted;
           analyzeData(jsonData);
         } catch (err) {
-          document.getElementById('jsonViewer').value = text;
           throw new Error("Data is not valid JSON");
         }
       } catch (err) {
-        document.getElementById('jsonViewer').value = `❌ Error: ${err.message}`;
-        document.getElementById('statsContainer').innerHTML = `
-          <div class="alert alert-error">Failed to load or parse data: ${err.message}</div>
+        document.getElementById('metricsBar').innerHTML = `
+          <div class="metric">
+            <div class="metric-value">❌</div>
+            <div class="metric-label">Error loading data</div>
+          </div>
         `;
       }
     }
     
     function analyzeData(data) {
-      // Basic statistics
-      const statsContainer = document.getElementById('statsContainer');
-      const structureContainer = document.getElementById('structureContainer');
-      const timelineContainer = document.getElementById('timelineContainer');
-      const timeContainer = document.getElementById('timeContainer');
-      const urlContainer = document.getElementById('urlContainer');
-      
       if (typeof data !== 'object' || data === null) {
-        statsContainer.innerHTML = `
-          <div class="alert alert-error">Data is not an object. Cannot analyze.</div>
-        `;
+        showError("Data is not an object");
         return;
       }
       
-      // Calculate statistics
-      const isArray = Array.isArray(data);
-      const itemCount = isArray ? data.length : Object.keys(data).length;
-      const depth = calculateDepth(data);
-      
-      // Count timestamp entries
+      // Count timestamp entries and collect flags
       let timestampCount = 0;
-      let uniqueProperties = new Set();
-      let uniqueValues = {};
-      let allUrls = new Set();
       const timestampEntries = [];
+      const flagCounts = {};
+      const today = new Date().toISOString().split('T')[0];
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      const yesterdayStr = yesterday.toISOString().split('T')[0];
+      let todayCount = 0;
+      let yesterdayCount = 0;
       
       for (const key in data) {
         if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
           timestampCount++;
           const entry = data[key];
+          const dateStr = key.split('T')[0];
+          
+          // Count today/yesterday entries
+          if (dateStr === today) todayCount++;
+          if (dateStr === yesterdayStr) yesterdayCount++;
+          
           timestampEntries.push({
             date: key,
             data: entry
           });
           
+          // Count flags
           for (const prop in entry) {
-            uniqueProperties.add(prop);
-            if (!uniqueValues[prop]) uniqueValues[prop] = new Set();
-            uniqueValues[prop].add(entry[prop]);
-            
-            if (prop === 'page_url' && entry[prop]) {
-              allUrls.add(entry[prop]);
+            if (prop === 'flag' || prop === 'pin' || prop === 'NUM' || prop === 'Stu') {
+              const value = entry[prop];
+              if (!flagCounts[prop]) flagCounts[prop] = {};
+              flagCounts[prop][value] = (flagCounts[prop][value] || 0) + 1;
             }
           }
         }
       }
       
-      // Time analysis
-      let timeStatsHTML = '';
+      // Calculate average per day
+      let avgPerDay = 0;
       if (timestampEntries.length > 0) {
-        // Sort entries by date
-        timestampEntries.sort((a, b) => new Date(a.date) - new Date(b.date));
-        
         const firstDate = new Date(timestampEntries[0].date);
         const lastDate = new Date(timestampEntries[timestampEntries.length - 1].date);
-        const totalDays = Math.round((lastDate - firstDate) / (1000 * 60 * 60 * 24));
-        
-        // Group by day
-        const entriesByDay = {};
-        timestampEntries.forEach(entry => {
-          const date = new Date(entry.date);
-          const dateStr = date.toISOString().split('T')[0];
-          if (!entriesByDay[dateStr]) entriesByDay[dateStr] = [];
-          entriesByDay[dateStr].push(entry);
-        });
-        
-        // Get yesterday and today's dates
-        const today = new Date().toISOString().split('T')[0];
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        const yesterdayStr = yesterday.toISOString().split('T')[0];
-        
-        timeStatsHTML = `
-          <div class="time-stats">
-            <div class="time-stat">
-              <div class="stat-title">First Entry</div>
-              <div class="stat-value">${formatDate(firstDate)}</div>
-              <div class="stat-description">${timeAgo(firstDate)}</div>
-            </div>
-            
-            <div class="time-stat">
-              <div class="stat-title">Last Entry</div>
-              <div class="stat-value">${formatDate(lastDate)}</div>
-              <div class="stat-description">${timeAgo(lastDate)}</div>
-            </div>
-            
-            <div class="time-stat">
-              <div class="stat-title">Total Duration</div>
-              <div class="stat-value">${totalDays} days</div>
-              <div class="stat-description">${timestampEntries.length} entries</div>
-            </div>
-            
-            <div class="time-stat">
-              <div class="stat-title">Today's Entries</div>
-              <div class="stat-value">${entriesByDay[today] ? entriesByDay[today].length : 0}</div>
-              <div class="stat-description">${today}</div>
-            </div>
-            
-            <div class="time-stat">
-              <div class="stat-title">Yesterday's Entries</div>
-              <div class="stat-value">${entriesByDay[yesterdayStr] ? entriesByDay[yesterdayStr].length : 0}</div>
-              <div class="stat-description">${yesterdayStr}</div>
-            </div>
-            
-            <div class="time-stat">
-              <div class="stat-title">Average Per Day</div>
-              <div class="stat-value">${(timestampEntries.length / (totalDays || 1)).toFixed(1)}</div>
-              <div class="stat-description">entries per day</div>
-            </div>
-          </div>
-        `;
-      } else {
-        timeStatsHTML = `<div class="alert alert-error">No timestamp entries found for time analysis</div>`;
+        const totalDays = Math.round((lastDate - firstDate) / (1000 * 60 * 60 * 24)) || 1;
+        avgPerDay = (timestampEntries.length / totalDays).toFixed(1);
       }
       
-      // URL information
-      let urlHTML = '';
-      if (allUrls.size > 0) {
-        urlHTML = `
-          <div class="stat-title">Found ${allUrls.size} unique URLs:</div>
-          ${Array.from(allUrls).map(url => `
-            <div class="url-display">
-              ${url}
-              <button class="btn btn-outline btn-sm copy-btn" data-url="${url}">Copy</button>
-            </div>
-          `).join('')}
-        `;
-      } else {
-        urlHTML = `<div class="alert alert-error">No URLs found in the data</div>`;
-      }
-      
-      // Basic stats
-      let statsHTML = `
-        <div class="stat-grid">
-          <div class="stat">
-            <div class="stat-title">Data Type</div>
-            <div class="stat-value">${isArray ? 'Array' : 'Object'}</div>
-            <div class="stat-description">${isArray ? 'Ordered collection' : 'Key-value pairs'}</div>
-          </div>
-          
-          <div class="stat">
-            <div class="stat-title">Total Items</div>
-            <div class="stat-value">${itemCount}</div>
-            <div class="stat-description">${timestampCount} timestamped</div>
-          </div>
-          
-          <div class="stat">
-            <div class="stat-title">Nesting Depth</div>
-            <div class="stat-value">${depth}</div>
-            <div class="bar-chart">
-              <div class="bar" style="width: ${Math.min(depth * 20, 100)}%"></div>
-            </div>
-          </div>
-          
-          <div class="stat">
-            <div class="stat-title">Unique Properties</div>
-            <div class="stat-value">${uniqueProperties.size}</div>
-            <div class="stat-description">Across all entries</div>
-          </div>
+      // Update metrics bar
+      document.getElementById('metricsBar').innerHTML = `
+        <div class="metric">
+          <div class="metric-value">${todayCount}</div>
+          <div class="metric-label">Today</div>
         </div>
-        
-        <div class="stat-title" style="margin-top:20px;">Property Distribution</div>
-        ${Object.entries(uniqueValues).map(([prop, values]) => `
-          <div style="margin:10px 0;">
-            <div style="display:flex; justify-content:space-between;">
-              <span>${prop}</span>
-              <span>${values.size} unique values</span>
-            </div>
-            <div class="bar-chart">
-              <div class="bar" style="width: ${Math.min(values.size * 5, 100)}%"></div>
-            </div>
-          </div>
-        `).join('')}
+        <div class="metric">
+          <div class="metric-value">${yesterdayCount}</div>
+          <div class="metric-label">Yesterday</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">${avgPerDay}</div>
+          <div class="metric-label">Avg/Day</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">${timestampCount}</div>
+          <div class="metric-label">Total Entries</div>
+        </div>
       `;
       
-      // Structure analysis
-      let structureHTML = '';
-      if (isArray) {
-        if (data.length > 0) {
-          const sampleItem = data[0];
-          structureHTML = `
-            <p>First item structure:</p>
-            <pre>${JSON.stringify(getStructure(sampleItem), null, 2)}</pre>
-          `;
-        }
-      } else {
-        // Show the main structure (non-timestamp properties)
-        const mainProperties = {};
-        for (const key in data) {
-          if (!key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
-            mainProperties[key] = {
-              type: typeof data[key],
-              value: data[key]
-            };
-          }
-        }
-        
-        structureHTML = `
-          <div style="margin-bottom:20px;">
-            <h3 style="margin-bottom:10px;">Root Properties</h3>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Key</th>
-                  <th>Type</th>
-                  <th>Example Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${Object.entries(mainProperties).map(([key, info]) => `
-                  <tr>
-                    <td>${key}</td>
-                    <td><span class="pill ${getPillClass(info.type)}">${info.type}</span></td>
-                    <td>${truncate(JSON.stringify(info.value), 50)}</td>
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          </div>
-          
-          <div>
-            <h3 style="margin-bottom:10px;">Timestamp Entry Structure</h3>
-            <pre>${JSON.stringify(getTimestampEntryStructure(data), null, 2)}</pre>
-          </div>
-        `;
-      }
-      
-      // Build timeline
-      let timelineHTML = '';
-      if (timestampEntries.length > 0) {
-        // Sort by date (newest first)
-        timestampEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
-        
-        timelineHTML = `
-          <div class="timeline">
-            ${timestampEntries.slice(0, 50).map((entry, index) => `
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">${formatDate(entry.date)}</div>
-                <div class="timeline-content">
-                  ${Object.entries(entry.data).map(([key, value]) => `
-                    <div><strong>${key}:</strong> ${formatValue(key, value)}</div>
-                  `).join('')}
-                </div>
-              </div>
+      // Update recent entries (newest first)
+      timestampEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const entriesHTML = timestampEntries.slice(0, 50).map(entry => `
+        <div class="entry-item">
+          <div class="entry-date">${formatDate(entry.date)}</div>
+          <div class="entry-content">
+            ${Object.entries(entry.data).map(([key, value]) => `
+              <span class="property-badge">${key}: ${truncate(value, 20)}</span>
             `).join('')}
           </div>
-        `;
+        </div>
+      `).join('');
+      
+      document.getElementById('entriesContainer').innerHTML = entriesHTML || `
+        <div class="loading">No entries found</div>
+      `;
+      
+      // Update flag statistics
+      let flagsHTML = '';
+      for (const flagType in flagCounts) {
+        flagsHTML += `<h3>${flagType}</h3><div class="flag-grid">`;
         
-        if (timestampEntries.length > 50) {
-          timelineHTML += `<p style="text-align:center;margin-top:15px;">Showing 50 of ${timestampEntries.length} entries</p>`;
-        }
-      } else {
-        timelineHTML = `<div class="alert alert-error">No timestamp entries found for timeline</div>`;
+        const sortedFlags = Object.entries(flagCounts[flagType])
+          .sort((a, b) => b[1] - a[1]);
+        
+        flagsHTML += sortedFlags.map(([value, count]) => `
+          <div class="flag-item">
+            <div class="flag-count">${count}</div>
+            <div class="flag-label">${value || 'N/A'}</div>
+          </div>
+        `).join('');
+        
+        flagsHTML += `</div>`;
       }
       
-      statsContainer.innerHTML = statsHTML;
-      structureContainer.innerHTML = structureHTML;
-      timelineContainer.innerHTML = timelineHTML;
-      timeContainer.innerHTML = timeStatsHTML;
-      urlContainer.innerHTML = urlHTML;
-      
-      // Setup copy buttons for URLs
-      document.querySelectorAll('.copy-btn[data-url]').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const url = this.getAttribute('data-url');
-          navigator.clipboard.writeText(url).then(() => {
-            const originalText = this.innerHTML;
-            this.innerHTML = '✓ Copied!';
-            setTimeout(() => {
-              this.innerHTML = originalText;
-            }, 2000);
-          });
-        });
-      });
+      document.getElementById('flagsContainer').innerHTML = flagsHTML || `
+        <div class="loading">No flag data found</div>
+      `;
     }
     
-    // Helper functions
-    function calculateDepth(obj, currentDepth = 0) {
-      if (typeof obj !== 'object' || obj === null) return currentDepth;
-      
-      const isArray = Array.isArray(obj);
-      const entries = isArray ? obj : Object.values(obj);
-      
-      if (entries.length === 0) return currentDepth + 1;
-      
-      const depths = entries.map(item => calculateDepth(item, currentDepth + 1));
-      return Math.max(...depths);
+    function showError(message) {
+      document.getElementById('metricsBar').innerHTML = `
+        <div class="metric">
+          <div class="metric-value">❌</div>
+          <div class="metric-label">${message}</div>
+        </div>
+      `;
     }
     
-    function getStructure(obj) {
-      if (typeof obj !== 'object' || obj === null) return typeof obj;
-      
-      if (Array.isArray(obj)) {
-        if (obj.length === 0) return 'array';
-        return [getStructure(obj[0])];
-      }
-      
-      const structure = {};
-      for (const key in obj) {
-        structure[key] = getStructure(obj[key]);
-      }
-      return structure;
-    }
-    
-    function getTimestampEntryStructure(data) {
-      for (const key in data) {
-        if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
-          return getStructure(data[key]);
-        }
-      }
-      return "No timestamp entries found";
-    }
-    
-    function truncate(str, length) {
-      if (typeof str !== 'string') str = JSON.stringify(str);
-      return str.length > length ? str.substring(0, length) + '...' : str;
-    }
-    
-    function formatDate(date) {
-      if (!(date instanceof Date)) date = new Date(date);
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
       return date.toLocaleString('en-US', {
         year: 'numeric',
         month: 'short',
@@ -948,42 +465,9 @@
       });
     }
     
-    function timeAgo(date) {
-      if (!(date instanceof Date)) date = new Date(date);
-      const seconds = Math.floor((new Date() - date) / 1000);
-      
-      let interval = Math.floor(seconds / 31536000);
-      if (interval >= 1) return `${interval} year${interval === 1 ? '' : 's'} ago`;
-      
-      interval = Math.floor(seconds / 2592000);
-      if (interval >= 1) return `${interval} month${interval === 1 ? '' : 's'} ago`;
-      
-      interval = Math.floor(seconds / 86400);
-      if (interval >= 1) return `${interval} day${interval === 1 ? '' : 's'} ago`;
-      
-      interval = Math.floor(seconds / 3600);
-      if (interval >= 1) return `${interval} hour${interval === 1 ? '' : 's'} ago`;
-      
-      interval = Math.floor(seconds / 60);
-      if (interval >= 1) return `${interval} minute${interval === 1 ? '' : 's'} ago`;
-      
-      return `${Math.floor(seconds)} second${seconds === 1 ? '' : 's'} ago`;
-    }
-    
-    function formatValue(key, value) {
-      if (key === 'page_url' && typeof value === 'string') {
-        return `<a href="${value}" target="_blank">${truncate(value, 50)}</a>`;
-      }
-      return truncate(value, 100);
-    }
-    
-    function getPillClass(type) {
-      switch(type) {
-        case 'string': return 'pill-primary';
-        case 'number': return 'pill-success';
-        case 'boolean': return 'pill-warning';
-        default: return '';
-      }
+    function truncate(str, length) {
+      if (typeof str !== 'string') str = String(str);
+      return str.length > length ? str.substring(0, length) + '...' : str;
     }
     
     // Load the data
