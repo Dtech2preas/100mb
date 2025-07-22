@@ -2,42 +2,184 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📊 Stats Viewer - Gist Data</title>
+  <title>📊 Advanced Stats Viewer - Gist Data Analysis</title>
   <style>
+    :root {
+      --primary: #00ffd5;
+      --secondary: #ff6bff;
+      --bg-dark: #111;
+      --card-bg: #1e1e1e;
+      --text-light: #f8f8f8;
+      --text-muted: #999;
+    }
+    
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #111;
-      color: #f8f8f8;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
       padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
+    
     h2 {
-      color: #00ffd5;
+      color: var(--primary);
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    #stats {
+    
+    .stats-container {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr 2fr;
       margin-top: 20px;
+    }
+    
+    .summary-panel {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    .data-panel {
       display: grid;
       gap: 15px;
     }
+    
     .entry {
-      background: #1e1e1e;
-      border-left: 4px solid #00ffd5;
-      padding: 10px 15px;
+      background: var(--card-bg);
+      border-left: 4px solid var(--primary);
+      padding: 15px;
       border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
     }
-    .entry pre {
-      margin: 5px 0 0 0;
-      color: #ccc;
+    
+    .entry:hover {
+      transform: translateY(-2px);
+    }
+    
+    .meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
       font-size: 14px;
     }
-    .meta {
-      font-size: 13px;
-      color: #999;
+    
+    .data-table th {
+      text-align: left;
+      background: rgba(0, 255, 213, 0.1);
+      padding: 8px 12px;
+      color: var(--primary);
+    }
+    
+    .data-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .stat-card {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+    
+    .stat-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--secondary);
+      font-size: 16px;
+    }
+    
+    .stat-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      color: var(--primary);
+      font-size: 18px;
+      gap: 10px;
+    }
+    
+    .loading:after {
+      content: "...";
+      animation: dots 1.5s steps(5, end) infinite;
+    }
+    
+    @keyframes dots {
+      0%, 20% { content: "."; }
+      40% { content: ".."; }
+      60%, 100% { content: "..."; }
+    }
+    
+    .error {
+      color: #ff6b6b;
+      background: rgba(255, 0, 0, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #ff6b6b;
+    }
+    
+    .tag {
+      display: inline-block;
+      background: rgba(0, 255, 213, 0.1);
+      color: var(--primary);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-right: 5px;
+    }
+    
+    .function-tag {
+      background: rgba(255, 107, 255, 0.1);
+      color: var(--secondary);
+    }
+    
+    @media (max-width: 768px) {
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>📁 Viewing Gist JSON File</h2>
-  <div id="stats">Loading...</div>
+  <h2>📊 Gist Data Analytics Dashboard</h2>
+  <div id="stats">
+    <div class="loading">Loading data</div>
+  </div>
 
   <script>
     async function loadGistFromStorage() {
@@ -45,7 +187,7 @@
       const logged = localStorage.getItem("loggedInUser");
 
       if (!logged) {
-        statsDiv.innerHTML = "<p>❌ No 'loggedInUser' found in localStorage.</p>";
+        statsDiv.innerHTML = `<div class="error">❌ No 'loggedInUser' found in localStorage.</div>`;
         return;
       }
 
@@ -55,20 +197,20 @@
         const gistId = userData.gistId || extractGistId(userData.gistUrl);
 
         if (!username || !gistId) {
-          statsDiv.innerHTML = "<p>❌ Missing username or gistId in localStorage.</p>";
+          statsDiv.innerHTML = `<div class="error">❌ Missing username or gistId in localStorage.</div>`;
           return;
         }
 
         const filename = `${username}.json`;
-        const rawURL = `https://gist.githubusercontent.com/Dtech2preas/${gistId}/raw/${filename}`;
+        const rawURL = `https://gist.githubusercontent.com/${username}/${gistId}/raw/${filename}`;
 
         const response = await fetch(rawURL);
-        if (!response.ok) throw new Error("❌ Failed to fetch gist JSON file.");
+        if (!response.ok) throw new Error("Failed to fetch gist JSON file");
 
         const data = await response.json();
         displayStats(data, username);
       } catch (err) {
-        statsDiv.innerHTML = `<p>${err.message}</p>`;
+        statsDiv.innerHTML = `<div class="error">❌ Error: ${err.message}</div>`;
       }
     }
 
@@ -80,29 +222,112 @@
     function displayStats(data, username) {
       const statsDiv = document.getElementById("stats");
       statsDiv.innerHTML = "";
-
+      
+      // Create container for stats
+      const container = document.createElement("div");
+      container.className = "stats-container";
+      statsDiv.appendChild(container);
+      
+      // Create summary panel
+      const summaryPanel = document.createElement("div");
+      summaryPanel.className = "summary-panel";
+      container.appendChild(summaryPanel);
+      
+      // Create data panel
+      const dataPanel = document.createElement("div");
+      dataPanel.className = "data-panel";
+      container.appendChild(dataPanel);
+      
+      // Process data for statistics
+      const entries = Object.entries(data).filter(([key]) => key !== "username" && key !== "created");
       const created = data.created ? new Date(data.created).toLocaleString() : "Unknown";
-
-      const metaDiv = document.createElement("div");
-      metaDiv.className = "entry";
-      metaDiv.innerHTML = `<div class="meta">👤 <strong>${username}</strong> | 🕒 Created: ${created}</div>`;
-      statsDiv.appendChild(metaDiv);
-
-      Object.keys(data).forEach(key => {
-        if (key === "username" || key === "created") return;
-
-        const item = data[key];
+      const lastEntry = entries.length > 0 ? new Date(entries[entries.length-1][0]).toLocaleString() : "None";
+      
+      // Count different functions
+      const functionCounts = {};
+      entries.forEach(([_, entry]) => {
+        const func = entry.authorise_function || "Unknown";
+        functionCounts[func] = (functionCounts[func] || 0) + 1;
+      });
+      
+      // Count different page URLs
+      const pageUrlCounts = {};
+      entries.forEach(([_, entry]) => {
+        const url = entry.page_url || "Unknown";
+        pageUrlCounts[url] = (pageUrlCounts[url] || 0) + 1;
+      });
+      
+      // Find most common numtype
+      const numtypeCounts = {};
+      entries.forEach(([_, entry]) => {
+        if (entry.numtype) {
+          numtypeCounts[entry.numtype] = (numtypeCounts[entry.numtype] || 0) + 1;
+        }
+      });
+      const mostCommonNumtype = Object.keys(numtypeCounts).length > 0 
+        ? Object.entries(numtypeCounts).sort((a, b) => b[1] - a[1])[0][0]
+        : "None";
+      
+      // Add summary cards
+      summaryPanel.innerHTML = `
+        <div class="stat-card">
+          <h3>User Profile</h3>
+          <div><strong>Username:</strong> ${username}</div>
+          <div><strong>First Record:</strong> ${created}</div>
+          <div><strong>Last Record:</strong> ${lastEntry}</div>
+        </div>
+        
+        <div class="stat-card">
+          <h3>Activity Summary</h3>
+          <div class="stat-value">${entries.length}</div>
+          <div class="stat-label">Total Entries</div>
+        </div>
+        
+        <div class="stat-card">
+          <h3>Most Common</h3>
+          <div><strong>Function:</strong> ${Object.keys(functionCounts).length > 0 
+            ? Object.entries(functionCounts).sort((a, b) => b[1] - a[1])[0][0] 
+            : 'None'}</div>
+          <div><strong>Numtype:</strong> ${mostCommonNumtype}</div>
+        </div>
+        
+        <div class="stat-card">
+          <h3>Functions Used</h3>
+          ${Object.entries(functionCounts).map(([func, count]) => `
+            <div>${func}: <span class="tag function-tag">${count}</span></div>
+          `).join('')}
+        </div>
+      `;
+      
+      // Add individual entries
+      entries.forEach(([timestamp, entry]) => {
         const block = document.createElement("div");
         block.className = "entry";
+        
+        // Format entry data as table rows
+        const tableRows = Object.entries(entry).map(([key, value]) => `
+          <tr>
+            <td><strong>${key}</strong></td>
+            <td>${typeof value === 'object' ? JSON.stringify(value) : value}</td>
+          </tr>
+        `).join('');
+        
         block.innerHTML = `
-          <div class="meta">📅 ${new Date(key).toLocaleString()}</div>
-          <pre>${JSON.stringify(item, null, 2)}</pre>
+          <div class="meta">
+            <span>📅 ${new Date(timestamp).toLocaleString()}</span>
+            ${entry.authorise_function ? `<span class="tag function-tag">${entry.authorise_function}</span>` : ''}
+            ${entry.numtype ? `<span class="tag">${entry.numtype}</span>` : ''}
+          </div>
+          <table class="data-table">
+            ${tableRows}
+          </table>
         `;
-        statsDiv.appendChild(block);
+        dataPanel.appendChild(block);
       });
     }
 
-    loadGistFromStorage();
+    // Load data when page loads
+    document.addEventListener('DOMContentLoaded', loadGistFromStorage);
   </script>
 </body>
 </html>
