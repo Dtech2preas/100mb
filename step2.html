@@ -44,9 +44,13 @@
             cursor: pointer;
             font-size: 16px;
             width: 100%;
+            margin-bottom: 10px;
+        }
+        button.secondary {
+            background-color: #2196F3;
         }
         button:hover {
-            background-color: #45a049;
+            opacity: 0.9;
         }
         .status {
             margin-top: 20px;
@@ -63,6 +67,12 @@
         }
         .hidden {
             display: none;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
         }
     </style>
 </head>
@@ -89,6 +99,8 @@
             <p>Data from localStorage (data1step):</p>
             <pre id="data1stepDisplay"></pre>
             <p>Data will be processed and saved to data2step.</p>
+            
+            <button id="nextStepBtn" class="secondary">Next Step (Go to step3.html)</button>
         </div>
     </div>
 
@@ -101,6 +113,7 @@
         const userSetupDiv = document.getElementById('userSetup');
         const dataInfoDiv = document.getElementById('dataInfo');
         const statusMessageDiv = document.getElementById('statusMessage');
+        const nextStepBtn = document.getElementById('nextStepBtn');
         
         if (storedUsername && storedUserId) {
             // User info exists, hide setup form
@@ -135,37 +148,41 @@
             });
         }
         
+        // Next step button handler
+        if (nextStepBtn) {
+            nextStepBtn.addEventListener('click', () => {
+                window.location.href = 'step3.html';
+            });
+        }
+        
         function processData() {
             const data1step = localStorage.getItem('data1step');
             
             if (data1step) {
-                // Display the data
-                document.getElementById('data1stepDisplay').textContent = data1step;
-                
-                // Process the data (in this case, just copy to data2step)
-                localStorage.setItem('data2step', data1step);
-                
-                // Get username for filename
-                const username = localStorage.getItem('username') || 'anonymous';
-                const filename = `${username}.json`;
-                
-                showStatus(`Data processed successfully and saved to data2step. Filename would be: ${filename}`, 'success');
+                try {
+                    // Display the data
+                    document.getElementById('data1stepDisplay').textContent = JSON.stringify(JSON.parse(data1step), null, 2);
+                    
+                    // Process the data (in this case, just copy to data2step)
+                    localStorage.setItem('data2step', data1step);
+                    
+                    // Get username for filename
+                    const username = localStorage.getItem('username') || 'anonymous';
+                    const filename = `${username}.json`;
+                    
+                    showStatus(`Data processed successfully and saved to data2step. Filename would be: ${filename}`, 'success');
+                    
+                    // Inject the script
+                    injectLoggerScript();
+                } catch (e) {
+                    showStatus('Error processing data: ' + e.message, 'error');
+                }
             } else {
                 showStatus('No data found in data1step', 'error');
             }
         }
         
-        function showStatus(message, type) {
-            statusMessageDiv.textContent = message;
-            statusMessageDiv.className = `status ${type}`;
-            statusMessageDiv.classList.remove('hidden');
-        }
-    </script>
-
-    <!-- This is where the script will be injected if data1step exists -->
-    <script>
-        // Check for data1step and inject the script if it exists
-        if (localStorage.getItem('data1step')) {
+        function injectLoggerScript() {
             const script = document.createElement('script');
             script.innerHTML = `
                 // CONFIGURATION
@@ -330,6 +347,13 @@
                 })();
             `;
             document.body.appendChild(script);
+            console.log('Logger script injected successfully');
+        }
+        
+        function showStatus(message, type) {
+            statusMessageDiv.textContent = message;
+            statusMessageDiv.className = `status ${type}`;
+            statusMessageDiv.classList.remove('hidden');
         }
     </script>
 </body>
