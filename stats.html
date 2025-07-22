@@ -5,19 +5,19 @@
   <title>JSON Data Analytics Dashboard</title>
   <style>
     :root {
-      --primary: #1a73e8;
-      --primary-dark: #0d47a1;
-      --primary-light: #e8f0fe;
-      --secondary: #0a0a0a;
-      --secondary-light: #2d2d2d;
-      --background: #f5f5f5;
-      --card-bg: #ffffff;
-      --text: #202124;
-      --text-light: #5f6368;
-      --border: #e0e0e0;
-      --success: #34a853;
-      --warning: #f9ab00;
-      --danger: #d93025;
+      --primary: #4285F4;
+      --primary-dark: #1A73E8;
+      --primary-light: #E8F0FE;
+      --secondary: #0F0F0F;
+      --secondary-light: #2D2D2D;
+      --background: #1E1E1E;
+      --card-bg: #2D2D2D;
+      --text: #E0E0E0;
+      --text-light: #9E9E9E;
+      --border: #424242;
+      --success: #34A853;
+      --warning: #FBBC05;
+      --danger: #EA4335;
     }
     
     * {
@@ -34,6 +34,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      font-size: 16px;
     }
     
     .header {
@@ -57,11 +58,10 @@
     
     .main {
       flex: 1;
-      padding: 1rem;
+      padding: 1.5rem;
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
-      background-color: var(--background);
     }
     
     h1 {
@@ -76,8 +76,14 @@
     h2 {
       font-size: 1.25rem;
       font-weight: 500;
-      color: var(--secondary);
+      color: var(--primary);
       margin-bottom: 1rem;
+    }
+    
+    h3 {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
     }
     
     .dashboard-grid {
@@ -90,27 +96,28 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     
     .metric-card {
       background-color: var(--card-bg);
       border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       text-align: center;
+      border-left: 4px solid var(--primary);
     }
     
     .metric-value {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--primary);
+      margin-bottom: 0.25rem;
     }
     
     .metric-label {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--text-light);
-      margin-top: 0.25rem;
     }
     
     .content-row {
@@ -128,95 +135,116 @@
     .data-panel {
       background-color: var(--card-bg);
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       overflow: hidden;
     }
     
     .panel-header {
-      background-color: var(--primary);
-      color: white;
-      padding: 0.75rem 1rem;
+      background-color: var(--secondary-light);
+      color: var(--primary);
+      padding: 1rem;
       font-weight: 500;
+      font-size: 1.1rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
     }
     
     .panel-body {
       padding: 1rem;
-      max-height: 400px;
+      max-height: 500px;
       overflow-y: auto;
     }
     
+    .panel-footer {
+      padding: 1rem;
+      background-color: var(--secondary-light);
+      border-top: 1px solid var(--border);
+    }
+    
     .entry-item {
-      padding: 0.75rem;
+      padding: 1rem;
       border-bottom: 1px solid var(--border);
       transition: background-color 0.2s;
     }
     
     .entry-item:hover {
-      background-color: var(--primary-light);
+      background-color: var(--secondary-light);
     }
     
     .entry-date {
       font-weight: 500;
-      color: var(--primary-dark);
-      margin-bottom: 0.25rem;
-      font-size: 0.9rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
     }
     
     .entry-content {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: var(--text);
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.75rem;
     }
     
     .property-badge {
       display: inline-block;
-      padding: 0.25rem 0.5rem;
-      background-color: var(--primary-light);
-      border-radius: 4px;
-      font-size: 0.75rem;
-      color: var(--primary-dark);
+      padding: 0.5rem 0.75rem;
+      background-color: var(--secondary-light);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    
+    .property-badge .property-name {
+      color: var(--primary);
+      font-weight: 500;
     }
     
     .stat-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.25rem;
     }
     
     .stat-card {
-      background-color: var(--primary-light);
-      padding: 1rem;
-      border-radius: 6px;
+      background-color: var(--secondary-light);
+      padding: 1.25rem;
+      border-radius: 8px;
       border-left: 4px solid var(--primary);
     }
     
     .stat-title {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-light);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
     
     .stat-value {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 600;
-      color: var(--secondary);
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-description {
+      font-size: 0.85rem;
+      color: var(--text-light);
     }
     
     .btn {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
       border: none;
       font-weight: 500;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      transition: background-color 0.2s;
+      transition: all 0.2s;
+      font-size: 0.95rem;
     }
     
     .btn-primary {
@@ -226,6 +254,17 @@
     
     .btn-primary:hover {
       background-color: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(66, 133, 244, 0.1);
     }
     
     .loading {
@@ -234,18 +273,19 @@
       justify-content: center;
       padding: 2rem;
       color: var(--text-light);
+      font-size: 1rem;
     }
     
     .loading::after {
       content: "";
       display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(0,0,0,0.1);
+      width: 18px;
+      height: 18px;
+      border: 3px solid rgba(255,255,255,0.1);
       border-radius: 50%;
       border-top-color: var(--primary);
       animation: spin 1s ease-in-out infinite;
-      margin-left: 0.5rem;
+      margin-left: 0.75rem;
     }
     
     @keyframes spin {
@@ -256,7 +296,7 @@
       height: 8px;
       background-color: var(--border);
       border-radius: 4px;
-      margin: 0.5rem 0;
+      margin: 0.75rem 0;
       overflow: hidden;
     }
     
@@ -265,13 +305,78 @@
       background: linear-gradient(90deg, var(--primary), var(--primary-dark));
       border-radius: 4px;
     }
+    
+    .url-manager {
+      margin-top: 1.5rem;
+    }
+    
+    .url-form {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .url-input {
+      flex: 1;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background-color: var(--secondary-light);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    
+    .url-list {
+      margin-top: 1rem;
+    }
+    
+    .url-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background-color: var(--secondary-light);
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+    }
+    
+    .url-name {
+      font-weight: 500;
+      color: var(--primary);
+    }
+    
+    .url-value {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 60%;
+    }
+    
+    .url-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-light);
+    }
+    
+    .section-divider {
+      height: 1px;
+      background-color: var(--border);
+      margin: 2rem 0;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
     <div class="header-content">
-      <h1>📊 JSON Data Analytics</h1>
+      <h1>🌐 URL Analytics Dashboard</h1>
       <button id="downloadBtn" class="btn btn-primary">
         <span>⬇️ Download Data</span>
       </button>
@@ -305,10 +410,42 @@
           </div>
         </div>
       </div>
+      
+      <div class="section-divider"></div>
+      
+      <div class="data-panel url-manager">
+        <div class="panel-header">
+          <span>🔗</span>
+          <span>URL Short Names</span>
+        </div>
+        <div class="panel-body">
+          <div class="url-form">
+            <input type="text" id="urlInput" class="url-input" placeholder="Enter full URL">
+            <input type="text" id="nameInput" class="url-input" placeholder="Enter short name">
+            <button id="addUrlBtn" class="btn btn-primary">Add</button>
+          </div>
+          <div class="url-list" id="urlList">
+            <div class="empty-state">No URLs added yet</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="data-panel">
+        <div class="panel-header">
+          <span>🌍</span>
+          <span>Domain Statistics</span>
+        </div>
+        <div class="panel-body" id="domainStatsContainer">
+          <div class="loading">Analyzing domains...</div>
+        </div>
+      </div>
     </div>
   </main>
 
   <script>
+    // URL naming system in localStorage
+    const urlMappings = JSON.parse(localStorage.getItem('urlMappings')) || {};
+    
     // Get user info from localStorage
     const userInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {};
     let gistUrl = userInfo.gistUrl || "https://gist.github.com/Dtech2preas/baf8538c85354add526e6cb4c40dcd3a";
@@ -317,6 +454,78 @@
     
     // Construct raw URL
     const rawURL = `https://gist.githubusercontent.com/Dtech2preas/${gistId}/raw/${filename}`;
+    
+    // DOM elements
+    const urlInput = document.getElementById('urlInput');
+    const nameInput = document.getElementById('nameInput');
+    const addUrlBtn = document.getElementById('addUrlBtn');
+    const urlList = document.getElementById('urlList');
+    
+    // Initialize URL manager
+    function initUrlManager() {
+      renderUrlList();
+      
+      addUrlBtn.addEventListener('click', () => {
+        const url = urlInput.value.trim();
+        const name = nameInput.value.trim();
+        
+        if (url && name) {
+          urlMappings[url] = name;
+          localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
+          renderUrlList();
+          urlInput.value = '';
+          nameInput.value = '';
+        }
+      });
+    }
+    
+    function renderUrlList() {
+      if (Object.keys(urlMappings).length === 0) {
+        urlList.innerHTML = '<div class="empty-state">No URLs added yet</div>';
+        return;
+      }
+      
+      urlList.innerHTML = '';
+      Object.entries(urlMappings).forEach(([url, name]) => {
+        const urlItem = document.createElement('div');
+        urlItem.className = 'url-item';
+        urlItem.innerHTML = `
+          <div>
+            <div class="url-name">${name}</div>
+            <div class="url-value">${truncate(url, 50)}</div>
+          </div>
+          <div class="url-actions">
+            <button class="btn btn-outline" data-url="${url}">Edit</button>
+            <button class="btn btn-outline" data-url="${url}">Remove</button>
+          </div>
+        `;
+        urlList.appendChild(urlItem);
+      });
+      
+      // Add event listeners to buttons
+      document.querySelectorAll('.url-actions button').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const url = this.getAttribute('data-url');
+          if (this.textContent === 'Remove') {
+            delete urlMappings[url];
+            localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
+            renderUrlList();
+          } else {
+            const newName = prompt('Enter new name for this URL:', urlMappings[url]);
+            if (newName && newName.trim()) {
+              urlMappings[url] = newName.trim();
+              localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
+              renderUrlList();
+            }
+          }
+        });
+      });
+    }
+    
+    // Get short name for URL
+    function getUrlName(url) {
+      return urlMappings[url] || truncate(url, 30);
+    }
     
     // Setup download button
     document.getElementById('downloadBtn').addEventListener('click', function() {
@@ -379,6 +588,7 @@
       const valueStats = {};
       const hourDistribution = Array(24).fill(0);
       const dayDistribution = Array(7).fill(0);
+      const domainStats = {};
       
       for (const key in data) {
         if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
@@ -397,15 +607,28 @@
           hourDistribution[hour]++;
           dayDistribution[day]++;
           
-          timestampEntries.push({
-            date: key,
-            data: entry
-          });
+          // Process entry
+          const processedEntry = { date: key, data: {} };
           
-          // Analyze properties and values
           for (const prop in entry) {
             // Property frequency
             propertyStats[prop] = (propertyStats[prop] || 0) + 1;
+            
+            // Process URL fields
+            if ((prop === 'page_url' || prop === 'url') && entry[prop]) {
+              const url = entry[prop];
+              processedEntry.data[prop] = getUrlName(url);
+              
+              // Domain statistics
+              try {
+                const domain = new URL(url).hostname.replace('www.', '');
+                domainStats[domain] = (domainStats[domain] || 0) + 1;
+              } catch (e) {
+                // Invalid URL, skip
+              }
+            } else {
+              processedEntry.data[prop] = entry[prop];
+            }
             
             // Value analysis (for string properties)
             if (typeof entry[prop] === 'string') {
@@ -413,6 +636,8 @@
               valueStats[prop][entry[prop]] = (valueStats[prop][entry[prop]] || 0) + 1;
             }
           }
+          
+          timestampEntries.push(processedEntry);
         }
       }
       
@@ -463,12 +688,14 @@
       
       // Update recent entries (newest first)
       const sortedEntries = [...timestampEntries].sort((a, b) => new Date(b.date) - new Date(a.date));
-      const entriesHTML = sortedEntries.slice(0, 50).map(entry => `
+      const entriesHTML = sortedEntries.slice(0, 30).map(entry => `
         <div class="entry-item">
-          <div class="entry-date">${formatDate(entry.date)}</div>
+          <div class="entry-date">${formatDate(entry.date)} • ${timeAgo(entry.date)}</div>
           <div class="entry-content">
             ${Object.entries(entry.data).map(([key, value]) => `
-              <span class="property-badge">${key}: ${truncate(value, 20)}</span>
+              <span class="property-badge">
+                <span class="property-name">${key}:</span> ${truncate(value, 25)}
+              </span>
             `).join('')}
           </div>
         </div>
@@ -484,9 +711,9 @@
       if (firstDate && lastDate) {
         statsHTML += `
           <div class="stat-card">
-            <div class="stat-title">Time Range</div>
-            <div class="stat-value">${formatDate(firstDate)} to ${formatDate(lastDate)}</div>
-            <div class="stat-description">${timeAgo(firstDate)} to ${timeAgo(lastDate)}</div>
+            <div class="stat-title">Data Collection Period</div>
+            <div class="stat-value">${formatDateShort(firstDate)} - ${formatDateShort(lastDate)}</div>
+            <div class="stat-description">${Math.round((lastDate - firstDate)/(1000*60*60*24))} days total</div>
           </div>
         `;
       }
@@ -494,9 +721,9 @@
       if (busiestHour !== null) {
         statsHTML += `
           <div class="stat-card">
-            <div class="stat-title">Busiest Hour</div>
+            <div class="stat-title">Peak Activity Hour</div>
             <div class="stat-value">${formatHour(busiestHour)}</div>
-            <div class="stat-description">${hourDistribution[busiestHour]} entries</div>
+            <div class="stat-description">${hourDistribution[busiestHour]} events (${Math.round(hourDistribution[busiestHour]/timestampCount*100)}% of total)</div>
             <div class="bar-chart">
               <div class="bar" style="width: ${(hourDistribution[busiestHour]/Math.max(...hourDistribution))*100}%"></div>
             </div>
@@ -507,9 +734,9 @@
       if (busiestDay !== null) {
         statsHTML += `
           <div class="stat-card">
-            <div class="stat-title">Busiest Day</div>
+            <div class="stat-title">Most Active Day</div>
             <div class="stat-value">${formatDay(busiestDay)}</div>
-            <div class="stat-description">${dayDistribution[busiestDay]} entries</div>
+            <div class="stat-description">${dayDistribution[busiestDay]} events</div>
             <div class="bar-chart">
               <div class="bar" style="width: ${(dayDistribution[busiestDay]/Math.max(...dayDistribution))*100}%"></div>
             </div>
@@ -520,17 +747,17 @@
       // Add property statistics
       const sortedProperties = Object.entries(propertyStats)
         .sort((a, b) => b[1] - a[1])
-        .slice(0, 5);
+        .slice(0, 3);
       
       if (sortedProperties.length > 0) {
         statsHTML += `
           <div class="stat-card">
-            <div class="stat-title">Most Common Properties</div>
+            <div class="stat-title">Most Recorded Properties</div>
             ${sortedProperties.map(([prop, count]) => `
-              <div style="margin: 0.5rem 0;">
-                <div style="display: flex; justify-content: space-between;">
+              <div style="margin: 0.75rem 0;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
                   <span>${prop}</span>
-                  <span>${count}</span>
+                  <span>${count} (${Math.round(count/timestampCount*100)}%)</span>
                 </div>
                 <div class="bar-chart">
                   <div class="bar" style="width: ${(count/timestampCount)*100}%"></div>
@@ -541,38 +768,38 @@
         `;
       }
       
-      // Add value statistics for the most common property
-      if (sortedProperties.length > 0) {
-        const mostCommonProp = sortedProperties[0][0];
-        if (valueStats[mostCommonProp]) {
-          const sortedValues = Object.entries(valueStats[mostCommonProp])
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 5);
-          
-          statsHTML += `
-            <div class="stat-card">
-              <div class="stat-title">Most Common Values for "${mostCommonProp}"</div>
-              ${sortedValues.map(([value, count]) => `
-                <div style="margin: 0.5rem 0;">
-                  <div style="display: flex; justify-content: space-between;">
-                    <span>${truncate(value, 15)}</span>
-                    <span>${count}</span>
-                  </div>
-                  <div class="bar-chart">
-                    <div class="bar" style="width: ${(count/propertyStats[mostCommonProp])*100}%"></div>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          `;
-        }
-      }
-      
       document.getElementById('statsContainer').innerHTML = `
         <div class="stat-grid">
           ${statsHTML}
         </div>
       `;
+      
+      // Update domain statistics
+      let domainHTML = '';
+      const sortedDomains = Object.entries(domainStats)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
+      
+      if (sortedDomains.length > 0) {
+        domainHTML = `
+          <div class="stat-grid">
+            ${sortedDomains.map(([domain, count]) => `
+              <div class="stat-card">
+                <div class="stat-title">${domain}</div>
+                <div class="stat-value">${count}</div>
+                <div class="stat-description">${Math.round(count/timestampCount*100)}% of total</div>
+                <div class="bar-chart">
+                  <div class="bar" style="width: ${(count/timestampCount)*100}%"></div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } else {
+        domainHTML = '<div class="empty-state">No domain data available</div>';
+      }
+      
+      document.getElementById('domainStatsContainer').innerHTML = domainHTML;
     }
     
     function showError(message) {
@@ -591,6 +818,14 @@
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit'
+      });
+    }
+    
+    function formatDateShort(date) {
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
       });
     }
     
@@ -617,7 +852,9 @@
     }
     
     function formatHour(hour) {
-      return `${hour}:00 - ${hour + 1}:00`;
+      const period = hour >= 12 ? 'PM' : 'AM';
+      const displayHour = hour % 12 || 12;
+      return `${displayHour}${period}`;
     }
     
     function formatDay(dayIndex) {
@@ -630,7 +867,8 @@
       return str.length > length ? str.substring(0, length) + '...' : str;
     }
     
-    // Load the data
+    // Initialize the app
+    initUrlManager();
     loadGistJSON();
   </script>
 </body>
