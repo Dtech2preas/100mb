@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DTech Structural & Integrity Stats</title>
+  <title>DTech Rate Limit Dashboard</title>
   <style>
     body {
       background-color: #0e0e0e;
@@ -40,50 +40,67 @@
   </style>
 </head>
 <body>
-  <h1>📊 DTech Structural & Integrity Dashboard</h1>
+  <h1>📊 DTech Rate Limit Dashboard</h1>
   <div id="stats" class="stats-grid">Loading stats...</div>
 
   <script>
-    const DATA_URL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(
-      "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/690da2cdc6ce936a1ac4e373d630e95ff0186ecb/rate.json"
-    );
+    const TOKENS_URL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
+    const GIST_API_URL = "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f";
+    const FILE_NAME = "rate.json";
 
-    async function loadStats() {
-      try {
-        const res = await fetch(DATA_URL);
-        const data = await res.json();
-        const statsContainer = document.getElementById('stats');
+    async function getRandomToken() {
+      const res = await fetch(TOKENS_URL);
+      const text = await res.text();
+      const tokens = text.trim().split("\n").filter(t => t.startsWith("ghp_"));
+      return tokens[Math.floor(Math.random() * tokens.length)];
+    }
 
-        if (!Array.isArray(data) || data.length === 0) {
-          statsContainer.innerHTML = "<p>No stats available yet.</p>";
-          return;
+    async function fetchRateStats(token) {
+      const res = await fetch(GIST_API_URL, {
+        headers: {
+          Authorization: `token ${token}`
         }
+      });
 
-        statsContainer.innerHTML = "";
+      if (!res.ok) throw new Error("Failed to fetch Gist");
 
-        data.forEach(entry => {
-          const { token, remaining, limit, used, timestamp } = entry;
+      const gist = await res.json();
+      const file = gist.files[FILE_NAME];
+      return JSON.parse(file.content);
+    }
 
-          const card = document.createElement('div');
-          card.className = 'stat-card';
-          card.innerHTML = `
-            <h3>🔐 Token Ending In: ${token.slice(-5)}</h3>
-            <p>📉 Remaining: ${remaining}</p>
-            <p>💥 Used: ${used}</p>
-            <p>📈 Limit: ${limit}</p>
-            <p>🕒 Updated: ${new Date(timestamp).toLocaleString()}</p>
-          `;
-          statsContainer.appendChild(card);
-        });
+    function displayStats(data) {
+      const statsContainer = document.getElementById("stats");
+      statsContainer.innerHTML = "";
+      data.forEach(entry => {
+        const { token, remaining, limit, used, timestamp } = entry;
+        const card = document.createElement("div");
+        card.className = "stat-card";
+        card.innerHTML = `
+          <h3>🔐 Token Ending In: ${token.slice(-5)}</h3>
+          <p>📉 Remaining: ${remaining}</p>
+          <p>💥 Used: ${used}</p>
+          <p>📈 Limit: ${limit}</p>
+          <p>🕒 Updated: ${new Date(timestamp).toLocaleString()}</p>
+        `;
+        statsContainer.appendChild(card);
+      });
+    }
 
-      } catch (err) {
-        document.getElementById('stats').innerHTML = "<p style='color:red;'>❌ Failed to load stats.</p>";
-        console.error("Error loading data:", err);
+    async function loadDashboard() {
+      try {
+        const token = await getRandomToken();
+        const data = await fetchRateStats(token);
+        displayStats(data);
+      } catch (e) {
+        document.getElementById("stats").innerHTML =
+          `<p style="color:red;">❌ Failed to load data. ${e.message}</p>`;
+        console.error(e);
       }
     }
 
-    loadStats();
-    setInterval(loadStats, 2 * 60 * 1000); // auto-refresh every 2 minutes
+    loadDashboard();
+    setInterval(loadDashboard, 2 * 60 * 1000); // Refresh every 2 minutes
   </script>
 </body>
 </html>
