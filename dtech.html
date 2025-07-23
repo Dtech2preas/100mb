@@ -1,47 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>DTech Rate Limit Dashboard</title>
-  <style>
-    body {
-      background-color: #0e0e0e;
-      color: #00ffd5;
-      font-family: 'Segoe UI', sans-serif;
-      padding: 20px;
-    }
-    h1 {
-      color: #ff6bff;
-      font-size: 28px;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .stat-card {
-      background-color: #1a1a1a;
-      border-left: 5px solid #00ffd5;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    .stat-card h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-      color: #ffffff;
-    }
-    .stat-card p {
-      margin: 0;
-      font-size: 15px;
-      color: #ccc;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>DTech Raw Rate Limit Data</title>
+<style>
+  body { font-family: monospace; background: #111; color: #0f0; padding: 1rem; }
+  pre { white-space: pre-wrap; word-break: break-word; }
+</style>
 </head>
 <body>
-  <h1>📊 DTech Rate Limit Dashboard</h1>
-  <div id="stats" class="stats-grid">Loading stats...</div>
+  <h1>📊 DTech Raw Rate Limit Data</h1>
+  <pre id="output">Loading data...</pre>
 
   <script>
     const TOKENS_URL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
@@ -55,52 +24,30 @@
       return tokens[Math.floor(Math.random() * tokens.length)];
     }
 
-    async function fetchRateStats(token) {
+    async function fetchRawData(token) {
       const res = await fetch(GIST_API_URL, {
-        headers: {
-          Authorization: `token ${token}`
-        }
+        headers: { Authorization: `token ${token}` }
       });
-
-      if (!res.ok) throw new Error("Failed to fetch Gist");
-
+      if (!res.ok) throw new Error("Failed to fetch gist data");
       const gist = await res.json();
-      const file = gist.files[FILE_NAME];
-      return JSON.parse(file.content);
+      return gist.files[FILE_NAME].content;
     }
 
-    function displayStats(data) {
-      const statsContainer = document.getElementById("stats");
-      statsContainer.innerHTML = "";
-      data.forEach(entry => {
-        const { token, remaining, limit, used, timestamp } = entry;
-        const card = document.createElement("div");
-        card.className = "stat-card";
-        card.innerHTML = `
-          <h3>🔐 Token Ending In: ${token.slice(-5)}</h3>
-          <p>📉 Remaining: ${remaining}</p>
-          <p>💥 Used: ${used}</p>
-          <p>📈 Limit: ${limit}</p>
-          <p>🕒 Updated: ${new Date(timestamp).toLocaleString()}</p>
-        `;
-        statsContainer.appendChild(card);
-      });
-    }
-
-    async function loadDashboard() {
+    async function main() {
+      const outputEl = document.getElementById("output");
       try {
         const token = await getRandomToken();
-        const data = await fetchRateStats(token);
-        displayStats(data);
-      } catch (e) {
-        document.getElementById("stats").innerHTML =
-          `<p style="color:red;">❌ Failed to load data. ${e.message}</p>`;
-        console.error(e);
+        const rawData = await fetchRawData(token);
+        // Pretty print the JSON string
+        const jsonData = JSON.parse(rawData);
+        outputEl.textContent = JSON.stringify(jsonData, null, 2);
+      } catch (err) {
+        outputEl.textContent = "❌ Error loading data:\n" + err.message;
+        console.error(err);
       }
     }
 
-    loadDashboard();
-    setInterval(loadDashboard, 2 * 60 * 1000); // Refresh every 2 minutes
+    main();
   </script>
 </body>
 </html>
