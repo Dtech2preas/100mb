@@ -1012,7 +1012,6 @@
     }
   </script>
 
-
 <style>
   #ad-layer {
     position: fixed;
@@ -1054,6 +1053,13 @@
     animation: bounce 2s infinite;
   }
   
+  #ad-layer .warning {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-top: 1rem;
+    display: none;
+  }
+  
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
     40% {transform: translateY(-20px);}
@@ -1065,6 +1071,7 @@
   <div class="emoji">👆</div>
   <div>Tap to Continue</div>
   <small>(Ad will open once every 30 minutes)</small>
+  <div class="warning" id="return-warning">Please watch the ad for at least 10 seconds before returning!</div>
 </div>
 
 <script>
@@ -1072,12 +1079,15 @@
     // Configuration
     const config = {
       directLink: "https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365",
-      checkInterval: 30 * 60 * 1000, // 30 minutes in milliseconds
+      adInterval: 30 * 60 * 1000,    // 30 minutes in milliseconds
+      minViewTime: 10 * 1000,        // 10 seconds in milliseconds
       localStorageKey: "direct_ad_last_click",
-      fadeDuration: 300 // milliseconds
+      viewTimeKey: "ad_view_start_time",
+      fadeDuration: 300              // milliseconds
     };
     
     const layer = document.getElementById("ad-layer");
+    const warning = document.getElementById("return-warning");
     let timeoutId = null;
     
     // Check if it's time to show the layer
@@ -1086,13 +1096,23 @@
       if (!lastClick) return true;
       
       const now = Date.now();
-      return (now - parseInt(lastClick)) > config.checkInterval;
+      return (now - parseInt(lastClick)) > config.adInterval;
+    }
+    
+    // Check if user watched ad long enough
+    function watchedLongEnough() {
+      const viewStart = localStorage.getItem(config.viewTimeKey);
+      if (!viewStart) return true; // No record means it's okay
+      
+      const now = Date.now();
+      return (now - parseInt(viewStart)) > config.minViewTime;
     }
     
     // Show the ad layer with fade effect
     function showLayer() {
       layer.style.display = "flex";
       setTimeout(() => layer.classList.add("visible"), 10);
+      warning.style.display = watchedLongEnough() ? "none" : "block";
     }
     
     // Hide the ad layer with fade effect
@@ -1107,16 +1127,28 @@
     function handleAdClick() {
       const now = Date.now();
       
+      // Check if user returned too quickly
+      if (!watchedLongEnough()) {
+        showLayer(); // Keep showing with warning
+        return;
+      }
+      
       if (shouldShowAd()) {
+        // Record when we opened the ad
+        localStorage.setItem(config.viewTimeKey, now.toString());
         window.open(config.directLink, "_blank");
-        localStorage.setItem(config.localStorageKey, now.toString());
+        
+        // Only update last click time if they watched long enough
+        setTimeout(() => {
+          localStorage.setItem(config.localStorageKey, now.toString());
+        }, config.minViewTime);
       }
       
       hideLayer();
       
       // Clear any pending timeout and set new one
       if (timeoutId) clearTimeout(timeoutId);
-      timeoutId = setTimeout(checkAndShowLayer, config.checkInterval);
+      timeoutId = setTimeout(checkAndShowLayer, config.adInterval);
     }
     
     // Check and show layer if needed
@@ -1132,7 +1164,7 @@
       checkAndShowLayer();
       
       // Check periodically in case page stays open
-      setInterval(checkAndShowLayer, config.checkInterval);
+      setInterval(checkAndShowLayer, config.adInterval);
     }
     
     // Start the script
