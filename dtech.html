@@ -688,4 +688,18 @@
         }
         
         populateTable(document.querySelector(".full-table"));
-        populateTable(document.querySele
+        populateTable(document.querySelector(".compact-table"), true);
+        
+      } catch (err) {
+        console.error("Error loading data:", err);
+        document.getElementById("integrity").innerHTML = `Error`;
+        document.getElementById("integrityBar").style.backgroundColor = "var(--danger)";
+        document.getElementById("integrityBar").style.width = "100%";
+        document.getElementById("integrityStatus").innerText = "Data Unavailable";
+        document.getElementById("integrityStatus").style.background = "rgba(218, 54, 51, 0.2)";
+        document.getElementById("integrityStatus").style.color = "var(--danger)";
+      }
+    })();
+  </script>
+</body>
+</html>
