@@ -1,72 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>GitHub Token Rate Limit Viewer</title>
+  <meta charset="UTF-8">
+  <title>DTech Structural & Integrity Monitor</title>
+  <style>
+    body {
+      background: #0e0e0e;
+      color: #00ffd5;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff6bff;
+      margin-bottom: 2rem;
+    }
+
+    .token-card {
+      background: #1a1a1a;
+      border: 1px solid #00ffd5;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 8px #00ffd5;
+    }
+
+    .token-id {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ff6bff, #00ffd5);
+    }
+
+    .stats {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
-  <h2>📊 GitHub Token Rate Limits</h2>
-  <button onclick="checkRateLimits()">Check All Tokens</button>
-  <pre id="output">Click the button to load token stats...</pre>
+  <h1>💠 DTech Token Structural Integrity</h1>
+  <div id="tokenContainer">Loading data...</div>
 
   <script>
-    const tokenListUrl = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/57fc9cc4a39f5b69aeefe4699bc155e176e2ae65/gistfile1.txt";
+    const DATA_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/690da2cdc6ce936a1ac4e373d630e95ff0186ecb/rate.json";
 
-    async function fetchTokenList() {
-      const response = await fetch(tokenListUrl);
-      const text = await response.text();
-      return text.trim().split("\n").filter(t => t.length > 10); // basic filter
-    }
-
-    async function fetchRateLimit(token) {
-      const response = await fetch("https://api.github.com/rate_limit", {
-        headers: {
-          "Authorization": `token ${token}`
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error with token: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return {
-        token: token.slice(0, 10) + "...", // partially mask token
-        remaining: data.rate.remaining,
-        limit: data.rate.limit,
-        reset: new Date(data.rate.reset * 1000).toLocaleString()
-      };
-    }
-
-    async function checkRateLimits() {
-      document.getElementById("output").textContent = "⏳ Checking all tokens...";
-
+    async function fetchAndDisplay() {
+      const container = document.getElementById("tokenContainer");
       try {
-        const tokens = await fetchTokenList();
-        const results = [];
+        const res = await fetch(DATA_URL);
+        const data = await res.json();
 
-        for (const token of tokens) {
-          try {
-            const limitData = await fetchRateLimit(token);
-            results.push(limitData);
-          } catch (err) {
-            results.push({ token: token.slice(0, 10) + "...", error: err.message });
-          }
-        }
+        container.innerHTML = ""; // clear placeholder
 
-        const output = results.map(res => {
-          if (res.error) {
-            return `❌ Token: ${res.token}\n   Error: ${res.error}`;
-          } else {
-            return `✅ Token: ${res.token}\n   Remaining: ${res.remaining} / ${res.limit}\n   Resets: ${res.reset}`;
-          }
-        }).join("\n\n");
+        data.forEach((entry, index) => {
+          const percent = (entry.rate.remaining / entry.rate.limit) * 100;
+          const resetDate = new Date(entry.rate.reset * 1000).toLocaleString();
 
-        document.getElementById("output").textContent = output;
-
+          const tokenCard = document.createElement("div");
+          tokenCard.className = "token-card";
+          tokenCard.innerHTML = `
+            <div class="token-id">🔑 Token ${index + 1}</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${percent}%;"></div>
+            </div>
+            <div class="stats">
+              ✅ Remaining: <strong>${entry.rate.remaining}</strong> / ${entry.rate.limit}<br>
+              ❌ Used: <strong>${entry.rate.used}</strong><br>
+              ⏰ Reset Time: <strong>${resetDate}</strong>
+            </div>
+          `;
+          container.appendChild(tokenCard);
+        });
       } catch (e) {
-        document.getElementById("output").textContent = "❌ Failed to fetch tokens or limits: " + e.message;
+        container.innerHTML = "⚠️ Failed to load data.";
+        console.error(e);
       }
     }
+
+    fetchAndDisplay();
   </script>
 </body>
 </html>
