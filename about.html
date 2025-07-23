@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTech - Where Digital Meets Possibility</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00f0ff;
+            --secondary: #7000ff;
+            --dark: #0a0a20;
+            --light: #f5f5ff;
+            --accent: #ff00aa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(112, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 240, 255, 0.15) 0%, transparent 50%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 8s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            color: rgba(245, 245, 255, 0.9);
+        }
+        
+        .tagline {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(112, 0, 255, 0.2);
+            border: 1px solid var(--secondary);
+            border-radius: 50px;
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        section {
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            border-radius: 3px;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: rgba(10, 10, 32, 0.6);
+            border: 1px solid rgba(112, 0, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+            z-index: -1;
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .card p {
+            color: rgba(245, 245, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        .philosophy {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 15px;
+            background: rgba(112, 0, 255, 0.1);
+            border: 1px solid rgba(112, 0, 255, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .philosophy::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 240, 255, 0.05), transparent);
+            z-index: -1;
+        }
+        
+        .philosophy p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .team-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+            animation: pulse 2s ease infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(0, 240, 255, 0.5); }
+            100% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.3); }
+        }
+        
+        .team-avatar i {
+            font-size: 4rem;
+            color: var(--dark);
+        }
+        
+        .vision {
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .vision-statement {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.4;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .vision-statement::before,
+        .vision-statement::after {
+            content: '“';
+            position: absolute;
+            font-size: 5rem;
+            color: rgba(0, 240, 255, 0.2);
+            font-family: serif;
+        }
+        
+        .vision-statement::before {
+            top: -30px;
+            left: 0;
+        }
+        
+        .vision-statement::after {
+            bottom: -80px;
+            right: 0;
+            transform: rotate(180deg);
+        }
+        
+        .cta {
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.4);
+        }
+        
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 1px solid rgba(112, 0, 255, 0.3);
+        }
+        
+        .footer-text {
+            color: rgba(245, 245, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Glow effects */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            z-index: -2;
+        }
+        
+        .glow-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 10%;
+            left: 10%;
+            animation: float-glow-1 15s ease infinite;
+        }
+        
+        .glow-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: 10%;
+            right: 10%;
+            animation: float-glow-2 20s ease infinite;
+        }
+        
+        @keyframes float-glow-1 {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+            100% { transform: translate(0, 0); }
+        }
+        
+        @keyframes float-glow-2 {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, -50px); }
+            100% { transform: translate(0, 0); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .vision-statement {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+    <header class="container">
+        <div class="logo">DTech</div>
+    </header>
+    
+    <section class="hero">
+        <span class="tagline">Innovate. Create. Elevate.</span>
+        <h1>Where Digital Meets Possibility</h1>
+        <p>DTech is a next-generation tech hub focused on building innovative, lightweight, and impactful digital solutions. We exist at the intersection of creativity, code, and community — turning bold ideas into real tools that anyone can use, from anywhere.</p>
+    </section>
+    
+    <section class="container">
+        <h2 class="section-title">What We Do</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Web Apps</h3>
+                <p>Ultra-light, mobile-friendly platforms built for speed and simplicity. We create experiences that feel effortless and intuitive.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Automation Tools</h3>
+                <p>From account checkers to smart data uploaders, we automate the boring stuff so you can focus on what matters.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <h3>GitHub Integration</h3>
+                <p>Leveraging Gists and APIs for clever no-backend data management. Simple solutions for complex problems.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>User Dashboards</h3>
+                <p>Real-time stats, logs, and custom UIs designed for clarity. Information should be beautiful and accessible.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Secure Systems</h3>
+                <p>We believe in privacy-first development and keeping user data in their control. Security isn't an afterthought.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Optimized performance that feels instantaneous. Every millisecond counts in user experience.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container">
+        <div class="philosophy">
+            <h2 class="section-title">Our Philosophy</h2>
+            <p>We're not a big company. We're not backed by corporations. We're a small, driven team with one goal — make the web smarter without making it harder.</p>
+            <p>Every line of code we write is about solving a real problem, saving time, or unlocking creative freedom for the user. We believe powerful tools shouldn't be locked behind paywalls, complex setups, or bloated apps.</p>
+            <p>We keep things lightweight, fast, and open — so anyone can benefit, no matter their level of tech experience.</p>
+        </div>
+        
+        <div class="team">
+            <div class="team-avatar">
+                <i class="fas fa-user-astronaut"></i>
+            </div>
+            <h3>The DTech Team</h3>
+            <p>DTech is built and maintained by a passionate solo developer who eats, sleeps, and breathes elegant solutions. When we say "we," it's really just me (👋) with occasional contributions from the open-source community.</p>
+        </div>
+    </section>
+    
+    <section class="container vision">
+        <h2 class="section-title">Our Vision</h2>
+        <p class="vision-statement">To be a digital toolkit for the future — fast, secure, personal, and always evolving. We want DTech to be your go-to name for creative problem-solving and clever, accessible innovation.</p>
+    </section>
+    
+    <section class="container cta">
+        <h2 class="section-title">Ready to Build Smart?</h2>
+        <a href="#" class="cta-button">Join the DTech Movement</a>
+    </section>
+    
+    <footer class="container">
+        <p class="footer-text">© 2023 DTech. All code crafted with ♥ and excessive caffeine.</p>
+        <p class="footer-text">Think different. Build smart. Think DTech.</p>
+    </footer>
+</body>
+</html>
