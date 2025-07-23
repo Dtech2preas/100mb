@@ -14,13 +14,13 @@
       --success: #00c853;
       --error: #ff3b30;
     }
-    
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
+
     body {
       font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
       background-color: var(--darker);
@@ -34,7 +34,7 @@
         radial-gradient(circle at 25% 25%, rgba(10, 132, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 75% 75%, rgba(10, 132, 255, 0.1) 0%, transparent 50%);
     }
-    
+
     .container {
       width: 100%;
       max-width: 500px;
@@ -47,7 +47,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .container::before {
       content: '';
       position: absolute;
@@ -57,20 +57,32 @@
       height: 4px;
       background: linear-gradient(90deg, var(--primary), var(--primary-dark));
     }
-    
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo {
+      height: 60px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(10, 132, 255, 0.5));
+    }
+
     h2, h3 {
       color: var(--primary);
       margin-bottom: 1.5rem;
       font-weight: 600;
     }
-    
+
     h2 {
       font-size: 1.8rem;
       text-align: center;
       position: relative;
       padding-bottom: 0.5rem;
     }
-    
+
     h2::after {
       content: '';
       position: absolute;
@@ -81,7 +93,7 @@
       height: 2px;
       background: var(--primary);
     }
-    
+
     input, button, textarea {
       width: 100%;
       padding: 0.8rem 1rem;
@@ -91,23 +103,23 @@
       margin-bottom: 1rem;
       transition: all 0.3s ease;
     }
-    
+
     input {
       background: rgba(255, 255, 255, 0.05);
       color: var(--light);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     input:focus {
       outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.3);
     }
-    
+
     input::placeholder {
       color: rgba(255, 255, 255, 0.4);
     }
-    
+
     button {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
@@ -117,16 +129,16 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     button:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(10, 132, 255, 0.3);
     }
-    
+
     button:active {
       transform: translateY(0);
     }
-    
+
     button::after {
       content: '';
       position: absolute;
@@ -137,7 +149,7 @@
       background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
       pointer-events: none;
     }
-    
+
     .error {
       color: var(--error);
       background: rgba(255, 59, 48, 0.1);
@@ -147,7 +159,7 @@
       font-size: 0.9rem;
       border-left: 3px solid var(--error);
     }
-    
+
     .success {
       color: var(--success);
       background: rgba(0, 200, 83, 0.1);
@@ -157,13 +169,13 @@
       font-size: 0.9rem;
       border-left: 3px solid var(--success);
     }
-    
+
     #signup-section, #login-info {
       margin-top: 2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: 1.5rem;
     }
-    
+
     pre {
       background: rgba(0, 0, 0, 0.3);
       padding: 1rem;
@@ -176,26 +188,26 @@
       margin-bottom: 1rem;
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     #login-info {
       display: none;
     }
-    
+
     .info-buttons {
       display: flex;
       gap: 0.8rem;
     }
-    
+
     .info-buttons button {
       flex: 1;
     }
-    
+
     .loading {
       position: relative;
       pointer-events: none;
       opacity: 0.8;
     }
-    
+
     .loading::before {
       content: '';
       position: absolute;
@@ -209,15 +221,15 @@
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
-    
+
     @keyframes spin {
       to { transform: translate(-50%, -50%) rotate(360deg); }
     }
-    
+
     .terminal-effect {
       position: relative;
     }
-    
+
     .terminal-effect::after {
       content: '|';
       position: absolute;
@@ -226,23 +238,27 @@
       transform: translateY(-50%);
       animation: blink 1s infinite;
     }
-    
+
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
-    
+
     .glow {
       text-shadow: 0 0 8px rgba(10, 132, 255, 0.7);
     }
-    
+
     @media (max-width: 600px) {
       .container {
         padding: 1.5rem;
       }
-      
+
       h2 {
         font-size: 1.5rem;
+      }
+      
+      .logo {
+        height: 50px;
       }
     }
   </style>
@@ -250,18 +266,22 @@
 <body>
 
 <div class="container">
+  <div class="logo-container">
+    <img src="logo.png" alt="D-TECh Logo" class="logo">
+  </div>
+  
   <h2 class="glow">DTECH SECURE PORTAL</h2>
-  
+
   <div id="error-msg" class="error" style="display: none;"></div>
-  
+
   <div class="terminal-effect">
     <input type="text" id="username" placeholder="Username" autocomplete="username" />
   </div>
-  
+
   <div class="terminal-effect">
     <input type="password" id="password" placeholder="Password" autocomplete="current-password" />
   </div>
-  
+
   <button id="login-btn">LOGIN</button>
 
   <div id="signup-section">
@@ -400,7 +420,7 @@ document.getElementById("login-btn").addEventListener("click", async () => {
   try {
     showLoading(loginBtn);
     showMessage(errorMsg, "Authenticating... Please wait", false);
-    
+
     if (!GITHUB_TOKEN) GITHUB_TOKEN = await getToken();
     if (allUsers.length === 0) await fetchAllUsers(GITHUB_TOKEN);
 
@@ -423,7 +443,7 @@ document.getElementById("login-btn").addEventListener("click", async () => {
     showInfo(info);
     localStorage.setItem("loggedInUser", JSON.stringify(info));
     showMessage(errorMsg, "Authentication successful! Redirecting...", false);
-    
+
     await new Promise(res => setTimeout(res, 3000));
     window.location.href = "nex.html";
   } catch (err) {
@@ -435,17 +455,17 @@ document.getElementById("login-btn").addEventListener("click", async () => {
 document.getElementById("signup-btn").addEventListener("click", async () => {
   const msg = document.getElementById("signup-msg");
   const signupBtn = document.getElementById("signup-btn");
-  
+
   try {
     showLoading(signupBtn);
     showMessage(msg, "Initializing secure connection...", false);
-    
+
     if (!GITHUB_TOKEN) GITHUB_TOKEN = await getToken();
     if (allUsers.length === 0) await fetchAllUsers(GITHUB_TOKEN);
 
     showMessage(msg, "Verifying IP address...", false);
     const ip = await getIP();
-    
+
     const takenByIP = allUsers.filter(u => u.taken && u.ip === ip);
     if (takenByIP.length >= 2) {
       showMessage(msg, "Maximum account limit reached for this IP.", true);
@@ -469,7 +489,7 @@ document.getElementById("signup-btn").addEventListener("click", async () => {
     if (idx !== -1) batch[idx] = availableUser;
 
     await updateGist(availableUser.gistId, availableUser.filename, batch, GITHUB_TOKEN);
-    
+
     showMessage(msg, "Creating secure gist...", false);
     const gist = await createPersonalGist(availableUser.username, GITHUB_TOKEN);
 
@@ -512,7 +532,7 @@ function downloadInfo() {
   a.href = URL.createObjectURL(blob);
   a.download = "dtech_credentials.txt";
   a.click();
-  
+
   const msg = document.getElementById("signup-msg");
   showMessage(msg, "Download started!", false);
   setTimeout(() => msg.style.display = 'none', 2000);
