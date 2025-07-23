@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📥 Download Starting...</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #121212;
+      color: #ffffff;
+    }
+    a {
+      color: #00ffd5;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h2>📥 Your download is starting...</h2>
+  <p id="message">If it doesn’t, <a id="downloadLink" href="#" target="_blank">click here</a>.</p>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const fileUrl = urlParams.get('file');
+
+    if (fileUrl) {
+      const a = document.createElement('a');
+      a.href = fileUrl;
+      a.download = '';
+      document.getElementById('downloadLink').href = fileUrl;
+      a.click();
+    } else {
+      document.getElementById('message').innerHTML = "❌ No file URL provided.";
+    }
+  </script>
+</body>
+</html>
