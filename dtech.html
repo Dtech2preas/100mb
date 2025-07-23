@@ -302,6 +302,64 @@
       display: none;
     }
     
+    /* New additions */
+    .alert-banner {
+      background: rgba(218, 54, 51, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+    }
+    
+    .alert-banner.warning {
+      background: rgba(158, 106, 3, 0.1);
+      border-left-color: var(--warning);
+    }
+    
+    .refresh-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    
+    .refresh-button:hover {
+      background: var(--primary-light);
+    }
+    
+    .time-window-selector {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    
+    .time-window-button {
+      background: var(--card-bg);
+      color: var(--text-light);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+    
+    .time-window-button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
     @media (max-width: 768px) {
       body {
         padding: 16px;
@@ -322,6 +380,11 @@
       .compact-table {
         display: table;
       }
+      
+      .time-window-selector {
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
     }
   </style>
 </head>
@@ -331,8 +394,17 @@
       <h1>GitHub API Rate Limit Dashboard</h1>
     </div>
     <div class="header-actions">
+      <button id="refreshButton" class="refresh-button">
+        <i class="fas fa-sync-alt"></i>
+        Refresh
+      </button>
       <div id="lastUpdated" class="last-updated">Loading data...</div>
     </div>
+  </div>
+  
+  <div id="alertBanner" class="alert-banner warning" style="display: none;">
+    <i class="fas fa-exclamation-triangle"></i>
+    <div id="alertMessage"></div>
   </div>
   
   <div class="integrity-card">
@@ -390,6 +462,13 @@
     </div>
   </div>
   
+  <div class="time-window-selector">
+    <button class="time-window-button active" data-hours="1">Last Hour</button>
+    <button class="time-window-button" data-hours="24">Last 24h</button>
+    <button class="time-window-button" data-hours="168">Last 7d</button>
+    <button class="time-window-button" data-hours="720">Last 30d</button>
+  </div>
+  
   <h2>Server Status</h2>
   <div id="serverCards" class="servers-grid"></div>
   
@@ -424,91 +503,123 @@
   </div>
 
   <script>
-    (async () => {
-      const TOKENS_GIST = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
-      const RATE_GIST_API = "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f";
+    // Configuration
+    const CONFIG = {
+      TOKENS_GIST: "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt",
+      RATE_GIST_API: "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f",
+      REFRESH_INTERVAL: 300000, // 5 minutes
+      CRITICAL_THRESHOLD: 40, // Percentage remaining that triggers critical alert
+      WARNING_THRESHOLD: 60 // Percentage remaining that triggers warning
+    };
+    
+    // State management
+    let appState = {
+      data: null,
+      lastFetch: null,
+      timeWindow: 24,
+      alert: null
+    };
+    
+    // DOM elements
+    const elements = {
+      integrity: document.getElementById("integrity"),
+      integrityBar: document.getElementById("integrityBar"),
+      integrityStatus: document.getElementById("integrityStatus"),
+      usagePercent: document.getElementById("usagePercent"),
+      today: document.getElementById("today"),
+      avgDaily: document.getElementById("avgDaily"),
+      month: document.getElementById("month"),
+      serverCards: document.getElementById("serverCards"),
+      lastUpdated: document.getElementById("lastUpdated"),
+      footerTimestamp: document.getElementById("footerTimestamp"),
+      refreshButton: document.getElementById("refreshButton"),
+      alertBanner: document.getElementById("alertBanner"),
+      alertMessage: document.getElementById("alertMessage"),
+      timeWindowButtons: document.querySelectorAll(".time-window-button")
+    };
+    
+    // Utility functions
+    function getStatusColor(percent) {
+      if (percent >= CONFIG.WARNING_THRESHOLD) return { 
+        bg: 'rgba(35, 134, 54, 0.1)', 
+        text: 'var(--success)', 
+        status: 'Optimal',
+        chart: 'var(--chart-good)',
+        icon: 'fa-check-circle'
+      };
+      if (percent >= CONFIG.CRITICAL_THRESHOLD) return { 
+        bg: 'rgba(158, 106, 3, 0.1)', 
+        text: 'var(--warning)', 
+        status: 'Stable',
+        chart: 'var(--chart-warning)',
+        icon: 'fa-exclamation-circle'
+      };
+      return { 
+        bg: 'rgba(218, 54, 51, 0.2)', 
+        text: 'var(--danger)', 
+        status: 'Critical',
+        chart: 'var(--chart-critical)',
+        icon: 'fa-exclamation-triangle'
+      };
+    }
+    
+    function formatToken(token) {
+      return `${token.substring(0, 4)}••••${token.substring(token.length - 4)}`;
+    }
+    
+    function formatShortDate(dateString) {
+      const date = new Date(dateString);
+      const now = new Date();
+      const diffHours = Math.abs(now - date) / 36e5;
       
-      function getStatusColor(percent) {
-        if (percent >= 80) return { 
-          bg: 'rgba(35, 134, 54, 0.1)', 
-          text: 'var(--success)', 
-          status: 'Optimal',
-          chart: 'var(--chart-good)'
-        };
-        if (percent >= 60) return { 
-          bg: 'rgba(158, 106, 3, 0.1)', 
-          text: 'var(--warning)', 
-          status: 'Stable',
-          chart: 'var(--chart-warning)'
-        };
-        if (percent >= 40) return { 
-          bg: 'rgba(218, 54, 51, 0.1)', 
-          text: 'var(--danger)', 
-          status: 'Warning',
-          chart: 'var(--chart-critical)'
-        };
-        return { 
-          bg: 'rgba(218, 54, 51, 0.2)', 
-          text: 'var(--danger)', 
-          status: 'Critical',
-          chart: 'var(--chart-critical)'
-        };
+      if (diffHours < 1) {
+        const diffMins = Math.round(diffHours * 60);
+        return `${diffMins}m ago`;
+      } else if (diffHours < 24) {
+        return `${Math.round(diffHours)}h ago`;
+      } else {
+        return `${Math.round(diffHours / 24)}d ago`;
       }
-      
-      function formatToken(token) {
-        return `${token.substring(0, 4)}••••${token.substring(token.length - 4)}`;
+    }
+    
+    function formatNumber(num) {
+      if (num > 1000) {
+        return (num / 1000).toFixed(1) + 'k';
       }
-      
-      function formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit'
-        });
-      }
-      
-      function formatShortDate(dateString) {
-        const date = new Date(dateString);
-        const now = new Date();
-        const diffHours = Math.abs(now - date) / 36e5;
-        
-        if (diffHours < 1) {
-          const diffMins = Math.round(diffHours * 60);
-          return `${diffMins}m ago`;
-        } else if (diffHours < 24) {
-          return `${Math.round(diffHours)}h ago`;
-        } else {
-          return `${Math.round(diffHours / 24)}d ago`;
-        }
-      }
-      
-      function formatNumber(num) {
-        if (num > 1000) {
-          return (num / 1000).toFixed(1) + 'k';
-        }
-        return num.toString();
-      }
-      
-      function calculateTrend(current, previous) {
-        if (previous === 0) return { value: 0, direction: 'up' };
-        const change = ((current - previous) / previous) * 100;
-        return {
-          value: Math.abs(change).toFixed(1),
-          direction: change >= 0 ? 'up' : 'down'
-        };
-      }
-      
+      return num.toString();
+    }
+    
+    function calculateTrend(current, previous) {
+      if (previous === 0) return { value: 0, direction: 'up' };
+      const change = ((current - previous) / previous) * 100;
+      return {
+        value: Math.abs(change).toFixed(1),
+        direction: change >= 0 ? 'up' : 'down'
+      };
+    }
+    
+    function showAlert(message, isWarning = true) {
+      elements.alertMessage.textContent = message;
+      elements.alertBanner.className = isWarning ? 'alert-banner warning' : 'alert-banner';
+      elements.alertBanner.style.display = 'flex';
+      appState.alert = { message, isWarning };
+    }
+    
+    function hideAlert() {
+      elements.alertBanner.style.display = 'none';
+      appState.alert = null;
+    }
+    
+    // Data processing
+    async function fetchData() {
       try {
-        // Show loading state
-        document.getElementById("integrity").innerText = "-";
-        
         // Fetch token list
-        const tokenListRaw = await fetch(TOKENS_GIST);
+        const tokenListRaw = await fetch(CONFIG.TOKENS_GIST);
         const tokenList = (await tokenListRaw.text()).trim().split('\n').filter(t => t.startsWith('ghp_'));
         const token = tokenList[Math.floor(Math.random() * tokenList.length)];
         
         // Fetch rate limit data
-        const rateRes = await fetch(RATE_GIST_API, {
+        const rateRes = await fetch(CONFIG.RATE_GIST_API, {
           headers: { Authorization: `token ${token}` }
         });
         
@@ -516,190 +627,277 @@
         
         const rateData = await rateRes.json();
         const contentRaw = rateData.files["rate.json"].content;
-        const allData = JSON.parse(contentRaw);
+        return JSON.parse(contentRaw);
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+        showAlert(`Failed to fetch data: ${error.message}`, false);
+        return null;
+      }
+    }
+    
+    function processData(rawData) {
+      if (!rawData) return null;
+      
+      // Filter and sort entries
+      const tokenEntries = rawData
+        .filter(entry => entry.token)
+        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      
+      // Group by token and get latest
+      const entriesByToken = {};
+      tokenEntries.forEach(entry => {
+        if (!entriesByToken[entry.token]) {
+          entriesByToken[entry.token] = [];
+        }
+        entriesByToken[entry.token].push(entry);
+      });
+      
+      const latestEntries = Object.keys(entriesByToken).map(token => {
+        return entriesByToken[token][0]; // Already sorted by date
+      });
+      
+      // Calculate statistics
+      const now = new Date();
+      const cutoffTime = new Date(now.getTime() - (appState.timeWindow * 60 * 60 * 1000));
+      
+      let totalUsed = 0;
+      let totalLimit = 0;
+      let requestsToday = 0;
+      let requestsYesterday = 0;
+      let requestsMonth = 0;
+      let prevRequestsYesterday = 0;
+      let prevRequestsMonth = 0;
+      let windowRequests = 0;
+      
+      tokenEntries.forEach((entry, index) => {
+        const used = entry.limit - entry.remaining;
+        const entryDate = new Date(entry.timestamp);
         
-        // Filter and sort entries
-        const tokenEntries = allData
-          .filter(entry => entry.token)
-          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-        
-        // Group by token and get latest
-        const entriesByToken = {};
-        tokenEntries.forEach(entry => {
-          if (!entriesByToken[entry.token]) {
-            entriesByToken[entry.token] = [];
-          }
-          entriesByToken[entry.token].push(entry);
-        });
-        
-        const latestEntries = Object.keys(entriesByToken).map(token => {
-          return entriesByToken[token][0]; // Already sorted by date
-        });
-        
-        // Calculate statistics
-        const now = new Date();
-        let totalUsed = 0;
-        let totalLimit = 0;
-        let requestsToday = 0;
-        let requestsYesterday = 0;
-        let requestsMonth = 0;
-        let prevRequestsYesterday = 0;
-        let prevRequestsMonth = 0;
-        
-        tokenEntries.forEach((entry, index) => {
-          const used = entry.limit - entry.remaining;
-          const entryDate = new Date(entry.timestamp);
-          
-          // For trend calculations
-          if (index < tokenEntries.length / 2) {
-            prevRequestsMonth += used;
-          }
-          
-          if (entryDate.toDateString() === now.toDateString()) {
-            requestsToday += used;
-          }
-          
-          const yesterday = new Date(now);
-          yesterday.setDate(yesterday.getDate() - 1);
-          if (entryDate.toDateString() === yesterday.toDateString()) {
-            requestsYesterday += used;
-          } else if (entryDate.toDateString() === new Date(yesterday.setDate(yesterday.getDate() - 1)).toDateString()) {
-            prevRequestsYesterday += used;
-          }
-          
-          if (entryDate.getMonth() === now.getMonth() && entryDate.getFullYear() === now.getFullYear()) {
-            requestsMonth += used;
-          }
-        });
-        
-        // Process latest entries for totals
-        latestEntries.forEach(entry => {
-          const used = entry.limit - entry.remaining;
-          totalUsed += used;
-          totalLimit += entry.limit;
-        });
-        
-        // Calculate trends
-        const todayTrend = calculateTrend(requestsToday, requestsYesterday);
-        const yesterdayTrend = calculateTrend(requestsYesterday, prevRequestsYesterday);
-        const monthTrend = calculateTrend(requestsMonth, prevRequestsMonth);
-        
-        // Update UI
-        const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
-        const remainingPercent = 100 - integrityPercent;
-        const statusColor = getStatusColor(remainingPercent);
-        
-        document.getElementById("integrity").innerHTML = `${remainingPercent}%`;
-        document.getElementById("integrityBar").style.backgroundColor = statusColor.chart;
-        document.getElementById("integrityBar").style.width = `${remainingPercent}%`;
-        document.getElementById("integrityStatus").innerText = statusColor.status;
-        document.getElementById("integrityStatus").style.background = statusColor.bg;
-        document.getElementById("integrityStatus").style.color = statusColor.text;
-        
-        document.getElementById("usagePercent").innerText = `${integrityPercent}%`;
-        document.getElementById("today").innerText = formatNumber(requestsToday);
-        document.getElementById("avgDaily").innerText = formatNumber(Math.round(requestsMonth / now.getDate()));
-        document.getElementById("month").innerText = formatNumber(requestsMonth);
-        
-        // Update trend indicators
-        document.querySelectorAll('.trend-up').forEach(el => {
-          el.innerHTML = `<i class="fas fa-arrow-up"></i><span>${todayTrend.value}% from yesterday</span>`;
-        });
-        
-        document.querySelectorAll('.trend-down').forEach(el => {
-          el.innerHTML = `<i class="fas fa-arrow-down"></i><span>${monthTrend.value}% from last period</span>`;
-        });
-        
-        // Update timestamps
-        const lastUpdatedTime = tokenEntries.length > 0 ? tokenEntries[0].timestamp : new Date();
-        document.getElementById("lastUpdated").innerText = `Updated ${formatShortDate(lastUpdatedTime)}`;
-        document.getElementById("footerTimestamp").innerText = new Date(lastUpdatedTime).toLocaleString();
-        
-        // Create server cards
-        const serverCardsContainer = document.getElementById("serverCards");
-        serverCardsContainer.innerHTML = "";
-        
-        latestEntries.forEach((entry, index) => {
-          const percent = Math.round((entry.remaining / entry.limit) * 100);
-          const statusColor = getStatusColor(percent);
-          const used = entry.limit - entry.remaining;
-          
-          const card = document.createElement("div");
-          card.className = "server-card";
-          card.innerHTML = `
-            <div class="server-header">
-              <div class="server-title">Server ${index + 1}</div>
-              <div class="server-status" style="background: ${statusColor.bg}; color: ${statusColor.text}">
-                ${statusColor.status}
-              </div>
-            </div>
-            <div class="server-stats">
-              <div class="stat-item">
-                <div class="stat-label">Remaining</div>
-                <div class="stat-value" style="color: ${statusColor.text}">${entry.remaining}</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-label">Limit</div>
-                <div class="stat-value">${entry.limit}</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-label">Usage</div>
-                <div class="stat-value" style="color: ${statusColor.text}">${100 - percent}%</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-label">Updated</div>
-                <div class="stat-value">${formatShortDate(entry.timestamp)}</div>
-              </div>
-            </div>
-          `;
-          serverCardsContainer.appendChild(card);
-        });
-        
-        // Populate tables
-        function populateTable(table, isCompact = false) {
-          const tbody = table.querySelector("tbody");
-          tbody.innerHTML = "";
-          
-          tokenEntries.slice(0, 8).forEach((entry, index) => {
-            const percent = Math.round((entry.remaining / entry.limit) * 100);
-            const statusColor = getStatusColor(percent);
-            
-            const row = document.createElement("tr");
-            
-            if (isCompact) {
-              row.innerHTML = `
-                <td>Server ${index + 1}</td>
-                <td>${entry.remaining}</td>
-                <td style="color: ${statusColor.text}">${100 - percent}%</td>
-              `;
-            } else {
-              row.innerHTML = `
-                <td>Server ${index + 1}</td>
-                <td class="token-cell">${formatToken(entry.token)}</td>
-                <td>${entry.remaining}</td>
-                <td>${entry.limit}</td>
-                <td style="color: ${statusColor.text}">${100 - percent}%</td>
-                <td>${formatShortDate(entry.timestamp)}</td>
-              `;
-            }
-            
-            tbody.appendChild(row);
-          });
+        // For selected time window
+        if (entryDate >= cutoffTime) {
+          windowRequests += used;
         }
         
-        populateTable(document.querySelector(".full-table"));
-        populateTable(document.querySelector(".compact-table"), true);
+        // For trend calculations
+        if (index < tokenEntries.length / 2) {
+          prevRequestsMonth += used;
+        }
         
-      } catch (err) {
-        console.error("Error loading data:", err);
-        document.getElementById("integrity").innerHTML = `Error`;
-        document.getElementById("integrityBar").style.backgroundColor = "var(--danger)";
-        document.getElementById("integrityBar").style.width = "100%";
-        document.getElementById("integrityStatus").innerText = "Data Unavailable";
-        document.getElementById("integrityStatus").style.background = "rgba(218, 54, 51, 0.2)";
-        document.getElementById("integrityStatus").style.color = "var(--danger)";
+        if (entryDate.toDateString() === now.toDateString()) {
+          requestsToday += used;
+        }
+        
+        const yesterday = new Date(now);
+        yesterday.setDate(yesterday.getDate() - 1);
+        if (entryDate.toDateString() === yesterday.toDateString()) {
+          requestsYesterday += used;
+        } else if (entryDate.toDateString() === new Date(yesterday.setDate(yesterday.getDate() - 1)).toDateString()) {
+          prevRequestsYesterday += used;
+        }
+        
+        if (entryDate.getMonth() === now.getMonth() && entryDate.getFullYear() === now.getFullYear()) {
+          requestsMonth += used;
+        }
+      });
+      
+      // Process latest entries for totals
+      latestEntries.forEach(entry => {
+        const used = entry.limit - entry.remaining;
+        totalUsed += used;
+        totalLimit += entry.limit;
+      });
+      
+      return {
+        tokenEntries,
+        latestEntries,
+        stats: {
+          totalUsed,
+          totalLimit,
+          requestsToday,
+          requestsYesterday,
+          requestsMonth,
+          prevRequestsYesterday,
+          prevRequestsMonth,
+          windowRequests
+        },
+        lastUpdated: tokenEntries.length > 0 ? tokenEntries[0].timestamp : new Date()
+      };
+    }
+    
+    // UI rendering
+    function renderUI(data) {
+      if (!data) return;
+      
+      const { latestEntries, tokenEntries, stats, lastUpdated } = data;
+      const { totalUsed, totalLimit } = stats;
+      
+      // Calculate integrity
+      const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
+      const remainingPercent = 100 - integrityPercent;
+      const statusColor = getStatusColor(remainingPercent);
+      
+      // Update integrity display
+      elements.integrity.textContent = `${remainingPercent}%`;
+      elements.integrityBar.style.backgroundColor = statusColor.chart;
+      elements.integrityBar.style.width = `${remainingPercent}%`;
+      elements.integrityStatus.textContent = statusColor.status;
+      elements.integrityStatus.style.background = statusColor.bg;
+      elements.integrityStatus.style.color = statusColor.text;
+      
+      // Check for alerts
+      if (remainingPercent < CONFIG.CRITICAL_THRESHOLD) {
+        showAlert(`Critical: Rate limit usage at ${integrityPercent}%. Consider adding more tokens or reducing API calls.`, false);
+      } else if (remainingPercent < CONFIG.WARNING_THRESHOLD) {
+        showAlert(`Warning: Rate limit usage at ${integrityPercent}%. Monitor closely.`);
+      } else {
+        hideAlert();
       }
-    })();
+      
+      // Calculate trends
+      const todayTrend = calculateTrend(stats.requestsToday, stats.requestsYesterday);
+      const yesterdayTrend = calculateTrend(stats.requestsYesterday, stats.prevRequestsYesterday);
+      const monthTrend = calculateTrend(stats.requestsMonth, stats.prevRequestsMonth);
+      
+      // Update stats cards
+      elements.usagePercent.textContent = `${integrityPercent}%`;
+      elements.today.textContent = formatNumber(stats.requestsToday);
+      elements.avgDaily.textContent = formatNumber(Math.round(stats.requestsMonth / new Date().getDate()));
+      elements.month.textContent = formatNumber(stats.requestsMonth);
+      
+      // Update trend indicators
+      document.querySelectorAll('.trend-up').forEach(el => {
+        el.innerHTML = `<i class="fas fa-arrow-up"></i><span>${todayTrend.value}% from yesterday</span>`;
+      });
+      
+      document.querySelectorAll('.trend-down').forEach(el => {
+        el.innerHTML = `<i class="fas fa-arrow-down"></i><span>${monthTrend.value}% from last period</span>`;
+      });
+      
+      // Update timestamps
+      elements.lastUpdated.textContent = `Updated ${formatShortDate(lastUpdated)}`;
+      elements.footerTimestamp.textContent = new Date(lastUpdated).toLocaleString();
+      
+      // Render server cards
+      elements.serverCards.innerHTML = "";
+      
+      latestEntries.forEach((entry, index) => {
+        const percent = Math.round((entry.remaining / entry.limit) * 100);
+        const statusColor = getStatusColor(percent);
+        const used = entry.limit - entry.remaining;
+        
+        const card = document.createElement("div");
+        card.className = "server-card";
+        card.innerHTML = `
+          <div class="server-header">
+            <div class="server-title">Server ${index + 1}</div>
+            <div class="server-status" style="background: ${statusColor.bg}; color: ${statusColor.text}">
+              <i class="fas ${statusColor.icon}"></i> ${statusColor.status}
+            </div>
+          </div>
+          <div class="server-stats">
+            <div class="stat-item">
+              <div class="stat-label">Remaining</div>
+              <div class="stat-value" style="color: ${statusColor.text}">${entry.remaining}</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Limit</div>
+              <div class="stat-value">${entry.limit}</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Usage</div>
+              <div class="stat-value" style="color: ${statusColor.text}">${100 - percent}%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Updated</div>
+              <div class="stat-value">${formatShortDate(entry.timestamp)}</div>
+            </div>
+          </div>
+        `;
+        elements.serverCards.appendChild(card);
+      });
+      
+      // Populate tables
+      function populateTable(table, isCompact = false) {
+        const tbody = table.querySelector("tbody");
+        tbody.innerHTML = "";
+        
+        // Filter entries based on time window
+        const cutoffTime = new Date(new Date().getTime() - (appState.timeWindow * 60 * 60 * 1000));
+        const filteredEntries = tokenEntries.filter(entry => new Date(entry.timestamp) >= cutoffTime);
+        
+        filteredEntries.slice(0, 8).forEach((entry, index) => {
+          const percent = Math.round((entry.remaining / entry.limit) * 100);
+          const statusColor = getStatusColor(percent);
+          
+          const row = document.createElement("tr");
+          
+          if (isCompact) {
+            row.innerHTML = `
+              <td>Server ${index + 1}</td>
+              <td>${entry.remaining}</td>
+              <td style="color: ${statusColor.text}">${100 - percent}%</td>
+            `;
+          } else {
+            row.innerHTML = `
+              <td>Server ${index + 1}</td>
+              <td class="token-cell">${formatToken(entry.token)}</td>
+              <td>${entry.remaining}</td>
+              <td>${entry.limit}</td>
+              <td style="color: ${statusColor.text}">${100 - percent}%</td>
+              <td>${formatShortDate(entry.timestamp)}</td>
+            `;
+          }
+          
+          tbody.appendChild(row);
+        });
+      }
+      
+      populateTable(document.querySelector(".full-table"));
+      populateTable(document.querySelector(".compact-table"), true);
+    }
+    
+    // Initialize app
+    async function initApp() {
+      // Set up event listeners
+      elements.refreshButton.addEventListener('click', refreshData);
+      
+      elements.timeWindowButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          elements.timeWindowButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          appState.timeWindow = parseInt(button.dataset.hours);
+          if (appState.data) {
+            const processedData = processData(appState.data);
+            renderUI(processedData);
+          }
+        });
+      });
+      
+      // Initial data load
+      await refreshData();
+      
+      // Set up auto-refresh
+      setInterval(refreshData, CONFIG.REFRESH_INTERVAL);
+    }
+    
+    async function refreshData() {
+      elements.refreshButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing';
+      elements.refreshButton.disabled = true;
+      
+      const rawData = await fetchData();
+      if (rawData) {
+        appState.data = rawData;
+        appState.lastFetch = new Date();
+        const processedData = processData(rawData);
+        renderUI(processedData);
+      }
+      
+      elements.refreshButton.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
+      elements.refreshButton.disabled = false;
+    }
+    
+    // Start the application
+    document.addEventListener('DOMContentLoaded', initApp);
   </script>
 </body>
 </html>
