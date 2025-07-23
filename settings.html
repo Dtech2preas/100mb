@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DTech ⚙️ Settings</title>
+  <style>
+    :root {
+      --bg: #121212;
+      --text: #fff;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    label, input, select, button {
+      display: block;
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #00ffd5;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #notif {
+      display: none;
+      margin-top: 20px;
+      padding: 10px;
+      background: #00ffd5;
+      color: #000;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>⚙️ DTech App Settings</h2>
+
+  <!-- Username -->
+  <label for="username">👤 Username:</label>
+  <input type="text" id="username" placeholder="Enter your name">
+
+  <!-- Theme -->
+  <label for="theme">🎨 Theme:</label>
+  <select id="theme">
+    <option value="dark">Dark</option>
+    <option value="light">Light</option>
+  </select>
+
+  <!-- Sound Alerts -->
+  <label><input type="checkbox" id="soundToggle"> 🔊 Enable Sound Alerts</label>
+
+  <!-- Notifications -->
+  <label><input type="checkbox" id="notifToggle"> 🔔 Enable Notifications</label>
+
+  <!-- Vibration -->
+  <label><input type="checkbox" id="vibrateToggle"> 📳 Enable Vibration</label>
+
+  <!-- Save Button -->
+  <button onclick="saveSettings()">💾 Save Settings</button>
+
+  <!-- Test Notification -->
+  <button onclick="testNotification()">🔔 Test Notification</button>
+
+  <!-- Notification Display -->
+  <div id="notif">🔔 This is a test notification!</div>
+
+  <!-- Sounds -->
+  <audio id="ding" src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" preload="auto"></audio>
+
+  <script>
+    // Load existing settings
+    window.onload = () => {
+      document.getElementById("username").value = localStorage.getItem("username") || "";
+      document.getElementById("theme").value = localStorage.getItem("theme") || "dark";
+      document.getElementById("soundToggle").checked = localStorage.getItem("sound") === "true";
+      document.getElementById("notifToggle").checked = localStorage.getItem("notify") === "true";
+      document.getElementById("vibrateToggle").checked = localStorage.getItem("vibrate") === "true";
+
+      applyTheme(document.getElementById("theme").value);
+    };
+
+    function saveSettings() {
+      const username = document.getElementById("username").value;
+      const theme = document.getElementById("theme").value;
+      const sound = document.getElementById("soundToggle").checked;
+      const notify = document.getElementById("notifToggle").checked;
+      const vibrate = document.getElementById("vibrateToggle").checked;
+
+      localStorage.setItem("username", username);
+      localStorage.setItem("theme", theme);
+      localStorage.setItem("sound", sound);
+      localStorage.setItem("notify", notify);
+      localStorage.setItem("vibrate", vibrate);
+
+      applyTheme(theme);
+      alert("✅ Settings saved!");
+    }
+
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        document.documentElement.style.setProperty("--bg", "#121212");
+        document.documentElement.style.setProperty("--text", "#ffffff");
+      } else {
+        document.documentElement.style.setProperty("--bg", "#ffffff");
+        document.documentElement.style.setProperty("--text", "#000000");
+      }
+    }
+
+    function testNotification() {
+      if (localStorage.getItem("notify") === "true") {
+        const notif = document.getElementById("notif");
+        notif.style.display = "block";
+        notif.textContent = `🔔 Hello ${localStorage.getItem("username") || "User"}!`;
+        setTimeout(() => notif.style.display = "none", 3000);
+      }
+
+      if (localStorage.getItem("sound") === "true") {
+        document.getElementById("ding").play();
+      }
+
+      if (localStorage.getItem("vibrate") === "true" && "vibrate" in navigator) {
+        navigator.vibrate(200);
+      }
+    }
+  </script>
+</body>
+</html>
