@@ -13,6 +13,12 @@
     h1 {
       color: #58a6ff;
     }
+    h2 {
+      color: #58a6ff;
+      margin-top: 30px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 5px;
+    }
     .status {
       font-size: 1.2em;
       margin: 10px 0;
@@ -36,18 +42,31 @@
     th {
       background: #21262d;
     }
+    .server-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .server-header {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #58a6ff;
+    }
+    .server-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .stat-item {
+      margin-bottom: 5px;
+    }
     .footer {
       margin-top: 20px;
       font-size: 0.9em;
       color: #8b949e;
-    }
-    .token-short {
-      font-family: monospace;
-      cursor: pointer;
-    }
-    .token-full {
-      display: none;
-      font-family: monospace;
     }
   </style>
 </head>
@@ -59,9 +78,14 @@
 <div class="status">Requests Yesterday: <span id="yesterday">-</span></div>
 <div class="status">Requests This Month: <span id="month">-</span></div>
 
+<h2>Server Details</h2>
+<div id="serverCards"></div>
+
+<h2>Historical Data</h2>
 <table id="statsTable">
   <thead>
     <tr>
+      <th>Server</th>
       <th>Token</th>
       <th>Remaining</th>
       <th>Limit</th>
@@ -89,10 +113,12 @@
   }
 
   function formatToken(token) {
-    if (!token) return '';
-    const prefix = token.slice(0, 7);
-    const suffix = token.slice(-3);
-    return `${prefix}...${suffix}`;
+    return token.substring(0, 8) + '****';
+  }
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleString();
   }
 
   try {
@@ -108,19 +134,29 @@
     
     const rateData = await rateRes.json();
     const contentRaw = rateData.files["rate.json"].content;
-    const data = JSON.parse(contentRaw);
+    const allData = JSON.parse(contentRaw);
 
-    // Group entries by token, keeping only the latest entry for each token
-    const tokenMap = new Map();
-    data.slice(1).forEach(entry => {
-      if (!entry.token) return;
-      
-      const existing = tokenMap.get(entry.token);
-      if (!existing || new Date(entry.timestamp) > new Date(existing.timestamp)) {
-        tokenMap.set(entry.token, entry);
+    // Filter out entries without token (like the first status entry)
+    const tokenEntries = allData.filter(entry => entry.token);
+    
+    // Group entries by token
+    const entriesByToken = {};
+    tokenEntries.forEach(entry => {
+      if (!entriesByToken[entry.token]) {
+        entriesByToken[entry.token] = [];
       }
+      entriesByToken[entry.token].push(entry);
     });
 
+    // Get the latest entry for each token
+    const latestEntries = Object.keys(entriesByToken).map(token => {
+      const entries = entriesByToken[token];
+      return entries.reduce((latest, current) => {
+        return new Date(current.timestamp) > new Date(latest.timestamp) ? current : latest;
+      });
+    });
+
+    // Calculate statistics
     const now = new Date();
     let totalUsed = 0;
     let totalLimit = 0;
@@ -128,10 +164,8 @@
     let requestsYesterday = 0;
     let requestsMonth = 0;
 
-    // Calculate totals from all entries (not just latest)
-    data.slice(1).forEach(entry => {
-      if (!entry.token) return;
-      
+    // Process all entries for historical data
+    tokenEntries.forEach(entry => {
       const used = entry.limit - entry.remaining;
       const lastUpdated = new Date(entry.timestamp);
       
@@ -146,40 +180,63 @@
       }
     });
 
-    // Calculate integrity from latest entries only
-    const latestEntries = Array.from(tokenMap.values());
+    // Process latest entries for server cards and totals
     latestEntries.forEach(entry => {
-      totalUsed += entry.limit - entry.remaining;
+      const used = entry.limit - entry.remaining;
+      totalUsed += used;
       totalLimit += entry.limit;
     });
 
-    const tbody = document.querySelector("#statsTable tbody");
-    tbody.innerHTML = "";
-
-    latestEntries.forEach((entry, index) => {
-      const percent = Math.round((entry.remaining / entry.limit) * 100);
-      const shortToken = formatToken(entry.token);
-
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>
-          <span class="token-short" onclick="this.style.display='none';this.nextElementSibling.style.display='inline'">${shortToken}</span>
-          <span class="token-full">${entry.token}</span>
-        </td>
-        <td>${entry.remaining}</td>
-        <td>${entry.limit}</td>
-        <td style="color: ${colorFromPercent(percent)}">${100 - percent}%</td>
-        <td>${entry.timestamp}</td>
-      `;
-      tbody.appendChild(row);
-    });
-
+    // Update summary information
     const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
     document.getElementById("integrity").innerText = `Structural Integrity: ${100 - integrityPercent}%`;
     document.getElementById("integrity").style.color = colorFromPercent(100 - integrityPercent);
     document.getElementById("today").innerText = requestsToday;
     document.getElementById("yesterday").innerText = requestsYesterday;
     document.getElementById("month").innerText = requestsMonth;
+
+    // Create server cards for latest entries
+    const serverCardsContainer = document.getElementById("serverCards");
+    serverCardsContainer.innerHTML = "";
+    
+    latestEntries.forEach((entry, index) => {
+      const percent = Math.round((entry.remaining / entry.limit) * 100);
+      const color = colorFromPercent(percent);
+      
+      const card = document.createElement("div");
+      card.className = "server-card";
+      card.innerHTML = `
+        <div class="server-header">Server ${index + 1}</div>
+        <div class="server-stats">
+          <div class="stat-item"><strong>Token:</strong> ${formatToken(entry.token)}</div>
+          <div class="stat-item"><strong>Remaining:</strong> ${entry.remaining}</div>
+          <div class="stat-item"><strong>Limit:</strong> ${entry.limit}</div>
+          <div class="stat-item"><strong>Usage:</strong> <span style="color: ${color}">${100 - percent}%</span></div>
+          <div class="stat-item"><strong>Last Updated:</strong> ${formatDate(entry.timestamp)}</div>
+        </div>
+      `;
+      serverCardsContainer.appendChild(card);
+    });
+
+    // Populate historical data table
+    const tbody = document.querySelector("#statsTable tbody");
+    tbody.innerHTML = "";
+    
+    tokenEntries.forEach((entry, index) => {
+      const percent = Math.round((entry.remaining / entry.limit) * 100);
+      const color = colorFromPercent(percent);
+      
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>Server ${index + 1}</td>
+        <td>${formatToken(entry.token)}</td>
+        <td>${entry.remaining}</td>
+        <td>${entry.limit}</td>
+        <td style="color: ${color}">${100 - percent}%</td>
+        <td>${formatDate(entry.timestamp)}</td>
+      `;
+      tbody.appendChild(row);
+    });
 
   } catch (err) {
     document.getElementById("integrity").innerText = `❌ Failed to load data: ${err.message}`;
