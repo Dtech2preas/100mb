@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>X24 Dashboard</title>
@@ -61,7 +59,7 @@
       font-weight: 700;
     }
 
-    p {
+    .tagline {
       color: rgba(255, 255, 255, 0.7);
       margin-bottom: 40px;
       font-size: 1.1rem;
@@ -109,11 +107,35 @@
     .button:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
     }
 
     .button:hover::before {
       left: 100%;
+    }
+
+    /* Unique colors for each button */
+    .button.logger:hover {
+      background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+    }
+    
+    .button.stats:hover {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    .button.management:hover {
+      background: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
+    }
+    
+    .button.crunchyroll:hover {
+      background: linear-gradient(135deg, #f857a6 0%, #ff5858 100%);
+    }
+    
+    .button.dtech:hover {
+      background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%);
+    }
+    
+    .button.about:hover {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     }
 
     .button i {
@@ -154,7 +176,7 @@
       .button-grid {
         grid-template-columns: 1fr;
       }
-      
+
       h1 {
         font-size: 2.2rem;
       }
@@ -164,32 +186,32 @@
 <body>
 
   <div class="container pulse">
-    <h1>Welcome to X24 Tools</h1>
-    <p>Your all-in-one productivity and entertainment suite</p>
+    <h1>X24 Dashboard</h1>
+    <p class="tagline">Streamlined tools for productivity and entertainment</p>
 
     <div class="button-grid">
-      <a href="next.html" class="button">
-        <i class="fas fa-rocket"></i> Start X24 Logger
+      <a href="next.html" class="button logger">
+        <i class="fas fa-rocket"></i> X24 Logger
       </a>
-      <a href="stats.html" class="button">
-        <i class="fas fa-chart-bar"></i> View Statistics
+      <a href="stats.html" class="button stats">
+        <i class="fas fa-chart-bar"></i> Statistics
       </a>
-      <a href="games.html" class="button">
-        <i class="fas fa-gamepad"></i> Games Center
+      <a href="time.html" class="button management">
+        <i class="fas fa-tasks"></i> Management
       </a>
-      <a href="time.html" class="button">
-        <i class="fas fa-clock"></i> Time Manager
+      <a href="crunchyroll.html" class="button crunchyroll">
+        <i class="fas fa-film"></i> Crunchyroll
       </a>
-      <a href="quiet.html" class="button">
-        <i class="fas fa-volume-mute"></i> Quiet Mode
+      <a href="dtech.html" class="button dtech">
+        <i class="fas fa-chart-pie"></i> DTech Stats
       </a>
-      <a href="quote.html" class="button">
-        <i class="fas fa-quote-right"></i> Daily Quote
+      <a href="about.html" class="button about">
+        <i class="fas fa-info-circle"></i> About Us
       </a>
     </div>
 
     <div class="footer">
-      <i class="fas fa-copyright"></i> <span>X24 Suite</span> by DTech — V1.0
+      <i class="fas fa-copyright"></i> <span>X24 Suite</span> by DTech — V1.1
     </div>
   </div>
 
