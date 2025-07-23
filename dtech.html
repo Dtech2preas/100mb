@@ -2,96 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DTech Structural & Integrity Monitor</title>
+  <title>DTech Structural & Integrity Stats</title>
   <style>
     body {
-      background: #0e0e0e;
+      background-color: #0e0e0e;
       color: #00ffd5;
       font-family: 'Segoe UI', sans-serif;
-      padding: 2rem;
+      padding: 20px;
     }
-
     h1 {
-      text-align: center;
       color: #ff6bff;
-      margin-bottom: 2rem;
+      font-size: 28px;
     }
-
-    .token-card {
-      background: #1a1a1a;
-      border: 1px solid #00ffd5;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 8px #00ffd5;
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
     }
-
-    .token-id {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      color: #fff;
+    .stat-card {
+      background-color: #1a1a1a;
+      border-left: 5px solid #00ffd5;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-
-    .progress-bar {
-      height: 10px;
-      background: #333;
-      border-radius: 5px;
-      overflow: hidden;
-      margin: 0.5rem 0 1rem 0;
+    .stat-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #ffffff;
     }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #ff6bff, #00ffd5);
-    }
-
-    .stats {
-      font-size: 0.9rem;
+    .stat-card p {
+      margin: 0;
+      font-size: 15px;
       color: #ccc;
     }
   </style>
 </head>
 <body>
-  <h1>💠 DTech Token Structural Integrity</h1>
-  <div id="tokenContainer">Loading data...</div>
+  <h1>📊 DTech Structural & Integrity Dashboard</h1>
+  <div id="stats" class="stats-grid">Loading stats...</div>
 
   <script>
-    const DATA_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/690da2cdc6ce936a1ac4e373d630e95ff0186ecb/rate.json";
+    const DATA_URL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(
+      "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/690da2cdc6ce936a1ac4e373d630e95ff0186ecb/rate.json"
+    );
 
-    async function fetchAndDisplay() {
-      const container = document.getElementById("tokenContainer");
+    async function loadStats() {
       try {
         const res = await fetch(DATA_URL);
         const data = await res.json();
+        const statsContainer = document.getElementById('stats');
 
-        container.innerHTML = ""; // clear placeholder
+        if (!Array.isArray(data) || data.length === 0) {
+          statsContainer.innerHTML = "<p>No stats available yet.</p>";
+          return;
+        }
 
-        data.forEach((entry, index) => {
-          const percent = (entry.rate.remaining / entry.rate.limit) * 100;
-          const resetDate = new Date(entry.rate.reset * 1000).toLocaleString();
+        statsContainer.innerHTML = "";
 
-          const tokenCard = document.createElement("div");
-          tokenCard.className = "token-card";
-          tokenCard.innerHTML = `
-            <div class="token-id">🔑 Token ${index + 1}</div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: ${percent}%;"></div>
-            </div>
-            <div class="stats">
-              ✅ Remaining: <strong>${entry.rate.remaining}</strong> / ${entry.rate.limit}<br>
-              ❌ Used: <strong>${entry.rate.used}</strong><br>
-              ⏰ Reset Time: <strong>${resetDate}</strong>
-            </div>
+        data.forEach(entry => {
+          const { token, remaining, limit, used, timestamp } = entry;
+
+          const card = document.createElement('div');
+          card.className = 'stat-card';
+          card.innerHTML = `
+            <h3>🔐 Token Ending In: ${token.slice(-5)}</h3>
+            <p>📉 Remaining: ${remaining}</p>
+            <p>💥 Used: ${used}</p>
+            <p>📈 Limit: ${limit}</p>
+            <p>🕒 Updated: ${new Date(timestamp).toLocaleString()}</p>
           `;
-          container.appendChild(tokenCard);
+          statsContainer.appendChild(card);
         });
-      } catch (e) {
-        container.innerHTML = "⚠️ Failed to load data.";
-        console.error(e);
+
+      } catch (err) {
+        document.getElementById('stats').innerHTML = "<p style='color:red;'>❌ Failed to load stats.</p>";
+        console.error("Error loading data:", err);
       }
     }
 
-    fetchAndDisplay();
+    loadStats();
+    setInterval(loadStats, 2 * 60 * 1000); // auto-refresh every 2 minutes
   </script>
 </body>
 </html>
