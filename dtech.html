@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>📊 DTech GitHub Rate Limit Analytics</title>
+  <title>🚀 GitHub Rate Limit Status</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -26,95 +26,87 @@
       background: var(--bg-darker);
       color: var(--text);
       padding: 20px;
-      line-height: 1.6;
-    }
-    
-    .container {
-      max-width: 1400px;
+      line-height: 1.5;
+      max-width: 1200px;
       margin: 0 auto;
     }
     
-    h1, h2, h3 {
+    h1, h2 {
       color: var(--primary);
-      margin-bottom: 0.5em;
-    }
-    
-    h1 {
-      font-size: 2.2rem;
+      margin: 0.5em 0;
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+    
+    h1 {
+      font-size: 1.8rem;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 15px;
+      padding-bottom: 10px;
     }
     
     h2 {
-      font-size: 1.5rem;
-      margin-top: 40px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
+      font-size: 1.3rem;
+      margin-top: 25px;
     }
     
     .dashboard-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     
-    .status-cards {
+    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
     }
     
-    .status-card {
+    .stat-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
+      padding: 15px;
+      min-height: 90px;
     }
     
-    .status-card:hover {
-      transform: translateY(-3px);
-    }
-    
-    .status-card h3 {
-      font-size: 1.1rem;
-      margin-top: 0;
+    .stat-card h3 {
+      font-size: 0.95rem;
+      margin: 0 0 8px 0;
       color: var(--text-light);
       display: flex;
       align-items: center;
       gap: 8px;
     }
     
-    .status-card .value {
-      font-size: 2rem;
+    .stat-card .value {
+      font-size: 1.5rem;
       font-weight: bold;
-      margin: 10px 0;
+      margin: 5px 0;
     }
     
-    .status-card .description {
+    .stat-card .description {
       color: var(--text-light);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
     
     .integrity-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 25px;
-      margin-bottom: 30px;
-      text-align: center;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     .integrity-value {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: bold;
-      margin: 15px 0;
+      margin: 5px 0;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       background-clip: text;
@@ -122,87 +114,86 @@
     }
     
     .progress-container {
-      height: 10px;
+      width: 100%;
+      height: 8px;
       background: var(--bg-dark);
-      border-radius: 5px;
-      margin: 20px 0;
+      border-radius: 4px;
+      margin: 10px 0;
       overflow: hidden;
     }
     
     .progress-bar {
       height: 100%;
-      border-radius: 5px;
-      transition: width 0.5s ease;
+      border-radius: 4px;
     }
     
-    .server-cards {
+    .servers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
     }
     
     .server-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 15px;
     }
     
     .server-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     
     .server-title {
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: var(--primary);
     }
     
     .server-status {
       display: inline-block;
-      padding: 4px 8px;
+      padding: 3px 8px;
       border-radius: 12px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: bold;
     }
     
     .server-stats {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 10px;
+      font-size: 0.9rem;
     }
     
     .stat-item {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     
     .stat-label {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-light);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     
     .stat-value {
       font-weight: bold;
-      font-size: 1.1rem;
     }
     
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
+      margin: 20px 0;
       background: var(--card-bg);
       border-radius: 6px;
-      overflow: hidden;
+      font-size: 0.9rem;
     }
     
     th, td {
-      padding: 12px 15px;
+      padding: 10px 12px;
       border: 1px solid var(--border);
       text-align: left;
     }
@@ -211,21 +202,19 @@
       background: var(--bg-dark);
       font-weight: 600;
       color: var(--primary);
-    }
-    
-    tr:nth-child(even) {
-      background: rgba(1, 4, 9, 0.5);
+      font-size: 0.85rem;
     }
     
     .token-cell {
       font-family: monospace;
+      font-size: 0.85rem;
     }
     
     .footer {
-      margin-top: 40px;
-      padding-top: 20px;
+      margin-top: 20px;
+      padding-top: 15px;
       border-top: 1px solid var(--border);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-light);
       text-align: center;
     }
@@ -233,107 +222,113 @@
     .last-updated {
       font-size: 0.8rem;
       color: var(--text-light);
-      text-align: right;
-      margin-top: 10px;
     }
     
-    /* Responsive adjustments */
+    .compact-table {
+      display: none;
+    }
+    
     @media (max-width: 768px) {
-      .status-cards {
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .servers-grid {
         grid-template-columns: 1fr;
       }
       
-      .server-cards {
-        grid-template-columns: 1fr;
+      .full-table {
+        display: none;
       }
       
-      .server-stats {
-        grid-template-columns: 1fr;
+      .compact-table {
+        display: table;
       }
-    }
-    
-    /* Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .fade-in {
-      animation: fadeIn 0.5s ease-out forwards;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="dashboard-header">
-      <h1>
-        <i class="fas fa-chart-line"></i>
-        DTech GitHub Rate Limit Analytics
-      </h1>
-      <div id="lastUpdated" class="last-updated">Loading data...</div>
+  <div class="dashboard-header">
+    <h1>
+      <i class="fas fa-rocket"></i>
+      GitHub Rate Limit Structural Integrity
+    </h1>
+    <div id="lastUpdated" class="last-updated">Loading...</div>
+  </div>
+  
+  <div class="integrity-card">
+    <h3>Structural Integrity Status</h3>
+    <div id="integrity" class="integrity-value">-</div>
+    <div class="progress-container">
+      <div id="integrityBar" class="progress-bar" style="width: 0%"></div>
+    </div>
+    <div id="integrityStatus" style="font-size: 0.9rem; margin-top: 5px;"></div>
+  </div>
+  
+  <h2><i class="fas fa-chart-pie"></i> Usage Statistics</h2>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3><i class="fas fa-fire"></i> Current Usage</h3>
+      <div id="usagePercent" class="value">-</div>
+      <div class="description">Of total rate limit capacity</div>
     </div>
     
-    <div class="status-cards">
-      <div class="status-card fade-in">
-        <h3><i class="fas fa-bolt"></i> Current Integrity</h3>
-        <div id="integrity" class="value">Loading...</div>
-        <div class="progress-container">
-          <div id="integrityBar" class="progress-bar" style="width: 0%"></div>
-        </div>
-        <div class="description">Overall rate limit availability across all servers</div>
-      </div>
-      
-      <div class="status-card fade-in">
-        <h3><i class="fas fa-calendar-day"></i> Today's Requests</h3>
-        <div id="today" class="value">-</div>
-        <div class="description">Total API requests made today</div>
-      </div>
-      
-      <div class="status-card fade-in">
-        <h3><i class="fas fa-calendar-week"></i> Yesterday's Requests</h3>
-        <div id="yesterday" class="value">-</div>
-        <div class="description">Total API requests made yesterday</div>
-      </div>
-      
-      <div class="status-card fade-in">
-        <h3><i class="fas fa-calendar-alt"></i> This Month</h3>
-        <div id="month" class="value">-</div>
-        <div class="description">Total API requests this calendar month</div>
-      </div>
+    <div class="stat-card">
+      <h3><i class="fas fa-bolt"></i> Requests Today</h3>
+      <div id="today" class="value">-</div>
+      <div class="description">API requests made today</div>
     </div>
     
-    <h2><i class="fas fa-server"></i> Server Status</h2>
-    <div id="serverCards" class="server-cards"></div>
-    
-    <h2><i class="fas fa-history"></i> Historical Data</h2>
-    <table id="statsTable">
-      <thead>
-        <tr>
-          <th>Server</th>
-          <th>Token</th>
-          <th>Remaining</th>
-          <th>Limit</th>
-          <th>Usage</th>
-          <th>Last Updated</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    
-    <div class="footer">
-      <p>Data sourced from GitHub Gist with random token authorization | Updated: <span id="footerTimestamp">-</span></p>
+    <div class="stat-card">
+      <h3><i class="fas fa-clock"></i> Avg. Daily</h3>
+      <div id="avgDaily" class="value">-</div>
+      <div class="description">Average daily requests</div>
     </div>
+    
+    <div class="stat-card">
+      <h3><i class="fas fa-calendar-alt"></i> This Month</h3>
+      <div id="month" class="value">-</div>
+      <div class="description">Total monthly requests</div>
+    </div>
+  </div>
+  
+  <h2><i class="fas fa-server"></i> Server Status</h2>
+  <div id="serverCards" class="servers-grid"></div>
+  
+  <h2><i class="fas fa-history"></i> Recent Activity</h2>
+  <table class="full-table">
+    <thead>
+      <tr>
+        <th>Server</th>
+        <th>Token</th>
+        <th>Remaining</th>
+        <th>Limit</th>
+        <th>Usage</th>
+        <th>Updated</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  
+  <table class="compact-table">
+    <thead>
+      <tr>
+        <th>Server</th>
+        <th>Remaining</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  
+  <div class="footer">
+    <p>GitHub API Rate Limit Monitoring | Last updated: <span id="footerTimestamp">-</span></p>
   </div>
 
   <script>
     (async () => {
       const TOKENS_GIST = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
       const RATE_GIST_API = "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f";
-      
-      // Add slight delay for fade-in animations
-      function delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
       
       function getStatusColor(percent) {
         if (percent >= 80) return { bg: 'rgba(46, 160, 67, 0.2)', text: '#2ea043', status: 'Excellent' };
@@ -348,12 +343,9 @@
       
       function formatDate(dateString) {
         const date = new Date(dateString);
-        return date.toLocaleString('en-US', {
-          month: 'short',
-          day: 'numeric',
+        return date.toLocaleTimeString('en-US', {
           hour: '2-digit',
-          minute: '2-digit',
-          hour12: true
+          minute: '2-digit'
         });
       }
       
@@ -364,16 +356,19 @@
         
         if (diffHours < 1) {
           const diffMins = Math.round(diffHours * 60);
-          return `${diffMins} min${diffMins !== 1 ? 's' : ''} ago`;
+          return `${diffMins}m ago`;
         } else if (diffHours < 24) {
-          return `${Math.round(diffHours)} hour${Math.round(diffHours) !== 1 ? 's' : ''} ago`;
+          return `${Math.round(diffHours)}h ago`;
         } else {
-          return `${Math.round(diffHours / 24)} day${Math.round(diffHours / 24) !== 1 ? 's' : ''} ago`;
+          return `${Math.round(diffHours / 24)}d ago`;
         }
       }
       
       function formatNumber(num) {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (num > 1000) {
+          return (num / 1000).toFixed(1) + 'k';
+        }
+        return num.toString();
       }
       
       try {
@@ -396,12 +391,12 @@
         const contentRaw = rateData.files["rate.json"].content;
         const allData = JSON.parse(contentRaw);
         
-        // Filter out entries without token and sort by timestamp
+        // Filter and sort entries
         const tokenEntries = allData
           .filter(entry => entry.token)
           .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
         
-        // Group entries by token
+        // Group by token and get latest
         const entriesByToken = {};
         tokenEntries.forEach(entry => {
           if (!entriesByToken[entry.token]) {
@@ -410,12 +405,8 @@
           entriesByToken[entry.token].push(entry);
         });
         
-        // Get the latest entry for each token
         const latestEntries = Object.keys(entriesByToken).map(token => {
-          const entries = entriesByToken[token];
-          return entries.reduce((latest, current) => {
-            return new Date(current.timestamp) > new Date(latest.timestamp) ? current : latest;
-          });
+          return entriesByToken[token][0]; // Already sorted by date
         });
         
         // Calculate statistics
@@ -425,60 +416,60 @@
         let requestsToday = 0;
         let requestsYesterday = 0;
         let requestsMonth = 0;
+        let totalEntries = 0;
+        let daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
         
-        // Process all entries for historical data
         tokenEntries.forEach(entry => {
           const used = entry.limit - entry.remaining;
-          const lastUpdated = new Date(entry.timestamp);
+          const entryDate = new Date(entry.timestamp);
+          totalEntries++;
           
-          if (lastUpdated.toDateString() === now.toDateString()) {
+          if (entryDate.toDateString() === now.toDateString()) {
             requestsToday += used;
           }
           
           const yesterday = new Date(now);
           yesterday.setDate(yesterday.getDate() - 1);
-          if (lastUpdated.toDateString() === yesterday.toDateString()) {
+          if (entryDate.toDateString() === yesterday.toDateString()) {
             requestsYesterday += used;
           }
           
-          if (lastUpdated.getMonth() === now.getMonth() && lastUpdated.getFullYear() === now.getFullYear()) {
+          if (entryDate.getMonth() === now.getMonth() && entryDate.getFullYear() === now.getFullYear()) {
             requestsMonth += used;
           }
         });
         
-        // Process latest entries for server cards and totals
+        // Process latest entries for totals
         latestEntries.forEach(entry => {
           const used = entry.limit - entry.remaining;
           totalUsed += used;
           totalLimit += entry.limit;
         });
         
-        // Update summary information
+        // Update UI
         const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
         const remainingPercent = 100 - integrityPercent;
         const statusColor = getStatusColor(remainingPercent);
         
-        document.getElementById("integrity").innerHTML = `
-          ${remainingPercent}% <span style="font-size: 1rem; color: ${statusColor.text}">(${statusColor.status})</span>
-        `;
+        document.getElementById("integrity").innerHTML = `${remainingPercent}%`;
         document.getElementById("integrityBar").style.backgroundColor = statusColor.text;
         document.getElementById("integrityBar").style.width = `${remainingPercent}%`;
+        document.getElementById("integrityStatus").innerText = statusColor.status;
+        document.getElementById("integrityStatus").style.color = statusColor.text;
         
+        document.getElementById("usagePercent").innerText = `${integrityPercent}%`;
         document.getElementById("today").innerText = formatNumber(requestsToday);
-        document.getElementById("yesterday").innerText = formatNumber(requestsYesterday);
+        document.getElementById("avgDaily").innerText = formatNumber(Math.round(requestsMonth / now.getDate()));
         document.getElementById("month").innerText = formatNumber(requestsMonth);
         
-        // Update last updated timestamp
-        const lastUpdatedTime = tokenEntries.length > 0 ? 
-          new Date(tokenEntries[0].timestamp) : new Date();
-        document.getElementById("lastUpdated").innerText = `Last updated: ${formatShortDate(lastUpdatedTime)}`;
-        document.getElementById("footerTimestamp").innerText = lastUpdatedTime.toLocaleString();
+        // Update timestamps
+        const lastUpdatedTime = tokenEntries.length > 0 ? tokenEntries[0].timestamp : new Date();
+        document.getElementById("lastUpdated").innerText = `Updated: ${formatShortDate(lastUpdatedTime)}`;
+        document.getElementById("footerTimestamp").innerText = new Date(lastUpdatedTime).toLocaleString();
         
-        // Create server cards for latest entries
+        // Create server cards
         const serverCardsContainer = document.getElementById("serverCards");
         serverCardsContainer.innerHTML = "";
-        
-        await delay(100); // Small delay for animation
         
         latestEntries.forEach((entry, index) => {
           const percent = Math.round((entry.remaining / entry.limit) * 100);
@@ -486,8 +477,7 @@
           const used = entry.limit - entry.remaining;
           
           const card = document.createElement("div");
-          card.className = "server-card fade-in";
-          card.style.animationDelay = `${index * 0.1}s`;
+          card.className = "server-card";
           card.innerHTML = `
             <div class="server-header">
               <div class="server-title">Server ${index + 1}</div>
@@ -497,10 +487,6 @@
             </div>
             <div class="server-stats">
               <div class="stat-item">
-                <div class="stat-label">Token</div>
-                <div class="stat-value token-cell">${formatToken(entry.token)}</div>
-              </div>
-              <div class="stat-item">
                 <div class="stat-label">Remaining</div>
                 <div class="stat-value" style="color: ${statusColor.text}">${entry.remaining}</div>
               </div>
@@ -509,15 +495,11 @@
                 <div class="stat-value">${entry.limit}</div>
               </div>
               <div class="stat-item">
-                <div class="stat-label">Used</div>
-                <div class="stat-value">${used}</div>
-              </div>
-              <div class="stat-item">
                 <div class="stat-label">Usage</div>
                 <div class="stat-value" style="color: ${statusColor.text}">${100 - percent}%</div>
               </div>
               <div class="stat-item">
-                <div class="stat-label">Last Updated</div>
+                <div class="stat-label">Updated</div>
                 <div class="stat-value">${formatShortDate(entry.timestamp)}</div>
               </div>
             </div>
@@ -525,34 +507,48 @@
           serverCardsContainer.appendChild(card);
         });
         
-        // Populate historical data table
-        const tbody = document.querySelector("#statsTable tbody");
-        tbody.innerHTML = "";
-        
-        tokenEntries.forEach((entry, index) => {
-          const percent = Math.round((entry.remaining / entry.limit) * 100);
-          const statusColor = getStatusColor(percent);
+        // Populate tables
+        function populateTable(table, isCompact = false) {
+          const tbody = table.querySelector("tbody");
+          tbody.innerHTML = "";
           
-          const row = document.createElement("tr");
-          row.className = "fade-in";
-          row.innerHTML = `
-            <td>Server ${index + 1}</td>
-            <td class="token-cell">${formatToken(entry.token)}</td>
-            <td>${entry.remaining}</td>
-            <td>${entry.limit}</td>
-            <td style="color: ${statusColor.text}">${100 - percent}%</td>
-            <td>${formatDate(entry.timestamp)}</td>
-          `;
-          tbody.appendChild(row);
-        });
+          tokenEntries.slice(0, 10).forEach((entry, index) => {
+            const percent = Math.round((entry.remaining / entry.limit) * 100);
+            const statusColor = getStatusColor(percent);
+            
+            const row = document.createElement("tr");
+            
+            if (isCompact) {
+              row.innerHTML = `
+                <td>Server ${index + 1}</td>
+                <td>${entry.remaining}</td>
+                <td style="color: ${statusColor.text}">${100 - percent}%</td>
+              `;
+            } else {
+              row.innerHTML = `
+                <td>Server ${index + 1}</td>
+                <td class="token-cell">${formatToken(entry.token)}</td>
+                <td>${entry.remaining}</td>
+                <td>${entry.limit}</td>
+                <td style="color: ${statusColor.text}">${100 - percent}%</td>
+                <td>${formatShortDate(entry.timestamp)}</td>
+              `;
+            }
+            
+            tbody.appendChild(row);
+          });
+        }
+        
+        populateTable(document.querySelector(".full-table"));
+        populateTable(document.querySelector(".compact-table"), true);
         
       } catch (err) {
         console.error("Error loading data:", err);
-        document.getElementById("integrity").innerHTML = `
-          <span style="color: var(--danger)">❌ Error loading data</span>
-        `;
+        document.getElementById("integrity").innerHTML = `Error`;
         document.getElementById("integrityBar").style.backgroundColor = "var(--danger)";
         document.getElementById("integrityBar").style.width = "100%";
+        document.getElementById("integrityStatus").innerText = "Failed to load data";
+        document.getElementById("integrityStatus").style.color = "var(--danger)";
       }
     })();
   </script>
