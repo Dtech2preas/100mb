@@ -1,153 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>📊 DTech Rate Limit Structural Integrity</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0d1117;
-      color: #c9d1d9;
-      padding: 20px;
-    }
-    h1 {
-      color: #58a6ff;
-    }
-    .status {
-      font-size: 1.2em;
-      margin: 10px 0;
-    }
-    .integrity {
-      font-weight: bold;
-      font-size: 1.5em;
-      margin: 15px 0;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      background: #161b22;
-    }
-    th, td {
-      padding: 10px;
-      border: 1px solid #30363d;
-      text-align: center;
-    }
-    th {
-      background: #21262d;
-    }
-    .footer {
-      margin-top: 20px;
-      font-size: 0.9em;
-      color: #8b949e;
-    }
+    body { font-family: Arial, sans-serif; background: #111; color: #eee; padding: 20px; }
+    h1 { color: #00ffc8; }
+    .status { margin-bottom: 20px; }
+    .green { color: #00ff00; }
+    .yellow { color: #ffff00; }
+    .orange { color: #ffa500; }
+    .red { color: #ff0000; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 10px; border: 1px solid #444; text-align: center; }
+    th { background: #222; }
   </style>
 </head>
 <body>
+  <h1>📊 DTech Rate Limit Structural Integrity</h1>
+  <div class="status" id="status">Loading data...</div>
+  <div id="stats"></div>
+  <table id="serverTable">
+    <thead>
+      <tr>
+        <th>Server</th>
+        <th>Avg Integrity</th>
+        <th>Samples</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
-<h1>📊 DTech Rate Limit Structural Integrity</h1>
-<div id="integrity" class="integrity">Loading...</div>
-<div class="status">Requests Today: <span id="today">-</span></div>
-<div class="status">Requests Yesterday: <span id="yesterday">-</span></div>
-<div class="status">Requests This Month: <span id="month">-</span></div>
+  <script>
+    const TOKENS_URL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
+    const DATA_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/690da2cdc6ce936a1ac4e373d630e95ff0186ecb/rate.json";
 
-<table id="statsTable">
-  <thead>
-    <tr>
-      <th>Server</th>
-      <th>Remaining</th>
-      <th>Limit</th>
-      <th>Usage %</th>
-      <th>Last Updated</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+    async function fetchWithToken(url, token) {
+      const res = await fetch(url, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+      return res.json();
+    }
 
-<div class="footer">
-  Data sourced from GitHub Gist with random token authorization
-</div>
+    function getTokenName(token) {
+      return token.slice(-8); // Use last 8 chars as ID
+    }
 
-<script>
-(async () => {
-  const TOKENS_GIST = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
-  const RATE_GIST_API = "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f";
+    function colorClass(percent) {
+      if (percent > 80) return 'green';
+      if (percent > 50) return 'yellow';
+      if (percent > 25) return 'orange';
+      return 'red';
+    }
 
-  function colorFromPercent(p) {
-    if (p >= 90) return "#2ecc71"; // green
-    if (p >= 70) return "#f1c40f"; // yellow
-    if (p >= 40) return "#e67e22"; // orange
-    return "#e74c3c"; // red
-  }
+    function formatDate(dateStr) {
+      const d = new Date(dateStr);
+      return d.toLocaleString();
+    }
 
-  try {
-    const tokenListRaw = await fetch(TOKENS_GIST);
-    const tokenList = (await tokenListRaw.text()).trim().split('\n').filter(t => t.startsWith('ghp_'));
-    const token = tokenList[Math.floor(Math.random() * tokenList.length)];
-
-    const rateRes = await fetch(RATE_GIST_API, {
-      headers: { Authorization: `token ${token}` }
-    });
-
-    if (!rateRes.ok) throw new Error(`GitHub API error: ${rateRes.status}`);
-    
-    const rateData = await rateRes.json();
-    const contentRaw = rateData.files["rate.json"].content;
-    const data = JSON.parse(contentRaw);
-
-    const serverData = data.slice(1); // Skip first entry
-    const now = new Date();
-
-    let totalUsed = 0;
-    let totalLimit = 0;
-    let requestsToday = 0;
-    let requestsYesterday = 0;
-    let requestsMonth = 0;
-
-    const tbody = document.querySelector("#statsTable tbody");
-    tbody.innerHTML = "";
-
-    serverData.forEach((entry, index) => {
-      const used = entry.limit - entry.remaining;
-      totalUsed += used;
-      totalLimit += entry.limit;
-
-      const lastUpdated = new Date(entry.timestamp);
-      if (lastUpdated.toDateString() === now.toDateString()) {
-        requestsToday += used;
+    function groupByToken(entries) {
+      const servers = {};
+      for (const entry of entries) {
+        if (!entry.token) continue;
+        const id = getTokenName(entry.token);
+        if (!servers[id]) servers[id] = [];
+        servers[id].push(entry);
       }
-      if (new Date(now - 86400000).toDateString() === lastUpdated.toDateString()) {
-        requestsYesterday += used;
-      }
-      if (lastUpdated.getMonth() === now.getMonth() && lastUpdated.getFullYear() === now.getFullYear()) {
-        requestsMonth += used;
+      return servers;
+    }
+
+    function calculateIntegrity(servers) {
+      const rows = [];
+      let today = 0, yesterday = 0, thisMonth = 0;
+      const now = new Date();
+      const todayStr = now.toISOString().slice(0, 10);
+      const yesterdayStr = new Date(now - 86400000).toISOString().slice(0, 10);
+      const monthStr = now.toISOString().slice(0, 7);
+
+      let i = 1;
+      for (const [id, samples] of Object.entries(servers)) {
+        let totalRem = 0, totalLimit = 0;
+        let lastTime = '';
+        for (const s of samples) {
+          totalRem += s.remaining;
+          totalLimit += s.limit;
+          lastTime = s.timestamp;
+          const day = s.timestamp.slice(0, 10);
+          if (day === todayStr) today++;
+          if (day === yesterdayStr) yesterday++;
+          if (day.startsWith(monthStr)) thisMonth++;
+        }
+        const integrity = (totalRem / totalLimit) * 100;
+        rows.push(`
+          <tr>
+            <td>Server ${i}</td>
+            <td class="${colorClass(integrity)}">${integrity.toFixed(1)}%</td>
+            <td>${samples.length}</td>
+            <td>${formatDate(lastTime)}</td>
+          </tr>
+        `);
+        i++;
       }
 
-      const percent = Math.round((entry.remaining / entry.limit) * 100);
-
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>Server ${index + 1}</td>
-        <td>${entry.remaining}</td>
-        <td>${entry.limit}</td>
-        <td style="color: ${colorFromPercent(percent)}">${100 - percent}%</td>
-        <td>${entry.timestamp}</td>
+      document.getElementById("stats").innerHTML = `
+        <p>✅ Requests Today: <strong>${today}</strong></p>
+        <p>📅 Requests Yesterday: <strong>${yesterday}</strong></p>
+        <p>📆 Requests This Month: <strong>${thisMonth}</strong></p>
       `;
-      tbody.appendChild(row);
-    });
+      document.querySelector("#serverTable tbody").innerHTML = rows.join('');
+    }
 
-    const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
-    document.getElementById("integrity").innerText = `Structural Integrity: ${100 - integrityPercent}%`;
-    document.getElementById("integrity").style.color = colorFromPercent(100 - integrityPercent);
-    document.getElementById("today").innerText = requestsToday;
-    document.getElementById("yesterday").innerText = requestsYesterday;
-    document.getElementById("month").innerText = requestsMonth;
+    async function loadDashboard() {
+      try {
+        const tokenList = await (await fetch(TOKENS_URL)).text();
+        const tokens = tokenList.trim().split("\n").filter(t => t.startsWith("ghp_"));
+        const token = tokens[Math.floor(Math.random() * tokens.length)];
+        const data = await fetchWithToken(DATA_URL, token);
+        const entries = Array.isArray(data) ? data : [];
+        const valid = entries.filter(e => e.token && e.remaining != null);
+        const servers = groupByToken(valid);
+        calculateIntegrity(servers);
+        document.getElementById("status").textContent = "✅ Data loaded successfully";
+      } catch (e) {
+        document.getElementById("status").textContent = `❌ Failed to load data: ${e.message}`;
+      }
+    }
 
-  } catch (err) {
-    document.getElementById("integrity").innerText = `❌ Failed to load data: ${err.message}`;
-  }
-})();
-</script>
-
+    loadDashboard();
+  </script>
 </body>
 </html>
