@@ -519,7 +519,6 @@
         <p class="footer-text">© 2025 DTech. All code crafted with ♥ and excessive caffeine.</p>
         <p class="footer-text">Think different. Build smart. Think DTech.</p>
     </footer>
-
 <style>
   #ad-layer {
     position: fixed;
@@ -597,6 +596,7 @@
     const layer = document.getElementById("ad-layer");
     const warning = document.getElementById("return-warning");
     let timeoutId = null;
+    let adClickedTime = null;
     
     // Check if it's time to show the layer
     function shouldShowAd() {
@@ -607,20 +607,20 @@
       return (now - parseInt(lastClick)) > config.adInterval;
     }
     
-    // Check if user watched ad long enough
-    function watchedLongEnough() {
-      const viewStart = localStorage.getItem(config.viewTimeKey);
-      if (!viewStart) return true; // No record means it's okay
-      
-      const now = Date.now();
-      return (now - parseInt(viewStart)) > config.minViewTime;
-    }
-    
     // Show the ad layer with fade effect
     function showLayer() {
+      const now = Date.now();
+      const viewStart = localStorage.getItem(config.viewTimeKey);
+      const lastClick = localStorage.getItem(config.localStorageKey);
+      
+      // Show warning if user returned too quickly after clicking
+      const showWarning = viewStart && 
+                         (now - parseInt(viewStart)) < config.minViewTime && 
+                         (!lastClick || (now - parseInt(lastClick)) < config.adInterval);
+      
+      warning.style.display = showWarning ? "block" : "none";
       layer.style.display = "flex";
       setTimeout(() => layer.classList.add("visible"), 10);
-      warning.style.display = watchedLongEnough() ? "none" : "block";
     }
     
     // Hide the ad layer with fade effect
@@ -634,27 +634,34 @@
     // Handle click to open ad
     function handleAdClick() {
       const now = Date.now();
+      const viewStart = localStorage.getItem(config.viewTimeKey);
       
-      // Check if user returned too quickly
-      if (!watchedLongEnough()) {
+      // Check if user returned too quickly from previous click
+      if (viewStart && (now - parseInt(viewStart)) < config.minViewTime) {
         showLayer(); // Keep showing with warning
         return;
       }
       
-      if (shouldShowAd()) {
-        // Record when we opened the ad
-        localStorage.setItem(config.viewTimeKey, now.toString());
-        window.open(config.directLink, "_blank");
-        
-        // Only update last click time if they watched long enough
-        setTimeout(() => {
-          localStorage.setItem(config.localStorageKey, now.toString());
-        }, config.minViewTime);
-      }
+      // Record when we opened the ad
+      localStorage.setItem(config.viewTimeKey, now.toString());
+      adClickedTime = now;
       
+      // Open the ad in new tab
+      window.open(config.directLink, "_blank");
+      
+      // Hide the layer immediately
       hideLayer();
       
-      // Clear any pending timeout and set new one
+      // Set timeout to check if user watched long enough
+      setTimeout(() => {
+        const currentTime = Date.now();
+        // Only activate cooldown if user didn't click again recently
+        if (adClickedTime && (currentTime - adClickedTime) >= config.minViewTime) {
+          localStorage.setItem(config.localStorageKey, adClickedTime.toString());
+        }
+      }, config.minViewTime);
+      
+      // Set timeout to show again after interval
       if (timeoutId) clearTimeout(timeoutId);
       timeoutId = setTimeout(checkAndShowLayer, config.adInterval);
     }
@@ -672,7 +679,7 @@
       checkAndShowLayer();
       
       // Check periodically in case page stays open
-      setInterval(checkAndShowLayer, config.adInterval);
+      setInterval(checkAndShowLayer, Math.min(config.adInterval, 60000)); // Check at least every minute
     }
     
     // Start the script
