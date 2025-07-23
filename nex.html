@@ -2,218 +2,366 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>X24 Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X24 Command Center</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #4facfe;
+      --secondary: #00f2fe;
+      --accent: #e94560;
+      --dark: #0a0a1a;
+      --darker: #070712;
+      --light: rgba(255,255,255,0.9);
+      --lighter: rgba(255,255,255,0.7);
+    }
+
     * {
       box-sizing: border-box;
-      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #0a0a1a 0%, #121236 100%);
+      background: var(--dark);
       color: white;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     body::before {
       content: '';
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 30%, rgba(23, 92, 255, 0.15) 0%, transparent 40%),
-                  radial-gradient(circle at 80% 70%, rgba(0, 200, 255, 0.1) 0%, transparent 40%);
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(23, 92, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0, 200, 255, 0.1) 0%, transparent 40%);
       z-index: -1;
     }
 
-    .container {
-      text-align: center;
-      padding: 2rem;
-      max-width: 900px;
-      width: 90%;
-      background: rgba(10, 15, 35, 0.7);
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    header {
+      padding: 1.5rem;
+      background: rgba(10, 15, 35, 0.8);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       font-weight: 700;
     }
 
-    .tagline {
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 40px;
-      font-size: 1.1rem;
+    .logo-icon {
+      font-size: 1.8rem;
+      color: var(--secondary);
     }
 
-    .button-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      width: 100%;
-      margin-bottom: 30px;
+    .main-container {
+      display: flex;
+      flex: 1;
     }
 
-    .button {
-      padding: 18px 25px;
-      background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
-      border: none;
-      border-radius: 12px;
-      color: white;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
+    .sidebar {
+      width: 250px;
+      background: rgba(15, 20, 45, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 2rem 1rem;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-item {
+      padding: 0.8rem 1.2rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      color: var(--lighter);
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      gap: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
     }
 
-    .button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      transition: 0.5s;
+    .nav-item:hover, .nav-item.active {
+      background: rgba(79, 172, 254, 0.15);
+      color: white;
     }
 
-    .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    .nav-item i {
+      width: 24px;
+      text-align: center;
     }
 
-    .button:hover::before {
-      left: 100%;
+    .content {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Unique colors for each button */
-    .button.logger:hover {
-      background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
-    }
-    
-    .button.stats:hover {
-      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    }
-    
-    .button.management:hover {
-      background: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
-    }
-    
-    .button.crunchyroll:hover {
-      background: linear-gradient(135deg, #f857a6 0%, #ff5858 100%);
-    }
-    
-    .button.dtech:hover {
-      background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%);
-    }
-    
-    .button.about:hover {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    .dashboard-header {
+      margin-bottom: 2rem;
     }
 
-    .button i {
-      font-size: 1.3rem;
+    .dashboard-header h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .dashboard-header p {
+      color: var(--lighter);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: rgba(20, 25, 60, 0.6);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      background: rgba(30, 35, 70, 0.8);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .card p {
+      color: var(--lighter);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: rgba(20, 25, 60, 0.6);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.05);
     }
 
     .footer {
-      margin-top: 30px;
+      padding: 1.5rem;
+      text-align: center;
+      background: rgba(10, 15, 35, 0.8);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: var(--lighter);
       font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.5);
-      display: flex;
-      align-items: center;
-      gap: 5px;
     }
 
-    .footer span {
-      color: rgba(255, 255, 255, 0.7);
-      font-weight: 600;
-    }
-
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+    @media (max-width: 1024px) {
+      .sidebar {
+        width: 200px;
+      }
+      
+      .quick-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
-      .button-grid {
-        grid-template-columns: 1fr 1fr;
+      .main-container {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 1rem;
+      }
+      
+      .nav-item {
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+        white-space: nowrap;
+      }
+      
+      .quick-stats {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 480px) {
-      .button-grid {
+      .card-grid {
         grid-template-columns: 1fr;
       }
-
-      h1 {
-        font-size: 2.2rem;
+      
+      header {
+        flex-direction: column;
+        gap: 1rem;
       }
+    }
+
+    /* Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
     }
   </style>
 </head>
 <body>
-
-  <div class="container pulse">
-    <h1>X24 Dashboard</h1>
-    <p class="tagline">Streamlined tools for productivity and entertainment</p>
-
-    <div class="button-grid">
-      <a href="next.html" class="button logger">
-        <i class="fas fa-rocket"></i> X24 Logger
-      </a>
-      <a href="stats.html" class="button stats">
-        <i class="fas fa-chart-bar"></i> Statistics
-      </a>
-      <a href="time.html" class="button management">
-        <i class="fas fa-tasks"></i> Management
-      </a>
-      <a href="crunchyroll.html" class="button crunchyroll">
-        <i class="fas fa-film"></i> Crunchyroll
-      </a>
-      <a href="dtech.html" class="button dtech">
-        <i class="fas fa-chart-pie"></i> DTech Stats
-      </a>
-      <a href="about.html" class="button about">
-        <i class="fas fa-info-circle"></i> About Us
-      </a>
+  <header>
+    <div class="logo">
+      <i class="fas fa-bolt logo-icon floating"></i>
+      <h1>X24 Command</h1>
     </div>
-
-    <div class="footer">
-      <i class="fas fa-copyright"></i> <span>X24 Suite</span> by DTech — V1.1
+    <div class="user-actions">
+      <button class="btn-contact">
+        <i class="fas fa-envelope"></i> Contact Us
+      </button>
     </div>
+  </header>
+
+  <div class="main-container">
+    <nav class="sidebar">
+      <a href="#" class="nav-item active">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="next.html" class="nav-item">
+        <i class="fas fa-rocket"></i>
+        <span>X24 Logger</span>
+      </a>
+      <a href="stats.html" class="nav-item">
+        <i class="fas fa-chart-bar"></i>
+        <span>Statistics</span>
+      </a>
+      <a href="management.html" class="nav-item">
+        <i class="fas fa-tasks"></i>
+        <span>Management</span>
+      </a>
+      <a href="crunchyroll.html" class="nav-item">
+        <i class="fas fa-film"></i>
+        <span>Crunchyroll</span>
+      </a>
+      <a href="dtech.html" class="nav-item">
+        <i class="fas fa-chart-pie"></i>
+        <span>DTech Stats</span>
+      </a>
+    </nav>
+
+    <main class="content">
+      <div class="dashboard-header">
+        <h2>Welcome to X24 Command</h2>
+        <p>Your centralized hub for productivity and analytics</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card" onclick="location.href='next.html'">
+          <i class="fas fa-rocket card-icon"></i>
+          <h3>X24 Logger</h3>
+          <p>🙂.</p>
+        </div>
+
+        <div class="card" onclick="location.href='stats.html'">
+          <i class="fas fa-chart-bar card-icon"></i>
+          <h3>Statistics</h3>
+          <p>View comprehensive data visualizations and performance metrics.</p>
+        </div>
+
+        <div class="card" onclick="location.href='management.html'">
+          <i class="fas fa-tasks card-icon"></i>
+          <h3>Management</h3>
+          <p>make sure you info is accurate.</p>
+        </div>
+
+        <div class="card" onclick="location.href='https://codes.ulenabler.co.za/jack.html'">
+          <i class="fas fa-film card-icon"></i>
+          <h3>Crunchyroll</h3>
+          <p>free Crunchyroll premium accounts.</p>
+        </div>
+
+        <div class="card" onclick="location.href='dtech.html'">
+          <i class="fas fa-chart-pie card-icon"></i>
+          <h3>DTech Stats</h3>
+          <p>Technical analytics and system performance monitoring tools.</p>
+        </div>
+
+        <div class="card" onclick="location.href='about.html'">
+          <i class="fas fa-info-circle card-icon"></i>
+          <h3>About Us</h3>
+          <p>Learn more about D-TECH and our development team.</p>
+        </div>
+      </div>
+    </main>
   </div>
 
+  <footer class="footer">
+    <p>© 2025 X24 Command Center by DTech | Version 2.0</p>
+    <div class="footer-links">
+      <a href="https://info.dtech24.co.za/ask.html">Contact</a> | 
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    // Simple animation for the contact button
+    document.querySelector('.btn-contact').addEventListener('mouseover', function() {
+      this.style.transform = 'scale(1.05)';
+      this.style.boxShadow = '0 0 15px rgba(79, 172, 254, 0.5)';
+    });
+    
+    document.querySelector('.btn-contact').addEventListener('mouseout', function() {
+      this.style.transform = 'scale(1)';
+      this.style.boxShadow = 'none';
+    });
+  </script>
 </body>
 </html>
