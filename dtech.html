@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub Token Rate Limit Viewer</title>
+</head>
+<body>
+  <h2>📊 GitHub Token Rate Limits</h2>
+  <button onclick="checkRateLimits()">Check All Tokens</button>
+  <pre id="output">Click the button to load token stats...</pre>
+
+  <script>
+    const tokenListUrl = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/57fc9cc4a39f5b69aeefe4699bc155e176e2ae65/gistfile1.txt";
+
+    async function fetchTokenList() {
+      const response = await fetch(tokenListUrl);
+      const text = await response.text();
+      return text.trim().split("\n").filter(t => t.length > 10); // basic filter
+    }
+
+    async function fetchRateLimit(token) {
+      const response = await fetch("https://api.github.com/rate_limit", {
+        headers: {
+          "Authorization": `token ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error with token: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return {
+        token: token.slice(0, 10) + "...", // partially mask token
+        remaining: data.rate.remaining,
+        limit: data.rate.limit,
+        reset: new Date(data.rate.reset * 1000).toLocaleString()
+      };
+    }
+
+    async function checkRateLimits() {
+      document.getElementById("output").textContent = "⏳ Checking all tokens...";
+
+      try {
+        const tokens = await fetchTokenList();
+        const results = [];
+
+        for (const token of tokens) {
+          try {
+            const limitData = await fetchRateLimit(token);
+            results.push(limitData);
+          } catch (err) {
+            results.push({ token: token.slice(0, 10) + "...", error: err.message });
+          }
+        }
+
+        const output = results.map(res => {
+          if (res.error) {
+            return `❌ Token: ${res.token}\n   Error: ${res.error}`;
+          } else {
+            return `✅ Token: ${res.token}\n   Remaining: ${res.remaining} / ${res.limit}\n   Resets: ${res.reset}`;
+          }
+        }).join("\n\n");
+
+        document.getElementById("output").textContent = output;
+
+      } catch (e) {
+        document.getElementById("output").textContent = "❌ Failed to fetch tokens or limits: " + e.message;
+      }
+    }
+  </script>
+</body>
+</html>
