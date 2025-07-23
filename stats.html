@@ -370,6 +370,26 @@
       background-color: var(--border);
       margin: 2rem 0;
     }
+    
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
@@ -442,6 +462,8 @@
     </div>
   </main>
 
+  <div id="notification" class="notification"></div>
+
   <script>
     // URL naming system in localStorage
     const urlMappings = JSON.parse(localStorage.getItem('urlMappings')) || {};
@@ -460,6 +482,16 @@
     const nameInput = document.getElementById('nameInput');
     const addUrlBtn = document.getElementById('addUrlBtn');
     const urlList = document.getElementById('urlList');
+    const notification = document.getElementById('notification');
+    
+    // Show notification
+    function showNotification(message, duration = 3000) {
+      notification.textContent = message;
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, duration);
+    }
     
     // Initialize URL manager
     function initUrlManager() {
@@ -470,13 +502,37 @@
         const name = nameInput.value.trim();
         
         if (url && name) {
+          if (!isValidUrl(url)) {
+            showNotification('Please enter a valid URL starting with http:// or https://');
+            return;
+          }
+          
           urlMappings[url] = name;
           localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
           renderUrlList();
           urlInput.value = '';
           nameInput.value = '';
+          showNotification('URL mapping saved successfully!');
+        } else {
+          showNotification('Please enter both URL and name');
         }
       });
+      
+      // Allow adding with Enter key
+      nameInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          addUrlBtn.click();
+        }
+      });
+    }
+    
+    function isValidUrl(url) {
+      try {
+        new URL(url);
+        return true;
+      } catch (e) {
+        return false;
+      }
     }
     
     function renderUrlList() {
@@ -510,12 +566,14 @@
             delete urlMappings[url];
             localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
             renderUrlList();
+            showNotification('URL mapping removed');
           } else {
             const newName = prompt('Enter new name for this URL:', urlMappings[url]);
             if (newName && newName.trim()) {
               urlMappings[url] = newName.trim();
               localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
               renderUrlList();
+              showNotification('URL mapping updated');
             }
           }
         });
@@ -527,6 +585,16 @@
       return urlMappings[url] || truncate(url, 30);
     }
     
+    // Get filename based on URL mappings
+    function getDownloadFilename() {
+      if (Object.keys(urlMappings).length > 0) {
+        const firstUrl = Object.keys(urlMappings)[0];
+        const baseName = urlMappings[firstUrl].replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        return `${baseName}_data.txt`;
+      }
+      return filename;
+    }
+    
     // Setup download button
     document.getElementById('downloadBtn').addEventListener('click', function() {
       const content = document.getElementById('jsonViewer')?.value || '';
@@ -534,11 +602,12 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = filename;
+      a.download = getDownloadFilename();
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      showNotification('Download started');
     });
 
     async function loadGistJSON() {
@@ -564,6 +633,7 @@
         }
       } catch (err) {
         showError("Error loading data: " + err.message);
+        showNotification('Failed to load data', 5000);
       }
     }
     
