@@ -3,225 +3,299 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚀 GitHub Rate Limit Status</title>
+  <title>GitHub API Rate Limit Dashboard</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #58a6ff;
-      --secondary: #1f6feb;
+      --primary: #1f6feb;
+      --primary-light: #58a6ff;
       --bg-dark: #0d1117;
       --bg-darker: #010409;
       --card-bg: #161b22;
       --border: #30363d;
-      --text: #c9d1d9;
-      --text-light: #8b949e;
-      --success: #2ea043;
-      --warning: #d29922;
-      --danger: #f85149;
-      --info: #58a6ff;
+      --text: #e6edf3;
+      --text-light: #7d8590;
+      --success: #238636;
+      --warning: #9e6a03;
+      --danger: #da3633;
+      --info: #1f6feb;
+      --chart-good: #3fb950;
+      --chart-warning: #d29922;
+      --chart-critical: #f85149;
     }
     
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg-darker);
       color: var(--text);
-      padding: 20px;
+      padding: 24px;
       line-height: 1.5;
       max-width: 1200px;
       margin: 0 auto;
     }
     
-    h1, h2 {
-      color: var(--primary);
-      margin: 0.5em 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    @supports (font-variation-settings: normal) {
+      body { font-family: 'Inter var', -apple-system, BlinkMacSystemFont, sans-serif; }
+    }
+    
+    h1, h2, h3 {
+      color: var(--text);
+      font-weight: 600;
+      margin: 0;
     }
     
     h1 {
-      font-size: 1.8rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
     }
     
     h2 {
-      font-size: 1.3rem;
-      margin-top: 25px;
+      font-size: 1.1rem;
+      margin: 24px 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
     }
     
     .dashboard-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 24px;
+    }
+    
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .last-updated {
+      font-size: 0.75rem;
+      color: var(--text-light);
     }
     
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      margin: 20px 0;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
     }
     
     .stat-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 15px;
-      min-height: 90px;
+      padding: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(1, 4, 9, 0.5);
     }
     
     .stat-card h3 {
-      font-size: 0.95rem;
+      font-size: 0.75rem;
       margin: 0 0 8px 0;
       color: var(--text-light);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
     .stat-card .value {
       font-size: 1.5rem;
-      font-weight: bold;
-      margin: 5px 0;
+      font-weight: 600;
+      margin: 4px 0;
     }
     
-    .stat-card .description {
-      color: var(--text-light);
-      font-size: 0.8rem;
+    .stat-card .trend {
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+    }
+    
+    .trend-up {
+      color: var(--danger);
+    }
+    
+    .trend-down {
+      color: var(--success);
     }
     
     .integrity-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 20px;
-      margin: 20px 0;
+      padding: 24px;
+      margin: 24px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .integrity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+    }
+    
+    .integrity-header {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
+      margin-bottom: 16px;
+    }
+    
+    .integrity-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-light);
     }
     
     .integrity-value {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin: 5px 0;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 8px 0;
     }
     
     .progress-container {
       width: 100%;
-      height: 8px;
+      height: 6px;
       background: var(--bg-dark);
-      border-radius: 4px;
-      margin: 10px 0;
+      border-radius: 3px;
+      margin: 16px 0;
       overflow: hidden;
     }
     
     .progress-bar {
       height: 100%;
-      border-radius: 4px;
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+    
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-light);
     }
     
     .servers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 15px;
-      margin: 20px 0;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
     }
     
     .server-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 15px;
+      padding: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .server-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(1, 4, 9, 0.5);
     }
     
     .server-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     
     .server-title {
-      font-weight: bold;
-      font-size: 1rem;
-      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
     }
     
     .server-status {
       display: inline-block;
-      padding: 3px 8px;
+      padding: 2px 8px;
       border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: bold;
+      font-size: 0.7rem;
+      font-weight: 500;
     }
     
     .server-stats {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      font-size: 0.9rem;
+      gap: 12px;
+      font-size: 0.85rem;
     }
     
     .stat-item {
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
     
     .stat-label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--text-light);
       margin-bottom: 2px;
+      font-weight: 500;
     }
     
     .stat-value {
-      font-weight: bold;
+      font-weight: 600;
     }
     
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px 0;
+      margin: 16px 0;
       background: var(--card-bg);
       border-radius: 6px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
     }
     
     th, td {
-      padding: 10px 12px;
-      border: 1px solid var(--border);
+      padding: 12px 16px;
       text-align: left;
+      border-bottom: 1px solid var(--border);
     }
     
     th {
       background: var(--bg-dark);
       font-weight: 600;
-      color: var(--primary);
-      font-size: 0.85rem;
+      color: var(--text);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
     }
     
     .token-cell {
-      font-family: monospace;
-      font-size: 0.85rem;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 0.8rem;
     }
     
     .footer {
-      margin-top: 20px;
-      padding-top: 15px;
+      margin-top: 32px;
+      padding-top: 16px;
       border-top: 1px solid var(--border);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--text-light);
       text-align: center;
-    }
-    
-    .last-updated {
-      font-size: 0.8rem;
-      color: var(--text-light);
     }
     
     .compact-table {
@@ -229,6 +303,10 @@
     }
     
     @media (max-width: 768px) {
+      body {
+        padding: 16px;
+      }
+      
       .stats-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -249,53 +327,73 @@
 </head>
 <body>
   <div class="dashboard-header">
-    <h1>
-      <i class="fas fa-rocket"></i>
-      GitHub Rate Limit Structural Integrity
-    </h1>
-    <div id="lastUpdated" class="last-updated">Loading...</div>
+    <div class="header-title">
+      <h1>GitHub API Rate Limit Dashboard</h1>
+    </div>
+    <div class="header-actions">
+      <div id="lastUpdated" class="last-updated">Loading data...</div>
+    </div>
   </div>
   
   <div class="integrity-card">
-    <h3>Structural Integrity Status</h3>
+    <div class="integrity-header">
+      <div class="integrity-title">STRUCTURAL INTEGRITY</div>
+      <div id="integrityStatus" class="server-status" style="background: rgba(31, 111, 235, 0.1); color: var(--primary);">Loading</div>
+    </div>
     <div id="integrity" class="integrity-value">-</div>
     <div class="progress-container">
-      <div id="integrityBar" class="progress-bar" style="width: 0%"></div>
+      <div id="integrityBar" class="progress-bar" style="width: 0%; background: var(--primary);"></div>
     </div>
-    <div id="integrityStatus" style="font-size: 0.9rem; margin-top: 5px;"></div>
+    <div class="progress-labels">
+      <span>0%</span>
+      <span>50%</span>
+      <span>100%</span>
+    </div>
   </div>
   
-  <h2><i class="fas fa-chart-pie"></i> Usage Statistics</h2>
+  <h2>Key Metrics</h2>
   <div class="stats-grid">
     <div class="stat-card">
-      <h3><i class="fas fa-fire"></i> Current Usage</h3>
+      <h3>Usage Rate</h3>
       <div id="usagePercent" class="value">-</div>
-      <div class="description">Of total rate limit capacity</div>
+      <div class="trend trend-up">
+        <i class="fas fa-arrow-up"></i>
+        <span>3.2% from yesterday</span>
+      </div>
     </div>
     
     <div class="stat-card">
-      <h3><i class="fas fa-bolt"></i> Requests Today</h3>
+      <h3>Today's Requests</h3>
       <div id="today" class="value">-</div>
-      <div class="description">API requests made today</div>
+      <div class="trend trend-up">
+        <i class="fas fa-arrow-up"></i>
+        <span>5.7% from yesterday</span>
+      </div>
     </div>
     
     <div class="stat-card">
-      <h3><i class="fas fa-clock"></i> Avg. Daily</h3>
+      <h3>Avg. Daily</h3>
       <div id="avgDaily" class="value">-</div>
-      <div class="description">Average daily requests</div>
+      <div class="trend trend-down">
+        <i class="fas fa-arrow-down"></i>
+        <span>1.4% from last week</span>
+      </div>
     </div>
     
     <div class="stat-card">
-      <h3><i class="fas fa-calendar-alt"></i> This Month</h3>
+      <h3>Monthly Total</h3>
       <div id="month" class="value">-</div>
-      <div class="description">Total monthly requests</div>
+      <div class="trend trend-up">
+        <i class="fas fa-arrow-up"></i>
+        <span>12.8% from last month</span>
+      </div>
     </div>
   </div>
   
-  <h2><i class="fas fa-server"></i> Server Status</h2>
+  <h2>Server Status</h2>
   <div id="serverCards" class="servers-grid"></div>
   
-  <h2><i class="fas fa-history"></i> Recent Activity</h2>
+  <h2>Recent Activity</h2>
   <table class="full-table">
     <thead>
       <tr>
@@ -304,7 +402,7 @@
         <th>Remaining</th>
         <th>Limit</th>
         <th>Usage</th>
-        <th>Updated</th>
+        <th>Last Updated</th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -322,7 +420,7 @@
   </table>
   
   <div class="footer">
-    <p>GitHub API Rate Limit Monitoring | Last updated: <span id="footerTimestamp">-</span></p>
+    <p>GitHub API Rate Limit Monitoring System | Last updated: <span id="footerTimestamp">-</span></p>
   </div>
 
   <script>
@@ -331,10 +429,30 @@
       const RATE_GIST_API = "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f";
       
       function getStatusColor(percent) {
-        if (percent >= 80) return { bg: 'rgba(46, 160, 67, 0.2)', text: '#2ea043', status: 'Excellent' };
-        if (percent >= 60) return { bg: 'rgba(210, 153, 34, 0.2)', text: '#d29922', status: 'Good' };
-        if (percent >= 40) return { bg: 'rgba(248, 81, 73, 0.2)', text: '#e67e22', status: 'Warning' };
-        return { bg: 'rgba(248, 81, 73, 0.2)', text: '#f85149', status: 'Critical' };
+        if (percent >= 80) return { 
+          bg: 'rgba(35, 134, 54, 0.1)', 
+          text: 'var(--success)', 
+          status: 'Optimal',
+          chart: 'var(--chart-good)'
+        };
+        if (percent >= 60) return { 
+          bg: 'rgba(158, 106, 3, 0.1)', 
+          text: 'var(--warning)', 
+          status: 'Stable',
+          chart: 'var(--chart-warning)'
+        };
+        if (percent >= 40) return { 
+          bg: 'rgba(218, 54, 51, 0.1)', 
+          text: 'var(--danger)', 
+          status: 'Warning',
+          chart: 'var(--chart-critical)'
+        };
+        return { 
+          bg: 'rgba(218, 54, 51, 0.2)', 
+          text: 'var(--danger)', 
+          status: 'Critical',
+          chart: 'var(--chart-critical)'
+        };
       }
       
       function formatToken(token) {
@@ -371,9 +489,18 @@
         return num.toString();
       }
       
+      function calculateTrend(current, previous) {
+        if (previous === 0) return { value: 0, direction: 'up' };
+        const change = ((current - previous) / previous) * 100;
+        return {
+          value: Math.abs(change).toFixed(1),
+          direction: change >= 0 ? 'up' : 'down'
+        };
+      }
+      
       try {
         // Show loading state
-        document.getElementById("integrity").innerText = "Loading...";
+        document.getElementById("integrity").innerText = "-";
         
         // Fetch token list
         const tokenListRaw = await fetch(TOKENS_GIST);
@@ -416,13 +543,17 @@
         let requestsToday = 0;
         let requestsYesterday = 0;
         let requestsMonth = 0;
-        let totalEntries = 0;
-        let daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+        let prevRequestsYesterday = 0;
+        let prevRequestsMonth = 0;
         
-        tokenEntries.forEach(entry => {
+        tokenEntries.forEach((entry, index) => {
           const used = entry.limit - entry.remaining;
           const entryDate = new Date(entry.timestamp);
-          totalEntries++;
+          
+          // For trend calculations
+          if (index < tokenEntries.length / 2) {
+            prevRequestsMonth += used;
+          }
           
           if (entryDate.toDateString() === now.toDateString()) {
             requestsToday += used;
@@ -432,6 +563,8 @@
           yesterday.setDate(yesterday.getDate() - 1);
           if (entryDate.toDateString() === yesterday.toDateString()) {
             requestsYesterday += used;
+          } else if (entryDate.toDateString() === new Date(yesterday.setDate(yesterday.getDate() - 1)).toDateString()) {
+            prevRequestsYesterday += used;
           }
           
           if (entryDate.getMonth() === now.getMonth() && entryDate.getFullYear() === now.getFullYear()) {
@@ -446,15 +579,21 @@
           totalLimit += entry.limit;
         });
         
+        // Calculate trends
+        const todayTrend = calculateTrend(requestsToday, requestsYesterday);
+        const yesterdayTrend = calculateTrend(requestsYesterday, prevRequestsYesterday);
+        const monthTrend = calculateTrend(requestsMonth, prevRequestsMonth);
+        
         // Update UI
         const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
         const remainingPercent = 100 - integrityPercent;
         const statusColor = getStatusColor(remainingPercent);
         
         document.getElementById("integrity").innerHTML = `${remainingPercent}%`;
-        document.getElementById("integrityBar").style.backgroundColor = statusColor.text;
+        document.getElementById("integrityBar").style.backgroundColor = statusColor.chart;
         document.getElementById("integrityBar").style.width = `${remainingPercent}%`;
         document.getElementById("integrityStatus").innerText = statusColor.status;
+        document.getElementById("integrityStatus").style.background = statusColor.bg;
         document.getElementById("integrityStatus").style.color = statusColor.text;
         
         document.getElementById("usagePercent").innerText = `${integrityPercent}%`;
@@ -462,9 +601,18 @@
         document.getElementById("avgDaily").innerText = formatNumber(Math.round(requestsMonth / now.getDate()));
         document.getElementById("month").innerText = formatNumber(requestsMonth);
         
+        // Update trend indicators
+        document.querySelectorAll('.trend-up').forEach(el => {
+          el.innerHTML = `<i class="fas fa-arrow-up"></i><span>${todayTrend.value}% from yesterday</span>`;
+        });
+        
+        document.querySelectorAll('.trend-down').forEach(el => {
+          el.innerHTML = `<i class="fas fa-arrow-down"></i><span>${monthTrend.value}% from last period</span>`;
+        });
+        
         // Update timestamps
         const lastUpdatedTime = tokenEntries.length > 0 ? tokenEntries[0].timestamp : new Date();
-        document.getElementById("lastUpdated").innerText = `Updated: ${formatShortDate(lastUpdatedTime)}`;
+        document.getElementById("lastUpdated").innerText = `Updated ${formatShortDate(lastUpdatedTime)}`;
         document.getElementById("footerTimestamp").innerText = new Date(lastUpdatedTime).toLocaleString();
         
         // Create server cards
@@ -512,7 +660,7 @@
           const tbody = table.querySelector("tbody");
           tbody.innerHTML = "";
           
-          tokenEntries.slice(0, 10).forEach((entry, index) => {
+          tokenEntries.slice(0, 8).forEach((entry, index) => {
             const percent = Math.round((entry.remaining / entry.limit) * 100);
             const statusColor = getStatusColor(percent);
             
@@ -547,7 +695,8 @@
         document.getElementById("integrity").innerHTML = `Error`;
         document.getElementById("integrityBar").style.backgroundColor = "var(--danger)";
         document.getElementById("integrityBar").style.width = "100%";
-        document.getElementById("integrityStatus").innerText = "Failed to load data";
+        document.getElementById("integrityStatus").innerText = "Data Unavailable";
+        document.getElementById("integrityStatus").style.background = "rgba(218, 54, 51, 0.2)";
         document.getElementById("integrityStatus").style.color = "var(--danger)";
       }
     })();
