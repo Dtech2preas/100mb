@@ -2,247 +2,625 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📊 DTech Rate Limit Structural Integrity</title>
+  <title>DTECH API Structural Integrity Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --dtech-primary: #0066ff;
+      --dtech-secondary: #003399;
+      --dtech-accent: #00ccff;
+      --dtech-success: #2ecc71;
+      --dtech-warning: #f39c12;
+      --dtech-danger: #e74c3c;
+      --dtech-dark: #0d1117;
+      --dtech-light: #f8f9fa;
+      --dtech-gray: #6c757d;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
-      background: #0d1117;
-      color: #c9d1d9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    
+    .dashboard-container {
+      max-width: 1400px;
+      margin: 0 auto;
       padding: 20px;
     }
-    h1 {
-      color: #58a6ff;
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
     }
-    h2 {
-      color: #58a6ff;
-      margin-top: 30px;
-      border-bottom: 1px solid #30363d;
-      padding-bottom: 5px;
+    
+    .logo {
+      display: flex;
+      align-items: center;
     }
-    .status {
-      font-size: 1.2em;
+    
+    .logo img {
+      height: 40px;
+      margin-right: 15px;
+    }
+    
+    .logo-text h1 {
+      color: var(--dtech-primary);
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    
+    .logo-text span {
+      color: var(--dtech-gray);
+      font-size: 14px;
+    }
+    
+    .last-updated {
+      color: var(--dtech-gray);
+      font-size: 14px;
+    }
+    
+    .status-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .status-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .status-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dtech-gray);
+      margin: 0;
+    }
+    
+    .card-value {
+      font-size: 32px;
+      font-weight: 700;
       margin: 10px 0;
     }
-    .integrity {
-      font-weight: bold;
-      font-size: 1.5em;
-      margin: 15px 0;
+    
+    .card-footer {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: var(--dtech-gray);
     }
+    
+    .integrity-card {
+      background: linear-gradient(135deg, var(--dtech-primary), var(--dtech-secondary));
+      color: white;
+    }
+    
+    .integrity-card .card-title,
+    .integrity-card .card-footer {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .dashboard-section {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--dtech-primary);
+      margin: 0;
+    }
+    
+    .server-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .server-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .server-card:hover {
+      border-color: var(--dtech-accent);
+      box-shadow: 0 5px 15px rgba(0, 204, 255, 0.1);
+    }
+    
+    .server-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .server-name {
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--dtech-primary);
+    }
+    
+    .server-status {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--dtech-success);
+      color: white;
+    }
+    
+    .server-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    
+    .stat-item {
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      color: var(--dtech-gray);
+      margin-bottom: 5px;
+    }
+    
+    .stat-value {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .progress-container {
+      height: 6px;
+      background: #f0f0f0;
+      border-radius: 3px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      border-radius: 3px;
+    }
+    
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
-      background: #161b22;
     }
-    th, td {
-      padding: 10px;
-      border: 1px solid #30363d;
-      text-align: center;
-    }
+    
     th {
-      background: #21262d;
+      text-align: left;
+      padding: 12px 15px;
+      background: #f8f9fa;
+      color: var(--dtech-gray);
+      font-weight: 600;
+      font-size: 14px;
+      border-bottom: 2px solid #e0e0e0;
     }
-    .server-card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 5px;
-      padding: 15px;
-      margin-bottom: 15px;
+    
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 14px;
     }
-    .server-header {
-      font-weight: bold;
-      font-size: 1.2em;
-      margin-bottom: 10px;
-      color: #58a6ff;
+    
+    tr:hover {
+      background-color: #f8f9fa;
     }
-    .server-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 10px;
+    
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
     }
-    .stat-item {
-      margin-bottom: 5px;
-    }
+    
     .footer {
-      margin-top: 20px;
-      font-size: 0.9em;
-      color: #8b949e;
+      text-align: center;
+      padding: 20px;
+      color: var(--dtech-gray);
+      font-size: 14px;
+      border-top: 1px solid #e0e0e0;
+      margin-top: 30px;
+    }
+    
+    .refresh-btn {
+      background: var(--dtech-primary);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.3s ease;
+    }
+    
+    .refresh-btn:hover {
+      background: var(--dtech-secondary);
+    }
+    
+    @media (max-width: 768px) {
+      .status-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .server-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
-<h1>📊 DTech Rate Limit Structural Integrity</h1>
-<div id="integrity" class="integrity">Loading...</div>
-<div class="status">Requests Today: <span id="today">-</span></div>
-<div class="status">Requests Yesterday: <span id="yesterday">-</span></div>
-<div class="status">Requests This Month: <span id="month">-</span></div>
-
-<h2>Server Details</h2>
-<div id="serverCards"></div>
-
-<h2>Historical Data</h2>
-<table id="statsTable">
-  <thead>
-    <tr>
-      <th>Server</th>
-      <th>Token</th>
-      <th>Remaining</th>
-      <th>Limit</th>
-      <th>Usage %</th>
-      <th>Last Updated</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-<div class="footer">
-  Data sourced from GitHub Gist with random token authorization
-</div>
-
-<script>
-(async () => {
-  const TOKENS_GIST = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
-  const RATE_GIST_API = "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f";
-
-  function colorFromPercent(p) {
-    if (p >= 90) return "#2ecc71"; // green
-    if (p >= 70) return "#f1c40f"; // yellow
-    if (p >= 40) return "#e67e22"; // orange
-    return "#e74c3c"; // red
-  }
-
-  function formatToken(token) {
-    return token.substring(0, 8) + '****';
-  }
-
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleString();
-  }
-
-  try {
-    const tokenListRaw = await fetch(TOKENS_GIST);
-    const tokenList = (await tokenListRaw.text()).trim().split('\n').filter(t => t.startsWith('ghp_'));
-    const token = tokenList[Math.floor(Math.random() * tokenList.length)];
-
-    const rateRes = await fetch(RATE_GIST_API, {
-      headers: { Authorization: `token ${token}` }
-    });
-
-    if (!rateRes.ok) throw new Error(`GitHub API error: ${rateRes.status}`);
-    
-    const rateData = await rateRes.json();
-    const contentRaw = rateData.files["rate.json"].content;
-    const allData = JSON.parse(contentRaw);
-
-    // Filter out entries without token (like the first status entry)
-    const tokenEntries = allData.filter(entry => entry.token);
-    
-    // Group entries by token
-    const entriesByToken = {};
-    tokenEntries.forEach(entry => {
-      if (!entriesByToken[entry.token]) {
-        entriesByToken[entry.token] = [];
-      }
-      entriesByToken[entry.token].push(entry);
-    });
-
-    // Get the latest entry for each token
-    const latestEntries = Object.keys(entriesByToken).map(token => {
-      const entries = entriesByToken[token];
-      return entries.reduce((latest, current) => {
-        return new Date(current.timestamp) > new Date(latest.timestamp) ? current : latest;
-      });
-    });
-
-    // Calculate statistics
-    const now = new Date();
-    let totalUsed = 0;
-    let totalLimit = 0;
-    let requestsToday = 0;
-    let requestsYesterday = 0;
-    let requestsMonth = 0;
-
-    // Process all entries for historical data
-    tokenEntries.forEach(entry => {
-      const used = entry.limit - entry.remaining;
-      const lastUpdated = new Date(entry.timestamp);
-      
-      if (lastUpdated.toDateString() === now.toDateString()) {
-        requestsToday += used;
-      }
-      if (new Date(now - 86400000).toDateString() === lastUpdated.toDateString()) {
-        requestsYesterday += used;
-      }
-      if (lastUpdated.getMonth() === now.getMonth() && lastUpdated.getFullYear() === now.getFullYear()) {
-        requestsMonth += used;
-      }
-    });
-
-    // Process latest entries for server cards and totals
-    latestEntries.forEach(entry => {
-      const used = entry.limit - entry.remaining;
-      totalUsed += used;
-      totalLimit += entry.limit;
-    });
-
-    // Update summary information
-    const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
-    document.getElementById("integrity").innerText = `Structural Integrity: ${100 - integrityPercent}%`;
-    document.getElementById("integrity").style.color = colorFromPercent(100 - integrityPercent);
-    document.getElementById("today").innerText = requestsToday;
-    document.getElementById("yesterday").innerText = requestsYesterday;
-    document.getElementById("month").innerText = requestsMonth;
-
-    // Create server cards for latest entries
-    const serverCardsContainer = document.getElementById("serverCards");
-    serverCardsContainer.innerHTML = "";
-    
-    latestEntries.forEach((entry, index) => {
-      const percent = Math.round((entry.remaining / entry.limit) * 100);
-      const color = colorFromPercent(percent);
-      
-      const card = document.createElement("div");
-      card.className = "server-card";
-      card.innerHTML = `
-        <div class="server-header">Server ${index + 1}</div>
-        <div class="server-stats">
-          <div class="stat-item"><strong>Token:</strong> ${formatToken(entry.token)}</div>
-          <div class="stat-item"><strong>Remaining:</strong> ${entry.remaining}</div>
-          <div class="stat-item"><strong>Limit:</strong> ${entry.limit}</div>
-          <div class="stat-item"><strong>Usage:</strong> <span style="color: ${color}">${100 - percent}%</span></div>
-          <div class="stat-item"><strong>Last Updated:</strong> ${formatDate(entry.timestamp)}</div>
+  <div class="dashboard-container">
+    <div class="header">
+      <div class="logo">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="#0066FF"/>
+          <path d="M12 12H28V28H12V12Z" fill="white"/>
+          <path d="M16 16H24V24H16V16Z" fill="#0066FF"/>
+        </svg>
+        <div class="logo-text">
+          <h1>DTECH API</h1>
+          <span>Structural Integrity Dashboard</span>
         </div>
-      `;
-      serverCardsContainer.appendChild(card);
-    });
-
-    // Populate historical data table
-    const tbody = document.querySelector("#statsTable tbody");
-    tbody.innerHTML = "";
+      </div>
+      <div class="last-updated" id="lastUpdated">Loading data...</div>
+    </div>
     
-    tokenEntries.forEach((entry, index) => {
-      const percent = Math.round((entry.remaining / entry.limit) * 100);
-      const color = colorFromPercent(percent);
+    <div class="status-cards">
+      <div class="status-card integrity-card">
+        <div class="card-header">
+          <h3 class="card-title">STRUCTURAL INTEGRITY</h3>
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="card-value" id="integrity">-</div>
+        <div class="card-footer">
+          <i class="fas fa-info-circle"></i>
+          <span>Overall system health status</span>
+        </div>
+      </div>
       
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>Server ${index + 1}</td>
-        <td>${formatToken(entry.token)}</td>
-        <td>${entry.remaining}</td>
-        <td>${entry.limit}</td>
-        <td style="color: ${color}">${100 - percent}%</td>
-        <td>${formatDate(entry.timestamp)}</td>
-      `;
-      tbody.appendChild(row);
-    });
+      <div class="status-card">
+        <div class="card-header">
+          <h3 class="card-title">REQUESTS TODAY</h3>
+          <i class="fas fa-calendar-day"></i>
+        </div>
+        <div class="card-value" id="today">-</div>
+        <div class="card-footer">
+          <i class="fas fa-arrow-up" id="todayTrend"></i>
+          <span id="todayComparison">Compared to yesterday</span>
+        </div>
+      </div>
+      
+      <div class="status-card">
+        <div class="card-header">
+          <h3 class="card-title">REQUESTS YESTERDAY</h3>
+          <i class="fas fa-calendar-week"></i>
+        </div>
+        <div class="card-value" id="yesterday">-</div>
+        <div class="card-footer">
+          <i class="fas fa-chart-line"></i>
+          <span>Daily request volume</span>
+        </div>
+      </div>
+      
+      <div class="status-card">
+        <div class="card-header">
+          <h3 class="card-title">REQUESTS THIS MONTH</h3>
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <div class="card-value" id="month">-</div>
+        <div class="card-footer">
+          <i class="fas fa-chart-bar"></i>
+          <span>Monthly request volume</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="dashboard-section">
+      <div class="section-header">
+        <h2 class="section-title">API Endpoint Status</h2>
+        <button class="refresh-btn" id="refreshBtn">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+      </div>
+      <div class="server-grid" id="serverCards"></div>
+    </div>
+    
+    <div class="dashboard-section">
+      <div class="section-header">
+        <h2 class="section-title">Historical Rate Limit Data</h2>
+        <div class="timeframe-selector">
+          <select id="timeframeSelect" style="padding: 8px; border-radius: 5px; border: 1px solid #e0e0e0;">
+            <option value="24">Last 24 hours</option>
+            <option value="7">Last 7 days</option>
+            <option value="30" selected>Last 30 days</option>
+          </select>
+        </div>
+      </div>
+      <table id="statsTable">
+        <thead>
+          <tr>
+            <th>Endpoint</th>
+            <th>Token</th>
+            <th>Remaining</th>
+            <th>Limit</th>
+            <th>Usage</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    
+    <div class="footer">
+      <p>DTECH API Monitoring System • Data refreshed every 5 minutes</p>
+      <p>For operational support, contact: api-support@dtech.com</p>
+    </div>
+  </div>
 
-  } catch (err) {
-    document.getElementById("integrity").innerText = `❌ Failed to load data: ${err.message}`;
-  }
-})();
-</script>
+  <script>
+    (async () => {
+      const TOKENS_GIST = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
+      const RATE_GIST_API = "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f";
 
+      function colorFromPercent(p) {
+        if (p >= 90) return "#2ecc71"; // green
+        if (p >= 70) return "#f1c40f"; // yellow
+        if (p >= 40) return "#e67e22"; // orange
+        return "#e74c3c"; // red
+      }
+
+      function formatToken(token) {
+        return token.substring(0, 8) + '••••';
+      }
+
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleString();
+      }
+
+      function formatShortDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      }
+
+      function getStatusIcon(percent) {
+        if (percent >= 90) return '<i class="fas fa-check-circle" style="color: #2ecc71"></i>';
+        if (percent >= 70) return '<i class="fas fa-exclamation-circle" style="color: #f1c40f"></i>';
+        return '<i class="fas fa-times-circle" style="color: #e74c3c"></i>';
+      }
+
+      async function loadData() {
+        try {
+          document.getElementById('refreshBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing';
+          
+          const tokenListRaw = await fetch(TOKENS_GIST);
+          const tokenList = (await tokenListRaw.text()).trim().split('\n').filter(t => t.startsWith('ghp_'));
+          const token = tokenList[Math.floor(Math.random() * tokenList.length)];
+
+          const rateRes = await fetch(RATE_GIST_API, {
+            headers: { Authorization: `token ${token}` }
+          });
+
+          if (!rateRes.ok) throw new Error(`GitHub API error: ${rateRes.status}`);
+          
+          const rateData = await rateRes.json();
+          const contentRaw = rateData.files["rate.json"].content;
+          const allData = JSON.parse(contentRaw);
+
+          // Update last updated time
+          document.getElementById('lastUpdated').textContent = `Last updated: ${new Date().toLocaleString()}`;
+
+          // Filter out entries without token (like the first status entry)
+          const tokenEntries = allData.filter(entry => entry.token);
+          
+          // Group entries by token
+          const entriesByToken = {};
+          tokenEntries.forEach(entry => {
+            if (!entriesByToken[entry.token]) {
+              entriesByToken[entry.token] = [];
+            }
+            entriesByToken[entry.token].push(entry);
+          });
+
+          // Get the latest entry for each token
+          const latestEntries = Object.keys(entriesByToken).map(token => {
+            const entries = entriesByToken[token];
+            return entries.reduce((latest, current) => {
+              return new Date(current.timestamp) > new Date(latest.timestamp) ? current : latest;
+            });
+          });
+
+          // Calculate statistics
+          const now = new Date();
+          let totalUsed = 0;
+          let totalLimit = 0;
+          let requestsToday = 0;
+          let requestsYesterday = 0;
+          let requestsMonth = 0;
+          let yesterdayRequests = 0;
+
+          // Process all entries for historical data
+          tokenEntries.forEach(entry => {
+            const used = entry.limit - entry.remaining;
+            const lastUpdated = new Date(entry.timestamp);
+            
+            if (lastUpdated.toDateString() === now.toDateString()) {
+              requestsToday += used;
+            }
+            if (new Date(now - 86400000).toDateString() === lastUpdated.toDateString()) {
+              requestsYesterday += used;
+              yesterdayRequests += used;
+            }
+            if (lastUpdated.getMonth() === now.getMonth() && lastUpdated.getFullYear() === now.getFullYear()) {
+              requestsMonth += used;
+            }
+          });
+
+          // Process latest entries for server cards and totals
+          latestEntries.forEach(entry => {
+            const used = entry.limit - entry.remaining;
+            totalUsed += used;
+            totalLimit += entry.limit;
+          });
+
+          // Update summary information
+          const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
+          const integrityElement = document.getElementById("integrity");
+          integrityElement.innerText = `${100 - integrityPercent}%`;
+          integrityElement.style.color = colorFromPercent(100 - integrityPercent);
+
+          document.getElementById("today").innerText = requestsToday;
+          document.getElementById("yesterday").innerText = requestsYesterday;
+          document.getElementById("month").innerText = requestsMonth;
+
+          // Update trend indicator
+          const todayTrend = document.getElementById("todayTrend");
+          const todayComparison = document.getElementById("todayComparison");
+          if (requestsToday > yesterdayRequests) {
+            todayTrend.className = "fas fa-arrow-up";
+            todayTrend.style.color = "#e74c3c";
+            todayComparison.textContent = `Up ${Math.round(((requestsToday - yesterdayRequests) / yesterdayRequests * 100)}% from yesterday`;
+          } else if (requestsToday < yesterdayRequests) {
+            todayTrend.className = "fas fa-arrow-down";
+            todayTrend.style.color = "#2ecc71";
+            todayComparison.textContent = `Down ${Math.round(((yesterdayRequests - requestsToday) / yesterdayRequests * 100)}% from yesterday`;
+          } else {
+            todayTrend.className = "fas fa-equals";
+            todayTrend.style.color = "#f39c12";
+            todayComparison.textContent = "Same as yesterday";
+          }
+
+          // Create server cards for latest entries
+          const serverCardsContainer = document.getElementById("serverCards");
+          serverCardsContainer.innerHTML = "";
+          
+          latestEntries.forEach((entry, index) => {
+            const percent = Math.round((entry.remaining / entry.limit) * 100);
+            const color = colorFromPercent(percent);
+            const used = entry.limit - entry.remaining;
+            const usagePercent = Math.round((used / entry.limit) * 100);
+            
+            const card = document.createElement("div");
+            card.className = "server-card";
+            card.innerHTML = `
+              <div class="server-header">
+                <span class="server-name">API Endpoint ${index + 1}</span>
+                <span class="server-status">${getStatusIcon(percent)} ${percent >= 90 ? 'Optimal' : percent >= 70 ? 'Degraded' : 'Critical'}</span>
+              </div>
+              <div class="server-stats">
+                <div class="stat-item">
+                  <div class="stat-label">Token ID</div>
+                  <div class="stat-value">${formatToken(entry.token)}</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-label">Requests Used</div>
+                  <div class="stat-value">${used.toLocaleString()}/${entry.limit.toLocaleString()}</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-label">Usage</div>
+                  <div class="stat-value" style="color: ${color}">${usagePercent}%</div>
+                  <div class="progress-container">
+                    <div class="progress-bar" style="width: ${usagePercent}%; background: ${color}"></div>
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-label">Last Updated</div>
+                  <div class="stat-value">${formatShortDate(entry.timestamp)}</div>
+                </div>
+              </div>
+            `;
+            serverCardsContainer.appendChild(card);
+          });
+
+          // Populate historical data table
+          const tbody = document.querySelector("#statsTable tbody");
+          tbody.innerHTML = "";
+          
+          tokenEntries.forEach((entry, index) => {
+            const percent = Math.round((entry.remaining / entry.limit) * 100);
+            const color = colorFromPercent(percent);
+            const usagePercent = 100 - percent;
+            
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>Endpoint ${index + 1}</td>
+              <td>${formatToken(entry.token)}</td>
+              <td>${entry.remaining.toLocaleString()}</td>
+              <td>${entry.limit.toLocaleString()}</td>
+              <td>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 60px; height: 6px; background: #f0f0f0; border-radius: 3px;">
+                    <div style="width: ${usagePercent}%; height: 100%; background: ${color}; border-radius: 3px;"></div>
+                  </div>
+                  <span style="color: ${color}">${usagePercent}%</span>
+                </div>
+              </td>
+              <td>${formatDate(entry.timestamp)}</td>
+            `;
+            tbody.appendChild(row);
+          });
+
+        } catch (err) {
+          document.getElementById("integrity").innerText = `Error`;
+          document.getElementById("integrity").style.color = "#e74c3c";
+          console.error("Failed to load data:", err);
+        } finally {
+          document.getElementById('refreshBtn').innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
+        }
+      }
+
+      // Initial load
+      await loadData();
+
+      // Setup refresh button
+      document.getElementById('refreshBtn').addEventListener('click', loadData);
+    })();
+  </script>
 </body>
 </html>
