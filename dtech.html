@@ -283,6 +283,36 @@
       background: var(--dtech-secondary);
     }
     
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+    
+    .error-message {
+      color: var(--dtech-danger);
+      background: rgba(231, 76, 60, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border-left: 4px solid var(--dtech-danger);
+    }
+    
     @media (max-width: 768px) {
       .status-cards {
         grid-template-columns: 1fr;
@@ -311,53 +341,9 @@
       <div class="last-updated" id="lastUpdated">Loading data...</div>
     </div>
     
-    <div class="status-cards">
-      <div class="status-card integrity-card">
-        <div class="card-header">
-          <h3 class="card-title">STRUCTURAL INTEGRITY</h3>
-          <i class="fas fa-shield-alt"></i>
-        </div>
-        <div class="card-value" id="integrity">-</div>
-        <div class="card-footer">
-          <i class="fas fa-info-circle"></i>
-          <span>Overall system health status</span>
-        </div>
-      </div>
-      
-      <div class="status-card">
-        <div class="card-header">
-          <h3 class="card-title">REQUESTS TODAY</h3>
-          <i class="fas fa-calendar-day"></i>
-        </div>
-        <div class="card-value" id="today">-</div>
-        <div class="card-footer">
-          <i class="fas fa-arrow-up" id="todayTrend"></i>
-          <span id="todayComparison">Compared to yesterday</span>
-        </div>
-      </div>
-      
-      <div class="status-card">
-        <div class="card-header">
-          <h3 class="card-title">REQUESTS YESTERDAY</h3>
-          <i class="fas fa-calendar-week"></i>
-        </div>
-        <div class="card-value" id="yesterday">-</div>
-        <div class="card-footer">
-          <i class="fas fa-chart-line"></i>
-          <span>Daily request volume</span>
-        </div>
-      </div>
-      
-      <div class="status-card">
-        <div class="card-header">
-          <h3 class="card-title">REQUESTS THIS MONTH</h3>
-          <i class="fas fa-calendar-alt"></i>
-        </div>
-        <div class="card-value" id="month">-</div>
-        <div class="card-footer">
-          <i class="fas fa-chart-bar"></i>
-          <span>Monthly request volume</span>
-        </div>
+    <div id="statusCards" class="status-cards">
+      <div class="loading-container">
+        <div class="loading"></div>
       </div>
     </div>
     
@@ -368,7 +354,9 @@
           <i class="fas fa-sync-alt"></i> Refresh
         </button>
       </div>
-      <div class="server-grid" id="serverCards"></div>
+      <div id="serverCards" class="loading-container">
+        <div class="loading"></div>
+      </div>
     </div>
     
     <div class="dashboard-section">
@@ -382,19 +370,9 @@
           </select>
         </div>
       </div>
-      <table id="statsTable">
-        <thead>
-          <tr>
-            <th>Endpoint</th>
-            <th>Token</th>
-            <th>Remaining</th>
-            <th>Limit</th>
-            <th>Usage</th>
-            <th>Last Updated</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div id="historicalData" class="loading-container">
+        <div class="loading"></div>
+      </div>
     </div>
     
     <div class="footer">
@@ -435,23 +413,62 @@
         return '<i class="fas fa-times-circle" style="color: #e74c3c"></i>';
       }
 
+      function showError(message) {
+        const errorHTML = `
+          <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i> <strong>Error:</strong> ${message}
+          </div>
+        `;
+        document.getElementById('statusCards').innerHTML = errorHTML;
+        document.getElementById('serverCards').innerHTML = errorHTML;
+        document.getElementById('historicalData').innerHTML = errorHTML;
+      }
+
       async function loadData() {
         try {
+          // Show loading states
           document.getElementById('refreshBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing';
+          document.getElementById('statusCards').innerHTML = '<div class="loading-container"><div class="loading"></div></div>';
+          document.getElementById('serverCards').innerHTML = '<div class="loading-container"><div class="loading"></div></div>';
+          document.getElementById('historicalData').innerHTML = '<div class="loading-container"><div class="loading"></div></div>';
+
+          // Load token list
+          const tokenListResponse = await fetch(TOKENS_GIST);
+          if (!tokenListResponse.ok) {
+            throw new Error(`Failed to fetch token list: ${tokenListResponse.status}`);
+          }
           
-          const tokenListRaw = await fetch(TOKENS_GIST);
-          const tokenList = (await tokenListRaw.text()).trim().split('\n').filter(t => t.startsWith('ghp_'));
+          const tokenListText = await tokenListResponse.text();
+          const tokenList = tokenListText.trim().split('\n').filter(t => t.startsWith('ghp_'));
+          
+          if (tokenList.length === 0) {
+            throw new Error('No valid tokens found in the token list');
+          }
+          
           const token = tokenList[Math.floor(Math.random() * tokenList.length)];
 
+          // Load rate data
           const rateRes = await fetch(RATE_GIST_API, {
             headers: { Authorization: `token ${token}` }
           });
 
-          if (!rateRes.ok) throw new Error(`GitHub API error: ${rateRes.status}`);
+          if (!rateRes.ok) {
+            throw new Error(`GitHub API error: ${rateRes.status} - ${rateRes.statusText}`);
+          }
           
           const rateData = await rateRes.json();
+          if (!rateData.files || !rateData.files["rate.json"]) {
+            throw new Error('Rate data file not found in gist');
+          }
+          
           const contentRaw = rateData.files["rate.json"].content;
-          const allData = JSON.parse(contentRaw);
+          let allData;
+          
+          try {
+            allData = JSON.parse(contentRaw);
+          } catch (e) {
+            throw new Error('Failed to parse rate data JSON');
+          }
 
           // Update last updated time
           document.getElementById('lastUpdated').textContent = `Last updated: ${new Date().toLocaleString()}`;
@@ -459,6 +476,10 @@
           // Filter out entries without token (like the first status entry)
           const tokenEntries = allData.filter(entry => entry.token);
           
+          if (tokenEntries.length === 0) {
+            throw new Error('No token entries found in rate data');
+          }
+
           // Group entries by token
           const entriesByToken = {};
           tokenEntries.forEach(entry => {
@@ -509,36 +530,68 @@
             totalLimit += entry.limit;
           });
 
-          // Update summary information
+          // Update status cards
           const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
-          const integrityElement = document.getElementById("integrity");
-          integrityElement.innerText = `${100 - integrityPercent}%`;
-          integrityElement.style.color = colorFromPercent(100 - integrityPercent);
-
-          document.getElementById("today").innerText = requestsToday;
-          document.getElementById("yesterday").innerText = requestsYesterday;
-          document.getElementById("month").innerText = requestsMonth;
-
-          // Update trend indicator
-          const todayTrend = document.getElementById("todayTrend");
-          const todayComparison = document.getElementById("todayComparison");
-          if (requestsToday > yesterdayRequests) {
-            todayTrend.className = "fas fa-arrow-up";
-            todayTrend.style.color = "#e74c3c";
-            todayComparison.textContent = `Up ${Math.round(((requestsToday - yesterdayRequests) / yesterdayRequests * 100)}% from yesterday`;
-          } else if (requestsToday < yesterdayRequests) {
-            todayTrend.className = "fas fa-arrow-down";
-            todayTrend.style.color = "#2ecc71";
-            todayComparison.textContent = `Down ${Math.round(((yesterdayRequests - requestsToday) / yesterdayRequests * 100)}% from yesterday`;
-          } else {
-            todayTrend.className = "fas fa-equals";
-            todayTrend.style.color = "#f39c12";
-            todayComparison.textContent = "Same as yesterday";
-          }
+          const statusCardsHTML = `
+            <div class="status-card integrity-card">
+              <div class="card-header">
+                <h3 class="card-title">STRUCTURAL INTEGRITY</h3>
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="card-value" style="color: ${colorFromPercent(100 - integrityPercent)}">${100 - integrityPercent}%</div>
+              <div class="card-footer">
+                <i class="fas fa-info-circle"></i>
+                <span>Overall system health status</span>
+              </div>
+            </div>
+            
+            <div class="status-card">
+              <div class="card-header">
+                <h3 class="card-title">REQUESTS TODAY</h3>
+                <i class="fas fa-calendar-day"></i>
+              </div>
+              <div class="card-value">${requestsToday.toLocaleString()}</div>
+              <div class="card-footer">
+                <i class="fas fa-arrow-${requestsToday > yesterdayRequests ? 'up' : requestsToday < yesterdayRequests ? 'down' : 'equal'}" 
+                   style="color: ${requestsToday > yesterdayRequests ? '#e74c3c' : requestsToday < yesterdayRequests ? '#2ecc71' : '#f39c12'}"></i>
+                <span>
+                  ${requestsToday > yesterdayRequests ? 
+                    `Up ${Math.round(((requestsToday - yesterdayRequests) / yesterdayRequests * 100)}% from yesterday` : 
+                    requestsToday < yesterdayRequests ? 
+                    `Down ${Math.round(((yesterdayRequests - requestsToday) / yesterdayRequests * 100)}% from yesterday` : 
+                    'Same as yesterday'}
+                </span>
+              </div>
+            </div>
+            
+            <div class="status-card">
+              <div class="card-header">
+                <h3 class="card-title">REQUESTS YESTERDAY</h3>
+                <i class="fas fa-calendar-week"></i>
+              </div>
+              <div class="card-value">${requestsYesterday.toLocaleString()}</div>
+              <div class="card-footer">
+                <i class="fas fa-chart-line"></i>
+                <span>Daily request volume</span>
+              </div>
+            </div>
+            
+            <div class="status-card">
+              <div class="card-header">
+                <h3 class="card-title">REQUESTS THIS MONTH</h3>
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <div class="card-value">${requestsMonth.toLocaleString()}</div>
+              <div class="card-footer">
+                <i class="fas fa-chart-bar"></i>
+                <span>Monthly request volume</span>
+              </div>
+            </div>
+          `;
+          document.getElementById('statusCards').innerHTML = statusCardsHTML;
 
           // Create server cards for latest entries
-          const serverCardsContainer = document.getElementById("serverCards");
-          serverCardsContainer.innerHTML = "";
+          let serverCardsHTML = '';
           
           latestEntries.forEach((entry, index) => {
             const percent = Math.round((entry.remaining / entry.limit) * 100);
@@ -546,70 +599,87 @@
             const used = entry.limit - entry.remaining;
             const usagePercent = Math.round((used / entry.limit) * 100);
             
-            const card = document.createElement("div");
-            card.className = "server-card";
-            card.innerHTML = `
-              <div class="server-header">
-                <span class="server-name">API Endpoint ${index + 1}</span>
-                <span class="server-status">${getStatusIcon(percent)} ${percent >= 90 ? 'Optimal' : percent >= 70 ? 'Degraded' : 'Critical'}</span>
-              </div>
-              <div class="server-stats">
-                <div class="stat-item">
-                  <div class="stat-label">Token ID</div>
-                  <div class="stat-value">${formatToken(entry.token)}</div>
+            serverCardsHTML += `
+              <div class="server-card">
+                <div class="server-header">
+                  <span class="server-name">API Endpoint ${index + 1}</span>
+                  <span class="server-status">${getStatusIcon(percent)} ${percent >= 90 ? 'Optimal' : percent >= 70 ? 'Degraded' : 'Critical'}</span>
                 </div>
-                <div class="stat-item">
-                  <div class="stat-label">Requests Used</div>
-                  <div class="stat-value">${used.toLocaleString()}/${entry.limit.toLocaleString()}</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-label">Usage</div>
-                  <div class="stat-value" style="color: ${color}">${usagePercent}%</div>
-                  <div class="progress-container">
-                    <div class="progress-bar" style="width: ${usagePercent}%; background: ${color}"></div>
+                <div class="server-stats">
+                  <div class="stat-item">
+                    <div class="stat-label">Token ID</div>
+                    <div class="stat-value">${formatToken(entry.token)}</div>
                   </div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-label">Last Updated</div>
-                  <div class="stat-value">${formatShortDate(entry.timestamp)}</div>
+                  <div class="stat-item">
+                    <div class="stat-label">Requests Used</div>
+                    <div class="stat-value">${used.toLocaleString()}/${entry.limit.toLocaleString()}</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-label">Usage</div>
+                    <div class="stat-value" style="color: ${color}">${usagePercent}%</div>
+                    <div class="progress-container">
+                      <div class="progress-bar" style="width: ${usagePercent}%; background: ${color}"></div>
+                    </div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-label">Last Updated</div>
+                    <div class="stat-value">${formatShortDate(entry.timestamp)}</div>
+                  </div>
                 </div>
               </div>
             `;
-            serverCardsContainer.appendChild(card);
           });
+          document.getElementById('serverCards').innerHTML = serverCardsHTML;
 
           // Populate historical data table
-          const tbody = document.querySelector("#statsTable tbody");
-          tbody.innerHTML = "";
+          let historicalHTML = `
+            <table id="statsTable">
+              <thead>
+                <tr>
+                  <th>Endpoint</th>
+                  <th>Token</th>
+                  <th>Remaining</th>
+                  <th>Limit</th>
+                  <th>Usage</th>
+                  <th>Last Updated</th>
+                </tr>
+              </thead>
+              <tbody>
+          `;
           
           tokenEntries.forEach((entry, index) => {
             const percent = Math.round((entry.remaining / entry.limit) * 100);
             const color = colorFromPercent(percent);
             const usagePercent = 100 - percent;
             
-            const row = document.createElement("tr");
-            row.innerHTML = `
-              <td>Endpoint ${index + 1}</td>
-              <td>${formatToken(entry.token)}</td>
-              <td>${entry.remaining.toLocaleString()}</td>
-              <td>${entry.limit.toLocaleString()}</td>
-              <td>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <div style="width: 60px; height: 6px; background: #f0f0f0; border-radius: 3px;">
-                    <div style="width: ${usagePercent}%; height: 100%; background: ${color}; border-radius: 3px;"></div>
+            historicalHTML += `
+              <tr>
+                <td>Endpoint ${index + 1}</td>
+                <td>${formatToken(entry.token)}</td>
+                <td>${entry.remaining.toLocaleString()}</td>
+                <td>${entry.limit.toLocaleString()}</td>
+                <td>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 60px; height: 6px; background: #f0f0f0; border-radius: 3px;">
+                      <div style="width: ${usagePercent}%; height: 100%; background: ${color}; border-radius: 3px;"></div>
+                    </div>
+                    <span style="color: ${color}">${usagePercent}%</span>
                   </div>
-                  <span style="color: ${color}">${usagePercent}%</span>
-                </div>
-              </td>
-              <td>${formatDate(entry.timestamp)}</td>
+                </td>
+                <td>${formatDate(entry.timestamp)}</td>
+              </tr>
             `;
-            tbody.appendChild(row);
           });
+          
+          historicalHTML += `
+              </tbody>
+            </table>
+          `;
+          document.getElementById('historicalData').innerHTML = historicalHTML;
 
         } catch (err) {
-          document.getElementById("integrity").innerText = `Error`;
-          document.getElementById("integrity").style.color = "#e74c3c";
           console.error("Failed to load data:", err);
+          showError(err.message);
         } finally {
           document.getElementById('refreshBtn').innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
         }
