@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit LocalStorage User</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; }
+    label { display: block; margin-top: 1rem; }
+    input, textarea, button { width: 100%; padding: 0.5rem; margin-top: 0.3rem; font-size: 1rem; }
+    .status { margin-top: 1rem; color: green; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+
+  <h2>📦 LocalStorage Editor: <code>loggedInUser</code></h2>
+
+  <div id="form-container">
+    <label>Username:
+      <input type="text" id="username">
+    </label>
+
+    <label>Password:
+      <input type="text" id="password">
+    </label>
+
+    <label>Gist ID:
+      <input type="text" id="gistId">
+    </label>
+
+    <label>Gist URL:
+      <input type="text" id="gistUrl">
+    </label>
+
+    <button onclick="saveToLocalStorage()">💾 Save Changes</button>
+    <button onclick="clearStorage()" style="background:red;color:white;">🗑 Clear Data</button>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script>
+    // Load current data
+    function loadUserData() {
+      const data = localStorage.getItem("loggedInUser");
+      if (!data) {
+        document.getElementById("status").innerHTML = "<span class='error'>❌ No 'loggedInUser' found in localStorage.</span>";
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(data);
+        document.getElementById("username").value = parsed.username || "";
+        document.getElementById("password").value = parsed.password || "";
+        document.getElementById("gistId").value = parsed.gistId || "";
+        document.getElementById("gistUrl").value = parsed.gistUrl || "";
+      } catch (e) {
+        document.getElementById("status").innerHTML = "<span class='error'>❌ Error parsing JSON.</span>";
+      }
+    }
+
+    function saveToLocalStorage() {
+      const user = {
+        username: document.getElementById("username").value.trim(),
+        password: document.getElementById("password").value.trim(),
+        gistId: document.getElementById("gistId").value.trim(),
+        gistUrl: document.getElementById("gistUrl").value.trim()
+      };
+
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      document.getElementById("status").textContent = "✅ Changes saved to localStorage.";
+    }
+
+    function clearStorage() {
+      localStorage.removeItem("loggedInUser");
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("gistId").value = "";
+      document.getElementById("gistUrl").value = "";
+      document.getElementById("status").innerHTML = "🗑 <b>'loggedInUser'</b> key removed from localStorage.";
+    }
+
+    // Initialize
+    loadUserData();
+  </script>
+
+</body>
+</html>
