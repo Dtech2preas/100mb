@@ -5,19 +5,70 @@
 <script>
   // Apply saved theme
   const theme = localStorage.getItem("theme") || "dark";
-  if (theme === "dark") {
-    document.documentElement.style.setProperty('--bg', '#121212');
-    document.documentElement.style.setProperty('--text', '#ffffff');
-  } else {
-    document.documentElement.style.setProperty('--bg', '#ffffff');
-    document.documentElement.style.setProperty('--text', '#000000');
+  let bg, text, accent, cardBg, border;
+  
+  switch(theme) {
+    case "light":
+      bg = "#ffffff";
+      text = "#000000";
+      accent = "#0066cc";
+      cardBg = "#f5f5f5";
+      border = "#ddd";
+      break;
+    case "oled":
+      bg = "#000000";
+      text = "#ffffff";
+      accent = "#00ffd5";
+      cardBg = "#111111";
+      border = "#222";
+      break;
+    case "sepia":
+      bg = "#f4ecd8";
+      text = "#5b4636";
+      accent = "#d4a017";
+      cardBg = "#e4d5b7";
+      border = "#d9c7a7";
+      break;
+    case "custom":
+      bg = localStorage.getItem("bgColor") || "#121212";
+      text = localStorage.getItem("textColor") || "#ffffff";
+      accent = localStorage.getItem("accentColor") || "#00ffd5";
+      cardBg = adjustColor(bg, 20);
+      border = adjustColor(bg, 30);
+      break;
+    default: // dark
+      bg = "#121212";
+      text = "#ffffff";
+      accent = "#00ffd5";
+      cardBg = "#1e1e1e";
+      border = "#333";
   }
-
-  // Get username (if needed)
+  
+  document.documentElement.style.setProperty("--bg", bg);
+  document.documentElement.style.setProperty("--text", text);
+  document.documentElement.style.setProperty("--accent", accent);
+  document.documentElement.style.setProperty("--card-bg", cardBg);
+  document.documentElement.style.setProperty("--border", border);
+  
+  // Apply font size
+  const fontSize = localStorage.getItem("fontSize") || "16";
+  document.documentElement.style.fontSize = `${fontSize}px`;
+  
+  // Get username
   const username = localStorage.getItem("username") || "Guest";
-
-  // Optional: use it somewhere
-  console.log("Welcome back, " + username);
+  
+  // Simple color adjustment function (basic implementation)
+  function adjustColor(color, amount) {
+    return color; // In a real implementation, you'd adjust the color
+  }
+  
+  // Optional: Welcome message
+  console.log(`Welcome back, ${username}!`);
+  document.addEventListener('DOMContentLoaded', () => {
+    if (username !== "Guest") {
+      // You could display the username somewhere in your UI
+    }
+  });
 </script>
 
   <meta charset="UTF-8">
