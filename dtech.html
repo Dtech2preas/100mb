@@ -2,90 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>📊 GitHub Token Rate Summary</title>
+  <title>📊 DTech GitHub API Stats</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
-    h1 { margin-bottom: 0.5em; }
-    .stat { font-size: 18px; margin: 10px 0; }
-    pre { 
-      font-size: 12px; 
-      background: #fff; 
-      padding: 10px; 
-      overflow-x: auto; 
-      max-height: 400px; 
-      border-left: 4px solid #ccc; 
-      white-space: pre-wrap;
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .label {
+      font-size: 14px;
+      color: #777;
+    }
+    .value {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 0.2rem;
     }
   </style>
 </head>
 <body>
-  <h1>📊 GitHub Token Rate Summary</h1>
-  <div class="stat">🟢 <strong>Today (UTC):</strong> <span id="today">–</span> requests</div>
-  <div class="stat">🟡 <strong>Yesterday (UTC):</strong> <span id="yesterday">–</span> requests</div>
-  <div class="stat">📆 <strong>This Month:</strong> <span id="month">–</span> requests</div>
+  <h1>📊 DTech GitHub API Usage</h1>
+  
+  <div class="card">
+    <div class="label">Today’s Requests</div>
+    <div id="today" class="value">Loading...</div>
+  </div>
 
-  <h2>📄 Request Log (UTC)</h2>
-  <pre id="log">Loading…</pre>
+  <div class="card">
+    <div class="label">Yesterday’s Total</div>
+    <div id="yesterday" class="value">Loading...</div>
+  </div>
+
+  <div class="card">
+    <div class="label">Total This Month (Last 30 Days)</div>
+    <div id="month" class="value">Loading...</div>
+  </div>
 
   <script>
     const RAW_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/rate.json";
 
-    async function load() {
+    async function loadStats() {
       const res = await fetch(RAW_URL);
       const data = await res.json();
 
-      // Build date strings
-      const today = new Date();
-      const utcTodayStr = today.toISOString().slice(0,10);
-      const yesterday = new Date(Date.UTC(
-        today.getUTCFullYear(),
-        today.getUTCMonth(),
-        today.getUTCDate() - 1
-      ));
-      const utcYesterdayStr = yesterday.toISOString().slice(0,10);
+      const now = new Date();
+      const todayStr = now.toISOString().split('T')[0];
+      const yesterdayStr = new Date(now.getTime() - 86400000).toISOString().split('T')[0];
+      const past30 = new Date(now.getTime() - (30 * 86400000));
 
-      const monthAgo = new Date(Date.UTC(
-        today.getUTCFullYear(),
-        today.getUTCMonth(),
-        today.getUTCDate() - 29
-      ));
-      const utcMonthAgoStr = monthAgo.toISOString().slice(0,10);
+      let todayTotal = 0;
+      let yesterdayTotal = 0;
+      let monthlyTotal = 0;
 
-      let sumToday = 0, sumYesterday = 0, sumMonth = 0;
-      const logLines = [];
-
-      for (const e of data) {
-        const used = Number(e.limit) - Number(e.remaining);
-        if (used < 0) continue; 
-        const dateStr = e.timestamp.slice(0,10);
-
-        // Month window: from utcMonthAgoStr up to utcTodayStr inclusive
-        if (dateStr >= utcMonthAgoStr && dateStr <= utcTodayStr) {
-          sumMonth += used;
-        }
-
-        if (dateStr === utcTodayStr) {
-          sumToday += used;
-          logLines.push(`✅ [Today]     ${e.timestamp} → ${used}`);
-        }
-        else if (dateStr === utcYesterdayStr) {
-          sumYesterday += used;
-          logLines.push(`🕘 [Yesterday] ${e.timestamp} → ${used}`);
-        }
-        else {
-          logLines.push(`📅 [Other]     ${e.timestamp} → ${used}`);
+      for (const entry of data) {
+        if (entry.timestamp) {
+          const ts = new Date(entry.timestamp);
+          const dStr = ts.toISOString().split('T')[0];
+          if (dStr === todayStr) {
+            todayTotal += entry.used;
+          }
+          if (ts >= past30) {
+            monthlyTotal += entry.used;
+          }
+        } else if (entry.date && entry.total_used != null) {
+          if (entry.date === yesterdayStr) {
+            yesterdayTotal += entry.total_used;
+          }
+          const entryDate = new Date(entry.date);
+          if (entryDate >= past30) {
+            monthlyTotal += entry.total_used;
+          }
         }
       }
 
-      document.getElementById('today').textContent = sumToday;
-      document.getElementById('yesterday').textContent = sumYesterday;
-      document.getElementById('month').textContent = sumMonth;
-      document.getElementById('log').textContent = logLines.join('\n');
+      document.getElementById("today").textContent = todayTotal.toLocaleString();
+      document.getElementById("yesterday").textContent = yesterdayTotal.toLocaleString();
+      document.getElementById("month").textContent = monthlyTotal.toLocaleString();
     }
 
-    load().catch(err => {
-      document.getElementById('log').textContent = '⚠️ Error: ' + err;
-    });
+    loadStats();
+    setInterval(loadStats, 60000); // Refresh every 60 seconds
   </script>
 </body>
 </html>
