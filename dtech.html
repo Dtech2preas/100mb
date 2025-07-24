@@ -7,70 +7,85 @@
     body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
     h1 { margin-bottom: 0.5em; }
     .stat { font-size: 18px; margin: 10px 0; }
-    pre { font-size: 12px; background: #fff; padding: 10px; overflow-x: auto; max-height: 400px; border-left: 4px solid #ccc; }
+    pre { 
+      font-size: 12px; 
+      background: #fff; 
+      padding: 10px; 
+      overflow-x: auto; 
+      max-height: 400px; 
+      border-left: 4px solid #ccc; 
+      white-space: pre-wrap;
+    }
   </style>
 </head>
 <body>
   <h1>📊 GitHub Token Rate Summary</h1>
-  <div class="stat">🟢 <strong>Today:</strong> <span id="today">-</span> requests</div>
-  <div class="stat">🟡 <strong>Yesterday:</strong> <span id="yesterday">-</span> requests</div>
-  <div class="stat">📆 <strong>This Month:</strong> <span id="month">-</span> requests</div>
+  <div class="stat">🟢 <strong>Today (UTC):</strong> <span id="today">–</span> requests</div>
+  <div class="stat">🟡 <strong>Yesterday (UTC):</strong> <span id="yesterday">–</span> requests</div>
+  <div class="stat">📆 <strong>This Month:</strong> <span id="month">–</span> requests</div>
 
   <h2>📄 Request Log (UTC)</h2>
-  <pre id="log">Loading...</pre>
+  <pre id="log">Loading…</pre>
 
   <script>
     const RAW_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/rate.json";
 
-    fetch(RAW_URL)
-      .then(res => res.json())
-      .then(data => {
-        const now = Date.now();
-        const ONE_DAY = 24 * 60 * 60 * 1000;
-        const TWO_DAYS = 2 * ONE_DAY;
-        const THIRTY_DAYS = 30 * ONE_DAY;
+    async function load() {
+      const res = await fetch(RAW_URL);
+      const data = await res.json();
 
-        let today = 0, yesterday = 0, month = 0;
-        const logs = [];
+      // Build date strings
+      const today = new Date();
+      const utcTodayStr = today.toISOString().slice(0,10);
+      const yesterday = new Date(Date.UTC(
+        today.getUTCFullYear(),
+        today.getUTCMonth(),
+        today.getUTCDate() - 1
+      ));
+      const utcYesterdayStr = yesterday.toISOString().slice(0,10);
 
-        for (const entry of data) {
-          const ts = new Date(entry.timestamp).getTime();
-          const age = now - ts;
+      const monthAgo = new Date(Date.UTC(
+        today.getUTCFullYear(),
+        today.getUTCMonth(),
+        today.getUTCDate() - 29
+      ));
+      const utcMonthAgoStr = monthAgo.toISOString().slice(0,10);
 
-          const limit = Number(entry.limit);
-          const remaining = Number(entry.remaining);
+      let sumToday = 0, sumYesterday = 0, sumMonth = 0;
+      const logLines = [];
 
-          if (isNaN(limit) || isNaN(remaining)) continue;
+      for (const e of data) {
+        const used = Number(e.limit) - Number(e.remaining);
+        if (used < 0) continue; 
+        const dateStr = e.timestamp.slice(0,10);
 
-          const used = limit - remaining;
-
-          // We'll accept any usage ≥ 0, even if > limit
-          if (used < 0) continue;
-
-          let label = "📅 [Older]";
-          if (age <= ONE_DAY) {
-            today += used;
-            label = "✅ [Today]";
-          } else if (age <= TWO_DAYS) {
-            yesterday += used;
-            label = "🕘 [Yesterday]";
-          }
-
-          if (age <= THIRTY_DAYS) {
-            month += used;
-          }
-
-          logs.push(`${label} ${entry.timestamp} → ${used} used`);
+        // Month window: from utcMonthAgoStr up to utcTodayStr inclusive
+        if (dateStr >= utcMonthAgoStr && dateStr <= utcTodayStr) {
+          sumMonth += used;
         }
 
-        document.getElementById("today").textContent = today;
-        document.getElementById("yesterday").textContent = yesterday;
-        document.getElementById("month").textContent = month;
-        document.getElementById("log").textContent = logs.join("\n");
-      })
-      .catch(err => {
-        document.getElementById("log").textContent = "⚠️ Error loading data:\n" + err;
-      });
+        if (dateStr === utcTodayStr) {
+          sumToday += used;
+          logLines.push(`✅ [Today]     ${e.timestamp} → ${used}`);
+        }
+        else if (dateStr === utcYesterdayStr) {
+          sumYesterday += used;
+          logLines.push(`🕘 [Yesterday] ${e.timestamp} → ${used}`);
+        }
+        else {
+          logLines.push(`📅 [Other]     ${e.timestamp} → ${used}`);
+        }
+      }
+
+      document.getElementById('today').textContent = sumToday;
+      document.getElementById('yesterday').textContent = sumYesterday;
+      document.getElementById('month').textContent = sumMonth;
+      document.getElementById('log').textContent = logLines.join('\n');
+    }
+
+    load().catch(err => {
+      document.getElementById('log').textContent = '⚠️ Error: ' + err;
+    });
   </script>
 </body>
 </html>
