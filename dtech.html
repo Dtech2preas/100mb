@@ -55,11 +55,15 @@
       margin-bottom: 3rem;
     }
     
-    .full-width {
-      grid-column: 1 / -1;
+    .top-row {
+      grid-template-columns: 1fr;
     }
     
-    .two-column {
+    .middle-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bottom-row {
       grid-template-columns: repeat(2, 1fr);
     }
     
@@ -70,31 +74,11 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       border-left: 4px solid var(--primary-blue);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
     }
     
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    }
-    
-    .integrity-card {
-      border-left-color: var(--accent-blue);
-    }
-    
-    .integrity-card::after {
-      background: linear-gradient(90deg, var(--accent-blue), #00c896);
     }
     
     .label {
@@ -125,10 +109,6 @@
       height: 100%;
       background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
       transition: width 0.5s ease;
-    }
-    
-    .integrity-fill {
-      background: linear-gradient(90deg, var(--accent-blue), #00c896);
     }
     
     .section-title {
@@ -198,23 +178,6 @@
       font-weight: 600;
       background: rgba(100, 255, 218, 0.1);
       color: var(--accent-blue);
-      margin-top: 0.5rem;
-    }
-    
-    .timestamp {
-      font-size: 0.85rem;
-      color: rgba(204, 214, 246, 0.6);
-      margin-top: 1rem;
-    }
-    
-    .pulse {
-      animation: pulse 1.5s infinite;
-    }
-    
-    @keyframes pulse {
-      0% { opacity: 0.7; }
-      50% { opacity: 1; }
-      100% { opacity: 0.7; }
     }
     
     @media (max-width: 768px) {
@@ -226,7 +189,7 @@
         font-size: 2rem;
       }
       
-      .two-column {
+      .middle-row, .bottom-row {
         grid-template-columns: 1fr;
       }
     }
@@ -236,50 +199,47 @@
   <div class="container">
     <h1>DTech GitHub API Usage Dashboard</h1>
     
-    <div class="grid">
-      <!-- Top: Full width integrity card -->
-      <div class="card integrity-card full-width">
+    <!-- Top Row - D-TECH STRUCTURAL INTEGRITY -->
+    <div class="grid top-row">
+      <div class="card">
         <div class="label">D-TECH STRUCTURAL INTEGRITY</div>
         <div id="integrity" class="value">Calculating...</div>
-        <div class="percent-bar">
-          <div id="integrity-bar" class="percent-fill integrity-fill" style="width:0%"></div>
-        </div>
-        <div class="status-badge">System Health Indicator</div>
-        <div class="timestamp" id="update-time">Last updated: --</div>
-      </div>
-      
-      <!-- Middle: Today/Yesterday -->
-      <div class="grid two-column">
-        <div class="card">
-          <div class="label">Today's Requests</div>
-          <div id="today" class="value pulse">Loading...</div>
-          <div class="status-badge">Live Data</div>
-        </div>
-        
-        <div class="card">
-          <div class="label">Yesterday's Total</div>
-          <div id="yesterday" class="value pulse">Loading...</div>
-          <div class="status-badge">24h Comparison</div>
-        </div>
-      </div>
-      
-      <!-- Bottom: Average/Monthly -->
-      <div class="grid two-column">
-        <div class="card">
-          <div class="label">Average Daily Usage</div>
-          <div id="average" class="value pulse">Calculating...</div>
-          <div class="status-badge">30-day Average</div>
-        </div>
-        
-        <div class="card">
-          <div class="label">This Month's Total</div>
-          <div id="month" class="value pulse">Loading...</div>
-          <div class="status-badge">Monthly Overview</div>
-        </div>
+        <div class="percent-bar"><div id="integrity-bar" class="percent-fill" style="width:0%"></div></div>
+        <div class="status-badge">System Health</div>
       </div>
     </div>
     
-    <div class="section-title">API Server Utilization</div>
+    <!-- Middle Row - Today and Yesterday -->
+    <div class="grid middle-row">
+      <div class="card">
+        <div class="label">Today's Requests</div>
+        <div id="today" class="value">Loading...</div>
+        <div class="status-badge">Live</div>
+      </div>
+      
+      <div class="card">
+        <div class="label">Yesterday's Total</div>
+        <div id="yesterday" class="value">Loading...</div>
+        <div class="status-badge">24h Analysis</div>
+      </div>
+    </div>
+    
+    <!-- Bottom Row - Average per Day and Monthly -->
+    <div class="grid bottom-row">
+      <div class="card">
+        <div class="label">Average per Day</div>
+        <div id="average" class="value">Loading...</div>
+        <div class="status-badge">Daily Trend</div>
+      </div>
+      
+      <div class="card">
+        <div class="label">This Month's Total</div>
+        <div id="month" class="value">Loading...</div>
+        <div class="status-badge">30-day Trend</div>
+      </div>
+    </div>
+    
+    <div class="section-title">Servers Overview</div>
     <table>
       <thead>
         <tr>
@@ -287,7 +247,6 @@
           <th>Total Used</th>
           <th>Limit</th>
           <th>Remaining</th>
-          <th>Utilization</th>
         </tr>
       </thead>
       <tbody id="servers"></tbody>
@@ -296,17 +255,6 @@
   
   <script>
     const RAW_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/rate.json";
-
-    function formatTimestamp() {
-      const now = new Date();
-      return now.toLocaleString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      });
-    }
 
     async function loadStats() {
       try {
@@ -345,15 +293,9 @@
 
             const key = entry.token?.substring(0, 20) ?? "unknown";
             if (!servers[key]) {
-              servers[key] = { 
-                total: 0, 
-                limit: entry.limit, 
-                remaining: entry.remaining,
-                used: 0
-              };
+              servers[key] = { total: 0, limit: entry.limit, remaining: entry.remaining };
             }
             servers[key].total += entry.used;
-            servers[key].used += entry.used;
           } else if (entry.date && entry.total_used != null) {
             if (entry.date === yesterdayStr) {
               yesterdayTotal += entry.total_used;
@@ -366,46 +308,26 @@
         }
 
         const integrity = hourRemaining + hourUsed > 0 ? Math.max(0, 100 - (hourUsed / (hourRemaining + hourUsed)) * 100) : 100;
-        const averageDaily = monthlyTotal / 30;
+        const averagePerDay = monthlyTotal / 30;
 
-        // Update DOM
         document.getElementById("today").textContent = todayTotal.toLocaleString();
-        document.getElementById("today").classList.remove("pulse");
-        
         document.getElementById("yesterday").textContent = yesterdayTotal.toLocaleString();
-        document.getElementById("yesterday").classList.remove("pulse");
-        
         document.getElementById("month").textContent = monthlyTotal.toLocaleString();
-        document.getElementById("month").classList.remove("pulse");
-        
-        document.getElementById("average").textContent = Math.round(averageDaily).toLocaleString();
-        document.getElementById("average").classList.remove("pulse");
-        
+        document.getElementById("average").textContent = Math.round(averagePerDay).toLocaleString();
         document.getElementById("integrity").textContent = integrity.toFixed(1) + "%";
         document.getElementById("integrity-bar").style.width = integrity + "%";
-        
-        document.getElementById("update-time").textContent = `Last updated: ${formatTimestamp()}`;
 
-        // Update server table
         const tbody = document.getElementById("servers");
         tbody.innerHTML = "";
         let index = 1;
         for (const key in servers) {
           const s = servers[key];
-          const utilization = s.limit ? Math.min(100, (s.used / s.limit) * 100) : 0;
-          
           tbody.innerHTML += `
             <tr>
               <td>Server ${index++}</td>
               <td>${s.total.toLocaleString()}</td>
               <td>${s.limit?.toLocaleString() ?? '-'}</td>
               <td>${s.remaining?.toLocaleString() ?? '-'}</td>
-              <td>
-                <div class="percent-bar" style="margin: 0; width: 100px">
-                  <div class="percent-fill" style="width: ${utilization}%"></div>
-                </div>
-                <small>${utilization.toFixed(1)}%</small>
-              </td>
             </tr>
           `;
         }
@@ -425,11 +347,17 @@
     // Update every 2 minutes
     setInterval(loadStats, 120000);
     
-    // Add timestamp to loading states
-    document.querySelectorAll('.value').forEach(el => {
-      if (el.textContent.includes('Loading') {
-        el.classList.add('pulse');
-      }
+    // Add loading animation while fetching data
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.value');
+      elements.forEach(el => {
+        if (el.textContent === 'Loading...' || el.textContent === 'Calculating...') {
+          el.style.opacity = '0.7';
+          setInterval(() => {
+            el.style.opacity = el.style.opacity === '0.7' ? '1' : '0.7';
+          }, 800);
+        }
+      });
     });
   </script>
 </body>
