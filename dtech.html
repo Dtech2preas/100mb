@@ -1,98 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>GitHub Token Usage Stats</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; background: #f7f7f7; color: #333; }
-    .box { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin: 20px auto; max-width: 800px; }
-    h2 { margin-top: 0; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    th, td { padding: 8px; border-bottom: 1px solid #ccc; text-align: left; }
-  </style>
-</head>
+<head><meta charset="UTF-8"><title>Debug GitHub Usage</title></head>
 <body>
-  <div class="box">
-    <h2>📊 GitHub Rate Usage Summary</h2>
-    <p><strong>Today’s Requests (Last 24h):</strong> <span id="today">Loading...</span></p>
-    <p><strong>Yesterday’s Requests (24–48h ago):</strong> <span id="yesterday">Loading...</span></p>
-    <p><strong>This Month (Last 30 days):</strong> <span id="month">Loading...</span></p>
-  </div>
-
-  <div class="box">
-    <h2>🔐 Per Token Breakdown</h2>
-    <table>
-      <thead>
-        <tr><th>Token</th><th>Entries</th><th>Total Used</th><th>Last Seen</th></tr>
-      </thead>
-      <tbody id="table-body"></tbody>
-    </table>
-  </div>
-
+  <h1>📊 Debug Usage Collector</h1>
+  <div><strong>Today ≦24h:</strong> <span id="today">0</span></div>
+  <div><strong>Yesterday (24–48h):</strong> <span id="yesterday">0</span></div>
+  <div><strong>Month ≤30d:</strong> <span id="month">0</span></div>
+  <pre id="log"></pre>
   <script>
-    const GIST_URL = 'https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/rate.json';
+    (async () => {
+      // Test data (your provided JSON)
+      const data = /* paste your JSON array here */;
 
-    async function loadData() {
-      const res = await fetch(GIST_URL);
-      const data = await res.json();
-
-      const now = new Date().getTime(); // UTC time
+      const now = Date.now();
       const ONE_DAY = 24 * 60 * 60 * 1000;
       const TWO_DAYS = 2 * ONE_DAY;
       const THIRTY_DAYS = 30 * ONE_DAY;
 
-      let totalToday = 0;
-      let totalYesterday = 0;
-      let totalMonth = 0;
+      let totalToday = 0, totalYesterday = 0, totalMonth = 0;
+      const log = [];
 
-      const tokenGroups = {};
+      data.forEach(e => {
+        const ts = new Date(e.timestamp).getTime();
+        const used = e.limit - e.remaining;
+        const age = now - ts;
+        let bucket = '';
 
-      data.forEach(entry => {
-        const { token, remaining, limit, timestamp } = entry;
-        const used = limit - remaining;
-        const ts = new Date(timestamp).getTime(); // also UTC
-
-        const timeAgo = now - ts;
-        const shortToken = token.slice(0, 10) + '...';
-
-        if (!tokenGroups[shortToken]) tokenGroups[shortToken] = [];
-        tokenGroups[shortToken].push({ ts, used, timestamp });
-
-        if (timeAgo <= ONE_DAY) {
-          totalToday += used;
-        } else if (timeAgo <= TWO_DAYS) {
-          totalYesterday += used;
+        if (age <= ONE_DAY) {
+          totalToday += used; bucket = 'today';
+        } else if (age <= TWO_DAYS) {
+          totalYesterday += used; bucket = 'yesterday';
         }
 
-        if (timeAgo <= THIRTY_DAYS) {
+        if (age <= THIRTY_DAYS) {
           totalMonth += used;
         }
+
+        log.push({ timestamp: e.timestamp, used, age, bucket });
       });
 
-      // Update summary
       document.getElementById('today').textContent = totalToday;
       document.getElementById('yesterday').textContent = totalYesterday;
       document.getElementById('month').textContent = totalMonth;
 
-      // Per-token table
-      const tbody = document.getElementById('table-body');
-      for (const token in tokenGroups) {
-        const logs = tokenGroups[token];
-        const totalUsed = logs.reduce((sum, l) => sum + l.used, 0);
-        const lastSeen = new Date(Math.max(...logs.map(l => l.ts))).toLocaleString();
-
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${token}</td>
-          <td>${logs.length}</td>
-          <td>${totalUsed}</td>
-          <td>${lastSeen}</td>
-        `;
-        tbody.appendChild(row);
-      }
-    }
-
-    loadData();
+      document.getElementById('log').textContent = log
+        .map(l => JSON.stringify(l))
+        .join('\n');
+    })();
   </script>
 </body>
 </html>
