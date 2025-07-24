@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Debug GitHub Usage</title></head>
+<head>
+  <meta charset="UTF-8" />
+  <title>📊 GitHub Token Rate Usage</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #fafafa; }
+    h1 { margin-bottom: 10px; }
+    .stat { font-size: 18px; margin: 10px 0; }
+    pre { font-size: 12px; background: #f0f0f0; padding: 10px; overflow-x: auto; max-height: 300px; border-left: 4px solid #ccc; }
+  </style>
+</head>
 <body>
-  <h1>📊 Debug Usage Collector</h1>
-  <div><strong>Today ≦24h:</strong> <span id="today">0</span></div>
-  <div><strong>Yesterday (24–48h):</strong> <span id="yesterday">0</span></div>
-  <div><strong>Month ≤30d:</strong> <span id="month">0</span></div>
-  <pre id="log"></pre>
+  <h1>📊 GitHub Token Rate Summary</h1>
+  <div class="stat">🟢 <strong>Today:</strong> <span id="today">-</span> requests</div>
+  <div class="stat">🟡 <strong>Yesterday:</strong> <span id="yesterday">-</span> requests</div>
+  <div class="stat">📆 <strong>This Month:</strong> <span id="month">-</span> requests</div>
+
+  <h2>📄 Request Log (UTC)</h2>
+  <pre id="log">Loading...</pre>
+
   <script>
-    (async () => {
-      // Test data (your provided JSON)
-      const data = /* paste your JSON array here */;
+    const RAW_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/rate.json";
 
-      const now = Date.now();
-      const ONE_DAY = 24 * 60 * 60 * 1000;
-      const TWO_DAYS = 2 * ONE_DAY;
-      const THIRTY_DAYS = 30 * ONE_DAY;
+    fetch(RAW_URL)
+      .then(r => r.text())
+      .then(text => {
+        const data = JSON.parse(text);
+        const now = Date.now();
+        const ONE_DAY = 24 * 60 * 60 * 1000;
+        const TWO_DAYS = 2 * ONE_DAY;
+        const THIRTY_DAYS = 30 * ONE_DAY;
 
-      let totalToday = 0, totalYesterday = 0, totalMonth = 0;
-      const log = [];
+        let totalToday = 0, totalYesterday = 0, totalMonth = 0;
+        const logs = [];
 
-      data.forEach(e => {
-        const ts = new Date(e.timestamp).getTime();
-        const used = e.limit - e.remaining;
-        const age = now - ts;
-        let bucket = '';
+        for (const entry of data) {
+          const ts = new Date(entry.timestamp).getTime(); // UTC timestamp
+          const age = now - ts;
+          const used = entry.limit - entry.remaining;
 
-        if (age <= ONE_DAY) {
-          totalToday += used; bucket = 'today';
-        } else if (age <= TWO_DAYS) {
-          totalYesterday += used; bucket = 'yesterday';
+          if (age <= ONE_DAY) {
+            totalToday += used;
+            logs.push(`✅ [Today] ${entry.timestamp} → ${used} used`);
+          } else if (age <= TWO_DAYS) {
+            totalYesterday += used;
+            logs.push(`🕘 [Yesterday] ${entry.timestamp} → ${used} used`);
+          } else {
+            logs.push(`📅 [Older] ${entry.timestamp} → ${used} used`);
+          }
+
+          if (age <= THIRTY_DAYS) {
+            totalMonth += used;
+          }
         }
 
-        if (age <= THIRTY_DAYS) {
-          totalMonth += used;
-        }
-
-        log.push({ timestamp: e.timestamp, used, age, bucket });
+        document.getElementById("today").textContent = totalToday;
+        document.getElementById("yesterday").textContent = totalYesterday;
+        document.getElementById("month").textContent = totalMonth;
+        document.getElementById("log").textContent = logs.join("\n");
+      })
+      .catch(err => {
+        document.getElementById("log").textContent = "⚠️ Failed to load data:\n" + err;
       });
-
-      document.getElementById('today').textContent = totalToday;
-      document.getElementById('yesterday').textContent = totalYesterday;
-      document.getElementById('month').textContent = totalMonth;
-
-      document.getElementById('log').textContent = log
-        .map(l => JSON.stringify(l))
-        .join('\n');
-    })();
   </script>
 </body>
 </html>
