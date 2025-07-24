@@ -14,9 +14,9 @@
 <body>
   <div class="box">
     <h2>📊 GitHub Rate Usage Summary</h2>
-    <p><strong>Today’s Requests (Last 24h):</strong> <span id="today">...</span></p>
-    <p><strong>Yesterday’s Requests (24–48h ago):</strong> <span id="yesterday">...</span></p>
-    <p><strong>This Month (Last 30 days):</strong> <span id="month">...</span></p>
+    <p><strong>Today’s Requests (Last 24h):</strong> <span id="today">Loading...</span></p>
+    <p><strong>Yesterday’s Requests (24–48h ago):</strong> <span id="yesterday">Loading...</span></p>
+    <p><strong>This Month (Last 30 days):</strong> <span id="month">Loading...</span></p>
   </div>
 
   <div class="box">
@@ -36,8 +36,9 @@
       const res = await fetch(GIST_URL);
       const data = await res.json();
 
-      const now = Date.now();
+      const now = new Date().getTime(); // UTC time
       const ONE_DAY = 24 * 60 * 60 * 1000;
+      const TWO_DAYS = 2 * ONE_DAY;
       const THIRTY_DAYS = 30 * ONE_DAY;
 
       let totalToday = 0;
@@ -49,18 +50,20 @@
       data.forEach(entry => {
         const { token, remaining, limit, timestamp } = entry;
         const used = limit - remaining;
-        const ts = new Date(timestamp).getTime();
+        const ts = new Date(timestamp).getTime(); // also UTC
+
+        const timeAgo = now - ts;
         const shortToken = token.slice(0, 10) + '...';
 
         if (!tokenGroups[shortToken]) tokenGroups[shortToken] = [];
         tokenGroups[shortToken].push({ ts, used, timestamp });
 
-        const timeAgo = now - ts;
         if (timeAgo <= ONE_DAY) {
           totalToday += used;
-        } else if (timeAgo <= 2 * ONE_DAY) {
+        } else if (timeAgo <= TWO_DAYS) {
           totalYesterday += used;
         }
+
         if (timeAgo <= THIRTY_DAYS) {
           totalMonth += used;
         }
