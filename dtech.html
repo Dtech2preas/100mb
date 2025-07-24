@@ -1,182 +1,337 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DTech API Usage Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-dark: #0a192f;
+      --primary-blue: #1e6feb;
+      --accent-blue: #64ffda;
+      --card-bg: #172a45;
+      --text-light: #ccd6f6;
+      --text-lighter: #e6f1ff;
+      --table-header: #112240;
+    }
+    
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f8f8f8, #e6ecf0);
+      font-family: 'Inter', sans-serif;
+      background: var(--primary-dark);
+      color: var(--text-light);
       padding: 2rem;
-      color: #333;
+      min-height: 100vh;
+      line-height: 1.6;
     }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
     h1 {
-      font-size: 28px;
-      color: #222;
-      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-lighter);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
     }
+    
+    h1::before {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 2.5rem;
+      background: var(--accent-blue);
+      border-radius: 2px;
+    }
+    
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
     }
+    
     .card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      background: var(--card-bg);
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      border-left: 4px solid var(--primary-blue);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    
     .label {
-      font-size: 14px;
-      color: #777;
+      font-size: 0.95rem;
+      color: var(--accent-blue);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
     }
+    
     .value {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 0.2rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-lighter);
+      margin: 0.5rem 0;
     }
+    
     .percent-bar {
       width: 100%;
-      background: #ddd;
+      background: rgba(100, 255, 218, 0.2);
       height: 8px;
-      border-radius: 5px;
+      border-radius: 4px;
       overflow: hidden;
-      margin-top: 0.5rem;
+      margin-top: 1.2rem;
     }
+    
     .percent-fill {
       height: 100%;
-      background: #0e9f6e;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+      transition: width 0.5s ease;
     }
+    
     .section-title {
-      margin-top: 2rem;
-      font-size: 20px;
-      font-weight: bold;
-      color: #444;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-lighter);
+      margin: 3rem 0 1.5rem;
+      position: relative;
+      padding-left: 1.2rem;
     }
+    
+    .section-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 1.5rem;
+      background: var(--accent-blue);
+      border-radius: 2px;
+    }
+    
     table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
       margin-top: 1rem;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
+    
     th, td {
-      padding: 0.5rem;
-      border-bottom: 1px solid #eee;
+      padding: 1rem 1.5rem;
       text-align: left;
+      border-bottom: 1px solid rgba(100, 255, 218, 0.1);
     }
+    
     th {
-      background: #f0f0f0;
+      background: var(--table-header);
+      color: var(--accent-blue);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+    
+    td {
+      color: var(--text-light);
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tr:hover td {
+      background: rgba(30, 111, 235, 0.1);
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(100, 255, 218, 0.1);
+      color: var(--accent-blue);
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>📊 DTech GitHub API Usage</h1>
-  <div class="grid">
-    <div class="card">
-      <div class="label">Today’s Requests</div>
-      <div id="today" class="value">Loading...</div>
-    </div><div class="card">
-  <div class="label">Yesterday’s Total</div>
-  <div id="yesterday" class="value">Loading...</div>
-</div>
-
-<div class="card">
-  <div class="label">This Month’s Total</div>
-  <div id="month" class="value">Loading...</div>
-</div>
-
-<div class="card">
-  <div class="label">D-TECH STRUCTURAL INTEGRITY</div>
-  <div id="integrity" class="value">Calculating...</div>
-  <div class="percent-bar"><div id="integrity-bar" class="percent-fill" style="width:0%"></div></div>
-</div>
-
-  </div>  <div class="section-title">🖥️ Servers Overview</div>
-  <table>
-    <thead>
-      <tr><th>Server</th><th>Total Used</th><th>Limit</th><th>Remaining</th></tr>
-    </thead>
-    <tbody id="servers"></tbody>
-  </table>  <script>
+  <div class="container">
+    <h1>DTech GitHub API Usage Dashboard</h1>
+    
+    <div class="grid">
+      <div class="card">
+        <div class="label">Today's Requests</div>
+        <div id="today" class="value">Loading...</div>
+        <div class="status-badge">Live</div>
+      </div>
+      
+      <div class="card">
+        <div class="label">Yesterday's Total</div>
+        <div id="yesterday" class="value">Loading...</div>
+        <div class="status-badge">24h Analysis</div>
+      </div>
+      
+      <div class="card">
+        <div class="label">This Month's Total</div>
+        <div id="month" class="value">Loading...</div>
+        <div class="status-badge">30-day Trend</div>
+      </div>
+      
+      <div class="card">
+        <div class="label">D-TECH STRUCTURAL INTEGRITY</div>
+        <div id="integrity" class="value">Calculating...</div>
+        <div class="percent-bar"><div id="integrity-bar" class="percent-fill" style="width:0%"></div></div>
+        <div class="status-badge">System Health</div>
+      </div>
+    </div>
+    
+    <div class="section-title">Servers Overview</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Server</th>
+          <th>Total Used</th>
+          <th>Limit</th>
+          <th>Remaining</th>
+        </tr>
+      </thead>
+      <tbody id="servers"></tbody>
+    </table>
+  </div>
+  
+  <script>
     const RAW_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/rate.json";
 
     async function loadStats() {
-      const res = await fetch(RAW_URL);
-      const data = await res.json();
+      try {
+        const res = await fetch(RAW_URL);
+        const data = await res.json();
 
-      const now = new Date();
-      const todayStr = now.toISOString().split('T')[0];
-      const yesterdayStr = new Date(now.getTime() - 86400000).toISOString().split('T')[0];
-      const past30 = new Date(now.getTime() - (30 * 86400000));
-      const currentHour = now.getHours();
+        const now = new Date();
+        const todayStr = now.toISOString().split('T')[0];
+        const yesterdayStr = new Date(now.getTime() - 86400000).toISOString().split('T')[0];
+        const past30 = new Date(now.getTime() - (30 * 86400000));
+        const currentHour = now.getHours();
 
-      let todayTotal = 0;
-      let yesterdayTotal = 0;
-      let monthlyTotal = 0;
-      let hourUsed = 0;
-      let hourRemaining = 0;
-      const servers = {};
+        let todayTotal = 0;
+        let yesterdayTotal = 0;
+        let monthlyTotal = 0;
+        let hourUsed = 0;
+        let hourRemaining = 0;
+        const servers = {};
 
-      for (const entry of data) {
-        if (entry.timestamp) {
-          const ts = new Date(entry.timestamp);
-          const dStr = ts.toISOString().split('T')[0];
+        for (const entry of data) {
+          if (entry.timestamp) {
+            const ts = new Date(entry.timestamp);
+            const dStr = ts.toISOString().split('T')[0];
 
-          if (dStr === todayStr) {
-            todayTotal += entry.used;
-            if (ts.getHours() === currentHour) {
-              hourUsed += entry.used;
-              hourRemaining += entry.remaining ?? 0;
+            if (dStr === todayStr) {
+              todayTotal += entry.used;
+              if (ts.getHours() === currentHour) {
+                hourUsed += entry.used;
+                hourRemaining += entry.remaining ?? 0;
+              }
+            }
+
+            if (ts >= past30) {
+              monthlyTotal += entry.used;
+            }
+
+            const key = entry.token?.substring(0, 20) ?? "unknown";
+            if (!servers[key]) {
+              servers[key] = { total: 0, limit: entry.limit, remaining: entry.remaining };
+            }
+            servers[key].total += entry.used;
+          } else if (entry.date && entry.total_used != null) {
+            if (entry.date === yesterdayStr) {
+              yesterdayTotal += entry.total_used;
+            }
+            const entryDate = new Date(entry.date);
+            if (entryDate >= past30) {
+              monthlyTotal += entry.total_used;
             }
           }
-
-          if (ts >= past30) {
-            monthlyTotal += entry.used;
-          }
-
-          const key = entry.token?.substring(0, 20) ?? "unknown";
-          if (!servers[key]) {
-            servers[key] = { total: 0, limit: entry.limit, remaining: entry.remaining };
-          }
-          servers[key].total += entry.used;
-        } else if (entry.date && entry.total_used != null) {
-          if (entry.date === yesterdayStr) {
-            yesterdayTotal += entry.total_used;
-          }
-          const entryDate = new Date(entry.date);
-          if (entryDate >= past30) {
-            monthlyTotal += entry.total_used;
-          }
         }
-      }
 
-      const integrity = hourRemaining + hourUsed > 0 ? Math.max(0, 100 - (hourUsed / (hourRemaining + hourUsed)) * 100) : 100;
+        const integrity = hourRemaining + hourUsed > 0 ? Math.max(0, 100 - (hourUsed / (hourRemaining + hourUsed)) * 100) : 100;
 
-      document.getElementById("today").textContent = todayTotal.toLocaleString();
-      document.getElementById("yesterday").textContent = yesterdayTotal.toLocaleString();
-      document.getElementById("month").textContent = monthlyTotal.toLocaleString();
-      document.getElementById("integrity").textContent = integrity.toFixed(1) + "%";
-      document.getElementById("integrity-bar").style.width = integrity + "%";
+        document.getElementById("today").textContent = todayTotal.toLocaleString();
+        document.getElementById("yesterday").textContent = yesterdayTotal.toLocaleString();
+        document.getElementById("month").textContent = monthlyTotal.toLocaleString();
+        document.getElementById("integrity").textContent = integrity.toFixed(1) + "%";
+        document.getElementById("integrity-bar").style.width = integrity + "%";
 
-      const tbody = document.getElementById("servers");
-      tbody.innerHTML = "";
-      let index = 1;
-      for (const key in servers) {
-        const s = servers[key];
-        tbody.innerHTML += `
-          <tr>
-            <td>Server ${index++}</td>
-            <td>${s.total.toLocaleString()}</td>
-            <td>${s.limit?.toLocaleString() ?? '-'}</td>
-            <td>${s.remaining?.toLocaleString() ?? '-'}</td>
-          </tr>
-        `;
+        const tbody = document.getElementById("servers");
+        tbody.innerHTML = "";
+        let index = 1;
+        for (const key in servers) {
+          const s = servers[key];
+          tbody.innerHTML += `
+            <tr>
+              <td>Server ${index++}</td>
+              <td>${s.total.toLocaleString()}</td>
+              <td>${s.limit?.toLocaleString() ?? '-'}</td>
+              <td>${s.remaining?.toLocaleString() ?? '-'}</td>
+            </tr>
+          `;
+        }
+      } catch (error) {
+        console.error("Error loading stats:", error);
+        document.getElementById("today").textContent = "Error";
+        document.getElementById("yesterday").textContent = "Error";
+        document.getElementById("month").textContent = "Error";
+        document.getElementById("integrity").textContent = "Error";
       }
     }
 
+    // Initial load
     loadStats();
-    setInterval(loadStats, 120000); // Update every 2 minutes
-  </script></body>
+    
+    // Update every 2 minutes
+    setInterval(loadStats, 120000);
+    
+    // Add loading animation while fetching data
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.value');
+      elements.forEach(el => {
+        if (el.textContent === 'Loading...') {
+          el.style.opacity = '0.7';
+          setInterval(() => {
+            el.style.opacity = el.style.opacity === '0.7' ? '1' : '0.7';
+          }, 800);
+        }
+      });
+    });
+  </script>
+</body>
 </html>
