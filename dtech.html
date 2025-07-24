@@ -7,7 +7,7 @@
     body {
       font-family: Arial, sans-serif;
       padding: 1rem;
-      background: #f9f9f9;
+      background: #f4f4f4;
       color: #333;
     }
     h1, h2 {
@@ -31,6 +31,14 @@
       border-bottom: 1px solid #ddd;
       text-align: left;
     }
+    .server h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: #444;
+    }
+    .server p {
+      margin: 0.2rem 0;
+    }
   </style>
 </head>
 <body>
@@ -51,37 +59,61 @@
       const monthStr = now.toISOString().slice(0, 7);
 
       const usage = {};
-      const daysUsed = new Set();
-      let totalToday = 0, totalYesterday = 0, totalMonth = 0;
+      const perDayUsage = {};
 
       data.forEach(entry => {
-        const { token, remaining, limit, timestamp } = entry;
-        const date = timestamp.slice(0, 10);
-        const key = token.slice(0, 10) + '...';
+        const { token, timestamp } = entry;
+        const shortToken = token.slice(0, 10) + '...';
+        const dateStr = timestamp.slice(0, 10);
 
-        if (!usage[key]) usage[key] = [];
-        usage[key].push(entry);
+        if (!usage[shortToken]) usage[shortToken] = [];
+        usage[shortToken].push(entry);
 
-        const used = limit - remaining;
-        if (date === todayStr) totalToday += used;
-        if (date === yesterdayStr) totalYesterday += used;
-        if (date.startsWith(monthStr)) totalMonth += used;
-
-        daysUsed.add(date);
+        if (!perDayUsage[dateStr]) perDayUsage[dateStr] = [];
+        perDayUsage[dateStr].push(entry);
       });
 
-      // Summary Section
+      // Compute daily usage
+      const dailyTotals = {};
+      for (const [date, entries] of Object.entries(perDayUsage)) {
+        const grouped = {};
+        for (const e of entries) {
+          const t = e.token;
+          if (!grouped[t]) grouped[t] = [];
+          grouped[t].push(e);
+        }
+
+        let totalUsed = 0;
+        for (const tokenEntries of Object.values(grouped)) {
+          tokenEntries.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+          for (let i = 1; i < tokenEntries.length; i++) {
+            const used = tokenEntries[i - 1].remaining - tokenEntries[i].remaining;
+            if (used > 0) totalUsed += used;
+          }
+        }
+
+        dailyTotals[date] = totalUsed;
+      }
+
+      const totalToday = dailyTotals[todayStr] || 0;
+      const totalYesterday = dailyTotals[yesterdayStr] || 0;
+      const totalMonth = Object.entries(dailyTotals)
+        .filter(([date]) => date.startsWith(monthStr))
+        .reduce((sum, [, value]) => sum + value, 0);
+      const average = Math.round(totalMonth / Object.keys(dailyTotals).length);
+
+      // Render Summary
       const summary = document.getElementById("summary");
       summary.innerHTML = `
         <h2>📅 Summary</h2>
         <p><strong>Today’s Requests:</strong> ${totalToday}</p>
         <p><strong>Yesterday’s Requests:</strong> ${totalYesterday}</p>
         <p><strong>This Month’s Requests:</strong> ${totalMonth}</p>
-        <p><strong>Average Per Day:</strong> ${Math.round(totalMonth / daysUsed.size)}</p>
-        <p><strong>Total Days Tracked:</strong> ${daysUsed.size}</p>
+        <p><strong>Average Per Day:</strong> ${average}</p>
+        <p><strong>Total Days Tracked:</strong> ${Object.keys(dailyTotals).length}</p>
       `;
 
-      // Server-specific data
+      // Render Server Details
       const serverDiv = document.getElementById("servers");
       for (const token in usage) {
         const logs = usage[token];
@@ -89,27 +121,24 @@
 
         let totalUsed = 0;
         for (let i = 1; i < logs.length; i++) {
-          const prev = logs[i - 1];
-          const curr = logs[i];
-          const used = (prev.remaining || 0) - (curr.remaining || 0);
-          if (used >= 0) totalUsed += used;
+          const used = logs[i - 1].remaining - logs[i].remaining;
+          if (used > 0) totalUsed += used;
         }
 
         const last = logs[logs.length - 1];
         const first = logs[0];
 
-        const entryHTML = `
+        serverDiv.innerHTML += `
           <div class="server">
-            <h2>🔐 ${token}</h2>
-            <p><strong>First Check:</strong> ${first.timestamp}</p>
-            <p><strong>Last Check:</strong> ${last.timestamp}</p>
-            <p><strong>Entries:</strong> ${logs.length}</p>
+            <h2>🔐 Token: ${token}</h2>
+            <p><strong>First Seen:</strong> ${first.timestamp}</p>
+            <p><strong>Last Seen:</strong> ${last.timestamp}</p>
+            <p><strong>Total Logs:</strong> ${logs.length}</p>
             <p><strong>Total Used:</strong> ${totalUsed}</p>
-            <p><strong>Remaining Now:</strong> ${last.remaining}</p>
+            <p><strong>Current Remaining:</strong> ${last.remaining}</p>
             <p><strong>Limit:</strong> ${last.limit}</p>
           </div>
         `;
-        serverDiv.innerHTML += entryHTML;
       }
     }
 
