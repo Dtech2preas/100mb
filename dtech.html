@@ -7,7 +7,7 @@
     body { font-family: Arial, sans-serif; padding: 20px; background: #fafafa; }
     h1 { margin-bottom: 10px; }
     .stat { font-size: 18px; margin: 10px 0; }
-    pre { font-size: 12px; background: #f0f0f0; padding: 10px; overflow-x: auto; max-height: 300px; border-left: 4px solid #ccc; }
+    pre { font-size: 12px; background: #f0f0f0; padding: 10px; overflow-x: auto; max-height: 400px; border-left: 4px solid #ccc; }
   </style>
 </head>
 <body>
@@ -23,44 +23,47 @@
     const RAW_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/rate.json";
 
     fetch(RAW_URL)
-      .then(r => r.text())
-      .then(text => {
-        const data = JSON.parse(text);
+      .then(res => res.json())
+      .then(data => {
         const now = Date.now();
         const ONE_DAY = 24 * 60 * 60 * 1000;
         const TWO_DAYS = 2 * ONE_DAY;
         const THIRTY_DAYS = 30 * ONE_DAY;
 
-        let totalToday = 0, totalYesterday = 0, totalMonth = 0;
+        let today = 0, yesterday = 0, month = 0;
         const logs = [];
 
         for (const entry of data) {
-          const ts = new Date(entry.timestamp).getTime(); // UTC timestamp
-          const age = now - ts;
+          const ts = new Date(entry.timestamp).getTime();
+          if (!entry.limit || !entry.remaining) continue;
           const used = entry.limit - entry.remaining;
+          if (used < 0 || used > entry.limit) continue; // sanity check
 
+          const age = now - ts;
+
+          let label = "📅 [Older]";
           if (age <= ONE_DAY) {
-            totalToday += used;
-            logs.push(`✅ [Today] ${entry.timestamp} → ${used} used`);
+            today += used;
+            label = "✅ [Today]";
           } else if (age <= TWO_DAYS) {
-            totalYesterday += used;
-            logs.push(`🕘 [Yesterday] ${entry.timestamp} → ${used} used`);
-          } else {
-            logs.push(`📅 [Older] ${entry.timestamp} → ${used} used`);
+            yesterday += used;
+            label = "🕘 [Yesterday]";
           }
 
           if (age <= THIRTY_DAYS) {
-            totalMonth += used;
+            month += used;
           }
+
+          logs.push(`${label} ${entry.timestamp} → ${used} used`);
         }
 
-        document.getElementById("today").textContent = totalToday;
-        document.getElementById("yesterday").textContent = totalYesterday;
-        document.getElementById("month").textContent = totalMonth;
+        document.getElementById("today").textContent = today;
+        document.getElementById("yesterday").textContent = yesterday;
+        document.getElementById("month").textContent = month;
         document.getElementById("log").textContent = logs.join("\n");
       })
       .catch(err => {
-        document.getElementById("log").textContent = "⚠️ Failed to load data:\n" + err;
+        document.getElementById("log").textContent = "⚠️ Error loading data:\n" + err;
       });
   </script>
 </body>
