@@ -2,147 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📊 GitHub Token Usage Stats</title>
+  <title>GitHub Token Usage Stats</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 1rem;
-      background: #f4f4f4;
-      color: #333;
-    }
-    h1, h2 {
-      text-align: center;
-    }
-    .stats, .server {
-      background: #fff;
-      padding: 1rem;
-      margin: 1rem auto;
-      max-width: 800px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-    th, td {
-      padding: 0.5rem;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-    }
-    .server h2 {
-      font-size: 1.1rem;
-      margin-bottom: 0.3rem;
-      color: #444;
-    }
-    .server p {
-      margin: 0.2rem 0;
-    }
+    body { font-family: sans-serif; padding: 20px; background: #f7f7f7; color: #333; }
+    .box { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin: 20px auto; max-width: 800px; }
+    h2 { margin-top: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { padding: 8px; border-bottom: 1px solid #ccc; text-align: left; }
   </style>
 </head>
 <body>
-  <h1>📊 GitHub Token Rate Limit Stats</h1>
-  <div id="summary" class="stats">Loading...</div>
-  <div id="servers"></div>
+  <div class="box">
+    <h2>📊 GitHub Rate Usage Summary</h2>
+    <p><strong>Today’s Requests (Last 24h):</strong> <span id="today">...</span></p>
+    <p><strong>Yesterday’s Requests (24–48h ago):</strong> <span id="yesterday">...</span></p>
+    <p><strong>This Month (Last 30 days):</strong> <span id="month">...</span></p>
+  </div>
+
+  <div class="box">
+    <h2>🔐 Per Token Breakdown</h2>
+    <table>
+      <thead>
+        <tr><th>Token</th><th>Entries</th><th>Total Used</th><th>Last Seen</th></tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
 
   <script>
     const GIST_URL = 'https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/rate.json';
 
-    async function loadStats() {
+    async function loadData() {
       const res = await fetch(GIST_URL);
       const data = await res.json();
 
-      const now = new Date();
-      const todayStr = now.toISOString().slice(0, 10);
-      const yesterdayStr = new Date(now - 86400000).toISOString().slice(0, 10);
-      const monthStr = now.toISOString().slice(0, 7);
+      const now = Date.now();
+      const ONE_DAY = 24 * 60 * 60 * 1000;
+      const THIRTY_DAYS = 30 * ONE_DAY;
 
-      const usage = {};
-      const perDayUsage = {};
+      let totalToday = 0;
+      let totalYesterday = 0;
+      let totalMonth = 0;
+
+      const tokenGroups = {};
 
       data.forEach(entry => {
-        const { token, timestamp } = entry;
+        const { token, remaining, limit, timestamp } = entry;
+        const used = limit - remaining;
+        const ts = new Date(timestamp).getTime();
         const shortToken = token.slice(0, 10) + '...';
-        const dateStr = timestamp.slice(0, 10);
 
-        if (!usage[shortToken]) usage[shortToken] = [];
-        usage[shortToken].push(entry);
+        if (!tokenGroups[shortToken]) tokenGroups[shortToken] = [];
+        tokenGroups[shortToken].push({ ts, used, timestamp });
 
-        if (!perDayUsage[dateStr]) perDayUsage[dateStr] = [];
-        perDayUsage[dateStr].push(entry);
+        const timeAgo = now - ts;
+        if (timeAgo <= ONE_DAY) {
+          totalToday += used;
+        } else if (timeAgo <= 2 * ONE_DAY) {
+          totalYesterday += used;
+        }
+        if (timeAgo <= THIRTY_DAYS) {
+          totalMonth += used;
+        }
       });
 
-      // Compute daily usage
-      const dailyTotals = {};
-      for (const [date, entries] of Object.entries(perDayUsage)) {
-        const grouped = {};
-        for (const e of entries) {
-          const t = e.token;
-          if (!grouped[t]) grouped[t] = [];
-          grouped[t].push(e);
-        }
+      // Update summary
+      document.getElementById('today').textContent = totalToday;
+      document.getElementById('yesterday').textContent = totalYesterday;
+      document.getElementById('month').textContent = totalMonth;
 
-        let totalUsed = 0;
-        for (const tokenEntries of Object.values(grouped)) {
-          tokenEntries.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-          for (let i = 1; i < tokenEntries.length; i++) {
-            const used = tokenEntries[i - 1].remaining - tokenEntries[i].remaining;
-            if (used > 0) totalUsed += used;
-          }
-        }
+      // Per-token table
+      const tbody = document.getElementById('table-body');
+      for (const token in tokenGroups) {
+        const logs = tokenGroups[token];
+        const totalUsed = logs.reduce((sum, l) => sum + l.used, 0);
+        const lastSeen = new Date(Math.max(...logs.map(l => l.ts))).toLocaleString();
 
-        dailyTotals[date] = totalUsed;
-      }
-
-      const totalToday = dailyTotals[todayStr] || 0;
-      const totalYesterday = dailyTotals[yesterdayStr] || 0;
-      const totalMonth = Object.entries(dailyTotals)
-        .filter(([date]) => date.startsWith(monthStr))
-        .reduce((sum, [, value]) => sum + value, 0);
-      const average = Math.round(totalMonth / Object.keys(dailyTotals).length);
-
-      // Render Summary
-      const summary = document.getElementById("summary");
-      summary.innerHTML = `
-        <h2>📅 Summary</h2>
-        <p><strong>Today’s Requests:</strong> ${totalToday}</p>
-        <p><strong>Yesterday’s Requests:</strong> ${totalYesterday}</p>
-        <p><strong>This Month’s Requests:</strong> ${totalMonth}</p>
-        <p><strong>Average Per Day:</strong> ${average}</p>
-        <p><strong>Total Days Tracked:</strong> ${Object.keys(dailyTotals).length}</p>
-      `;
-
-      // Render Server Details
-      const serverDiv = document.getElementById("servers");
-      for (const token in usage) {
-        const logs = usage[token];
-        logs.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-
-        let totalUsed = 0;
-        for (let i = 1; i < logs.length; i++) {
-          const used = logs[i - 1].remaining - logs[i].remaining;
-          if (used > 0) totalUsed += used;
-        }
-
-        const last = logs[logs.length - 1];
-        const first = logs[0];
-
-        serverDiv.innerHTML += `
-          <div class="server">
-            <h2>🔐 Token: ${token}</h2>
-            <p><strong>First Seen:</strong> ${first.timestamp}</p>
-            <p><strong>Last Seen:</strong> ${last.timestamp}</p>
-            <p><strong>Total Logs:</strong> ${logs.length}</p>
-            <p><strong>Total Used:</strong> ${totalUsed}</p>
-            <p><strong>Current Remaining:</strong> ${last.remaining}</p>
-            <p><strong>Limit:</strong> ${last.limit}</p>
-          </div>
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${token}</td>
+          <td>${logs.length}</td>
+          <td>${totalUsed}</td>
+          <td>${lastSeen}</td>
         `;
+        tbody.appendChild(row);
       }
     }
 
-    loadStats();
+    loadData();
   </script>
 </body>
 </html>
