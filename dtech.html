@@ -1,25 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>📊 DTech GitHub API Stats</title>
+  <title>DTech API Usage Dashboard</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8f8f8, #e6ecf0);
       padding: 2rem;
       color: #333;
     }
     h1 {
-      font-size: 24px;
-      margin-bottom: 1rem;
+      font-size: 28px;
+      color: #222;
+      margin-bottom: 1.5rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
     }
     .card {
       background: white;
       padding: 1.5rem;
-      margin: 1rem 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
     }
     .label {
       font-size: 14px;
@@ -30,27 +38,68 @@
       font-weight: bold;
       margin-top: 0.2rem;
     }
+    .percent-bar {
+      width: 100%;
+      background: #ddd;
+      height: 8px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .percent-fill {
+      height: 100%;
+      background: #0e9f6e;
+    }
+    .section-title {
+      margin-top: 2rem;
+      font-size: 20px;
+      font-weight: bold;
+      color: #444;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 0.5rem;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    th {
+      background: #f0f0f0;
+    }
   </style>
 </head>
 <body>
   <h1>📊 DTech GitHub API Usage</h1>
-  
-  <div class="card">
-    <div class="label">Today’s Requests</div>
-    <div id="today" class="value">Loading...</div>
-  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="label">Today’s Requests</div>
+      <div id="today" class="value">Loading...</div>
+    </div><div class="card">
+  <div class="label">Yesterday’s Total</div>
+  <div id="yesterday" class="value">Loading...</div>
+</div>
 
-  <div class="card">
-    <div class="label">Yesterday’s Total</div>
-    <div id="yesterday" class="value">Loading...</div>
-  </div>
+<div class="card">
+  <div class="label">This Month’s Total</div>
+  <div id="month" class="value">Loading...</div>
+</div>
 
-  <div class="card">
-    <div class="label">Total This Month (Last 30 Days)</div>
-    <div id="month" class="value">Loading...</div>
-  </div>
+<div class="card">
+  <div class="label">D-TECH STRUCTURAL INTEGRITY</div>
+  <div id="integrity" class="value">Calculating...</div>
+  <div class="percent-bar"><div id="integrity-bar" class="percent-fill" style="width:0%"></div></div>
+</div>
 
-  <script>
+  </div>  <div class="section-title">🖥️ Servers Overview</div>
+  <table>
+    <thead>
+      <tr><th>Server</th><th>Total Used</th><th>Limit</th><th>Remaining</th></tr>
+    </thead>
+    <tbody id="servers"></tbody>
+  </table>  <script>
     const RAW_URL = "https://gist.githubusercontent.com/Preasx24/baaadec8c55a20705b958950ae630b9f/raw/rate.json";
 
     async function loadStats() {
@@ -61,21 +110,37 @@
       const todayStr = now.toISOString().split('T')[0];
       const yesterdayStr = new Date(now.getTime() - 86400000).toISOString().split('T')[0];
       const past30 = new Date(now.getTime() - (30 * 86400000));
+      const currentHour = now.getHours();
 
       let todayTotal = 0;
       let yesterdayTotal = 0;
       let monthlyTotal = 0;
+      let hourUsed = 0;
+      let hourRemaining = 0;
+      const servers = {};
 
       for (const entry of data) {
         if (entry.timestamp) {
           const ts = new Date(entry.timestamp);
           const dStr = ts.toISOString().split('T')[0];
+
           if (dStr === todayStr) {
             todayTotal += entry.used;
+            if (ts.getHours() === currentHour) {
+              hourUsed += entry.used;
+              hourRemaining += entry.remaining ?? 0;
+            }
           }
+
           if (ts >= past30) {
             monthlyTotal += entry.used;
           }
+
+          const key = entry.token?.substring(0, 20) ?? "unknown";
+          if (!servers[key]) {
+            servers[key] = { total: 0, limit: entry.limit, remaining: entry.remaining };
+          }
+          servers[key].total += entry.used;
         } else if (entry.date && entry.total_used != null) {
           if (entry.date === yesterdayStr) {
             yesterdayTotal += entry.total_used;
@@ -87,13 +152,31 @@
         }
       }
 
+      const integrity = hourRemaining + hourUsed > 0 ? Math.max(0, 100 - (hourUsed / (hourRemaining + hourUsed)) * 100) : 100;
+
       document.getElementById("today").textContent = todayTotal.toLocaleString();
       document.getElementById("yesterday").textContent = yesterdayTotal.toLocaleString();
       document.getElementById("month").textContent = monthlyTotal.toLocaleString();
+      document.getElementById("integrity").textContent = integrity.toFixed(1) + "%";
+      document.getElementById("integrity-bar").style.width = integrity + "%";
+
+      const tbody = document.getElementById("servers");
+      tbody.innerHTML = "";
+      let index = 1;
+      for (const key in servers) {
+        const s = servers[key];
+        tbody.innerHTML += `
+          <tr>
+            <td>Server ${index++}</td>
+            <td>${s.total.toLocaleString()}</td>
+            <td>${s.limit?.toLocaleString() ?? '-'}</td>
+            <td>${s.remaining?.toLocaleString() ?? '-'}</td>
+          </tr>
+        `;
+      }
     }
 
     loadStats();
-    setInterval(loadStats, 60000); // Refresh every 60 seconds
-  </script>
-</body>
+    setInterval(loadStats, 120000); // Update every 2 minutes
+  </script></body>
 </html>
