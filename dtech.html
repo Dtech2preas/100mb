@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>📊 GitHub Token Rate Usage</title>
+  <title>📊 GitHub Token Rate Summary</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #fafafa; }
-    h1 { margin-bottom: 10px; }
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    h1 { margin-bottom: 0.5em; }
     .stat { font-size: 18px; margin: 10px 0; }
-    pre { font-size: 12px; background: #f0f0f0; padding: 10px; overflow-x: auto; max-height: 400px; border-left: 4px solid #ccc; }
+    pre { font-size: 12px; background: #fff; padding: 10px; overflow-x: auto; max-height: 400px; border-left: 4px solid #ccc; }
   </style>
 </head>
 <body>
@@ -35,11 +35,17 @@
 
         for (const entry of data) {
           const ts = new Date(entry.timestamp).getTime();
-          if (!entry.limit || !entry.remaining) continue;
-          const used = entry.limit - entry.remaining;
-          if (used < 0 || used > entry.limit) continue; // sanity check
-
           const age = now - ts;
+
+          const limit = Number(entry.limit);
+          const remaining = Number(entry.remaining);
+
+          if (isNaN(limit) || isNaN(remaining)) continue;
+
+          const used = limit - remaining;
+
+          // We'll accept any usage ≥ 0, even if > limit
+          if (used < 0) continue;
 
           let label = "📅 [Older]";
           if (age <= ONE_DAY) {
