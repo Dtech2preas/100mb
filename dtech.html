@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  
-  <title>DTech API Usage Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DTech GitHub API Usage Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -207,7 +207,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>D-TECH SYSTEMS DASHBOARD</h1>
+    <h1>DTech GitHub API Usage Dashboard</h1>
     
     <!-- Top Row - D-TECH STRUCTURAL INTEGRITY -->
     <div class="grid top-row">
@@ -276,13 +276,12 @@
         const todayStr = now.toISOString().split('T')[0];
         const yesterdayStr = new Date(now.getTime() - 86400000).toISOString().split('T')[0];
         const past30 = new Date(now.getTime() - (30 * 86400000));
-        const currentHour = now.getHours();
 
         let todayTotal = 0;
         let yesterdayTotal = 0;
         let monthlyTotal = 0;
-        let hourUsed = 0;
-        let hourLimit = 0;
+        let dailyLimit = 0;
+        let dailyUsed = 0;
         const servers = {};
 
         for (const entry of data) {
@@ -292,10 +291,8 @@
 
             if (dStr === todayStr) {
               todayTotal += entry.used;
-              if (ts.getHours() === currentHour) {
-                hourUsed += entry.used;
-                hourLimit = entry.limit; // Assuming all entries in current hour have same limit
-              }
+              dailyUsed += entry.used;
+              dailyLimit = entry.limit * 24; // Convert hourly limit to daily
             }
 
             if (ts >= past30) {
@@ -305,14 +302,13 @@
             const key = entry.token?.substring(0, 20) ?? "unknown";
             if (!servers[key]) {
               servers[key] = { 
-                total: 0, 
+                used: 0, 
                 limit: entry.limit, 
-                remaining: entry.remaining,
-                used: 0
+                remaining: entry.remaining
               };
             }
-            servers[key].total += entry.used;
             servers[key].used += entry.used;
+            servers[key].remaining = servers[key].limit - servers[key].used;
           } else if (entry.date && entry.total_used != null) {
             if (entry.date === yesterdayStr) {
               yesterdayTotal += entry.total_used;
@@ -324,10 +320,10 @@
           }
         }
 
-        // Calculate structural integrity (percentage of remaining capacity for current hour)
+        // Calculate structural integrity (daily remaining percentage)
         let integrity = 100;
-        if (hourLimit > 0) {
-          integrity = Math.max(0, 100 - (hourUsed / hourLimit) * 100);
+        if (dailyLimit > 0) {
+          integrity = Math.max(0, 100 - (dailyUsed / dailyLimit) * 100);
         }
 
         // Update integrity display
@@ -360,7 +356,6 @@
         let index = 1;
         for (const key in servers) {
           const s = servers[key];
-          const remaining = s.limit - s.used;
           const usagePercent = s.limit > 0 ? (s.used / s.limit) * 100 : 0;
           
           tbody.innerHTML += `
@@ -368,7 +363,7 @@
               <td>Server ${index++}</td>
               <td>${s.used.toLocaleString()}</td>
               <td>${s.limit?.toLocaleString() ?? '-'}</td>
-              <td>${remaining.toLocaleString()}</td>
+              <td>${s.remaining?.toLocaleString() ?? '-'}</td>
               <td>
                 <div class="percent-bar" style="margin-top: 0;">
                   <div class="percent-fill" style="width: ${Math.min(100, usagePercent)}%"></div>
