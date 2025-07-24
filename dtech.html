@@ -302,6 +302,41 @@
       display: none;
     }
     
+    .alert-banner {
+      background: rgba(218, 54, 51, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+    }
+    
+    .alert-banner.warning {
+      background: rgba(158, 106, 3, 0.1);
+      border-left-color: var(--warning);
+    }
+    
+    .refresh-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    
+    .refresh-button:hover {
+      background: var(--primary-light);
+    }
+    
     @media (max-width: 768px) {
       body {
         padding: 16px;
@@ -331,8 +366,17 @@
       <h1>GitHub API Rate Limit Dashboard</h1>
     </div>
     <div class="header-actions">
+      <button id="refreshButton" class="refresh-button">
+        <i class="fas fa-sync-alt"></i>
+        Refresh
+      </button>
       <div id="lastUpdated" class="last-updated">Loading data...</div>
     </div>
+  </div>
+  
+  <div id="alertBanner" class="alert-banner warning" style="display: none;">
+    <i class="fas fa-exclamation-triangle"></i>
+    <div id="alertMessage"></div>
   </div>
   
   <div class="integrity-card">
@@ -358,7 +402,7 @@
       <div id="usagePercent" class="value">-</div>
       <div class="trend trend-up">
         <i class="fas fa-arrow-up"></i>
-        <span>3.2% from yesterday</span>
+        <span>Calculating...</span>
       </div>
     </div>
     
@@ -367,25 +411,25 @@
       <div id="today" class="value">-</div>
       <div class="trend trend-up">
         <i class="fas fa-arrow-up"></i>
-        <span>5.7% from yesterday</span>
+        <span>Calculating...</span>
       </div>
     </div>
     
     <div class="stat-card">
-      <h3>Avg. Daily</h3>
-      <div id="avgDaily" class="value">-</div>
-      <div class="trend trend-down">
-        <i class="fas fa-arrow-down"></i>
-        <span>1.4% from last week</span>
+      <h3>Yesterday's Requests</h3>
+      <div id="yesterday" class="value">-</div>
+      <div class="trend trend-up">
+        <i class="fas fa-arrow-up"></i>
+        <span>Calculating...</span>
       </div>
     </div>
     
     <div class="stat-card">
-      <h3>Monthly Total</h3>
+      <h3>This Month</h3>
       <div id="month" class="value">-</div>
       <div class="trend trend-up">
         <i class="fas fa-arrow-up"></i>
-        <span>12.8% from last month</span>
+        <span>Calculating...</span>
       </div>
     </div>
   </div>
@@ -424,91 +468,98 @@
   </div>
 
   <script>
-    (async () => {
-      const TOKENS_GIST = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
-      const RATE_GIST_API = "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f";
+    // Configuration
+    const CONFIG = {
+      TOKENS_GIST: "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt",
+      RATE_GIST_API: "https://api.github.com/gists/baaadec8c55a20705b958950ae630b9f",
+      REFRESH_INTERVAL: 300000, // 5 minutes
+      CRITICAL_THRESHOLD: 40, // Percentage remaining that triggers critical alert
+      WARNING_THRESHOLD: 60 // Percentage remaining that triggers warning
+    };
+    
+    // Utility functions
+    function getStatusColor(percent) {
+      if (percent >= CONFIG.WARNING_THRESHOLD) return { 
+        bg: 'rgba(35, 134, 54, 0.1)', 
+        text: 'var(--success)', 
+        status: 'Optimal',
+        chart: 'var(--chart-good)',
+        icon: 'fa-check-circle'
+      };
+      if (percent >= CONFIG.CRITICAL_THRESHOLD) return { 
+        bg: 'rgba(158, 106, 3, 0.1)', 
+        text: 'var(--warning)', 
+        status: 'Stable',
+        chart: 'var(--chart-warning)',
+        icon: 'fa-exclamation-circle'
+      };
+      return { 
+        bg: 'rgba(218, 54, 51, 0.2)', 
+        text: 'var(--danger)', 
+        status: 'Critical',
+        chart: 'var(--chart-critical)',
+        icon: 'fa-exclamation-triangle'
+      };
+    }
+    
+    function formatToken(token) {
+      return `${token.substring(0, 4)}••••${token.substring(token.length - 4)}`;
+    }
+    
+    function formatShortDate(dateString) {
+      const date = new Date(dateString);
+      const now = new Date();
+      const diffHours = Math.abs(now - date) / 36e5;
       
-      function getStatusColor(percent) {
-        if (percent >= 80) return { 
-          bg: 'rgba(35, 134, 54, 0.1)', 
-          text: 'var(--success)', 
-          status: 'Optimal',
-          chart: 'var(--chart-good)'
-        };
-        if (percent >= 60) return { 
-          bg: 'rgba(158, 106, 3, 0.1)', 
-          text: 'var(--warning)', 
-          status: 'Stable',
-          chart: 'var(--chart-warning)'
-        };
-        if (percent >= 40) return { 
-          bg: 'rgba(218, 54, 51, 0.1)', 
-          text: 'var(--danger)', 
-          status: 'Warning',
-          chart: 'var(--chart-critical)'
-        };
-        return { 
-          bg: 'rgba(218, 54, 51, 0.2)', 
-          text: 'var(--danger)', 
-          status: 'Critical',
-          chart: 'var(--chart-critical)'
-        };
+      if (diffHours < 1) {
+        const diffMins = Math.round(diffHours * 60);
+        return `${diffMins}m ago`;
+      } else if (diffHours < 24) {
+        return `${Math.round(diffHours)}h ago`;
+      } else {
+        return `${Math.round(diffHours / 24)}d ago`;
       }
-      
-      function formatToken(token) {
-        return `${token.substring(0, 4)}••••${token.substring(token.length - 4)}`;
+    }
+    
+    function formatNumber(num) {
+      if (num > 1000) {
+        return (num / 1000).toFixed(1) + 'k';
       }
-      
-      function formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit'
-        });
-      }
-      
-      function formatShortDate(dateString) {
-        const date = new Date(dateString);
-        const now = new Date();
-        const diffHours = Math.abs(now - date) / 36e5;
-        
-        if (diffHours < 1) {
-          const diffMins = Math.round(diffHours * 60);
-          return `${diffMins}m ago`;
-        } else if (diffHours < 24) {
-          return `${Math.round(diffHours)}h ago`;
-        } else {
-          return `${Math.round(diffHours / 24)}d ago`;
-        }
-      }
-      
-      function formatNumber(num) {
-        if (num > 1000) {
-          return (num / 1000).toFixed(1) + 'k';
-        }
-        return num.toString();
-      }
-      
-      function calculateTrend(current, previous) {
-        if (previous === 0) return { value: 0, direction: 'up' };
-        const change = ((current - previous) / previous) * 100;
-        return {
-          value: Math.abs(change).toFixed(1),
-          direction: change >= 0 ? 'up' : 'down'
-        };
-      }
-      
+      return num.toString();
+    }
+    
+    function calculateTrend(current, previous) {
+      if (previous === 0) return { value: 0, direction: 'up' };
+      const change = ((current - previous) / previous) * 100;
+      return {
+        value: Math.abs(change).toFixed(1),
+        direction: change >= 0 ? 'up' : 'down'
+      };
+    }
+    
+    function showAlert(message, isWarning = true) {
+      document.getElementById("alertMessage").textContent = message;
+      document.getElementById("alertBanner").className = isWarning ? 'alert-banner warning' : 'alert-banner';
+      document.getElementById("alertBanner").style.display = 'flex';
+    }
+    
+    function hideAlert() {
+      document.getElementById("alertBanner").style.display = 'none';
+    }
+    
+    // Data processing with accurate time calculations
+    async function fetchAndProcessData() {
       try {
         // Show loading state
-        document.getElementById("integrity").innerText = "-";
+        document.getElementById("integrity").innerText = "Loading...";
         
         // Fetch token list
-        const tokenListRaw = await fetch(TOKENS_GIST);
+        const tokenListRaw = await fetch(CONFIG.TOKENS_GIST);
         const tokenList = (await tokenListRaw.text()).trim().split('\n').filter(t => t.startsWith('ghp_'));
         const token = tokenList[Math.floor(Math.random() * tokenList.length)];
         
         // Fetch rate limit data
-        const rateRes = await fetch(RATE_GIST_API, {
+        const rateRes = await fetch(CONFIG.RATE_GIST_API, {
           headers: { Authorization: `token ${token}` }
         });
         
@@ -536,8 +587,16 @@
           return entriesByToken[token][0]; // Already sorted by date
         });
         
-        // Calculate statistics
+        // Calculate statistics with accurate time boundaries
         const now = new Date();
+        const today = new Date(now);
+        today.setHours(0, 0, 0, 0);
+        
+        const yesterday = new Date(today);
+        yesterday.setDate(yesterday.getDate() - 1);
+        
+        const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+        
         let totalUsed = 0;
         let totalLimit = 0;
         let requestsToday = 0;
@@ -546,49 +605,44 @@
         let prevRequestsYesterday = 0;
         let prevRequestsMonth = 0;
         
-        tokenEntries.forEach((entry, index) => {
+        tokenEntries.forEach(entry => {
           const used = entry.limit - entry.remaining;
           const entryDate = new Date(entry.timestamp);
           
-          // For trend calculations
-          if (index < tokenEntries.length / 2) {
-            prevRequestsMonth += used;
-          }
+          // For totals
+          totalUsed += used;
+          totalLimit += entry.limit;
           
-          if (entryDate.toDateString() === now.toDateString()) {
+          // Today's requests
+          if (entryDate >= today) {
             requestsToday += used;
           }
-          
-          const yesterday = new Date(now);
-          yesterday.setDate(yesterday.getDate() - 1);
-          if (entryDate.toDateString() === yesterday.toDateString()) {
+          // Yesterday's requests
+          else if (entryDate >= yesterday && entryDate < today) {
             requestsYesterday += used;
-          } else if (entryDate.toDateString() === new Date(yesterday.setDate(yesterday.getDate() - 1)).toDateString()) {
+          }
+          // Day before yesterday (for trend comparison)
+          else if (entryDate >= new Date(yesterday.getTime() - 86400000) && entryDate < yesterday) {
             prevRequestsYesterday += used;
           }
           
-          if (entryDate.getMonth() === now.getMonth() && entryDate.getFullYear() === now.getFullYear()) {
+          // This month's requests
+          if (entryDate >= monthStart) {
             requestsMonth += used;
+          }
+          // Last month's requests (for trend comparison)
+          else if (entryDate >= new Date(monthStart.getFullYear(), monthStart.getMonth() - 1, 1) && 
+                   entryDate < monthStart) {
+            prevRequestsMonth += used;
           }
         });
         
-        // Process latest entries for totals
-        latestEntries.forEach(entry => {
-          const used = entry.limit - entry.remaining;
-          totalUsed += used;
-          totalLimit += entry.limit;
-        });
-        
-        // Calculate trends
-        const todayTrend = calculateTrend(requestsToday, requestsYesterday);
-        const yesterdayTrend = calculateTrend(requestsYesterday, prevRequestsYesterday);
-        const monthTrend = calculateTrend(requestsMonth, prevRequestsMonth);
-        
-        // Update UI
+        // Calculate integrity
         const integrityPercent = Math.round((totalUsed / totalLimit) * 100);
         const remainingPercent = 100 - integrityPercent;
         const statusColor = getStatusColor(remainingPercent);
         
+        // Update UI
         document.getElementById("integrity").innerHTML = `${remainingPercent}%`;
         document.getElementById("integrityBar").style.backgroundColor = statusColor.chart;
         document.getElementById("integrityBar").style.width = `${remainingPercent}%`;
@@ -596,18 +650,48 @@
         document.getElementById("integrityStatus").style.background = statusColor.bg;
         document.getElementById("integrityStatus").style.color = statusColor.text;
         
+        // Check for alerts
+        if (remainingPercent < CONFIG.CRITICAL_THRESHOLD) {
+          showAlert(`Critical: Rate limit usage at ${integrityPercent}%. Consider adding more tokens or reducing API calls.`, false);
+        } else if (remainingPercent < CONFIG.WARNING_THRESHOLD) {
+          showAlert(`Warning: Rate limit usage at ${integrityPercent}%. Monitor closely.`);
+        } else {
+          hideAlert();
+        }
+        
+        // Calculate trends
+        const todayTrend = calculateTrend(requestsToday, requestsYesterday);
+        const yesterdayTrend = calculateTrend(requestsYesterday, prevRequestsYesterday);
+        const monthTrend = calculateTrend(requestsMonth, prevRequestsMonth);
+        
+        // Update stats cards
         document.getElementById("usagePercent").innerText = `${integrityPercent}%`;
         document.getElementById("today").innerText = formatNumber(requestsToday);
-        document.getElementById("avgDaily").innerText = formatNumber(Math.round(requestsMonth / now.getDate()));
+        document.getElementById("yesterday").innerText = formatNumber(requestsYesterday);
         document.getElementById("month").innerText = formatNumber(requestsMonth);
         
         // Update trend indicators
-        document.querySelectorAll('.trend-up').forEach(el => {
-          el.innerHTML = `<i class="fas fa-arrow-up"></i><span>${todayTrend.value}% from yesterday</span>`;
-        });
-        
-        document.querySelectorAll('.trend-down').forEach(el => {
-          el.innerHTML = `<i class="fas fa-arrow-down"></i><span>${monthTrend.value}% from last period</span>`;
+        document.querySelectorAll('.trend').forEach((el, i) => {
+          let trend, label;
+          if (i === 0) { // Usage Rate
+            trend = calculateTrend(integrityPercent, Math.round((prevRequestsYesterday / totalLimit) * 100));
+            label = 'from yesterday';
+          } else if (i === 1) { // Today's Requests
+            trend = todayTrend;
+            label = 'from yesterday';
+          } else if (i === 2) { // Yesterday's Requests
+            trend = yesterdayTrend;
+            label = 'from day before';
+          } else { // Monthly Requests
+            trend = monthTrend;
+            label = 'from last month';
+          }
+          
+          el.innerHTML = `
+            <i class="fas fa-arrow-${trend.direction}"></i>
+            <span>${trend.value}% ${label}</span>
+          `;
+          el.className = `trend trend-${trend.direction}`;
         });
         
         // Update timestamps
@@ -630,7 +714,7 @@
             <div class="server-header">
               <div class="server-title">Server ${index + 1}</div>
               <div class="server-status" style="background: ${statusColor.bg}; color: ${statusColor.text}">
-                ${statusColor.status}
+                <i class="fas ${statusColor.icon}"></i> ${statusColor.status}
               </div>
             </div>
             <div class="server-stats">
@@ -695,11 +779,36 @@
         document.getElementById("integrity").innerHTML = `Error`;
         document.getElementById("integrityBar").style.backgroundColor = "var(--danger)";
         document.getElementById("integrityBar").style.width = "100%";
-        document.getElementById("integrityStatus").innerText = "Data Unavailable";
+        document.getElementById("integrityStatus").innerText = "Failed to load data";
         document.getElementById("integrityStatus").style.background = "rgba(218, 54, 51, 0.2)";
         document.getElementById("integrityStatus").style.color = "var(--danger)";
+        showAlert(`Failed to load data: ${err.message}`, false);
       }
-    })();
+    }
+    
+    // Initialize app
+    function initApp() {
+      // Set up refresh button
+      document.getElementById("refreshButton").addEventListener('click', () => {
+        const button = document.getElementById("refreshButton");
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing';
+        button.disabled = true;
+        
+        fetchAndProcessData().finally(() => {
+          button.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
+          button.disabled = false;
+        });
+      });
+      
+      // Initial data load
+      fetchAndProcessData();
+      
+      // Set up auto-refresh
+      setInterval(fetchAndProcessData, CONFIG.REFRESH_INTERVAL);
+    }
+    
+    // Start the application
+    document.addEventListener('DOMContentLoaded', initApp);
   </script>
 </body>
 </html>
