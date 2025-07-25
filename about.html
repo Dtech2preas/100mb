@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://couphaithuph.net/act/files/tag.min.js?z=9619875" data-cfasync="false" async></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DTech - Where Digital Meets Possibility</title>
@@ -521,138 +522,7 @@
     </footer>
 <script async="async" data-cfasync="false" src="//gapcontroversialprodigal.com/17bdc3ff4d9e3bbe0f49799dd182c4c1/invoke.js"></script>
 <div id="container-17bdc3ff4d9e3bbe0f49799dd182c4c1"></div>
-<style>
-  #ad-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.85);
-    color: #fff;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-family: 'Arial', sans-serif;
-    z-index: 9999;
-    cursor: pointer;
-    text-align: center;
-    padding: 2rem;
-    box-sizing: border-box;
-    backdrop-filter: blur(5px);
-    transition: opacity 0.3s ease;
-    opacity: 0;
-  }
-  
-  #ad-layer.visible {
-    opacity: 1;
-  }
-  
-  #ad-layer small {
-    display: block;
-    margin-top: 1rem;
-    font-size: 1rem;
-    opacity: 0.8;
-  }
-  
-  #ad-layer .emoji {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    animation: bounce 2s infinite;
-  }
-  
-  #ad-layer .warning {
-    color: #ff6b6b;
-    font-weight: bold;
-    margin-top: 1rem;
-    display: none;
-  }
-  
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-20px);}
-    60% {transform: translateY(-10px);}
-  }
-</style>
 
-<div id="ad-layer">
-  <div class="emoji">👆</div>
-  <div>Tap to Continue</div>
-  <small>(Ad will open once every 30 minutes)</small>
-  <div class="warning" id="return-warning">Please watch the ad for at least 10 seconds before returning!</div>
-</div>
-
-<script>
-(function() {
-  const adCooldown = 30 * 60 * 1000; // 30 minutes
-  const minWatchTime = 10 * 1000; // 10 seconds
-  const now = Date.now();
-
-  const lastWatched = localStorage.getItem('adWatchedAt');
-  const clickedAt = localStorage.getItem('adClickedAt');
-
-  if (lastWatched && now - lastWatched < adCooldown) return; // skip showing ad again
-
-  // Fullscreen overlay
-  const overlay = document.createElement('div');
-  overlay.style = `
-    position:fixed; top:0; left:0; width:100vw; height:100vh;
-    background:#000c; z-index:9999; display:flex;
-    align-items:center; justify-content:center; flex-direction:column;
-    color:#fff; font-family:sans-serif; text-align:center;
-  `;
-
-  const msg = document.createElement('div');
-  msg.style = "margin-bottom:20px; font-size:18px;";
-  msg.textContent = clickedAt
-    ? "⚠️ You returned too fast. Please watch the ad for at least 10 seconds."
-    : "📢 Please watch the ad and stay for 10 seconds.";
-
-  const btn = document.createElement('button');
-  btn.textContent = "🎥 Watch Ad";
-  btn.style = `
-    padding:15px 25px; font-size:18px; background:#00c853; border:none;
-    color:white; border-radius:8px; cursor:pointer;
-  `;
-
-  btn.onclick = () => {
-    // Load your PopCash script
-    const pop_tag = document.createElement('script');
-    pop_tag.src = '//cdn.popcash.net/show.js';
-    document.body.appendChild(pop_tag);
-    pop_tag.onerror = function() {
-      const fallback = document.createElement('script');
-      fallback.src = '//cdn2.popcash.net/show.js';
-      document.body.appendChild(fallback);
-    };
-
-    // Set PopCash UID/WID
-    window.uid = '484938';
-    window.wid = '743587';
-    window.pop_fback = 'up';
-
-    localStorage.setItem('adClickedAt', Date.now());
-    msg.textContent = "⏳ Ad opened. Please wait 10 seconds before coming back.";
-    btn.disabled = true;
-    btn.style.opacity = "0.5";
-  };
-
-  if (clickedAt && !lastWatched) {
-    const diff = now - parseInt(clickedAt);
-    if (diff >= minWatchTime) {
-      localStorage.setItem('adWatchedAt', now);
-      localStorage.removeItem('adClickedAt');
-      overlay.remove();
-      return;
-    }
-  }
-
-  overlay.appendChild(msg);
-  overlay.appendChild(btn);
-  document.body.appendChild(overlay);
-})();
-</script>
 
 
 
