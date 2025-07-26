@@ -52,21 +52,22 @@
     async function createOrUpdate(mode) {
       const name = document.getElementById("name").value.trim();
       const url = document.getElementById("url").value.trim();
-      if (!name || !url) return log("Please fill in name and URL");
+      if (!name || (mode === "create" && !url)) return log("Please fill in name and URL");
 
       const token = await getToken();
       const meta = await getGistMeta(token);
       const mapping = await loadMapping();
 
-      if (!mapping[name] && mode === 'extend') {
-        return log(`No entry found for "${name}" to extend`);
-      }
+      if (!mapping._expires) mapping._expires = {};
 
       if (mode === 'create') {
-        mapping[name] = { url, expires: getUnix() + 3600 };
+        mapping[name] = url;
+        mapping._expires[name] = getUnix() + 3600;
         log(`Created entry for ${name} (expires in 1h)`);
       } else if (mode === 'extend') {
-        mapping[name].expires += 3600;
+        if (!mapping[name]) return log(`No entry found for "${name}" to extend`);
+        if (!mapping._expires[name]) mapping._expires[name] = getUnix();
+        mapping._expires[name] += 3600;
         log(`Extended ${name} by +1 hour`);
       }
 
@@ -91,9 +92,10 @@
       if (!name) return log("Enter a name to check");
 
       const mapping = await loadMapping();
-      if (!mapping[name]) return log(`No entry found for "${name}"`);
+      const expires = mapping._expires?.[name];
+      if (!expires) return log(`No expiry set for "${name}"`);
 
-      const remaining = mapping[name].expires - getUnix();
+      const remaining = expires - getUnix();
       if (remaining <= 0) return log(`${name} has expired`);
 
       const mins = Math.floor(remaining / 60);
