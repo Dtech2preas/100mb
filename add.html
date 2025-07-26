@@ -6,72 +6,56 @@
   <style>
     body { font-family: sans-serif; padding: 20px; max-width: 500px; margin: auto; }
     input, button { display: block; margin: 10px 0; width: 100%; padding: 8px; }
-    #log { margin-top: 20px; white-space: pre-wrap; background: #f0f0f0; padding: 10px; }
+    #log { margin-top: 20px; white-space: pre-wrap; background: #f0f0f0; padding: 10px; border-radius: 5px; }
   </style>
 </head>
 <body>
 
   <h2>Subdomain Gist Entry Manager</h2>
 
-  <input type="text" id="name" placeholder="Your Name (e.g. lefa)" />
-  <input type="url" id="url" placeholder="Your Gist URL" />
+  <input type="text" id="name" placeholder="Name (e.g. lefa)" />
+  <input type="url" id="url" placeholder="Gist URL (only for create)" />
 
-  <button onclick="createOrUpdate('create')">Create Entry (1h)</button>
-  <button onclick="createOrUpdate('extend')">Add 1 Hour</button>
+  <button onclick="handle('create')">Create Entry (1h)</button>
+  <button onclick="handle('extend')">Extend by 1 Hour</button>
   <button onclick="checkTime()">Check Remaining Time</button>
 
   <div id="log">...</div>
 
   <script>
-    const mappingGistRaw = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
-    const tokenGistRaw = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
-    const log = msg => document.getElementById("log").textContent = msg;
+    const mappingRawURL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
+    const tokenRawURL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
+    const log = (msg) => document.getElementById("log").textContent = msg;
+
+    const getUnix = () => Math.floor(Date.now() / 1000);
 
     async function getToken() {
-      const res = await fetch(tokenGistRaw);
-      return (await res.text()).split("\n")[0].trim();
+      try {
+        const res = await fetch(tokenRawURL);
+        const tokens = await res.text();
+        return tokens.split("\n")[0].trim();
+      } catch (e) {
+        log("❌ Failed to load token");
+        throw e;
+      }
     }
 
-    async function getGistMeta(token) {
+    async function getMapping() {
+      const res = await fetch(mappingRawURL + "?t=" + Date.now()); // prevent caching
+      return JSON.parse(await res.text());
+    }
+
+    async function getGistID(token) {
       const res = await fetch("https://api.github.com/gists", {
         headers: { Authorization: `Bearer ${token}` }
       });
       const gists = await res.json();
-      return gists.find(g => g.files["gistfile1.txt"] && g.description.includes("mapping")) || gists[0];
+      return gists.find(g => g.files["gistfile1.txt"])?.id || gists[0]?.id;
     }
 
-    async function loadMapping() {
-      const res = await fetch(mappingGistRaw);
-      return JSON.parse(await res.text());
-    }
-
-    function getUnix() {
-      return Math.floor(Date.now() / 1000);
-    }
-
-    async function createOrUpdate(mode) {
-      const name = document.getElementById("name").value.trim();
-      const url = document.getElementById("url").value.trim();
-      if (!name || (mode === "create" && !url)) return log("Please fill in name and URL");
-
-      const token = await getToken();
-      const meta = await getGistMeta(token);
-      const mapping = await loadMapping();
-
-      if (!mapping._expires) mapping._expires = {};
-
-      if (mode === 'create') {
-        mapping[name] = url;
-        mapping._expires[name] = getUnix() + 3600;
-        log(`Created entry for ${name} (expires in 1h)`);
-      } else if (mode === 'extend') {
-        if (!mapping[name]) return log(`No entry found for "${name}" to extend`);
-        if (!mapping._expires[name]) mapping._expires[name] = getUnix();
-        mapping._expires[name] += 3600;
-        log(`Extended ${name} by +1 hour`);
-      }
-
-      await fetch(`https://api.github.com/gists/${meta.id}`, {
+    async function updateMapping(newMapping, token, gistId) {
+      const patchURL = `https://api.github.com/gists/${gistId}`;
+      const res = await fetch(patchURL, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -80,27 +64,63 @@
         body: JSON.stringify({
           files: {
             "gistfile1.txt": {
-              content: JSON.stringify(mapping, null, 2)
+              content: JSON.stringify(newMapping, null, 2)
             }
           }
         })
       });
+
+      if (!res.ok) throw new Error("❌ Failed to update mapping");
+    }
+
+    async function handle(mode) {
+      const name = document.getElementById("name").value.trim();
+      const url = document.getElementById("url").value.trim();
+      if (!name) return log("⚠️ Name is required");
+
+      if (mode === "create" && !url) return log("⚠️ URL is required for creating");
+
+      try {
+        const token = await getToken();
+        const gistId = await getGistID(token);
+        const mapping = await getMapping();
+
+        if (!mapping._expires) mapping._expires = {};
+
+        if (mode === "create") {
+          mapping[name] = url;
+          mapping._expires[name] = getUnix() + 3600;
+          log(`✅ Created '${name}' entry (1h expiry)`);
+        } else if (mode === "extend") {
+          if (!mapping[name]) return log(`❌ Entry "${name}" not found`);
+          mapping._expires[name] = (mapping._expires[name] || getUnix()) + 3600;
+          log(`✅ Extended '${name}' by 1 hour`);
+        }
+
+        await updateMapping(mapping, token, gistId);
+      } catch (e) {
+        log("❌ Error during update: " + e.message);
+      }
     }
 
     async function checkTime() {
       const name = document.getElementById("name").value.trim();
-      if (!name) return log("Enter a name to check");
+      if (!name) return log("⚠️ Enter a name to check");
 
-      const mapping = await loadMapping();
-      const expires = mapping._expires?.[name];
-      if (!expires) return log(`No expiry set for "${name}"`);
+      try {
+        const mapping = await getMapping();
+        const expires = mapping._expires?.[name];
+        if (!expires) return log(`❌ No expiry set for "${name}"`);
 
-      const remaining = expires - getUnix();
-      if (remaining <= 0) return log(`${name} has expired`);
+        const remaining = expires - getUnix();
+        if (remaining <= 0) return log(`❌ "${name}" has expired`);
 
-      const mins = Math.floor(remaining / 60);
-      const hrs = Math.floor(mins / 60);
-      log(`${name} has ${hrs}h ${mins % 60}min left`);
+        const mins = Math.floor(remaining / 60);
+        const hrs = Math.floor(mins / 60);
+        log(`🕐 "${name}" has ${hrs}h ${mins % 60}min left`);
+      } catch (e) {
+        log("❌ Failed to check time");
+      }
     }
   </script>
 
