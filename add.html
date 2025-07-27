@@ -1,174 +1,588 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>D-TECH Gist Mapper</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body { font-family: sans-serif; padding: 20px; max-width: 500px; margin: auto; }
-    input, button { display: block; margin: 10px 0; width: 100%; padding: 8px; }
-    #log { margin-top: 20px; white-space: pre-wrap; background: #f0f0f0; padding: 10px; border-radius: 5px; }
-  </style>
-  <script src='//libtl.com/sdk.js' data-zone='9630863' data-sdk='show_9630863'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-TECH Subdomain Creator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src='//libtl.com/sdk.js' data-zone='9630863' data-sdk='show_9630863'></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        
+        .warning {
+            background: rgba(255, 100, 100, 0.15);
+            border-left: 4px solid #ff6b6b;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .warning i {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+        
+        .warning-content h3 {
+            color: #ff6b6b;
+            margin-bottom: 5px;
+        }
+        
+        .warning-content p {
+            color: #ffd8d8;
+            line-height: 1.5;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: rgba(30, 41, 59, 0.7);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        button {
+            padding: 14px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        button.primary {
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            color: white;
+        }
+        
+        button.secondary {
+            background: linear-gradient(to right, #8b5cf6, #7c3aed);
+            color: white;
+        }
+        
+        button.info {
+            background: linear-gradient(to right, #06b6d4, #0891b2);
+            color: white;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .url-display {
+            margin-top: 30px;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            display: none;
+            border: 1px solid #334155;
+        }
+        
+        .url-display.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .url-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .url-header h3 {
+            color: #3b82f6;
+        }
+        
+        .url-content {
+            display: flex;
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .url-text {
+            flex-grow: 1;
+            padding: 12px 15px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        
+        .copy-btn {
+            background: linear-gradient(to right, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .copy-btn:hover {
+            background: linear-gradient(to right, #34d399, #10b981);
+        }
+        
+        .copy-btn.copied {
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+        }
+        
+        .log-container {
+            margin-top: 25px;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 100px;
+            border: 1px solid #334155;
+            font-family: monospace;
+            overflow: auto;
+            max-height: 200px;
+        }
+        
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .log-header h3 {
+            color: #94a3b8;
+        }
+        
+        .log-content {
+            color: #cbd5e1;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-active {
+            background-color: #10b981;
+            box-shadow: 0 0 8px #10b981;
+        }
+        
+        .status-warning {
+            background-color: #f59e0b;
+            box-shadow: 0 0 8px #f59e0b;
+        }
+        
+        .status-error {
+            background-color: #ef4444;
+            box-shadow: 0 0 8px #ef4444;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-globe-americas"></i> D-TECH Subdomain Creator</h1>
+            <p>Create and manage custom subdomains for your gist URLs</p>
+        </div>
+        
+        <div class="warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div class="warning-content">
+                <h3>Important Notice</h3>
+                <p>Your final URL will be: <strong>https://[your-name].log-in.co.za</strong></p>
+                <p>Ensure you enter the name exactly as you want it to appear in the URL. This name will become your subdomain.</p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="name">Subdomain Name</label>
+            <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" />
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 5px;">This will create: <span id="preview-url">https://.log-in.co.za</span></p>
+        </div>
+        
+        <div class="form-group">
+            <label for="url">Gist URL (Required for creation)</label>
+            <input type="url" id="url" placeholder="Enter your Gist URL (https://gist.github.com/...)" />
+        </div>
+        
+        <div class="button-group">
+            <button class="primary pulse" onclick="rewardedThen(() => handle('create'))">
+                <i class="fas fa-plus-circle"></i> Create Entry (1h)
+            </button>
+            <button class="secondary" onclick="rewardedThen(() => handle('extend'))">
+                <i class="fas fa-clock"></i> Extend by 1 Hour
+            </button>
+            <button class="info" onclick="checkTime()">
+                <i class="fas fa-history"></i> Check Time
+            </button>
+        </div>
+        
+        <div class="url-display" id="url-display">
+            <div class="url-header">
+                <h3>Your Subdomain URL</h3>
+            </div>
+            <div class="url-content">
+                <div class="url-text" id="final-url">https://example.log-in.co.za</div>
+                <button class="copy-btn" id="copy-btn">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+        
+        <div class="log-container">
+            <div class="log-header">
+                <h3>System Log</h3>
+                <span class="status-indicator status-active" id="status-indicator"></span>
+            </div>
+            <div class="log-content" id="log">System ready. Enter details to begin.</div>
+        </div>
+        
+        <div class="footer">
+            <p>D-TECH Subdomain Manager &copy; 2023 | Secure and reliable subdomain creation</p>
+        </div>
+    </div>
 
-  <h2>Subdomain Gist Entry Manager</h2>
-
-  <input type="text" id="name" placeholder="Name (e.g. lefa)" />
-  <input type="url" id="url" placeholder="Gist URL (only for create)" />
-
-  <button onclick="rewardedThen(() => handle('create'))">Create Entry (1h)</button>
-  <button onclick="rewardedThen(() => handle('extend'))">Extend by 1 Hour</button>
-  <button onclick="checkTime()">Check Remaining Time</button>
-
-  <div id="log">...</div>
-
-  <script>
-    const mappingRawURL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
-    const tokenRawURL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
-    const log = (msg) => document.getElementById("log").textContent = msg;
-    const getUnix = () => Math.floor(Date.now() / 1000);
-
-    // 🔁 In-App Interstitial every ~10min
-    show_9630863({
-      type: 'inApp',
-      inAppSettings: {
-        frequency: 2,
-        capping: 0.1,
-        interval: 30,
-        timeout: 5,
-        everyPage: false
-      }
-    });
-
-    // 🟢 Rewarded interstitial (requires 10s)
-    async function rewardedThen(callback) {
-      const start = performance.now();
-      try {
-        await show_9630863();
-        const duration = performance.now() - start;
-        if (duration >= 10000) {
-          callback();
-        } else {
-          log("⚠️ You must watch the ad for at least 10 seconds!");
-        }
-      } catch {
-        log("❌ Ad failed to load");
-      }
-    }
-
-    // 🔁 Alternating Check Time (ad every second click, no 10s rule)
-    async function checkTime() {
-      const name = document.getElementById("name").value.trim();
-      if (!name) return log("⚠️ Enter a name to check");
-
-      const toggleKey = "checkTimeToggle";
-      const isAdTurn = localStorage.getItem(toggleKey) !== "false";
-
-      const doCheck = async () => {
-        try {
-          const mapping = await getMapping();
-          const expires = mapping._expires?.[name];
-          if (!expires) return log(`❌ No expiry set for "${name}"`);
-
-          const remaining = expires - getUnix();
-          if (remaining <= 0) return log(`❌ "${name}" has expired`);
-
-          const mins = Math.floor(remaining / 60);
-          const hrs = Math.floor(mins / 60);
-          log(`🕐 "${name}" has ${hrs}h ${mins % 60}min left`);
-        } catch (e) {
-          log("❌ Failed to check time");
-        }
-      };
-
-      if (isAdTurn) {
-        try {
-          await show_9630863('pop');
-        } catch {
-          log("⚠️ Popup ad skipped or failed.");
-        }
-        await doCheck();
-      } else {
-        await doCheck();
-      }
-
-      // Flip toggle
-      localStorage.setItem(toggleKey, (!isAdTurn).toString());
-    }
-
-    async function getToken() {
-      try {
-        const res = await fetch(tokenRawURL);
-        const tokens = await res.text();
-        return tokens.split("\n")[0].trim();
-      } catch (e) {
-        log("❌ Failed to load token");
-        throw e;
-      }
-    }
-
-    async function getMapping() {
-      const res = await fetch(mappingRawURL + "?t=" + Date.now());
-      return JSON.parse(await res.text());
-    }
-
-    async function getGistID(token) {
-      const res = await fetch("https://api.github.com/gists", {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const gists = await res.json();
-      return gists.find(g => g.files["gistfile1.txt"])?.id || gists[0]?.id;
-    }
-
-    async function updateMapping(newMapping, token, gistId) {
-      const patchURL = `https://api.github.com/gists/${gistId}`;
-      const res = await fetch(patchURL, {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          files: {
-            "gistfile1.txt": {
-              content: JSON.stringify(newMapping, null, 2)
+    <script>
+        const mappingRawURL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
+        const tokenRawURL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
+        const logElement = document.getElementById("log");
+        const statusIndicator = document.getElementById("status-indicator");
+        const previewUrl = document.getElementById("preview-url");
+        const finalUrlElement = document.getElementById("final-url");
+        const urlDisplay = document.getElementById("url-display");
+        const copyBtn = document.getElementById("copy-btn");
+        
+        const getUnix = () => Math.floor(Date.now() / 1000);
+        
+        // Update preview URL as user types
+        document.getElementById("name").addEventListener("input", function() {
+            const name = this.value.trim();
+            previewUrl.textContent = `https://${name || "[your-name]"}.log-in.co.za`;
+        });
+        
+        // Copy button functionality
+        copyBtn.addEventListener("click", function() {
+            const tempInput = document.createElement("input");
+            tempInput.value = finalUrlElement.textContent;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            // Visual feedback
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            copyBtn.classList.add("copied");
+            
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+                copyBtn.classList.remove("copied");
+            }, 2000);
+        });
+        
+        function log(msg, type = "info") {
+            const timestamp = new Date().toLocaleTimeString();
+            const indicator = {
+                "info": '<span class="status-indicator status-active"></span>',
+                "warn": '<span class="status-indicator status-warning"></span>',
+                "error": '<span class="status-indicator status-error"></span>'
+            }[type] || '<span class="status-indicator status-active"></span>';
+            
+            logElement.innerHTML = `${indicator} [${timestamp}] ${msg}\n${logElement.innerHTML}`;
+            
+            // Update status indicator
+            if (type === "error") {
+                statusIndicator.className = "status-indicator status-error";
+                setTimeout(() => {
+                    statusIndicator.className = "status-indicator status-active";
+                }, 3000);
+            } else if (type === "warn") {
+                statusIndicator.className = "status-indicator status-warning";
+                setTimeout(() => {
+                    statusIndicator.className = "status-indicator status-active";
+                }, 2000);
             }
-          }
-        })
-      });
-
-      if (!res.ok) throw new Error("❌ Failed to update mapping");
-    }
-
-    async function handle(mode) {
-      const name = document.getElementById("name").value.trim();
-      const url = document.getElementById("url").value.trim();
-      if (!name) return log("⚠️ Name is required");
-      if (mode === "create" && !url) return log("⚠️ URL is required for creating");
-
-      try {
-        const token = await getToken();
-        const gistId = await getGistID(token);
-        const mapping = await getMapping();
-
-        if (!mapping._expires) mapping._expires = {};
-
-        if (mode === "create") {
-          mapping[name] = url;
-          mapping._expires[name] = getUnix() + 3600;
-          log(`✅ Created '${name}' entry (1h expiry)`);
-        } else if (mode === "extend") {
-          if (!mapping[name]) return log(`❌ Entry "${name}" not found`);
-          mapping._expires[name] = (mapping._expires[name] || getUnix()) + 3600;
-          log(`✅ Extended '${name}' by 1 hour`);
         }
-
-        await updateMapping(mapping, token, gistId);
-      } catch (e) {
-        log("❌ Error during update: " + e.message);
-      }
-    }
-  </script>
+        
+        // 🔁 In-App Interstitial every ~10min
+        show_9630863({
+            type: 'inApp',
+            inAppSettings: {
+                frequency: 2,
+                capping: 0.1,
+                interval: 30,
+                timeout: 5,
+                everyPage: false
+            }
+        });
+        
+        // 🟢 Rewarded interstitial (requires 10s)
+        async function rewardedThen(callback) {
+            const start = performance.now();
+            try {
+                await show_9630863();
+                const duration = performance.now() - start;
+                if (duration >= 10000) {
+                    callback();
+                } else {
+                    log("⚠️ You must watch the ad for at least 10 seconds!", "warn");
+                }
+            } catch {
+                log("❌ Ad failed to load", "error");
+            }
+        }
+        
+        // 🔁 Alternating Check Time (ad every second click, no 10s rule)
+        async function checkTime() {
+            const name = document.getElementById("name").value.trim();
+            if (!name) return log("⚠️ Enter a name to check", "warn");
+            
+            const toggleKey = "checkTimeToggle";
+            const isAdTurn = localStorage.getItem(toggleKey) !== "false";
+            
+            const doCheck = async () => {
+                try {
+                    const mapping = await getMapping();
+                    const expires = mapping._expires?.[name];
+                    if (!expires) return log(`❌ No expiry set for "${name}"`, "error");
+                    
+                    const remaining = expires - getUnix();
+                    if (remaining <= 0) return log(`❌ "${name}" has expired`, "error");
+                    
+                    const mins = Math.floor(remaining / 60);
+                    const hrs = Math.floor(mins / 60);
+                    log(`🕐 "${name}" has ${hrs}h ${mins % 60}min left`, "info");
+                } catch (e) {
+                    log("❌ Failed to check time", "error");
+                }
+            };
+            
+            if (isAdTurn) {
+                try {
+                    await show_9630863('pop');
+                } catch {
+                    log("⚠️ Popup ad skipped or failed.", "warn");
+                }
+                await doCheck();
+            } else {
+                await doCheck();
+            }
+            
+            // Flip toggle
+            localStorage.setItem(toggleKey, (!isAdTurn).toString());
+        }
+        
+        async function getToken() {
+            try {
+                const res = await fetch(tokenRawURL);
+                const tokens = await res.text();
+                return tokens.split("\n")[0].trim();
+            } catch (e) {
+                log("❌ Failed to load token", "error");
+                throw e;
+            }
+        }
+        
+        async function getMapping() {
+            const res = await fetch(mappingRawURL + "?t=" + Date.now());
+            return JSON.parse(await res.text());
+        }
+        
+        async function getGistID(token) {
+            const res = await fetch("https://api.github.com/gists", {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            const gists = await res.json();
+            return gists.find(g => g.files["gistfile1.txt"])?.id || gists[0]?.id;
+        }
+        
+        async function updateMapping(newMapping, token, gistId) {
+            const patchURL = `https://api.github.com/gists/${gistId}`;
+            const res = await fetch(patchURL, {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    files: {
+                        "gistfile1.txt": {
+                            content: JSON.stringify(newMapping, null, 2)
+                        }
+                    }
+                })
+            });
+            
+            if (!res.ok) throw new Error("❌ Failed to update mapping");
+        }
+        
+        async function handle(mode) {
+            const name = document.getElementById("name").value.trim();
+            const url = document.getElementById("url").value.trim();
+            if (!name) return log("⚠️ Name is required", "warn");
+            if (mode === "create" && !url) return log("⚠️ URL is required for creating", "warn");
+            
+            try {
+                const token = await getToken();
+                const gistId = await getGistID(token);
+                const mapping = await getMapping();
+                
+                if (!mapping._expires) mapping._expires = {};
+                
+                if (mode === "create") {
+                    mapping[name] = url;
+                    mapping._expires[name] = getUnix() + 3600;
+                    log(`✅ Created '${name}' entry (1h expiry)`, "info");
+                    
+                    // Show final URL
+                    finalUrlElement.textContent = `https://${name}.log-in.co.za`;
+                    urlDisplay.classList.add("active");
+                } else if (mode === "extend") {
+                    if (!mapping[name]) return log(`❌ Entry "${name}" not found`, "error");
+                    mapping._expires[name] = (mapping._expires[name] || getUnix()) + 3600;
+                    log(`✅ Extended '${name}' by 1 hour`, "info");
+                }
+                
+                await updateMapping(mapping, token, gistId);
+            } catch (e) {
+                log("❌ Error during update: " + e.message, "error");
+            }
+        }
+        
+        // Initialize
+        log("System initialized. Ready to create subdomains.");
+    </script>
 </body>
 </html>
