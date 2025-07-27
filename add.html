@@ -601,4 +601,28 @@
                 if (mode === "create") {
                     mapping[name] = url;
                     mapping._expires[name] = getUnix() + 3600;
-                    log(`✅ Created '${name}' entry (1h expiry)`
+                    log(`✅ Created '${name}' entry (1h expiry)`, "info");
+                    
+                    // Show final URL
+                    finalUrlElement.textContent = `https://${name}.log-in.co.za`;
+                    urlDisplay.classList.add("active");
+                    
+                    // Add activation notice to log
+                    log("⏳ Your URL may take 1-2 minutes to become active", "info");
+                } else if (mode === "extend") {
+                    if (!mapping[name]) return log(`❌ Entry "${name}" not found`, "error");
+                    mapping._expires[name] = (mapping._expires[name] || getUnix()) + 3600;
+                    log(`✅ Extended '${name}' by 1 hour`, "info");
+                }
+                
+                await updateMapping(mapping, token, gistId);
+            } catch (e) {
+                log("❌ Error during update: " + e.message, "error");
+            }
+        }
+        
+        // Initialize
+        log("System initialized. Ready to create subdomains.");
+    </script>
+</body>
+</html>
