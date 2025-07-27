@@ -15,7 +15,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
             color: #fff;
             min-height: 100vh;
             padding: 20px;
@@ -27,7 +27,7 @@
         .container {
             width: 100%;
             max-width: 600px;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15, 23, 42, 0.95);
             border-radius: 16px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -59,9 +59,9 @@
             margin: 0 auto;
         }
         
-        .notice {
-            background: rgba(100, 200, 255, 0.15);
-            border-left: 4px solid #3b82f6;
+        .warning {
+            background: rgba(255, 100, 100, 0.15);
+            border-left: 4px solid #ff6b6b;
             padding: 15px;
             border-radius: 4px;
             margin-bottom: 25px;
@@ -69,9 +69,9 @@
             gap: 12px;
         }
         
-        .warning {
-            background: rgba(255, 100, 100, 0.15);
-            border-left: 4px solid #ff6b6b;
+        .notice {
+            background: rgba(100, 200, 255, 0.15);
+            border-left: 4px solid #3b82f6;
             padding: 15px;
             border-radius: 4px;
             margin-bottom: 25px;
@@ -107,10 +107,12 @@
         .warning-content p, .notice-content p {
             color: #e2e8f0;
             line-height: 1.5;
+            font-size: 0.95rem;
         }
         
         .form-group {
             margin-bottom: 20px;
+            position: relative;
         }
         
         label {
@@ -183,6 +185,12 @@
             transform: translateY(0);
         }
         
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
         .url-display {
             margin-top: 30px;
             background: rgba(30, 41, 59, 0.7);
@@ -233,6 +241,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .copy-btn:hover {
@@ -241,6 +252,60 @@
         
         .copy-btn.copied {
             background: linear-gradient(to right, #3b82f6, #2563eb);
+        }
+        
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            max-width: 350px;
+        }
+        
+        .notification {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease, fadeOut 0.5s ease 3s forwards;
+            opacity: 0.95;
+        }
+        
+        .notification.success {
+            background: linear-gradient(to right, #10b981, #059669);
+            border-left: 4px solid #059669;
+        }
+        
+        .notification.error {
+            background: linear-gradient(to right, #ef4444, #dc2626);
+            border-left: 4px solid #dc2626;
+        }
+        
+        .notification.warning {
+            background: linear-gradient(to right, #f59e0b, #d97706);
+            border-left: 4px solid #d97706;
+        }
+        
+        .notification.info {
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            border-left: 4px solid #2563eb;
+        }
+        
+        .notification i {
+            font-size: 1.5rem;
+        }
+        
+        .notification-content h3 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .notification-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
         
         .log-container {
@@ -270,6 +335,7 @@
             color: #cbd5e1;
             white-space: pre-wrap;
             line-height: 1.5;
+            font-size: 0.9rem;
         }
         
         .status-indicator {
@@ -309,6 +375,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 0.95; }
+            to { opacity: 0; transform: translateY(-20px); }
+        }
+        
         .pulse {
             animation: pulse 1.5s infinite;
         }
@@ -335,6 +411,32 @@
             margin-right: 8px;
         }
         
+        .name-status {
+            margin-top: 5px;
+            font-size: 0.9rem;
+            padding: 5px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .name-available {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid #10b981;
+        }
+        
+        .name-taken {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+        }
+        
+        .name-checking {
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 3px solid #3b82f6;
+        }
+        
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -347,10 +449,18 @@
             .button-group {
                 grid-template-columns: 1fr;
             }
+            
+            .notification-container {
+                left: 20px;
+                right: 20px;
+                max-width: none;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="notification-container" id="notification-container"></div>
+    
     <div class="container">
         <div class="header">
             <h1><i class="fas fa-globe-americas"></i> D-TECH Subdomain Creator</h1>
@@ -362,7 +472,7 @@
             <div class="warning-content">
                 <h3>Important Notice</h3>
                 <p>Your final URL will be: <strong>https://[your-name].log-in.co.za</strong></p>
-                <p>Ensure you enter the name exactly as you want it to appear in the URL. This name will become your subdomain.</p>
+                <p>Ensure you enter the name exactly as you want it to appear in the URL.</p>
             </div>
         </div>
         
@@ -370,14 +480,15 @@
             <i class="fas fa-info-circle"></i>
             <div class="notice-content">
                 <h3>Activation Notice</h3>
-                <p>After creation, it may take up to 2 minutes for your custom URL to become active.</p>
-                <p>Please be patient while DNS records propagate.</p>
+                <p>After creation, it may take 1-2 minutes for your custom URL to become active.</p>
+                <p>Subdomains with less than 1 hour remaining may be removed at any time.</p>
             </div>
         </div>
         
         <div class="form-group">
             <label for="name">Subdomain Name</label>
             <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" />
+            <div id="name-status" class="name-status"></div>
             <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 5px;">This will create: <span id="preview-url">https://.log-in.co.za</span></p>
         </div>
         
@@ -387,7 +498,7 @@
         </div>
         
         <div class="button-group">
-            <button class="primary pulse" onclick="rewardedThen(() => handle('create'))">
+            <button class="primary pulse" id="create-btn" disabled>
                 <i class="fas fa-plus-circle"></i> Create Entry (1h)
             </button>
             <button class="secondary" onclick="rewardedThen(() => handle('extend'))">
@@ -437,35 +548,103 @@
         const finalUrlElement = document.getElementById("final-url");
         const urlDisplay = document.getElementById("url-display");
         const copyBtn = document.getElementById("copy-btn");
+        const notificationContainer = document.getElementById("notification-container");
+        const nameInput = document.getElementById("name");
+        const nameStatus = document.getElementById("name-status");
+        const createBtn = document.getElementById("create-btn");
         
         const getUnix = () => Math.floor(Date.now() / 1000);
         
         // Update preview URL as user types
-        document.getElementById("name").addEventListener("input", function() {
+        nameInput.addEventListener("input", function() {
             const name = this.value.trim();
             previewUrl.textContent = `https://${name || "[your-name]"}.log-in.co.za`;
+            
+            // Check name availability when typing stops
+            clearTimeout(this.timer);
+            this.timer = setTimeout(() => {
+                if (name.length > 0) {
+                    checkNameAvailability(name);
+                } else {
+                    nameStatus.style.display = "none";
+                    createBtn.disabled = true;
+                }
+            }, 500);
         });
         
-        // Copy button functionality
-        copyBtn.addEventListener("click", function() {
-            const tempInput = document.createElement("input");
-            tempInput.value = finalUrlElement.textContent;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
+        // Check if name is available
+        async function checkNameAvailability(name) {
+            nameStatus.textContent = "Checking name availability...";
+            nameStatus.className = "name-status name-checking";
+            nameStatus.style.display = "block";
             
-            // Visual feedback
-            const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            copyBtn.classList.add("copied");
+            try {
+                const mapping = await getMapping();
+                
+                if (mapping[name]) {
+                    // Name is taken
+                    nameStatus.textContent = `❌ "${name}" is already taken - Please choose another`;
+                    nameStatus.className = "name-status name-taken";
+                    createBtn.disabled = true;
+                } else {
+                    // Name is available
+                    nameStatus.textContent = `✅ "${name}" is available!`;
+                    nameStatus.className = "name-status name-available";
+                    createBtn.disabled = false;
+                }
+            } catch (e) {
+                nameStatus.textContent = "⚠️ Could not check name availability";
+                nameStatus.className = "name-status name-checking";
+                log("❌ Failed to check name availability", "error");
+            }
+        }
+        
+        // Show notification function
+        function showNotification(message, type = "info") {
+            const notification = document.createElement("div");
+            notification.className = `notification ${type}`;
             
+            let icon = "fa-info-circle";
+            if (type === "success") icon = "fa-check-circle";
+            if (type === "error") icon = "fa-exclamation-circle";
+            if (type === "warning") icon = "fa-exclamation-triangle";
+            
+            notification.innerHTML = `
+                <i class="fas ${icon}"></i>
+                <div class="notification-content">
+                    <p>${message}</p>
+                </div>
+            `;
+            
+            notificationContainer.appendChild(notification);
+            
+            // Remove notification after animation completes
             setTimeout(() => {
-                copyBtn.innerHTML = originalText;
-                copyBtn.classList.remove("copied");
-            }, 2000);
+                notification.remove();
+            }, 3500);
+        }
+        
+        // Copy button functionality using modern Clipboard API
+        copyBtn.addEventListener("click", async function() {
+            const url = finalUrlElement.textContent;
+            
+            try {
+                await navigator.clipboard.writeText(url);
+                showNotification("URL copied to clipboard!", "success");
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                copyBtn.classList.add("copied");
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                    copyBtn.classList.remove("copied");
+                }, 2000);
+            } catch (err) {
+                showNotification("Failed to copy URL", "error");
+                console.error('Failed to copy: ', err);
+            }
         });
         
+        // Improved logging function
         function log(msg, type = "info") {
             const timestamp = new Date().toLocaleTimeString();
             const indicator = {
@@ -474,7 +653,12 @@
                 "error": '<span class="status-indicator status-error"></span>'
             }[type] || '<span class="status-indicator status-active"></span>';
             
-            logElement.innerHTML = `${indicator} [${timestamp}] ${msg}\n${logElement.innerHTML}`;
+            // Keep log concise by limiting to 5 entries
+            const logEntries = logElement.innerHTML.split('\n');
+            if (logEntries.length > 5) {
+                logEntries.pop();
+            }
+            logElement.innerHTML = `${indicator} [${timestamp}] ${msg}\n${logEntries.join('\n')}`;
             
             // Update status indicator
             if (type === "error") {
@@ -487,6 +671,11 @@
                 setTimeout(() => {
                     statusIndicator.className = "status-indicator status-active";
                 }, 2000);
+            }
+            
+            // Also show notification for important messages
+            if (type === "error" || type === "warn" || type === "success") {
+                showNotification(msg, type);
             }
         }
         
@@ -528,14 +717,36 @@
             try {
                 const mapping = await getMapping();
                 const expires = mapping._expires?.[name];
-                if (!expires) return log(`❌ No expiry set for "${name}"`, "error");
+                if (!expires) {
+                    log(`❌ No expiry set for "${name}"`, "error");
+                    return;
+                }
                 
                 const remaining = expires - getUnix();
-                if (remaining <= 0) return log(`❌ "${name}" has expired`, "error");
+                if (remaining <= 0) {
+                    log(`❌ "${name}" has expired`, "error");
+                    return;
+                }
                 
                 const mins = Math.floor(remaining / 60);
                 const hrs = Math.floor(mins / 60);
-                log(`✅ "${name}" has ${hrs}h ${mins % 60}min left`, "info");
+                const minPart = mins % 60;
+                
+                let message = `✅ "${name}" has ${hrs}h ${minPart}min left`;
+                let type = "info";
+                
+                // Add warning for low time
+                if (mins < 60) {
+                    message = `⚠️ "${name}" has only ${mins}min left - may be removed soon!`;
+                    type = "warn";
+                }
+                
+                log(message, type);
+                
+                // Show critical warning if less than 30 minutes
+                if (mins < 30) {
+                    showNotification(`WARNING: ${name} has only ${mins} minutes left!`, "warning");
+                }
             } catch (e) {
                 log("❌ Failed to check time: " + e.message, "error");
             }
@@ -592,6 +803,16 @@
             if (mode === "create" && !url) return log("⚠️ URL is required for creating", "warn");
             
             try {
+                // Double-check name availability before creating
+                if (mode === "create") {
+                    const mapping = await getMapping();
+                    if (mapping[name]) {
+                        log(`❌ Cannot create: "${name}" is already taken`, "error");
+                        showNotification(`"${name}" is already taken - choose another`, "error");
+                        return;
+                    }
+                }
+                
                 const token = await getToken();
                 const gistId = await getGistID(token);
                 const mapping = await getMapping();
@@ -601,28 +822,34 @@
                 if (mode === "create") {
                     mapping[name] = url;
                     mapping._expires[name] = getUnix() + 3600;
-                    log(`✅ Created '${name}' entry (1h expiry)`, "info");
+                    log(`✅ Created '${name}' entry (1h expiry)`, "success");
                     
                     // Show final URL
                     finalUrlElement.textContent = `https://${name}.log-in.co.za`;
                     urlDisplay.classList.add("active");
                     
-                    // Add activation notice to log
-                    log("⏳ Your URL may take 1-2 minutes to become active", "info");
+                    // Show notification
+                    showNotification("Subdomain created successfully! May take 1-2 min to activate", "success");
                 } else if (mode === "extend") {
                     if (!mapping[name]) return log(`❌ Entry "${name}" not found`, "error");
                     mapping._expires[name] = (mapping._expires[name] || getUnix()) + 3600;
-                    log(`✅ Extended '${name}' by 1 hour`, "info");
+                    log(`✅ Extended '${name}' by 1 hour`, "success");
+                    showNotification(`Subdomain "${name}" extended by 1 hour`, "success");
                 }
                 
                 await updateMapping(mapping, token, gistId);
             } catch (e) {
                 log("❌ Error during update: " + e.message, "error");
+                showNotification("Error during update: " + e.message, "error");
             }
         }
         
         // Initialize
         log("System initialized. Ready to create subdomains.");
+        showNotification("Welcome to D-TECH Subdomain Creator", "info");
+        
+        // Set up create button with rewarded ad
+        createBtn.addEventListener("click", () => rewardedThen(() => handle('create')));
     </script>
 </body>
 </html>
