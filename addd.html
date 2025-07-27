@@ -3,54 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feature Moved Notice</title>
+    <title>Feature Moved to Telegram</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
             max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
+            overflow: hidden;
             text-align: center;
-            background-color: #f5f5f5;
         }
-        .notice-box {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-top: 50px;
+        
+        .header {
+            background: linear-gradient(to right, #0088cc, #00a8ff);
+            color: white;
+            padding: 30px 20px;
+            position: relative;
         }
-        .url-box {
-            background-color: #f0f0f0;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 20px 0;
-            word-break: break-all;
-            font-family: monospace;
+        
+        .header i {
+            font-size: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
         }
-        .highlight {
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .instructions {
+            background: #f0f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #00a8ff;
+        }
+        
+        .instructions h2 {
             color: #0088cc;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .step-number {
+            background: #0088cc;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
             font-weight: bold;
         }
-        .telegram-icon {
-            color: #0088cc;
-            font-size: 24px;
-            margin-right: 5px;
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .step-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .url-container {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .url-box {
+            display: flex;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .url-input {
+            flex: 1;
+            padding: 18px 20px;
+            font-size: 1.1rem;
+            border: none;
+            outline: none;
+            background: #f8f9fa;
+            font-family: monospace;
+            color: #333;
+        }
+        
+        .copy-btn {
+            background: linear-gradient(to right, #0088cc, #00a8ff);
+            color: white;
+            border: none;
+            padding: 0 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: linear-gradient(to right, #0077b3, #0099e6);
+            transform: translateY(-2px);
+        }
+        
+        .copy-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .copy-btn.copied {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+        }
+        
+        .copy-btn.copied i {
+            animation: bounce 0.5s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .note {
+            background: #fff8e1;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .note h3 {
+            color: #ff9800;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .note p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(to right, #0088cc, #00a8ff);
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 20px;
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.6);
+        }
+        
+        .telegram-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .footer {
+            padding: 20px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 500px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .copy-btn span {
+                display: none;
+            }
+            
+            .copy-btn {
+                padding: 0 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="notice-box">
-        <h2><span class="telegram-icon">✉️</span> Feature Moved Notice</h2>
-        <p>This feature has been moved to Telegram Mini App due to ad complications.</p>
-        
-        <p>Please <span class="highlight">copy this link</span>:</p>
-        
-        <div class="url-box">
-            https://t.me/DTECHURL_bot/ADD
+    <div class="container">
+        <div class="header">
+            <i class="fab fa-telegram"></i>
+            <h1>Feature Moved to Telegram</h1>
+            <p>This feature has been moved to our Telegram Mini App due to ad complications.</p>
         </div>
         
-        <p>Then <span class="highlight">paste it</span> in your Telegram saved messages or anywhere and press it to access the feature.</p>
+        <div class="content">
+            <div class="instructions">
+                <h2>How to Access the Feature</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Copy the Link</h3>
+                        <p>Click the button below to copy the special Telegram link to your clipboard.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Paste in Telegram</h3>
+                        <p>Open your Telegram app and paste the link in your saved messages, any chat, or the search bar.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Press the Link</h3>
+                        <p>Simply tap the link to open and access the feature in Telegram's Mini App environment.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="url-container">
+                <div class="url-box">
+                    <input type="text" class="url-input" value="https://t.me/DTECHURL_bot/ADD" id="telegramUrl" readonly>
+                    <button class="copy-btn" id="copyButton">
+                        <i class="fas fa-copy"></i>
+                        <span>Copy Link</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-lightbulb"></i> Why we moved to Telegram</h3>
+                <p>To provide a better user experience without intrusive advertisements, we've transitioned this feature to Telegram's Mini App platform. This allows us to offer a cleaner, faster, and more reliable service.</p>
+            </div>
+            
+            <a href="https://telegram.org/" class="telegram-btn" target="_blank">
+                <i class="fab fa-telegram"></i>
+                Get Telegram
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 DTECHURL Services. All rights reserved. | Feature available on Telegram</p>
+        </div>
     </div>
+
+    <script>
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const urlInput = document.getElementById('telegramUrl');
+            urlInput.select();
+            urlInput.setSelectionRange(0, 99999); // For mobile devices
+            
+            navigator.clipboard.writeText(urlInput.value).then(() => {
+                const originalText = this.innerHTML;
+                this.classList.add('copied');
+                this.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+                
+                setTimeout(() => {
+                    this.classList.remove('copied');
+                    this.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy text. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>
