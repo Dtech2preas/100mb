@@ -1,64 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Unlock with Ad</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>
-    let adOpenedTime = 0;
-    let adWindow = null;
-    let adWatched = false;
-
-    function openAdTab() {
-      adOpenedTime = Date.now();
-      adWatched = false;
-
-      adWindow = window.open("https://www.preasx24.co.za/adredir.html", "_blank");
-
-      if (!adWindow) {
-        alert("❌ Please allow pop-ups to continue.");
-        return;
-      }
-
-      // Listen for ad status
-      window.addEventListener("message", (event) => {
-        const data = event.data;
-        if (data?.status === "ad_failed") {
-          alert("❌ Ad was blocked. Disable VPN or proxy and try again.");
-          adWatched = false;
-        } else if (data?.status === "ad_redirected") {
-          console.log("✅ Ad loaded successfully. Waiting for return...");
-        }
-      });
-
-      // Detect user return
-      window.addEventListener("focus", () => {
-        if (adWindow && !adWindow.closed) {
-          const timeSpent = (Date.now() - adOpenedTime) / 1000;
-          if (timeSpent >= 10) {
-            adWatched = true;
-            alert("✅ Ad watched successfully.");
-          } else {
-            alert("⏱️ Please watch the ad for at least 10 seconds.");
-          }
-          adWindow.close();
-        }
-      });
+  <title>Ad Tester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body, iframe {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      border: none;
+      overflow: hidden;
     }
-
-    function continueIfWatched() {
-      if (adWatched) {
-        alert("🔓 Access Granted!");
-        // Continue logic here, e.g., redirect to subdomain or unlock button
-      } else {
-        alert("🚫 You must watch the ad first.");
-      }
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
     }
-  </script>
+  </style>
 </head>
 <body>
-  <h1>Watch Ad to Unlock</h1>
-  <button onclick="openAdTab()">📺 Watch Ad</button>
-  <br><br>
-  <button onclick="continueIfWatched()">➡️ Continue</button>
+  <iframe id="adFrame" src="https://otieu.com/4/9515888" allow="fullscreen"></iframe>
+
+  <script>
+    // Optional: detect if iframe loaded successfully
+    const iframe = document.getElementById('adFrame');
+    iframe.onload = () => {
+      console.log("✅ Ad loaded.");
+    };
+    iframe.onerror = () => {
+      console.log("❌ Ad failed to load (possibly blocked).");
+    };
+  </script>
 </body>
 </html>
