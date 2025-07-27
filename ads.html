@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ad Tester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body, iframe {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      border: none;
+      overflow: hidden;
+    }
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="adFrame" src="https://gapcontroversialprodigal.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365" allow="fullscreen"></iframe>
+
+  <script>
+    // Optional: detect if iframe loaded successfully
+    const iframe = document.getElementById('adFrame');
+    iframe.onload = () => {
+      console.log("✅ Ad loaded.");
+    };
+    iframe.onerror = () => {
+      console.log("❌ Ad failed to load (possibly blocked).");
+    };
+  </script>
+</body>
+</html>
