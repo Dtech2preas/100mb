@@ -41,7 +41,7 @@
       }
     });
 
-    // 🟢 Rewarded interstitial for Create & Extend
+    // 🟢 Rewarded interstitial (requires 10s)
     async function rewardedThen(callback) {
       const start = performance.now();
       try {
@@ -57,13 +57,13 @@
       }
     }
 
-    // 🔁 Alternating Check Time with rewarded popup ad every second call
+    // 🔁 Alternating Check Time (ad every second click, no 10s rule)
     async function checkTime() {
       const name = document.getElementById("name").value.trim();
       if (!name) return log("⚠️ Enter a name to check");
 
       const toggleKey = "checkTimeToggle";
-      const isAdTurn = localStorage.getItem(toggleKey) !== "false"; // first time true
+      const isAdTurn = localStorage.getItem(toggleKey) !== "false";
 
       const doCheck = async () => {
         try {
@@ -83,25 +83,18 @@
       };
 
       if (isAdTurn) {
-        const start = performance.now();
         try {
           await show_9630863('pop');
-          const duration = performance.now() - start;
-          if (duration >= 10000) {
-            await doCheck();
-          } else {
-            log("⚠️ You must watch the ad for at least 10 seconds!");
-            return;
-          }
         } catch {
-          log("❌ Ad popup failed");
-          return;
+          log("⚠️ Popup ad skipped or failed.");
         }
+        await doCheck();
       } else {
         await doCheck();
       }
 
-      localStorage.setItem(toggleKey, (!isAdTurn).toString()); // flip toggle
+      // Flip toggle
+      localStorage.setItem(toggleKey, (!isAdTurn).toString());
     }
 
     async function getToken() {
