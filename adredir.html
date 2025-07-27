@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting to Ad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+  </style>
+  <script>
+    const adUrl = "https://gapcontroversialprodigal.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365";
+
+    // Try fetching to test if the ad is blocked
+    fetch(adUrl, { mode: 'no-cors' })
+      .then(() => {
+        // Notify opener
+        window.opener?.postMessage({ status: "ad_redirected" }, "*");
+
+        // Proceed to ad
+        window.location.href = adUrl;
+      })
+      .catch(() => {
+        document.body.innerHTML = `
+          <h2>Ad Blocked</h2>
+          <p>You're using a VPN or proxy. Disable it to view the ad and unlock the feature.</p>
+        `;
+        // Notify parent
+        window.opener?.postMessage({ status: "ad_failed" }, "*");
+      });
+  </script>
+</head>
+<body>
+  <p>Checking your connection…</p>
+</body>
+</html>
