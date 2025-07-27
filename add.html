@@ -8,8 +8,7 @@
     input, button { display: block; margin: 10px 0; width: 100%; padding: 8px; }
     #log { margin-top: 20px; white-space: pre-wrap; background: #f0f0f0; padding: 10px; border-radius: 5px; }
   </style>
-<script src='//libtl.com/sdk.js' data-zone='9630863' data-sdk='show_9630863'></script>
-  
+  <script src='//libtl.com/sdk.js' data-zone='9630863' data-sdk='show_9630863'></script>
 </head>
 <body>
 
@@ -20,7 +19,7 @@
 
   <button onclick="rewardedThen(() => handle('create'))">Create Entry (1h)</button>
   <button onclick="rewardedThen(() => handle('extend'))">Extend by 1 Hour</button>
-  <button onclick="popupRewardedThen(checkTime)">Check Remaining Time</button>
+  <button onclick="checkTime()">Check Remaining Time</button>
 
   <div id="log">...</div>
 
@@ -30,7 +29,19 @@
     const log = (msg) => document.getElementById("log").textContent = msg;
     const getUnix = () => Math.floor(Date.now() / 1000);
 
-    // Rewarded Interstitial
+    // 🔁 In-App Interstitial every ~10min
+    show_9630863({
+      type: 'inApp',
+      inAppSettings: {
+        frequency: 2,
+        capping: 0.1,
+        interval: 30,
+        timeout: 5,
+        everyPage: false
+      }
+    });
+
+    // 🟢 Rewarded interstitial for Create & Extend
     async function rewardedThen(callback) {
       const start = performance.now();
       try {
@@ -46,33 +57,52 @@
       }
     }
 
-    // Rewarded Popup
-    async function popupRewardedThen(callback) {
-      const start = performance.now();
-      try {
-        await show_9630863('pop');
-        const duration = performance.now() - start;
-        if (duration >= 10000) {
-          callback();
-        } else {
-          log("⚠️ You must watch the ad for at least 10 seconds!");
-        }
-      } catch {
-        log("❌ Ad popup failed");
-      }
-    }
+    // 🔁 Alternating Check Time with rewarded popup ad every second call
+    async function checkTime() {
+      const name = document.getElementById("name").value.trim();
+      if (!name) return log("⚠️ Enter a name to check");
 
-    // In-App Interstitial auto-loop
-    show_9630863({
-      type: 'inApp',
-      inAppSettings: {
-        frequency: 2,
-        capping: 0.1,
-        interval: 30,
-        timeout: 5,
-        everyPage: false
+      const toggleKey = "checkTimeToggle";
+      const isAdTurn = localStorage.getItem(toggleKey) !== "false"; // first time true
+
+      const doCheck = async () => {
+        try {
+          const mapping = await getMapping();
+          const expires = mapping._expires?.[name];
+          if (!expires) return log(`❌ No expiry set for "${name}"`);
+
+          const remaining = expires - getUnix();
+          if (remaining <= 0) return log(`❌ "${name}" has expired`);
+
+          const mins = Math.floor(remaining / 60);
+          const hrs = Math.floor(mins / 60);
+          log(`🕐 "${name}" has ${hrs}h ${mins % 60}min left`);
+        } catch (e) {
+          log("❌ Failed to check time");
+        }
+      };
+
+      if (isAdTurn) {
+        const start = performance.now();
+        try {
+          await show_9630863('pop');
+          const duration = performance.now() - start;
+          if (duration >= 10000) {
+            await doCheck();
+          } else {
+            log("⚠️ You must watch the ad for at least 10 seconds!");
+            return;
+          }
+        } catch {
+          log("❌ Ad popup failed");
+          return;
+        }
+      } else {
+        await doCheck();
       }
-    });
+
+      localStorage.setItem(toggleKey, (!isAdTurn).toString()); // flip toggle
+    }
 
     async function getToken() {
       try {
@@ -144,26 +174,6 @@
         await updateMapping(mapping, token, gistId);
       } catch (e) {
         log("❌ Error during update: " + e.message);
-      }
-    }
-
-    async function checkTime() {
-      const name = document.getElementById("name").value.trim();
-      if (!name) return log("⚠️ Enter a name to check");
-
-      try {
-        const mapping = await getMapping();
-        const expires = mapping._expires?.[name];
-        if (!expires) return log(`❌ No expiry set for "${name}"`);
-
-        const remaining = expires - getUnix();
-        if (remaining <= 0) return log(`❌ "${name}" has expired`);
-
-        const mins = Math.floor(remaining / 60);
-        const hrs = Math.floor(mins / 60);
-        log(`🕐 "${name}" has ${hrs}h ${mins % 60}min left`);
-      } catch (e) {
-        log("❌ Failed to check time");
       }
     }
   </script>
