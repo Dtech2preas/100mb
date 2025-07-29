@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pyodide Test</title>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+</head>
+<body>
+  <h2>Pyodide Python Test</h2>
+  <button onclick="runPython()">Run Python Code</button>
+  <pre id="output"></pre>
+
+  <script type="text/javascript">
+    let pyodideReadyPromise = loadPyodide();
+
+    async function runPython() {
+      const pyodide = await pyodideReadyPromise;
+      const pythonCode = `
+name = "DTech"
+result = f"Hello from Python, {name}!"
+result
+      `;
+      let output = await pyodide.runPythonAsync(pythonCode);
+      document.getElementById("output").textContent = output;
+    }
+  </script>
+</body>
+</html>
