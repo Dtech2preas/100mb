@@ -2,95 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Images to PDF</title>
+  <title>Images to PDF (fixed)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-      line-height: 1.4;
-    }
-    h1 {
-      font-size: 1.75rem;
-      margin-bottom: 0.25rem;
-    }
-    .uploader {
-      border: 2px dashed #888;
-      padding: 1rem;
-      border-radius: 8px;
-      position: relative;
-      cursor: pointer;
-      text-align: center;
-      transition: background 0.2s;
-    }
-    .uploader.dragover {
-      background: #f0f8ff;
-      border-color: #005bb5;
-    }
-    input[type=file] {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      cursor: pointer;
-    }
-    #preview {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 1rem;
-    }
-    .thumb {
-      position: relative;
-      width: 120px;
-      border: 1px solid #ccc;
-      padding: 4px;
-      border-radius: 6px;
-      background: #fafafa;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .thumb img {
-      max-width: 100%;
-      border-radius: 4px;
-      display: block;
-    }
-    .thumb button {
-      margin-top: 4px;
-      background: #e53e3e;
-      border: none;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.65rem;
-    }
-    .actions {
-      margin-top: 1rem;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    button.primary {
-      background: #2563eb;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.25rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    .note {
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-      color: #555;
-    }
+    /* same styles as before */
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 1rem; }
+    h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .uploader { border: 2px dashed #888; padding: 1rem; border-radius: 8px; position: relative; cursor: pointer; text-align: center; }
+    .uploader.dragover { background: #f0f8ff; border-color: #005bb5; }
+    input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+    #preview { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1rem; }
+    .thumb { width: 120px; border: 1px solid #ccc; padding: 4px; border-radius: 6px; background: #fafafa; display: flex; flex-direction: column; align-items: center; }
+    .thumb img { max-width: 100%; border-radius: 4px; }
+    .thumb button { margin-top: 4px; background: #e53e3e; border: none; color: white; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.65rem; }
+    .actions { margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    button.primary { background: #2563eb; color: white; border: none; padding: 0.75rem 1.25rem; border-radius: 6px; cursor: pointer; font-size: 1rem; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .note { margin-top: 0.5rem; font-size: 0.85rem; color: #555; }
   </style>
 </head>
 <body>
@@ -116,7 +44,7 @@
   </div>
 
   <!-- jsPDF from CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-/xgXgZMx9ii4k6YNRZpVfU0i+zSBHYNQGUK3tQCCfQz4LqEz8F/0 K1uKRbQ+7+1OrCeet3N3qLcVutw5Kk7nA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <script>
     const input = document.getElementById("file-input");
@@ -125,7 +53,7 @@
     const clearBtn = document.getElementById("clear");
     const dropArea = document.getElementById("drop-area");
 
-    let images = []; // { file, dataURL, imgElement }
+    let images = []; // { file, dataURL }
 
     function updateGenerateState() {
       generateBtn.disabled = images.length === 0;
@@ -177,21 +105,19 @@
 
     input.addEventListener("change", (e) => {
       handleFiles(e.target.files);
-      input.value = ""; // allow re-upload of same
+      input.value = "";
     });
 
     // Drag & drop
     ["dragenter", "dragover"].forEach(evt => {
-      dropArea.addEventListener(evt, (e) => {
+      dropArea.addEventListener(evt, e => {
         e.preventDefault();
-        e.stopPropagation();
         dropArea.classList.add("dragover");
       });
     });
     ["dragleave", "drop"].forEach(evt => {
-      dropArea.addEventListener(evt, (e) => {
+      dropArea.addEventListener(evt, e => {
         e.preventDefault();
-        e.stopPropagation();
         dropArea.classList.remove("dragover");
       });
     });
@@ -201,72 +127,71 @@
       }
     });
 
+    async function loadImageDimensions(dataURL) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve({ width: img.width, height: img.height });
+        img.onerror = () => reject(new Error("Image load failed"));
+        img.src = dataURL;
+      });
+    }
+
     generateBtn.addEventListener("click", async () => {
       if (images.length === 0) return;
       generateBtn.disabled = true;
       generateBtn.textContent = "Generating…";
 
-      const { jsPDF } = window.jspdf;
-      // A4 size in mm
-      const pdf = new jsPDF({
-        unit: "mm",
-        format: "a4",
-        orientation: "portrait"
-      });
+      try {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({ unit: "mm", format: "a4" });
 
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const margin = 10;
 
-      for (let i = 0; i < images.length; i++) {
-        const imgData = images[i].dataURL;
+        for (let i = 0; i < images.length; i++) {
+          const imgObj = images[i];
+          console.log(`Processing image ${i + 1} of ${images.length}: ${imgObj.file.name}`);
 
-        // Create an offscreen image to get natural size
-        const img = new Image();
-        img.src = imgData;
+          const dims = await loadImageDimensions(imgObj.dataURL);
 
-        await new Promise((res) => {
-          img.onload = () => {
-            // Calculate dimensions preserving aspect ratio, with margin
-            const margin = 10; // mm
-            let iw = img.width;
-            let ih = img.height;
+          // Convert px to mm (approximate)
+          const pxToMm = px => (px * 25.4) / 96;
 
-            // convert px to mm loosely: assume 96 dpi => 96 px per 25.4 mm
-            const pxToMm = (px) => px * 25.4 / 96;
+          let w_mm = pxToMm(dims.width);
+          let h_mm = pxToMm(dims.height);
 
-            let w_mm = pxToMm(iw);
-            let h_mm = pxToMm(ih);
+          const maxW = pageWidth - margin * 2;
+          const maxH = pageHeight - margin * 2;
 
-            // Fit within (pageWidth - 2*margin) x (pageHeight - 2*margin)
-            const maxW = pageWidth - margin * 2;
-            const maxH = pageHeight - margin * 2;
-            const ratio = Math.min(maxW / w_mm, maxH / h_mm, 1);
-            w_mm = w_mm * ratio;
-            h_mm = h_mm * ratio;
+          const ratio = Math.min(maxW / w_mm, maxH / h_mm, 1);
 
-            const x = (pageWidth - w_mm) / 2;
-            const y = (pageHeight - h_mm) / 2;
+          w_mm = w_mm * ratio;
+          h_mm = h_mm * ratio;
 
-            // Add to PDF. jsPDF accepts image as DataURL.
-            pdf.addImage(imgData, "JPEG", x, y, w_mm, h_mm, undefined, "FAST");
+          const x = (pageWidth - w_mm) / 2;
+          const y = (pageHeight - h_mm) / 2;
 
-            if (i < images.length - 1) {
-              pdf.addPage();
-            }
-            res();
-          };
-          img.onerror = () => {
-            console.warn("Failed loading image", imgData);
-            res();
-          };
-        });
+          // Detect image format for jsPDF addImage (defaults to JPEG)
+          const ext = imgObj.file.name.split('.').pop().toLowerCase();
+          let format = "JPEG";
+          if (ext === "png") format = "PNG";
+          else if (ext === "webp") format = "WEBP";
+
+          pdf.addImage(imgObj.dataURL, format, x, y, w_mm, h_mm, undefined, "FAST");
+
+          if (i < images.length - 1) pdf.addPage();
+        }
+
+        pdf.save("images.pdf");
+        console.log("PDF generated and download triggered.");
+      } catch (e) {
+        console.error("Error generating PDF:", e);
+        alert("Error generating PDF. See console for details.");
       }
 
-      // Save / trigger download
-      pdf.save("images.pdf");
-
       generateBtn.textContent = "Generate PDF";
-      updateGenerateState();
+      generateBtn.disabled = images.length === 0;
     });
 
     clearBtn.addEventListener("click", () => {
@@ -275,13 +200,6 @@
       updateGenerateState();
     });
 
-    // Optional: keyboard shortcut (Ctrl+G) to generate
-    document.addEventListener("keydown", (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "g") {
-        e.preventDefault();
-        if (!generateBtn.disabled) generateBtn.click();
-      }
-    });
   </script>
 </body>
 </html>
