@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Beauty Showcase Upload & Gallery</title>
+  <title>Beauty Upload & Gallery (Single JSON)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <style>
     body { font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; background:#f2f4f8; margin:0; padding:0; }
@@ -16,12 +16,8 @@
     .profile img { width:100%; display:block; border-radius:8px; }
     .overlay { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.55); color:#fff; padding:8px; display:flex; justify-content:space-between; align-items:center; font-size:13px; }
     .like-btn { background:#ff4081; border:none; padding:6px 12px; border-radius:20px; cursor:pointer; display:flex; align-items:center; gap:6px; }
-    .disabled { opacity:0.6; pointer-events:none; }
     .status { margin-top:8px; padding:8px; border-radius:6px; background:#eef7ee; }
     .error { background:#ffe3e3; }
-    .flex { display:flex; gap:12px; flex-wrap:wrap; }
-    .pill { background:#f0f4ff; padding:4px 10px; border-radius:999px; font-size:12px; }
-    .small-avatar { width:32px; height:32px; border-radius:50%; object-fit:cover; margin-right:6px; }
   </style>
 </head>
 <body>
@@ -60,44 +56,29 @@
   </div>
 
   <script>
-    // Configuration
+    // Config
     const GIST_TOKEN_URL = "https://gist.githubusercontent.com/Dtech2preas/6750d0418aaa9dfe7f297c26d1dfae48/raw/2e511e4d11267d5aade0229849446b7297ae01c9/gistfile1.txt";
-    const USER_CHECK_URL = "https://raw.githubusercontent.com/Dtech2preas/Oratilr/main/data1.json";
     const REPO_OWNER = "Dtech2preas";
     const REPO_NAME = "Oratilr";
-    const DATA_FILE_PATH = "data1.json.json"; // must exist (init with [])
-    const IMGBB_API_KEY = "cedf418c6d844af9c47a7775a17161a6"; // existing key
+    const DATA_FILE_PATH = "data1.json"; // single JSON file
+    const IMGBB_API_KEY = "cedf418c6d844af9c47a7775a17161a6";
 
     const statusEl = document.getElementById("status");
     const galleryEl = document.getElementById("gallery");
     const galleryStatusEl = document.getElementById("galleryStatus");
     const submitBtn = document.getElementById("submitBtn");
 
-    function setStatus(msg, isError=false) {
+    function setStatus(msg, error=false) {
       statusEl.textContent = msg;
-      statusEl.className = "status small" + (isError ? " error" : "");
+      statusEl.className = "status small" + (error ? " error" : "");
     }
-
-    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
     async function fetchToken() {
-      const res = await fetch(GIST_TOKEN_URL);
-      if (!res.ok) throw new Error("Failed to fetch token gist");
-      const txt = (await res.text()).trim();
-      if (!txt) throw new Error("Empty token");
-      return txt;
-    }
-
-    async function isUsernameAvailable(username) {
-      try {
-        const res = await fetch(USER_CHECK_URL);
-        if (!res.ok) return true; // fallback, assume available
-        const list = await res.json();
-        if (!Array.isArray(list)) return true;
-        return !list.some(u => String(u.username).toLowerCase() === username.toLowerCase());
-      } catch {
-        return true;
-      }
+      const r = await fetch(GIST_TOKEN_URL);
+      if (!r.ok) throw new Error("Could not fetch token gist");
+      const t = (await r.text()).trim();
+      if (!t) throw new Error("Token empty");
+      return t;
     }
 
     async function getRepoFile(token) {
@@ -109,16 +90,16 @@
         }
       });
       if (!res.ok) {
-        throw new Error(`Failed to fetch ${DATA_FILE_PATH}: ${res.status} ${res.statusText}`);
+        throw new Error(`GitHub fetch failed ${res.status} ${res.statusText}`);
       }
       return await res.json();
     }
 
-    async function updateRepoFile(token, sha, newArray) {
+    async function updateRepoFile(token, sha, array) {
       const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
-      const payload = {
-        message: "Update beauty profiles",
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(newArray, null, 2)))),
+      const body = {
+        message: "Update beauty profile",
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2)))),
         sha: sha
       };
       const res = await fetch(url, {
@@ -128,18 +109,18 @@
           Accept: "application/vnd.github.v3+json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(body)
       });
       if (!res.ok) {
-        const t = await res.text();
-        throw new Error(`GitHub update failed: ${res.status} ${t}`);
+        const txt = await res.text();
+        throw new Error("GitHub update error: " + res.status + " " + txt);
       }
       return await res.json();
     }
 
-    async function uploadImageAsPNG(file) {
-      // convert image to PNG via canvas
-      const blob = await new Promise((resolve, reject) => {
+    async function uploadImage(file) {
+      // Convert to PNG then to base64
+      const pngBlob = await new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => {
           const img = new Image();
@@ -150,25 +131,28 @@
             const ctx = canvas.getContext("2d");
             ctx.fillStyle = "#fff";
             ctx.fillRect(0,0,canvas.width,canvas.height);
-            ctx.drawImage(img, 0, 0);
+            ctx.drawImage(img,0,0);
             canvas.toBlob(b => {
               if (!b) reject("Canvas blob failed");
               else resolve(b);
             }, "image/png");
           };
-          img.onerror = () => reject("Image load error");
+          img.onerror = () => reject("Image load failed");
           img.src = reader.result;
         };
         reader.onerror = () => reject("File read error");
         reader.readAsDataURL(file);
       });
 
-      // upload to imgbb
+      // to base64 string (imgbb expects base64 without prefix)
       const base64 = await new Promise((resolve, reject) => {
         const r = new FileReader();
-        r.onload = () => resolve(r.result.split(",")[1]);
-        r.onerror = () => reject("Base64 conversion failed");
-        r.readAsDataURL(blob);
+        r.onload = () => {
+          const str = r.result.split(",")[1];
+          resolve(str);
+        };
+        r.onerror = () => reject("Base64 convert failed");
+        r.readAsDataURL(pngBlob);
       });
 
       const form = new FormData();
@@ -178,31 +162,39 @@
         body: form
       });
       const data = await resp.json();
-      if (!data.success) throw new Error("Image upload to imgbb failed");
+      if (!data.success) throw new Error("imgbb upload failed");
       return data.data.url;
     }
 
-    // load gallery initially
+    function escapeHTML(s) {
+      if (!s) return "";
+      return s.replace(/[&<>"']/g, c => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[c]));
+    }
+
+    // Load gallery from raw JSON
     async function loadGallery() {
       galleryEl.innerHTML = "";
       galleryStatusEl.textContent = "Loading profiles...";
       try {
-        const token = await fetchToken(); // we don't need token for read raw
-        const fileRes = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${DATA_FILE_PATH}`);
-        if (!fileRes.ok) throw new Error("Failed to fetch beauty.json");
-        const profiles = await fileRes.json();
-        if (!Array.isArray(profiles)) throw new Error("Malformed beauty.json");
+        const raw = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${DATA_FILE_PATH}`);
+        if (!raw.ok) throw new Error("Failed to fetch JSON file");
+        const profiles = await raw.json();
+        if (!Array.isArray(profiles)) throw new Error("Malformed JSON");
         if (profiles.length === 0) {
           galleryStatusEl.textContent = "No profiles yet.";
           return;
         }
         galleryStatusEl.textContent = `${profiles.length} profile(s) loaded.`;
-        // sort by likes desc
         profiles.sort((a,b)=> (b.likes||0)-(a.likes||0));
         profiles.forEach(p => renderProfile(p));
       } catch (e) {
-        console.error(e);
-        galleryStatusEl.textContent = "Failed to load gallery: " + e.message;
+        galleryStatusEl.textContent = "Gallery load error: " + e.message;
       }
     }
 
@@ -218,60 +210,45 @@
       overlay.className = "overlay";
 
       const left = document.createElement("div");
-      left.innerHTML = `<div style="display:flex;align-items:center;"><div><strong>${escapeHTML(profile.username)}</strong> ${profile.fullName?`• ${escapeHTML(profile.fullName)}`:""}</div></div>`;
+      left.innerHTML = `<div><strong>${escapeHTML(profile.username)}</strong> ${profile.fullName?`• ${escapeHTML(profile.fullName)}`:""} • ${profile.age}</div>`;
 
       const right = document.createElement("div");
       const likeBtn = document.createElement("button");
       likeBtn.className = "like-btn";
       likeBtn.innerHTML = `❤️ <span class="likes-count">${profile.likes||0}</span>`;
-      likeBtn.onclick = () => handleLike(profile.username, likeBtn);
+      likeBtn.onclick = () => likeProfile(profile.username, likeBtn);
       right.appendChild(likeBtn);
 
       overlay.appendChild(left);
       overlay.appendChild(right);
       card.appendChild(overlay);
+
       galleryEl.appendChild(card);
     }
 
-    function escapeHTML(s) {
-      if (!s) return "";
-      return s.replace(/[&<>"']/g, c => ({
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#39;"
-      }[c]));
-    }
-
-    // like handler: loads, increments, commits
-    async function handleLike(targetUsername, buttonEl) {
-      buttonEl.disabled = true;
-      const original = buttonEl.innerHTML;
+    async function likeProfile(username, btn) {
+      btn.disabled = true;
       try {
-        setStatus(`Updating like for ${targetUsername}...`);
+        setStatus("Updating like...");
         const token = await fetchToken();
         const fileInfo = await getRepoFile(token);
         let profiles = [];
         try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
-        const idx = profiles.findIndex(p => String(p.username).toLowerCase() === targetUsername.toLowerCase());
+        const idx = profiles.findIndex(p => String(p.username).toLowerCase() === username.toLowerCase());
         if (idx === -1) throw new Error("Profile not found");
         profiles[idx].likes = (profiles[idx].likes||0) + 1;
         await updateRepoFile(token, fileInfo.sha, profiles);
-        // reflect UI
-        const span = buttonEl.querySelector(".likes-count");
+        // reflect
+        const span = btn.querySelector(".likes-count");
         if (span) span.textContent = profiles[idx].likes;
         setStatus("Like updated.");
       } catch (e) {
-        console.error(e);
-        setStatus("Failed to like: "+e.message, true);
+        setStatus("Like failed: "+e.message, true);
       } finally {
-        buttonEl.disabled = false;
-        buttonEl.innerHTML = original;
+        btn.disabled = false;
       }
     }
 
-    // shim for getRepoFile (used in like handler)
     async function getRepoFile(token) {
       const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
       const res = await fetch(url, {
@@ -280,76 +257,67 @@
           Accept: "application/vnd.github.v3+json"
         }
       });
-      if (!res.ok) throw new Error("Failed to fetch repo file: "+res.statusText);
+      if (!res.ok) throw new Error("GitHub file fetch error: " + res.statusText);
       return await res.json();
     }
 
-    // submit flow
     submitBtn.addEventListener("click", async () => {
       try {
-        setStatus("Validating inputs...");
+        setStatus("Validating input...");
         const username = document.getElementById("username").value.trim();
         const fullName = document.getElementById("fullName").value.trim();
         const age = document.getElementById("age").value.trim();
         const file = document.getElementById("imageInput").files[0];
+
         if (!username || !fullName || !age || !file) {
           setStatus("All fields required.", true);
           return;
         }
         if (isNaN(age) || Number(age) < 13) {
-          setStatus("Age must be >=13.", true);
+          setStatus("Age must be 13+.", true);
           return;
         }
 
-        setStatus("Checking username availability...");
-        const available = await isUsernameAvailable(username);
-        if (!available) {
-          setStatus("Username taken.", true);
-          return;
-        }
-
-        setStatus("Fetching GitHub token...");
+        setStatus("Fetching token...");
         const token = await fetchToken();
 
-        setStatus("Fetching existing profiles...");
+        setStatus("Fetching existing data...");
         const fileInfo = await getRepoFile(token);
         let profiles = [];
         try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
         if (!Array.isArray(profiles)) profiles = [];
 
-        // Prevent duplicate username in beauty.json as well
+        // username uniqueness in same file
         if (profiles.some(p => String(p.username).toLowerCase() === username.toLowerCase())) {
-          setStatus("Username already exists in beauty.json.", true);
+          setStatus("Username already taken.", true);
           return;
         }
 
-        setStatus("Processing image...");
-        const uploadedImageUrl = await uploadImageAsPNG(file);
+        setStatus("Processing and uploading image...");
+        const imageUrl = await uploadImage(file);
 
         const newProfile = {
           username,
           fullName,
           age: Number(age),
-          image: uploadedImageUrl,
+          image: imageUrl,
           likes: 0,
           timestamp: Date.now()
         };
 
         profiles.push(newProfile);
 
-        setStatus("Committing to GitHub...");
+        setStatus("Committing profile...");
         await updateRepoFile(token, fileInfo.sha, profiles);
-        setStatus("Profile uploaded successfully!");
-        // refresh gallery after a short delay
-        await sleep(1000);
+        setStatus("Success! Profile added.");
+        // reload gallery
         await loadGallery();
-      } catch (err) {
-        console.error(err);
-        setStatus("Error: " + (err.message||err), true);
+      } catch (e) {
+        setStatus("Error: " + e.message, true);
       }
     });
 
-    // initial load
+    // kick off
     loadGallery();
   </script>
 </body>
