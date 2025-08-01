@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Beauty Showcase (Debuggable)</title>
+  <title>Beauty Showcase (Full Screen Viewer)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <style>
     body { font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; background:#f0f4f9; margin:0; padding:0; }
@@ -10,7 +10,7 @@
     .card { background:#fff; border-radius:10px; padding:16px; box-shadow:0 8px 20px rgba(0,0,0,0.08); margin-bottom:1rem; }
     .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
     .profile { position:relative; border:1px solid #e2e8f0; border-radius:8px; overflow:hidden; }
-    .profile img { width:100%; display:block; object-fit:cover; }
+    .profile img { width:100%; display:block; object-fit:cover; cursor: pointer; }
     .overlay { padding:8px; background:#fff; }
     .small { font-size:12px; color:#555; }
     .badge { background:#edf2ff; padding:4px 10px; border-radius:999px; font-size:11px; margin-right:6px; }
@@ -24,9 +24,167 @@
     button { background:#2563eb; color:#fff; border:none; cursor:pointer; }
     .flex { display:flex; gap:12px; flex-wrap:wrap; }
     .url { word-break:break-all; color:#1d4ed8; }
+    
+    /* Full screen viewer */
+    .fullscreen-viewer { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0,0,0,0.9); 
+      z-index: 1000; 
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .fullscreen-content {
+      position: relative;
+      width: 90%;
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+    }
+    .fullscreen-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .fullscreen-info {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      z-index: 1001;
+    }
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #ff4081;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1002;
+    }
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.3);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .prev-btn { left: 20px; }
+    .next-btn { right: 20px; }
+    
+    /* Login modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+    }
+    .modal-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .modal-buttons button {
+      flex: 1;
+    }
+    .create-profile-form {
+      display: none;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <h2>Login to Like</h2>
+      <div id="loginForm">
+        <div class="field">
+          <label>Username or Email</label>
+          <input type="text" id="loginInput" placeholder="Enter your username or email" />
+        </div>
+        <div id="loginStatus" class="status small">Enter your username or email to continue</div>
+        <div class="modal-buttons">
+          <button id="anonymousBtn">Use Anonymous</button>
+          <button id="loginBtn">Login</button>
+        </div>
+      </div>
+      <div id="createProfileForm" class="create-profile-form">
+        <h3>Create Profile</h3>
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="newUsername" placeholder="Choose a username" />
+        </div>
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="newFullName" placeholder="Name and surname" />
+        </div>
+        <div class="field">
+          <label>Age</label>
+          <input type="number" id="newAge" placeholder="Age" min="13" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="newEmail" placeholder="Your email" />
+        </div>
+        <div id="createProfileStatus" class="status small"></div>
+        <div class="modal-buttons">
+          <button id="cancelCreateBtn">Cancel</button>
+          <button id="createProfileBtn">Create Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full Screen Viewer -->
+  <div class="fullscreen-viewer" id="fullscreenViewer">
+    <button class="close-btn" id="closeFullscreen">×</button>
+    <button class="nav-btn prev-btn" id="prevBtn">❮</button>
+    <button class="nav-btn next-btn" id="nextBtn">❯</button>
+    <div class="fullscreen-content">
+      <div class="fullscreen-info" id="fullscreenInfo">
+        <div><strong id="fsUsername"></strong> • <span id="fsFullName"></span> • <span id="fsAge"></span></div>
+        <div>Likes: <span id="fsLikes"></span></div>
+      </div>
+      <img class="fullscreen-img" id="fullscreenImg" src="" alt="" />
+    </div>
+  </div>
+
+  <!-- Main App -->
   <div class="container">
     <div class="card" id="uploadSection">
       <h2>Upload Beauty Profile</h2>
@@ -43,6 +201,10 @@
           <label>Age</label>
           <input type="number" id="age" placeholder="Age" min="13" />
         </div>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Your email (not displayed)" />
       </div>
       <div class="field">
         <label>Profile Image</label>
@@ -79,11 +241,274 @@
     const galleryStatusEl = document.getElementById("galleryStatus");
     const rawJsonEl = document.getElementById("rawJson");
     const submitBtn = document.getElementById("submitBtn");
+    
+    // Full screen viewer elements
+    const fullscreenViewer = document.getElementById("fullscreenViewer");
+    const fullscreenImg = document.getElementById("fullscreenImg");
+    const fullscreenInfo = document.getElementById("fullscreenInfo");
+    const fsUsername = document.getElementById("fsUsername");
+    const fsFullName = document.getElementById("fsFullName");
+    const fsAge = document.getElementById("fsAge");
+    const fsLikes = document.getElementById("fsLikes");
+    const closeFullscreen = document.getElementById("closeFullscreen");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    
+    // Login modal elements
+    const loginModal = document.getElementById("loginModal");
+    const loginInput = document.getElementById("loginInput");
+    const loginBtn = document.getElementById("loginBtn");
+    const anonymousBtn = document.getElementById("anonymousBtn");
+    const loginStatus = document.getElementById("loginStatus");
+    const createProfileForm = document.getElementById("createProfileForm");
+    const newUsername = document.getElementById("newUsername");
+    const newFullName = document.getElementById("newFullName");
+    const newAge = document.getElementById("newAge");
+    const newEmail = document.getElementById("newEmail");
+    const createProfileBtn = document.getElementById("createProfileBtn");
+    const cancelCreateBtn = document.getElementById("cancelCreateBtn");
+    const createProfileStatus = document.getElementById("createProfileStatus");
 
     // === STATE ===
     let cachedToken = null;
     let tokenFetchedAt = 0;
     const TOKEN_TTL = 30_000; // 30 seconds
+    let currentUser = localStorage.getItem('currentUser') || null;
+    let userLikesToday = JSON.parse(localStorage.getItem('userLikesToday') || '{}');
+    let profiles = [];
+    let currentFullscreenIndex = 0;
+    
+    // Initialize the app
+    function initApp() {
+      // Check if user is already logged in
+      if (currentUser) {
+        updateLikeCounts();
+      }
+      
+      // Load gallery
+      loadGalleryViaAPI();
+      
+      // Set up event listeners
+      setupEventListeners();
+    }
+    
+    // Set up all event listeners
+    function setupEventListeners() {
+      // Full screen viewer
+      closeFullscreen.addEventListener('click', () => {
+        fullscreenViewer.style.display = 'none';
+      });
+      
+      prevBtn.addEventListener('click', showPrevImage);
+      nextBtn.addEventListener('click', showNextImage);
+      
+      // Login modal
+      loginBtn.addEventListener('click', handleLogin);
+      anonymousBtn.addEventListener('click', useAnonymous);
+      createProfileBtn.addEventListener('click', createNewProfile);
+      cancelCreateBtn.addEventListener('click', () => {
+        createProfileForm.style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+      });
+      
+      // Submit profile
+      submitBtn.addEventListener('click', submitProfile);
+      
+      // Keyboard navigation for fullscreen viewer
+      document.addEventListener('keydown', (e) => {
+        if (fullscreenViewer.style.display === 'flex') {
+          if (e.key === 'Escape') {
+            fullscreenViewer.style.display = 'none';
+          } else if (e.key === 'ArrowLeft') {
+            showPrevImage();
+          } else if (e.key === 'ArrowRight') {
+            showNextImage();
+          }
+        }
+      });
+    }
+    
+    // Show previous image in fullscreen viewer
+    function showPrevImage() {
+      if (profiles.length === 0) return;
+      currentFullscreenIndex = (currentFullscreenIndex - 1 + profiles.length) % profiles.length;
+      updateFullscreenView();
+    }
+    
+    // Show next image in fullscreen viewer
+    function showNextImage() {
+      if (profiles.length === 0) return;
+      currentFullscreenIndex = (currentFullscreenIndex + 1) % profiles.length;
+      updateFullscreenView();
+    }
+    
+    // Update the fullscreen view with current image
+    function updateFullscreenView() {
+      const profile = profiles[currentFullscreenIndex];
+      fullscreenImg.src = profile.image;
+      fsUsername.textContent = profile.username || 'Unknown';
+      fsFullName.textContent = profile.fullName || '';
+      fsAge.textContent = profile.age || '';
+      fsLikes.textContent = profile.likes || 0;
+    }
+    
+    // Open fullscreen viewer for a specific image
+    function openFullscreenView(index) {
+      currentFullscreenIndex = index;
+      updateFullscreenView();
+      fullscreenViewer.style.display = 'flex';
+    }
+    
+    // Handle login
+    async function handleLogin() {
+      const input = loginInput.value.trim();
+      if (!input) {
+        loginStatus.textContent = "Please enter a username or email";
+        loginStatus.className = "status small error";
+        return;
+      }
+      
+      try {
+        const token = await fetchToken();
+        const fileInfo = await getRepoFile(token);
+        let profiles = [];
+        try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
+        
+        // Check if input matches any username or email
+        const user = profiles.find(p => 
+          p.username.toLowerCase() === input.toLowerCase() || 
+          (p.email && p.email.toLowerCase() === input.toLowerCase())
+        );
+        
+        if (user) {
+          // Valid user found
+          currentUser = user.username;
+          localStorage.setItem('currentUser', currentUser);
+          updateLikeCounts();
+          loginModal.style.display = 'none';
+          loginStatus.textContent = "Logged in as " + user.username;
+          loginStatus.className = "status small";
+        } else {
+          // No user found, show create profile option
+          loginStatus.textContent = "No profile found. Would you like to create one?";
+          loginStatus.className = "status small";
+          document.getElementById('loginForm').style.display = 'none';
+          createProfileForm.style.display = 'block';
+          newUsername.value = input.includes('@') ? '' : input;
+          newEmail.value = input.includes('@') ? input : '';
+        }
+      } catch (e) {
+        loginStatus.textContent = "Error: " + e.message;
+        loginStatus.className = "status small error";
+      }
+    }
+    
+    // Use anonymous mode
+    function useAnonymous() {
+      currentUser = "anonymous_" + Math.random().toString(36).substr(2, 8);
+      localStorage.setItem('currentUser', currentUser);
+      updateLikeCounts();
+      loginModal.style.display = 'none';
+      loginStatus.textContent = "Using anonymous mode";
+      loginStatus.className = "status small";
+    }
+    
+    // Create new profile
+    async function createNewProfile() {
+      const username = newUsername.value.trim();
+      const fullName = newFullName.value.trim();
+      const age = newAge.value.trim();
+      const email = newEmail.value.trim();
+      
+      if (!username || !fullName || !age || !email) {
+        createProfileStatus.textContent = "All fields are required";
+        createProfileStatus.className = "status small error";
+        return;
+      }
+      
+      if (isNaN(age) {
+        createProfileStatus.textContent = "Age must be a number";
+        createProfileStatus.className = "status small error";
+        return;
+      }
+      
+      try {
+        // In a real app, you would save this to your database
+        // For now, we'll just set it as the current user
+        currentUser = username;
+        localStorage.setItem('currentUser', currentUser);
+        updateLikeCounts();
+        loginModal.style.display = 'none';
+        
+        // Show the upload form
+        document.getElementById('username').value = username;
+        document.getElementById('fullName').value = fullName;
+        document.getElementById('age').value = age;
+        document.getElementById('email').value = email;
+        
+        createProfileStatus.textContent = "Profile created. Now upload your profile image.";
+        createProfileStatus.className = "status small";
+      } catch (e) {
+        createProfileStatus.textContent = "Error creating profile: " + e.message;
+        createProfileStatus.className = "status small error";
+      }
+    }
+    
+    // Check if user can like (based on daily limits)
+    function canUserLike() {
+      if (!currentUser) {
+        showLoginModal();
+        return false;
+      }
+      
+      // Reset likes if it's a new day
+      const today = new Date().toDateString();
+      const lastLikeDate = localStorage.getItem('lastLikeDate');
+      if (lastLikeDate !== today) {
+        userLikesToday = {};
+        localStorage.setItem('userLikesToday', JSON.stringify(userLikesToday));
+        localStorage.setItem('lastLikeDate', today);
+      }
+      
+      // Check like limits
+      const maxLikes = currentUser.startsWith('anonymous_') ? 5 : 10;
+      const userLikes = userLikesToday[currentUser] || 0;
+      
+      if (userLikes >= maxLikes) {
+        alert(`You've reached your daily like limit (${maxLikes}). Please try again tomorrow.`);
+        return false;
+      }
+      
+      return true;
+    }
+    
+    // Record a like for the current user
+    function recordLike() {
+      if (!currentUser) return;
+      
+      const today = new Date().toDateString();
+      userLikesToday[currentUser] = (userLikesToday[currentUser] || 0) + 1;
+      localStorage.setItem('userLikesToday', JSON.stringify(userLikesToday));
+      localStorage.setItem('lastLikeDate', today);
+    }
+    
+    // Update like counts display
+    function updateLikeCounts() {
+      const likeButtons = document.querySelectorAll('.like-btn');
+      likeButtons.forEach(btn => {
+        btn.disabled = false;
+      });
+    }
+    
+    // Show login modal
+    function showLoginModal() {
+      loginInput.value = '';
+      loginStatus.textContent = 'Enter your username or email to continue';
+      loginStatus.className = 'status small';
+      document.getElementById('loginForm').style.display = 'block';
+      createProfileForm.style.display = 'none';
+      loginModal.style.display = 'flex';
+    }
 
     function setStatus(msg, isError=false) {
       statusEl.textContent = msg;
@@ -143,7 +568,7 @@
       const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
       const body = {
         message: "Update profile",
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2)))),
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2))),
         sha
       };
       const res = await timeoutFetch(url, {
@@ -223,12 +648,17 @@
       }
       galleryStatusEl.textContent = `${profiles.length} profile(s) loaded.`;
       profiles.sort((a,b)=> (b.likes||0)-(a.likes||0));
-      profiles.forEach(p => {
+      
+      // Save profiles to global state for fullscreen viewer
+      window.profiles = profiles;
+      
+      profiles.forEach((p, index) => {
         const div = document.createElement("div");
         div.className = "profile card";
         const img = document.createElement("img");
         img.src = p.image;
         img.alt = p.username || "profile";
+        img.addEventListener('click', () => openFullscreenView(index));
         div.appendChild(img);
         const ov = document.createElement("div");
         ov.className = "overlay";
@@ -249,6 +679,8 @@
 
       document.querySelectorAll(".like-btn").forEach(b => {
         b.onclick = async () => {
+          if (!canUserLike()) return;
+          
           const target = b.dataset.username;
           if (!target) return;
           b.disabled = true;
@@ -260,6 +692,7 @@
             const newLikes = await incrementLike(target);
             if (likesSpan) likesSpan.textContent = newLikes;
             setStatus("Like saved.");
+            recordLike();
             await reloadGalleryFresh(); // ensure others see it
           } catch (e) {
             if (likesSpan) likesSpan.textContent = prevLikes;
@@ -328,8 +761,9 @@
         const username = document.getElementById("username").value.trim();
         const fullName = document.getElementById("fullName").value.trim();
         const age = document.getElementById("age").value.trim();
+        const email = document.getElementById("email").value.trim();
         const file = document.getElementById("imageInput").files[0];
-        if (!username || !fullName || !age || !file) {
+        if (!username || !fullName || !age || !email || !file) {
           setStatus("All fields required.", true);
           return;
         }
@@ -363,6 +797,7 @@
               username,
               fullName,
               age: Number(age),
+              email,
               image: imageUrl,
               likes: 0,
               timestamp: Date.now()
@@ -389,9 +824,8 @@
       }
     }
 
-    submitBtn.addEventListener("click", submitProfile);
-    // initial load
-    loadGalleryViaAPI();
+    // Initialize the app
+    initApp();
   </script>
 </body>
 </html>
