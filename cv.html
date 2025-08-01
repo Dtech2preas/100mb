@@ -81,7 +81,6 @@
     const submitBtn = document.getElementById("submitBtn");
 
     // === STATE ===
-    let lastETag = null;
     let cachedToken = null;
     let tokenFetchedAt = 0;
     const TOKEN_TTL = 30_000; // 30 seconds
@@ -114,6 +113,7 @@
       }
     }
 
+    // fetch and cache token briefly
     async function fetchToken() {
       if (cachedToken && (Date.now() - tokenFetchedAt) < TOKEN_TTL) return cachedToken;
       const res = await timeoutFetch(GIST_TOKEN_URL, {}, 6000);
@@ -247,7 +247,6 @@
         galleryEl.appendChild(div);
       });
 
-      // attach like handlers with safe retry & optimistic UI
       document.querySelectorAll(".like-btn").forEach(b => {
         b.onclick = async () => {
           const target = b.dataset.username;
@@ -255,15 +254,14 @@
           b.disabled = true;
           const likesSpan = b.closest(".overlay").querySelector(".likes-count");
           const prevLikes = parseInt(likesSpan?.textContent || "0", 10);
-          // optimistic UI
-          if (likesSpan) likesSpan.textContent = prevLikes + 1;
+          if (likesSpan) likesSpan.textContent = prevLikes + 1; // optimistic
           setStatus("Updating like for " + target + "...");
           try {
             const newLikes = await incrementLike(target);
             if (likesSpan) likesSpan.textContent = newLikes;
             setStatus("Like saved.");
+            await reloadGalleryFresh(); // ensure others see it
           } catch (e) {
-            // rollback
             if (likesSpan) likesSpan.textContent = prevLikes;
             setStatus("Like error: "+e.message, true);
           } finally {
@@ -286,9 +284,8 @@
 
         try {
           await updateRepoFile(token, fileInfo.sha, arr);
-          return arr[idx].likes; // success
+          return arr[idx].likes;
         } catch (e) {
-          // conflict-ish: GitHub returns 409 for outdated SHA
           if ((e.code === 409 || (e.message && e.message.includes("409"))) && attempt < maxRetries) {
             await new Promise(r => setTimeout(r, 100 * attempt));
             continue;
@@ -299,28 +296,28 @@
       throw new Error("Failed to increment like after retries");
     }
 
-    async function loadGallery() {
+    // load via GitHub Contents API for freshness
+    async function loadGalleryViaAPI() {
       galleryStatusEl.textContent = "Loading profiles...";
       try {
-        const headers = {};
-        if (lastETag) headers['If-None-Match'] = lastETag;
-        const res = await timeoutFetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${DATA_FILE_PATH}`, {
-          headers,
-          cache: 'no-store'
-        }, 8000);
-        if (!res) throw new Error("No response");
-        if (res.status === 304) {
-          galleryStatusEl.textContent = "Profiles unchanged.";
-          return;
-        }
-        if (!res.ok) throw new Error(`Raw fetch failed: ${res.status} ${res.statusText}`);
-        lastETag = res.headers.get('ETag');
-        const profiles = await res.json();
+        const token = await fetchToken();
+        const fileInfo = await getRepoFile(token);
+        let profiles = [];
+        try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
         rawJsonEl.textContent = JSON.stringify(profiles, null, 2);
         renderProfiles(profiles);
       } catch (e) {
         galleryStatusEl.textContent = "Failed to load gallery: " + e.message;
         rawJsonEl.textContent = "Error fetching/parsing JSON:\n" + (e.stack || e);
+      }
+    }
+
+    async function reloadGalleryFresh() {
+      await loadGalleryViaAPI();
+      // optional short reconciliation: poll a couple times to ensure consistency
+      for (let i = 1; i <= 2; i++) {
+        await new Promise(r => setTimeout(r, 300 * i));
+        await loadGalleryViaAPI();
       }
     }
 
@@ -345,7 +342,6 @@
         const token = await fetchToken();
 
         setStatus("Reading existing JSON...");
-        // attempt to append with retry-on-conflict
         let success = false;
         const maxRetries = 3;
         for (let attempt = 1; attempt <= maxRetries && !success; attempt++) {
@@ -355,7 +351,6 @@
             try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
             if (!Array.isArray(profiles)) profiles = [];
 
-            // username conflict
             if (profiles.some(p => String(p.username).toLowerCase() === username.toLowerCase())) {
               setStatus("Username already exists.", true);
               return;
@@ -378,11 +373,10 @@
             await updateRepoFile(token, fileInfo.sha, profiles);
             success = true;
             setStatus("Profile added successfully.");
-            await loadGallery();
+            await reloadGalleryFresh();
             break;
           } catch (e) {
             if ((e.code === 409 || (e.message && e.message.includes("409"))) && attempt < maxRetries) {
-              // conflict, retry after backoff
               await new Promise(r => setTimeout(r, 150 * attempt));
               continue;
             }
@@ -396,7 +390,8 @@
     }
 
     submitBtn.addEventListener("click", submitProfile);
-    loadGallery();
+    // initial load
+    loadGalleryViaAPI();
   </script>
 </body>
 </html>
