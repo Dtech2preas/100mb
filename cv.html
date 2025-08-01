@@ -2,300 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>BeautyTok ✨</title>
+  <title>Beauty Showcase (Debuggable)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <style>
-    :root {
-      --tiktok-pink: #FE2C55;
-      --tiktok-teal: #25F4EE;
-      --tiktok-dark: #121212;
-      --tiktok-light: #F1F1F2;
-    }
-    body { 
-      font-family: 'Proxima Nova', system-ui, -apple-system, sans-serif; 
-      background: var(--tiktok-dark); 
-      margin:0; 
-      padding:0; 
-      color: white;
-    }
-    .container { 
-      max-width: 1000px; 
-      margin: auto; 
-      padding:1rem; 
-    }
-    .card { 
-      background:rgba(255,255,255,0.05); 
-      border-radius:16px; 
-      padding:16px; 
-      box-shadow:0 4px 20px rgba(0,0,0,0.2); 
-      margin-bottom:1.5rem; 
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .grid { 
-      display:grid; 
-      gap:16px; 
-      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-    }
-    input, button { 
-      padding:12px; 
-      font-size:15px; 
-      border-radius:8px; 
-      border:none; 
-      width:100%; 
-      box-sizing:border-box; 
-      background: rgba(255,255,255,0.1);
-      color: white;
-    }
-    input::placeholder {
-      color: rgba(255,255,255,0.5);
-    }
-    button { 
-      cursor:pointer; 
-      background: linear-gradient(to right, var(--tiktok-pink), var(--tiktok-teal)); 
-      color:#fff; 
-      font-weight:600;
-      transition: transform 0.2s, opacity 0.2s;
-    }
-    button:hover {
-      transform: scale(1.02);
-      opacity: 0.9;
-    }
-    button:active {
-      transform: scale(0.98);
-    }
-    .small { 
-      font-size:13px; 
-      color:rgba(255,255,255,0.7); 
-    }
-    .profile { 
-      position:relative; 
-      overflow:hidden; 
-      border-radius:16px;
-      aspect-ratio: 9/16;
-      transition: transform 0.3s;
-    }
-    .profile:hover {
-      transform: scale(1.03);
-    }
-    .profile img { 
-      width:100%; 
-      height:100%;
-      display:block; 
-      object-fit: cover;
-    }
-    .overlay { 
-      position:absolute; 
-      bottom:0; 
-      left:0; 
-      right:0; 
-      background:linear-gradient(transparent, rgba(0,0,0,0.8)); 
-      color:#fff; 
-      padding:12px; 
-      display:flex; 
-      justify-content:space-between; 
-      align-items:center; 
-      font-size:14px; 
-    }
-    .like-btn { 
-      background:rgba(255,255,255,0.2); 
-      border:none; 
-      padding:6px 12px; 
-      border-radius:20px; 
-      cursor:pointer; 
-      display:flex; 
-      align-items:center; 
-      gap:6px; 
-      backdrop-filter: blur(5px);
-    }
-    .like-btn:hover {
-      background: rgba(255,255,255,0.3);
-    }
-    .status { 
-      margin-top:12px; 
-      padding:10px; 
-      border-radius:8px; 
-      background:rgba(37, 244, 238, 0.1); 
-      border: 1px solid rgba(37, 244, 238, 0.3);
-    }
-    .error { 
-      background:rgba(254, 44, 85, 0.1); 
-      border: 1px solid rgba(254, 44, 85, 0.3);
-    }
-    h2 {
-      margin-top: 0;
-      background: linear-gradient(to right, var(--tiktok-pink), var(--tiktok-teal));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 24px;
-    }
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.8);
-    }
-    #galleryStatus {
-      text-align: center;
-      padding: 12px;
-    }
-    .empty-state {
-      text-align: center;
-      padding: 40px 20px;
-      color: rgba(255,255,255,0.5);
-    }
-    .empty-state svg {
-      width: 60px;
-      height: 60px;
-      opacity: 0.5;
-      margin-bottom: 16px;
-    }
+    body { font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; background:#f0f4f9; margin:0; padding:0; }
+    .container { max-width: 1000px; margin:auto; padding:1rem; }
+    .card { background:#fff; border-radius:10px; padding:16px; box-shadow:0 8px 20px rgba(0,0,0,0.08); margin-bottom:1rem; }
+    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
+    .profile { position:relative; border:1px solid #e2e8f0; border-radius:8px; overflow:hidden; }
+    .profile img { width:100%; display:block; object-fit:cover; }
+    .overlay { padding:8px; background:#fff; }
+    .small { font-size:12px; color:#555; }
+    .badge { background:#edf2ff; padding:4px 10px; border-radius:999px; font-size:11px; margin-right:6px; }
+    .like-btn { background:#ff4081; color:#fff; border:none; padding:6px 12px; border-radius:20px; cursor:pointer; display:inline-flex; align-items:center; gap:4px; font-size:12px; }
+    .status { margin-top:8px; padding:10px; border-radius:6px; background:#eef7ee; }
+    .error { background:#ffe3e3; }
+    pre { background:#1e1e1e; color:#eee; padding:10px; border-radius:6px; overflow:auto; font-size:11px; }
+    .meta { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:4px; }
+    .field { margin-bottom:6px; }
+    input, button { padding:10px; border-radius:6px; border:1px solid #ccc; font-size:14px; width:100%; box-sizing:border-box; }
+    button { background:#2563eb; color:#fff; border:none; cursor:pointer; }
+    .flex { display:flex; gap:12px; flex-wrap:wrap; }
+    .url { word-break:break-all; color:#1d4ed8; }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="card" id="uploadSection">
-      <h2>✨ Create BeautyTok</h2>
-      <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));">
-        <div>
-          <label>Username</label>
-          <input type="text" id="username" placeholder="e.g., beautyqueen" />
+      <h2>Upload Beauty Profile</h2>
+      <div class="flex">
+        <div class="field" style="flex:1">
+          <label>Preferred Username</label>
+          <input type="text" id="username" placeholder="beautyqueen" />
         </div>
-        <div>
+        <div class="field" style="flex:1">
           <label>Full Name</label>
           <input type="text" id="fullName" placeholder="Name and surname" />
         </div>
-        <div>
+        <div class="field" style="flex:1">
           <label>Age</label>
           <input type="number" id="age" placeholder="Age" min="13" />
         </div>
       </div>
-      <div style="margin-top:12px;">
+      <div class="field">
         <label>Profile Image</label>
         <input type="file" id="imageInput" accept="image/*" />
       </div>
-      <div style="margin-top:16px;">
-        <button id="submitBtn">POST TO BEAUTYTOK</button>
+      <div class="field">
+        <button id="submitBtn">Submit & Upload</button>
       </div>
-      <div id="status" class="status small">Ready to create your beauty profile...</div>
+      <div id="status" class="status small">Ready.</div>
     </div>
 
     <div class="card">
-      <h2>🔥 BeautyTok Gallery</h2>
-      <div id="gallery" class="grid"></div>
+      <h2>Gallery</h2>
       <div id="galleryStatus" class="small">Loading profiles...</div>
+      <div id="gallery" class="grid" style="margin-top:12px;"></div>
+      <div style="margin-top:12px;">
+        <strong>Debug / Raw JSON:</strong>
+        <pre id="rawJson">...</pre>
+      </div>
     </div>
   </div>
 
   <script>
-    // Config
+    // === CONFIG ===
     const GIST_TOKEN_URL = "https://gist.githubusercontent.com/Dtech2preas/6750d0418aaa9dfe7f297c26d1dfae48/raw/2e511e4d11267d5aade0229849446b7297ae01c9/gistfile1.txt";
     const REPO_OWNER = "Dtech2preas";
     const REPO_NAME = "Oratilr";
-    const DATA_FILE_PATH = "data1.json"; // single JSON file
-    const IMGBB_API_KEY = "cedf418c6d844af9c47a7775a17161a6";
+    const DATA_FILE_PATH = "data1.json";
+    const IMGBB_API_KEY = "cedf418c6d844af9c47a7775a17161a6"; // existing key
 
+    // === DOM ===
     const statusEl = document.getElementById("status");
     const galleryEl = document.getElementById("gallery");
     const galleryStatusEl = document.getElementById("galleryStatus");
+    const rawJsonEl = document.getElementById("rawJson");
     const submitBtn = document.getElementById("submitBtn");
 
-    function setStatus(msg, error=false) {
+    function setStatus(msg, isError=false) {
       statusEl.textContent = msg;
-      statusEl.className = "status small" + (error ? " error" : "");
-    }
-
-    async function fetchToken() {
-      const r = await fetch(GIST_TOKEN_URL);
-      if (!r.ok) throw new Error("Could not fetch token gist");
-      const t = (await r.text()).trim();
-      if (!t) throw new Error("Token empty");
-      return t;
-    }
-
-    async function getRepoFile(token) {
-      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
-      const res = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github.v3+json"
-        }
-      });
-      if (!res.ok) {
-        throw new Error(`GitHub fetch failed ${res.status} ${res.statusText}`);
-      }
-      return await res.json();
-    }
-
-    async function updateRepoFile(token, sha, array) {
-      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
-      const body = {
-        message: "Update beauty profile",
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2))),
-        sha: sha
-      };
-      const res = await fetch(url, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github.v3+json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(body)
-      });
-      if (!res.ok) {
-        const txt = await res.text();
-        throw new Error("GitHub update error: " + res.status + " " + txt);
-      }
-      return await res.json();
-    }
-
-    async function uploadImage(file) {
-      // Convert to PNG then to base64
-      const pngBlob = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const img = new Image();
-          img.onload = () => {
-            const canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            const ctx = canvas.getContext("2d");
-            ctx.fillStyle = "#fff";
-            ctx.fillRect(0,0,canvas.width,canvas.height);
-            ctx.drawImage(img,0,0);
-            canvas.toBlob(b => {
-              if (!b) reject("Canvas blob failed");
-              else resolve(b);
-            }, "image/png");
-          };
-          img.onerror = () => reject("Image load failed");
-          img.src = reader.result;
-        };
-        reader.onerror = () => reject("File read error");
-        reader.readAsDataURL(file);
-      });
-
-      // to base64 string (imgbb expects base64 without prefix)
-      const base64 = await new Promise((resolve, reject) => {
-        const r = new FileReader();
-        r.onload = () => {
-          const str = r.result.split(",")[1];
-          resolve(str);
-        };
-        r.onerror = () => reject("Base64 convert failed");
-        r.readAsDataURL(pngBlob);
-      });
-
-      const form = new FormData();
-      form.append("image", base64);
-      const resp = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
-        method: "POST",
-        body: form
-      });
-      const data = await resp.json();
-      if (!data.success) throw new Error("imgbb upload failed");
-      return data.data.url;
+      statusEl.className = "status small" + (isError? " error": "");
     }
 
     function escapeHTML(s) {
@@ -309,136 +96,209 @@
       }[c]));
     }
 
-    // Load gallery from raw JSON
-    async function loadGallery() {
+    async function fetchToken() {
+      const res = await fetch(GIST_TOKEN_URL);
+      if (!res.ok) throw new Error("Failed fetching token gist: " + res.status);
+      const t = (await res.text()).trim();
+      if (!t) throw new Error("Token empty");
+      return t;
+    }
+
+    async function getRepoFile(token) {
+      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
+      const res = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json"
+        }
+      });
+      if (!res.ok) {
+        throw new Error(`GitHub contents API failed: ${res.status} ${res.statusText}`);
+      }
+      return await res.json();
+    }
+
+    async function updateRepoFile(token, sha, array) {
+      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
+      const body = {
+        message: "Update profile",
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2)))),
+        sha
+      };
+      const res = await fetch(url, {
+        method:"PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const txt = await res.text();
+        throw new Error("GitHub update failed: " + res.status + " " + txt);
+      }
+      return await res.json();
+    }
+
+    async function uploadImageAsPNG(file) {
+      // convert image to PNG via canvas
+      const blob = await new Promise((resolve,reject)=>{
+        const reader = new FileReader();
+        reader.onload = ()=>{
+          const img = new Image();
+          img.onload = ()=>{
+            const canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle="#fff";
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.drawImage(img,0,0);
+            canvas.toBlob(b=>{
+              if(!b) reject("canvas toBlob failed");
+              else resolve(b);
+            },"image/png");
+          };
+          img.onerror = ()=> reject("image load error");
+          img.src = reader.result;
+        };
+        reader.onerror = ()=> reject("file reader error");
+        reader.readAsDataURL(file);
+      });
+
+      // to base64
+      const base64 = await new Promise((resolve,reject)=>{
+        const r = new FileReader();
+        r.onload = ()=> {
+          const str = r.result.split(",")[1];
+          resolve(str);
+        };
+        r.onerror = ()=> reject("base64 conversion failed");
+        r.readAsDataURL(blob);
+      });
+
+      const form = new FormData();
+      form.append("image", base64);
+      const resp = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,{
+        method:"POST", body: form
+      });
+      const json = await resp.json();
+      if (!json.success) throw new Error("imgbb upload failed");
+      return json.data.url;
+    }
+
+    function renderProfiles(profiles) {
       galleryEl.innerHTML = "";
+      if (!Array.isArray(profiles)) {
+        galleryStatusEl.textContent = "Profiles JSON is not an array.";
+        return;
+      }
+      if (profiles.length === 0) {
+        galleryStatusEl.textContent = "No profiles yet.";
+        return;
+      }
+      galleryStatusEl.textContent = `${profiles.length} profile(s) loaded.`;
+      profiles.sort((a,b)=> (b.likes||0)-(a.likes||0));
+      profiles.forEach(p => {
+        const div = document.createElement("div");
+        div.className = "profile card";
+        const img = document.createElement("img");
+        img.src = p.image;
+        img.alt = p.username || "profile";
+        div.appendChild(img);
+        const ov = document.createElement("div");
+        ov.className = "overlay";
+        ov.innerHTML = `
+          <div style="flex:1">
+            <div><strong>${escapeHTML(p.username || "")}</strong> ${p.fullName?`• ${escapeHTML(p.fullName)}`:""} • ${escapeHTML(String(p.age||""))}</div>
+            <div class="small">Uploaded: ${new Date(p.timestamp||0).toLocaleString()}</div>
+            <div class="small url">Image URL: <a href="${escapeHTML(p.image)}" target="_blank">${escapeHTML(p.image)}</a></div>
+          </div>
+          <div style="text-align:right">
+            <div class="small">Likes: <span class="likes-count">${p.likes||0}</span></div>
+            <button class="like-btn" data-username="${p.username}">❤️ Like</button>
+          </div>
+        `;
+        div.appendChild(ov);
+        galleryEl.appendChild(div);
+      });
+
+      // attach like handlers
+      document.querySelectorAll(".like-btn").forEach(b => {
+        b.onclick = async () => {
+          const target = b.dataset.username;
+          b.disabled = true;
+          try {
+            setStatus("Updating like for " + target + "...");
+            const token = await fetchToken();
+            const fileInfo = await getRepoFile(token);
+            let arr = [];
+            try { arr = JSON.parse(atob(fileInfo.content)); } catch {}
+            const idx = arr.findIndex(x => String(x.username).toLowerCase() === String(target).toLowerCase());
+            if (idx === -1) throw new Error("Profile not found");
+            arr[idx].likes = (arr[idx].likes||0)+1;
+            await updateRepoFile(token, fileInfo.sha, arr);
+            // reflect increment locally
+            const span = b.closest(".overlay").querySelector(".likes-count");
+            if (span) span.textContent = arr[idx].likes;
+            setStatus("Like saved.");
+          } catch (e) {
+            setStatus("Like error: "+e.message, true);
+          } finally {
+            b.disabled = false;
+          }
+        };
+      });
+    }
+
+    async function loadGallery() {
       galleryStatusEl.textContent = "Loading profiles...";
       try {
-        const raw = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${DATA_FILE_PATH}?t=${Date.now()}`);
-        if (!raw.ok) throw new Error("Failed to fetch JSON file");
-        const text = await raw.text();
-        const profiles = text ? JSON.parse(text) : [];
-        
-        if (!Array.isArray(profiles)) throw new Error("Malformed JSON");
-        
-        if (profiles.length === 0) {
-          galleryEl.innerHTML = `
-            <div class="empty-state" style="grid-column:1/-1">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-              </svg>
-              <div>No profiles yet. Be the first to post!</div>
-            </div>
-          `;
-          galleryStatusEl.textContent = "";
-          return;
-        }
-        
-        galleryStatusEl.textContent = `${profiles.length} beauty profiles`;
-        profiles.sort((a,b)=> (b.likes||0)-(a.likes||0));
-        profiles.forEach(p => renderProfile(p));
+        const raw = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${DATA_FILE_PATH}`);
+        if (!raw.ok) throw new Error(`Raw fetch failed: ${raw.status} ${raw.statusText}`);
+        const profiles = await raw.json();
+        rawJsonEl.textContent = JSON.stringify(profiles, null, 2);
+        renderProfiles(profiles);
       } catch (e) {
-        galleryStatusEl.textContent = "Error loading gallery: " + e.message;
+        galleryStatusEl.textContent = "Failed to load gallery: " + e.message;
+        rawJsonEl.textContent = "Error fetching/parsing JSON:\n" + e.stack || e;
       }
     }
 
-    function renderProfile(profile) {
-      if (!profile.image) return; // Skip if no image URL
-      
-      const card = document.createElement("div");
-      card.className = "profile";
-      
-      const img = document.createElement("img");
-      img.src = profile.image;
-      img.alt = profile.username;
-      img.onerror = () => { 
-        card.style.display = 'none'; // Hide if image fails to load
-      };
-      card.appendChild(img);
-
-      const overlay = document.createElement("div");
-      overlay.className = "overlay";
-
-      const left = document.createElement("div");
-      left.innerHTML = `
-        <div>
-          <strong>${escapeHTML(profile.username)}</strong>
-          ${profile.fullName ? `• ${escapeHTML(profile.fullName)}` : ""}
-          ${profile.age ? `• ${profile.age}` : ""}
-        </div>
-      `;
-
-      const right = document.createElement("div");
-      const likeBtn = document.createElement("button");
-      likeBtn.className = "like-btn";
-      likeBtn.innerHTML = `❤️ <span class="likes-count">${profile.likes||0}</span>`;
-      likeBtn.onclick = () => likeProfile(profile.username, likeBtn);
-      right.appendChild(likeBtn);
-
-      overlay.appendChild(left);
-      overlay.appendChild(right);
-      card.appendChild(overlay);
-
-      galleryEl.appendChild(card);
-    }
-
-    async function likeProfile(username, btn) {
-      btn.disabled = true;
+    async function submitProfile() {
       try {
-        setStatus("Sending love... ❤️");
-        const token = await fetchToken();
-        const fileInfo = await getRepoFile(token);
-        let profiles = [];
-        try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
-        const idx = profiles.findIndex(p => String(p.username).toLowerCase() === username.toLowerCase());
-        if (idx === -1) throw new Error("Profile not found");
-        profiles[idx].likes = (profiles[idx].likes||0) + 1;
-        await updateRepoFile(token, fileInfo.sha, profiles);
-        // reflect
-        const span = btn.querySelector(".likes-count");
-        if (span) span.textContent = profiles[idx].likes;
-        setStatus("Liked! ❤️");
-      } catch (e) {
-        setStatus("Like failed: "+e.message, true);
-      } finally {
-        btn.disabled = false;
-      }
-    }
-
-    submitBtn.addEventListener("click", async () => {
-      try {
-        setStatus("Validating input...");
+        setStatus("Validating...");
         const username = document.getElementById("username").value.trim();
         const fullName = document.getElementById("fullName").value.trim();
         const age = document.getElementById("age").value.trim();
         const file = document.getElementById("imageInput").files[0];
-
         if (!username || !fullName || !age || !file) {
           setStatus("All fields required.", true);
           return;
         }
         if (isNaN(age) || Number(age) < 13) {
-          setStatus("Age must be 13+.", true);
+          setStatus("Age must be >=13", true);
           return;
         }
 
-        setStatus("Getting ready...");
+        setStatus("Fetching token...");
         const token = await fetchToken();
 
-        setStatus("Checking existing profiles...");
+        setStatus("Reading existing JSON...");
         const fileInfo = await getRepoFile(token);
         let profiles = [];
         try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
         if (!Array.isArray(profiles)) profiles = [];
 
-        // username uniqueness in same file
+        // username conflict
         if (profiles.some(p => String(p.username).toLowerCase() === username.toLowerCase())) {
-          setStatus("Username already taken.", true);
+          setStatus("Username already exists.", true);
           return;
         }
 
-        setStatus("Uploading your image...");
-        const imageUrl = await uploadImage(file);
+        setStatus("Uploading image...");
+        const imageUrl = await uploadImageAsPNG(file);
 
         const newProfile = {
           username,
@@ -448,20 +308,18 @@
           likes: 0,
           timestamp: Date.now()
         };
-
         profiles.push(newProfile);
 
-        setStatus("Posting to BeautyTok...");
+        setStatus("Writing to GitHub...");
         await updateRepoFile(token, fileInfo.sha, profiles);
-        setStatus("Success! Your BeautyTok is live! 🎉");
-        // reload gallery
+        setStatus("Profile added successfully.");
         await loadGallery();
       } catch (e) {
-        setStatus("Error: " + e.message, true);
+        setStatus("Submit failed: " + e.message, true);
       }
-    });
+    }
 
-    // Initial load
+    submitBtn.addEventListener("click", submitProfile);
     loadGallery();
   </script>
 </body>
