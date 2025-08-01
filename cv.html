@@ -2,31 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Beauty Upload & Gallery (Single JSON)</title>
+  <title>BeautyTok ✨</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <style>
-    body { font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; background:#f2f4f8; margin:0; padding:0; }
-    .container { max-width: 1000px; margin: auto; padding:1rem; }
-    .card { background:#fff; border-radius:12px; padding:16px; box-shadow:0 10px 25px rgba(0,0,0,0.06); margin-bottom:1rem; }
-    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); }
-    input, button { padding:10px; font-size:14px; border-radius:6px; border:1px solid #ccc; width:100%; box-sizing:border-box; }
-    button { cursor:pointer; background:#2563eb; color:#fff; border:none; }
-    .small { font-size:12px; color:#555; }
-    .profile { position:relative; overflow:hidden; border-radius:12px; }
-    .profile img { width:100%; display:block; border-radius:8px; }
-    .overlay { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.55); color:#fff; padding:8px; display:flex; justify-content:space-between; align-items:center; font-size:13px; }
-    .like-btn { background:#ff4081; border:none; padding:6px 12px; border-radius:20px; cursor:pointer; display:flex; align-items:center; gap:6px; }
-    .status { margin-top:8px; padding:8px; border-radius:6px; background:#eef7ee; }
-    .error { background:#ffe3e3; }
+    :root {
+      --tiktok-pink: #FE2C55;
+      --tiktok-teal: #25F4EE;
+      --tiktok-dark: #121212;
+      --tiktok-light: #F1F1F2;
+    }
+    body { 
+      font-family: 'Proxima Nova', system-ui, -apple-system, sans-serif; 
+      background: var(--tiktok-dark); 
+      margin:0; 
+      padding:0; 
+      color: white;
+    }
+    .container { 
+      max-width: 1000px; 
+      margin: auto; 
+      padding:1rem; 
+    }
+    .card { 
+      background:rgba(255,255,255,0.05); 
+      border-radius:16px; 
+      padding:16px; 
+      box-shadow:0 4px 20px rgba(0,0,0,0.2); 
+      margin-bottom:1.5rem; 
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .grid { 
+      display:grid; 
+      gap:16px; 
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    }
+    input, button { 
+      padding:12px; 
+      font-size:15px; 
+      border-radius:8px; 
+      border:none; 
+      width:100%; 
+      box-sizing:border-box; 
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+    input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    button { 
+      cursor:pointer; 
+      background: linear-gradient(to right, var(--tiktok-pink), var(--tiktok-teal)); 
+      color:#fff; 
+      font-weight:600;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    button:hover {
+      transform: scale(1.02);
+      opacity: 0.9;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    .small { 
+      font-size:13px; 
+      color:rgba(255,255,255,0.7); 
+    }
+    .profile { 
+      position:relative; 
+      overflow:hidden; 
+      border-radius:16px;
+      aspect-ratio: 9/16;
+      transition: transform 0.3s;
+    }
+    .profile:hover {
+      transform: scale(1.03);
+    }
+    .profile img { 
+      width:100%; 
+      height:100%;
+      display:block; 
+      object-fit: cover;
+    }
+    .overlay { 
+      position:absolute; 
+      bottom:0; 
+      left:0; 
+      right:0; 
+      background:linear-gradient(transparent, rgba(0,0,0,0.8)); 
+      color:#fff; 
+      padding:12px; 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+      font-size:14px; 
+    }
+    .like-btn { 
+      background:rgba(255,255,255,0.2); 
+      border:none; 
+      padding:6px 12px; 
+      border-radius:20px; 
+      cursor:pointer; 
+      display:flex; 
+      align-items:center; 
+      gap:6px; 
+      backdrop-filter: blur(5px);
+    }
+    .like-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .status { 
+      margin-top:12px; 
+      padding:10px; 
+      border-radius:8px; 
+      background:rgba(37, 244, 238, 0.1); 
+      border: 1px solid rgba(37, 244, 238, 0.3);
+    }
+    .error { 
+      background:rgba(254, 44, 85, 0.1); 
+      border: 1px solid rgba(254, 44, 85, 0.3);
+    }
+    h2 {
+      margin-top: 0;
+      background: linear-gradient(to right, var(--tiktok-pink), var(--tiktok-teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 24px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+    }
+    #galleryStatus {
+      text-align: center;
+      padding: 12px;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: rgba(255,255,255,0.5);
+    }
+    .empty-state svg {
+      width: 60px;
+      height: 60px;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="card" id="uploadSection">
-      <h2>Upload Beauty Profile</h2>
+      <h2>✨ Create BeautyTok</h2>
       <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));">
         <div>
-          <label>Preferred Username</label>
+          <label>Username</label>
           <input type="text" id="username" placeholder="e.g., beautyqueen" />
         </div>
         <div>
@@ -42,16 +174,16 @@
         <label>Profile Image</label>
         <input type="file" id="imageInput" accept="image/*" />
       </div>
-      <div style="margin-top:12px;">
-        <button id="submitBtn">Submit & Upload</button>
+      <div style="margin-top:16px;">
+        <button id="submitBtn">POST TO BEAUTYTOK</button>
       </div>
-      <div id="status" class="status small">Ready.</div>
+      <div id="status" class="status small">Ready to create your beauty profile...</div>
     </div>
 
     <div class="card">
-      <h2>Gallery</h2>
+      <h2>🔥 BeautyTok Gallery</h2>
       <div id="gallery" class="grid"></div>
-      <div id="galleryStatus" class="small" style="margin-top:4px;">Loading profiles...</div>
+      <div id="galleryStatus" class="small">Loading profiles...</div>
     </div>
   </div>
 
@@ -99,7 +231,7 @@
       const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
       const body = {
         message: "Update beauty profile",
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2)))),
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2))),
         sha: sha
       };
       const res = await fetch(url, {
@@ -182,35 +314,59 @@
       galleryEl.innerHTML = "";
       galleryStatusEl.textContent = "Loading profiles...";
       try {
-        const raw = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${DATA_FILE_PATH}`);
+        const raw = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${DATA_FILE_PATH}?t=${Date.now()}`);
         if (!raw.ok) throw new Error("Failed to fetch JSON file");
-        const profiles = await raw.json();
+        const text = await raw.text();
+        const profiles = text ? JSON.parse(text) : [];
+        
         if (!Array.isArray(profiles)) throw new Error("Malformed JSON");
+        
         if (profiles.length === 0) {
-          galleryStatusEl.textContent = "No profiles yet.";
+          galleryEl.innerHTML = `
+            <div class="empty-state" style="grid-column:1/-1">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <div>No profiles yet. Be the first to post!</div>
+            </div>
+          `;
+          galleryStatusEl.textContent = "";
           return;
         }
-        galleryStatusEl.textContent = `${profiles.length} profile(s) loaded.`;
+        
+        galleryStatusEl.textContent = `${profiles.length} beauty profiles`;
         profiles.sort((a,b)=> (b.likes||0)-(a.likes||0));
         profiles.forEach(p => renderProfile(p));
       } catch (e) {
-        galleryStatusEl.textContent = "Gallery load error: " + e.message;
+        galleryStatusEl.textContent = "Error loading gallery: " + e.message;
       }
     }
 
     function renderProfile(profile) {
+      if (!profile.image) return; // Skip if no image URL
+      
       const card = document.createElement("div");
-      card.className = "card profile";
+      card.className = "profile";
+      
       const img = document.createElement("img");
       img.src = profile.image;
       img.alt = profile.username;
+      img.onerror = () => { 
+        card.style.display = 'none'; // Hide if image fails to load
+      };
       card.appendChild(img);
 
       const overlay = document.createElement("div");
       overlay.className = "overlay";
 
       const left = document.createElement("div");
-      left.innerHTML = `<div><strong>${escapeHTML(profile.username)}</strong> ${profile.fullName?`• ${escapeHTML(profile.fullName)}`:""} • ${profile.age}</div>`;
+      left.innerHTML = `
+        <div>
+          <strong>${escapeHTML(profile.username)}</strong>
+          ${profile.fullName ? `• ${escapeHTML(profile.fullName)}` : ""}
+          ${profile.age ? `• ${profile.age}` : ""}
+        </div>
+      `;
 
       const right = document.createElement("div");
       const likeBtn = document.createElement("button");
@@ -229,7 +385,7 @@
     async function likeProfile(username, btn) {
       btn.disabled = true;
       try {
-        setStatus("Updating like...");
+        setStatus("Sending love... ❤️");
         const token = await fetchToken();
         const fileInfo = await getRepoFile(token);
         let profiles = [];
@@ -241,24 +397,12 @@
         // reflect
         const span = btn.querySelector(".likes-count");
         if (span) span.textContent = profiles[idx].likes;
-        setStatus("Like updated.");
+        setStatus("Liked! ❤️");
       } catch (e) {
         setStatus("Like failed: "+e.message, true);
       } finally {
         btn.disabled = false;
       }
-    }
-
-    async function getRepoFile(token) {
-      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
-      const res = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github.v3+json"
-        }
-      });
-      if (!res.ok) throw new Error("GitHub file fetch error: " + res.statusText);
-      return await res.json();
     }
 
     submitBtn.addEventListener("click", async () => {
@@ -278,10 +422,10 @@
           return;
         }
 
-        setStatus("Fetching token...");
+        setStatus("Getting ready...");
         const token = await fetchToken();
 
-        setStatus("Fetching existing data...");
+        setStatus("Checking existing profiles...");
         const fileInfo = await getRepoFile(token);
         let profiles = [];
         try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
@@ -293,7 +437,7 @@
           return;
         }
 
-        setStatus("Processing and uploading image...");
+        setStatus("Uploading your image...");
         const imageUrl = await uploadImage(file);
 
         const newProfile = {
@@ -307,9 +451,9 @@
 
         profiles.push(newProfile);
 
-        setStatus("Committing profile...");
+        setStatus("Posting to BeautyTok...");
         await updateRepoFile(token, fileInfo.sha, profiles);
-        setStatus("Success! Profile added.");
+        setStatus("Success! Your BeautyTok is live! 🎉");
         // reload gallery
         await loadGallery();
       } catch (e) {
@@ -317,7 +461,7 @@
       }
     });
 
-    // kick off
+    // Initial load
     loadGallery();
   </script>
 </body>
