@@ -5,26 +5,26 @@
   <title>Beauty Showcase — Auth</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <style>
-    :root { --back:#f0f4f9; --card:#fff; --radius:10px; --shadow:0 8px 20px rgba(0,0,0,0.08); }
+    :root { --bg:#f0f4f9; --card:#fff; --radius:12px; --shadow:0 20px 40px rgba(0,0,0,0.05); --accent:#2563eb; }
     *{box-sizing:border-box;}
-    body { background:var(--back); font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; margin:0; }
-    .container { max-width:800px; margin:50px auto; padding:16px; }
-    .card { background:var(--card); border-radius:12px; padding:24px; box-shadow:var(--shadow); }
+    body { background:var(--bg); font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; margin:0; }
+    .container { max-width:800px; margin:60px auto; padding:16px; }
+    .card { background:var(--card); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow); }
     .tabs { display:flex; gap:8px; margin-bottom:16px; }
-    .tab { flex:1; padding:12px; border-radius:8px; cursor:pointer; text-align:center; background:#e2e8f0; }
-    .tab.active { background:#2563eb; color:#fff; }
-    .field { margin-bottom:12px; }
+    .tab { flex:1; padding:12px; border-radius:8px; cursor:pointer; text-align:center; background:#e2e8f0; font-weight:600; }
+    .tab.active { background:var(--accent); color:#fff; }
+    .field { margin-bottom:14px; }
     label { display:block; margin-bottom:4px; font-weight:600; }
-    input { width:100%; padding:10px; border-radius:6px; border:1px solid #ccc; font-size:14px; }
-    button { padding:12px 16px; border:none; border-radius:6px; cursor:pointer; background:#2563eb; color:#fff; font-size:14px; }
-    .small { font-size:12px; color:#555; margin-top:4px; }
-    .status { margin-top:12px; padding:10px; background:#eef7ee; border-radius:6px; }
+    input { width:100%; padding:10px 12px; border-radius:6px; border:1px solid #ccc; font-size:14px; }
+    button { padding:12px 16px; border:none; border-radius:6px; cursor:pointer; background:var(--accent); color:#fff; font-size:14px; }
+    .small { font-size:12px; color:#555; }
+    .status { margin-top:12px; padding:10px; border-radius:6px; background:#eef7ee; }
     .error { background:#ffe3e3; }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="card" id="authCard">
+    <div class="card">
       <h1>Beauty Showcase</h1>
       <div class="tabs">
         <div class="tab active" data-tab="login" id="tabLogin">Login</div>
@@ -42,7 +42,7 @@
           <input type="email" id="loginEmail" placeholder="you@example.com" />
         </div>
         <button id="loginBtn">Login / Validate</button>
-        <div class="small">Enter username and email to log in. Email is only for lightweight validation; existing username must be in the profiles list.</div>
+        <div class="small">Enter username and email to log in. Email is only for lightweight validation; the username must already exist in the profile data.</div>
       </div>
 
       <div id="signupPane" class="hidden">
@@ -67,7 +67,7 @@
           <input type="file" id="newImageInput" accept="image/*" />
         </div>
         <button id="createProfileBtn">Create Profile</button>
-        <div class="small">Sign-up creates a new profile and stores email only for login; it is not displayed publicly.</div>
+        <div class="small">Sign-up creates a new profile; email is stored for login and not exposed publicly.</div>
       </div>
 
       <div id="anonPane" class="hidden">
@@ -80,207 +80,270 @@
   </div>
 
   <script>
-    // CONFIG (same as viewer side)
+    // CONFIG
     const GIST_TOKEN_URL = "https://gist.githubusercontent.com/Dtech2preas/6750d0418aaa9dfe7f297c26d1dfae48/raw/2e511e4d11267d5aade0229849446b7297ae01c9/gistfile1.txt";
-    const REPO_OWNER="Dtech2preas", REPO_NAME="Oratilr", DATA_FILE_PATH="data1.json";
-    const TOKEN_TTL=30000;
-    let cachedToken=null, tokenFetchedAt=0;
-    let currentProfiles=[];
+    const REPO_OWNER = "Dtech2preas";
+    const REPO_NAME = "Oratilr";
+    const DATA_FILE_PATH = "data1.json";
+    const TOKEN_TTL = 30000;
+
+    // STATE
+    let cachedToken = null;
+    let tokenFetchedAt = 0;
 
     // DOM
-    const tabLogin=document.getElementById("tabLogin");
-    const tabSignup=document.getElementById("tabSignup");
-    const tabAnon=document.getElementById("tabAnon");
-    const loginPane=document.getElementById("loginPane");
-    const signupPane=document.getElementById("signupPane");
-    const anonPane=document.getElementById("anonPane");
-    const authStatus=document.getElementById("authStatus");
-    const loginUsernameInput=document.getElementById("loginUsername");
-    const loginEmailInput=document.getElementById("loginEmail");
-    const newUsernameInput=document.getElementById("newUsername");
-    const newFullNameInput=document.getElementById("newFullName");
-    const newAgeInput=document.getElementById("newAge");
-    const newEmailInput=document.getElementById("newEmail");
-    const newImageInput=document.getElementById("newImageInput");
-    const loginBtn=document.getElementById("loginBtn");
-    const createProfileBtn=document.getElementById("createProfileBtn");
-    const anonBtn=document.getElementById("anonBtn");
+    const tabLogin = document.getElementById("tabLogin");
+    const tabSignup = document.getElementById("tabSignup");
+    const tabAnon = document.getElementById("tabAnon");
+    const loginPane = document.getElementById("loginPane");
+    const signupPane = document.getElementById("signupPane");
+    const anonPane = document.getElementById("anonPane");
+    const authStatus = document.getElementById("authStatus");
+    const loginUsernameInput = document.getElementById("loginUsername");
+    const loginEmailInput = document.getElementById("loginEmail");
+    const newUsernameInput = document.getElementById("newUsername");
+    const newFullNameInput = document.getElementById("newFullName");
+    const newAgeInput = document.getElementById("newAge");
+    const newEmailInput = document.getElementById("newEmail");
+    const newImageInput = document.getElementById("newImageInput");
+    const loginBtn = document.getElementById("loginBtn");
+    const createProfileBtn = document.getElementById("createProfileBtn");
+    const anonBtn = document.getElementById("anonBtn");
 
-    // utilities
-    function setStatus(msg, isError=false){
-      authStatus.textContent=msg;
-      authStatus.className="status"+(isError?" error":"");
+    function setStatus(msg, isError=false) {
+      authStatus.textContent = msg;
+      authStatus.className = isError ? "status error" : "status";
     }
+
     function escapeHTML(s){ if(!s) return ""; return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
+    // Simple fetch with timeout
     async function timeoutFetch(url, opts={}, ms=8000){
-      const c=new AbortController();
-      const id=setTimeout(()=>c.abort(), ms);
-      try { return await fetch(url, {...opts, signal:c.signal}); }
+      const controller = new AbortController();
+      const id = setTimeout(()=>controller.abort(), ms);
+      try { return await fetch(url, {...opts, signal: controller.signal}); }
       finally { clearTimeout(id); }
     }
-    async function fetchToken(){
-      if (cachedToken && (Date.now()-tokenFetchedAt)<TOKEN_TTL) return cachedToken;
-      const r=await timeoutFetch(GIST_TOKEN_URL);
-      if (!r.ok) throw new Error("token fetch failed");
-      const t=(await r.text()).trim();
-      if(!t) throw new Error("empty token");
-      cachedToken=t; tokenFetchedAt=Date.now();
+
+    async function fetchToken() {
+      if (cachedToken && (Date.now() - tokenFetchedAt) < TOKEN_TTL) return cachedToken;
+      const res = await timeoutFetch(GIST_TOKEN_URL);
+      if (!res.ok) throw new Error("Token fetch failed: " + res.status);
+      const t = (await res.text()).trim();
+      if (!t) throw new Error("Empty token");
+      cachedToken = t;
+      tokenFetchedAt = Date.now();
       return t;
     }
-    async function getRepoFile(token){
-      const url=`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
-      const r=await timeoutFetch(url,{headers:{Authorization:`Bearer ${token}`, Accept:"application/vnd.github.v3+json"}});
-      if(!r.ok) throw new Error("contents fetch failed");
-      return await r.json();
+
+    async function getRepoFile(token) {
+      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
+      const res = await timeoutFetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json"
+        }
+      });
+      if (!res.ok) throw new Error(`GitHub contents API failed: ${res.status} ${res.statusText}`);
+      return await res.json();
     }
 
-    async function loadProfiles(){
-      setStatus("Loading profiles...");
-      try {
-        const token=await fetchToken();
-        const fileInfo=await getRepoFile(token);
-        let arr=[];
-        try { arr=JSON.parse(atob(fileInfo.content)); } catch {}
-        if(!Array.isArray(arr)) arr=[];
-        currentProfiles=arr;
-        setStatus("Profiles loaded.");
-      } catch(e){
-        setStatus("Failed loading profiles: "+e.message, true);
+    async function updateRepoFile(token, sha, array) {
+      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
+      const body = {
+        message: "Create profile",
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2)))),
+        sha
+      };
+      const res = await timeoutFetch(url, {
+        method:"PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(body)
+      }, 10000);
+      if (!res.ok) {
+        const txt = await res.text();
+        throw new Error("GitHub update failed: " + res.status + " " + txt);
       }
+      return await res.json();
     }
 
-    function profileExists(username){
-      return currentProfiles.some(p=>String(p.username).toLowerCase()===String(username).toLowerCase());
+    async function rawFetchProfiles() {
+      const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${DATA_FILE_PATH}`;
+      const res = await timeoutFetch(rawUrl);
+      if (!res.ok) throw new Error("Raw fetch failed");
+      return await res.json();
     }
 
-    function saveIdentity(obj){
+    function saveIdentity(obj) {
       localStorage.setItem("beauty_identity", JSON.stringify(obj));
-      // redirect to viewer
-      location.href="viewer.html";
+      // redirect
+      location.href = "viewer.html";
     }
 
-    // tab switching
-    function activateTab(name){
-      [tabLogin,tabSignup,tabAnon].forEach(t=>t.classList.remove("active"));
+    function profileExists(profiles, username) {
+      return profiles.some(p => String(p.username).toLowerCase() === String(username).toLowerCase());
+    }
+
+    // Tab switching
+    function activateTab(name) {
+      [tabLogin, tabSignup, tabAnon].forEach(t=>t.classList.remove("active"));
       loginPane.classList.add("hidden");
       signupPane.classList.add("hidden");
       anonPane.classList.add("hidden");
-      if(name==="login"){ tabLogin.classList.add("active"); loginPane.classList.remove("hidden"); }
-      if(name==="signup"){ tabSignup.classList.add("active"); signupPane.classList.remove("hidden"); }
-      if(name==="anon"){ tabAnon.classList.add("active"); anonPane.classList.remove("hidden"); }
+      if (name === "login") { tabLogin.classList.add("active"); loginPane.classList.remove("hidden"); }
+      if (name === "signup") { tabSignup.classList.add("active"); signupPane.classList.remove("hidden"); }
+      if (name === "anon") { tabAnon.classList.add("active"); anonPane.classList.remove("hidden"); }
     }
-    tabLogin.addEventListener("click",()=>activateTab("login"));
-    tabSignup.addEventListener("click",()=>activateTab("signup"));
-    tabAnon.addEventListener("click",()=>activateTab("anon"));
+    tabLogin.addEventListener("click", ()=>activateTab("login"));
+    tabSignup.addEventListener("click", ()=>activateTab("signup"));
+    tabAnon.addEventListener("click", ()=>activateTab("anon"));
 
-    // existing identity check
-    (function tryExisting(){
-      const stored=localStorage.getItem("beauty_identity");
-      if(stored){
+    // existing identity short-circuit
+    (function checkExisting() {
+      const stored = localStorage.getItem("beauty_identity");
+      if (stored) {
         try {
-          const id=JSON.parse(stored);
-          if(id && id.username){
-            // proceed to viewer
-            location.href="viewer.html";
+          const o = JSON.parse(stored);
+          if (o && o.username) {
+            location.href = "viewer.html";
           }
-        } catch{}
+        } catch {}
       }
-      setStatus("Please login, sign up, or continue anonymous.");
+      setStatus("Ready. Choose login, signup, or anonymous.");
     })();
 
     // login handler
-    loginBtn.addEventListener("click", async ()=>{
-      const username=loginUsernameInput.value.trim();
-      const email=loginEmailInput.value.trim();
-      if(!username){ setStatus("Username required.", true); return;}
-      await loadProfiles();
-      if(!profileExists(username)){ setStatus("Profile not found. Sign up.", true); return;}
-      const today=new Date().toISOString().slice(0,10);
-      saveIdentity({ username, email: email||"", anonymous:false, lastLikeDate: today, likesToday:0 });
+    loginBtn.addEventListener("click", async () => {
+      try {
+        const username = loginUsernameInput.value.trim();
+        const email = loginEmailInput.value.trim();
+        if (!username) { setStatus("Username required.", true); return; }
+        setStatus("Loading profiles...");
+        let profiles = [];
+        try {
+          const token = await fetchToken();
+          const fileInfo = await getRepoFile(token);
+          profiles = JSON.parse(atob(fileInfo.content));
+        } catch (e) {
+          // fallback read
+          console.warn("API login fetch failed, falling back:", e);
+          profiles = await rawFetchProfiles();
+        }
+        if (!Array.isArray(profiles)) profiles = [];
+        if (!profileExists(profiles, username)) {
+          setStatus("Profile not found. Sign up.", true);
+          return;
+        }
+        const today = new Date().toISOString().slice(0,10);
+        saveIdentity({ username, email: email||"", anonymous:false, lastLikeDate: today, likesToday:0 });
+      } catch (e) {
+        setStatus("Login error: " + e.message, true);
+      }
     });
 
     // anonymous
-    anonBtn.addEventListener("click", ()=>{
-      const randomId="anon_"+Math.random().toString(36).substring(2,8);
-      const today=new Date().toISOString().slice(0,10);
+    anonBtn.addEventListener("click", () => {
+      const randomId = "anon_" + Math.random().toString(36).substring(2,8);
+      const today = new Date().toISOString().slice(0,10);
       saveIdentity({ username: randomId, email:"", anonymous:true, lastLikeDate: today, likesToday:0 });
     });
 
-    // sign up (creates profile similar to viewer logic)
-    createProfileBtn.addEventListener("click", async ()=>{
+    // signup/create
+    createProfileBtn.addEventListener("click", async () => {
       try {
-        setStatus("Validating...");
-        const username=newUsernameInput.value.trim();
-        const fullName=newFullNameInput.value.trim();
-        const age=newAgeInput.value.trim();
-        const email=newEmailInput.value.trim();
-        const file=newImageInput.files[0];
-        if(!username||!fullName||!age||!email||!file){ setStatus("All fields required.", true); return;}
-        if(isNaN(age)||Number(age)<13){ setStatus("Age must be >=13", true); return;}
-        await loadProfiles();
-        if(profileExists(username)){ setStatus("Username exists.", true); return;}
-        const token=await fetchToken();
-        // fetch current file
-        const fileInfo=await getRepoFile(token);
-        let profiles=[];
-        try { profiles=JSON.parse(atob(fileInfo.content)); } catch{}
-        if(!Array.isArray(profiles)) profiles=[];
-        // upload image
-        // reuse minimal inlined conversion
-        const blob=await new Promise((resolve,reject)=>{
-          const reader=new FileReader();
-          reader.onload=()=>{
-            const img=new Image();
-            img.onload=()=>{
-              const canvas=document.createElement("canvas");
-              canvas.width=img.width; canvas.height=img.height;
-              const ctx=canvas.getContext("2d");
-              ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
-              ctx.drawImage(img,0,0);
-              canvas.toBlob(b=> b?resolve(b):reject("canvas fail"),"image/png");
+        const username = newUsernameInput.value.trim();
+        const fullName = newFullNameInput.value.trim();
+        const age = newAgeInput.value.trim();
+        const email = newEmailInput.value.trim();
+        const file = newImageInput.files[0];
+        if (!username || !fullName || !age || !email || !file) {
+          setStatus("All fields required.", true);
+          return;
+        }
+        if (isNaN(age) || Number(age) < 13) {
+          setStatus("Age must be >=13", true);
+          return;
+        }
+        setStatus("Fetching existing profiles...");
+        // load existing
+        let profiles = [];
+        let token;
+        try {
+          token = await fetchToken();
+          const fileInfo = await getRepoFile(token);
+          profiles = JSON.parse(atob(fileInfo.content));
+        } catch (e) {
+          // if API fails, still try raw read (but cannot write until token works)
+          console.warn("Fetch existing profiles failed, fallback read only:", e);
+          profiles = await rawFetchProfiles();
+          if (!Array.isArray(profiles)) profiles = [];
+        }
+        if (!Array.isArray(profiles)) profiles = [];
+        if (profileExists(profiles, username)) {
+          setStatus("Username already exists.", true);
+          return;
+        }
+        setStatus("Uploading image...");
+        // upload image (simple canvas png conversion)
+        const imageUrl = await (async function uploadImage(file) {
+          const blob = await new Promise((resolve,reject)=>{
+            const reader=new FileReader();
+            reader.onload=()=>{
+              const img=new Image();
+              img.onload=()=>{
+                const canvas=document.createElement("canvas");
+                canvas.width=img.width;
+                canvas.height=img.height;
+                const ctx=canvas.getContext("2d");
+                ctx.fillStyle="#fff";
+                ctx.fillRect(0,0,canvas.width,canvas.height);
+                ctx.drawImage(img,0,0);
+                canvas.toBlob(b=> b? resolve(b): reject("canvas fail"), "image/png");
+              };
+              img.onerror=()=>reject("img load");
+              img.src=reader.result;
             };
-            img.onerror=()=>reject("img load");
-            img.src=reader.result;
-          };
-          reader.onerror=()=>reject("reader");
-          reader.readAsDataURL(file);
-        });
-        const base64=await new Promise((resolve,reject)=>{
-          const r=new FileReader();
-          r.onload=()=>resolve(r.result.split(",")[1]);
-          r.onerror=()=>reject("base64 fail");
-          r.readAsDataURL(blob);
-        });
-        const form=new FormData();
-        form.append("image", base64);
-        const uploadResp=await timeoutFetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,{method:"POST", body: form});
-        const uploadJson=await uploadResp.json();
-        if(!uploadJson.success) throw new Error("imgbb upload failed");
-        const imageUrl=uploadJson.data.url;
-
-        const newProfile={
+            reader.onerror=()=>reject("reader");
+            reader.readAsDataURL(file);
+          });
+          const base64=await new Promise((resolve,reject)=>{
+            const r=new FileReader();
+            r.onload=()=> resolve(r.result.split(",")[1]);
+            r.onerror=()=> reject("base64 fail");
+            r.readAsDataURL(blob);
+          });
+          const form=new FormData();
+          form.append("image", base64);
+          const resp=await timeoutFetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,{ method:"POST", body: form });
+          const json=await resp.json();
+          if (!json.success) throw new Error("imgbb upload failed");
+          return json.data.url;
+        })(file);
+        const newProfile = {
           username,
           fullName,
           age: Number(age),
           image: imageUrl,
-          likes:0,
+          likes: 0,
           timestamp: Date.now(),
           email
         };
         profiles.push(newProfile);
         // write back
+        if (!token) token = await fetchToken();
+        const fileInfo = await getRepoFile(token);
         await updateRepoFile(token, fileInfo.sha, profiles);
-        setStatus("Profile created. Logging in...");
-        const today=new Date().toISOString().slice(0,10);
+        setStatus("Profile created, logging in...");
+        const today = new Date().toISOString().slice(0,10);
         saveIdentity({ username, email, anonymous:false, lastLikeDate: today, likesToday:0 });
-      } catch (e){
-        setStatus("Signup error: "+e.message, true);
+      } catch (e) {
+        setStatus("Signup error: " + (e.message || e), true);
       }
     });
-
-    // initialization: load profiles so login/signup works quickly
-    loadProfiles();
   </script>
 </body>
 </html>
