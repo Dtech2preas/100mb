@@ -85,6 +85,7 @@
     const REPO_OWNER = "Dtech2preas";
     const REPO_NAME = "Oratilr";
     const DATA_FILE_PATH = "data1.json";
+    const IMGBB_API_KEY = "cedf418c6d844af9c47a7775a17161a6"; // fixed: define it
     const TOKEN_TTL = 30000;
 
     // STATE
@@ -117,7 +118,7 @@
 
     function escapeHTML(s){ if(!s) return ""; return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
-    // Simple fetch with timeout
+    // fetch with timeout
     async function timeoutFetch(url, opts={}, ms=8000){
       const controller = new AbortController();
       const id = setTimeout(()=>controller.abort(), ms);
@@ -180,7 +181,6 @@
 
     function saveIdentity(obj) {
       localStorage.setItem("beauty_identity", JSON.stringify(obj));
-      // redirect
       location.href = "viewer.html";
     }
 
@@ -188,7 +188,7 @@
       return profiles.some(p => String(p.username).toLowerCase() === String(username).toLowerCase());
     }
 
-    // Tab switching
+    // tab switching
     function activateTab(name) {
       [tabLogin, tabSignup, tabAnon].forEach(t=>t.classList.remove("active"));
       loginPane.classList.add("hidden");
@@ -202,7 +202,7 @@
     tabSignup.addEventListener("click", ()=>activateTab("signup"));
     tabAnon.addEventListener("click", ()=>activateTab("anon"));
 
-    // existing identity short-circuit
+    // early redirect if already logged in
     (function checkExisting() {
       const stored = localStorage.getItem("beauty_identity");
       if (stored) {
@@ -211,7 +211,7 @@
           if (o && o.username) {
             location.href = "viewer.html";
           }
-        } catch {}
+        } catch{}
       }
       setStatus("Ready. Choose login, signup, or anonymous.");
     })();
@@ -229,7 +229,6 @@
           const fileInfo = await getRepoFile(token);
           profiles = JSON.parse(atob(fileInfo.content));
         } catch (e) {
-          // fallback read
           console.warn("API login fetch failed, falling back:", e);
           profiles = await rawFetchProfiles();
         }
@@ -241,7 +240,7 @@
         const today = new Date().toISOString().slice(0,10);
         saveIdentity({ username, email: email||"", anonymous:false, lastLikeDate: today, likesToday:0 });
       } catch (e) {
-        setStatus("Login error: " + e.message, true);
+        setStatus("Login error: " + (e.message || e), true);
       }
     });
 
@@ -269,7 +268,6 @@
           return;
         }
         setStatus("Fetching existing profiles...");
-        // load existing
         let profiles = [];
         let token;
         try {
@@ -277,7 +275,6 @@
           const fileInfo = await getRepoFile(token);
           profiles = JSON.parse(atob(fileInfo.content));
         } catch (e) {
-          // if API fails, still try raw read (but cannot write until token works)
           console.warn("Fetch existing profiles failed, fallback read only:", e);
           profiles = await rawFetchProfiles();
           if (!Array.isArray(profiles)) profiles = [];
@@ -288,7 +285,7 @@
           return;
         }
         setStatus("Uploading image...");
-        // upload image (simple canvas png conversion)
+        // upload image
         const imageUrl = await (async function uploadImage(file) {
           const blob = await new Promise((resolve,reject)=>{
             const reader=new FileReader();
@@ -333,7 +330,6 @@
           email
         };
         profiles.push(newProfile);
-        // write back
         if (!token) token = await fetchToken();
         const fileInfo = await getRepoFile(token);
         await updateRepoFile(token, fileInfo.sha, profiles);
