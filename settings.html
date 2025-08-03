@@ -36,7 +36,6 @@
     .label-inline { font-size:11px; color:#666; margin-top:2px; display:block; }
     .section-title { margin-bottom:8px; font-weight:700; }
     .remove-btn { background:#ef4444; }
-    .mini { font-size:11px; color:#777; }
   </style>
 </head>
 <body>
@@ -123,10 +122,10 @@
 
   <script>
     // === CONFIG ===
-    const GIST_TOKEN_URL="https://gist.githubusercontent.com/Dtech2preas/6750d0418aaa9dfe7f297c26d5aade0229849446b7297ae01c9/gistfile1.txt";
-    const REPO_OWNER="Dtech2preas", REPO_NAME="Oratilr", DATA_FILE_PATH="data1.json";
-    const IMGBB_API_KEY="cedf418c6d844af9c47a7775a17161a6";
-    const TOKEN_TTL=30000;
+    const GIST_TOKEN_URL = "https://gist.githubusercontent.com/Dtech2preas/6750d0418aaa9dfe7f297c26d1dfae48/raw/2e511e4d11267d5aade0229849446b7297ae01c9/gistfile1.txt";
+    const REPO_OWNER = "Dtech2preas", REPO_NAME = "Oratilr", DATA_FILE_PATH = "data1.json";
+    const IMGBB_API_KEY = "cedf418c6d844af9c47a7775a17161a6";
+    const TOKEN_TTL = 30000;
 
     // DOM
     const identityDisplay = document.getElementById("identityDisplay");
@@ -152,30 +151,39 @@
     let meProfile = null;
     let cachedToken = null;
     let tokenFetchedAt = 0;
-    let currentFileSha = null;
 
-    // helpers
+    // For write conflicts
+    let latestSha = null;
+
     function setStatus(el, msg, isError=false) {
       el.textContent = msg;
       el.className = isError ? "status small error" : "status small";
     }
     function escapeHTML(s){ if(!s) return ""; return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
     async function timeoutFetch(url, opts={}, ms=8000) {
       const controller = new AbortController();
       const id = setTimeout(()=>controller.abort(), ms);
       try { return await fetch(url, {...opts, signal: controller.signal}); }
       finally { clearTimeout(id); }
     }
+
     async function fetchToken() {
       if (cachedToken && (Date.now() - tokenFetchedAt) < TOKEN_TTL) return cachedToken;
-      const res = await timeoutFetch(GIST_TOKEN_URL);
-      if (!res.ok) throw new Error("token fetch failed");
-      const t = (await res.text()).trim();
-      if (!t) throw new Error("empty token");
-      cachedToken = t; tokenFetchedAt = Date.now();
-      return t;
+      try {
+        const res = await timeoutFetch(GIST_TOKEN_URL);
+        if (!res.ok) throw new Error("token fetch failed");
+        const t = (await res.text()).trim();
+        if (!t) throw new Error("empty token");
+        cachedToken = t; tokenFetchedAt = Date.now();
+        return t;
+      } catch (e) {
+        console.warn("Token fetch failure, proceeding with fallback read-only if possible:", e);
+        throw e;
+      }
     }
-    async function getRepoFile(token) {
+
+    async function getRepoFileViaAPI(token) {
       const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
       const res = await timeoutFetch(url, {
         headers: {
@@ -183,9 +191,17 @@
           Accept: "application/vnd.github.v3+json"
         }
       });
-      if (!res.ok) throw new Error("fetch profile json failed");
+      if (!res.ok) throw new Error(`GitHub contents API failed: ${res.status}`);
       return await res.json();
     }
+
+    async function getRawJsonFallback() {
+      const rawUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${DATA_FILE_PATH}`;
+      const res = await timeoutFetch(rawUrl);
+      if (!res.ok) throw new Error("Fallback raw fetch failed");
+      return await res.json();
+    }
+
     async function updateRepoFile(token, sha, array) {
       const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
       const body = {
@@ -194,23 +210,22 @@
         sha
       };
       const res = await timeoutFetch(url, {
-        method:"PUT",
+        method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
           Accept: "application/vnd.github.v3+json",
-          "Content-Type":"application/json"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(body)
       }, 10000);
       if (!res.ok) {
         const t = await res.text();
-        throw new Error("update failed: "+t);
+        throw new Error("update failed: " + t);
       }
       return await res.json();
     }
 
     async function uploadImage(file) {
-      // convert to PNG to ensure consistent format
       const blob = await new Promise((resolve,reject)=>{
         const reader=new FileReader();
         reader.onload=()=>{
@@ -256,51 +271,13 @@
         }
         identity = stored;
         identityDisplay.textContent = identity.anonymous
-          ? `Anonymous: ${identity.username}`
-          : `Logged in: ${identity.username}`;
+          ? `Anonymous: ${escapeHTML(identity.username)}`
+          : `Logged in: ${escapeHTML(identity.username)}`;
       } catch {
-        loginStatus.textContent = "No identity found. Redirecting to login...";
+        setStatus(loginStatus, "No identity found. Redirecting...", true);
         setTimeout(()=> location.href="auth.html", 800);
+        throw new Error("no identity");
       }
-    }
-
-    // core
-    async function init() {
-      setStatus(loginStatus, "Loading...");
-      loadIdentity();
-      try {
-        const token = await fetchToken();
-        const fileInfo = await getRepoFile(token);
-        currentFileSha = fileInfo.sha;
-        let arr = [];
-        try { arr = JSON.parse(atob(fileInfo.content)); } catch {}
-        if (!Array.isArray(arr)) arr = [];
-        profiles = arr;
-        // find my profile
-        const me = profiles.find(p => String(p.username).toLowerCase() === String(identity.username).toLowerCase());
-        if (!me) {
-          setStatus(loginStatus, "Profile not found. You might need to create one.", true);
-          return;
-        }
-        meProfile = me;
-        populateForm(meProfile);
-        setStatus(loginStatus, "Loaded profile.");
-      } catch (e) {
-        setStatus(loginStatus, "Failed init: "+e.message, true);
-      }
-    }
-
-    function populateForm(p) {
-      usernameInput.value = p.username || "";
-      fullNameInput.value = p.fullName || "";
-      ageInput.value = p.age || "";
-      emailInput.value = p.email || "";
-      avatarImg.src = p.image || "";
-      facebookInput.value = (p.social && p.social.facebook) || "";
-      tiktokInput.value = (p.social && p.social.tiktok) || "";
-      youtubeInput.value = (p.social && p.social.youtube) || "";
-      whatsappInput.value = (p.social && p.social.whatsapp) || "";
-      renderGallery(p.gallery || []);
     }
 
     function renderGallery(list) {
@@ -309,7 +286,10 @@
         const div = document.createElement("div");
         div.className = "gallery-thumb";
         div.dataset.idx = idx;
-        div.innerHTML = `<img src="${escapeHTML(url)}" alt="gallery"> <button style="position:absolute; top:4px; right:4px; background:rgba(0,0,0,.5); border:none; padding:4px 6px; color:#fff; border-radius:4px; font-size:10px;" class="remove-thumb">x</button>`;
+        div.innerHTML = `
+          <img src="${escapeHTML(url)}" alt="gallery">
+          <button style="position:absolute; top:4px; right:4px; background:rgba(0,0,0,.5); border:none; padding:4px 6px; color:#fff; border-radius:4px; font-size:10px;" class="remove-thumb">x</button>
+        `;
         galleryContainer.appendChild(div);
         div.querySelector(".remove-thumb").addEventListener("click", (e) => {
           e.stopPropagation();
@@ -325,7 +305,55 @@
       renderGallery(meProfile.gallery);
     }
 
-    // event wiring
+    function populateForm(p) {
+      usernameInput.value = p.username || "";
+      fullNameInput.value = p.fullName || "";
+      ageInput.value = p.age || "";
+      emailInput.value = p.email || "";
+      avatarImg.src = p.image || "";
+      facebookInput.value = (p.social && p.social.facebook) || "";
+      tiktokInput.value = (p.social && p.social.tiktok) || "";
+      youtubeInput.value = (p.social && p.social.youtube) || "";
+      whatsappInput.value = (p.social && p.social.whatsapp) || "";
+      renderGallery(p.gallery || []);
+    }
+
+    async function init() {
+      setStatus(loginStatus, "Loading profile...");
+      try {
+        loadIdentity();
+        // attempt to fetch profiles via API first
+        let fileInfo;
+        try {
+          const token = await fetchToken();
+          fileInfo = await getRepoFileViaAPI(token);
+          latestSha = fileInfo.sha;
+          let arr = [];
+          try { arr = JSON.parse(atob(fileInfo.content)); } catch {}
+          if (!Array.isArray(arr)) arr = [];
+          profiles = arr;
+        } catch (apiErr) {
+          console.warn("API fetch failed; falling back to raw:", apiErr);
+          // fallback read-only
+          const arr = await getRawJsonFallback();
+          if (!Array.isArray(arr)) throw new Error("Profile data invalid");
+          profiles = arr;
+          // note: no sha available for write in this fallback situation until token API works
+        }
+
+        // find my profile
+        meProfile = profiles.find(p => String(p.username).toLowerCase() === String(identity.username).toLowerCase());
+        if (!meProfile) {
+          setStatus(loginStatus, "Profile not found for user.", true);
+          return;
+        }
+        populateForm(meProfile);
+        setStatus(loginStatus, "Loaded profile.");
+      } catch (e) {
+        setStatus(loginStatus, "Failed init: " + e.message, true);
+      }
+    }
+
     changeAvatarInput.addEventListener("change", async () => {
       const file = changeAvatarInput.files[0];
       if (!file) return;
@@ -336,15 +364,14 @@
         if (meProfile) meProfile.image = url;
         setStatus(saveStatus, "Avatar ready. Save to persist.");
       } catch (e) {
-        setStatus(saveStatus, "Avatar upload failed: "+e.message, true);
+        setStatus(saveStatus, "Avatar upload failed: " + e.message, true);
       }
     });
 
     addGalleryBtn.addEventListener("click", async () => {
-      // create file input dynamically
       const input = document.createElement("input");
-      input.type="file";
-      input.accept="image/*";
+      input.type = "file";
+      input.accept = "image/*";
       input.onchange = async () => {
         const file = input.files[0];
         if (!file) return;
@@ -356,7 +383,7 @@
           renderGallery(meProfile.gallery);
           setStatus(saveStatus, "Added to gallery. Save to persist.");
         } catch (e) {
-          setStatus(saveStatus, "Upload failed: "+e.message, true);
+          setStatus(saveStatus, "Upload failed: " + e.message, true);
         }
       };
       input.click();
@@ -365,7 +392,6 @@
     saveBtn.addEventListener("click", async () => {
       if (!meProfile) return;
       setStatus(saveStatus, "Saving...");
-      // apply form values
       meProfile.fullName = fullNameInput.value.trim();
       meProfile.age = Number(ageInput.value) || meProfile.age;
       meProfile.social = {
@@ -374,23 +400,22 @@
         youtube: youtubeInput.value.trim(),
         whatsapp: whatsappInput.value.trim()
       };
-      // image already updated in meProfile.image
       try {
         const token = await fetchToken();
-        // reload latest to avoid conflicts
-        const fileInfo = await getRepoFile(token);
+        // re-fetch to avoid overwriting remote changes
+        const fileInfo = await getRepoFileViaAPI(token);
+        latestSha = fileInfo.sha;
         let arr = [];
         try { arr = JSON.parse(atob(fileInfo.content)); } catch {}
         if (!Array.isArray(arr)) arr = [];
-        // find index and replace
         const idx = arr.findIndex(x => String(x.username).toLowerCase() === String(meProfile.username).toLowerCase());
-        if (idx === -1) throw new Error("Profile disappeared");
+        if (idx === -1) throw new Error("Profile missing on remote");
         arr[idx] = meProfile;
         await updateRepoFile(token, fileInfo.sha, arr);
         profiles = arr;
         setStatus(saveStatus, "Saved successfully.");
       } catch (e) {
-        setStatus(saveStatus, "Save failed: "+e.message, true);
+        setStatus(saveStatus, "Save failed: " + e.message, true);
       }
     });
 
