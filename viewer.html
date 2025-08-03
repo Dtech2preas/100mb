@@ -7,9 +7,8 @@
   <style>
     :root {
       --bg:#000;
-      --overlay-gradient: linear-gradient(180deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,0) 60%);
-      --footer-gradient: linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,0) 60%);
-      --radius:10px;
+      --overlay-gradient: linear-gradient(180deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,0) 60%);
+      --footer-gradient: linear-gradient(0deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,0) 60%);
       --transition:.25s ease;
     }
     *{box-sizing:border-box;}
@@ -18,26 +17,27 @@
       position:fixed;
       top:12px;
       right:12px;
-      background:rgba(255,255,255,.1);
-      border:none;
-      padding:10px 14px;
-      border-radius:8px;
+      background:rgba(255,255,255,.15);
+      border:2px solid rgba(255,255,255,.5);
+      padding:10px 12px;
+      border-radius:10px;
       cursor:pointer;
       display:flex;
       flex-direction:column;
-      gap:2px;
+      gap:3px;
       align-items:flex-start;
-      width:44px;
-      height:36px;
+      width:48px;
+      height:40px;
       justify-content:center;
-      backdrop-filter:blur(6px);
+      z-index:10;
+      box-shadow:0 10px 30px rgba(0,0,0,.5);
     }
     .identity-button span {
       display:block;
-      width:22px;
-      height:2px;
+      width:24px;
+      height:3px;
       background:#fff;
-      border-radius:2px;
+      border-radius:3px;
     }
     .viewer-container {
       height:100vh;
@@ -67,35 +67,37 @@
       top:0;
       left:0;
       right:0;
-      padding:16px;
+      padding:18px 20px;
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
       gap:10px;
       background: var(--overlay-gradient);
-      z-index:2;
+      z-index:5;
     }
     .profile-info {
       display:flex;
       flex-direction:column;
       gap:6px;
+      max-width:75%;
     }
     .profile-info .username {
-      font-size:1.4rem;
+      font-size:1.6rem;
       font-weight:700;
+      line-height:1.1;
     }
     .profile-info .sub {
-      font-size:0.9rem;
+      font-size:0.95rem;
       opacity:0.9;
     }
     .like-area {
+      margin-top:8px;
       display:flex;
       align-items:center;
       gap:12px;
-      margin-top:8px;
     }
     .like-btn {
-      background:rgba(255,64,129,0.9);
+      background:rgba(255,64,129,0.95);
       border:none;
       padding:10px 16px;
       border-radius:999px;
@@ -105,30 +107,28 @@
       align-items:center;
       gap:6px;
       color:#fff;
+      font-weight:600;
+      backdrop-filter:blur(4px);
     }
     .likes-count {
-      font-weight:600;
+      margin-left:4px;
     }
     .viewer-footer {
-      position:absolute;
+      position:fixed;
       bottom:0;
       left:0;
       right:0;
-      padding:16px;
+      padding:16px 20px;
       display:flex;
       justify-content:space-between;
       align-items:center;
       background: var(--footer-gradient);
-      z-index:2;
+      z-index:5;
       gap:12px;
       flex-wrap:wrap;
     }
-    .user-status {
-      font-size:0.9rem;
-    }
-    .limit-warning {
-      color:#ffb3b3;
-    }
+    .user-status { font-size:0.9rem; }
+    .limit-warning { color:#ffb3b3; }
     .loader {
       position:fixed;
       top:50%;
@@ -138,33 +138,85 @@
       padding:12px 16px;
       border-radius:8px;
       font-size:14px;
+      z-index:20;
     }
-    .refresh-hint {
+    .floating-actions {
       position:fixed;
+      right:12px;
       top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      background:rgba(255,255,255,.1);
-      padding:10px 14px;
-      border-radius:8px;
-      font-size:12px;
+      transform:translateY(10%);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      z-index:8;
     }
+    .action-btn {
+      background:rgba(255,255,255,.1);
+      border:none;
+      padding:10px;
+      border-radius:50%;
+      cursor:pointer;
+      width:48px;
+      height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      backdrop-filter:blur(6px);
+      box-shadow:0 15px 30px rgba(0,0,0,.4);
+    }
+    .action-btn svg { width:20px; height:20px; fill:#fff; }
+    .tooltip {
+      position:absolute;
+      right:110%;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,.85);
+      padding:6px 10px;
+      border-radius:6px;
+      font-size:12px;
+      white-space:nowrap;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease;
+      z-index:12;
+    }
+    .action-btn:hover .tooltip { opacity:1; }
+    .hidden { display:none; }
   </style>
 </head>
 <body>
+  <!-- settings / hamburger -->
   <button class="identity-button" aria-label="Settings" onclick="location.href='settings.html'">
     <span></span><span></span><span></span>
   </button>
 
-  <div class="viewer-container" id="viewerContainer">
-    <!-- slides inserted here -->
+  <!-- floating share/profile -->
+  <div class="floating-actions">
+    <button class="action-btn" id="shareBtn" aria-label="Copy profile link">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M13 5.828V2h-2v3.828a3 3 0 0 0-1.586.52L7.05 5.05l-1.414 1.414 2.364 2.364A3 3 0 0 0 8 11a3 3 0 0 0 .586-.05l2.364 2.364 1.414-1.414-2.364-2.364A3 3 0 0 0 13 8a3 3 0 0 0 .05-.586l2.364-2.364L14.05 5.05 12.414 6.686A3 3 0 0 0 13 5.828z"></path>
+      </svg>
+      <div class="tooltip">Copy profile link</div>
+    </button>
+    <button class="action-btn" id="viewProfileBtn" aria-label="View profile">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-3.866 0-7 1.79-7 4v2h14v-2c0-2.21-3.134-4-7-4z"/>
+      </svg>
+      <div class="tooltip">Open profile</div>
+    </button>
   </div>
 
-  <div class="viewer-footer" id="footerBar">
+  <!-- vertical slides -->
+  <div class="viewer-container" id="viewerContainer"></div>
+
+  <!-- footer -->
+  <div class="viewer-footer">
     <div class="user-status" id="identityDisplay">Loading identity...</div>
-    <div class="user-status" id="likeStatus">Likes left: --</div>
+    <div class="user-status" id="likeStatus">Likes today: --</div>
   </div>
 
+  <!-- loader -->
   <div class="loader" id="globalStatus" style="display:none;">Loading...</div>
 
   <script>
@@ -186,6 +238,8 @@
     const identityDisplay=document.getElementById("identityDisplay");
     const likeStatus=document.getElementById("likeStatus");
     const globalStatus=document.getElementById("globalStatus");
+    const shareBtn=document.getElementById("shareBtn");
+    const viewProfileBtn=document.getElementById("viewProfileBtn");
 
     function showStatus(msg) {
       globalStatus.textContent=msg;
@@ -250,11 +304,8 @@
     async function timeoutFetch(url, opts={}, ms=8000) {
       const controller = new AbortController();
       const id = setTimeout(()=>controller.abort(), ms);
-      try {
-        return await fetch(url, {...opts, signal: controller.signal});
-      } finally {
-        clearTimeout(id);
-      }
+      try { return await fetch(url, {...opts, signal: controller.signal}); }
+      finally { clearTimeout(id); }
     }
 
     async function fetchToken() {
@@ -313,13 +364,13 @@
         if (!Array.isArray(arr)) arr = [];
         profiles = arr;
         hideStatus();
-        renderAllSlides();
+        renderSlides();
       } catch (e) {
         showStatus("Failed to load profiles: " + e.message);
       }
     }
 
-    function renderAllSlides() {
+    function renderSlides() {
       viewerContainer.innerHTML = "";
       if (!profiles.length) {
         viewerContainer.innerHTML = '<div class="profile-slide"><div style="text-align:center;color:#fff;">No profiles yet.</div></div>';
@@ -346,14 +397,17 @@
         `;
         viewerContainer.appendChild(slide);
       });
-      // attach like handlers
+      attachLikeHandlers();
+      trackScroll();
+    }
+
+    function attachLikeHandlers() {
       document.querySelectorAll(".like-btn").forEach(btn => {
-        btn.addEventListener("click", async (e) => {
+        btn.onclick = async (e) => {
           e.stopPropagation();
-          if (isUpdating) return;
           const target = btn.dataset.username;
           if (!identity) {
-            alert("No identity; please login."); // fallback
+            alert("No identity; please login.");
             return;
           }
           if (!canLike()) {
@@ -362,17 +416,17 @@
               : `Limit reached (${MAX_LIKES_LOGGED}/day).`);
             return;
           }
+          if (isUpdating) return;
           isUpdating = true;
           btn.disabled = true;
+          showStatus("Updating like...");
           try {
-            showStatus("Updating like...");
             await incrementLike(target);
             recordLike();
             refreshIdentityUI();
-            // reflect UI
+            // update UI count
             const span = btn.querySelector(".likes-count");
             if (span) {
-              // find updated value from profiles
               const updated = profiles.find(p => String(p.username).toLowerCase() === String(target).toLowerCase());
               span.textContent = updated?.likes || "0";
             }
@@ -383,7 +437,7 @@
             btn.disabled = false;
             isUpdating = false;
           }
-        });
+        };
       });
     }
 
@@ -398,7 +452,7 @@
         arr[idx].likes = (arr[idx].likes||0) + 1;
         try {
           await updateRepoFile(token, fileInfo.sha, arr);
-          profiles = arr; // update local copy
+          profiles = arr; // refresh local
           return arr[idx].likes;
         } catch (e) {
           if ((e.message.includes("409") || e.code === 409) && attempt < maxRetries) {
@@ -408,42 +462,64 @@
           throw e;
         }
       }
-      throw new Error("Failed to increment like after retries");
+      throw new Error("Failed to increment like");
     }
 
-    // snap tracking to highlight current slide if needed
-    viewerContainer.addEventListener("scroll", () => {
-      const slides = [...document.querySelectorAll(".profile-slide")];
-      const viewportHeight = window.innerHeight;
-      const mid = viewportHeight / 2;
-      let nearestIdx = currentIndex;
-      let minDist = Infinity;
-      slides.forEach(s => {
-        const rect = s.getBoundingClientRect();
-        const dist = Math.abs(rect.top + rect.height/2 - mid);
-        if (dist < minDist) {
-          minDist = dist;
-          nearestIdx = Number(s.dataset.index);
-        }
+    // active slide tracking
+    function trackScroll() {
+      viewerContainer.addEventListener("scroll", () => {
+        const slides = [...document.querySelectorAll(".profile-slide")];
+        const viewportHeight = window.innerHeight;
+        const mid = viewportHeight / 2;
+        let nearest = currentIndex;
+        let minDist = Infinity;
+        slides.forEach(s => {
+          const rect = s.getBoundingClientRect();
+          const center = rect.top + rect.height/2;
+          const d = Math.abs(center - mid);
+          if (d < minDist) {
+            minDist = d;
+            nearest = Number(s.dataset.index);
+          }
+        });
+        currentIndex = nearest;
       });
-      if (nearestIdx !== currentIndex) {
-        currentIndex = nearestIdx;
-      }
+    }
+
+    // share / profile button logic
+    function currentProfile() {
+      if (!profiles || profiles.length === 0) return null;
+      return profiles[currentIndex] || profiles[0];
+    }
+
+    shareBtn.addEventListener("click", () => {
+      const p = currentProfile();
+      if (!p) return;
+      const url = `${location.origin}${location.pathname.replace(/viewer\.html$/, 'viewer.html')}?user=${encodeURIComponent(p.username)}`;
+      navigator.clipboard.writeText(url).then(() => {
+        alert("Profile link copied!");
+      }).catch(()=> {
+        prompt("Copy this link:", url);
+      });
     });
 
-    // Bootstrap
-    loadIdentity();
+    viewProfileBtn.addEventListener("click", () => {
+      const p = currentProfile();
+      if (!p) return;
+      location.href = `profile.html?user=${encodeURIComponent(p.username)}`;
+    });
+
+    // init
     async function init() {
+      loadIdentity();
       await loadProfiles();
-      // ensure first slide is visible
+      // ensure first snap visible
       setTimeout(()=> {
         const first = document.querySelector('.profile-slide');
         if (first) first.scrollIntoView({behavior:"instant"});
       }, 100);
     }
-    init();
 
-    // identity load helper
     function loadIdentity() {
       try {
         const stored = JSON.parse(localStorage.getItem("beauty_identity")||"null");
@@ -475,6 +551,8 @@
         likeStatus.classList.remove("limit-warning");
       }
     }
+
+    init();
   </script>
 </body>
 </html>
