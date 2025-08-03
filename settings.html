@@ -1,666 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DTech ⚙️ Advanced Settings</title>
+  <meta charset="UTF-8" />
+  <title>Beauty Showcase — Settings</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <style>
     :root {
-      --bg: #121212;
-      --text: #fff;
-      --accent: #00ffd5;
-      --card-bg: #1e1e1e;
-      --border: #333;
+      --card:#fff;
+      --radius:12px;
+      --shadow:0 20px 40px rgba(0,0,0,0.05);
+      --accent:#2563eb;
     }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      transition: all 0.3s ease;
+    *{box-sizing:border-box;}
+    body { margin:0; font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; background:#f0f4f9; color:#1f2d3d; }
+    .container { max-width:900px; margin:40px auto; padding:16px; }
+    .card { background:var(--card); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow); margin-bottom:24px; position:relative; }
+    h1 { margin-top:0; }
+    .flex { display:flex; gap:20px; flex-wrap:wrap; }
+    .field { flex:1; min-width:220px; margin-bottom:16px; }
+    label { display:block; font-weight:600; margin-bottom:6px; }
+    input[type=text], input[type=email], input[type=number], input[type=url] {
+      width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ccc; font-size:14px;
     }
-
-    h2 {
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .settings-section {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border: 1px solid var(--border);
-    }
-
-    .section-title {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    label {
-      display: block;
-      margin: 15px 0 5px;
-      font-weight: 500;
-    }
-
-    input, select, button, textarea {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--card-bg);
-      color: var(--text);
-      font-size: 1rem;
-      transition: all 0.2s ease;
-    }
-
-    input[type="checkbox"] {
-      display: inline-block;
-      width: auto;
-      margin-right: 10px;
-    }
-
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      margin: 10px 0;
-      cursor: pointer;
-    }
-
-    button {
-      background-color: var(--accent);
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    button:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-
-    button:active {
-      transform: translateY(0);
-    }
-
-    #notif {
-      display: none;
-      margin: 20px 0;
-      padding: 15px;
-      background: var(--accent);
-      color: #000;
-      border-radius: 10px;
-      font-weight: bold;
-      animation: fadeIn 0.3s;
-    }
-
-    .color-preview {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      display: inline-block;
-      margin-left: 10px;
-      border: 1px solid var(--border);
-    }
-
-    .slider-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    input[type="range"] {
-      flex-grow: 1;
-      padding: 0;
-      height: 8px;
-    }
-
-    .slider-value {
-      min-width: 30px;
-      text-align: center;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .flex-row {
-      display: flex;
-      gap: 15px;
-    }
-
-    .flex-row > * {
-      flex: 1;
-    }
-
-    @media (max-width: 600px) {
-      .flex-row {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
+    button { padding:12px 18px; border:none; border-radius:8px; cursor:pointer; font-size:14px; background:var(--accent); color:#fff; }
+    .small { font-size:12px; color:#555; }
+    .status { margin-top:12px; padding:10px; border-radius:6px; background:#eef7ee; }
+    .error { background:#ffe3e3; }
+    .avatar { width:120px; height:120px; border-radius:999px; object-fit:cover; border:3px solid var(--accent); }
+    .gallery { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+    .gallery-thumb { position:relative; width:100px; height:100px; border-radius:8px; overflow:hidden; cursor:pointer; border:2px solid transparent; }
+    .gallery-thumb.selected { border-color: var(--accent); }
+    .gallery-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .social-row { display:flex; gap:12px; flex-wrap:wrap; }
+    .social { flex:1; min-width:180px; }
+    .label-inline { font-size:11px; color:#666; margin-top:2px; display:block; }
+    .section-title { margin-bottom:8px; font-weight:700; }
+    .remove-btn { background:#ef4444; }
+    .mini { font-size:11px; color:#777; }
   </style>
 </head>
 <body>
-  <h2><span>⚙️</span> DTech Advanced Settings</h2>
-
-  <div class="settings-section">
-    <div class="section-title">👤 User Profile</div>
-    
-    <label for="username">Username:</label>
-    <input type="text" id="username" placeholder="Enter your name">
-    
-    <label for="email">Email (optional):</label>
-    <input type="email" id="email" placeholder="your@email.com">
-  </div>
-
-  <div class="settings-section">
-    <div class="section-title">🎨 Appearance</div>
-    
-    <label for="theme">Theme:</label>
-    <select id="theme">
-      <option value="dark">Dark</option>
-      <option value="light">Light</option>
-      <option value="oled">OLED Black</option>
-      <option value="sepia">Sepia</option>
-      <option value="custom">Custom</option>
-    </select>
-    
-    <div id="customThemeOptions" class="hidden">
-      <label for="bgColor">Background Color:</label>
-      <input type="color" id="bgColor" value="#121212">
-      
-      <label for="textColor">Text Color:</label>
-      <input type="color" id="textColor" value="#ffffff">
-      
-      <label for="accentColor">Accent Color:</label>
-      <input type="color" id="accentColor" value="#00ffd5">
+  <div class="container">
+    <div class="card">
+      <h1>Settings</h1>
+      <div id="identityDisplay" class="small">Loading identity...</div>
+      <div id="loginStatus" class="status small">Initializing...</div>
     </div>
-    
-    <label for="fontSize">Font Size:</label>
-    <div class="slider-container">
-      <input type="range" id="fontSize" min="12" max="24" value="16">
-      <span class="slider-value" id="fontSizeValue">16px</span>
-    </div>
-  </div>
 
-  <div class="settings-section">
-    <div class="section-title">🔊 Sound & Notifications</div>
-    
-    <label class="checkbox-label">
-      <input type="checkbox" id="soundToggle"> Enable Sound Alerts
-    </label>
-    
-    <div id="soundOptions" class="hidden">
-      <label for="soundVolume">Notification Volume:</label>
-      <div class="slider-container">
-        <input type="range" id="soundVolume" min="0" max="100" value="70">
-        <span class="slider-value" id="soundVolumeValue">70%</span>
+    <div class="card" id="editProfileCard">
+      <div style="display:flex; gap:24px; flex-wrap:wrap;">
+        <div style="flex:0 0 140px; text-align:center;">
+          <div class="section-title">Display Picture</div>
+          <img src="" alt="avatar" id="avatarImg" class="avatar" />
+          <div style="margin-top:8px;">
+            <input type="file" id="changeAvatarInput" accept="image/*" />
+          </div>
+          <div class="small">Upload a new main display picture.</div>
+        </div>
+        <div style="flex:1; min-width:260px;">
+          <div class="section-title">Basic Info</div>
+          <div class="flex">
+            <div class="field">
+              <label>Username (read-only)</label>
+              <input type="text" id="username" disabled/>
+            </div>
+            <div class="field">
+              <label>Full Name</label>
+              <input type="text" id="fullName" />
+            </div>
+            <div class="field">
+              <label>Age</label>
+              <input type="number" id="age" min="13" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Email (not displayed publicly)</label>
+            <input type="email" id="email" disabled />
+          </div>
+        </div>
       </div>
-      
-      <label for="notificationSound">Notification Sound:</label>
-      <select id="notificationSound">
-        <option value="ding">Digital Ding</option>
-        <option value="chime">Soft Chime</option>
-        <option value="beep">Short Beep</option>
-        <option value="none">None</option>
-      </select>
+      <div style="margin-top:20px;">
+        <div class="section-title">Social Media / Contact</div>
+        <div class="social-row">
+          <div class="social">
+            <label>Facebook Username</label>
+            <input type="text" id="facebook" placeholder="username or profile link" />
+            <div class="label-inline">Optional</div>
+          </div>
+          <div class="social">
+            <label>TikTok Username</label>
+            <input type="text" id="tiktok" placeholder="@beauty" />
+            <div class="label-inline">Optional</div>
+          </div>
+          <div class="social">
+            <label>YouTube Channel</label>
+            <input type="text" id="youtube" placeholder="channel name or URL" />
+            <div class="label-inline">Optional</div>
+          </div>
+          <div class="social">
+            <label>WhatsApp Number</label>
+            <input type="text" id="whatsapp" placeholder="+1234567890" />
+            <div class="label-inline">Optional</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <div class="section-title">Gallery (additional pictures)</div>
+        <div>
+          <button id="addGalleryBtn">Add New Picture</button>
+          <div class="small">You can upload multiple images; one is the main display (top), others show on profile page.</div>
+        </div>
+        <div class="gallery" id="galleryContainer"></div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <button id="saveBtn">Save Changes</button>
+        <div id="saveStatus" class="status small">Ready.</div>
+      </div>
     </div>
-    
-    <label class="checkbox-label">
-      <input type="checkbox" id="notifToggle"> Enable Notifications
-    </label>
-    
-    <label class="checkbox-label">
-      <input type="checkbox" id="vibrateToggle"> Enable Vibration
-    </label>
-    
-    <label>Notification Style:</label>
-    <select id="notifStyle">
-      <option value="banner">Banner</option>
-      <option value="alert">Alert</option>
-      <option value="badge">Badge Only</option>
-    </select>
   </div>
-
-  <div class="settings-section">
-    <div class="section-title">🔄 Data Management</div>
-    
-    <button id="exportBtn">📤 Export Settings</button>
-    <button id="importBtn">📥 Import Settings</button>
-    <input type="file" id="importFile" class="hidden" accept=".json">
-    
-    <button id="resetBtn" style="background-color: #ff4444; color: white;">🔄 Reset to Defaults</button>
-  </div>
-
-  <div class="settings-section">
-    <div class="section-title">🔧 Testing</div>
-    
-    <button onclick="testNotification('success')">✅ Test Success Notification</button>
-    <button onclick="testNotification('warning')">⚠️ Test Warning Notification</button>
-    <button onclick="testNotification('error')">❌ Test Error Notification</button>
-  </div>
-
-  <div id="notif">🔔 Notification Preview</div>
-
-  <!-- Notification Sounds -->
-  <audio id="ding" src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" preload="auto"></audio>
-  <audio id="chime" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
-  <audio id="beep" src="https://actions.google.com/sounds/v1/alarms/medium_bell_ringing_near.ogg" preload="auto"></audio>
 
   <script>
-    // Load existing settings
-    window.onload = () => {
-      // User Profile
-      document.getElementById("username").value = localStorage.getItem("username") || "";
-      document.getElementById("email").value = localStorage.getItem("email") || "";
-      
-      // Appearance
-      const theme = localStorage.getItem("theme") || "dark";
-      document.getElementById("theme").value = theme;
-      document.getElementById("bgColor").value = localStorage.getItem("bgColor") || "#121212";
-      document.getElementById("textColor").value = localStorage.getItem("textColor") || "#ffffff";
-      document.getElementById("accentColor").value = localStorage.getItem("accentColor") || "#00ffd5";
-      
-      const fontSize = localStorage.getItem("fontSize") || "16";
-      document.getElementById("fontSize").value = fontSize;
-      document.getElementById("fontSizeValue").textContent = `${fontSize}px`;
-      document.documentElement.style.fontSize = `${fontSize}px`;
-      
-      // Sound & Notifications
-      document.getElementById("soundToggle").checked = localStorage.getItem("soundEnabled") === "true";
-      document.getElementById("notifToggle").checked = localStorage.getItem("notifyEnabled") === "true";
-      document.getElementById("vibrateToggle").checked = localStorage.getItem("vibrateEnabled") === "true";
-      
-      const soundVolume = localStorage.getItem("soundVolume") || "70";
-      document.getElementById("soundVolume").value = soundVolume;
-      document.getElementById("soundVolumeValue").textContent = `${soundVolume}%`;
-      
-      document.getElementById("notificationSound").value = localStorage.getItem("notificationSound") || "ding";
-      document.getElementById("notifStyle").value = localStorage.getItem("notifStyle") || "banner";
-      
-      // Toggle options based on settings
-      toggleSoundOptions();
-      toggleCustomTheme();
-      
-      // Apply theme
-      applyTheme(theme);
-      
-      // Setup event listeners
-      setupEventListeners();
-    };
+    // === CONFIG ===
+    const GIST_TOKEN_URL="https://gist.githubusercontent.com/Dtech2preas/6750d0418aaa9dfe7f297c26d5aade0229849446b7297ae01c9/gistfile1.txt";
+    const REPO_OWNER="Dtech2preas", REPO_NAME="Oratilr", DATA_FILE_PATH="data1.json";
+    const IMGBB_API_KEY="cedf418c6d844af9c47a7775a17161a6";
+    const TOKEN_TTL=30000;
 
-    function setupEventListeners() {
-      // Theme change
-      document.getElementById("theme").addEventListener("change", function() {
-        const theme = this.value;
-        localStorage.setItem("theme", theme);
-        applyTheme(theme);
-        toggleCustomTheme();
-      });
-      
-      // Custom theme colors
-      document.getElementById("bgColor").addEventListener("input", function() {
-        localStorage.setItem("bgColor", this.value);
-        if (document.getElementById("theme").value === "custom") {
-          applyTheme("custom");
-        }
-      });
-      
-      document.getElementById("textColor").addEventListener("input", function() {
-        localStorage.setItem("textColor", this.value);
-        if (document.getElementById("theme").value === "custom") {
-          applyTheme("custom");
-        }
-      });
-      
-      document.getElementById("accentColor").addEventListener("input", function() {
-        localStorage.setItem("accentColor", this.value);
-        if (document.getElementById("theme").value === "custom") {
-          applyTheme("custom");
-        }
-      });
-      
-      // Sound toggle
-      document.getElementById("soundToggle").addEventListener("change", toggleSoundOptions);
-      
-      // Font size slider
-      document.getElementById("fontSize").addEventListener("input", function() {
-        const size = this.value;
-        document.getElementById("fontSizeValue").textContent = `${size}px`;
-        localStorage.setItem("fontSize", size);
-        document.documentElement.style.fontSize = `${size}px`;
-      });
-      
-      // Sound volume slider
-      document.getElementById("soundVolume").addEventListener("input", function() {
-        const volume = this.value;
-        document.getElementById("soundVolumeValue").textContent = `${volume}%`;
-        localStorage.setItem("soundVolume", volume);
-      });
-      
-      // Notification sound
-      document.getElementById("notificationSound").addEventListener("change", function() {
-        localStorage.setItem("notificationSound", this.value);
-      });
-      
-      // Notification style
-      document.getElementById("notifStyle").addEventListener("change", function() {
-        localStorage.setItem("notifStyle", this.value);
-      });
-      
-      // Export/import buttons
-      document.getElementById("exportBtn").addEventListener("click", exportSettings);
-      document.getElementById("importBtn").addEventListener("click", () => {
-        document.getElementById("importFile").click();
-      });
-      document.getElementById("importFile").addEventListener("change", importSettings);
-      
-      // Reset button
-      document.getElementById("resetBtn").addEventListener("click", resetSettings);
-    }
-    
-    function toggleCustomTheme() {
-      const theme = document.getElementById("theme").value;
-      const customOptions = document.getElementById("customThemeOptions");
-      if (theme === "custom") {
-        customOptions.classList.remove("hidden");
-      } else {
-        customOptions.classList.add("hidden");
-      }
-    }
-    
-    function toggleSoundOptions() {
-      const soundEnabled = document.getElementById("soundToggle").checked;
-      document.getElementById("soundOptions").classList.toggle("hidden", !soundEnabled);
-      localStorage.setItem("soundEnabled", soundEnabled);
-    }
+    // DOM
+    const identityDisplay = document.getElementById("identityDisplay");
+    const loginStatus = document.getElementById("loginStatus");
+    const avatarImg = document.getElementById("avatarImg");
+    const changeAvatarInput = document.getElementById("changeAvatarInput");
+    const usernameInput = document.getElementById("username");
+    const fullNameInput = document.getElementById("fullName");
+    const ageInput = document.getElementById("age");
+    const emailInput = document.getElementById("email");
+    const facebookInput = document.getElementById("facebook");
+    const tiktokInput = document.getElementById("tiktok");
+    const youtubeInput = document.getElementById("youtube");
+    const whatsappInput = document.getElementById("whatsapp");
+    const galleryContainer = document.getElementById("galleryContainer");
+    const addGalleryBtn = document.getElementById("addGalleryBtn");
+    const saveBtn = document.getElementById("saveBtn");
+    const saveStatus = document.getElementById("saveStatus");
 
-    function saveSettings() {
-      // User Profile
-      const username = document.getElementById("username").value;
-      const email = document.getElementById("email").value;
-      
-      // Appearance
-      const theme = document.getElementById("theme").value;
-      const bgColor = document.getElementById("bgColor").value;
-      const textColor = document.getElementById("textColor").value;
-      const accentColor = document.getElementById("accentColor").value;
-      const fontSize = document.getElementById("fontSize").value;
-      
-      // Sound & Notifications
-      const soundEnabled = document.getElementById("soundToggle").checked;
-      const notifyEnabled = document.getElementById("notifToggle").checked;
-      const vibrateEnabled = document.getElementById("vibrateToggle").checked;
-      const soundVolume = document.getElementById("soundVolume").value;
-      const notificationSound = document.getElementById("notificationSound").value;
-      const notifStyle = document.getElementById("notifStyle").value;
-      
-      // Save to localStorage
-      localStorage.setItem("username", username);
-      localStorage.setItem("email", email);
-      
-      localStorage.setItem("theme", theme);
-      localStorage.setItem("bgColor", bgColor);
-      localStorage.setItem("textColor", textColor);
-      localStorage.setItem("accentColor", accentColor);
-      localStorage.setItem("fontSize", fontSize);
-      
-      localStorage.setItem("soundEnabled", soundEnabled);
-      localStorage.setItem("notifyEnabled", notifyEnabled);
-      localStorage.setItem("vibrateEnabled", vibrateEnabled);
-      localStorage.setItem("soundVolume", soundVolume);
-      localStorage.setItem("notificationSound", notificationSound);
-      localStorage.setItem("notifStyle", notifStyle);
-      
-      // Apply changes
-      applyTheme(theme);
-      document.documentElement.style.fontSize = `${fontSize}px`;
-      
-      // Show confirmation
-      showNotification("✅ Settings saved successfully!", "success");
-    }
+    // STATE
+    let identity = null;
+    let profiles = [];
+    let meProfile = null;
+    let cachedToken = null;
+    let tokenFetchedAt = 0;
+    let currentFileSha = null;
 
-    function applyTheme(theme) {
-      let bg, text, accent, cardBg, border;
-      
-      switch(theme) {
-        case "light":
-          bg = "#ffffff";
-          text = "#000000";
-          accent = "#0066cc";
-          cardBg = "#f5f5f5";
-          border = "#ddd";
-          break;
-        case "oled":
-          bg = "#000000";
-          text = "#ffffff";
-          accent = "#00ffd5";
-          cardBg = "#111111";
-          border = "#222";
-          break;
-        case "sepia":
-          bg = "#f4ecd8";
-          text = "#5b4636";
-          accent = "#d4a017";
-          cardBg = "#e4d5b7";
-          border = "#d9c7a7";
-          break;
-        case "custom":
-          bg = localStorage.getItem("bgColor") || "#121212";
-          text = localStorage.getItem("textColor") || "#ffffff";
-          accent = localStorage.getItem("accentColor") || "#00ffd5";
-          cardBg = adjustColor(bg, 20);
-          border = adjustColor(bg, 30);
-          break;
-        default: // dark
-          bg = "#121212";
-          text = "#ffffff";
-          accent = "#00ffd5";
-          cardBg = "#1e1e1e";
-          border = "#333";
-      }
-      
-      document.documentElement.style.setProperty("--bg", bg);
-      document.documentElement.style.setProperty("--text", text);
-      document.documentElement.style.setProperty("--accent", accent);
-      document.documentElement.style.setProperty("--card-bg", cardBg);
-      document.documentElement.style.setProperty("--border", border);
+    // helpers
+    function setStatus(el, msg, isError=false) {
+      el.textContent = msg;
+      el.className = isError ? "status small error" : "status small";
     }
-    
-    function adjustColor(color, amount) {
-      // Simple function to adjust color lightness
-      return color; // In a real implementation, you'd adjust the color
+    function escapeHTML(s){ if(!s) return ""; return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+    async function timeoutFetch(url, opts={}, ms=8000) {
+      const controller = new AbortController();
+      const id = setTimeout(()=>controller.abort(), ms);
+      try { return await fetch(url, {...opts, signal: controller.signal}); }
+      finally { clearTimeout(id); }
     }
-
-    function testNotification(type = "success") {
-      if (localStorage.getItem("notifyEnabled") !== "true") {
-        showNotification("Please enable notifications first", "error");
-        return;
-      }
-      
-      const username = localStorage.getItem("username") || "User";
-      let message, emoji;
-      
-      switch(type) {
-        case "warning":
-          message = `⚠️ Warning ${username}, this is a test warning!`;
-          break;
-        case "error":
-          message = `❌ Error ${username}, this is a test error!`;
-          break;
-        default:
-          message = `✅ Success ${username}, this is a test notification!`;
-      }
-      
-      showNotification(message, type);
-      
-      // Play sound if enabled
-      if (localStorage.getItem("soundEnabled") === "true") {
-        const sound = localStorage.getItem("notificationSound") || "ding";
-        if (sound !== "none") {
-          const audio = document.getElementById(sound);
-          audio.volume = (localStorage.getItem("soundVolume") || 70) / 100;
-          audio.play();
+    async function fetchToken() {
+      if (cachedToken && (Date.now() - tokenFetchedAt) < TOKEN_TTL) return cachedToken;
+      const res = await timeoutFetch(GIST_TOKEN_URL);
+      if (!res.ok) throw new Error("token fetch failed");
+      const t = (await res.text()).trim();
+      if (!t) throw new Error("empty token");
+      cachedToken = t; tokenFetchedAt = Date.now();
+      return t;
+    }
+    async function getRepoFile(token) {
+      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
+      const res = await timeoutFetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json"
         }
-      }
-      
-      // Vibrate if enabled
-      if (localStorage.getItem("vibrateEnabled") === "true" && "vibrate" in navigator) {
-        navigator.vibrate([100, 50, 100]);
-      }
+      });
+      if (!res.ok) throw new Error("fetch profile json failed");
+      return await res.json();
     }
-    
-    function showNotification(message, type = "info") {
-      const notif = document.getElementById("notif");
-      notif.textContent = message;
-      notif.style.display = "block";
-      
-      // Set color based on type
-      switch(type) {
-        case "success":
-          notif.style.backgroundColor = "#4CAF50";
-          break;
-        case "warning":
-          notif.style.backgroundColor = "#FFC107";
-          notif.style.color = "#000";
-          break;
-        case "error":
-          notif.style.backgroundColor = "#F44336";
-          break;
-        default:
-          notif.style.backgroundColor = "var(--accent)";
-          notif.style.color = "#000";
-      }
-      
-      setTimeout(() => {
-        notif.style.display = "none";
-      }, 3000);
-    }
-    
-    function exportSettings() {
-      const settings = {
-        version: 1,
-        user: {
-          username: localStorage.getItem("username") || "",
-          email: localStorage.getItem("email") || ""
-        },
-        appearance: {
-          theme: localStorage.getItem("theme") || "dark",
-          bgColor: localStorage.getItem("bgColor") || "#121212",
-          textColor: localStorage.getItem("textColor") || "#ffffff",
-          accentColor: localStorage.getItem("accentColor") || "#00ffd5",
-          fontSize: localStorage.getItem("fontSize") || "16"
-        },
-        sound: {
-          enabled: localStorage.getItem("soundEnabled") === "true",
-          volume: localStorage.getItem("soundVolume") || "70",
-          sound: localStorage.getItem("notificationSound") || "ding"
-        },
-        notifications: {
-          enabled: localStorage.getItem("notifyEnabled") === "true",
-          vibrate: localStorage.getItem("vibrateEnabled") === "true",
-          style: localStorage.getItem("notifStyle") || "banner"
-        }
+    async function updateRepoFile(token, sha, array) {
+      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
+      const body = {
+        message: "Update user settings",
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2)))),
+        sha
       };
-      
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(settings, null, 2));
-      const downloadAnchor = document.createElement("a");
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", "dtech_settings.json");
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      document.body.removeChild(downloadAnchor);
-      
-      showNotification("⚙️ Settings exported successfully!", "success");
+      const res = await timeoutFetch(url, {
+        method:"PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(body)
+      }, 10000);
+      if (!res.ok) {
+        const t = await res.text();
+        throw new Error("update failed: "+t);
+      }
+      return await res.json();
     }
-    
-    function importSettings(event) {
-      const file = event.target.files[0];
+
+    async function uploadImage(file) {
+      // convert to PNG to ensure consistent format
+      const blob = await new Promise((resolve,reject)=>{
+        const reader=new FileReader();
+        reader.onload=()=>{
+          const img=new Image();
+          img.onload=()=>{
+            const canvas=document.createElement("canvas");
+            canvas.width=img.width;
+            canvas.height=img.height;
+            const ctx=canvas.getContext("2d");
+            ctx.fillStyle="#fff"; ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.drawImage(img,0,0);
+            canvas.toBlob(b=> b? resolve(b): reject("canvas failed"), "image/png");
+          };
+          img.onerror=()=>reject("image load error");
+          img.src=reader.result;
+        };
+        reader.onerror=()=>reject("reader error");
+        reader.readAsDataURL(file);
+      });
+      const base64 = await new Promise((resolve,reject)=>{
+        const r=new FileReader();
+        r.onload=()=> resolve(r.result.split(",")[1]);
+        r.onerror=()=> reject("base64 fail");
+        r.readAsDataURL(blob);
+      });
+      const form=new FormData();
+      form.append("image", base64);
+      const resp=await timeoutFetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,{ method:"POST", body: form },10000);
+      const j=await resp.json();
+      if (!j.success) throw new Error("img upload failed");
+      return j.data.url;
+    }
+
+    function loadIdentity() {
+      try {
+        const stored = JSON.parse(localStorage.getItem("beauty_identity")||"null");
+        if (!stored || !stored.username) throw new Error("no identity");
+        const today = new Date().toISOString().slice(0,10);
+        if (stored.lastLikeDate !== today) {
+          stored.likesToday = 0;
+          stored.lastLikeDate = today;
+          localStorage.setItem("beauty_identity", JSON.stringify(stored));
+        }
+        identity = stored;
+        identityDisplay.textContent = identity.anonymous
+          ? `Anonymous: ${identity.username}`
+          : `Logged in: ${identity.username}`;
+      } catch {
+        loginStatus.textContent = "No identity found. Redirecting to login...";
+        setTimeout(()=> location.href="auth.html", 800);
+      }
+    }
+
+    // core
+    async function init() {
+      setStatus(loginStatus, "Loading...");
+      loadIdentity();
+      try {
+        const token = await fetchToken();
+        const fileInfo = await getRepoFile(token);
+        currentFileSha = fileInfo.sha;
+        let arr = [];
+        try { arr = JSON.parse(atob(fileInfo.content)); } catch {}
+        if (!Array.isArray(arr)) arr = [];
+        profiles = arr;
+        // find my profile
+        const me = profiles.find(p => String(p.username).toLowerCase() === String(identity.username).toLowerCase());
+        if (!me) {
+          setStatus(loginStatus, "Profile not found. You might need to create one.", true);
+          return;
+        }
+        meProfile = me;
+        populateForm(meProfile);
+        setStatus(loginStatus, "Loaded profile.");
+      } catch (e) {
+        setStatus(loginStatus, "Failed init: "+e.message, true);
+      }
+    }
+
+    function populateForm(p) {
+      usernameInput.value = p.username || "";
+      fullNameInput.value = p.fullName || "";
+      ageInput.value = p.age || "";
+      emailInput.value = p.email || "";
+      avatarImg.src = p.image || "";
+      facebookInput.value = (p.social && p.social.facebook) || "";
+      tiktokInput.value = (p.social && p.social.tiktok) || "";
+      youtubeInput.value = (p.social && p.social.youtube) || "";
+      whatsappInput.value = (p.social && p.social.whatsapp) || "";
+      renderGallery(p.gallery || []);
+    }
+
+    function renderGallery(list) {
+      galleryContainer.innerHTML = "";
+      (list || []).forEach((url, idx) => {
+        const div = document.createElement("div");
+        div.className = "gallery-thumb";
+        div.dataset.idx = idx;
+        div.innerHTML = `<img src="${escapeHTML(url)}" alt="gallery"> <button style="position:absolute; top:4px; right:4px; background:rgba(0,0,0,.5); border:none; padding:4px 6px; color:#fff; border-radius:4px; font-size:10px;" class="remove-thumb">x</button>`;
+        galleryContainer.appendChild(div);
+        div.querySelector(".remove-thumb").addEventListener("click", (e) => {
+          e.stopPropagation();
+          removeGalleryAt(idx);
+        });
+      });
+    }
+
+    function removeGalleryAt(idx) {
+      if (!meProfile) return;
+      meProfile.gallery = meProfile.gallery || [];
+      meProfile.gallery.splice(idx,1);
+      renderGallery(meProfile.gallery);
+    }
+
+    // event wiring
+    changeAvatarInput.addEventListener("change", async () => {
+      const file = changeAvatarInput.files[0];
       if (!file) return;
-      
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        try {
-          const settings = JSON.parse(e.target.result);
-          
-          // Validate it's our settings file
-          if (!settings.version || !settings.user || !settings.appearance) {
-            throw new Error("Invalid settings file");
-          }
-          
-          // Import user settings
-          if (settings.user.username) localStorage.setItem("username", settings.user.username);
-          if (settings.user.email) localStorage.setItem("email", settings.user.email);
-          
-          // Import appearance
-          if (settings.appearance.theme) localStorage.setItem("theme", settings.appearance.theme);
-          if (settings.appearance.bgColor) localStorage.setItem("bgColor", settings.appearance.bgColor);
-          if (settings.appearance.textColor) localStorage.setItem("textColor", settings.appearance.textColor);
-          if (settings.appearance.accentColor) localStorage.setItem("accentColor", settings.appearance.accentColor);
-          if (settings.appearance.fontSize) localStorage.setItem("fontSize", settings.appearance.fontSize);
-          
-          // Import sound
-          if (settings.sound) {
-            localStorage.setItem("soundEnabled", settings.sound.enabled ? "true" : "false");
-            if (settings.sound.volume) localStorage.setItem("soundVolume", settings.sound.volume);
-            if (settings.sound.sound) localStorage.setItem("notificationSound", settings.sound.sound);
-          }
-          
-          // Import notifications
-          if (settings.notifications) {
-            localStorage.setItem("notifyEnabled", settings.notifications.enabled ? "true" : "false");
-            localStorage.setItem("vibrateEnabled", settings.notifications.vibrate ? "true" : "false");
-            if (settings.notifications.style) localStorage.setItem("notifStyle", settings.notifications.style);
-          }
-          
-          // Reload settings
-          window.location.reload();
-          showNotification("⚙️ Settings imported successfully!", "success");
-        } catch (error) {
-          console.error("Error importing settings:", error);
-          showNotification("❌ Error importing settings", "error");
-        }
-      };
-      reader.readAsText(file);
-      
-      // Reset file input
-      event.target.value = "";
-    }
-    
-    function resetSettings() {
-      if (confirm("Are you sure you want to reset all settings to default values?")) {
-        localStorage.clear();
-        window.location.reload();
-      }
-    }
-    
-    // Auto-save when inputs change
-    document.querySelectorAll('input, select').forEach(element => {
-      if (element.id !== 'importFile') { // Exclude file input
-        element.addEventListener('change', saveSettings);
+      try {
+        setStatus(saveStatus, "Uploading avatar...");
+        const url = await uploadImage(file);
+        avatarImg.src = url;
+        if (meProfile) meProfile.image = url;
+        setStatus(saveStatus, "Avatar ready. Save to persist.");
+      } catch (e) {
+        setStatus(saveStatus, "Avatar upload failed: "+e.message, true);
       }
     });
+
+    addGalleryBtn.addEventListener("click", async () => {
+      // create file input dynamically
+      const input = document.createElement("input");
+      input.type="file";
+      input.accept="image/*";
+      input.onchange = async () => {
+        const file = input.files[0];
+        if (!file) return;
+        try {
+          setStatus(saveStatus, "Uploading gallery image...");
+          const url = await uploadImage(file);
+          meProfile.gallery = meProfile.gallery || [];
+          meProfile.gallery.push(url);
+          renderGallery(meProfile.gallery);
+          setStatus(saveStatus, "Added to gallery. Save to persist.");
+        } catch (e) {
+          setStatus(saveStatus, "Upload failed: "+e.message, true);
+        }
+      };
+      input.click();
+    });
+
+    saveBtn.addEventListener("click", async () => {
+      if (!meProfile) return;
+      setStatus(saveStatus, "Saving...");
+      // apply form values
+      meProfile.fullName = fullNameInput.value.trim();
+      meProfile.age = Number(ageInput.value) || meProfile.age;
+      meProfile.social = {
+        facebook: facebookInput.value.trim(),
+        tiktok: tiktokInput.value.trim(),
+        youtube: youtubeInput.value.trim(),
+        whatsapp: whatsappInput.value.trim()
+      };
+      // image already updated in meProfile.image
+      try {
+        const token = await fetchToken();
+        // reload latest to avoid conflicts
+        const fileInfo = await getRepoFile(token);
+        let arr = [];
+        try { arr = JSON.parse(atob(fileInfo.content)); } catch {}
+        if (!Array.isArray(arr)) arr = [];
+        // find index and replace
+        const idx = arr.findIndex(x => String(x.username).toLowerCase() === String(meProfile.username).toLowerCase());
+        if (idx === -1) throw new Error("Profile disappeared");
+        arr[idx] = meProfile;
+        await updateRepoFile(token, fileInfo.sha, arr);
+        profiles = arr;
+        setStatus(saveStatus, "Saved successfully.");
+      } catch (e) {
+        setStatus(saveStatus, "Save failed: "+e.message, true);
+      }
+    });
+
+    // bootstrap
+    init();
   </script>
 </body>
 </html>
