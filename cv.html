@@ -85,7 +85,7 @@
     const REPO_OWNER = "Dtech2preas";
     const REPO_NAME = "Oratilr";
     const DATA_FILE_PATH = "data1.json";
-    const IMGBB_API_KEY = "cedf418c6d844af9c47a7775a17161a6"; // fixed: define it
+    const IMGBB_API_KEY = "cedf418c6d844af9c47a7775a17161a6";
     const TOKEN_TTL = 30000;
 
     // STATE
@@ -116,9 +116,8 @@
       authStatus.className = isError ? "status error" : "status";
     }
 
-    function escapeHTML(s){ if(!s) return ""; return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+    function safeEscape(s){ if(!s) return ""; return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
-    // fetch with timeout
     async function timeoutFetch(url, opts={}, ms=8000){
       const controller = new AbortController();
       const id = setTimeout(()=>controller.abort(), ms);
@@ -188,6 +187,43 @@
       return profiles.some(p => String(p.username).toLowerCase() === String(username).toLowerCase());
     }
 
+    function readFileAsDataURL(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error("Failed reading file"));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function convertImageToBase64Png(file) {
+      const dataUrl = await readFileAsDataURL(file);
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext("2d");
+          ctx.fillStyle = "#fff";
+          ctx.fillRect(0,0,canvas.width,canvas.height);
+          ctx.drawImage(img,0,0);
+          canvas.toBlob(blob => {
+            if (!blob) return reject(new Error("Canvas conversion failed"));
+            const fr = new FileReader();
+            fr.onload = () => {
+              const base64 = fr.result.split(",")[1];
+              resolve(base64);
+            };
+            fr.onerror = () => reject(new Error("Failed reading canvas blob"));
+            fr.readAsDataURL(blob);
+          }, "image/png");
+        };
+        img.onerror = () => reject(new Error("Image load failed"));
+        img.src = dataUrl;
+      });
+    }
+
     // tab switching
     function activateTab(name) {
       [tabLogin, tabSignup, tabAnon].forEach(t=>t.classList.remove("active"));
@@ -202,8 +238,8 @@
     tabSignup.addEventListener("click", ()=>activateTab("signup"));
     tabAnon.addEventListener("click", ()=>activateTab("anon"));
 
-    // early redirect if already logged in
-    (function checkExisting() {
+    // pre-check existing identity
+    (function checkExisting(){
       const stored = localStorage.getItem("beauty_identity");
       if (stored) {
         try {
@@ -211,12 +247,12 @@
           if (o && o.username) {
             location.href = "viewer.html";
           }
-        } catch{}
+        } catch {}
       }
       setStatus("Ready. Choose login, signup, or anonymous.");
     })();
 
-    // login handler
+    // login
     loginBtn.addEventListener("click", async () => {
       try {
         const username = loginUsernameInput.value.trim();
@@ -256,17 +292,19 @@
       try {
         const username = newUsernameInput.value.trim();
         const fullName = newFullNameInput.value.trim();
-        const age = newAgeInput.value.trim();
+        const ageStr = newAgeInput.value.trim();
         const email = newEmailInput.value.trim();
         const file = newImageInput.files[0];
-        if (!username || !fullName || !age || !email || !file) {
+        if (!username || !fullName || !ageStr || !email || !file) {
           setStatus("All fields required.", true);
           return;
         }
-        if (isNaN(age) || Number(age) < 13) {
-          setStatus("Age must be >=13", true);
+        const age = Number(ageStr);
+        if (isNaN(age) || age < 13) {
+          setStatus("Age must be a number >=13", true);
           return;
         }
+
         setStatus("Fetching existing profiles...");
         let profiles = [];
         let token;
@@ -275,7 +313,7 @@
           const fileInfo = await getRepoFile(token);
           profiles = JSON.parse(atob(fileInfo.content));
         } catch (e) {
-          console.warn("Fetch existing profiles failed, fallback read only:", e);
+          console.warn("Fetch existing profiles failed, falling back to raw read:", e);
           profiles = await rawFetchProfiles();
           if (!Array.isArray(profiles)) profiles = [];
         }
@@ -284,52 +322,28 @@
           setStatus("Username already exists.", true);
           return;
         }
+
+        setStatus("Processing image...");
+        const base64 = await convertImageToBase64Png(file);
         setStatus("Uploading image...");
-        // upload image
-        const imageUrl = await (async function uploadImage(file) {
-          const blob = await new Promise((resolve,reject)=>{
-            const reader=new FileReader();
-            reader.onload=()=>{
-              const img=new Image();
-              img.onload=()=>{
-                const canvas=document.createElement("canvas");
-                canvas.width=img.width;
-                canvas.height=img.height;
-                const ctx=canvas.getContext("2d");
-                ctx.fillStyle="#fff";
-                ctx.fillRect(0,0,canvas.width,canvas.height);
-                ctx.drawImage(img,0,0);
-                canvas.toBlob(b=> b? resolve(b): reject("canvas fail"), "image/png");
-              };
-              img.onerror=()=>reject("img load");
-              img.src=reader.result;
-            };
-            reader.onerror=()=>reject("reader");
-            reader.readAsDataURL(file);
-          });
-          const base64=await new Promise((resolve,reject)=>{
-            const r=new FileReader();
-            r.onload=()=> resolve(r.result.split(",")[1]);
-            r.onerror=()=> reject("base64 fail");
-            r.readAsDataURL(blob);
-          });
-          const form=new FormData();
-          form.append("image", base64);
-          const resp=await timeoutFetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,{ method:"POST", body: form });
-          const json=await resp.json();
-          if (!json.success) throw new Error("imgbb upload failed");
-          return json.data.url;
-        })(file);
+        const form = new FormData();
+        form.append("image", base64);
+        const uploadResp = await timeoutFetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method:"POST", body: form });
+        const uploadJson = await uploadResp.json();
+        if (!uploadJson.success) throw new Error("Image upload failed: " + (uploadJson.data?.error?.message || "unknown"));
+        const imageUrl = uploadJson.data.url;
+
         const newProfile = {
           username,
           fullName,
-          age: Number(age),
+          age,
           image: imageUrl,
           likes: 0,
           timestamp: Date.now(),
           email
         };
         profiles.push(newProfile);
+
         if (!token) token = await fetchToken();
         const fileInfo = await getRepoFile(token);
         await updateRepoFile(token, fileInfo.sha, profiles);
