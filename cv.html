@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Beauty Showcase (Debuggable)</title>
+  <title>Beauty Showcase (Auth + Viewer)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <style>
     :root { --back:#f0f4f9; --card:#fff; --radius:10px; --shadow:0 8px 20px rgba(0,0,0,0.08); }
@@ -26,12 +26,10 @@
     button { background:#2563eb; color:#fff; border:none; cursor:pointer; }
     .flex { display:flex; gap:12px; flex-wrap:wrap; }
     .url { word-break:break-all; color:#1d4ed8; }
-    .login-overlay {
-      position:fixed; inset:0; background:rgba(0,0,0,.6); display:flex; align-items:center; justify-content:center; z-index:50;
-    }
-    .login-box { background:#fff; padding:24px; border-radius:12px; width:360px; box-shadow:0 20px 40px rgba(0,0,0,0.2); position:relative; }
-    .login-box h2 { margin-top:0; }
-    .small-muted { font-size:11px; color:#666; margin-top:4px; }
+    .tab-buttons { display:flex; gap:8px; margin-bottom:12px; }
+    .tab { padding:12px 16px; border-radius:8px; cursor:pointer; flex:1; text-align:center; background:#e2e8f0; }
+    .tab.active { background:#2563eb; color:#fff; }
+    .hidden { display:none; }
     .viewer {
       position:fixed; inset:0; background:#000; display:none; align-items:center; justify-content:center; z-index:100;
     }
@@ -58,32 +56,67 @@
 </head>
 <body>
   <div class="container">
-    <div class="card" id="loginSection">
-      <h2>Login / Identity</h2>
-      <div id="identityDisplay" style="margin-bottom:12px;"></div>
-      <div class="flex">
-        <div class="field" style="flex:1">
-          <label>Username</label>
-          <input type="text" id="loginUsername" placeholder="username or anonymous" />
-        </div>
-        <div class="field" style="flex:1">
-          <label>Email (optional for anonymous)</label>
-          <input type="email" id="loginEmail" placeholder="you@example.com" />
-        </div>
-        <div class="field" style="flex:1; display:flex; flex-direction:column; justify-content:flex-end;">
-          <button id="loginBtn" style="margin-bottom:6px;">Login / Validate</button>
-          <button id="anonBtn" style="background:#6b7280;">Continue Anonymous</button>
-        </div>
+    <!-- Auth / login/signup panel -->
+    <div class="card" id="authPanel">
+      <h2>Welcome to Beauty Showcase</h2>
+      <div class="tab-buttons">
+        <div class="tab active" data-tab="login" id="tabLogin">Login</div>
+        <div class="tab" data-tab="signup" id="tabSignup">Sign Up</div>
+        <div class="tab" data-tab="anon" id="tabAnon">Anonymous</div>
       </div>
-      <div class="small-muted">
-        If you don't have a profile, use "Create Profile" below to register. Anonymous mode allows 5 likes/day; logged in users 10/day.
+      <div id="loginTab">
+        <div class="flex">
+          <div class="field" style="flex:1">
+            <label>Username</label>
+            <input type="text" id="loginUsername" placeholder="existing username" />
+          </div>
+          <div class="field" style="flex:1">
+            <label>Email</label>
+            <input type="email" id="loginEmail" placeholder="you@example.com" />
+          </div>
+          <div class="field" style="flex:1; display:flex; flex-direction:column; justify-content:flex-end;">
+            <button id="loginBtn">Login / Validate</button>
+          </div>
+        </div>
+        <div class="small-muted">Enter username and email to log in. Email is used only for lightweight validation (not exposed). Must exist in profile data.</div>
       </div>
-      <div style="margin-top:12px;">
-        <button id="showCreateProfile" style="background:#10b981;">Create Profile</button>
+      <div id="signupTab" class="hidden">
+        <div class="flex">
+          <div class="field" style="flex:1">
+            <label>Preferred Username</label>
+            <input type="text" id="newUsername" placeholder="beautyqueen" />
+          </div>
+          <div class="field" style="flex:1">
+            <label>Full Name</label>
+            <input type="text" id="newFullName" placeholder="Name and surname" />
+          </div>
+          <div class="field" style="flex:1">
+            <label>Age</label>
+            <input type="number" id="newAge" placeholder="Age" min="13" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="newEmail" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label>Profile Image</label>
+          <input type="file" id="newImageInput" accept="image/*" />
+        </div>
+        <div class="field">
+          <button id="createProfileBtn">Create & Upload</button>
+        </div>
+        <div class="small-muted">Sign up creates a new profile; email is stored but not displayed in public views.</div>
+        <div id="createStatus" class="status small">Ready to create.</div>
       </div>
-      <div id="loginStatus" class="status small">Not logged in.</div>
+      <div id="anonTab" class="hidden">
+        <p>Continue anonymously. Limited to 5 likes per day. You'll get a generated anon identifier.</p>
+        <button id="anonBtn">Start Anonymous Session</button>
+      </div>
+      <div id="authStatus" class="status small">Please choose an option.</div>
     </div>
 
+    <!-- upload/profile section -->
     <div class="card" id="uploadSection" style="display:none;">
       <h2>Upload Beauty Profile</h2>
       <div class="flex">
@@ -114,6 +147,7 @@
       <div id="status" class="status small">Ready.</div>
     </div>
 
+    <!-- gallery -->
     <div class="card">
       <h2>Gallery</h2>
       <div id="galleryStatus" class="small">Loading profiles...</div>
@@ -125,9 +159,9 @@
     </div>
   </div>
 
-  <!-- full screen viewer -->
+  <!-- viewer -->
   <div class="viewer" id="viewer">
-    <div class="viewer-info" id="viewerInfo">
+    <div class="viewer-info">
       <div>
         <div><strong id="v-username"></strong> <span id="v-fullname" class="small"></span></div>
         <div class="small">Age: <span id="v-age"></span> • Uploaded: <span id="v-uploaded"></span></div>
@@ -148,37 +182,6 @@
     </div>
   </div>
 
-  <!-- create profile section -->
-  <div class="card" id="createProfileSection" style="display:none;">
-    <h2>Create Profile</h2>
-    <div class="flex">
-      <div class="field" style="flex:1">
-        <label>Preferred Username</label>
-        <input type="text" id="newUsername" placeholder="beautyqueen" />
-      </div>
-      <div class="field" style="flex:1">
-        <label>Full Name</label>
-        <input type="text" id="newFullName" placeholder="Name and surname" />
-      </div>
-      <div class="field" style="flex:1">
-        <label>Age</label>
-        <input type="number" id="newAge" placeholder="Age" min="13" />
-      </div>
-    </div>
-    <div class="field">
-      <label>Email</label>
-      <input type="email" id="newEmail" placeholder="you@example.com" />
-    </div>
-    <div class="field">
-      <label>Profile Image</label>
-      <input type="file" id="newImageInput" accept="image/*" />
-    </div>
-    <div class="field">
-      <button id="createProfileBtn">Create & Upload</button>
-    </div>
-    <div id="createStatus" class="status small">Ready to create.</div>
-  </div>
-
   <script>
     // === CONFIG ===
     const GIST_TOKEN_URL = "https://gist.githubusercontent.com/Dtech2preas/6750d0418aaa9dfe7f297c26d1dfae48/raw/2e511e4d11267d5aade0229849446b7297ae01c9/gistfile1.txt";
@@ -189,21 +192,15 @@
     const MAX_LIKES_LOGGED = 10;
     const MAX_LIKES_ANON = 5;
 
-    // === DOM ===
-    const statusEl = document.getElementById("status");
-    const galleryEl = document.getElementById("gallery");
-    const galleryStatusEl = document.getElementById("galleryStatus");
-    const rawJsonEl = document.getElementById("rawJson");
-    const submitBtn = document.getElementById("submitBtn");
-    const loginBtn = document.getElementById("loginBtn");
-    const anonBtn = document.getElementById("anonBtn");
-    const loginStatusEl = document.getElementById("loginStatus");
-    const identityDisplay = document.getElementById("identityDisplay");
-    const showCreateProfile = document.getElementById("showCreateProfile");
-    const createSection = document.getElementById("createProfileSection");
-    const createBtn = document.getElementById("createProfileBtn");
-    const createStatusEl = document.getElementById("createStatus");
-    const uploadSection = document.getElementById("uploadSection");
+    // DOM
+    const authPanel = document.getElementById("authPanel");
+    const tabLogin = document.getElementById("tabLogin");
+    const tabSignup = document.getElementById("tabSignup");
+    const tabAnon = document.getElementById("tabAnon");
+    const loginTab = document.getElementById("loginTab");
+    const signupTab = document.getElementById("signupTab");
+    const anonTab = document.getElementById("anonTab");
+    const authStatus = document.getElementById("authStatus");
     const loginUsernameInput = document.getElementById("loginUsername");
     const loginEmailInput = document.getElementById("loginEmail");
     const newUsernameInput = document.getElementById("newUsername");
@@ -211,8 +208,16 @@
     const newAgeInput = document.getElementById("newAge");
     const newEmailInput = document.getElementById("newEmail");
     const newImageInput = document.getElementById("newImageInput");
-
-    // viewer
+    const loginBtn = document.getElementById("loginBtn");
+    const anonBtn = document.getElementById("anonBtn");
+    const createProfileBtn = document.getElementById("createProfileBtn");
+    const createStatusEl = document.getElementById("createStatus");
+    const uploadSection = document.getElementById("uploadSection");
+    const statusEl = document.getElementById("status");
+    const submitBtn = document.getElementById("submitBtn");
+    const galleryEl = document.getElementById("gallery");
+    const galleryStatusEl = document.getElementById("galleryStatus");
+    const rawJsonEl = document.getElementById("rawJson");
     const viewer = document.getElementById("viewer");
     const viewerImg = document.getElementById("viewerImg");
     const vUsername = document.getElementById("v-username");
@@ -226,7 +231,7 @@
     const nextPic = document.getElementById("nextPic");
     const viewerUserinfo = document.getElementById("viewer-userinfo");
 
-    // === STATE ===
+    // state
     let cachedToken = null;
     let tokenFetchedAt = 0;
     const TOKEN_TTL = 30_000;
@@ -234,23 +239,17 @@
     let currentViewerIndex = 0;
     let identity = null; // { username, email, anonymous, lastLikeDate, likesToday }
 
-    // utils
+    // helpers
     function setStatus(el, msg, isError=false) {
       el.textContent = msg;
-      el.className = (isError ? "status small error" : "status small");
+      el.className = isError ? "status small error" : "status small";
     }
-
     function escapeHTML(s) {
       if (!s) return "";
       return s.replace(/[&<>"']/g, c => ({
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#39;"
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
       }[c]));
     }
-
     function loadIdentity() {
       try {
         const stored = JSON.parse(localStorage.getItem("beauty_identity")||"null");
@@ -262,37 +261,31 @@
             saveIdentity(stored);
           }
           identity = stored;
-          updateIdentityUI();
         }
       } catch {}
+      refreshUIForIdentity();
     }
     function saveIdentity(obj) {
       identity = obj;
       localStorage.setItem("beauty_identity", JSON.stringify(obj));
-      updateIdentityUI();
+      refreshUIForIdentity();
     }
-    function updateIdentityUI() {
+    function refreshUIForIdentity() {
       if (!identity) {
-        identityDisplay.textContent = "Not logged in.";
-        loginStatusEl.textContent = "Not logged in.";
+        setStatus(authStatus, "Not logged in.");
         uploadSection.style.display = "none";
-        return;
+      } else {
+        setStatus(authStatus, identity.anonymous
+          ? `Anonymous as ${identity.username} (likes ${identity.likesToday||0}/${MAX_LIKES_ANON})`
+          : `Logged in as ${identity.username} (likes ${identity.likesToday||0}/${MAX_LIKES_LOGGED})`);
+        uploadSection.style.display = identity.anonymous ? "none" : "block";
       }
-      identityDisplay.innerHTML = identity.anonymous
-        ? `Anonymous: <strong>${escapeHTML(identity.username)}</strong> (likes today ${identity.likesToday || 0}/${MAX_LIKES_ANON})`
-        : `Logged in as: <strong>${escapeHTML(identity.username)}</strong> (likes today ${identity.likesToday || 0}/${MAX_LIKES_LOGGED})`;
-      loginStatusEl.textContent = identity.anonymous
-        ? "Anonymous session active."
-        : `Authenticated as ${identity.username}.`;
-      uploadSection.style.display = identity.anonymous ? "none" : "block";
     }
-
     function canLike() {
       if (!identity) return false;
       const limit = identity.anonymous ? MAX_LIKES_ANON : MAX_LIKES_LOGGED;
-      return (identity.likesToday || 0) < limit;
+      return (identity.likesToday||0) < limit;
     }
-
     function recordLike() {
       const today = new Date().toISOString().slice(0,10);
       if (!identity) return;
@@ -300,48 +293,41 @@
         identity.likesToday = 0;
         identity.lastLikeDate = today;
       }
-      identity.likesToday = (identity.likesToday||0) + 1;
+      identity.likesToday = (identity.likesToday||0)+1;
       saveIdentity(identity);
     }
-
-    async function timeoutFetch(url, opts = {}, ms = 8000) {
+    async function timeoutFetch(url, opts={}, ms=8000) {
       const controller = new AbortController();
-      const id = setTimeout(() => controller.abort(), ms);
+      const id = setTimeout(()=>controller.abort(), ms);
       try {
-        return await fetch(url, { ...opts, signal: controller.signal });
+        return await fetch(url, {...opts, signal: controller.signal});
       } finally {
         clearTimeout(id);
       }
     }
-
     async function fetchToken() {
       if (cachedToken && (Date.now() - tokenFetchedAt) < TOKEN_TTL) return cachedToken;
       const res = await timeoutFetch(GIST_TOKEN_URL, {}, 6000);
-      if (!res || !res.ok) throw new Error("Failed fetching token gist: " + (res? res.status : "no response"));
+      if (!res || !res.ok) throw new Error("Failed fetching token gist");
       const t = (await res.text()).trim();
-      if (!t) throw new Error("Token empty");
+      if (!t) throw new Error("Empty token");
       cachedToken = t;
       tokenFetchedAt = Date.now();
       return t;
     }
-
     async function getRepoFile(token) {
       const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
       const res = await timeoutFetch(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github.v3+json"
-        }
+        headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" }
       }, 8000);
-      if (!res.ok) throw new Error(`GitHub contents API failed: ${res.status} ${res.statusText}`);
+      if (!res.ok) throw new Error(`GitHub contents API failed: ${res.status}`);
       return await res.json();
     }
-
     async function updateRepoFile(token, sha, array) {
       const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
       const body = {
         message: "Update profile",
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null, 2)))),
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(array, null,2)))),
         sha
       };
       const res = await timeoutFetch(url, {
@@ -355,13 +341,12 @@
       }, 10000);
       if (!res.ok) {
         const txt = await res.text();
-        const err = new Error("GitHub update failed: " + res.status + " " + txt);
+        const err = new Error("Update failed: " + txt);
         err.code = res.status;
         throw err;
       }
       return await res.json();
     }
-
     async function uploadImageAsPNG(file) {
       const blob = await new Promise((resolve,reject)=>{
         const reader = new FileReader();
@@ -376,23 +361,20 @@
             ctx.fillRect(0,0,canvas.width,canvas.height);
             ctx.drawImage(img,0,0);
             canvas.toBlob(b=>{
-              if(!b) reject("canvas toBlob failed");
+              if(!b) reject("canvas error");
               else resolve(b);
             },"image/png");
           };
           img.onerror = ()=> reject("image load error");
           img.src = reader.result;
         };
-        reader.onerror = ()=> reject("file reader error");
+        reader.onerror = ()=> reject("reader error");
         reader.readAsDataURL(file);
       });
       const base64 = await new Promise((resolve,reject)=>{
         const r = new FileReader();
-        r.onload = ()=> {
-          const str = r.result.split(",")[1];
-          resolve(str);
-        };
-        r.onerror = ()=> reject("base64 conversion failed");
+        r.onload = ()=> resolve(r.result.split(",")[1]);
+        r.onerror = ()=> reject("base64 fail");
         r.readAsDataURL(blob);
       });
       const form = new FormData();
@@ -400,9 +382,9 @@
       const resp = await timeoutFetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,{
         method:"POST", body: form
       }, 10000);
-      const json = await resp.json();
-      if (!json.success) throw new Error("imgbb upload failed");
-      return json.data.url;
+      const j = await resp.json();
+      if (!j.success) throw new Error("imgbb upload failed");
+      return j.data.url;
     }
 
     async function loadGalleryViaAPI() {
@@ -418,14 +400,14 @@
         renderProfiles(profiles);
       } catch (e) {
         galleryStatusEl.textContent = "Failed to load gallery: " + e.message;
-        rawJsonEl.textContent = "Error fetching/parsing JSON:\n" + (e.stack || e);
+        rawJsonEl.textContent = "Error:\n" + (e.stack||e);
       }
     }
 
     function renderProfiles(profiles) {
       galleryEl.innerHTML = "";
       if (!Array.isArray(profiles)) {
-        galleryStatusEl.textContent = "Profiles JSON is not an array.";
+        galleryStatusEl.textContent = "Invalid profiles.";
         return;
       }
       if (profiles.length === 0) {
@@ -446,7 +428,7 @@
         ov.className = "overlay";
         ov.innerHTML = `
           <div style="flex:1">
-            <div><strong>${escapeHTML(p.username || "")}</strong> ${p.fullName?`• ${escapeHTML(p.fullName)}`:""} • ${escapeHTML(String(p.age||""))}</div>
+            <div><strong>${escapeHTML(p.username||"")}</strong> ${p.fullName?`• ${escapeHTML(p.fullName)}`:""} • ${escapeHTML(String(p.age||""))}</div>
             <div class="small">Likes: ${p.likes||0}</div>
           </div>
           <div style="text-align:right">
@@ -455,36 +437,35 @@
         `;
         div.appendChild(ov);
         galleryEl.appendChild(div);
-        div.addEventListener("click", (e)=>{
+        div.addEventListener("click", e=>{
           if (e.target.closest(".like-btn")) return;
           openViewer(idx);
         });
       });
 
-      document.querySelectorAll(".like-btn").forEach(b => {
-        b.onclick = async (e) => {
+      document.querySelectorAll(".like-btn").forEach(b=>{
+        b.onclick = async e=>{
           e.stopPropagation();
           const target = b.dataset.username;
           if (!identity) {
-            setStatus(loginStatusEl, "Login first to like.", true);
+            setStatus(authStatus, "Login/signup first to like.", true);
             return;
           }
           if (!canLike()) {
-            setStatus(loginStatusEl, identity.anonymous
-              ? `Anonymous limit reached (max ${MAX_LIKES_ANON}/day). Wait till tomorrow.`
-              : `Limit reached (max ${MAX_LIKES_LOGGED}/day). Wait till tomorrow.`, true);
+            setStatus(authStatus, identity.anonymous
+              ? `Anonymous limit reached (${MAX_LIKES_ANON}/day).`
+              : `Limit reached (${MAX_LIKES_LOGGED}/day).`, true);
             return;
           }
           b.disabled = true;
-          setStatus(loginStatusEl, "Updating like for " + target + "...");
+          setStatus(authStatus, "Updating like...");
           try {
             await incrementLike(target);
             recordLike();
-            updateIdentityUI();
-            setStatus(loginStatusEl, "Like saved.");
+            setStatus(authStatus, "Like saved.");
             await reloadGalleryFresh();
           } catch (err) {
-            setStatus(loginStatusEl, "Like error: " + err.message, true);
+            setStatus(authStatus, "Like error: " + err.message, true);
           } finally {
             b.disabled = false;
           }
@@ -492,89 +473,82 @@
       });
     }
 
-    async function incrementLike(targetUsername, maxRetries = 3) {
-      for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    async function incrementLike(targetUsername, maxRetries=3) {
+      for (let attempt=1; attempt<=maxRetries; attempt++) {
         const token = await fetchToken();
         const fileInfo = await getRepoFile(token);
         let arr = [];
         try { arr = JSON.parse(atob(fileInfo.content)); } catch {}
-        const idx = arr.findIndex(x => String(x.username).toLowerCase() === String(targetUsername).toLowerCase());
+        const idx = arr.findIndex(x=> String(x.username).toLowerCase() === String(targetUsername).toLowerCase());
         if (idx === -1) throw new Error("Profile not found");
-        arr[idx].likes = (arr[idx].likes||0) + 1;
+        arr[idx].likes = (arr[idx].likes||0)+1;
         try {
           await updateRepoFile(token, fileInfo.sha, arr);
           return arr[idx].likes;
         } catch (e) {
-          if ((e.code === 409 || (e.message && e.message.includes("409"))) && attempt < maxRetries) {
-            await new Promise(r => setTimeout(r, 100 * attempt));
+          if ((e.code===409 || (e.message && e.message.includes("409"))) && attempt<maxRetries) {
+            await new Promise(r=>setTimeout(r, 100*attempt));
             continue;
           }
           throw e;
         }
       }
-      throw new Error("Failed to increment like after retries");
+      throw new Error("Failed to increment like");
     }
 
     async function reloadGalleryFresh() {
       await loadGalleryViaAPI();
-      for (let i = 1; i <= 2; i++) {
-        await new Promise(r => setTimeout(r, 300 * i));
+      for (let i=1;i<=2;i++) {
+        await new Promise(r=>setTimeout(r, 300*i));
         await loadGalleryViaAPI();
       }
     }
 
-    function validateLocalProfile(username, email) {
-      if (!currentProfiles || !Array.isArray(currentProfiles)) return false;
-      return currentProfiles.some(p => {
-        if (String(p.username).toLowerCase() !== String(username).toLowerCase()) return false;
-        return true;
-      });
+    function switchTab(to) {
+      [tabLogin, tabSignup, tabAnon].forEach(t=>t.classList.remove("active"));
+      loginTab.classList.add("hidden");
+      signupTab.classList.add("hidden");
+      anonTab.classList.add("hidden");
+      if (to==="login") { tabLogin.classList.add("active"); loginTab.classList.remove("hidden"); }
+      if (to==="signup") { tabSignup.classList.add("active"); signupTab.classList.remove("hidden"); }
+      if (to==="anon") { tabAnon.classList.add("active"); anonTab.classList.remove("hidden"); }
     }
 
-    loginBtn.addEventListener("click", async () => {
+    function validateLocalProfile(username) {
+      if (!Array.isArray(currentProfiles)) return false;
+      return currentProfiles.some(p => String(p.username).toLowerCase() === String(username).toLowerCase());
+    }
+
+    // tab clicks
+    tabLogin.addEventListener("click", ()=>switchTab("login"));
+    tabSignup.addEventListener("click", ()=>switchTab("signup"));
+    tabAnon.addEventListener("click", ()=>switchTab("anon"));
+
+    // login
+    loginBtn.addEventListener("click", async ()=>{
       const username = loginUsernameInput.value.trim();
       const email = loginEmailInput.value.trim();
-      if (!username) {
-        setStatus(loginStatusEl, "Username required.", true);
-        return;
-      }
+      if (!username) { setStatus(authStatus, "Username required.", true); return; }
       await loadGalleryViaAPI();
-      if (!validateLocalProfile(username, email)) {
-        setStatus(loginStatusEl, "No such profile exists. Create one.", true);
+      if (!validateLocalProfile(username)) {
+        setStatus(authStatus, "Profile not found. Sign up.", true);
         return;
       }
       const today = new Date().toISOString().slice(0,10);
-      const obj = {
-        username,
-        email: email || "",
-        anonymous: false,
-        lastLikeDate: today,
-        likesToday: 0
-      };
-      saveIdentity(obj);
-      setStatus(loginStatusEl, "Logged in as " + username);
+      saveIdentity({ username, email: email||"", anonymous:false, lastLikeDate: today, likesToday:0 });
+      setStatus(authStatus, "Logged in as " + username);
     });
 
-    anonBtn.addEventListener("click", () => {
+    // anonymous
+    anonBtn.addEventListener("click", ()=>{
       const randomId = "anon_" + Math.random().toString(36).substring(2,8);
       const today = new Date().toISOString().slice(0,10);
-      const obj = {
-        username: randomId,
-        email: "",
-        anonymous: true,
-        lastLikeDate: today,
-        likesToday: 0
-      };
-      saveIdentity(obj);
-      setStatus(loginStatusEl, "Anonymous session started.");
+      saveIdentity({ username: randomId, email:"", anonymous:true, lastLikeDate: today, likesToday:0 });
+      setStatus(authStatus, "Anonymous session started.");
     });
 
-    showCreateProfile.addEventListener("click", () => {
-      createSection.style.display = "block";
-      createSection.scrollIntoView({behavior:"smooth"});
-    });
-
-    createBtn.addEventListener("click", async () => {
+    // sign up create profile (same as upload)
+    createProfileBtn.addEventListener("click", async ()=>{
       try {
         setStatus(createStatusEl, "Validating...");
         const username = newUsernameInput.value.trim();
@@ -586,21 +560,17 @@
           setStatus(createStatusEl, "All fields required.", true);
           return;
         }
-        if (isNaN(age) || Number(age) < 13) {
-          setStatus(createStatusEl, "Age must be >=13", true);
-          return;
-        }
+        if (isNaN(age) || Number(age)<13) { setStatus(createStatusEl, "Age must be >=13", true); return; }
         setStatus(createStatusEl, "Fetching token...");
         const token = await fetchToken();
-
-        let success = false;
+        let success=false;
         for (let attempt=1; attempt<=3 && !success; attempt++) {
           try {
             const fileInfo = await getRepoFile(token);
             let profiles = [];
             try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
             if (!Array.isArray(profiles)) profiles = [];
-            if (profiles.some(p => String(p.username).toLowerCase() === username.toLowerCase())) {
+            if (profiles.some(p=> String(p.username).toLowerCase()===String(username).toLowerCase())) {
               setStatus(createStatusEl, "Username exists.", true);
               return;
             }
@@ -618,13 +588,13 @@
             profiles.push(newProfile);
             setStatus(createStatusEl, "Writing to GitHub...");
             await updateRepoFile(token, fileInfo.sha, profiles);
-            success = true;
+            success=true;
             setStatus(createStatusEl, "Profile created.");
             await reloadGalleryFresh();
             break;
           } catch (e) {
-            if ((e.code === 409 || (e.message && e.message.includes("409"))) && attempt < 3) {
-              await new Promise(r => setTimeout(r, 150 * attempt));
+            if ((e.code===409 || (e.message && e.message.includes("409"))) && attempt<3) {
+              await new Promise(r=>setTimeout(r, 150*attempt));
               continue;
             }
             throw e;
@@ -632,11 +602,70 @@
         }
         if (!success) throw new Error("Failed after retries");
       } catch (err) {
-        setStatus(createStatusEl, "Create error: " + err.message, true);
+        setStatus(createStatusEl, "Create error: "+err.message, true);
       }
     });
 
-    // viewer
+    // submit new profile from upload section (duplicate path if needed)
+    submitBtn.addEventListener("click", async ()=>{
+      try {
+        setStatus(statusEl, "Validating...");
+        const username = document.getElementById("username").value.trim();
+        const fullName = document.getElementById("fullName").value.trim();
+        const age = document.getElementById("age").value.trim();
+        const email = document.getElementById("profileEmail").value.trim();
+        const file = document.getElementById("imageInput").files[0];
+        if (!username || !fullName || !age || !email || !file) {
+          setStatus(statusEl, "All fields required.", true);
+          return;
+        }
+        if (isNaN(age) || Number(age)<13) { setStatus(statusEl, "Age must be >=13", true); return; }
+        setStatus(statusEl, "Fetching token...");
+        const token = await fetchToken();
+        let success=false;
+        for (let attempt=1; attempt<=3 && !success; attempt++) {
+          try {
+            const fileInfo = await getRepoFile(token);
+            let profiles = [];
+            try { profiles = JSON.parse(atob(fileInfo.content)); } catch {}
+            if (!Array.isArray(profiles)) profiles = [];
+            if (profiles.some(p=> String(p.username).toLowerCase()===String(username).toLowerCase())) {
+              setStatus(statusEl, "Username exists.", true);
+              return;
+            }
+            setStatus(statusEl, "Uploading image...");
+            const imageUrl = await uploadImageAsPNG(file);
+            const newProfile = {
+              username,
+              fullName,
+              age: Number(age),
+              image: imageUrl,
+              likes: 0,
+              timestamp: Date.now(),
+              email
+            };
+            profiles.push(newProfile);
+            setStatus(statusEl, "Writing to GitHub...");
+            await updateRepoFile(token, fileInfo.sha, profiles);
+            success=true;
+            setStatus(statusEl, "Profile added.");
+            await reloadGalleryFresh();
+            break;
+          } catch (e) {
+            if ((e.code===409 || (e.message && e.message.includes("409"))) && attempt<3) {
+              await new Promise(r=>setTimeout(r, 150*attempt));
+              continue;
+            }
+            throw e;
+          }
+        }
+        if (!success) throw new Error("Failed to submit");
+      } catch (e) {
+        setStatus(statusEl, "Submit failed: "+e.message, true);
+      }
+    });
+
+    // viewer control
     function openViewer(index) {
       if (!currentProfiles || !currentProfiles[index]) return;
       currentViewerIndex = index;
@@ -654,56 +683,48 @@
         : "Not logged in.";
       viewer.classList.add("active");
     }
+    function closeViewer() { viewer.classList.remove("active"); }
 
-    function closeViewer() {
-      viewer.classList.remove("active");
-    }
-
-    prevPic.addEventListener("click", () => {
+    prevPic.addEventListener("click", ()=>{
       currentViewerIndex = (currentViewerIndex -1 + currentProfiles.length) % currentProfiles.length;
       openViewer(currentViewerIndex);
     });
-    nextPic.addEventListener("click", () => {
+    nextPic.addEventListener("click", ()=>{
       currentViewerIndex = (currentViewerIndex +1) % currentProfiles.length;
       openViewer(currentViewerIndex);
     });
     vClose.addEventListener("click", closeViewer);
-
-    vLikeBtn.addEventListener("click", async () => {
-      if (!identity) {
-        setStatus(loginStatusEl, "Login first to like.", true);
-        return;
-      }
+    vLikeBtn.addEventListener("click", async ()=>{
+      if (!identity) { setStatus(authStatus, "Login first.", true); return; }
       const profile = currentProfiles[currentViewerIndex];
       if (!profile) return;
       if (!canLike()) {
-        setStatus(loginStatusEl, identity.anonymous
-          ? `Anonymous limit reached (max ${MAX_LIKES_ANON}/day).`
-          : `Limit reached (max ${MAX_LIKES_LOGGED}/day).`, true);
+        setStatus(authStatus, identity.anonymous
+          ? `Anonymous limit reached (${MAX_LIKES_ANON}/day).`
+          : `Limit reached (${MAX_LIKES_LOGGED}/day).`, true);
         return;
       }
       vLikeBtn.disabled = true;
       try {
         await incrementLike(profile.username);
         recordLike();
-        updateIdentityUI();
         await reloadGalleryFresh();
-        const updated = currentProfiles.find(p => p.username === profile.username);
+        const updated = currentProfiles.find(p=>p.username===profile.username);
         vLikesCount.textContent = updated?.likes||0;
-        setStatus(loginStatusEl, "Like saved.");
+        setStatus(authStatus, "Like saved.");
         viewerUserinfo.textContent = identity
           ? identity.anonymous
             ? `You: Anonymous (${identity.username}) • Likes today ${identity.likesToday||0}/${MAX_LIKES_ANON}`
             : `You: ${identity.username} • Likes today ${identity.likesToday||0}/${MAX_LIKES_LOGGED}`
           : "";
       } catch (e) {
-        setStatus(loginStatusEl, "Like error: " + e.message, true);
+        setStatus(authStatus, "Like error: "+e.message, true);
       } finally {
         vLikeBtn.disabled = false;
       }
     });
 
-    // bootstrap
+    // init
     loadIdentity();
     loadGalleryViaAPI();
   </script>
