@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Beauty Showcase — Viewer</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <style>
+    :root { --back:#f0f4f9; --card:#fff; --radius:10px; --shadow:0 8px 20px rgba(0,0,0,0.08); }
+    *{box-sizing:border-box;}
+    body { background:var(--back); font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif; margin:0; }
+    .container { max-width:1000px; margin:auto; padding:16px; }
+    .card { background:var(--card); border-radius:12px; padding:16px; box-shadow:var(--shadow); margin-bottom:16px; }
+    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); }
+    .profile { position:relative; border:1px solid #e2e8f0; border-radius:8px; overflow:hidden; cursor:pointer; }
+    .profile img { width:100%; display:block; object-fit:cover; }
+    .overlay { padding:8px; background:rgba(255,255,255,.95); display:flex; justify-content:space-between; }
+    .small { font-size:12px; color:#555; }
+    .like-btn { background:#ff4081; color:#fff; border:none; padding:6px 12px; border-radius:20px; cursor:pointer; font-size:12px; }
+    .status { margin-top:8px; padding:10px; border-radius:6px; background:#eef7ee; }
+    pre { background:#1e1e1e; color:#eee; padding:10px; border-radius:6px; overflow:auto; font-size:11px; }
+    .viewer { position:fixed; inset:0; background:#000; display:none; align-items:center; justify-content:center; z-index:100; }
+    .viewer.active { display:flex; }
+    .viewer-img { max-width:100%; max-height:100%; object-fit:contain; }
+    .viewer-info { position:absolute; top:0; left:0; right:0; padding:16px; display:flex; justify-content:space-between; background:linear-gradient(180deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,0) 70%); color:#fff; gap:12px; flex-wrap:wrap; }
+    .viewer-footer { position:absolute; bottom:0; left:0; right:0; padding:12px; display:flex; justify-content:space-between; background:linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,0) 70%); color:#fff; }
+    .nav-btn { background:rgba(255,255,255,.1); border:none; color:#fff; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:14px; }
+    .close-btn { background:rgba(255,255,255,.2); border:none; color:#fff; padding:6px 10px; border-radius:6px; cursor:pointer; font-size:14px; }
+    .badge-inline { background:rgba(255,255,255,.2); padding:4px 10px; border-radius:999px; margin-right:6px; font-size:12px; }
+    .flex { display:flex; gap:12px; flex-wrap:wrap; }
+    .identity { margin-bottom:8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="identity" id="identityDisplay">Loading identity...</div>
+      <div class="status small" id="loginStatus">Initializing...</div>
+    </div>
+    <div class="card">
+      <h2>Gallery</h2>
+      <div id="galleryStatus" class="small">Loading...</div>
+      <div id="gallery" class="grid" style="margin-top:12px;"></div>
+      <div style="margin-top:12px;">
+        <strong>Debug / Raw JSON:</strong>
+        <pre id="rawJson">...</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- fullscreen viewer -->
+  <div class="viewer" id="viewer">
+    <div class="viewer-info">
+      <div>
+        <div><strong id="v-username"></strong> <span id="v-fullname" class="small"></span></div>
+        <div class="small">Age: <span id="v-age"></span> • Uploaded: <span id="v-uploaded"></span></div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <div class="badge-inline">Likes: <span id="v-likes-count"></span></div>
+        <button class="like-btn" id="v-like-btn">❤️ Like</button>
+        <button class="close-btn" id="v-close">Close</button>
+      </div>
+    </div>
+    <img src="" alt="full" class="viewer-img" id="viewerImg" />
+    <div class="viewer-footer">
+      <div style="display:flex; gap:8px;">
+        <button class="nav-btn" id="prevPic">Prev</button>
+        <button class="nav-btn" id="nextPic">Next</button>
+      </div>
+      <div class="small" id="viewer-userinfo"></div>
+    </div>
+  </div>
+
+  <script>
+    // CONFIG
+    const GIST_TOKEN_URL="https://gist.githubusercontent.com/Dtech2preas/6750d0418aaa9dfe7f297c26d1dfae48/raw/2e511e4d11267d5aade0229849446b7297ae01c9/gistfile1.txt";
+    const REPO_OWNER="Dtech2preas", REPO_NAME="Oratilr", DATA_FILE_PATH="data1.json";
+    const IMGBB_API_KEY="cedf418c6d844af9c47a7775a17161a6";
+    const MAX_LIKES_LOGGED=10, MAX_LIKES_ANON=5;
+    const TOKEN_TTL=30000;
+
+    // DOM
+    const identityDisplay=document.getElementById("identityDisplay");
+    const loginStatus=document.getElementById("loginStatus");
+    const gallery=document.getElementById("gallery");
+    const galleryStatus=document.getElementById("galleryStatus");
+    const rawJsonEl=document.getElementById("rawJson");
+    const viewer=document.getElementById("viewer");
+    const viewerImg=document.getElementById("viewerImg");
+    const vUsername=document.getElementById("v-username");
+    const vFullname=document.getElementById("v-fullname");
+    const vAge=document.getElementById("v-age");
+    const vUploaded=document.getElementById("v-uploaded");
+    const vLikesCount=document.getElementById("v-likes-count");
+    const vLikeBtn=document.getElementById("v-like-btn");
+    const vClose=document.getElementById("v-close");
+    const prevPic=document.getElementById("prevPic");
+    const nextPic=document.getElementById("nextPic");
+    const viewerUserinfo=document.getElementById("viewer-userinfo");
+
+    // STATE
+    let identity=null;
+    let cachedToken=null, tokenFetchedAt=0;
+    let currentProfiles=[];
+    let currentViewerIndex=0;
+
+    // helpers
+    function escapeHTML(s){ if(!s) return ""; return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+    function setStatus(el,msg,isError=false){ el.textContent=msg; el.className=isError? "status small error":"status small"; }
+    function loadIdentity(){
+      try{
+        const stored=JSON.parse(localStorage.getItem("beauty_identity")||"null");
+        if(stored && stored.username){
+          const today=new Date().toISOString().slice(0,10);
+          if(stored.lastLikeDate !== today){
+            stored.likesToday=0;
+            stored.lastLikeDate=today;
+          }
+          identity=stored;
+          localStorage.setItem("beauty_identity", JSON.stringify(identity));
+          updateIdentityUI();
+          return;
+        }
+      }catch{}
+      // missing -> go back
+      location.href="auth.html";
+    }
+    function updateIdentityUI(){
+      if(!identity) return;
+      identityDisplay.innerHTML = identity.anonymous
+        ? `Anonymous: <strong>${escapeHTML(identity.username)}</strong> (likes today ${identity.likesToday||0}/${MAX_LIKES_ANON})`
+        : `Logged in as <strong>${escapeHTML(identity.username)}</strong> (likes today ${identity.likesToday||0}/${MAX_LIKES_LOGGED})`;
+      loginStatus.textContent = identity.anonymous ? "Anonymous session." : `Authenticated as ${identity.username}.`;
+    }
+    function canLike(){ if(!identity) return false; const limit=identity.anonymous?MAX_LIKES_ANON:MAX_LIKES_LOGGED; return (identity.likesToday||0)<limit; }
+    function recordLike(){ const today=new Date().toISOString().slice(0,10); if(!identity) return; if(identity.lastLikeDate!==today){ identity.likesToday=0; identity.lastLikeDate=today; } identity.likesToday=(identity.likesToday||0)+1; localStorage.setItem("beauty_identity", JSON.stringify(identity)); updateIdentityUI(); }
+
+    async function timeoutFetch(url, opts={}, ms=8000){
+      const controller=new AbortController();
+      const id=setTimeout(()=>controller.abort(), ms);
+      try { return await fetch(url, {...opts, signal:controller.signal}); }
+      finally { clearTimeout(id); }
+    }
+    async function fetchToken(){
+      if(cachedToken && (Date.now()-tokenFetchedAt)<TOKEN_TTL) return cachedToken;
+      const r=await timeoutFetch(GIST_TOKEN_URL);
+      if(!r.ok) throw new Error("token fetch failed");
+      const t=(await r.text()).trim();
+      if(!t) throw new Error("empty token");
+      cachedToken=t; tokenFetchedAt=Date.now();
+      return t;
+    }
+    async function getRepoFile(token){
+      const url=`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
+      const r=await timeoutFetch(url,{headers:{Authorization:`Bearer ${token}`, Accept:"application/vnd.github.v3+json"}});
+      if(!r.ok) throw new Error("contents fetch failed");
+      return await r.json();
+    }
+    async function updateRepoFile(token, sha, arr){
+      const url=`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DATA_FILE_PATH}`;
+      const body={ message:"Update profile", content:btoa(unescape(encodeURIComponent(JSON.stringify(arr,null,2)))), sha };
+      const r=await timeoutFetch(url,{method:"PUT", headers:{Authorization:`Bearer ${token}`, Accept:"application/vnd.github.v3+json","Content-Type":"application/json"}, body:JSON.stringify(body)},10000);
+      if(!r.ok){ const txt=await r.text(); throw new Error("update failed: "+txt); }
+      return await r.json();
+    }
+
+    async function loadGallery(){
+      galleryStatus.textContent="Loading profiles...";
+      try{
+        const token=await fetchToken();
+        const fileInfo=await getRepoFile(token);
+        let profiles=[];
+        try{ profiles=JSON.parse(atob(fileInfo.content)); }catch{}
+        if(!Array.isArray(profiles)) profiles=[];
+        currentProfiles=profiles;
+        rawJsonEl.textContent=JSON.stringify(profiles,null,2);
+        renderGallery(profiles);
+      }catch(e){
+        galleryStatus.textContent="Failed to load gallery: "+e.message;
+        rawJsonEl.textContent="Error:\n"+(e.stack||e);
+      }
+    }
+
+    function renderGallery(profiles){
+      gallery.innerHTML="";
+      if(!Array.isArray(profiles)){ galleryStatus.textContent="Invalid data"; return; }
+      if(profiles.length===0){ galleryStatus.textContent="No profiles yet."; return; }
+      galleryStatus.textContent=`${profiles.length} profile(s) loaded.`;
+      profiles.sort((a,b)=>(b.likes||0)-(a.likes||0));
+      profiles.forEach((p, idx)=>{
+        const card=document.createElement("div");
+        card.className="profile card";
+        card.dataset.index=idx;
+        const img=document.createElement("img");
+        img.src=p.image;
+        img.alt=p.username||"profile";
+        card.appendChild(img);
+        const ov=document.createElement("div");
+        ov.className="overlay";
+        ov.innerHTML=`
+          <div style="flex:1">
+            <div><strong>${escapeHTML(p.username||"")}</strong> ${p.fullName?`• ${escapeHTML(p.fullName)}`:""} • ${escapeHTML(String(p.age||""))}</div>
+            <div class="small">Likes: ${p.likes||0}</div>
+          </div>
+          <div style="text-align:right">
+            <button class="like-btn" data-username="${p.username}">❤️</button>
+          </div>
+        `;
+        card.appendChild(ov);
+        gallery.appendChild(card);
+        card.addEventListener("click", e=>{
+          if(e.target.closest(".like-btn")) return;
+          openViewer(idx);
+        });
+      });
+      document.querySelectorAll(".like-btn").forEach(b=>{
+        b.onclick=async e=>{
+          e.stopPropagation();
+          const target=b.dataset.username;
+          if(!identity){ setStatus(loginStatus,"No identity; go login.",true); return; }
+          if(!canLike()){ setStatus(loginStatus, identity.anonymous?`Anon limit reached (${MAX_LIKES_ANON}/day)`:`Limit reached (${MAX_LIKES_LOGGED}/day)`, true); return; }
+          b.disabled=true;
+          setStatus(loginStatus,"Updating like...");
+          try{
+            await incrementLike(target);
+            recordLike();
+            setStatus(loginStatus,"Like saved.");
+            await reloadGalleryFresh();
+          }catch(err){
+            setStatus(loginStatus,"Like error: "+err.message,true);
+          }finally{ b.disabled=false; }
+        };
+      });
+    }
+
+    async function incrementLike(username, maxRetries=3){
+      for(let attempt=1; attempt<=maxRetries; attempt++){
+        const token=await fetchToken();
+        const fileInfo=await getRepoFile(token);
+        let arr=[];
+        try{ arr=JSON.parse(atob(fileInfo.content)); }catch{}
+        const idx=arr.findIndex(x=>String(x.username).toLowerCase()===String(username).toLowerCase());
+        if(idx===-1) throw new Error("profile not found");
+        arr[idx].likes=(arr[idx].likes||0)+1;
+        try{
+          await updateRepoFile(token,fileInfo.sha,arr);
+          return arr[idx].likes;
+        }catch(e){
+          if((e.message.includes("409") || e.code===409) && attempt<maxRetries){
+            await new Promise(r=>setTimeout(r,100*attempt));
+            continue;
+          }
+          throw e;
+        }
+      }
+      throw new Error("failed to increment like");
+    }
+
+    async function reloadGalleryFresh(){
+      await loadGallery();
+      for(let i=1;i<=2;i++){
+        await new Promise(r=>setTimeout(r,300*i));
+        await loadGallery();
+      }
+    }
+
+    // viewer logic
+    function openViewer(index){
+      if(!currentProfiles || !currentProfiles[index]) return;
+      currentViewerIndex=index;
+      const p=currentProfiles[index];
+      vUsername.textContent=p.username||"";
+      vFullname.textContent=p.fullName?`• ${p.fullName}`:"";
+      vAge.textContent=p.age||"";
+      vUploaded.textContent=new Date(p.timestamp||0).toLocaleString();
+      vLikesCount.textContent=p.likes||0;
+      viewerImg.src=p.image;
+      viewerUserinfo.textContent= identity
+        ? identity.anonymous
+          ? `You: Anonymous (${escapeHTML(identity.username)}) • Likes today ${identity.likesToday||0}/${MAX_LIKES_ANON}`
+          : `You: ${escapeHTML(identity.username)} • Likes today ${identity.likesToday||0}/${MAX_LIKES_LOGGED}`
+        : "Not logged in.";
+      viewer.classList.add("active");
+    }
+    function closeViewer(){ viewer.classList.remove("active"); }
+
+    prevPic.addEventListener("click", ()=>{
+      currentViewerIndex=(currentViewerIndex-1+currentProfiles.length)%currentProfiles.length;
+      openViewer(currentViewerIndex);
+    });
+    nextPic.addEventListener("click", ()=>{
+      currentViewerIndex=(currentViewerIndex+1)%currentProfiles.length;
+      openViewer(currentViewerIndex);
+    });
+    vClose.addEventListener("click", closeViewer);
+
+    vLikeBtn.addEventListener("click", async ()=>{
+      if(!identity){ setStatus(loginStatus,"No identity.",true); return; }
+      const profile=currentProfiles[currentViewerIndex];
+      if(!profile) return;
+      if(!canLike()){ setStatus(loginStatus, identity.anonymous?`Anon limit reached (${MAX_LIKES_ANON}/day)`:`Limit reached (${MAX_LIKES_LOGGED}/day)`, true); return; }
+      vLikeBtn.disabled=true;
+      try {
+        await incrementLike(profile.username);
+        recordLike();
+        await reloadGalleryFresh();
+        const updated=currentProfiles.find(p=>p.username===profile.username);
+        vLikesCount.textContent=updated?.likes||0;
+        setStatus(loginStatus,"Like saved.");
+      } catch(e){
+        setStatus(loginStatus,"Like error: "+e.message,true);
+      } finally {
+        vLikeBtn.disabled=false;
+      }
+    });
+
+    // identity load/enforce
+    function enforceIdentity(){
+      try{
+        const stored=JSON.parse(localStorage.getItem("beauty_identity")||"null");
+        if(!stored || !stored.username) throw new Error("no identity");
+        const today=new Date().toISOString().slice(0,10);
+        if(stored.lastLikeDate!==today){
+          stored.likesToday=0;
+          stored.lastLikeDate=today;
+          localStorage.setItem("beauty_identity", JSON.stringify(stored));
+        }
+        identity=stored;
+        updateIdentityUI();
+      }catch(e){
+        location.href="auth.html";
+      }
+    }
+
+    // boot
+    enforceIdentity();
+    loadGallery();
+  </script>
+</body>
+</html>
