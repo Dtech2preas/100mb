@@ -344,13 +344,18 @@
 
     <div id="adVerificationContainer" class="ad-verification">
       <h3>Ad Verification Required</h3>
-      <p>To view your live website URL, please visit our sponsor's page and stay for at least 10 seconds.</p>
-      <div class="ad-timer" id="adTimer">Time required: 10 seconds</div>
+      <p>To view your live website URL, please:</p>
+      <ol>
+        <li>Click the "Visit Sponsor Page" button below</li>
+        <li>Stay on that page for at least <strong>10 seconds</strong></li>
+        <li>Return here and click "Verify Ad View"</li>
+      </ol>
+      <div class="ad-timer" id="adTimer">Required time: 10 seconds</div>
       <a href="https://gapcontroversialprodigal.com/r4xi2y93d?key=15dfa2df783ad560869b4cd10d94bb0d" target="_blank" class="url-link" id="adLink">
         <button class="ad-button">Visit Sponsor Page</button>
       </a>
       <div id="adMessage" class="ad-message" style="display: none;"></div>
-      <button id="verifyAdBtn" style="margin-top: 1rem;">I've Viewed the Ad</button>
+      <button id="verifyAdBtn" style="margin-top: 1rem;">Verify Ad View</button>
     </div>
 
     <div class="url-container" id="liveUrlContainer" style="display: none;">
@@ -386,7 +391,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   let githubToken = '';
   let currentHtml = '';
   let gistData = null;
-  let adStartTime = null;
 
   // Update HTML preview when input changes
   htmlInput.addEventListener('input', () => {
@@ -492,9 +496,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       resultContainer.style.display = 'block';
       uploadStatus.style.display = 'none';
 
-      // Set ad start time
-      adStartTime = new Date().getTime();
-      localStorage.setItem('adStartTime', adStartTime.toString());
+      // Set ad start time when user clicks the ad link
+      adLink.addEventListener('click', () => {
+        localStorage.setItem('adStartTime', new Date().getTime().toString());
+      });
 
       // Scroll to results
       setTimeout(() => {
@@ -515,21 +520,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Verify ad button click handler
   verifyAdBtn.addEventListener('click', () => {
     const now = new Date().getTime();
-    const storedAdTime = localStorage.getItem('adStartTime');
+    const adStartTime = localStorage.getItem('adStartTime');
     
-    if (!storedAdTime) {
-      showAdMessage('Please visit the sponsor page first', false);
+    if (!adStartTime) {
+      showAdMessage('Please visit the sponsor page first by clicking the button above', false);
       return;
     }
 
-    const timePassed = now - parseInt(storedAdTime);
+    const timePassed = now - parseInt(adStartTime);
     const requiredTime = 10000; // 10 seconds
 
     if (timePassed >= requiredTime) {
       showLiveUrl();
     } else {
       const remaining = Math.ceil((requiredTime - timePassed) / 1000);
-      showAdMessage(`Please stay on the sponsor page for ${remaining} more seconds`, false);
+      showAdMessage(`Please stay on the sponsor page for ${remaining} more seconds before verifying`, false);
     }
   });
 
@@ -560,14 +565,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     showAdMessage('Ad verification successful! Your URL is now available.', true);
   }
 
-  // Check if returning from ad view
-  window.addEventListener('load', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('returnFromAd') && gistData) {
-      verifyAdBtn.click();
-    }
-  });
-
   // Copy URL button
   copyLiveUrl.addEventListener('click', () => {
     if (liveUrl.href) {
@@ -579,11 +576,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         copyLiveUrl.textContent = originalText;
       }, 2000);
     }
-  });
-
-  // Add returnFromAd parameter when coming back from ad
-  adLink.addEventListener('click', () => {
-    localStorage.setItem('adReturning', 'true');
   });
 });
 </script>
