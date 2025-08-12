@@ -663,6 +663,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   let currentHtml = '';
   let gistData = null;
 
+  // Check if returning from ad with verification
+  function checkReturnFromAd() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('ad_verified')) {
+      const liveUrlFromStorage = localStorage.getItem('liveUrl');
+      if (liveUrlFromStorage) {
+        showLiveUrl(liveUrlFromStorage);
+        localStorage.removeItem('liveUrl');
+        localStorage.removeItem('adStartTime');
+        // Clean the URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }
+  }
+
   // Validate HTML content
   function validateHtml() {
     if (currentHtml.length > 0) {
@@ -757,6 +772,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     validateHtml();
   }
 
+  // Check for returning from ad on page load
+  checkReturnFromAd();
+
   // Upload button click handler
   uploadBtn.addEventListener('click', async () => {
     if (!githubToken) {
@@ -801,14 +819,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         throw new Error(gistData.message || 'Failed to create gist');
       }
 
-      // Show result container with ad verification
-      resultContainer.style.display = 'block';
-      uploadStatus.style.display = 'none';
-
+      // Generate the live URL
+      const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
+      
+      // Store the live URL in localStorage
+      localStorage.setItem('liveUrl', liveRenderUrl);
+      
       // Set ad start time when user clicks the ad link
       adLink.addEventListener('click', () => {
         localStorage.setItem('adStartTime', new Date().getTime().toString());
       });
+
+      // Show result container with ad verification
+      resultContainer.style.display = 'block';
+      uploadStatus.style.display = 'none';
 
       // Scroll to results
       setTimeout(() => {
@@ -840,7 +864,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const requiredTime = 10000; // 10 seconds
 
     if (timePassed >= requiredTime) {
-      showLiveUrl();
+      const liveUrlFromStorage = localStorage.getItem('liveUrl');
+      if (liveUrlFromStorage) {
+        showLiveUrl(liveUrlFromStorage);
+        localStorage.removeItem('liveUrl');
+        localStorage.removeItem('adStartTime');
+      }
     } else {
       const remaining = Math.ceil((requiredTime - timePassed) / 1000);
       showAdMessage(`Please stay on the sponsor page for ${remaining} more seconds before verifying`, false);
@@ -855,10 +884,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Function to show live URL after ad verification
-  function showLiveUrl() {
-    if (!gistData) return;
-
-    const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
+  function showLiveUrl(url) {
+    if (!url) return;
     
     // Mark step 3 as completed
     document.querySelectorAll('.step')[2].classList.add('completed');
@@ -867,8 +894,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     liveUrlContainer.style.display = 'block';
     copyLiveUrl.style.display = 'block';
 
-    liveUrl.textContent = liveRenderUrl;
-    liveUrl.href = liveRenderUrl;
+    liveUrl.textContent = url;
+    liveUrl.href = url;
 
     // Show success message
     showAdMessage('✓ Ad verification successful! Your URL is now available.', true);
@@ -925,6 +952,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       localStorage.setItem('currentHtml', currentHtml);
     };
     reader.readAsText(file);
+  });
+
+  // Modify the ad link to include return parameter
+  adLink.addEventListener('click', () => {
+    const returnUrl = encodeURIComponent(window.location.href.split('?')[0] + '?ad_verified=true');
+    adLink.href = `${randomAdUrl}&return=${returnUrl}`;
+    localStorage.setItem('adStartTime', new Date().getTime().toString());
   });
 });
 </script>
