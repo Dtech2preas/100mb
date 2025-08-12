@@ -670,8 +670,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       const liveUrlFromStorage = localStorage.getItem('liveUrl');
       if (liveUrlFromStorage) {
         showLiveUrl(liveUrlFromStorage);
-        localStorage.removeItem('liveUrl');
-        localStorage.removeItem('adStartTime');
         // Clean the URL
         window.history.replaceState({}, document.title, window.location.pathname);
       }
@@ -867,8 +865,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       const liveUrlFromStorage = localStorage.getItem('liveUrl');
       if (liveUrlFromStorage) {
         showLiveUrl(liveUrlFromStorage);
-        localStorage.removeItem('liveUrl');
-        localStorage.removeItem('adStartTime');
       }
     } else {
       const remaining = Math.ceil((requiredTime - timePassed) / 1000);
@@ -901,16 +897,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     showAdMessage('✓ Ad verification successful! Your URL is now available.', true);
   }
 
-  // Copy URL button
+  // Copy URL button - clears storage and reloads after copy
   copyLiveUrl.addEventListener('click', () => {
     if (liveUrl.href) {
-      navigator.clipboard.writeText(liveUrl.href);
-      const originalText = copyLiveUrl.textContent;
-      copyLiveUrl.textContent = 'Copied!';
-      copyLiveUrl.style.backgroundColor = 'var(--success)';
-      setTimeout(() => {
-        copyLiveUrl.textContent = originalText;
-      }, 2000);
+      navigator.clipboard.writeText(liveUrl.href)
+        .then(() => {
+          const originalText = copyLiveUrl.textContent;
+          copyLiveUrl.textContent = 'Copied!';
+          copyLiveUrl.style.backgroundColor = 'var(--success)';
+          
+          // Clear all storage and reload after short delay
+          setTimeout(() => {
+            localStorage.clear();
+            window.location.reload();
+          }, 1000);
+        })
+        .catch(err => {
+          console.error('Failed to copy URL:', err);
+        });
     }
   });
 
