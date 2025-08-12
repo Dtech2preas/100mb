@@ -227,6 +227,35 @@
     border-radius: 0.375rem;
     margin-bottom: 1rem;
   }
+
+  .ad-verification {
+    background-color: #fff8e1;
+    border: 1px solid #ffd54f;
+    border-radius: 0.375rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .ad-verification h3 {
+    color: #ff6f00;
+    margin-bottom: 1rem;
+  }
+
+  .ad-timer {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: var(--primary);
+  }
+
+  .ad-button {
+    background-color: #ff6f00;
+  }
+
+  .ad-button:hover {
+    background-color: #e65100;
+  }
 </style>
 </head>
 <body>
@@ -300,12 +329,23 @@
       <a href="#" class="url-link" id="gistUrl" target="_blank"></a>
     </div>
 
-    <div class="url-container" id="liveUrlContainer">
+    <div id="adVerificationContainer" class="ad-verification" style="display: none;">
+      <h3>Ad Verification Required</h3>
+      <p>To view your live website URL, please visit our sponsor's page and stay for at least 10 seconds.</p>
+      <div class="ad-timer" id="adTimer">Time required: 10 seconds</div>
+      <a href="https://gapcontroversialprodigal.com/r4xi2y93d?key=15dfa2df783ad560869b4cd10d94bb0d" target="_blank" class="url-link">
+        <button class="ad-button">Visit Sponsor Page</button>
+      </a>
+      <p id="adReturnMessage" style="margin-top: 1rem; display: none;">Please wait 10 seconds on the sponsor page before returning.</p>
+      <button id="checkAdStatusBtn" style="margin-top: 1rem; display: none;">Verify Ad View</button>
+    </div>
+
+    <div class="url-container" id="liveUrlContainer" style="display: none;">
       <span class="url-label">Live Website URL:</span>
       <a href="#" class="url-link" id="liveUrl" target="_blank"></a>
     </div>
 
-    <button id="copyLiveUrl" style="background-color: var(--success);">Copy Live URL</button>
+    <button id="copyLiveUrl" style="background-color: var(--success); display: none;">Copy Live URL</button>
   </div>
 </div>
 
@@ -325,10 +365,35 @@ document.addEventListener('DOMContentLoaded', async () => {
   const copyLiveUrl = document.getElementById('copyLiveUrl');
   const gistUrlContainer = document.getElementById('gistUrlContainer');
   const liveUrlContainer = document.getElementById('liveUrlContainer');
+  const adVerificationContainer = document.getElementById('adVerificationContainer');
+  const adTimer = document.getElementById('adTimer');
+  const adReturnMessage = document.getElementById('adReturnMessage');
+  const checkAdStatusBtn = document.getElementById('checkAdStatusBtn');
 
-  // Store token and HTML
+  // Store token, HTML, and ad verification status
   let githubToken = '';
   let currentHtml = '';
+  let adStartTime = null;
+  let gistData = null;
+
+  // Check if user has already viewed ad
+  function checkAdViewStatus() {
+    const now = new Date().getTime();
+    const adViewedTime = localStorage.getItem('adViewedTime');
+    
+    if (adViewedTime && (now - parseInt(adViewedTime)) < 10000) {
+      // Not enough time has passed
+      const remaining = Math.ceil((10000 - (now - parseInt(adViewedTime))) / 1000);
+      adReturnMessage.textContent = `Please wait ${remaining} more seconds on the sponsor page before returning.`;
+      adReturnMessage.style.display = 'block';
+      checkAdStatusBtn.style.display = 'block';
+      return false;
+    } else if (adViewedTime) {
+      // Enough time has passed
+      return true;
+    }
+    return false;
+  }
 
   // Update HTML preview when input changes
   htmlInput.addEventListener('input', () => {
@@ -424,40 +489,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         })
       });
 
-      const gistData = await gistResponse.json();
+      gistData = await gistResponse.json();
 
       if (!gistData.id) {
         throw new Error(gistData.message || 'Failed to create gist');
       }
 
-      // Wait for GitHub to process the gist
-      uploadStatusText.textContent = 'Generating live URL...';
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Use gist.githack.com for instant rendering
-      const gistHtmlUrl = gistData.html_url;
-      const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
-
-      // Verify the URL is accessible
-      try {
-        const testResponse = await fetch(liveRenderUrl, { 
-          method: 'HEAD',
-          cache: 'no-store'
-        });
-        if (!testResponse.ok) throw new Error('URL not ready');
-      } catch (e) {
-        console.log('Initial URL test failed, retrying...');
-        await new Promise(resolve => setTimeout(resolve, 1000));
-      }
-
-      // Show result container and URLs
+      // Show result container with Gist URL and ad verification
       resultContainer.style.display = 'block';
       uploadStatus.style.display = 'none';
 
-      gistUrl.textContent = gistHtmlUrl;
-      gistUrl.href = gistHtmlUrl;
-      liveUrl.textContent = liveRenderUrl;
-      liveUrl.href = liveRenderUrl;
+      gistUrl.textContent = gistData.html_url;
+      gistUrl.href = gistData.html_url;
+
+      // Show ad verification
+      adVerificationContainer.style.display = 'block';
+      adStartTime = new Date().getTime();
+      localStorage.setItem('adViewedTime', adStartTime.toString());
 
       // Scroll to results
       setTimeout(() => {
@@ -472,6 +520,43 @@ document.addEventListener('DOMContentLoaded', async () => {
       `;
       uploadBtn.disabled = false;
       console.error('Upload error:', err);
+    }
+  });
+
+  // Check ad status button
+  checkAdStatusBtn.addEventListener('click', () => {
+    if (checkAdViewStatus()) {
+      // Show live URL
+      showLiveUrl();
+    }
+  });
+
+  // Function to show live URL after ad verification
+  function showLiveUrl() {
+    if (!gistData) return;
+
+    const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
+    
+    adVerificationContainer.style.display = 'none';
+    liveUrlContainer.style.display = 'block';
+    copyLiveUrl.style.display = 'block';
+
+    liveUrl.textContent = liveRenderUrl;
+    liveUrl.href = liveRenderUrl;
+  }
+
+  // Check if returning from ad view
+  window.addEventListener('load', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('returnFromAd') && gistData) {
+      if (checkAdViewStatus()) {
+        showLiveUrl();
+      } else {
+        resultContainer.style.display = 'block';
+        gistUrl.textContent = gistData.html_url;
+        gistUrl.href = gistData.html_url;
+        adVerificationContainer.style.display = 'block';
+      }
     }
   });
 
