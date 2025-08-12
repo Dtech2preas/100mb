@@ -663,55 +663,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   let currentHtml = '';
   let gistData = null;
 
-  // Restore state from localStorage
-  function restoreState() {
-    const savedHtml = localStorage.getItem('currentHtml');
-    const savedGist = localStorage.getItem('gistData');
-    const savedToken = localStorage.getItem('githubToken');
-    
-    if (savedHtml) {
-      currentHtml = savedHtml;
-      htmlInput.value = currentHtml;
-      htmlPreview.textContent = currentHtml;
-      htmlLength.textContent = `${currentHtml.length} characters`;
-      validateHtml();
-    }
-    
-    if (savedGist) {
-      gistData = JSON.parse(savedGist);
-    }
-    
-    if (savedToken) {
-      githubToken = savedToken;
-      tokenStatus.innerHTML = `
-        <span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--success')}">
-          ✓ Using GitHub token (automatically selected)
-        </span>
-      `;
-      if (currentHtml.length > 0) {
-        uploadBtn.disabled = false;
-      }
-    }
-    
-    // If we have gist data but not yet verified, show the result container
-    if (gistData && !localStorage.getItem('adVerified')) {
-      resultContainer.style.display = 'block';
-      uploadStatus.style.display = 'none';
-    }
-    
-    // If ad was already verified, show the live URL
-    if (gistData && localStorage.getItem('adVerified')) {
-      showLiveUrl();
-    }
-  }
-
-  // Save state to localStorage
-  function saveState() {
-    if (currentHtml) localStorage.setItem('currentHtml', currentHtml);
-    if (gistData) localStorage.setItem('gistData', JSON.stringify(gistData));
-    if (githubToken) localStorage.setItem('githubToken', githubToken);
-  }
-
   // Validate HTML content
   function validateHtml() {
     if (currentHtml.length > 0) {
@@ -732,6 +683,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const file = e.target.files[0];
     if (!file) return;
     
+    // Check file type
+    if (!file.name.match(/\.(html|htm|txt)$/i)) {
+      showAdMessage('Please upload an HTML file (.html, .htm) or text file (.txt)', false);
+      return;
+    }
+    
     const reader = new FileReader();
     reader.onload = (event) => {
       currentHtml = event.target.result;
@@ -739,7 +696,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       htmlPreview.textContent = currentHtml;
       htmlLength.textContent = `${currentHtml.length} characters`;
       validateHtml();
-      saveState();
+      localStorage.setItem('currentHtml', currentHtml);
     };
     reader.readAsText(file);
   });
@@ -750,7 +707,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     htmlPreview.textContent = currentHtml;
     htmlLength.textContent = `${currentHtml.length} characters`;
     validateHtml();
-    saveState();
+    localStorage.setItem('currentHtml', currentHtml);
   });
 
   // Fetch first token from GitHub Gist
@@ -777,8 +734,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (currentHtml.length > 0) {
         uploadBtn.disabled = false;
       }
-      
-      saveState();
     } catch (error) {
       tokenStatus.innerHTML = `
         <span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--error')}">
@@ -789,9 +744,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Initialize token loading and restore state
+  // Initialize token loading
   fetchToken();
-  restoreState();
+
+  // Restore HTML from localStorage if available
+  const savedHtml = localStorage.getItem('currentHtml');
+  if (savedHtml) {
+    currentHtml = savedHtml;
+    htmlInput.value = currentHtml;
+    htmlPreview.textContent = currentHtml;
+    htmlLength.textContent = `${currentHtml.length} characters`;
+    validateHtml();
+  }
 
   // Upload button click handler
   uploadBtn.addEventListener('click', async () => {
@@ -846,9 +810,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         localStorage.setItem('adStartTime', new Date().getTime().toString());
       });
 
-      // Save state
-      saveState();
-
       // Scroll to results
       setTimeout(() => {
         resultContainer.scrollIntoView({ behavior: 'smooth' });
@@ -879,7 +840,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const requiredTime = 10000; // 10 seconds
 
     if (timePassed >= requiredTime) {
-      localStorage.setItem('adVerified', 'true');
       showLiveUrl();
     } else {
       const remaining = Math.ceil((requiredTime - timePassed) / 1000);
@@ -932,18 +892,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   fileUploadLabel.addEventListener('dragover', (e) => {
     e.preventDefault();
-    fileUploadLabel.style.borderColor = var(--primary);
+    fileUploadLabel.style.borderColor = 'var(--primary)';
     fileUploadLabel.style.backgroundColor = 'rgba(59, 130, 246, 0.2)';
   });
   
   fileUploadLabel.addEventListener('dragleave', () => {
-    fileUploadLabel.style.borderColor = var(--border);
+    fileUploadLabel.style.borderColor = 'var(--border)';
     fileUploadLabel.style.backgroundColor = '';
   });
   
   fileUploadLabel.addEventListener('drop', (e) => {
     e.preventDefault();
-    fileUploadLabel.style.borderColor = var(--border);
+    fileUploadLabel.style.borderColor = 'var(--border)';
     fileUploadLabel.style.backgroundColor = '';
     
     const file = e.dataTransfer.files[0];
@@ -962,7 +922,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       htmlPreview.textContent = currentHtml;
       htmlLength.textContent = `${currentHtml.length} characters`;
       validateHtml();
-      saveState();
+      localStorage.setItem('currentHtml', currentHtml);
     };
     reader.readAsText(file);
   });
