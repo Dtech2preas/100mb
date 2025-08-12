@@ -256,6 +256,24 @@
   .ad-button:hover {
     background-color: #e65100;
   }
+
+  .ad-message {
+    margin: 1rem 0;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+  }
+
+  .ad-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+    border: 1px solid var(--success);
+  }
+
+  .ad-error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+    border: 1px solid var(--error);
+  }
 </style>
 </head>
 <body>
@@ -306,7 +324,7 @@
   <div class="result-container" id="resultContainer">
     <div class="result-card">
       <h2>🎉 Success! Your website is live</h2>
-      <p>Here are your links:</p>
+      <p>Complete these steps to view your URL:</p>
     </div>
 
     <div class="step completed">
@@ -319,25 +337,20 @@
       <div class="step-text">Uploaded to GitHub Gist</div>
     </div>
 
-    <div class="step completed">
+    <div class="step">
       <div class="step-number">3</div>
-      <div class="step-text">Converted to live website</div>
+      <div class="step-text">Complete ad verification</div>
     </div>
 
-    <div class="url-container" id="gistUrlContainer">
-      <span class="url-label">Gist URL (GitHub):</span>
-      <a href="#" class="url-link" id="gistUrl" target="_blank"></a>
-    </div>
-
-    <div id="adVerificationContainer" class="ad-verification" style="display: none;">
+    <div id="adVerificationContainer" class="ad-verification">
       <h3>Ad Verification Required</h3>
       <p>To view your live website URL, please visit our sponsor's page and stay for at least 10 seconds.</p>
       <div class="ad-timer" id="adTimer">Time required: 10 seconds</div>
-      <a href="https://gapcontroversialprodigal.com/r4xi2y93d?key=15dfa2df783ad560869b4cd10d94bb0d" target="_blank" class="url-link">
+      <a href="https://gapcontroversialprodigal.com/r4xi2y93d?key=15dfa2df783ad560869b4cd10d94bb0d" target="_blank" class="url-link" id="adLink">
         <button class="ad-button">Visit Sponsor Page</button>
       </a>
-      <p id="adReturnMessage" style="margin-top: 1rem; display: none;">Please wait 10 seconds on the sponsor page before returning.</p>
-      <button id="checkAdStatusBtn" style="margin-top: 1rem; display: none;">Verify Ad View</button>
+      <div id="adMessage" class="ad-message" style="display: none;"></div>
+      <button id="verifyAdBtn" style="margin-top: 1rem;">I've Viewed the Ad</button>
     </div>
 
     <div class="url-container" id="liveUrlContainer" style="display: none;">
@@ -360,40 +373,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   const uploadStatus = document.getElementById('uploadStatus');
   const uploadStatusText = document.getElementById('uploadStatusText');
   const resultContainer = document.getElementById('resultContainer');
-  const gistUrl = document.getElementById('gistUrl');
   const liveUrl = document.getElementById('liveUrl');
   const copyLiveUrl = document.getElementById('copyLiveUrl');
-  const gistUrlContainer = document.getElementById('gistUrlContainer');
   const liveUrlContainer = document.getElementById('liveUrlContainer');
   const adVerificationContainer = document.getElementById('adVerificationContainer');
   const adTimer = document.getElementById('adTimer');
-  const adReturnMessage = document.getElementById('adReturnMessage');
-  const checkAdStatusBtn = document.getElementById('checkAdStatusBtn');
+  const adMessage = document.getElementById('adMessage');
+  const verifyAdBtn = document.getElementById('verifyAdBtn');
+  const adLink = document.getElementById('adLink');
 
-  // Store token, HTML, and ad verification status
+  // Store token and HTML
   let githubToken = '';
   let currentHtml = '';
-  let adStartTime = null;
   let gistData = null;
-
-  // Check if user has already viewed ad
-  function checkAdViewStatus() {
-    const now = new Date().getTime();
-    const adViewedTime = localStorage.getItem('adViewedTime');
-    
-    if (adViewedTime && (now - parseInt(adViewedTime)) < 10000) {
-      // Not enough time has passed
-      const remaining = Math.ceil((10000 - (now - parseInt(adViewedTime))) / 1000);
-      adReturnMessage.textContent = `Please wait ${remaining} more seconds on the sponsor page before returning.`;
-      adReturnMessage.style.display = 'block';
-      checkAdStatusBtn.style.display = 'block';
-      return false;
-    } else if (adViewedTime) {
-      // Enough time has passed
-      return true;
-    }
-    return false;
-  }
+  let adStartTime = null;
 
   // Update HTML preview when input changes
   htmlInput.addEventListener('input', () => {
@@ -495,17 +488,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         throw new Error(gistData.message || 'Failed to create gist');
       }
 
-      // Show result container with Gist URL and ad verification
+      // Show result container with ad verification
       resultContainer.style.display = 'block';
       uploadStatus.style.display = 'none';
 
-      gistUrl.textContent = gistData.html_url;
-      gistUrl.href = gistData.html_url;
-
-      // Show ad verification
-      adVerificationContainer.style.display = 'block';
+      // Set ad start time
       adStartTime = new Date().getTime();
-      localStorage.setItem('adViewedTime', adStartTime.toString());
+      localStorage.setItem('adStartTime', adStartTime.toString());
 
       // Scroll to results
       setTimeout(() => {
@@ -523,13 +512,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // Check ad status button
-  checkAdStatusBtn.addEventListener('click', () => {
-    if (checkAdViewStatus()) {
-      // Show live URL
+  // Verify ad button click handler
+  verifyAdBtn.addEventListener('click', () => {
+    const now = new Date().getTime();
+    const storedAdTime = localStorage.getItem('adStartTime');
+    
+    if (!storedAdTime) {
+      showAdMessage('Please visit the sponsor page first', false);
+      return;
+    }
+
+    const timePassed = now - parseInt(storedAdTime);
+    const requiredTime = 10000; // 10 seconds
+
+    if (timePassed >= requiredTime) {
       showLiveUrl();
+    } else {
+      const remaining = Math.ceil((requiredTime - timePassed) / 1000);
+      showAdMessage(`Please stay on the sponsor page for ${remaining} more seconds`, false);
     }
   });
+
+  // Function to show ad verification message
+  function showAdMessage(message, isSuccess) {
+    adMessage.textContent = message;
+    adMessage.className = isSuccess ? 'ad-message ad-success' : 'ad-message ad-error';
+    adMessage.style.display = 'block';
+  }
 
   // Function to show live URL after ad verification
   function showLiveUrl() {
@@ -537,26 +546,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
     
+    // Mark step 3 as completed
+    document.querySelectorAll('.step')[2].classList.add('completed');
+    
     adVerificationContainer.style.display = 'none';
     liveUrlContainer.style.display = 'block';
     copyLiveUrl.style.display = 'block';
 
     liveUrl.textContent = liveRenderUrl;
     liveUrl.href = liveRenderUrl;
+
+    // Show success message
+    showAdMessage('Ad verification successful! Your URL is now available.', true);
   }
 
   // Check if returning from ad view
   window.addEventListener('load', () => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('returnFromAd') && gistData) {
-      if (checkAdViewStatus()) {
-        showLiveUrl();
-      } else {
-        resultContainer.style.display = 'block';
-        gistUrl.textContent = gistData.html_url;
-        gistUrl.href = gistData.html_url;
-        adVerificationContainer.style.display = 'block';
-      }
+      verifyAdBtn.click();
     }
   });
 
@@ -571,6 +579,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         copyLiveUrl.textContent = originalText;
       }, 2000);
     }
+  });
+
+  // Add returnFromAd parameter when coming back from ad
+  adLink.addEventListener('click', () => {
+    localStorage.setItem('adReturning', 'true');
   });
 });
 </script>
