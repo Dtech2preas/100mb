@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>HTML to Live Website Converter</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --primary: #3b82f6;
@@ -178,11 +179,12 @@
     overflow: auto;
     padding: 1.5rem;
     background-color: rgba(2, 6, 23, 0.7);
-    font-family: 'Fira Code', monospace, 'Inter', sans-serif;
-    white-space: pre-wrap;
+    font-family: 'Fira Code', monospace;
+    white-space: pre;
     color: var(--text-light);
     font-size: 0.9rem;
     line-height: 1.7;
+    tab-size: 2;
   }
 
   .result-container {
@@ -429,6 +431,43 @@
     font-weight: bold;
   }
 
+  .file-upload {
+    position: relative;
+    margin-bottom: 1.25rem;
+  }
+
+  .file-upload input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .file-upload-label {
+    display: block;
+    padding: 1rem;
+    border: 2px dashed var(--border);
+    border-radius: 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .file-upload-label:hover {
+    border-color: var(--primary);
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+
+  .file-upload-label span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+
   @media (max-width: 768px) {
     .container {
       padding: 1.5rem 1rem;
@@ -471,6 +510,19 @@
   <!-- Your HTML content here -->
 </body>
 </html>"></textarea>
+    
+    <div class="file-upload">
+      <label class="file-upload-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        Or upload HTML file
+        <span>(Click to browse or drag & drop)</span>
+        <input type="file" id="fileInput" accept=".html,.htm,.txt" />
+      </label>
+    </div>
     
     <div class="preview-container">
       <div class="preview-header">
@@ -578,6 +630,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // DOM Elements
   const tokenStatus = document.getElementById('tokenStatus');
   const htmlInput = document.getElementById('htmlInput');
+  const fileInput = document.getElementById('fileInput');
   const htmlPreview = document.getElementById('htmlPreview');
   const htmlLength = document.getElementById('html-length');
   const htmlStatus = document.getElementById('htmlStatus');
@@ -610,12 +663,57 @@ document.addEventListener('DOMContentLoaded', async () => {
   let currentHtml = '';
   let gistData = null;
 
-  // Update HTML preview when input changes
-  htmlInput.addEventListener('input', () => {
-    currentHtml = htmlInput.value;
-    htmlPreview.textContent = currentHtml;
-    htmlLength.textContent = `${currentHtml.length} characters`;
+  // Restore state from localStorage
+  function restoreState() {
+    const savedHtml = localStorage.getItem('currentHtml');
+    const savedGist = localStorage.getItem('gistData');
+    const savedToken = localStorage.getItem('githubToken');
     
+    if (savedHtml) {
+      currentHtml = savedHtml;
+      htmlInput.value = currentHtml;
+      htmlPreview.textContent = currentHtml;
+      htmlLength.textContent = `${currentHtml.length} characters`;
+      validateHtml();
+    }
+    
+    if (savedGist) {
+      gistData = JSON.parse(savedGist);
+    }
+    
+    if (savedToken) {
+      githubToken = savedToken;
+      tokenStatus.innerHTML = `
+        <span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--success')}">
+          ✓ Using GitHub token (automatically selected)
+        </span>
+      `;
+      if (currentHtml.length > 0) {
+        uploadBtn.disabled = false;
+      }
+    }
+    
+    // If we have gist data but not yet verified, show the result container
+    if (gistData && !localStorage.getItem('adVerified')) {
+      resultContainer.style.display = 'block';
+      uploadStatus.style.display = 'none';
+    }
+    
+    // If ad was already verified, show the live URL
+    if (gistData && localStorage.getItem('adVerified')) {
+      showLiveUrl();
+    }
+  }
+
+  // Save state to localStorage
+  function saveState() {
+    if (currentHtml) localStorage.setItem('currentHtml', currentHtml);
+    if (gistData) localStorage.setItem('gistData', JSON.stringify(gistData));
+    if (githubToken) localStorage.setItem('githubToken', githubToken);
+  }
+
+  // Validate HTML content
+  function validateHtml() {
     if (currentHtml.length > 0) {
       if (currentHtml.includes('<html') && currentHtml.includes('</html>')) {
         htmlStatus.innerHTML = `<span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--success')}">✓ Valid HTML document</span>`;
@@ -627,6 +725,32 @@ document.addEventListener('DOMContentLoaded', async () => {
       htmlStatus.innerHTML = `<span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--text-light')}">Waiting for HTML content...</span>`;
       uploadBtn.disabled = true;
     }
+  }
+
+  // Handle file upload
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      currentHtml = event.target.result;
+      htmlInput.value = currentHtml;
+      htmlPreview.textContent = currentHtml;
+      htmlLength.textContent = `${currentHtml.length} characters`;
+      validateHtml();
+      saveState();
+    };
+    reader.readAsText(file);
+  });
+
+  // Update HTML preview when input changes
+  htmlInput.addEventListener('input', () => {
+    currentHtml = htmlInput.value;
+    htmlPreview.textContent = currentHtml;
+    htmlLength.textContent = `${currentHtml.length} characters`;
+    validateHtml();
+    saveState();
   });
 
   // Fetch first token from GitHub Gist
@@ -653,6 +777,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (currentHtml.length > 0) {
         uploadBtn.disabled = false;
       }
+      
+      saveState();
     } catch (error) {
       tokenStatus.innerHTML = `
         <span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--error')}">
@@ -663,8 +789,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Initialize token loading
+  // Initialize token loading and restore state
   fetchToken();
+  restoreState();
 
   // Upload button click handler
   uploadBtn.addEventListener('click', async () => {
@@ -719,6 +846,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         localStorage.setItem('adStartTime', new Date().getTime().toString());
       });
 
+      // Save state
+      saveState();
+
       // Scroll to results
       setTimeout(() => {
         resultContainer.scrollIntoView({ behavior: 'smooth' });
@@ -749,6 +879,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const requiredTime = 10000; // 10 seconds
 
     if (timePassed >= requiredTime) {
+      localStorage.setItem('adVerified', 'true');
       showLiveUrl();
     } else {
       const remaining = Math.ceil((requiredTime - timePassed) / 1000);
@@ -794,6 +925,46 @@ document.addEventListener('DOMContentLoaded', async () => {
         copyLiveUrl.textContent = originalText;
       }, 2000);
     }
+  });
+
+  // Handle drag and drop for file upload
+  const fileUploadLabel = document.querySelector('.file-upload-label');
+  
+  fileUploadLabel.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    fileUploadLabel.style.borderColor = var(--primary);
+    fileUploadLabel.style.backgroundColor = 'rgba(59, 130, 246, 0.2)';
+  });
+  
+  fileUploadLabel.addEventListener('dragleave', () => {
+    fileUploadLabel.style.borderColor = var(--border);
+    fileUploadLabel.style.backgroundColor = '';
+  });
+  
+  fileUploadLabel.addEventListener('drop', (e) => {
+    e.preventDefault();
+    fileUploadLabel.style.borderColor = var(--border);
+    fileUploadLabel.style.backgroundColor = '';
+    
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    
+    // Check if file is HTML or text
+    if (!file.name.match(/\.(html|htm|txt)$/i)) {
+      showAdMessage('Please upload an HTML file (.html, .htm) or text file (.txt)', false);
+      return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      currentHtml = event.target.result;
+      htmlInput.value = currentHtml;
+      htmlPreview.textContent = currentHtml;
+      htmlLength.textContent = `${currentHtml.length} characters`;
+      validateHtml();
+      saveState();
+    };
+    reader.readAsText(file);
   });
 });
 </script>
