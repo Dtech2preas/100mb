@@ -2,49 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chat with AI Links</title>
+  <title>AI Chat Links</title>
   <style>
-    .ai-link-button {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      font-size: 16px;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
     }
-    .chatgpt { background-color: #00a8ff; }
-    .chatgpt:hover { background-color: #0088cc; }
-    .deepseek { background-color: #ff6b6b; }
-    .deepseek:hover { background-color: #cc5252; }
-    .perplexity { background-color: #2ed573; }
-    .perplexity:hover { background-color: #28b45f; }
-    .claude { background-color: #f7b731; }
-    .claude:hover { background-color: #d9a31f; }
+    .ai-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 400px;
+    }
+    .ai-card a {
+      display: inline-block;
+      padding: 12px 20px;
+      margin-top: 10px;
+      background: #0078ff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .ai-card a:hover {
+      background: #005fcc;
+    }
+    .description {
+      font-size: 14px;
+      color: #333;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- ChatGPT: very reliable / accurate for manageable tasks -->
-  <a href="https://chatgpt.com/" class="ai-link-button chatgpt" target="_blank">
-    Chat with ChatGPT
-  </a>
+  <!-- ChatGPT -->
+  <div class="ai-card">
+    <h2>ChatGPT</h2>
+    <p class="description">Manageable and accurate code generation. Great for learning, troubleshooting, and reliable HTML/CSS/JS.</p>
+    <a href="https://chatgpt.com/" target="_blank">Chat with ChatGPT</a>
+  </div>
 
-  <!-- DeepSeek: more advanced / powerful code, but may have accuracy issues sometimes -->
-  <a href="https://chat.deepseek.com/" class="ai-link-button deepseek" target="_blank">
-    Chat with DeepSeek
-  </a>
+  <!-- DeepSeek -->
+  <div class="ai-card">
+    <h2>DeepSeek</h2>
+    <p class="description">Produces more advanced and powerful code. Sometimes less accurate, so double-check results.</p>
+    <a href="https://chat.deepseek.com/" target="_blank">Chat with DeepSeek</a>
+  </div>
 
-  <!-- Perplexity: great for web-aware answer synthesis and research style tasks -->
-  <a href="https://www.perplexity.ai/" class="ai-link-button perplexity" target="_blank">
-    Chat with Perplexity
-  </a>
-
-  <!-- Claude: strong at clean structured output, good reasoning, longer instructions -->
-  <a href="https://claude.ai/" class="ai-link-button claude" target="_blank">
-    Chat with Claude
-  </a>
+  <!-- Extra Button: Pic.html -->
+  <div class="ai-card">
+    <h2>Extra Link</h2>
+    <p class="description">Opens the local page <b>pic.html</b>. You can use this for an image gallery or extra content.</p>
+    <a href="pic.html" target="_blank">Open pic.html</a>
+  </div>
 
 </body>
 </html>
