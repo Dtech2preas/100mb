@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DTECH Drop | Image to PNG Converter</title>
+</head>
+<body>
+
+  <h1>DTECH Drop - Image to PNG Converter</h1>
+
+  <!-- Upload -->
+  <div id="dropZone">
+    <input type="file" id="imageUpload" accept="image/*">
+    <p>Drag & drop or click to upload</p>
+    <p>All images convert to PNG (Max 32MB)</p>
+  </div>
+
+  <!-- Preview -->
+  <div id="previewContainer" style="display:none;">
+    <img id="preview" style="max-width:100%; max-height:300px;">
+    <button onclick="clearImage()">Remove</button>
+  </div>
+
+  <!-- Progress -->
+  <div id="progressContainer" style="display:none;">
+    <span>Processing...</span>
+    <span id="progressPercent">0%</span>
+    <div style="width:100%; background:#ddd;">
+      <div id="progressBar" style="width:0%; background:blue; height:10px;"></div>
+    </div>
+    <p id="statusText">Converting to PNG...</p>
+  </div>
+
+  <!-- Upload Button -->
+  <button id="uploadBtn" onclick="uploadImage()" disabled>
+    <span id="btnText">Convert & Upload</span>
+  </button>
+
+  <!-- Result -->
+  <div id="resultContainer" style="display:none;">
+    <h3>PNG Image URL</h3>
+    <input id="imageUrl" type="text" readonly>
+    <button onclick="openImage()">Open</button>
+    <button onclick="copyToClipboard()">Copy</button>
+    <button onclick="shareLink()">Share</button>
+    <p id="fileSize"></p>
+    <p id="fileFormat">PNG</p>
+  </div>
+
+  <p>All images are automatically converted to PNG format</p>
+
+  <script>
+    const API_KEY = 'cedf418c6d844af9c47a7775a17161a6';
+    let uploadStartTime;
+
+    const elements = {
+      dropZone: document.getElementById('dropZone'),
+      imageUpload: document.getElementById('imageUpload'),
+      previewContainer: document.getElementById('previewContainer'),
+      preview: document.getElementById('preview'),
+      uploadBtn: document.getElementById('uploadBtn'),
+      btnText: document.getElementById('btnText'),
+      progressContainer: document.getElementById('progressContainer'),
+      progressBar: document.getElementById('progressBar'),
+      progressPercent: document.getElementById('progressPercent'),
+      statusText: document.getElementById('statusText'),
+      resultContainer: document.getElementById('resultContainer'),
+      imageUrl: document.getElementById('imageUrl'),
+      fileSize: document.getElementById('fileSize'),
+      fileFormat: document.getElementById('fileFormat'),
+    };
+
+    elements.imageUpload.addEventListener('change', (e) => {
+      if (e.target.files.length) showPreview(e.target.files[0]);
+    });
+
+    function showPreview(file) {
+      if (!file.type.match('image.*')) {
+        alert('Please select an image file');
+        return;
+      }
+
+      if (file.size > 32 * 1024 * 1024) {
+        alert('File too large (max 32MB)');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        elements.preview.src = e.target.result;
+        elements.previewContainer.style.display = 'block';
+        elements.uploadBtn.disabled = false;
+        elements.btnText.textContent = `Convert ${formatFileSize(file.size)} to PNG`;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearImage() {
+      elements.imageUpload.value = '';
+      elements.previewContainer.style.display = 'none';
+      elements.uploadBtn.disabled = true;
+      elements.btnText.textContent = 'Convert & Upload';
+    }
+
+    function convertToPNG(file, callback) {
+      elements.statusText.textContent = "Converting to PNG...";
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+          canvas.toBlob(function(blob) {
+            const pngFile = new File([blob], file.name.replace(/\.[^/.]+$/, '') + '.png', {
+              type: 'image/png',
+              lastModified: new Date()
+            });
+            callback(pngFile);
+          }, 'image/png');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function uploadImage() {
+      const file = elements.imageUpload.files[0];
+      if (!file) return;
+
+      uploadStartTime = Date.now();
+      elements.uploadBtn.disabled = true;
+      elements.btnText.textContent = 'Processing...';
+      elements.progressContainer.style.display = 'block';
+      elements.resultContainer.style.display = 'none';
+
+      convertToPNG(file, (pngFile) => {
+        elements.statusText.textContent = "Uploading PNG...";
+        elements.progressPercent.textContent = "0%";
+
+        const formData = new FormData();
+        formData.append('image', pngFile);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', `https://api.imgbb.com/1/upload?key=${API_KEY}`);
+
+        xhr.upload.onprogress = (e) => {
+          if (e.lengthComputable) {
+            const percent = Math.round((e.loaded / e.total) * 100);
+            elements.progressBar.style.width = `${percent}%`;
+            elements.progressPercent.textContent = `${percent}%`;
+          }
+        };
+
+        xhr.onload = () => {
+          const data = JSON.parse(xhr.responseText);
+          if (data.success) {
+            showResult(data.data, pngFile);
+          } else {
+            alert("Upload failed");
+          }
+        };
+
+        xhr.onerror = () => {
+          alert("Network error");
+        };
+
+        xhr.send(formData);
+      });
+    }
+
+    function showResult(data, file) {
+      elements.progressContainer.style.display = 'none';
+      elements.btnText.textContent = 'Done!';
+      elements.imageUrl.value = data.url;
+      elements.fileSize.textContent = `Size: ${formatFileSize(file.size)}`;
+      elements.resultContainer.style.display = 'block';
+      elements.uploadBtn.disabled = false;
+    }
+
+    function copyToClipboard() {
+      elements.imageUrl.select();
+      document.execCommand('copy');
+      alert("Copied!");
+    }
+
+    function shareLink() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'PNG Image',
+          text: 'Converted via DTECH Drop',
+          url: elements.imageUrl.value
+        });
+      } else {
+        copyToClipboard();
+      }
+    }
+
+    function openImage() {
+      window.open(elements.imageUrl.value, '_blank');
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes < 1024) return `${bytes} B`;
+      if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+      return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+    }
+  </script>
+
+</body>
+</html>
