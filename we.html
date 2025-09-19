@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-TECH Subdomain Creator</title>
+    <script src='//libtl.com/sdk.js' data-zone='9630863' data-sdk='show_9630863'></script>
+</head>
+<body>
+    <div id="notification-container"></div>
+
+    <h1>D-TECH Subdomain Creator</h1>
+    <p>Create custom subdomains for your gist URLs</p>
+
+    <div>
+        <p>Important Notice: Your URL: <strong>https://[name].log-in.co.za</strong></p>
+        <p>Subdomains with &lt;1 hour may be removed at any time</p>
+        <p>Activation Notice: URL may take 1-2 minutes to become active. IF IT DOESN'T WORK THE FIRST TIME, THE SECOND TIME IT WILL 100% WORK</p>
+    </div>
+
+    <div>
+        <label for="name">Subdomain Name</label>
+        <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" />
+        <div id="name-status"></div>
+        <p>Use lowercase letters and dashes (-) only</p>
+        <p>Result: <span id="preview-url">https://.log-in.co.za</span></p>
+    </div>
+
+    <div>
+        <label for="url">Gist URL (Required for creation)</label>
+        <input type="url" id="url" placeholder="https://gist.github.com/..." />
+    </div>
+
+    <div>
+        <button id="create-btn" disabled>Create (2h)</button>
+        <button id="extend-btn">Extend 12h</button>
+        <button id="check-btn">Check Time</button>
+    </div>
+
+    <div>
+        URL activation may take 1-2 minutes
+    </div>
+
+    <div id="url-display" style="display:none;">
+        <h3>Your Subdomain URL</h3>
+        <div id="final-url">https://example.log-in.co.za</div>
+        <button id="copy-btn">Copy</button>
+    </div>
+
+    <div>
+        <h3>System Log</h3>
+        <span id="status-indicator"></span>
+        <pre id="log">System ready. Enter details to begin.</pre>
+    </div>
+
+    <script>
+        const MAPPING_RAW_URL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
+        const TOKEN_RAW_URL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
+        const GIST_ID = "451a35def0daf123212fcb9729d3dfdd";
+        const CACHE_TTL = 30000;
+        const INITIAL_DURATION = 7200;
+        const EXTENSION_DURATION = 43200;
+
+        let mappingCache = null;
+        let lastCacheTime = 0;
+
+        const elements = {
+            log: document.getElementById("log"),
+            statusIndicator: document.getElementById("status-indicator"),
+            previewUrl: document.getElementById("preview-url"),
+            finalUrl: document.getElementById("final-url"),
+            urlDisplay: document.getElementById("url-display"),
+            copyBtn: document.getElementById("copy-btn"),
+            notificationContainer: document.getElementById("notification-container"),
+            nameInput: document.getElementById("name"),
+            nameStatus: document.getElementById("name-status"),
+            createBtn: document.getElementById("create-btn"),
+            extendBtn: document.getElementById("extend-btn"),
+            checkBtn: document.getElementById("check-btn"),
+            urlInput: document.getElementById("url")
+        };
+
+        const getUnix = () => Math.floor(Date.now() / 1000);
+
+        const sanitizeName = (name) => {
+            return name.toLowerCase()
+                .replace(/[^a-z0-9-]/g, '')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+        };
+
+        const showNotification = (message, type = "info") => {
+            const notification = document.createElement("div");
+            notification.textContent = message;
+            elements.notificationContainer.appendChild(notification);
+            setTimeout(() => notification.remove(), 3500);
+        };
+
+        const log = (msg, type = "info") => {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntries = elements.log.textContent.split('\n').slice(0, 5);
+            elements.log.textContent = `[${timestamp}] ${msg}\n${logEntries.join('\n')}`;
+        };
+
+        const safeFetch = async (url, options) => {
+            try {
+                const res = await fetch(url, options);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return await res.json();
+            } catch (e) {
+                log(`Network error: ${e.message}`, "error");
+                throw e;
+            }
+        };
+
+        const getToken = async () => {
+            const response = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`);
+            const tokens = await response.text();
+            return tokens.split("\n")[0].trim();
+        };
+
+        const getMapping = async () => {
+            const now = Date.now();
+            if (mappingCache && now - lastCacheTime < CACHE_TTL) return mappingCache;
+            const response = await fetch(`${MAPPING_RAW_URL}?t=${now}`);
+            const data = await response.json();
+            mappingCache = data;
+            lastCacheTime = now;
+            return data;
+        };
+
+        const checkNameAvailability = async (name) => {
+            elements.nameStatus.textContent = "Checking...";
+            try {
+                const mapping = await getMapping();
+                if (mapping[name]) {
+                    elements.nameStatus.textContent = `"${name}" is taken`;
+                    elements.createBtn.disabled = true;
+                } else {
+                    elements.nameStatus.textContent = `"${name}" is available!`;
+                    elements.createBtn.disabled = false;
+                }
+            } catch (e) {
+                elements.nameStatus.textContent = "Check failed";
+            }
+        };
+
+        const updateMapping = async (newMapping) => {
+            const token = await getToken();
+            await safeFetch(`https://api.github.com/gists/${GIST_ID}`, {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Accept": "application/vnd.github.v3+json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ files: { "gistfile1.txt": { content: JSON.stringify(newMapping, null, 2) } } })
+            });
+        };
+
+        const handleAction = async (mode) => {
+            const name = sanitizeName(elements.nameInput.value.trim());
+            const url = elements.urlInput.value.trim();
+            if (!name) return log("Name is required");
+            if (mode === "create" && !url) return log("URL is required");
+            const mapping = await getMapping();
+            if (!mapping._expires) mapping._expires = {};
+            if (mode === "create") {
+                mapping[name] = url;
+                mapping._expires[name] = getUnix() + INITIAL_DURATION;
+                elements.finalUrl.textContent = `https://${name}.log-in.co.za`;
+                elements.urlDisplay.style.display = "block";
+            } else if (mode === "extend") {
+                mapping._expires[name] = (mapping._expires[name] || getUnix()) + EXTENSION_DURATION;
+            }
+            await updateMapping(mapping);
+            mappingCache = null;
+        };
+
+        const checkTime = async () => {
+            const name = sanitizeName(elements.nameInput.value.trim());
+            if (!name) return log("Enter a name first");
+            const mapping = await getMapping();
+            const expires = mapping._expires?.[name];
+            if (!expires) return log("No expiry set");
+            const remaining = expires - getUnix();
+            const mins = Math.floor(remaining / 60);
+            const hrs = Math.floor(mins / 60);
+            const minPart = mins % 60;
+            log(`Time remaining: ${hrs}h ${minPart}m`);
+        };
+
+        const withAd = async (callback) => {
+            try { await show_9630863(); callback(); } 
+            catch { callback(); }
+        };
+
+        elements.nameInput.addEventListener("input", function() {
+            const name = sanitizeName(this.value);
+            this.value = name;
+            elements.previewUrl.textContent = `https://${name || "[name]"}.log-in.co.za`;
+            clearTimeout(this.timer);
+            this.timer = setTimeout(() => name && checkNameAvailability(name), 500);
+        });
+
+        elements.copyBtn.addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText(elements.finalUrl.textContent);
+                showNotification("URL copied!");
+            } catch { showNotification("Failed to copy"); }
+        });
+
+        elements.createBtn.addEventListener("click", () => withAd(() => handleAction("create")));
+        elements.extendBtn.addEventListener("click", () => withAd(() => handleAction("extend")));
+        elements.checkBtn.addEventListener("click", checkTime);
+
+        log("System ready.");
+    </script>
+</body>
+</html>
