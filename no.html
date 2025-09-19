@@ -2,63 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AI Chat Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DTECH Website Creator</title>
   <style>
+    /* General body styling */
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      margin: 0;
       padding: 20px;
       text-align: center;
     }
-    .ai-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 400px;
+
+    h1 {
+      color: #00a8ff;
+      margin-bottom: 30px;
     }
+
+    /* Card styling */
+    .ai-card {
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      margin: 20px auto;
+      padding: 25px 20px;
+      max-width: 450px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .ai-card:hover {
+      transform: translateY(-5px);
+      border-color: #00a8ff;
+    }
+
+    .ai-card h2 {
+      margin-top: 0;
+      color: #00a8ff;
+    }
+
+    .ai-card .description {
+      font-size: 14px;
+      color: #ccc;
+      margin: 12px 0;
+    }
+
+    /* Buttons */
     .ai-card a {
       display: inline-block;
-      padding: 12px 20px;
+      padding: 12px 25px;
       margin-top: 10px;
-      background: #0078ff;
+      background: #00a8ff;
       color: white;
       text-decoration: none;
       border-radius: 8px;
-      transition: background 0.3s;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
     }
+
     .ai-card a:hover {
-      background: #005fcc;
+      background: #0088cc;
+      transform: scale(1.05);
     }
-    .description {
-      font-size: 14px;
-      color: #333;
-      margin-top: 10px;
+
+    .secondary-btn {
+      background: #28b463;
     }
+    .secondary-btn:hover {
+      background: #1f8f4b;
+    }
+
+    .tertiary-btn {
+      background: #ff6b6b;
+    }
+    .tertiary-btn:hover {
+      background: #cc5252;
+    }
+
+    /* Footer / workflow note */
+    .note {
+      max-width: 700px;
+      margin: 40px auto;
+      font-size: 15px;
+      color: #aaa;
+      line-height: 1.5;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- ChatGPT -->
+  <h1>DTECH AI Website Creator</h1>
+
+  <!-- ChatGPT Card -->
   <div class="ai-card">
     <h2>ChatGPT</h2>
-    <p class="description">Manageable and accurate code generation. Great for learning, troubleshooting, and reliable HTML/CSS/JS.</p>
-    <a href="https://chatgpt.com/" target="_blank">Chat with ChatGPT</a>
+    <p class="description">
+      Generate manageable and accurate HTML code. Paste your prompt and optional image URL for full customization.
+    </p>
+    <a href="https://chatgpt.com/" target="_blank">Go to ChatGPT</a>
   </div>
 
-  <!-- DeepSeek -->
+  <!-- DeepSeek Card -->
   <div class="ai-card">
     <h2>DeepSeek</h2>
-    <p class="description">Produces more advanced and powerful code. Sometimes less accurate, so double-check results.</p>
-    <a href="https://chat.deepseek.com/" target="_blank">Chat with DeepSeek</a>
+    <p class="description">
+      Generate advanced, powerful HTML code. Results may require verification. Include your image URL for logos or banners.
+    </p>
+    <a href="https://chat.deepseek.com/" target="_blank">Go to DeepSeek</a>
   </div>
 
-  <!-- Extra Button: Pic.html -->
+  <!-- Pic Upload Card -->
   <div class="ai-card">
-    <h2>Extra Link</h2>
-    <p class="description">Opens the local page <b>pic.html</b>. You can use this for an image gallery or extra content.</p>
-    <a href="pic.html" target="_blank">Open pic.html</a>
+    <h2>Upload Logo / Picture</h2>
+    <p class="description">
+      Upload your picture/logo to get a URL. Paste that URL into your AI prompt so your generated website includes it.
+    </p>
+    <a href="pic.html" target="_blank" class="secondary-btn">Upload Pic</a>
+  </div>
+
+  <!-- Error / Live URL Card -->
+  <div class="ai-card">
+    <h2>Paste & Go Live</h2>
+    <p class="description">
+      After generating HTML code with AI, paste it here to get a live website URL.
+    </p>
+    <a href="err.html" target="_blank" class="tertiary-btn">Go to Live URL Page</a>
+  </div>
+
+  <div class="note">
+    <strong>Workflow:</strong><br>
+    1. Click one of the AI options to generate your HTML code.<br>
+    2. If you want an image/logo in your site, upload it via the Pic button and copy the URL.<br>
+    3. Include the image URL in your AI prompt to customize the code.<br>
+    4. After generating the code, go to the "Paste & Go Live" button (err.html) to view your website online.
   </div>
 
 </body>
