@@ -4,6 +4,25 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>HTML to Live Website Converter</title>
+<style>
+  #previewContainer {
+    border: 1px solid #000;
+    height: 400px;
+    width: 100%;
+    position: relative;
+  }
+  #previewIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  #fullscreenBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+  }
+</style>
 </head>
 <body>
 
@@ -22,12 +41,13 @@
 <!-- Step 2: Input HTML -->
 <div>
   <h2>Step 2: Input HTML</h2>
-  <textarea id="htmlInput" rows="15" cols="80" placeholder="Paste your HTML here"></textarea><br><br>
+  <textarea id="htmlInput" rows="10" cols="80" placeholder="Paste your HTML here"></textarea><br><br>
   <label>Or upload an HTML file:</label>
   <input type="file" id="htmlFile" accept=".html,.htm">
-  <div>
-    <h3>Preview:</h3>
-    <pre id="htmlPreview"></pre>
+
+  <div id="previewContainer">
+    <button id="fullscreenBtn">Full Screen</button>
+    <iframe id="previewIframe"></iframe>
   </div>
 </div>
 
@@ -56,17 +76,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   const tokenOptionsContainer = document.getElementById('tokenOptionsContainer');
   const htmlInput = document.getElementById('htmlInput');
   const htmlFile = document.getElementById('htmlFile');
-  const htmlPreview = document.getElementById('htmlPreview');
+  const previewIframe = document.getElementById('previewIframe');
   const uploadBtn = document.getElementById('uploadBtn');
   const uploadStatus = document.getElementById('uploadStatus');
   const resultContainer = document.getElementById('resultContainer');
   const gistUrl = document.getElementById('gistUrl');
   const liveUrl = document.getElementById('liveUrl');
   const copyLiveUrl = document.getElementById('copyLiveUrl');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  const previewContainer = document.getElementById('previewContainer');
 
   let htmlContent = '';
 
-  // Fetch tokens
+  // Fetch GitHub tokens
   async function fetchTokens() {
     try {
       const res = await fetch('https://gist.githubusercontent.com/Dtech2preas/8a30b80295920ae54ce13af87b7c162d/raw/gistfile1.txt');
@@ -98,10 +120,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   fetchTokens();
 
+  // Update preview
+  function updatePreview(content) {
+    previewIframe.srcdoc = content;
+  }
+
   // Handle textarea input
   htmlInput.addEventListener('input', () => {
     htmlContent = htmlInput.value;
-    htmlPreview.textContent = htmlContent;
+    updatePreview(htmlContent);
   });
 
   // Handle file upload
@@ -111,7 +138,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       const reader = new FileReader();
       reader.onload = function(ev) {
         htmlContent = ev.target.result;
-        htmlPreview.textContent = htmlContent;
+        updatePreview(htmlContent);
+        htmlInput.value = htmlContent;
       };
       reader.readAsText(file);
     }
@@ -168,6 +196,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     setTimeout(()=>{ copyLiveUrl.textContent='Copy Live URL'; }, 2000);
   });
 
+  // Fullscreen toggle
+  fullscreenBtn.addEventListener('click', () => {
+    if(!document.fullscreenElement) {
+      previewContainer.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  });
 });
 </script>
 
