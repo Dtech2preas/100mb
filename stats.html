@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JSON Data Analytics Dashboard</title>
   <style>
     :root {
@@ -20,14 +19,15 @@
       --success: #34A853;
       --warning: #FBBC05;
       --danger: #EA4335;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
+
     body {
       font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--secondary);
@@ -38,7 +38,7 @@
       min-height: 100vh;
       font-size: 16px;
     }
-    
+
     .header {
       background-color: var(--secondary);
       color: white;
@@ -49,15 +49,76 @@
       z-index: 100;
       border-bottom: 2px solid var(--primary);
     }
-    
+
     .header-content {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    
+
+    .header-controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .refresh-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--border);
+      transition: .4s;
+      border-radius: 24px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: var(--primary);
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(26px);
+    }
+
     .main {
       flex: 1;
       padding: 1.5rem;
@@ -65,7 +126,7 @@
       margin: 0 auto;
       width: 100%;
     }
-    
+
     h1 {
       font-size: 1.5rem;
       font-weight: 500;
@@ -74,73 +135,84 @@
       align-items: center;
       gap: 10px;
     }
-    
+
     h2 {
       font-size: 1.25rem;
       font-weight: 500;
       color: var(--primary);
       margin-bottom: 1rem;
     }
-    
+
     h3 {
       font-size: 1.1rem;
       color: var(--text-light);
       margin-bottom: 0.75rem;
     }
-    
+
     .dashboard-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-    
+
     .metrics-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
-    
+
     .metric-card {
       background-color: var(--card-bg);
       border-radius: 8px;
       padding: 1.25rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: var(--card-shadow);
       text-align: center;
       border-left: 4px solid var(--primary);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
     .metric-value {
       font-size: 2rem;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 0.25rem;
     }
-    
+
     .metric-label {
       font-size: 1rem;
       color: var(--text-light);
     }
-    
+
     .content-row {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-    
+
     @media (min-width: 992px) {
       .content-row {
         grid-template-columns: 1fr 1fr;
       }
     }
-    
+
     .data-panel {
       background-color: var(--card-bg);
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: var(--card-shadow);
       overflow: hidden;
+      transition: transform 0.2s;
     }
-    
+
+    .data-panel:hover {
+      transform: translateY(-2px);
+    }
+
     .panel-header {
       background-color: var(--secondary-light);
       color: var(--primary);
@@ -152,36 +224,47 @@
       gap: 10px;
       border-bottom: 1px solid var(--border);
     }
-    
+
     .panel-body {
       padding: 1rem;
       max-height: 500px;
       overflow-y: auto;
     }
-    
+
     .panel-footer {
       padding: 1rem;
       background-color: var(--secondary-light);
       border-top: 1px solid var(--border);
     }
-    
+
     .entry-item {
       padding: 1rem;
       border-bottom: 1px solid var(--border);
       transition: background-color 0.2s;
     }
-    
+
     .entry-item:hover {
       background-color: var(--secondary-light);
     }
-    
+
     .entry-date {
       font-weight: 500;
       color: var(--primary);
       margin-bottom: 0.5rem;
       font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    
+
+    .entry-time-ago {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      background-color: var(--secondary);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
     .entry-content {
       font-size: 0.95rem;
       color: var(--text);
@@ -189,7 +272,7 @@
       flex-wrap: wrap;
       gap: 0.75rem;
     }
-    
+
     .property-badge {
       display: inline-block;
       padding: 0.5rem 0.75rem;
@@ -198,44 +281,48 @@
       font-size: 0.9rem;
       color: var(--text);
       border: 1px solid var(--border);
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    
+
     .property-badge .property-name {
       color: var(--primary);
       font-weight: 500;
     }
-    
+
     .stat-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1.25rem;
     }
-    
+
     .stat-card {
       background-color: var(--secondary-light);
       padding: 1.25rem;
       border-radius: 8px;
       border-left: 4px solid var(--primary);
     }
-    
+
     .stat-title {
       font-size: 0.95rem;
       color: var(--text-light);
       margin-bottom: 0.75rem;
     }
-    
+
     .stat-value {
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 0.5rem;
     }
-    
+
     .stat-description {
       font-size: 0.85rem;
       color: var(--text-light);
     }
-    
+
     .btn {
       padding: 0.75rem 1.25rem;
       border-radius: 6px;
@@ -248,27 +335,32 @@
       transition: all 0.2s;
       font-size: 0.95rem;
     }
-    
+
     .btn-primary {
       background-color: var(--primary);
       color: white;
     }
-    
+
     .btn-primary:hover {
       background-color: var(--primary-dark);
       transform: translateY(-1px);
     }
-    
+
     .btn-outline {
       background-color: transparent;
       border: 1px solid var(--primary);
       color: var(--primary);
     }
-    
+
     .btn-outline:hover {
       background-color: rgba(66, 133, 244, 0.1);
     }
-    
+
+    .btn-sm {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+    }
+
     .loading {
       display: flex;
       align-items: center;
@@ -277,7 +369,7 @@
       color: var(--text-light);
       font-size: 1rem;
     }
-    
+
     .loading::after {
       content: "";
       display: inline-block;
@@ -289,11 +381,11 @@
       animation: spin 1s ease-in-out infinite;
       margin-left: 0.75rem;
     }
-    
+
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    
+
     .bar-chart {
       height: 8px;
       background-color: var(--border);
@@ -301,25 +393,27 @@
       margin: 0.75rem 0;
       overflow: hidden;
     }
-    
+
     .bar {
       height: 100%;
       background: linear-gradient(90deg, var(--primary), var(--primary-dark));
       border-radius: 4px;
     }
-    
+
     .url-manager {
       margin-top: 1.5rem;
     }
-    
+
     .url-form {
       display: flex;
       gap: 1rem;
       margin-bottom: 1rem;
+      flex-wrap: wrap;
     }
-    
+
     .url-input {
       flex: 1;
+      min-width: 200px;
       padding: 0.75rem;
       border-radius: 6px;
       border: 1px solid var(--border);
@@ -327,11 +421,11 @@
       color: var(--text);
       font-size: 0.95rem;
     }
-    
+
     .url-list {
       margin-top: 1rem;
     }
-    
+
     .url-item {
       display: flex;
       justify-content: space-between;
@@ -340,39 +434,50 @@
       background-color: var(--secondary-light);
       border-radius: 6px;
       margin-bottom: 0.75rem;
+      gap: 1rem;
     }
-    
+
+    .url-info {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+    }
+
     .url-name {
       font-weight: 500;
       color: var(--primary);
+      margin-bottom: 0.25rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    
+
     .url-value {
       font-size: 0.85rem;
       color: var(--text-light);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      max-width: 60%;
     }
-    
+
     .url-actions {
       display: flex;
       gap: 0.5rem;
+      flex-shrink: 0;
     }
-    
+
     .empty-state {
       text-align: center;
       padding: 2rem;
       color: var(--text-light);
     }
-    
+
     .section-divider {
       height: 1px;
       background-color: var(--border);
       margin: 2rem 0;
     }
-    
+
     /* Toast notification */
     .toast {
       position: fixed;
@@ -382,19 +487,20 @@
       color: white;
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: var(--card-shadow);
       transform: translateY(100px);
       opacity: 0;
       transition: all 0.3s ease;
       z-index: 1000;
       border-left: 4px solid var(--primary);
+      max-width: 350px;
     }
-    
+
     .toast.show {
       transform: translateY(0);
       opacity: 1;
     }
-    
+
     /* Export options */
     .export-options {
       display: none;
@@ -403,32 +509,33 @@
       top: 100%;
       background-color: var(--card-bg);
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: var(--card-shadow);
       padding: 0.5rem;
       z-index: 10;
       min-width: 200px;
     }
-    
+
     .export-options.show {
       display: block;
     }
-    
+
     .export-option {
       padding: 0.75rem;
       cursor: pointer;
       border-radius: 4px;
+      transition: background-color 0.2s;
     }
-    
+
     .export-option:hover {
       background-color: var(--secondary-light);
     }
-    
+
     /* Tooltip */
     .tooltip {
       position: relative;
       display: inline-block;
     }
-    
+
     .tooltip .tooltiptext {
       visibility: hidden;
       width: 120px;
@@ -447,10 +554,47 @@
       font-size: 0.8rem;
       border: 1px solid var(--border);
     }
-    
+
     .tooltip:hover .tooltiptext {
       visibility: visible;
       opacity: 1;
+    }
+
+    /* Highlight new entries */
+    .new-entry {
+      animation: highlight 2s ease;
+    }
+
+    @keyframes highlight {
+      0% { background-color: rgba(66, 133, 244, 0.2); }
+      100% { background-color: transparent; }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .header-controls {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .url-form {
+        flex-direction: column;
+      }
+      
+      .url-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .url-actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -459,36 +603,46 @@
   <header class="header">
     <div class="header-content">
       <h1>🌐 URL Analytics Dashboard</h1>
-      <div style="position: relative;">
-        <button id="downloadBtn" class="btn btn-primary">
-          <span>⬇️ Export Data</span>
-        </button>
-        <div id="exportOptions" class="export-options">
-          <div class="export-option" data-format="json">JSON (Original)</div>
-          <div class="export-option" data-format="json-short">JSON (With Short Names)</div>
-          <div class="export-option" data-format="csv">CSV (With Short Names)</div>
+      <div class="header-controls">
+        <div class="refresh-toggle">
+          <label class="toggle-switch">
+            <input type="checkbox" id="autoRefreshToggle">
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Auto Refresh</span>
+        </div>
+        <div style="position: relative;">
+          <button id="downloadBtn" class="btn btn-primary">
+            <span>⬇️ Export Data</span>
+          </button>
+          <div id="exportOptions" class="export-options">
+            <div class="export-option" data-format="json">JSON (Original)</div>
+            <div class="export-option" data-format="json-short">JSON (With Short Names)</div>
+            <div class="export-option" data-format="csv">CSV (With Short Names)</div>
+          </div>
         </div>
       </div>
     </div>
   </header>
-  
+
   <main class="main">
     <div class="dashboard-grid">
       <div class="metrics-row" id="metricsBar">
         <div class="loading">Loading metrics...</div>
       </div>
-      
+
       <div class="content-row">
         <div class="data-panel">
           <div class="panel-header">
             <span>📅</span>
             <span>Recent Activity</span>
+            <button id="refreshDataBtn" class="btn btn-outline btn-sm" style="margin-left: auto;">🔄 Refresh</button>
           </div>
           <div class="panel-body" id="entriesContainer">
             <div class="loading">Loading entries...</div>
           </div>
         </div>
-        
+
         <div class="data-panel">
           <div class="panel-header">
             <span>📊</span>
@@ -499,16 +653,16 @@
           </div>
         </div>
       </div>
-      
+
       <div class="section-divider"></div>
-      
+
       <div class="data-panel url-manager">
         <div class="panel-header">
           <span>🔗</span>
           <span>URL Short Names</span>
           <div style="margin-left: auto; display: flex; gap: 0.5rem;">
-            <button id="importUrlsBtn" class="btn btn-outline" style="font-size: 0.8rem;">Import</button>
-            <button id="exportUrlsBtn" class="btn btn-outline" style="font-size: 0.8rem;">Export</button>
+            <button id="importUrlsBtn" class="btn btn-outline btn-sm">Import</button>
+            <button id="exportUrlsBtn" class="btn btn-outline btn-sm">Export</button>
           </div>
         </div>
         <div class="panel-body">
@@ -522,7 +676,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="data-panel">
         <div class="panel-header">
           <span>🌍</span>
@@ -540,20 +694,23 @@
 
   <!-- Hidden file input for import -->
   <input type="file" id="fileImport" style="display: none;" accept=".json,.csv">
+  
+  <!-- Hidden textarea for JSON data storage -->
+  <textarea id="jsonViewer" style="display: none;"></textarea>
 
   <script>
     // URL naming system in localStorage
     const urlMappings = JSON.parse(localStorage.getItem('urlMappings')) || {};
-    
+
     // Get user info from localStorage
     const userInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {};
     let gistUrl = userInfo.gistUrl || "https://gist.github.com/Dtech2preas/baf8538c85354add526e6cb4c40dcd3a";
     let gistId = userInfo.gistId || "baf8538c85354add526e6cb4c40dcd3a";
     const filename = userInfo.username ? `${userInfo.username}.json` : "Data.json";
-    
+
     // Construct raw URL
     const rawURL = `https://gist.githubusercontent.com/Dtech2preas/${gistId}/raw/${filename}`;
-    
+
     // DOM elements
     const urlInput = document.getElementById('urlInput');
     const nameInput = document.getElementById('nameInput');
@@ -565,26 +722,33 @@
     const exportUrlsBtn = document.getElementById('exportUrlsBtn');
     const fileImport = document.getElementById('fileImport');
     const toast = document.getElementById('toast');
-    
+    const jsonViewer = document.getElementById('jsonViewer');
+    const autoRefreshToggle = document.getElementById('autoRefreshToggle');
+    const refreshDataBtn = document.getElementById('refreshDataBtn');
+
+    // Auto refresh variables
+    let autoRefreshInterval = null;
+    let lastDataHash = null;
+
     // Initialize the app
     document.addEventListener('DOMContentLoaded', () => {
       initUrlManager();
       setupEventListeners();
       loadGistJSON();
     });
-    
+
     function setupEventListeners() {
       // Toggle export options
       downloadBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         exportOptions.classList.toggle('show');
       });
-      
+
       // Close export options when clicking elsewhere
       document.addEventListener('click', () => {
         exportOptions.classList.remove('show');
       });
-      
+
       // Handle export option selection
       exportOptions.querySelectorAll('.export-option').forEach(option => {
         option.addEventListener('click', (e) => {
@@ -594,13 +758,44 @@
           exportOptions.classList.remove('show');
         });
       });
-      
+
       // URL import/export
       importUrlsBtn.addEventListener('click', () => fileImport.click());
       exportUrlsBtn.addEventListener('click', exportUrlMappings);
       fileImport.addEventListener('change', handleFileImport);
+      
+      // Auto refresh toggle
+      autoRefreshToggle.addEventListener('change', function() {
+        if (this.checked) {
+          startAutoRefresh();
+        } else {
+          stopAutoRefresh();
+        }
+      });
+      
+      // Manual refresh button
+      refreshDataBtn.addEventListener('click', () => {
+        loadGistJSON();
+        showToast('Data refreshed');
+      });
     }
-    
+
+    function startAutoRefresh() {
+      // Refresh every 30 seconds
+      autoRefreshInterval = setInterval(() => {
+        loadGistJSON();
+      }, 30000);
+      showToast('Auto refresh enabled');
+    }
+
+    function stopAutoRefresh() {
+      if (autoRefreshInterval) {
+        clearInterval(autoRefreshInterval);
+        autoRefreshInterval = null;
+        showToast('Auto refresh disabled');
+      }
+    }
+
     function showToast(message, duration = 3000) {
       toast.textContent = message;
       toast.classList.add('show');
@@ -608,20 +803,20 @@
         toast.classList.remove('show');
       }, duration);
     }
-    
+
     // Initialize URL manager
     function initUrlManager() {
       renderUrlList();
-      
+
       addUrlBtn.addEventListener('click', () => {
         const url = urlInput.value.trim();
         const name = nameInput.value.trim();
-        
+
         if (!url || !name) {
           showToast('Please enter both URL and name');
           return;
         }
-        
+
         try {
           // Validate URL
           new URL(url);
@@ -629,39 +824,45 @@
           showToast('Please enter a valid URL');
           return;
         }
-        
+
         urlMappings[url] = name;
         localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
         showToast('URL mapping added');
         renderUrlList();
         urlInput.value = '';
         nameInput.value = '';
+        
+        // Refresh the data to apply the new mappings
+        if (jsonViewer.value) {
+          const data = JSON.parse(jsonViewer.value);
+          analyzeData(data);
+        }
       });
     }
-    
+
     function renderUrlList() {
       if (Object.keys(urlMappings).length === 0) {
         urlList.innerHTML = '<div class="empty-state">No URLs added yet</div>';
         return;
       }
-      
+
       urlList.innerHTML = '';
       Object.entries(urlMappings).forEach(([url, name]) => {
         const urlItem = document.createElement('div');
         urlItem.className = 'url-item';
         urlItem.innerHTML = `
-          <div>
+          <div class="url-info">
             <div class="url-name">${name}</div>
-            <div class="url-value">${truncate(url, 50)}</div>
+            <div class="url-value" title="${url}">${truncate(url, 50)}</div>
           </div>
           <div class="url-actions">
-            <button class="btn btn-outline" data-url="${url}">Edit</button>
-            <button class="btn btn-outline" data-url="${url}">Remove</button>
+            <button class="btn btn-outline btn-sm" data-url="${url}">Edit</button>
+            <button class="btn btn-outline btn-sm" data-url="${url}">Remove</button>
           </div>
         `;
         urlList.appendChild(urlItem);
       });
-      
+
       // Add event listeners to buttons
       document.querySelectorAll('.url-actions button').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -671,6 +872,12 @@
             localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
             showToast('URL mapping removed');
             renderUrlList();
+            
+            // Refresh the data to apply the removed mappings
+            if (jsonViewer.value) {
+              const data = JSON.parse(jsonViewer.value);
+              analyzeData(data);
+            }
           } else {
             const newName = prompt('Enter new name for this URL:', urlMappings[url]);
             if (newName && newName.trim()) {
@@ -678,12 +885,18 @@
               localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
               showToast('URL mapping updated');
               renderUrlList();
+              
+              // Refresh the data to apply the updated mappings
+              if (jsonViewer.value) {
+                const data = JSON.parse(jsonViewer.value);
+                analyzeData(data);
+              }
             }
           }
         });
       });
     }
-    
+
     function exportUrlMappings() {
       const dataStr = JSON.stringify(urlMappings, null, 2);
       const blob = new Blob([dataStr], { type: 'application/json' });
@@ -697,11 +910,11 @@
       URL.revokeObjectURL(url);
       showToast('URL mappings exported');
     }
-    
+
     function handleFileImport(e) {
       const file = e.target.files[0];
       if (!file) return;
-      
+
       const reader = new FileReader();
       reader.onload = (event) => {
         try {
@@ -711,6 +924,12 @@
             localStorage.setItem('urlMappings', JSON.stringify(urlMappings));
             showToast(`${Object.keys(importedMappings).length} URLs imported`);
             renderUrlList();
+            
+            // Refresh the data to apply the imported mappings
+            if (jsonViewer.value) {
+              const data = JSON.parse(jsonViewer.value);
+              analyzeData(data);
+            }
           } else {
             showToast('Invalid file format');
           }
@@ -721,18 +940,23 @@
       reader.readAsText(file);
       fileImport.value = ''; // Reset input
     }
-    
+
     // Get short name for URL
     function getUrlName(url) {
       return urlMappings[url] || truncate(url, 30);
     }
-    
+
     // Export data in different formats
     function exportData(format) {
-      const rawData = JSON.parse(document.getElementById('jsonViewer').value || '{}');
-      
+      if (!jsonViewer.value) {
+        showToast('No data to export');
+        return;
+      }
+
+      const rawData = JSON.parse(jsonViewer.value);
+
       let data, filename, mimeType;
-      
+
       switch (format) {
         case 'json':
           // Original JSON
@@ -740,14 +964,14 @@
           filename = 'data-original.json';
           mimeType = 'application/json';
           break;
-          
+
         case 'json-short':
           // JSON with short names
           data = JSON.stringify(processDataForDownload(rawData), null, 2);
           filename = 'data-with-short-names.json';
           mimeType = 'application/json';
           break;
-          
+
         case 'csv':
           // CSV with short names
           const processedData = processDataForDownload(rawData);
@@ -755,11 +979,11 @@
           filename = 'data-with-short-names.csv';
           mimeType = 'text/csv';
           break;
-          
+
         default:
           return;
       }
-      
+
       const blob = new Blob([data], { type: mimeType });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -771,7 +995,7 @@
       URL.revokeObjectURL(url);
       showToast(`Exported as ${filename}`);
     }
-    
+
     function processDataForDownload(data) {
       if (Array.isArray(data)) {
         return data.map(item => processDataForDownload(item));
@@ -792,10 +1016,10 @@
       }
       return data;
     }
-    
+
     function convertToCSV(data) {
       if (typeof data !== 'object') return '';
-      
+
       // Get all unique property names
       const allKeys = new Set();
       Object.values(data).forEach(entry => {
@@ -803,17 +1027,17 @@
           Object.keys(entry).forEach(key => allKeys.add(key));
         }
       });
-      
+
       const headers = Array.from(allKeys);
       let csv = headers.join(',') + '\n';
-      
+
       // Process each entry
       Object.values(data).forEach(entry => {
         if (typeof entry === 'object' && entry !== null) {
           const row = headers.map(header => {
             const value = entry[header];
             if (value === undefined || value === null) return '';
-            
+
             // Escape quotes and wrap in quotes if contains commas
             let str = String(value).replace(/"/g, '""');
             if (str.includes(',')) str = `"${str}"`;
@@ -822,24 +1046,27 @@
           csv += row.join(',') + '\n';
         }
       });
-      
+
       return csv;
     }
 
     async function loadGistJSON() {
       try {
-        // Create hidden textarea for download functionality
-        const textarea = document.createElement('textarea');
-        textarea.id = 'jsonViewer';
-        textarea.style.display = 'none';
-        document.body.appendChild(textarea);
-        
         const response = await fetch(rawURL);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
+
         const text = await response.text();
-        textarea.value = text;
         
+        // Check if data has actually changed
+        const newHash = hashString(text);
+        if (newHash === lastDataHash) {
+          // Data hasn't changed, no need to update UI
+          return;
+        }
+        lastDataHash = newHash;
+        
+        jsonViewer.value = text;
+
         let jsonData;
         try {
           jsonData = JSON.parse(text);
@@ -851,13 +1078,24 @@
         showError("Error loading data: " + err.message);
       }
     }
-    
+
+    // Simple hash function to detect changes
+    function hashString(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+      }
+      return hash;
+    }
+
     function analyzeData(data) {
       if (typeof data !== 'object' || data === null) {
         showError("Data is not an object");
         return;
       }
-      
+
       // Count timestamp entries and collect statistics
       let timestampCount = 0;
       const timestampEntries = [];
@@ -867,14 +1105,14 @@
       const yesterdayStr = yesterday.toISOString().split('T')[0];
       let todayCount = 0;
       let yesterdayCount = 0;
-      
+
       // For property analysis
       const propertyStats = {};
       const valueStats = {};
       const hourDistribution = Array(24).fill(0);
       const dayDistribution = Array(7).fill(0);
       const domainStats = {};
-      
+
       for (const key in data) {
         if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
           timestampCount++;
@@ -883,27 +1121,27 @@
           const dateStr = key.split('T')[0];
           const hour = date.getHours();
           const day = date.getDay();
-          
+
           // Count today/yesterday entries
           if (dateStr === today) todayCount++;
           if (dateStr === yesterdayStr) yesterdayCount++;
-          
+
           // Track hour and day distribution
           hourDistribution[hour]++;
           dayDistribution[day]++;
-          
+
           // Process entry
           const processedEntry = { date: key, data: {} };
-          
+
           for (const prop in entry) {
             // Property frequency
             propertyStats[prop] = (propertyStats[prop] || 0) + 1;
-            
+
             // Process URL fields
             if ((prop === 'page_url' || prop === 'url') && entry[prop]) {
               const url = entry[prop];
               processedEntry.data[prop] = getUrlName(url);
-              
+
               // Domain statistics
               try {
                 const domain = new URL(url).hostname.replace('www.', '');
@@ -914,43 +1152,43 @@
             } else {
               processedEntry.data[prop] = entry[prop];
             }
-            
+
             // Value analysis (for string properties)
             if (typeof entry[prop] === 'string') {
               if (!valueStats[prop]) valueStats[prop] = {};
               valueStats[prop][entry[prop]] = (valueStats[prop][entry[prop]] || 0) + 1;
             }
           }
-          
+
           timestampEntries.push(processedEntry);
         }
       }
-      
+
       // Calculate time-based metrics
       let avgPerDay = 0;
       let firstDate = null;
       let lastDate = null;
       let busiestHour = null;
       let busiestDay = null;
-      
+
       if (timestampEntries.length > 0) {
         // Sort entries by date
         timestampEntries.sort((a, b) => new Date(a.date) - new Date(b.date));
-        
+
         firstDate = new Date(timestampEntries[0].date);
         lastDate = new Date(timestampEntries[timestampEntries.length - 1].date);
         const totalDays = Math.max(Math.round((lastDate - firstDate) / (1000 * 60 * 60 * 24)), 1);
         avgPerDay = (timestampEntries.length / totalDays).toFixed(1);
-        
+
         // Find busiest hour
         const maxHourCount = Math.max(...hourDistribution);
         busiestHour = hourDistribution.indexOf(maxHourCount);
-        
+
         // Find busiest day
         const maxDayCount = Math.max(...dayDistribution);
         busiestDay = dayDistribution.indexOf(maxDayCount);
       }
-      
+
       // Update metrics bar
       document.getElementById('metricsBar').innerHTML = `
         <div class="metric-card">
@@ -970,29 +1208,32 @@
           <div class="metric-label">Total Entries</div>
         </div>
       `;
-      
+
       // Update recent entries (newest first)
       const sortedEntries = [...timestampEntries].sort((a, b) => new Date(b.date) - new Date(a.date));
       const entriesHTML = sortedEntries.slice(0, 30).map(entry => `
         <div class="entry-item">
-          <div class="entry-date">${formatDate(entry.date)} • ${timeAgo(entry.date)}</div>
+          <div class="entry-date">
+            ${formatDate(entry.date)}
+            <span class="entry-time-ago">${timeAgo(entry.date)}</span>
+          </div>
           <div class="entry-content">
             ${Object.entries(entry.data).map(([key, value]) => `
-              <span class="property-badge">
+              <span class="property-badge" title="${key}: ${value}">
                 <span class="property-name">${key}:</span> ${truncate(value, 25)}
               </span>
             `).join('')}
           </div>
         </div>
       `).join('');
-      
+
       document.getElementById('entriesContainer').innerHTML = entriesHTML || `
         <div class="loading">No entries found</div>
       `;
-      
+
       // Update statistics panel
       let statsHTML = '';
-      
+
       if (firstDate && lastDate) {
         statsHTML += `
           <div class="stat-card">
@@ -1002,7 +1243,7 @@
           </div>
         `;
       }
-      
+
       if (busiestHour !== null) {
         statsHTML += `
           <div class="stat-card">
@@ -1015,7 +1256,7 @@
           </div>
         `;
       }
-      
+
       if (busiestDay !== null) {
         statsHTML += `
           <div class="stat-card">
@@ -1028,12 +1269,12 @@
           </div>
         `;
       }
-      
+
       // Add property statistics
       const sortedProperties = Object.entries(propertyStats)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 3);
-      
+
       if (sortedProperties.length > 0) {
         statsHTML += `
           <div class="stat-card">
@@ -1052,19 +1293,19 @@
           </div>
         `;
       }
-      
+
       document.getElementById('statsContainer').innerHTML = `
         <div class="stat-grid">
           ${statsHTML}
         </div>
       `;
-      
+
       // Update domain statistics
       let domainHTML = '';
       const sortedDomains = Object.entries(domainStats)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 10);
-      
+
       if (sortedDomains.length > 0) {
         domainHTML = `
           <div class="stat-grid">
@@ -1083,10 +1324,10 @@
       } else {
         domainHTML = '<div class="empty-state">No domain data available</div>';
       }
-      
+
       document.getElementById('domainStatsContainer').innerHTML = domainHTML;
     }
-    
+
     function showError(message) {
       document.getElementById('metricsBar').innerHTML = `
         <div class="metric-card">
@@ -1095,7 +1336,7 @@
         </div>
       `;
     }
-    
+
     function formatDate(dateStr) {
       const date = new Date(dateStr);
       return date.toLocaleString('en-US', {
@@ -1105,7 +1346,7 @@
         minute: '2-digit'
       });
     }
-    
+
     function formatDateShort(date) {
       return date.toLocaleDateString('en-US', {
         year: 'numeric',
@@ -1113,47 +1354,44 @@
         day: 'numeric'
       });
     }
-    
+
     function timeAgo(date) {
       if (!(date instanceof Date)) date = new Date(date);
       const seconds = Math.floor((new Date() - date) / 1000);
-      
+
       let interval = Math.floor(seconds / 31536000);
       if (interval >= 1) return `${interval}y ago`;
-      
+
       interval = Math.floor(seconds / 2592000);
       if (interval >= 1) return `${interval}mo ago`;
-      
+
       interval = Math.floor(seconds / 86400);
       if (interval >= 1) return `${interval}d ago`;
-      
+
       interval = Math.floor(seconds / 3600);
       if (interval >= 1) return `${interval}h ago`;
-      
+
       interval = Math.floor(seconds / 60);
       if (interval >= 1) return `${interval}m ago`;
-      
+
       return `${Math.floor(seconds)}s ago`;
     }
-    
+
     function formatHour(hour) {
       const period = hour >= 12 ? 'PM' : 'AM';
       const displayHour = hour % 12 || 12;
       return `${displayHour}${period}`;
     }
-    
+
     function formatDay(dayIndex) {
       const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       return days[dayIndex];
     }
-    
+
     function truncate(str, length) {
       if (typeof str !== 'string') str = String(str);
       return str.length > length ? str.substring(0, length) + '...' : str;
     }
   </script>
-
-
-
 </body>
 </html>
