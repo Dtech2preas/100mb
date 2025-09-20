@@ -10,6 +10,7 @@
   input { width:100%; padding:8px; margin:6px 0; box-sizing:border-box; }
   button { margin:4px; padding:8px 12px; }
   #name-status { margin:6px 0; font-weight:600; }
+  #time-remaining { font-weight:700; margin-left:8px; }
 </style>
 </head>
 <body>
@@ -52,6 +53,7 @@
 <div id="url-display" style="display:none; margin-top:8px;">
   <h3>Your Subdomain URL</h3>
   <div id="final-url">https://example.log-in.co.za</div>
+  <div>Time remaining: <span id="time-remaining">--:--:--</span></div>
   <button id="copy-btn">Copy</button>
 </div>
 
@@ -64,12 +66,13 @@
 <script>
 /* ---------- CONFIG ---------- */
 const MAPPING_RAW_URL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
-const TOKEN_RAW_URL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
-const GIST_ID = "451a35def0daf123212fcb9729d3dfdd";
-const CACHE_TTL = 30000;                // 30s cache for mapping
-const INITIAL_DURATION = 7200;          // 2 hours (seconds)
-const EXTENSION_DURATION = 43200;       // 12 hours (seconds)
-const AD_WAIT_MS = 15000;               // 15 seconds required
+const TOKEN_RAW_URL   = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
+const GIST_ID         = "451a35def0daf123212fcb9729d3dfdd";
+const FILE_NAME       = "gistfile1.txt";          // explicit file name we PATCH
+const CACHE_TTL       = 30000;                    // 30s cache for mapping
+const INITIAL_DURATION = 7200;                    // 2 hours (seconds)
+const EXTENSION_DURATION = 43200;                 // 12 hours (seconds)
+const AD_WAIT_MS      = 15000;                    // 15 seconds required
 
 /* ---------- STATE ---------- */
 let mappingCache = null;
@@ -81,6 +84,7 @@ let lastAdAwardAt = 0;
 let credits = 0;
 let pollingInterval = null;
 let opInProgress = false;               // single UI-level mutex
+let liveTimerInterval = null;
 
 /* ---------- ELEMENTS ---------- */
 const el = {
@@ -97,7 +101,8 @@ const el = {
   finalUrl: document.getElementById('final-url'),
   urlDisplay: document.getElementById('url-display'),
   copyBtn: document.getElementById('copy-btn'),
-  creditsDisplay: document.getElementById('credits-display')
+  creditsDisplay: document.getElementById('credits-display'),
+  timeRemaining: document.getElementById('time-remaining')
 };
 
 /* ---------- UTIL ---------- */
@@ -148,11 +153,8 @@ async function getMapping() {
     }
     if (!parsed || typeof parsed !== 'object') parsed = {};
     if (!parsed._expires) parsed._expires = {};
-    // normalize expiry values to numbers (avoid strings)
-    for (const k of Object.keys(parsed._expires || {})) {
-      const v = parsed._expires[k];
-      parsed._expires[k] = Number(v) || 0;
-    }
+    // normalize expiry to numbers
+    for (const k of Object.keys(parsed._expires || {})) parsed._expires[k] = Number(parsed._expires[k]) || 0;
     mappingCache = parsed;
     lastCacheTime = now;
     return parsed;
@@ -163,49 +165,74 @@ async function getMapping() {
 }
 
 /**
- * updateMapping safely merges with latest gist content and patches.
- * It no longer throws for opInProgress — opInProgress is handled at the caller level.
+ * updateMapping: merge with latest and PATCH to the exact GIST_ID and FILE_NAME.
+ * After PATCH we fetch the raw mapping and verify the gist content matches what we wrote.
  */
 async function updateMapping(newMapping) {
-  // Fetch latest raw text and merge conservatively
+  if (!newMapping) throw new Error('No mapping provided');
+  // conservative merge with latest
   const latestText = await fetchRawText(MAPPING_RAW_URL);
   let latest = {};
   if (latestText && latestText.trim()) {
     try { latest = JSON.parse(latestText); } catch(e) { latest = {}; }
   }
-  const merged = Object.assign({}, latest, newMapping || {});
+  const merged = Object.assign({}, latest, newMapping);
   if (!merged._expires) merged._expires = {};
-  // for any names present in both latest and merged, ensure we prefer the larger expiry
+  // prefer larger expiry for safety
   for (const k of Object.keys(latest._expires || {})) {
-    const latestVal = Number((latest._expires||{})[k]) || 0;
-    const mergedVal = Number((merged._expires||{})[k]) || 0;
-    merged._expires[k] = Math.max(latestVal, mergedVal);
+    const lv = Number((latest._expires||{})[k]) || 0;
+    const mv = Number((merged._expires||{})[k]) || 0;
+    merged._expires[k] = Math.max(lv, mv);
   }
 
-  // fetch token
+  // fetch token (from TOKEN_RAW_URL)
   const tokenRes = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`, { cache: "no-store" });
   if (!tokenRes.ok) throw new Error(`Token fetch failed ${tokenRes.status}`);
   const tokenText = await tokenRes.text();
   const token = tokenText.split('\n')[0].trim();
   if (!token) throw new Error('No token available');
 
-  const res = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+  // PATCH the gist
+  const patchRes = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
     method: 'PATCH',
     headers: {
       'Authorization': `Bearer ${token}`,
       'Accept': 'application/vnd.github.v3+json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ files: { "gistfile1.txt": { content: JSON.stringify(merged, null, 2) } } })
+    body: JSON.stringify({ files: { [FILE_NAME]: { content: JSON.stringify(merged, null, 2) } } })
   });
-  if (!res.ok) {
-    const t = await res.text();
-    throw new Error(`Gist patch failed ${res.status}: ${t.slice(0,200)}`);
+
+  const patchText = await patchRes.text();
+  log(`PATCH response: ${patchRes.status} ${patchRes.statusText} — body (first 1000 chars): ${patchText.slice(0,1000)}`);
+  if (!patchRes.ok) {
+    throw new Error(`Gist PATCH failed: ${patchRes.status} ${patchRes.statusText}`);
   }
-  // update local cache
+
+  // update local cache (optimistically)
   mappingCache = merged;
   lastCacheTime = nowMs();
-  log('Mapping updated on gist.');
+
+  // Verification: re-fetch raw mapping and compare
+  try {
+    const verifyRaw = await fetchRawText(MAPPING_RAW_URL);
+    let verifyParsed = {};
+    try { verifyParsed = JSON.parse(verifyRaw); } catch(e) { verifyParsed = {}; }
+    // simple deep compare by stringifying both (deterministic)
+    const written = JSON.stringify(merged, Object.keys(merged).sort());
+    const fetched = JSON.stringify(verifyParsed, Object.keys(verifyParsed).sort());
+    if (written !== fetched) {
+      log('Warning: verification mismatch — remote gist content does not match what we wrote.');
+      log('Written (first 200 chars): ' + written.slice(0,200));
+      log('Fetched (first 200 chars): ' + fetched.slice(0,200));
+      showNotification('Warning: gist verification mismatch. Check console/log. The script attempted to write to the gist but the raw file content differs.');
+    } else {
+      log('Verification OK — gist raw content matches what we wrote.');
+    }
+  } catch (e) {
+    log('Warning: verification fetch failed: ' + e.message);
+  }
+
   return merged;
 }
 
@@ -233,7 +260,6 @@ function awardAdCreditsIfEligible() {
     log(`Ad returned too early: ${Math.floor(elapsed/1000)}s`);
     return;
   }
-  // prevent duplicate awards in same session
   if (lastAdAwardAt && Math.abs(lastAdAwardAt - adStartTime) < 1000) return;
   lastAdAwardAt = adStartTime;
   credits += 2;
@@ -262,6 +288,7 @@ async function refreshButtonsBasedOnName() {
     el.nameStatus.textContent = '';
     el.createBtn.disabled = true;
     el.extendBtn.disabled = true;
+    stopLiveTimer();
     return;
   }
   try {
@@ -271,22 +298,53 @@ async function refreshButtonsBasedOnName() {
       el.nameStatus.textContent = `"${name}" already exists — you can extend (if you have credits).`;
       el.createBtn.disabled = true;
       el.extendBtn.disabled = opInProgress || credits <= 0;
+      startLiveTimerForName(name, mapping);
     } else {
       el.nameStatus.textContent = `"${name}" is available — you can create it (if you have credits).`;
       el.createBtn.disabled = opInProgress || credits <= 0;
       el.extendBtn.disabled = true;
+      stopLiveTimer();
+      el.timeRemaining.textContent = '--:--:--';
     }
   } catch (e) {
     el.nameStatus.textContent = 'Name check failed';
     el.createBtn.disabled = true;
     el.extendBtn.disabled = true;
+    stopLiveTimer();
   }
   updateCreditsUI();
 }
 
+/* ---------- LIVE timer (updates UI each second) ---------- */
+function formatHMS(totalSeconds) {
+  if (totalSeconds <= 0) return '00:00:00';
+  const hrs = Math.floor(totalSeconds/3600);
+  const mins = Math.floor((totalSeconds%3600)/60);
+  const secs = Math.floor(totalSeconds%60);
+  const pad = v => String(v).padStart(2,'0');
+  return `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
+}
+
+function startLiveTimerForName(name, mapping) {
+  stopLiveTimer();
+  liveTimerInterval = setInterval(async () => {
+    try {
+      const latest = await getMapping();
+      const expires = Number(latest._expires?.[name] || 0);
+      const rem = Math.max(0, expires - getUnix());
+      el.timeRemaining.textContent = formatHMS(rem);
+    } catch (e) {
+      el.timeRemaining.textContent = '--:--:--';
+    }
+  }, 1000);
+}
+
+function stopLiveTimer() {
+  if (liveTimerInterval) { clearInterval(liveTimerInterval); liveTimerInterval = null; }
+}
+
 /* ---------- CORE: create / extend / check ---------- */
 async function handleAction(mode) {
-  // Guard: single UI-level mutex prevents overlapping create/extend
   if (opInProgress) return showNotification('Operation in progress — please wait...');
   const name = sanitizeName(el.nameInput.value.trim());
   const url = el.urlInput.value.trim();
@@ -294,7 +352,6 @@ async function handleAction(mode) {
   if (mode === 'create' && !url) return showNotification('Enter URL to point the subdomain to.');
   if (credits <= 0) return showNotification('No credits — press the ad button and wait 15s.');
 
-  // Begin operation: set mutex, disable buttons to block further clicks.
   opInProgress = true;
   el.createBtn.disabled = true;
   el.extendBtn.disabled = true;
@@ -303,7 +360,6 @@ async function handleAction(mode) {
     log(`Starting ${mode} for ${name} ...`);
     const mapping = await getMapping();
     if (!mapping._expires) mapping._expires = {};
-    // read & normalize current expiry
     const rawExpiry = mapping._expires[name];
     const currentExpiry = (typeof rawExpiry === 'number' && rawExpiry > 0) ? rawExpiry : getUnix();
 
@@ -326,7 +382,7 @@ async function handleAction(mode) {
       mapping._expires[name] = Math.max(currentExpiry, getUnix()) + EXTENSION_DURATION;
     }
 
-    // attempt merge-and-patch
+    // attempt update
     const updated = await updateMapping(mapping);
 
     // consume credit only after successful update
@@ -335,14 +391,12 @@ async function handleAction(mode) {
     showNotification(`${mode} successful. Credits left: ${credits}`);
     log(`${mode} done for ${name}. Credits left: ${credits}. New expiry: ${Number(updated._expires[name]||0)}`);
 
-    // refresh UI (availability & button enablement)
     await refreshButtonsBasedOnName();
   } catch (e) {
     log(`Error during ${mode}: ${e.message}`);
     showNotification(`Operation failed: ${e.message}`);
   } finally {
     opInProgress = false;
-    // re-evaluate UI state
     await refreshButtonsBasedOnName();
   }
 }
