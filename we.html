@@ -50,7 +50,7 @@
 <div>
     <h3>System Log</h3>
     <span id="status-indicator"></span>
-    <pre id="log">System ready. Enter details to begin.</pre>
+    <pre id="log">System ready. Press the ad button to get credits.</pre>
 </div>
 
 <script>
@@ -167,6 +167,26 @@ document.addEventListener("visibilitychange", () => {
     }
 });
 
+// --- CHECK NAME AVAILABILITY ---
+const checkNameAvailability = async () => {
+    const name = sanitizeName(elements.nameInput.value.trim());
+    if (!name) return;
+    try {
+        const mapping = await getMapping();
+        if (mapping[name]) {
+            elements.nameStatus.textContent = `"${name}" already exists! You can only extend time.`;
+            elements.createBtn.disabled = true;
+            elements.extendBtn.disabled = credits <= 0;
+        } else {
+            elements.nameStatus.textContent = `"${name}" is available! You can create it.`;
+            elements.createBtn.disabled = credits <= 0;
+            elements.extendBtn.disabled = true;
+        }
+    } catch (e) {
+        elements.nameStatus.textContent = "Check failed";
+    }
+};
+
 // --- ACTIONS ---
 const handleAction = async (mode) => {
     if (credits <= 0) return showNotification("No credits! Watch the ad first.");
@@ -179,14 +199,19 @@ const handleAction = async (mode) => {
     const mapping = await getMapping();
     if (!mapping._expires) mapping._expires = {};
 
-    const currentExpiry = mapping._expires[name] || getUnix();
+    let currentExpiry = mapping._expires[name] || getUnix();
+
     if (mode === "create") {
+        if (mapping[name]) return showNotification("Subdomain exists! Only extend allowed.");
         mapping[name] = url;
-        mapping._expires[name] = Math.max(currentExpiry, getUnix()) + INITIAL_DURATION;
+        currentExpiry = currentExpiry > getUnix() ? currentExpiry : getUnix();
+        mapping._expires[name] = currentExpiry + INITIAL_DURATION;
         elements.finalUrl.textContent = `https://${name}.log-in.co.za`;
         elements.urlDisplay.style.display = "block";
     } else if (mode === "extend") {
-        mapping._expires[name] = Math.max(currentExpiry, getUnix()) + EXTENSION_DURATION;
+        if (!mapping[name]) return showNotification("Subdomain does not exist! Create it first.");
+        currentExpiry = currentExpiry > getUnix() ? currentExpiry : getUnix();
+        mapping._expires[name] = currentExpiry + EXTENSION_DURATION;
     }
 
     credits--;
@@ -215,10 +240,11 @@ const checkTime = async () => {
 };
 
 // --- INPUT HANDLERS ---
-elements.nameInput.addEventListener("input", function() {
-    const name = sanitizeName(this.value);
-    this.value = name;
+elements.nameInput.addEventListener("input", () => {
+    const name = sanitizeName(elements.nameInput.value);
+    elements.nameInput.value = name;
     elements.previewUrl.textContent = `https://${name || "[name]"}.log-in.co.za`;
+    checkNameAvailability();
 });
 
 elements.copyBtn.addEventListener("click", async () => {
