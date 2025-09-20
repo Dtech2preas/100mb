@@ -9,16 +9,24 @@
 <div id="notification-container"></div>
 
 <h1>D-TECH Subdomain Creator</h1>
+<p>Create custom subdomains for your gist URLs</p>
+
+<div>
+    <p>Important Notice: Your URL: <strong>https://[name].log-in.co.za</strong></p>
+    <p>Subdomains with &lt;1 hour may be removed at any time</p>
+    <p>Activation Notice: URL may take 1-2 minutes to become active. IF IT DOESN'T WORK THE FIRST TIME, THE SECOND TIME IT WILL 100% WORK</p>
+</div>
 
 <div>
     <label for="name">Subdomain Name</label>
-    <input type="text" id="name" placeholder="Enter your subdomain name" />
+    <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" />
     <div id="name-status"></div>
+    <p>Use lowercase letters and dashes (-) only</p>
     <p>Result: <span id="preview-url">https://.log-in.co.za</span></p>
 </div>
 
 <div>
-    <label for="url">Gist URL (Required)</label>
+    <label for="url">Gist URL (Required for creation)</label>
     <input type="url" id="url" placeholder="https://gist.github.com/..." />
 </div>
 
@@ -29,44 +37,56 @@
     <button id="check-btn">Check Time</button>
 </div>
 
+<div>
+    URL activation may take 1-2 minutes
+</div>
+
 <div id="url-display" style="display:none;">
     <h3>Your Subdomain URL</h3>
-    <div id="final-url"></div>
+    <div id="final-url">https://example.log-in.co.za</div>
     <button id="copy-btn">Copy</button>
 </div>
 
 <div>
     <h3>System Log</h3>
-    <pre id="log">System ready.</pre>
+    <span id="status-indicator"></span>
+    <pre id="log">System ready. Enter details to begin.</pre>
 </div>
 
 <script>
-const INITIAL_DURATION = 7200;   // 2h
-const EXTENSION_DURATION = 43200; // 12h
+const MAPPING_RAW_URL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
+const TOKEN_RAW_URL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
+const GIST_ID = "451a35def0daf123212fcb9729d3dfdd";
+const CACHE_TTL = 30000;
+const INITIAL_DURATION = 7200;
+const EXTENSION_DURATION = 43200;
 
+let mappingCache = null;
+let lastCacheTime = 0;
 let adWindow = null;
 let adStartTime = 0;
 let credits = 0;
 
 const elements = {
     log: document.getElementById("log"),
+    statusIndicator: document.getElementById("status-indicator"),
+    previewUrl: document.getElementById("preview-url"),
+    finalUrl: document.getElementById("final-url"),
+    urlDisplay: document.getElementById("url-display"),
+    copyBtn: document.getElementById("copy-btn"),
     notificationContainer: document.getElementById("notification-container"),
     nameInput: document.getElementById("name"),
-    previewUrl: document.getElementById("preview-url"),
-    urlInput: document.getElementById("url"),
+    nameStatus: document.getElementById("name-status"),
     createBtn: document.getElementById("create-btn"),
     extendBtn: document.getElementById("extend-btn"),
     checkBtn: document.getElementById("check-btn"),
-    adBtn: document.getElementById("ad-btn"),
-    finalUrl: document.getElementById("final-url"),
-    urlDisplay: document.getElementById("url-display")
+    urlInput: document.getElementById("url"),
+    adBtn: document.getElementById("ad-btn")
 };
 
-const log = (msg) => {
-    const timestamp = new Date().toLocaleTimeString();
-    const lines = elements.log.textContent.split('\n').slice(0, 10);
-    elements.log.textContent = `[${timestamp}] ${msg}\n${lines.join('\n')}`;
-};
+const getUnix = () => Math.floor(Date.now() / 1000);
+
+const sanitizeName = (name) => name.toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
 
 const showNotification = (msg) => {
     const n = document.createElement("div");
@@ -75,21 +95,63 @@ const showNotification = (msg) => {
     setTimeout(() => n.remove(), 3500);
 };
 
-const sanitizeName = (name) => name.toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
+const logMsg = (msg) => {
+    const timestamp = new Date().toLocaleTimeString();
+    const lines = elements.log.textContent.split('\n').slice(0, 10);
+    elements.log.textContent = `[${timestamp}] ${msg}\n${lines.join('\n')}`;
+};
 
-const saveMapping = (mapping) => localStorage.setItem("mapping", JSON.stringify(mapping));
-const loadMapping = () => JSON.parse(localStorage.getItem("mapping") || "{}");
+const safeFetch = async (url, options) => {
+    try {
+        const res = await fetch(url, options);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+    } catch (e) {
+        logMsg(`Network error: ${e.message}`);
+        throw e;
+    }
+};
+
+const getToken = async () => {
+    const response = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`);
+    const tokens = await response.text();
+    return tokens.split("\n")[0].trim();
+};
+
+const getMapping = async () => {
+    const now = Date.now();
+    if (mappingCache && now - lastCacheTime < CACHE_TTL) return mappingCache;
+    const response = await fetch(`${MAPPING_RAW_URL}?t=${now}`);
+    const data = await response.json();
+    mappingCache = data;
+    lastCacheTime = now;
+    return data;
+};
+
+const updateMapping = async (newMapping) => {
+    const token = await getToken();
+    await safeFetch(`https://api.github.com/gists/${GIST_ID}`, {
+        method: "PATCH",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Accept": "application/vnd.github.v3+json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ files: { "gistfile1.txt": { content: JSON.stringify(newMapping, null, 2) } } })
+    });
+    mappingCache = null;
+};
 
 // --- AD LOGIC ---
 elements.adBtn.addEventListener("click", () => {
     adWindow = window.open("https://otieu.com/4/9630811", "_blank");
     adStartTime = Date.now();
-    showNotification("Ad opened! Return after 15s to get 2 actions.");
+    showNotification("Ad opened! Return after 15s to get 2 action credits.");
 });
 
 document.addEventListener("visibilitychange", () => {
     if (!adWindow) return;
-    if (!document.hidden) { 
+    if (!document.hidden) {
         const elapsed = (Date.now() - adStartTime)/1000;
         if (elapsed >= 15) {
             credits += 2;
@@ -98,7 +160,7 @@ document.addEventListener("visibilitychange", () => {
             elements.createBtn.disabled = false;
             elements.extendBtn.disabled = false;
             showNotification(`Ad complete! You now have ${credits} credits.`);
-            log(`Credits available: ${credits}`);
+            logMsg(`Credits available: ${credits}`);
         } else {
             showNotification(`Wait at least 15s. You returned too early (${Math.floor(elapsed)}s).`);
         }
@@ -106,24 +168,24 @@ document.addEventListener("visibilitychange", () => {
 });
 
 // --- ACTIONS ---
-const handleAction = (mode) => {
+const handleAction = async (mode) => {
+    if (credits <= 0) return showNotification("No credits! Watch the ad first.");
+
     const name = sanitizeName(elements.nameInput.value.trim());
     const url = elements.urlInput.value.trim();
-    if (!name) return log("Enter a subdomain name.");
-    if (mode==="create" && !url) return log("Enter a gist URL to create.");
+    if (!name) return logMsg("Name is required");
+    if (mode === "create" && !url) return logMsg("URL is required");
 
-    if (credits <= 0) return showNotification("No credits left! Watch the ad to get more.");
-
-    const mapping = loadMapping();
+    const mapping = await getMapping();
     if (!mapping._expires) mapping._expires = {};
 
     if (mode === "create") {
         mapping[name] = url;
-        mapping._expires[name] = Math.floor(Date.now()/1000) + INITIAL_DURATION;
+        mapping._expires[name] = getUnix() + INITIAL_DURATION;
         elements.finalUrl.textContent = `https://${name}.log-in.co.za`;
         elements.urlDisplay.style.display = "block";
     } else if (mode === "extend") {
-        mapping._expires[name] = (mapping._expires[name] || Math.floor(Date.now()/1000)) + EXTENSION_DURATION;
+        mapping._expires[name] = (mapping._expires[name] || getUnix()) + EXTENSION_DURATION;
     }
 
     credits--;
@@ -132,25 +194,23 @@ const handleAction = (mode) => {
         elements.extendBtn.disabled = true;
     }
 
-    saveMapping(mapping);
+    await updateMapping(mapping);
     showNotification(`${mode} successful. Remaining credits: ${credits}`);
-    log(`${mode} done for ${name}. Credits left: ${credits}`);
+    logMsg(`${mode} done for ${name}. Credits left: ${credits}`);
 };
 
 // --- CHECK TIME ---
-const checkTime = () => {
+const checkTime = async () => {
     const name = sanitizeName(elements.nameInput.value.trim());
-    if (!name) return log("Enter a name first");
-
-    const mapping = loadMapping();
+    if (!name) return logMsg("Enter a name first");
+    const mapping = await getMapping();
     const expires = mapping._expires?.[name];
-    if (!expires) return log("No expiry set");
-
-    const remaining = expires - Math.floor(Date.now()/1000);
-    const mins = Math.floor(remaining/60);
-    const hrs = Math.floor(mins/60);
+    if (!expires) return logMsg("No expiry set");
+    const remaining = expires - getUnix();
+    const mins = Math.floor(remaining / 60);
+    const hrs = Math.floor(mins / 60);
     const minPart = mins % 60;
-    log(`Time remaining for ${name}: ${hrs}h ${minPart}m`);
+    logMsg(`Time remaining for ${name}: ${hrs}h ${minPart}m`);
 };
 
 // --- INPUT HANDLERS ---
@@ -160,7 +220,7 @@ elements.nameInput.addEventListener("input", function() {
     elements.previewUrl.textContent = `https://${name || "[name]"}.log-in.co.za`;
 });
 
-elements.copyBtn?.addEventListener("click", async () => {
+elements.copyBtn.addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(elements.finalUrl.textContent); showNotification("URL copied!"); }
     catch { showNotification("Failed to copy"); }
 });
@@ -169,7 +229,7 @@ elements.createBtn.addEventListener("click", () => handleAction("create"));
 elements.extendBtn.addEventListener("click", () => handleAction("extend"));
 elements.checkBtn.addEventListener("click", checkTime);
 
-log("System ready. Press the ad button to start.");
+logMsg("System ready. Press the ad button to get credits.");
 </script>
 </body>
 </html>
