@@ -1,355 +1,582 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>D-TECH Subdomain Creator</title>
 <style>
-  :root{
-    --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent1:#00d2ff; --accent2:#3a7bd5;
-    --success:#16a34a; --danger:#ef4444; --glass: rgba(255,255,255,0.03);
-    --radius:14px;
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  :root {
+    --primary-bg: #0a0a14;
+    --secondary-bg: #12121f;
+    --card-bg: #161627;
+    --accent-blue: #2563eb;
+    --accent-blue-light: #3b82f6;
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --border-color: #2d2d42;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
   }
-  html,body{height:100%; margin:0; background:linear-gradient(180deg,#041226 0%, #061022 100%); color:#e6eef6}
-  .wrap{ max-width:980px; margin:28px auto; padding:24px; }
-  header{ display:flex; align-items:center; gap:16px; margin-bottom:18px; }
-  .logo{ width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,var(--accent1),var(--accent2)); display:flex;align-items:center;justify-content:center;font-weight:700;color:#021; font-size:22px}
-  h1{margin:0;font-size:22px;letter-spacing:0.4px}
-  p.lead{ margin:6px 0 0; color:var(--muted); font-size:13px }
-
-  .grid{ display:grid; grid-template-columns: 1fr 340px; gap:18px; align-items:start; }
-  .card{ background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:16px; box-shadow: 0 6px 20px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.03) }
-  .muted{ color:var(--muted); font-size:13px; }
-
-  label{ display:block; font-size:13px; color:#cfe7ff; margin-bottom:6px; font-weight:600}
-  input[type="text"], input[type="url"]{
-    width:100%; padding:12px 10px; border-radius:10px; border:1px solid rgba(255,255,255,0.04);
-    background:transparent; color: #eaf6ff; outline:none; font-size:14px; box-sizing:border-box;
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-  .row{ display:flex; gap:8px; align-items:center; margin-top:12px; flex-wrap:wrap }
-  .btn{
-    background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#001121; padding:10px 14px; border-radius:10px; border:none; font-weight:700; cursor:pointer;
-    box-shadow:0 6px 18px rgba(20,60,120,0.12);
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
   }
-  .btn.ghost{ background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04); box-shadow:none; font-weight:600 }
-  .btn.danger{ background:linear-gradient(90deg,#ff5f6d,#ef4444); color:white }
-  .small{ font-size:13px; padding:8px 10px; border-radius:8px; }
-
-  #notification-container > div{ background:var(--glass); padding:10px 12px; border-radius:8px; color:#dff3ff; margin-bottom:8px; border:1px solid rgba(255,255,255,0.03) }
-  #name-status{ margin-top:6px; font-weight:700; color:var(--muted) }
-
-  .right-col .card{ position:sticky; top:24px; }
-  .final-url{ background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; font-weight:700; overflow:auto; color:#dff6ff }
-  .meta{ color:var(--muted); font-size:13px; margin-top:6px }
-
-  pre#log{ background:#02101a; color:#9ee6b8; padding:10px; border-radius:10px; height:240px; overflow:auto; margin:0; font-size:12px }
-  .footer{ margin-top:16px; color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:12px }
-  .badge{ background:rgba(255,255,255,0.03); padding:6px 8px; border-radius:8px; font-weight:700; color:var(--muted) }
-
-  .toggle{ display:inline-flex; align-items:center; gap:8px; cursor:pointer; color:var(--muted); font-size:13px }
-  .time-display{ font-weight:900; color:#dff6ff; font-size:15px }
-
-  @media (max-width:920px){
-    .grid{ grid-template-columns: 1fr; }
-    .right-col{ order:-1; }
+  
+  h1, h2, h3 {
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+  }
+  
+  p {
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+  }
+  
+  .container {
+    background-color: var(--secondary-bg);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+  }
+  
+  .notice {
+    background-color: rgba(37, 99, 235, 0.1);
+    border-left: 4px solid var(--accent-blue);
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .notice strong {
+    color: var(--accent-blue-light);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 6px 0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 16px;
+    transition: all 0.2s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+  
+  .status {
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 8px 0;
+    font-weight: 600;
+  }
+  
+  .url-preview {
+    background-color: var(--card-bg);
+    padding: 12px;
+    border-radius: 6px;
+    margin: 12px 0;
+    border: 1px solid var(--border-color);
+  }
+  
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  
+  button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  #ad-btn {
+    background: linear-gradient(to right, #7e22ce, #3b82f6);
+    color: white;
+  }
+  
+  #ad-btn:hover:not(:disabled) {
+    background: linear-gradient(to right, #6b21a8, #2563eb);
+    transform: translateY(-2px);
+  }
+  
+  #create-btn {
+    background-color: var(--accent-blue);
+    color: white;
+  }
+  
+  #create-btn:hover:not(:disabled) {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+  }
+  
+  #extend-btn {
+    background-color: #10b981;
+    color: white;
+  }
+  
+  #extend-btn:hover:not(:disabled) {
+    background-color: #059669;
+    transform: translateY(-2px);
+  }
+  
+  #check-btn {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+  
+  #check-btn:hover:not(:disabled) {
+    background-color: #2d2d42;
+  }
+  
+  #copy-btn {
+    background-color: var(--accent-blue);
+    color: white;
+    margin-top: 12px;
+  }
+  
+  #copy-btn:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .credits {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-left: 12px;
+  }
+  
+  .credits::before {
+    content: "🪙";
+    margin-right: 8px;
+  }
+  
+  #url-display {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+  }
+  
+  #final-url {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent-blue-light);
+    margin-bottom: 12px;
+    word-break: break-all;
+  }
+  
+  .time-remaining {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  #time-remaining {
+    font-weight: 700;
+    margin-left: 8px;
+    color: var(--accent-blue-light);
+  }
+  
+  .log-container {
+    background-color: var(--primary-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+  }
+  
+  #log {
+    height: 220px;
+    overflow: auto;
+    background-color: #111;
+    color: #bfb;
+    padding: 16px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    margin-top: 12px;
+    border: 1px solid #2d2d42;
+  }
+  
+  #notification-container > div {
+    padding: 12px 16px;
+    margin: 8px 0;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 6px;
+    border-left: 4px solid var(--accent-blue);
+    color: var(--text-primary);
+  }
+  
+  .instructions {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    body {
+      padding: 12px;
+    }
+    
+    .button-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    button {
+      width: 100%;
+      margin: 4px 0;
+    }
+    
+    .credits {
+      margin: 12px 0;
+      justify-content: center;
+    }
   }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">D-T</div>
-      <div>
-        <h1>D-TECH Subdomain Creator</h1>
-        <p class="lead">Create custom subdomains for your gist URLs — create or add time after watching a short ad.</p>
-      </div>
-    </header>
+<div id="notification-container"></div>
 
-    <div class="grid">
-      <!-- left -->
-      <div>
-        <div class="card">
-          <div class="muted">Important Notice</div>
-          <h3 style="margin:8px 0 2px">Your URL: <span class="badge">https://[name].log-in.co.za</span></h3>
-          <p class="muted" style="margin-top:6px">Subdomains with &lt;1 hour may be removed at any time. Activation may take 1–2 minutes.</p>
-        </div>
+<div class="container">
+  <h1>D-TECH Subdomain Creator</h1>
+  <p>Create custom subdomains for your gist URLs</p>
+</div>
 
-        <div style="height:12px"></div>
+<div class="container notice">
+  <p><strong>Important Notice:</strong> Your URL: <strong>https://[name].log-in.co.za</strong></p>
+  <p>Subdomains with &lt;1 hour may be removed at any time</p>
+  <p><strong>Activation Notice:</strong> URL may take 1-2 minutes to become active. IF IT DOESN'T WORK THE FIRST TIME, THE SECOND TIME IT WILL 100% WORK</p>
+</div>
 
-        <div class="card">
-          <label for="name">Subdomain Name</label>
-          <input id="name" type="text" placeholder="Enter your subdomain name (e.g. lefa)" />
-          <div id="name-status" class="muted">Use lowercase letters and dashes (-) only</div>
-
-          <div style="height:10px"></div>
-
-          <label for="url">Gist URL (Required for creation)</label>
-          <input id="url" type="url" placeholder="https://gist.github.com/..." />
-
-          <div class="row" style="margin-top:14px">
-            <button id="ad-btn" class="btn small">Press Ad — Get 2 Actions (wait 15s)</button>
-            <button id="create-btn" class="btn small ghost" disabled>Create (2h)</button>
-            <button id="extend-btn" class="btn small ghost" disabled>Extend (12h)</button>
-            <button id="check-btn" class="btn small ghost">Check Time</button>
-            <div style="flex:1"></div>
-            <div class="badge">Credits: <span id="credits-display">0</span></div>
-          </div>
-
-          <div class="meta" style="margin-top:12px">
-            Result: <span id="preview-url">https://.log-in.co.za</span>
-          </div>
-        </div>
-
-        <div style="height:12px"></div>
-
-        <div class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center">
-            <div><strong>Your Subdomain URL</strong></div>
-            <div style="display:flex; gap:8px; align-items:center">
-              <label class="toggle"><input id="dev-toggle" type="checkbox" /> Dev Mode</label>
-            </div>
-          </div>
-
-          <div style="height:8px"></div>
-          <div class="final-url" id="final-url">https://example.log-in.co.za</div>
-          <div style="margin-top:8px">Time remaining: <span id="time-remaining" class="time-display">--:--:--</span></div>
-          <div style="margin-top:10px"><button id="copy-btn" class="btn small ghost">Copy</button></div>
-        </div>
-
-      </div>
-
-      <!-- right -->
-      <aside class="right-col">
-        <div class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center">
-            <strong>System Log</strong>
-            <div class="muted">status: <span id="status-indicator">ready</span></div>
-          </div>
-          <div style="height:10px"></div>
-          <pre id="log">System ready. Press the ad button to get credits.</pre>
-        </div>
-
-        <div style="height:12px"></div>
-
-        <div class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center">
-            <div><strong>About</strong></div>
-            <div class="muted">D-TECH UI</div>
-          </div>
-          <p class="muted" style="margin-top:8px">This tool stores mapping in a GitHub gist. After each update we refresh the raw URL used for reading the mapping so you always read the newest hash.</p>
-        </div>
-      </aside>
-    </div>
-
-    <div class="footer">
-      <div class="muted">Made with ♥ D-TECH</div>
-      <div class="muted">Version: <strong>1.3</strong></div>
+<div class="container">
+  <div class="form-group">
+    <label for="name">Subdomain Name</label>
+    <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" autocomplete="off" />
+    <div id="name-status" class="status"></div>
+    <p class="instructions">Use lowercase letters and dashes (-) only</p>
+    <div class="url-preview">
+      Result: <span id="preview-url">https://.log-in.co.za</span>
     </div>
   </div>
 
+  <div class="form-group">
+    <label for="url">Gist URL (Required for creation)</label>
+    <input type="url" id="url" placeholder="https://gist.github.com/..." />
+  </div>
+
+  <div class="button-group">
+    <button id="ad-btn">Press Ad to Get 2 Actions (Must Wait 15s)</button>
+    <button id="create-btn" disabled>Create (2h)</button>
+    <button id="extend-btn" disabled>Extend 12h</button>
+    <button id="check-btn">Check Time</button>
+    <div class="credits">Credits: <span id="credits-display">0</span></div>
+  </div>
+
+  <p class="instructions">URL activation may take 1-2 minutes</p>
+</div>
+
+<div class="container" id="url-display" style="display:none;">
+  <h3>Your Subdomain URL</h3>
+  <div id="final-url">https://example.log-in.co.za</div>
+  <div class="time-remaining">Time remaining: <span id="time-remaining">--:--:--</span></div>
+  <button id="copy-btn">Copy URL</button>
+</div>
+
+<div class="container log-container">
+  <h3>System Log</h3>
+  <span id="status-indicator"></span>
+  <pre id="log">System ready. Press the ad button to get credits.</pre>
+</div>
+
 <script>
-/* ---------- CONFIG (your values) ---------- */
-let MAPPING_RAW_URL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
+/* ---------- CONFIG ---------- */
+const MAPPING_RAW_URL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
 const TOKEN_RAW_URL   = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
 const GIST_ID         = "451a35def0daf123212fcb9729d3dfdd";
-const FILE_NAME       = "gistfile1.txt";
-const CACHE_TTL       = 30000;
-const INITIAL_DURATION = 7200;
-const EXTENSION_DURATION = 43200;
-const AD_WAIT_MS      = 15000;
+const FILE_NAME       = "gistfile1.txt";          // explicit file name we PATCH
+const CACHE_TTL       = 30000;                    // 30s cache for mapping
+const INITIAL_DURATION = 7200;                    // 2 hours (seconds)
+const EXTENSION_DURATION = 43200;                 // 12 hours (seconds)
+const AD_WAIT_MS      = 15000;                    // 15 seconds required
 
 /* ---------- STATE ---------- */
-let mappingCache = null, lastCacheTime = 0;
-let adWindow = null, adStartTime = 0, adPending = false, lastAdAwardAt = 0;
-let credits = 0, pollingInterval = null, opInProgress = false;
+let mappingCache = null;
+let lastCacheTime = 0;
+let adWindow = null;
+let adStartTime = 0;
+let adPending = false;
+let lastAdAwardAt = 0;
+let credits = 0;
+let pollingInterval = null;
+let opInProgress = false;               // single UI-level mutex
 let liveTimerInterval = null;
-let devMode = false;
 
 /* ---------- ELEMENTS ---------- */
 const el = {
   notif: document.getElementById('notification-container'),
   log: document.getElementById('log'),
-  name: document.getElementById('name'),
+  nameInput: document.getElementById('name'),
   nameStatus: document.getElementById('name-status'),
-  preview: document.getElementById('preview-url'),
-  url: document.getElementById('url'),
+  previewUrl: document.getElementById('preview-url'),
+  urlInput: document.getElementById('url'),
   adBtn: document.getElementById('ad-btn'),
   createBtn: document.getElementById('create-btn'),
   extendBtn: document.getElementById('extend-btn'),
   checkBtn: document.getElementById('check-btn'),
   finalUrl: document.getElementById('final-url'),
-  timeRemaining: document.getElementById('time-remaining'),
+  urlDisplay: document.getElementById('url-display'),
   copyBtn: document.getElementById('copy-btn'),
   creditsDisplay: document.getElementById('credits-display'),
-  statusIndicator: document.getElementById('status-indicator'),
-  devToggle: document.getElementById('dev-toggle')
+  timeRemaining: document.getElementById('time-remaining')
 };
 
 /* ---------- UTIL ---------- */
-const getUnix = () => Math.floor(Date.now()/1000);
+const getUnix = () => Math.floor(Date.now() / 1000);
 const nowMs = () => Date.now();
-const sanitize = s => (s||'').toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
-const showNotif = (m, t=3500)=>{ const d=document.createElement('div'); d.textContent=m; el.notif.appendChild(d); setTimeout(()=>d.remove(),t); };
-const appendLog = (m) => { const t=new Date().toLocaleTimeString(); el.log.textContent=`[${t}] ${m}\n${el.log.textContent}`; };
-const updateCreditsUI = ()=>{ el.creditsDisplay.textContent = credits; };
+
+const sanitizeName = (s) => (s||'').toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
+
+const showNotification = (msg, timeout = 3500) => {
+  const d = document.createElement('div'); d.textContent = msg; el.notif.appendChild(d);
+  setTimeout(() => d.remove(), timeout);
+};
+
+const log = (msg) => {
+  const t = new Date().toLocaleTimeString();
+  const lines = el.log.textContent.split('\n').slice(0, 200);
+  el.log.textContent = `[${t}] ${msg}\n${lines.join('\n')}`;
+  el.log.scrollTop = el.log.scrollHeight;
+};
+
+const updateCreditsUI = () => {
+  el.creditsDisplay.textContent = credits;
+};
 
 /* ---------- NETWORK ---------- */
-async function fetchRawText(url){
-  const r = await fetch(`${url}?t=${Date.now()}`, { cache:'no-store' });
+async function fetchRawText(url) {
+  const r = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return await r.text();
 }
 
-async function getMapping(){
-  try{
+async function getMapping() {
+  try {
     const now = nowMs();
     if (mappingCache && now - lastCacheTime < CACHE_TTL) return mappingCache;
     const text = await fetchRawText(MAPPING_RAW_URL);
     let parsed = {};
     if (!text || !text.trim()) parsed = {};
     else {
-      try { parsed = JSON.parse(text); } catch(e){
-        const s = text.indexOf('{'), eidx = text.lastIndexOf('}');
-        if (s>=0 && eidx>s) {
-          try { parsed = JSON.parse(text.substring(s,eidx+1)); } catch(e2){ parsed = {}; appendLog('Warning: parse fallback failed'); }
+      try { parsed = JSON.parse(text); } 
+      catch(e) {
+        const maybeStart = text.indexOf('{'), maybeEnd = text.lastIndexOf('}');
+        if (maybeStart >= 0 && maybeEnd > maybeStart) {
+          try { parsed = JSON.parse(text.substring(maybeStart, maybeEnd+1)); }
+          catch(_) { parsed = {}; log('Warning: mapping parse failed, using empty mapping'); }
         } else parsed = {};
       }
     }
-    if (!parsed || typeof parsed!=='object') parsed = {};
+    if (!parsed || typeof parsed !== 'object') parsed = {};
     if (!parsed._expires) parsed._expires = {};
-    // normalize expiry numbers
-    Object.keys(parsed._expires||{}).forEach(k => parsed._expires[k] = Number(parsed._expires[k]) || 0);
-    mappingCache = parsed; lastCacheTime = now;
+    // normalize expiry to numbers
+    for (const k of Object.keys(parsed._expires || {})) parsed._expires[k] = Number(parsed._expires[k]) || 0;
+    mappingCache = parsed;
+    lastCacheTime = now;
     return parsed;
-  } catch(e){
-    appendLog(`Failed to fetch mapping: ${e.message}`);
+  } catch (e) {
+    log(`Failed to fetch mapping: ${e.message}`);
     return { _expires: {} };
   }
 }
 
-/* Merge and patch then update MAPPING_RAW_URL from response raw_url (so we always read the latest hash) */
-async function updateMapping(newMapping){
-  if (!newMapping) throw new Error('No mapping');
+/**
+ * updateMapping: merge with latest and PATCH to the exact GIST_ID and FILE_NAME.
+ * After PATCH we fetch the raw mapping and verify the gist content matches what we wrote.
+ */
+async function updateMapping(newMapping) {
+  if (!newMapping) throw new Error('No mapping provided');
   // conservative merge with latest
   const latestText = await fetchRawText(MAPPING_RAW_URL);
   let latest = {};
-  if (latestText && latestText.trim()){
-    try { latest = JSON.parse(latestText); } catch(e){ latest = {}; }
+  if (latestText && latestText.trim()) {
+    try { latest = JSON.parse(latestText); } catch(e) { latest = {}; }
   }
   const merged = Object.assign({}, latest, newMapping);
   if (!merged._expires) merged._expires = {};
-  for (const k of Object.keys(latest._expires||{})) {
-    const lv = Number((latest._expires||{})[k])||0;
-    const mv = Number((merged._expires||{})[k])||0;
-    merged._expires[k] = Math.max(lv,mv);
+  // prefer larger expiry for safety
+  for (const k of Object.keys(latest._expires || {})) {
+    const lv = Number((latest._expires||{})[k]) || 0;
+    const mv = Number((merged._expires||{})[k]) || 0;
+    merged._expires[k] = Math.max(lv, mv);
   }
 
-  // get token
-  const tokenRes = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`, { cache:'no-store' });
+  // fetch token (from TOKEN_RAW_URL)
+  const tokenRes = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`, { cache: "no-store" });
   if (!tokenRes.ok) throw new Error(`Token fetch failed ${tokenRes.status}`);
   const tokenText = await tokenRes.text();
   const token = tokenText.split('\n')[0].trim();
-  if (!token) throw new Error('No token');
+  if (!token) throw new Error('No token available');
 
-  // PATCH gist
+  // PATCH the gist
   const patchRes = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
-    method:'PATCH',
-    headers:{
+    method: 'PATCH',
+    headers: {
       'Authorization': `Bearer ${token}`,
-      'Accept':'application/vnd.github.v3+json',
-      'Content-Type':'application/json'
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({ files: { [FILE_NAME]: { content: JSON.stringify(merged, null, 2) } } })
   });
 
   const patchText = await patchRes.text();
-  appendLog(`PATCH response: ${patchRes.status} ${patchRes.statusText}`);
-  if (devMode) appendLog(`PATCH body (trim): ${patchText.slice(0,1000)}`);
+  log(`PATCH response: ${patchRes.status} ${patchRes.statusText} — body (first 1000 chars): ${patchText.slice(0,1000)}`);
+  if (!patchRes.ok) {
+    throw new Error(`Gist PATCH failed: ${patchRes.status} ${patchRes.statusText}`);
+  }
 
-  if (!patchRes.ok) throw new Error(`Gist PATCH failed ${patchRes.status}`);
-
-  // update mapping cache
+  // update local cache (optimistically)
   mappingCache = merged;
   lastCacheTime = nowMs();
 
-  // update MAPPING_RAW_URL to the fresh raw_url that GH returns (ensures we read correct hash)
-  try {
-    const parsed = JSON.parse(patchText);
-    const rawUrl = parsed?.files?.[FILE_NAME]?.raw_url;
-    if (rawUrl) {
-      MAPPING_RAW_URL = rawUrl;
-      appendLog('Updated raw URL to latest hash from PATCH response.');
-      if (devMode) appendLog(`New raw URL: ${rawUrl}`);
-    } else {
-      appendLog('PATCH response did not include files[...]raw_url (unexpected)');
-    }
-  } catch(e){ appendLog('Failed to parse PATCH response JSON for raw_url'); }
-
-  // verification: fetch from new raw url and compare
+  // Verification: re-fetch raw mapping and compare
   try {
     const verifyRaw = await fetchRawText(MAPPING_RAW_URL);
     let verifyParsed = {};
-    try { verifyParsed = JSON.parse(verifyRaw); } catch(e){ verifyParsed = {}; }
+    try { verifyParsed = JSON.parse(verifyRaw); } catch(e) { verifyParsed = {}; }
+    // simple deep compare by stringifying both (deterministic)
     const written = JSON.stringify(merged, Object.keys(merged).sort());
     const fetched = JSON.stringify(verifyParsed, Object.keys(verifyParsed).sort());
     if (written !== fetched) {
-      appendLog('Warning: verification mismatch — remote gist content does not match exactly what we wrote.');
-      if (devMode) {
-        appendLog('Written (first 200): ' + written.slice(0,200));
-        appendLog('Fetched (first 200): ' + fetched.slice(0,200));
-      }
-      showNotif('Warning: gist verification mismatch (dev mode logs show details).');
+      log('Warning: verification mismatch — remote gist content does not match what we wrote.');
+      log('Written (first 200 chars): ' + written.slice(0,200));
+      log('Fetched (first 200 chars): ' + fetched.slice(0,200));
+      showNotification('Warning: gist verification mismatch. Check console/log. The script attempted to write to the gist but the raw file content differs.');
     } else {
-      appendLog('Verification OK — gist raw content matches what we wrote.');
+      log('Verification OK — gist raw content matches what we wrote.');
     }
-  } catch(e){
-    appendLog('Verification fetch failed: ' + e.message);
+  } catch (e) {
+    log('Warning: verification fetch failed: ' + e.message);
   }
+
   return merged;
 }
 
-/* ---------- AD / credits ---------- */
-function startAd() {
-  if (adPending) return showNotif('Ad already open — return after 15s');
-  try { adWindow = window.open('https://otieu.com/4/9630811', '_blank'); } catch(e) { adWindow = null; }
-  adStartTime = nowMs(); adPending = true; lastAdAwardAt = 0;
-  appendLog(`Ad started at ${new Date(adStartTime).toLocaleTimeString()}`);
-  showNotif('Ad opened — return after at least 15s to get credits.');
+/* ---------- AD / CREDITS logic ---------- */
+function startAdFlow() {
+  if (adPending) return showNotification('Ad already open — return after 15s');
+  try { adWindow = window.open('https://otieu.com/4/9630811', '_blank'); } catch (e) { adWindow = null; }
+  adStartTime = nowMs();
+  adPending = true;
+  lastAdAwardAt = 0;
+  showNotification('Ad opened. Return after at least 15 seconds.');
+  log(`Ad started at ${new Date(adStartTime).toLocaleTimeString()}`);
   if (pollingInterval) clearInterval(pollingInterval);
-  pollingInterval = setInterval(()=> {
+  pollingInterval = setInterval(() => {
     if (!adPending) { clearInterval(pollingInterval); pollingInterval = null; return; }
     if (adWindow && adWindow.closed) handleReturnFromAd();
   }, 800);
 }
 
-function awardAdIfEligible(){
+function awardAdCreditsIfEligible() {
   if (!adPending) return;
   const elapsed = nowMs() - adStartTime;
-  if (elapsed < AD_WAIT_MS) { showNotif(`Returned too early (${Math.floor(elapsed/1000)}s). Wait 15s.`); appendLog(`Ad returned early: ${Math.floor(elapsed/1000)}s`); return; }
+  if (elapsed < AD_WAIT_MS) {
+    showNotification(`You returned too early (${Math.floor(elapsed/1000)}s). Wait at least 15s.`);
+    log(`Ad returned too early: ${Math.floor(elapsed/1000)}s`);
+    return;
+  }
   if (lastAdAwardAt && Math.abs(lastAdAwardAt - adStartTime) < 1000) return;
   lastAdAwardAt = adStartTime;
-  credits += 2; updateCreditsUI();
-  showNotif(`Ad complete — awarded 2 credits (Credits: ${credits})`);
-  appendLog(`Ad awarded 2 credits at ${new Date().toLocaleTimeString()}. Total credits: ${credits}`);
+  credits += 2;
+  updateCreditsUI();
+  showNotification(`Ad complete — awarded 2 credits. Credits: ${credits}`);
+  log(`Ad awarded 2 credits at ${new Date().toLocaleTimeString()}. Total credits: ${credits}`);
   adPending = false;
-  try{ if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
+  try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
   adWindow = null;
   if (pollingInterval) { clearInterval(pollingInterval); pollingInterval = null; }
-  refreshButtons();
+  refreshButtonsBasedOnName();
 }
 
-function handleReturnFromAd(){ try { awardAdIfEligible(); } catch(e){ appendLog('Award error: '+e.message); } }
-window.addEventListener('focus', ()=> { if (adPending) handleReturnFromAd(); });
-document.addEventListener('visibilitychange', ()=> { if (adPending && !document.hidden) handleReturnFromAd(); });
+function handleReturnFromAd() {
+  try { awardAdCreditsIfEligible(); } catch (e) { log('Error awarding ad credits: ' + e.message); }
+}
 
-/* ---------- UI state ---------- */
-async function refreshButtons() {
-  const name = sanitize(el.name.value.trim());
+window.addEventListener('focus', () => { if (adPending) handleReturnFromAd(); });
+document.addEventListener('visibilitychange', () => { if (adPending && !document.hidden) handleReturnFromAd(); });
+el.adBtn.addEventListener('click', () => startAdFlow());
+
+/* ---------- UI state based on name ---------- */
+async function refreshButtonsBasedOnName() {
+  const name = sanitizeName(el.nameInput.value.trim());
   if (!name) {
-    el.nameStatus.textContent = 'Use lowercase letters and dashes (-) only';
-    el.createBtn.disabled = true; el.extendBtn.disabled = true;
-    stopLiveTimer(); el.timeRemaining.textContent='--:--:--';
+    el.nameStatus.textContent = '';
+    el.createBtn.disabled = true;
+    el.extendBtn.disabled = true;
+    stopLiveTimer();
     return;
   }
   try {
@@ -359,116 +586,154 @@ async function refreshButtons() {
       el.nameStatus.textContent = `"${name}" already exists — you can extend (if you have credits).`;
       el.createBtn.disabled = true;
       el.extendBtn.disabled = opInProgress || credits <= 0;
-      el.finalUrl.textContent = `https://${name}.log-in.co.za`;
-      startLiveTimer(name);
+      startLiveTimerForName(name, mapping);
     } else {
       el.nameStatus.textContent = `"${name}" is available — you can create it (if you have credits).`;
       el.createBtn.disabled = opInProgress || credits <= 0;
       el.extendBtn.disabled = true;
-      el.finalUrl.textContent = `https://${name}.log-in.co.za`;
-      stopLiveTimer(); el.timeRemaining.textContent='--:--:--';
+      stopLiveTimer();
+      el.timeRemaining.textContent = '--:--:--';
     }
-  } catch(e){
-    el.nameStatus.textContent = 'Name check failed'; appendLog('Name check failed: '+e.message);
+  } catch (e) {
+    el.nameStatus.textContent = 'Name check failed';
+    el.createBtn.disabled = true;
+    el.extendBtn.disabled = true;
+    stopLiveTimer();
   }
   updateCreditsUI();
 }
 
-/* ---------- live timer ---------- */
-function formatHMS(sec){
-  if (sec <= 0) return '00:00:00';
-  const h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60), s = Math.floor(sec%60);
-  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+/* ---------- LIVE timer (updates UI each second) ---------- */
+function formatHMS(totalSeconds) {
+  if (totalSeconds <= 0) return '00:00:00';
+  const hrs = Math.floor(totalSeconds/3600);
+  const mins = Math.floor((totalSeconds%3600)/60);
+  const secs = Math.floor(totalSeconds%60);
+  const pad = v => String(v).padStart(2,'0');
+  return `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
 }
-function startLiveTimer(name){
+
+function startLiveTimerForName(name, mapping) {
   stopLiveTimer();
-  liveTimerInterval = setInterval(async ()=>{
+  liveTimerInterval = setInterval(async () => {
     try {
-      const mapping = await getMapping();
-      const exp = Number(mapping._expires?.[name]||0);
-      const rem = Math.max(0, exp - getUnix());
+      const latest = await getMapping();
+      const expires = Number(latest._expires?.[name] || 0);
+      const rem = Math.max(0, expires - getUnix());
       el.timeRemaining.textContent = formatHMS(rem);
-    } catch(e) { el.timeRemaining.textContent='--:--:--'; }
+    } catch (e) {
+      el.timeRemaining.textContent = '--:--:--';
+    }
   }, 1000);
 }
-function stopLiveTimer(){ if (liveTimerInterval) { clearInterval(liveTimerInterval); liveTimerInterval = null; } }
 
-/* ---------- create / extend / check ---------- */
-async function performAction(mode){
-  if (opInProgress) return showNotif('Operation in progress — wait');
-  const name = sanitize(el.name.value.trim());
-  const url = el.url.value.trim();
-  if (!name) return showNotif('Enter a subdomain name');
-  if (mode==='create' && !url) return showNotif('Enter a Gist URL for creation');
-  if (credits <= 0) return showNotif('No credits — press ad and wait 15s');
+function stopLiveTimer() {
+  if (liveTimerInterval) { clearInterval(liveTimerInterval); liveTimerInterval = null; }
+}
 
-  opInProgress = true; el.createBtn.disabled = true; el.extendBtn.disabled = true;
-  el.statusIndicator.textContent = 'working';
-  appendLog(`Starting ${mode} for ${name} ...`);
+/* ---------- CORE: create / extend / check ---------- */
+async function handleAction(mode) {
+  if (opInProgress) return showNotification('Operation in progress — please wait...');
+  const name = sanitizeName(el.nameInput.value.trim());
+  const url = el.urlInput.value.trim();
+  if (!name) return showNotification('Enter subdomain name.');
+  if (mode === 'create' && !url) return showNotification('Enter URL to point the subdomain to.');
+  if (credits <= 0) return showNotification('No credits — press the ad button and wait 15s.');
+
+  opInProgress = true;
+  el.createBtn.disabled = true;
+  el.extendBtn.disabled = true;
+
   try {
+    log(`Starting ${mode} for ${name} ...`);
     const mapping = await getMapping();
     if (!mapping._expires) mapping._expires = {};
     const rawExpiry = mapping._expires[name];
-    const curExp = (typeof rawExpiry === 'number' && rawExpiry>0) ? rawExpiry : getUnix();
+    const currentExpiry = (typeof rawExpiry === 'number' && rawExpiry > 0) ? rawExpiry : getUnix();
 
-    if (mode==='create') {
-      if (mapping[name]) { showNotif('Already exists — use extend'); appendLog('Create aborted: exists'); return; }
+    if (mode === 'create') {
+      if (mapping[name]) {
+        showNotification('Subdomain already exists — cannot create. Use extend.');
+        log('Create aborted: already exists.');
+        return;
+      }
       mapping[name] = url;
-      mapping._expires[name] = Math.max(curExp, getUnix()) + INITIAL_DURATION;
+      mapping._expires[name] = Math.max(currentExpiry, getUnix()) + INITIAL_DURATION;
       el.finalUrl.textContent = `https://${name}.log-in.co.za`;
-    } else {
-      if (!mapping[name]) { showNotif('Does not exist — create first'); appendLog('Extend aborted: missing'); return; }
-      mapping._expires[name] = Math.max(curExp, getUnix()) + EXTENSION_DURATION;
+      el.urlDisplay.style.display = 'block';
+    } else { // extend
+      if (!mapping[name]) {
+        showNotification('Subdomain does not exist — create it first.');
+        log('Extend aborted: does not exist.');
+        return;
+      }
+      mapping._expires[name] = Math.max(currentExpiry, getUnix()) + EXTENSION_DURATION;
     }
 
+    // attempt update
     const updated = await updateMapping(mapping);
 
-    // consume credit after success
-    credits = Math.max(0, credits-1); updateCreditsUI();
-    showNotif(`${mode} successful — credits left: ${credits}`);
-    appendLog(`${mode} done for ${name}. Credits left: ${credits}. New expiry: ${Number(updated._expires[name]||0)}`);
-    await refreshButtons();
-  } catch(e){
-    appendLog(`Error during ${mode}: ${e.message}`);
-    showNotif('Operation failed (see log)');
+    // consume credit only after successful update
+    credits = Math.max(0, credits - 1);
+    updateCreditsUI();
+    showNotification(`${mode} successful. Credits left: ${credits}`);
+    log(`${mode} done for ${name}. Credits left: ${credits}. New expiry: ${Number(updated._expires[name]||0)}`);
+
+    await refreshButtonsBasedOnName();
+  } catch (e) {
+    log(`Error during ${mode}: ${e.message}`);
+    showNotification(`Operation failed: ${e.message}`);
   } finally {
     opInProgress = false;
-    el.statusIndicator.textContent = 'ready';
-    await refreshButtons();
+    await refreshButtonsBasedOnName();
   }
 }
 
-async function checkTime(){
-  const name = sanitize(el.name.value.trim());
-  if (!name) return showNotif('Enter a name first');
+el.createBtn.addEventListener('click', () => handleAction('create'));
+el.extendBtn.addEventListener('click', () => handleAction('extend'));
+
+/* ---------- check time ---------- */
+async function checkTime() {
+  const name = sanitizeName(el.nameInput.value.trim());
+  if (!name) return showNotification('Enter a name first');
   try {
     const mapping = await getMapping();
-    const exp = mapping._expires?.[name];
-    if (!exp) { appendLog('No expiry set'); showNotif('No expiry set'); return; }
-    const rem = Math.max(0, Number(exp) - getUnix());
-    const mins = Math.floor(rem/60), hrs = Math.floor(mins/60), minPart = mins%60;
-    appendLog(`Time remaining for ${name}: ${hrs}h ${minPart}m`);
-  } catch(e){ appendLog('Check failed: '+e.message); showNotif('Check failed'); }
+    const expires = mapping._expires?.[name];
+    if (!expires) { log('No expiry set'); showNotification('No expiry set'); return; }
+    const remaining = Math.max(0, Number(expires) - getUnix());
+    const mins = Math.floor(remaining / 60);
+    const hrs = Math.floor(mins / 60);
+    const minPart = mins % 60;
+    log(`Time remaining for ${name}: ${hrs}h ${minPart}m`);
+  } catch (e) {
+    log('Check time failed: ' + e.message);
+    showNotification('Check failed');
+  }
 }
-
-/* ---------- events ---------- */
-el.adBtn.addEventListener('click', startAd);
-el.createBtn.addEventListener('click', ()=>performAction('create'));
-el.extendBtn.addEventListener('click', ()=>performAction('extend'));
 el.checkBtn.addEventListener('click', checkTime);
-el.copyBtn.addEventListener('click', async ()=>{
-  try { await navigator.clipboard.writeText(el.finalUrl.textContent); showNotif('URL copied'); } catch { showNotif('Copy failed'); }
+
+/* ---------- input handlers ---------- */
+el.nameInput.addEventListener('input', () => {
+  const name = sanitizeName(el.nameInput.value);
+  el.nameInput.value = name;
+  el.previewUrl.textContent = `https://${name || '[name]'}.log-in.co.za`;
+  if (el.nameInput._timer) clearTimeout(el.nameInput._timer);
+  el.nameInput._timer = setTimeout(() => refreshButtonsBasedOnName(), 300);
 });
-el.name.addEventListener('input', ()=>{
-  const v = sanitize(el.name.value); el.name.value = v; el.preview.textContent = `https://${v||'[name]'}.log-in.co.za`;
-  if (el.name._timer) clearTimeout(el.name._timer);
-  el.name._timer = setTimeout(()=>refreshButtons(), 250);
+
+el.copyBtn.addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(el.finalUrl.textContent); showNotification('URL copied!'); }
+  catch { showNotification('Failed to copy'); }
 });
-el.devToggle.addEventListener('change', (e)=>{ devMode = e.target.checked; appendLog('Dev mode: '+devMode); });
 
 /* ---------- init ---------- */
-(async function init(){
-  try { await refreshButtons(); updateCreditsUI(); appendLog('System ready.'); } catch(e){ appendLog('Init error: '+e.message); }
+(async function init() {
+  try {
+    await refreshButtonsBasedOnName();
+    log('System ready. Press the ad button to get credits.');
+  } catch (e) {
+    log('Init error: ' + e.message);
+  }
 })();
 </script>
 </body>
