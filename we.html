@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>D-TECH Subdomain Creator</title>
+<style>
+  /* small styles so logs/notifications are readable */
+  #notification-container > div { padding:6px; margin:6px 0; background:#eef; border-radius:6px; }
+  #log { height:220px; overflow:auto; background:#111; color:#bfb; padding:12px; border-radius:6px; }
+  input { width:100%; padding:8px; margin:6px 0; box-sizing:border-box; }
+  button { margin:4px; padding:8px 12px; }
+  #name-status { margin:6px 0; font-weight:600; }
+</style>
 </head>
 <body>
 <div id="notification-container"></div>
@@ -12,251 +20,428 @@
 <p>Create custom subdomains for your gist URLs</p>
 
 <div>
-    <p>Important Notice: Your URL: <strong>https://[name].log-in.co.za</strong></p>
-    <p>Subdomains with &lt;1 hour may be removed at any time</p>
-    <p>Activation Notice: URL may take 1-2 minutes to become active. IF IT DOESN'T WORK THE FIRST TIME, THE SECOND TIME IT WILL 100% WORK</p>
+  <p>Important Notice: Your URL: <strong>https://[name].log-in.co.za</strong></p>
+  <p>Subdomains with &lt;1 hour may be removed at any time</p>
+  <p>Activation Notice: URL may take 1-2 minutes to become active. IF IT DOESN'T WORK THE FIRST TIME, THE SECOND TIME IT WILL 100% WORK</p>
 </div>
 
 <div>
-    <label for="name">Subdomain Name</label>
-    <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" />
-    <div id="name-status"></div>
-    <p>Use lowercase letters and dashes (-) only</p>
-    <p>Result: <span id="preview-url">https://.log-in.co.za</span></p>
+  <label for="name">Subdomain Name</label>
+  <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" autocomplete="off" />
+  <div id="name-status"></div>
+  <p>Use lowercase letters and dashes (-) only</p>
+  <p>Result: <span id="preview-url">https://.log-in.co.za</span></p>
 </div>
 
 <div>
-    <label for="url">Gist URL (Required for creation)</label>
-    <input type="url" id="url" placeholder="https://gist.github.com/..." />
+  <label for="url">Gist URL (Required for creation)</label>
+  <input type="url" id="url" placeholder="https://gist.github.com/..." />
 </div>
 
 <div>
-    <button id="ad-btn">Press Ad to Get 2 Actions (Must Wait 15s)</button>
-    <button id="create-btn" disabled>Create (2h)</button>
-    <button id="extend-btn" disabled>Extend 12h</button>
-    <button id="check-btn">Check Time</button>
+  <button id="ad-btn">Press Ad to Get 2 Actions (Must Wait 15s)</button>
+  <button id="create-btn" disabled>Create (2h)</button>
+  <button id="extend-btn" disabled>Extend 12h</button>
+  <button id="check-btn">Check Time</button>
+  <span style="margin-left:14px">Credits: <span id="credits-display">0</span></span>
 </div>
 
 <div>
-    URL activation may take 1-2 minutes
+  URL activation may take 1-2 minutes
 </div>
 
-<div id="url-display" style="display:none;">
-    <h3>Your Subdomain URL</h3>
-    <div id="final-url">https://example.log-in.co.za</div>
-    <button id="copy-btn">Copy</button>
+<div id="url-display" style="display:none; margin-top:8px;">
+  <h3>Your Subdomain URL</h3>
+  <div id="final-url">https://example.log-in.co.za</div>
+  <button id="copy-btn">Copy</button>
 </div>
 
-<div>
-    <h3>System Log</h3>
-    <span id="status-indicator"></span>
-    <pre id="log">System ready. Press the ad button to get credits.</pre>
+<div style="margin-top:12px;">
+  <h3>System Log</h3>
+  <span id="status-indicator"></span>
+  <pre id="log">System ready. Press the ad button to get credits.</pre>
 </div>
 
 <script>
+/* ---------- CONFIG ---------- */
 const MAPPING_RAW_URL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
 const TOKEN_RAW_URL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
 const GIST_ID = "451a35def0daf123212fcb9729d3dfdd";
-const CACHE_TTL = 30000;
-const INITIAL_DURATION = 7200;       // 2 hours
-const EXTENSION_DURATION = 43200;    // 12 hours
+const CACHE_TTL = 30000;                // 30s cache for mapping
+const INITIAL_DURATION = 7200;          // 2 hours (seconds)
+const EXTENSION_DURATION = 43200;       // 12 hours (seconds)
+const AD_WAIT_MS = 15000;               // 15 seconds required
 
+/* ---------- STATE ---------- */
 let mappingCache = null;
 let lastCacheTime = 0;
 let adWindow = null;
 let adStartTime = 0;
+let adPending = false;
+let lastAdAwardAt = 0;
 let credits = 0;
+let pollingInterval = null;
+let opInProgress = false;               // prevents double-click updates
 
-const elements = {
-    log: document.getElementById("log"),
-    statusIndicator: document.getElementById("status-indicator"),
-    previewUrl: document.getElementById("preview-url"),
-    finalUrl: document.getElementById("final-url"),
-    urlDisplay: document.getElementById("url-display"),
-    copyBtn: document.getElementById("copy-btn"),
-    notificationContainer: document.getElementById("notification-container"),
-    nameInput: document.getElementById("name"),
-    nameStatus: document.getElementById("name-status"),
-    createBtn: document.getElementById("create-btn"),
-    extendBtn: document.getElementById("extend-btn"),
-    checkBtn: document.getElementById("check-btn"),
-    urlInput: document.getElementById("url"),
-    adBtn: document.getElementById("ad-btn")
+/* ---------- ELEMENTS ---------- */
+const el = {
+  notif: document.getElementById('notification-container'),
+  log: document.getElementById('log'),
+  nameInput: document.getElementById('name'),
+  nameStatus: document.getElementById('name-status'),
+  previewUrl: document.getElementById('preview-url'),
+  urlInput: document.getElementById('url'),
+  adBtn: document.getElementById('ad-btn'),
+  createBtn: document.getElementById('create-btn'),
+  extendBtn: document.getElementById('extend-btn'),
+  checkBtn: document.getElementById('check-btn'),
+  finalUrl: document.getElementById('final-url'),
+  urlDisplay: document.getElementById('url-display'),
+  copyBtn: document.getElementById('copy-btn'),
+  creditsDisplay: document.getElementById('credits-display')
 };
 
+/* ---------- UTIL ---------- */
 const getUnix = () => Math.floor(Date.now() / 1000);
+const nowMs = () => Date.now();
 
-const sanitizeName = (name) => name.toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
+const sanitizeName = (s) => (s||'').toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
 
-const showNotification = (msg) => {
-    const n = document.createElement("div");
-    n.textContent = msg;
-    elements.notificationContainer.appendChild(n);
-    setTimeout(() => n.remove(), 3500);
+const showNotification = (msg, timeout = 3500) => {
+  const d = document.createElement('div');
+  d.textContent = msg;
+  el.notif.appendChild(d);
+  setTimeout(() => d.remove(), timeout);
 };
 
-const logMsg = (msg) => {
-    const timestamp = new Date().toLocaleTimeString();
-    const lines = elements.log.textContent.split('\n').slice(0, 10);
-    elements.log.textContent = `[${timestamp}] ${msg}\n${lines.join('\n')}`;
+const log = (msg) => {
+  const t = new Date().toLocaleTimeString();
+  const lines = el.log.textContent.split('\n').slice(0, 200);
+  el.log.textContent = `[${t}] ${msg}\n${lines.join('\n')}`;
+  // keep scroll bottom
+  el.log.scrollTop = el.log.scrollHeight;
 };
 
-const safeFetch = async (url, options) => {
-    try {
-        const res = await fetch(url, options);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return await res.json();
-    } catch (e) {
-        logMsg(`Network error: ${e.message}`);
-        throw e;
-    }
+const updateCreditsUI = () => {
+  el.creditsDisplay.textContent = credits;
+  // enable/disable buttons depending on credits and existence: checkNameAvailability will update finer state
 };
 
-const getToken = async () => {
-    const response = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`);
-    const tokens = await response.text();
-    return tokens.split("\n")[0].trim();
-};
+/* ---------- NETWORK: robust mapping fetch / update ---------- */
 
-const getMapping = async () => {
-    const now = Date.now();
+async function fetchRawText(url) {
+  const r = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return await r.text();
+}
+
+/**
+ * Get latest mapping from the gist raw file.
+ * Returns an object ({} if file empty or parse fails).
+ */
+async function getMapping() {
+  try {
+    const now = nowMs();
     if (mappingCache && now - lastCacheTime < CACHE_TTL) return mappingCache;
-    const response = await fetch(`${MAPPING_RAW_URL}?t=${now}`);
-    const data = await response.json();
-    mappingCache = data;
+    const text = await fetchRawText(MAPPING_RAW_URL);
+    let parsed = {};
+    if (!text || !text.trim()) parsed = {};
+    else {
+      try { parsed = JSON.parse(text); }
+      catch(e) {
+        // Sometimes file might contain stray lines - attempt to extract JSON between first { and last }
+        const maybe = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+        try { parsed = JSON.parse(maybe); }
+        catch(e2) { parsed = {}; log('Warning: mapping parse failed, using empty mapping'); }
+      }
+    }
+    // ensure structure
+    if (!parsed || typeof parsed !== 'object') parsed = {};
+    if (!parsed._expires) parsed._expires = {};
+    mappingCache = parsed;
     lastCacheTime = now;
-    return data;
-};
+    return parsed;
+  } catch (e) {
+    log(`Failed to fetch mapping: ${e.message}`);
+    return { _expires: {} };
+  }
+}
 
-const updateMapping = async (newMapping) => {
-    const token = await getToken();
-    await safeFetch(`https://api.github.com/gists/${GIST_ID}`, {
-        method: "PATCH",
-        headers: {
-            Authorization: `Bearer ${token}`,
-            "Accept": "application/vnd.github.v3+json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ files: { "gistfile1.txt": { content: JSON.stringify(newMapping, null, 2) } } })
+/**
+ * Patch the gist with newMapping. To minimize overwrite risk we:
+ * - refetch the latest text
+ * - merge our newMapping into it (prefer latest for other keys)
+ * - then PATCH
+ */
+async function updateMapping(newMapping) {
+  if (opInProgress) throw new Error('Another operation is in progress');
+  opInProgress = true;
+  try {
+    // re-fetch latest and attempt to merge conservatively
+    const latestText = await fetchRawText(MAPPING_RAW_URL);
+    let latest = {};
+    if (latestText && latestText.trim()) {
+      try { latest = JSON.parse(latestText); }
+      catch (e) { latest = {}; }
+    }
+    // merge: keep any keys from latest that are missing in newMapping (so we don't clobber)
+    const merged = Object.assign({}, latest, newMapping);
+    if (!merged._expires) merged._expires = {};
+    // prefer larger expiry for each name (avoid shrinking accidentally)
+    for (const k of Object.keys((latest._expires||{}))) {
+      if (!merged._expires[k]) merged._expires[k] = latest._expires[k];
+      else merged._expires[k] = Math.max(merged._expires[k], latest._expires[k]);
+    }
+    // make PATCH
+    const tokenText = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`, { cache: "no-store" });
+    if (!tokenText.ok) throw new Error(`Token fetch failed ${tokenText.status}`);
+    const tokenLines = await tokenText.text();
+    const token = tokenLines.split('\n')[0].trim();
+    if (!token) throw new Error('No token available');
+    const res = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ files: { "gistfile1.txt": { content: JSON.stringify(merged, null, 2) } } })
     });
-    mappingCache = null;
-};
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Gist patch failed ${res.status}: ${text.slice(0,200)}`);
+    }
+    // update local cache
+    mappingCache = merged;
+    lastCacheTime = nowMs();
+    log('Mapping updated on gist.');
+    return merged;
+  } finally {
+    opInProgress = false;
+  }
+}
 
-// --- AD LOGIC ---
-elements.adBtn.addEventListener("click", () => {
-    adWindow = window.open("https://otieu.com/4/9630811", "_blank");
-    adStartTime = Date.now();
-    showNotification("Ad opened! Return after 15s to get 2 action credits.");
+/* ---------- AD / CREDITS logic (robust) ---------- */
+
+function startAdFlow() {
+  // open ad window and mark pending
+  if (adPending) return showNotification('Ad already open — return after 15s');
+  try {
+    adWindow = window.open('https://otieu.com/4/9630811', '_blank');
+  } catch (e) {
+    adWindow = null;
+  }
+  adStartTime = nowMs();
+  adPending = true;
+  lastAdAwardAt = 0;
+  showNotification('Ad opened. Return to this tab after at least 15 seconds.');
+  log(`Ad started at ${new Date(adStartTime).toLocaleTimeString()}`);
+  // start polling to detect closed window if focus doesn't fire
+  if (pollingInterval) clearInterval(pollingInterval);
+  pollingInterval = setInterval(() => {
+    if (!adPending) { clearInterval(pollingInterval); pollingInterval = null; return; }
+    // If adWindow is closed, treat as return (we still compute elapsed time)
+    if (adWindow && adWindow.closed) {
+      handleReturnFromAd();
+    } else {
+      // also check if user has been away and came back via visibilitychange (sometimes visibilitychange is blocked)
+      // nothing else here, focus event will handle awarding
+    }
+  }, 800);
+}
+
+function awardAdCreditsIfEligible() {
+  if (!adPending) return;
+  const elapsed = nowMs() - adStartTime;
+  if (elapsed < AD_WAIT_MS) {
+    showNotification(`You returned too early (${Math.floor(elapsed/1000)}s). Wait at least 15s.`);
+    log(`Ad returned too early: ${Math.floor(elapsed/1000)}s`);
+    return;
+  }
+  // prevent multiple awards for same ad session
+  if (lastAdAwardAt && Math.abs(lastAdAwardAt - adStartTime) < 1000) return;
+  lastAdAwardAt = adStartTime;
+  credits += 2;
+  updateCreditsUI();
+  showNotification(`Ad complete — awarded 2 credits. Credits: ${credits}`);
+  log(`Ad awarded 2 credits at ${new Date().toLocaleTimeString()}. Total credits: ${credits}`);
+  adPending = false;
+  // close the ad window if possible
+  try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
+  adWindow = null;
+  if (pollingInterval) { clearInterval(pollingInterval); pollingInterval = null; }
+  refreshButtonsBasedOnName(); // name availability check will enable/disable appropriately
+}
+
+function handleReturnFromAd() {
+  try {
+    awardAdCreditsIfEligible();
+  } catch (e) {
+    log('Error awarding ad credits: ' + e.message);
+  }
+}
+
+// focus event (user returns to tab)
+window.addEventListener('focus', () => {
+  if (adPending) {
+    handleReturnFromAd();
+  }
 });
 
-document.addEventListener("visibilitychange", () => {
-    if (!adWindow) return;
-    if (!document.hidden) {
-        const elapsed = (Date.now() - adStartTime)/1000;
-        if (elapsed >= 15) {
-            credits += 2;
-            adWindow.close();
-            adWindow = null;
-            elements.createBtn.disabled = false;
-            elements.extendBtn.disabled = false;
-            showNotification(`Ad complete! You now have ${credits} credits.`);
-            logMsg(`Credits available: ${credits}`);
-        } else {
-            showNotification(`Wait at least 15s. You returned too early (${Math.floor(elapsed)}s).`);
-        }
-    }
+// visibility change as additional safety
+document.addEventListener('visibilitychange', () => {
+  if (!adPending) return;
+  if (!document.hidden) {
+    // user returned to the tab
+    handleReturnFromAd();
+  }
 });
 
-// --- CHECK NAME AVAILABILITY ---
-const checkNameAvailability = async () => {
-    const name = sanitizeName(elements.nameInput.value.trim());
-    if (!name) return;
-    try {
-        const mapping = await getMapping();
-        if (mapping[name]) {
-            elements.nameStatus.textContent = `"${name}" already exists! You can only extend time.`;
-            elements.createBtn.disabled = true;
-            elements.extendBtn.disabled = credits <= 0;
-        } else {
-            elements.nameStatus.textContent = `"${name}" is available! You can create it.`;
-            elements.createBtn.disabled = credits <= 0;
-            elements.extendBtn.disabled = true;
-        }
-    } catch (e) {
-        elements.nameStatus.textContent = "Check failed";
+el.adBtn.addEventListener('click', () => {
+  startAdFlow();
+});
+
+/* ---------- Name availability and UI helpers ---------- */
+
+// refresh create/extend enablement based on name and credits
+async function refreshButtonsBasedOnName() {
+  const name = sanitizeName(el.nameInput.value.trim());
+  if (!name) {
+    el.nameStatus.textContent = '';
+    el.createBtn.disabled = true;
+    el.extendBtn.disabled = true;
+    return;
+  }
+  try {
+    const mapping = await getMapping();
+    const exists = Boolean(mapping[name]);
+    if (exists) {
+      el.nameStatus.textContent = `"${name}" already exists — you can extend (if you have credits).`;
+      el.createBtn.disabled = true;
+      el.extendBtn.disabled = credits <= 0 || opInProgress;
+    } else {
+      el.nameStatus.textContent = `"${name}" is available — you can create it (if you have credits).`;
+      el.createBtn.disabled = credits <= 0 || opInProgress;
+      el.extendBtn.disabled = true;
     }
-};
+  } catch (e) {
+    el.nameStatus.textContent = 'Name check failed';
+    el.createBtn.disabled = true;
+    el.extendBtn.disabled = true;
+  }
+  updateCreditsUI();
+}
 
-// --- ACTIONS ---
-const handleAction = async (mode) => {
-    if (credits <= 0) return showNotification("No credits! Watch the ad first.");
+/* ---------- CORE actions: create / extend / check ---------- */
 
-    const name = sanitizeName(elements.nameInput.value.trim());
-    const url = elements.urlInput.value.trim();
-    if (!name) return logMsg("Name is required");
-    if (mode === "create" && !url) return logMsg("URL is required");
-
+async function handleAction(mode) {
+  if (opInProgress) return showNotification('Operation already in progress, please wait...');
+  if (credits <= 0) return showNotification('No credits — press the ad button and wait 15s to get credits.');
+  const name = sanitizeName(el.nameInput.value.trim());
+  const url = el.urlInput.value.trim();
+  if (!name) return showNotification('Enter subdomain name.');
+  if (mode === 'create' && !url) return showNotification('Enter a URL to point the subdomain to.');
+  try {
+    opInProgress = true;
+    el.createBtn.disabled = true;
+    el.extendBtn.disabled = true;
+    log(`Starting ${mode} for ${name} ...`);
+    // always fetch latest mapping just before applying change
     const mapping = await getMapping();
     if (!mapping._expires) mapping._expires = {};
-
-    let currentExpiry = mapping._expires[name] || getUnix();
-
-    if (mode === "create") {
-        if (mapping[name]) return showNotification("Subdomain exists! Only extend allowed.");
-        mapping[name] = url;
-        currentExpiry = currentExpiry > getUnix() ? currentExpiry : getUnix();
-        mapping._expires[name] = currentExpiry + INITIAL_DURATION;
-        elements.finalUrl.textContent = `https://${name}.log-in.co.za`;
-        elements.urlDisplay.style.display = "block";
-    } else if (mode === "extend") {
-        if (!mapping[name]) return showNotification("Subdomain does not exist! Create it first.");
-        currentExpiry = currentExpiry > getUnix() ? currentExpiry : getUnix();
-        mapping._expires[name] = currentExpiry + EXTENSION_DURATION;
+    // ensure stored expiry is numeric when present
+    const rawExpiry = mapping._expires[name];
+    const currentExpiry = (typeof rawExpiry === 'number' && rawExpiry > 0) ? rawExpiry : getUnix();
+    if (mode === 'create') {
+      if (mapping[name]) {
+        showNotification('Subdomain already exists — cannot create. Use extend.');
+        log('Create aborted: already exists.');
+        await refreshButtonsBasedOnName();
+        return;
+      }
+      mapping[name] = url;
+      // add initial duration to existing expiry (or now)
+      mapping._expires[name] = Math.max(currentExpiry, getUnix()) + INITIAL_DURATION;
+      el.finalUrl.textContent = `https://${name}.log-in.co.za`;
+      el.urlDisplay.style.display = 'block';
+    } else if (mode === 'extend') {
+      if (!mapping[name]) {
+        showNotification('Subdomain does not exist — create it first.');
+        log('Extend aborted: does not exist.');
+        await refreshButtonsBasedOnName();
+        return;
+      }
+      mapping._expires[name] = Math.max(currentExpiry, getUnix()) + EXTENSION_DURATION;
     }
+    // perform the patch (this merges and updates cache)
+    const updated = await updateMapping(mapping);
+    // consume credit only after successful update
+    credits = Math.max(0, credits - 1);
+    updateCreditsUI();
+    showNotification(`${mode} successful. Credits left: ${credits}`);
+    log(`${mode} done for ${name}. Credits left: ${credits}. New expiry: ${updated._expires[name]}`);
+    // refresh UI & availability
+    await refreshButtonsBasedOnName();
+  } catch (e) {
+    log(`Error during ${mode}: ${e.message}`);
+    showNotification(`Operation failed: ${e.message}`);
+  } finally {
+    opInProgress = false;
+    await refreshButtonsBasedOnName();
+  }
+}
 
-    credits--;
-    if (credits === 0) {
-        elements.createBtn.disabled = true;
-        elements.extendBtn.disabled = true;
-    }
+el.createBtn.addEventListener('click', () => handleAction('create'));
+el.extendBtn.addEventListener('click', () => handleAction('extend'));
 
-    await updateMapping(mapping);
-    showNotification(`${mode} successful. Remaining credits: ${credits}`);
-    logMsg(`${mode} done for ${name}. Credits left: ${credits}`);
-};
-
-// --- CHECK TIME ---
-const checkTime = async () => {
-    const name = sanitizeName(elements.nameInput.value.trim());
-    if (!name) return logMsg("Enter a name first");
+// check time (free)
+async function checkTime() {
+  const name = sanitizeName(el.nameInput.value.trim());
+  if (!name) return showNotification('Enter a name first');
+  try {
     const mapping = await getMapping();
     const expires = mapping._expires?.[name];
-    if (!expires) return logMsg("No expiry set");
-    const remaining = expires - getUnix();
+    if (!expires) { log('No expiry set'); showNotification('No expiry set'); return; }
+    const remaining = Math.max(0, expires - getUnix());
     const mins = Math.floor(remaining / 60);
     const hrs = Math.floor(mins / 60);
     const minPart = mins % 60;
-    logMsg(`Time remaining for ${name}: ${hrs}h ${minPart}m`);
-};
+    log(`Time remaining for ${name}: ${hrs}h ${minPart}m`);
+  } catch (e) {
+    log('Check time failed: ' + e.message);
+    showNotification('Check failed');
+  }
+}
+el.checkBtn.addEventListener('click', checkTime);
 
-// --- INPUT HANDLERS ---
-elements.nameInput.addEventListener("input", () => {
-    const name = sanitizeName(elements.nameInput.value);
-    elements.nameInput.value = name;
-    elements.previewUrl.textContent = `https://${name || "[name]"}.log-in.co.za`;
-    checkNameAvailability();
+/* ---------- input handlers ---------- */
+el.nameInput.addEventListener('input', () => {
+  const name = sanitizeName(el.nameInput.value);
+  el.nameInput.value = name;
+  el.previewUrl.textContent = `https://${name || '[name]'}.log-in.co.za`;
+  // debounce name check a little
+  if (el.nameInput._timer) clearTimeout(el.nameInput._timer);
+  el.nameInput._timer = setTimeout(() => refreshButtonsBasedOnName(), 300);
 });
 
-elements.copyBtn.addEventListener("click", async () => {
-    try { await navigator.clipboard.writeText(elements.finalUrl.textContent); showNotification("URL copied!"); }
-    catch { showNotification("Failed to copy"); }
+el.copyBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(el.finalUrl.textContent);
+    showNotification('URL copied!');
+  } catch {
+    showNotification('Failed to copy');
+  }
 });
 
-elements.createBtn.addEventListener("click", () => handleAction("create"));
-elements.extendBtn.addEventListener("click", () => handleAction("extend"));
-elements.checkBtn.addEventListener("click", checkTime);
-
-logMsg("System ready. Press the ad button to get credits.");
+/* ---------- init ---------- */
+(async function init() {
+  try {
+    await refreshButtonsBasedOnName();
+    log('System ready. Press the ad button to get credits.');
+  } catch (e) {
+    log('Init error: ' + e.message);
+  }
+})();
 </script>
 </body>
 </html>
