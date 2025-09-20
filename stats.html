@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>D-TECH JSON Data Analytics Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -96,6 +97,9 @@
       color: var(--primary-light);
       text-decoration: none;
       transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     .branding a:hover {
@@ -496,19 +500,44 @@
 
     .export-options {
       display: none;
-      position: absolute;
-      right: 0;
-      top: 100%;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       background: linear-gradient(145deg, var(--card-bg), var(--secondary-light));
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      padding: 1.5rem;
-      z-index: 10;
-      width: 380px;
-      margin-top: 1rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      padding: 2rem;
+      z-index: 1000;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 2px solid var(--primary);
     }
 
     .export-options.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -45%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    .export-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 999;
+    }
+
+    .export-overlay.show {
       display: block;
     }
 
@@ -522,10 +551,13 @@
       margin-bottom: 0.8rem;
       transition: background-color 0.2s;
       font-weight: 500;
+      background: linear-gradient(145deg, var(--secondary-light), var(--card-bg));
+      border: 1px solid var(--border);
     }
 
     .export-option:hover {
-      background-color: var(--secondary-light);
+      background: linear-gradient(145deg, var(--primary-dark), var(--primary));
+      color: white;
     }
 
     .date-range-selector {
@@ -648,8 +680,8 @@
       }
       
       .export-options {
-        width: 320px;
-        right: -50px;
+        width: 95%;
+        padding: 1.5rem;
       }
     }
 
@@ -671,8 +703,8 @@
       }
       
       .export-options {
-        width: 280px;
-        right: -80px;
+        width: 95%;
+        padding: 1rem;
       }
     }
 
@@ -698,6 +730,23 @@
       font-size: 0.95rem;
       color: var(--text-light);
     }
+
+    /* Close button for export modal */
+    .close-export {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close-export:hover {
+      color: var(--primary);
+    }
   </style>
 </head>
 <body>
@@ -708,8 +757,8 @@
         <div>
           <div class="logo-text">D-TECH ANALYTICS</div>
           <div class="branding">
-            <span>Property of <a href="https://t.me/DTECHX24" target="_blank">DTECH</a></span>
-            <span>Affiliated with <a href="https://t.me/thelastofus9999" target="_blank">THELASTOFUS9999</a></span>
+            <span>Property of <a href="https://t.me/DTECHX24" target="_blank"><i class="fab fa-telegram"></i> DTECH</a></span>
+            <span>Affiliated with <a href="https://t.me/thelastofus9999" target="_blank"><i class="fab fa-telegram"></i> THELASTOFUS9999</a></span>
           </div>
         </div>
       </div>
@@ -719,7 +768,8 @@
           <span>Export Data</span>
         </button>
         <div id="exportOptions" class="export-options">
-          <h3 style="margin-bottom: 1.2rem; color: var(--primary);">D-TECH Export Options</h3>
+          <button class="close-export">&times;</button>
+          <h3 style="margin-bottom: 1.2rem; color: var(--primary); text-align: center;">D-TECH Export Options</h3>
           
           <div class="date-range-selector">
             <h4>Select Date Range</h4>
@@ -749,6 +799,7 @@
             <span>CSV (With Short Names)</span>
           </div>
         </div>
+        <div id="exportOverlay" class="export-overlay"></div>
       </div>
     </div>
   </header>
@@ -861,6 +912,7 @@
     const urlList = document.getElementById('urlList');
     const downloadBtn = document.getElementById('downloadBtn');
     const exportOptions = document.getElementById('exportOptions');
+    const exportOverlay = document.getElementById('exportOverlay');
     const importUrlsBtn = document.getElementById('importUrlsBtn');
     const exportUrlsBtn = document.getElementById('exportUrlsBtn');
     const fileImport = document.getElementById('fileImport');
@@ -869,6 +921,7 @@
     const startDateInput = document.getElementById('startDate');
     const endDateInput = document.getElementById('endDate');
     const shortnameOptions = document.getElementById('shortnameOptions');
+    const closeExportBtn = document.querySelector('.close-export');
     let jsonData = null;
 
     // Set default date values (last 7 days)
@@ -891,14 +944,19 @@
       downloadBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         populateShortnameOptions();
-        exportOptions.classList.toggle('show');
+        exportOptions.classList.add('show');
+        exportOverlay.classList.add('show');
       });
 
-      // Close export options when clicking elsewhere
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('.export-container')) {
-          exportOptions.classList.remove('show');
-        }
+      // Close export options when clicking on overlay or close button
+      exportOverlay.addEventListener('click', () => {
+        exportOptions.classList.remove('show');
+        exportOverlay.classList.remove('show');
+      });
+      
+      closeExportBtn.addEventListener('click', () => {
+        exportOptions.classList.remove('show');
+        exportOverlay.classList.remove('show');
       });
 
       // Handle export option selection
@@ -911,6 +969,7 @@
           const selectedShortnames = getSelectedShortnames();
           exportData(format, startDate, endDate, selectedShortnames);
           exportOptions.classList.remove('show');
+          exportOverlay.classList.remove('show');
         });
       });
 
