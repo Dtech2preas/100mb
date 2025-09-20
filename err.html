@@ -5,137 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DTECH HTML to Live Website Converter</title>
 <style>
-  /* Base */
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #0f0f15;
-    color: #fff;
+    margin: 0; padding: 0;
+    background: #0f0f15; color: #fff;
   }
-
   h1, h2 {
-    text-align: center;
-    color: #00ffcc;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    text-align: center; color: #00ffcc;
+    margin-top: 1rem; margin-bottom: 1rem;
   }
-
-  h2 {
-    font-size: 1.4rem;
-    color: #00d1ff;
-  }
-
-  /* Container */
+  h2 { font-size: 1.4rem; color: #00d1ff; }
   .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #1a1a2e;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
+    max-width: 900px; margin: 20px auto; padding: 20px;
+    background: #1a1a2e; border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,255,200,0.2);
   }
-
   textarea {
-    width: 100%;
-    border-radius: 8px;
-    padding: 10px;
-    background: #12121f;
-    color: #00ffcc;
-    border: 1px solid #00ffcc;
-    font-family: monospace;
-    font-size: 14px;
-    resize: vertical;
+    width: 100%; border-radius: 8px; padding: 10px;
+    background: #12121f; color: #00ffcc; border: 1px solid #00ffcc;
+    font-family: monospace; font-size: 14px; resize: vertical;
   }
-
-  input[type="file"] {
-    display: block;
-    margin: 10px 0;
-    color: #00ffcc;
-  }
-
-  /* Preview */
+  input[type="file"] { display:block; margin:10px 0; color:#00ffcc; }
   #previewContainer {
-    border: 1px solid #00ffcc;
-    height: 400px;
-    width: 100%;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 15px;
+    border: 1px solid #00ffcc; height:400px; width:100%;
+    position:relative; border-radius:10px; overflow:hidden; margin-top:15px;
   }
-
-  #previewIframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
+  #previewIframe { width:100%; height:100%; border:none; }
   #fullscreenBtn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #00ffcc;
-    color: #000;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+    position:absolute; top:10px; right:10px; background:#00ffcc; color:#000;
+    border:none; padding:5px 10px; border-radius:5px; cursor:pointer; font-weight:bold;
+    transition:0.3s;
   }
-
-  #fullscreenBtn:hover {
-    background: #00d1ff;
-  }
-
-  /* Buttons */
+  #fullscreenBtn:hover { background:#00d1ff; }
   button {
-    background: #00ffcc;
-    color: #000;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px 5px 0 0;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+    background:#00ffcc; color:#000; border:none; padding:10px 20px;
+    margin:10px 5px 0 0; border-radius:8px; cursor:pointer; font-weight:bold;
+    transition:0.3s;
   }
-
-  button:hover {
-    background: #00d1ff;
-  }
-
-  #uploadStatus {
-    margin-top: 10px;
-    color: #ff6a00;
-  }
-
-  a {
-    color: #00ffcc;
-    text-decoration: underline;
-  }
-
-  a:hover {
-    color: #00d1ff;
-  }
-
+  button:hover { background:#00d1ff; }
+  #uploadStatus { margin-top:10px; color:#ff6a00; }
+  a { color:#00ffcc; text-decoration:underline; }
+  a:hover { color:#00d1ff; }
   #resultContainer {
-    margin-top: 20px;
-    text-align: center;
-    background: #12121f;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
+    margin-top:20px; text-align:center; background:#12121f; padding:15px;
+    border-radius:12px; box-shadow:0 0 10px rgba(0,255,200,0.3);
   }
 </style>
 </head>
 <body>
-
 <div class="container">
   <h1>DTECH HTML to Live Website Converter</h1>
 
-  <!-- Step 2: Input HTML -->
   <div>
     <h2>Step 1: Input HTML</h2>
     <textarea id="htmlInput" rows="10" placeholder="Paste your HTML here"></textarea><br>
@@ -148,19 +68,15 @@
     </div>
   </div>
 
-  <!-- Step 3: Upload -->
   <div>
     <h2>Step 2: Upload & Generate</h2>
     <button id="uploadBtn">Upload & Generate Live URL</button>
     <div id="uploadStatus" style="display:none;">Uploading...</div>
   </div>
 
-  <!-- Step 4: Result -->
   <div id="resultContainer" style="display:none;">
     <h2>🎉 Success! Your website is live</h2>
-    <div>
-      <strong>Live URL:</strong> <a href="#" id="liveUrl" target="_blank"></a>
-    </div>
+    <div><strong>Live URL:</strong> <a href="#" id="liveUrl" target="_blank"></a></div>
     <button id="copyLiveUrl">Copy Live URL</button>
     <button onclick="window.location.href='we.html'">Go to we.html</button>
   </div>
@@ -181,7 +97,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   let htmlContent = '';
   let selectedToken = null;
-
   const UPLOAD_KEY = 'dtech_upload_timer';
 
   function getRemainingTime() {
@@ -195,11 +110,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     localStorage.setItem(UPLOAD_KEY, endTime);
   }
 
-  // Update button text based on timer
   function updateButtonState() {
     const remaining = getRemainingTime();
-    if (remaining > 0) {
-      uploadBtn.textContent = `Wait ${Math.ceil(remaining/1000)}s for ad...`;
+    if(remaining>0){
+      uploadBtn.textContent = `Click ad and wait ${Math.ceil(remaining/1000)}s`;
     } else {
       uploadBtn.textContent = 'Upload & Generate Live URL';
     }
@@ -207,111 +121,86 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   setInterval(updateButtonState, 500);
 
-  // Fetch GitHub tokens
   async function fetchTokens() {
     try {
       const res = await fetch('https://gist.githubusercontent.com/Dtech2preas/8a30b80295920ae54ce13af87b7c162d/raw/gistfile1.txt');
       const text = await res.text();
-      const tokens = text.split('\n').map(line => line.trim()).filter(line => line.startsWith('ghp_'));
-      if(tokens.length < 2) throw new Error('Need at least 2 tokens');
+      const tokens = text.split('\n').map(l=>l.trim()).filter(l=>l.startsWith('ghp_'));
+      if(tokens.length<2) throw new Error('Need at least 2 tokens');
       selectedToken = tokens[Math.floor(Math.random()*2)];
-    } catch(err) {
-      alert('Error loading tokens: ' + err.message);
-    }
+    } catch(e){ alert('Error loading tokens: '+e.message); }
   }
   fetchTokens();
 
-  function updatePreview(content) {
-    previewIframe.srcdoc = content;
-  }
+  function updatePreview(content){ previewIframe.srcdoc = content; }
 
-  htmlInput.addEventListener('input', () => {
-    htmlContent = htmlInput.value;
-    updatePreview(htmlContent);
-  });
+  htmlInput.addEventListener('input', ()=>{ htmlContent = htmlInput.value; updatePreview(htmlContent); });
 
-  htmlFile.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if(file) {
-      const reader = new FileReader();
-      reader.onload = function(ev) {
-        htmlContent = ev.target.result;
-        updatePreview(htmlContent);
-        htmlInput.value = htmlContent;
-      };
+  htmlFile.addEventListener('change', (e)=>{
+    const file=e.target.files[0];
+    if(file){
+      const reader=new FileReader();
+      reader.onload=ev=>{ htmlContent=ev.target.result; updatePreview(htmlContent); htmlInput.value=htmlContent; }
       reader.readAsText(file);
     }
   });
 
-  uploadBtn.addEventListener('click', async () => {
-    if (!selectedToken) { alert('Token not ready'); return; }
-    if (!htmlContent) { alert('Provide HTML content'); return; }
+  uploadBtn.addEventListener('click', async ()=>{
+    if(!selectedToken){ alert('Token not ready'); return; }
+    if(!htmlContent){ alert('Provide HTML content'); return; }
 
     const remaining = getRemainingTime();
 
-    if (remaining > 0) {
-      // Open ad page if 10s haven't passed
-      window.open('https://otieu.com/4/9630811', '_blank');
-      alert(`Please wait ${Math.ceil(remaining/1000)} seconds for the ad to load, then press again.`);
+    if(remaining>0){
+      // Reset timer if they press too early
+      startUploadDelay();
+      window.open('https://otieu.com/4/9630811','_blank');
+      alert('Click the ad link and wait 10s before coming back, then press again.');
       return;
     }
 
-    // Start timer if not already started
-    startUploadDelay();
-
-    // Upload logic
+    // Execute upload
     uploadBtn.disabled = true;
     uploadStatus.style.display = 'block';
     uploadStatus.textContent = 'Uploading...';
 
-    try {
-      const gistResponse = await fetch('https://api.github.com/gists', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'token '+selectedToken,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
+    try{
+      const gistResponse = await fetch('https://api.github.com/gists',{
+        method:'POST',
+        headers:{
+          'Authorization':'token '+selectedToken,
+          'Accept':'application/vnd.github.v3+json',
+          'Content-Type':'application/json'
         },
-        body: JSON.stringify({
-          description: 'Live website ' + new Date().toISOString(),
-          public: true,
-          files: { 'index.html': { content: htmlContent } }
+        body:JSON.stringify({
+          description:'Live website '+new Date().toISOString(),
+          public:true,
+          files:{'index.html':{content:htmlContent}}
         })
       });
-
       const gistData = await gistResponse.json();
-      if(!gistData.id) throw new Error(gistData.message || 'Failed to create gist');
+      if(!gistData.id) throw new Error(gistData.message||'Failed to create gist');
 
-      const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
+      const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login||'anonymous'}/${gistData.id}/raw/index.html`;
 
       liveUrl.textContent = liveRenderUrl;
       liveUrl.href = liveRenderUrl;
-
-      uploadStatus.style.display = 'none';
-      resultContainer.style.display = 'block';
-    } catch(err) {
-      uploadStatus.textContent = 'Error: ' + err.message;
-      uploadBtn.disabled = false;
+      uploadStatus.style.display='none';
+      resultContainer.style.display='block';
+    }catch(err){
+      uploadStatus.textContent='Error: '+err.message;
+      uploadBtn.disabled=false;
     }
   });
 
-  copyLiveUrl.addEventListener('click', () => {
-    navigator.clipboard.writeText(liveUrl.href);
-    copyLiveUrl.textContent = 'Copied!';
-    setTimeout(()=>{ copyLiveUrl.textContent='Copy Live URL'; }, 2000);
-  });
+  copyLiveUrl.addEventListener('click', ()=>{ navigator.clipboard.writeText(liveUrl.href); copyLiveUrl.textContent='Copied!'; setTimeout(()=>{ copyLiveUrl.textContent='Copy Live URL'; },2000); });
 
-  fullscreenBtn.addEventListener('click', () => {
-    if(!document.fullscreenElement) {
-      previewContainer.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
+  fullscreenBtn.addEventListener('click', ()=>{
+    if(!document.fullscreenElement){ previewContainer.requestFullscreen(); } else { document.exitFullscreen(); }
   });
 
   updateButtonState();
 });
 </script>
-
 </body>
 </html>
