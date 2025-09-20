@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>D-TECH Subdomain Creator</title>
 <style>
-  /* small styles so logs/notifications are readable */
   #notification-container > div { padding:6px; margin:6px 0; background:#eef; border-radius:6px; }
-  #log { height:220px; overflow:auto; background:#111; color:#bfb; padding:12px; border-radius:6px; }
+  #log { height:220px; overflow:auto; background:#111; color:#bfb; padding:12px; border-radius:6px; white-space:pre-wrap; }
   input { width:100%; padding:8px; margin:6px 0; box-sizing:border-box; }
   button { margin:4px; padding:8px 12px; }
   #name-status { margin:6px 0; font-weight:600; }
@@ -81,7 +80,7 @@ let adPending = false;
 let lastAdAwardAt = 0;
 let credits = 0;
 let pollingInterval = null;
-let opInProgress = false;               // prevents double-click updates
+let opInProgress = false;               // single UI-level mutex
 
 /* ---------- ELEMENTS ---------- */
 const el = {
@@ -108,9 +107,7 @@ const nowMs = () => Date.now();
 const sanitizeName = (s) => (s||'').toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
 
 const showNotification = (msg, timeout = 3500) => {
-  const d = document.createElement('div');
-  d.textContent = msg;
-  el.notif.appendChild(d);
+  const d = document.createElement('div'); d.textContent = msg; el.notif.appendChild(d);
   setTimeout(() => d.remove(), timeout);
 };
 
@@ -118,27 +115,20 @@ const log = (msg) => {
   const t = new Date().toLocaleTimeString();
   const lines = el.log.textContent.split('\n').slice(0, 200);
   el.log.textContent = `[${t}] ${msg}\n${lines.join('\n')}`;
-  // keep scroll bottom
   el.log.scrollTop = el.log.scrollHeight;
 };
 
 const updateCreditsUI = () => {
   el.creditsDisplay.textContent = credits;
-  // enable/disable buttons depending on credits and existence: checkNameAvailability will update finer state
 };
 
-/* ---------- NETWORK: robust mapping fetch / update ---------- */
-
+/* ---------- NETWORK ---------- */
 async function fetchRawText(url) {
   const r = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return await r.text();
 }
 
-/**
- * Get latest mapping from the gist raw file.
- * Returns an object ({} if file empty or parse fails).
- */
 async function getMapping() {
   try {
     const now = nowMs();
@@ -147,17 +137,22 @@ async function getMapping() {
     let parsed = {};
     if (!text || !text.trim()) parsed = {};
     else {
-      try { parsed = JSON.parse(text); }
+      try { parsed = JSON.parse(text); } 
       catch(e) {
-        // Sometimes file might contain stray lines - attempt to extract JSON between first { and last }
-        const maybe = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
-        try { parsed = JSON.parse(maybe); }
-        catch(e2) { parsed = {}; log('Warning: mapping parse failed, using empty mapping'); }
+        const maybeStart = text.indexOf('{'), maybeEnd = text.lastIndexOf('}');
+        if (maybeStart >= 0 && maybeEnd > maybeStart) {
+          try { parsed = JSON.parse(text.substring(maybeStart, maybeEnd+1)); }
+          catch(_) { parsed = {}; log('Warning: mapping parse failed, using empty mapping'); }
+        } else parsed = {};
       }
     }
-    // ensure structure
     if (!parsed || typeof parsed !== 'object') parsed = {};
     if (!parsed._expires) parsed._expires = {};
+    // normalize expiry values to numbers (avoid strings)
+    for (const k of Object.keys(parsed._expires || {})) {
+      const v = parsed._expires[k];
+      parsed._expires[k] = Number(v) || 0;
+    }
     mappingCache = parsed;
     lastCacheTime = now;
     return parsed;
@@ -168,85 +163,65 @@ async function getMapping() {
 }
 
 /**
- * Patch the gist with newMapping. To minimize overwrite risk we:
- * - refetch the latest text
- * - merge our newMapping into it (prefer latest for other keys)
- * - then PATCH
+ * updateMapping safely merges with latest gist content and patches.
+ * It no longer throws for opInProgress — opInProgress is handled at the caller level.
  */
 async function updateMapping(newMapping) {
-  if (opInProgress) throw new Error('Another operation is in progress');
-  opInProgress = true;
-  try {
-    // re-fetch latest and attempt to merge conservatively
-    const latestText = await fetchRawText(MAPPING_RAW_URL);
-    let latest = {};
-    if (latestText && latestText.trim()) {
-      try { latest = JSON.parse(latestText); }
-      catch (e) { latest = {}; }
-    }
-    // merge: keep any keys from latest that are missing in newMapping (so we don't clobber)
-    const merged = Object.assign({}, latest, newMapping);
-    if (!merged._expires) merged._expires = {};
-    // prefer larger expiry for each name (avoid shrinking accidentally)
-    for (const k of Object.keys((latest._expires||{}))) {
-      if (!merged._expires[k]) merged._expires[k] = latest._expires[k];
-      else merged._expires[k] = Math.max(merged._expires[k], latest._expires[k]);
-    }
-    // make PATCH
-    const tokenText = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`, { cache: "no-store" });
-    if (!tokenText.ok) throw new Error(`Token fetch failed ${tokenText.status}`);
-    const tokenLines = await tokenText.text();
-    const token = tokenLines.split('\n')[0].trim();
-    if (!token) throw new Error('No token available');
-    const res = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
-      method: 'PATCH',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ files: { "gistfile1.txt": { content: JSON.stringify(merged, null, 2) } } })
-    });
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`Gist patch failed ${res.status}: ${text.slice(0,200)}`);
-    }
-    // update local cache
-    mappingCache = merged;
-    lastCacheTime = nowMs();
-    log('Mapping updated on gist.');
-    return merged;
-  } finally {
-    opInProgress = false;
+  // Fetch latest raw text and merge conservatively
+  const latestText = await fetchRawText(MAPPING_RAW_URL);
+  let latest = {};
+  if (latestText && latestText.trim()) {
+    try { latest = JSON.parse(latestText); } catch(e) { latest = {}; }
   }
+  const merged = Object.assign({}, latest, newMapping || {});
+  if (!merged._expires) merged._expires = {};
+  // for any names present in both latest and merged, ensure we prefer the larger expiry
+  for (const k of Object.keys(latest._expires || {})) {
+    const latestVal = Number((latest._expires||{})[k]) || 0;
+    const mergedVal = Number((merged._expires||{})[k]) || 0;
+    merged._expires[k] = Math.max(latestVal, mergedVal);
+  }
+
+  // fetch token
+  const tokenRes = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`, { cache: "no-store" });
+  if (!tokenRes.ok) throw new Error(`Token fetch failed ${tokenRes.status}`);
+  const tokenText = await tokenRes.text();
+  const token = tokenText.split('\n')[0].trim();
+  if (!token) throw new Error('No token available');
+
+  const res = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ files: { "gistfile1.txt": { content: JSON.stringify(merged, null, 2) } } })
+  });
+  if (!res.ok) {
+    const t = await res.text();
+    throw new Error(`Gist patch failed ${res.status}: ${t.slice(0,200)}`);
+  }
+  // update local cache
+  mappingCache = merged;
+  lastCacheTime = nowMs();
+  log('Mapping updated on gist.');
+  return merged;
 }
 
-/* ---------- AD / CREDITS logic (robust) ---------- */
-
+/* ---------- AD / CREDITS logic ---------- */
 function startAdFlow() {
-  // open ad window and mark pending
   if (adPending) return showNotification('Ad already open — return after 15s');
-  try {
-    adWindow = window.open('https://otieu.com/4/9630811', '_blank');
-  } catch (e) {
-    adWindow = null;
-  }
+  try { adWindow = window.open('https://otieu.com/4/9630811', '_blank'); } catch (e) { adWindow = null; }
   adStartTime = nowMs();
   adPending = true;
   lastAdAwardAt = 0;
-  showNotification('Ad opened. Return to this tab after at least 15 seconds.');
+  showNotification('Ad opened. Return after at least 15 seconds.');
   log(`Ad started at ${new Date(adStartTime).toLocaleTimeString()}`);
-  // start polling to detect closed window if focus doesn't fire
   if (pollingInterval) clearInterval(pollingInterval);
   pollingInterval = setInterval(() => {
     if (!adPending) { clearInterval(pollingInterval); pollingInterval = null; return; }
-    // If adWindow is closed, treat as return (we still compute elapsed time)
-    if (adWindow && adWindow.closed) {
-      handleReturnFromAd();
-    } else {
-      // also check if user has been away and came back via visibilitychange (sometimes visibilitychange is blocked)
-      // nothing else here, focus event will handle awarding
-    }
+    if (adWindow && adWindow.closed) handleReturnFromAd();
   }, 800);
 }
 
@@ -258,7 +233,7 @@ function awardAdCreditsIfEligible() {
     log(`Ad returned too early: ${Math.floor(elapsed/1000)}s`);
     return;
   }
-  // prevent multiple awards for same ad session
+  // prevent duplicate awards in same session
   if (lastAdAwardAt && Math.abs(lastAdAwardAt - adStartTime) < 1000) return;
   lastAdAwardAt = adStartTime;
   credits += 2;
@@ -266,44 +241,21 @@ function awardAdCreditsIfEligible() {
   showNotification(`Ad complete — awarded 2 credits. Credits: ${credits}`);
   log(`Ad awarded 2 credits at ${new Date().toLocaleTimeString()}. Total credits: ${credits}`);
   adPending = false;
-  // close the ad window if possible
   try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
   adWindow = null;
   if (pollingInterval) { clearInterval(pollingInterval); pollingInterval = null; }
-  refreshButtonsBasedOnName(); // name availability check will enable/disable appropriately
+  refreshButtonsBasedOnName();
 }
 
 function handleReturnFromAd() {
-  try {
-    awardAdCreditsIfEligible();
-  } catch (e) {
-    log('Error awarding ad credits: ' + e.message);
-  }
+  try { awardAdCreditsIfEligible(); } catch (e) { log('Error awarding ad credits: ' + e.message); }
 }
 
-// focus event (user returns to tab)
-window.addEventListener('focus', () => {
-  if (adPending) {
-    handleReturnFromAd();
-  }
-});
+window.addEventListener('focus', () => { if (adPending) handleReturnFromAd(); });
+document.addEventListener('visibilitychange', () => { if (adPending && !document.hidden) handleReturnFromAd(); });
+el.adBtn.addEventListener('click', () => startAdFlow());
 
-// visibility change as additional safety
-document.addEventListener('visibilitychange', () => {
-  if (!adPending) return;
-  if (!document.hidden) {
-    // user returned to the tab
-    handleReturnFromAd();
-  }
-});
-
-el.adBtn.addEventListener('click', () => {
-  startAdFlow();
-});
-
-/* ---------- Name availability and UI helpers ---------- */
-
-// refresh create/extend enablement based on name and credits
+/* ---------- UI state based on name ---------- */
 async function refreshButtonsBasedOnName() {
   const name = sanitizeName(el.nameInput.value.trim());
   if (!name) {
@@ -318,10 +270,10 @@ async function refreshButtonsBasedOnName() {
     if (exists) {
       el.nameStatus.textContent = `"${name}" already exists — you can extend (if you have credits).`;
       el.createBtn.disabled = true;
-      el.extendBtn.disabled = credits <= 0 || opInProgress;
+      el.extendBtn.disabled = opInProgress || credits <= 0;
     } else {
       el.nameStatus.textContent = `"${name}" is available — you can create it (if you have credits).`;
-      el.createBtn.disabled = credits <= 0 || opInProgress;
+      el.createBtn.disabled = opInProgress || credits <= 0;
       el.extendBtn.disabled = true;
     }
   } catch (e) {
@@ -332,61 +284,65 @@ async function refreshButtonsBasedOnName() {
   updateCreditsUI();
 }
 
-/* ---------- CORE actions: create / extend / check ---------- */
-
+/* ---------- CORE: create / extend / check ---------- */
 async function handleAction(mode) {
-  if (opInProgress) return showNotification('Operation already in progress, please wait...');
-  if (credits <= 0) return showNotification('No credits — press the ad button and wait 15s to get credits.');
+  // Guard: single UI-level mutex prevents overlapping create/extend
+  if (opInProgress) return showNotification('Operation in progress — please wait...');
   const name = sanitizeName(el.nameInput.value.trim());
   const url = el.urlInput.value.trim();
   if (!name) return showNotification('Enter subdomain name.');
-  if (mode === 'create' && !url) return showNotification('Enter a URL to point the subdomain to.');
+  if (mode === 'create' && !url) return showNotification('Enter URL to point the subdomain to.');
+  if (credits <= 0) return showNotification('No credits — press the ad button and wait 15s.');
+
+  // Begin operation: set mutex, disable buttons to block further clicks.
+  opInProgress = true;
+  el.createBtn.disabled = true;
+  el.extendBtn.disabled = true;
+
   try {
-    opInProgress = true;
-    el.createBtn.disabled = true;
-    el.extendBtn.disabled = true;
     log(`Starting ${mode} for ${name} ...`);
-    // always fetch latest mapping just before applying change
     const mapping = await getMapping();
     if (!mapping._expires) mapping._expires = {};
-    // ensure stored expiry is numeric when present
+    // read & normalize current expiry
     const rawExpiry = mapping._expires[name];
     const currentExpiry = (typeof rawExpiry === 'number' && rawExpiry > 0) ? rawExpiry : getUnix();
+
     if (mode === 'create') {
       if (mapping[name]) {
         showNotification('Subdomain already exists — cannot create. Use extend.');
         log('Create aborted: already exists.');
-        await refreshButtonsBasedOnName();
         return;
       }
       mapping[name] = url;
-      // add initial duration to existing expiry (or now)
       mapping._expires[name] = Math.max(currentExpiry, getUnix()) + INITIAL_DURATION;
       el.finalUrl.textContent = `https://${name}.log-in.co.za`;
       el.urlDisplay.style.display = 'block';
-    } else if (mode === 'extend') {
+    } else { // extend
       if (!mapping[name]) {
         showNotification('Subdomain does not exist — create it first.');
         log('Extend aborted: does not exist.');
-        await refreshButtonsBasedOnName();
         return;
       }
       mapping._expires[name] = Math.max(currentExpiry, getUnix()) + EXTENSION_DURATION;
     }
-    // perform the patch (this merges and updates cache)
+
+    // attempt merge-and-patch
     const updated = await updateMapping(mapping);
+
     // consume credit only after successful update
     credits = Math.max(0, credits - 1);
     updateCreditsUI();
     showNotification(`${mode} successful. Credits left: ${credits}`);
-    log(`${mode} done for ${name}. Credits left: ${credits}. New expiry: ${updated._expires[name]}`);
-    // refresh UI & availability
+    log(`${mode} done for ${name}. Credits left: ${credits}. New expiry: ${Number(updated._expires[name]||0)}`);
+
+    // refresh UI (availability & button enablement)
     await refreshButtonsBasedOnName();
   } catch (e) {
     log(`Error during ${mode}: ${e.message}`);
     showNotification(`Operation failed: ${e.message}`);
   } finally {
     opInProgress = false;
+    // re-evaluate UI state
     await refreshButtonsBasedOnName();
   }
 }
@@ -394,7 +350,7 @@ async function handleAction(mode) {
 el.createBtn.addEventListener('click', () => handleAction('create'));
 el.extendBtn.addEventListener('click', () => handleAction('extend'));
 
-// check time (free)
+/* ---------- check time ---------- */
 async function checkTime() {
   const name = sanitizeName(el.nameInput.value.trim());
   if (!name) return showNotification('Enter a name first');
@@ -402,7 +358,7 @@ async function checkTime() {
     const mapping = await getMapping();
     const expires = mapping._expires?.[name];
     if (!expires) { log('No expiry set'); showNotification('No expiry set'); return; }
-    const remaining = Math.max(0, expires - getUnix());
+    const remaining = Math.max(0, Number(expires) - getUnix());
     const mins = Math.floor(remaining / 60);
     const hrs = Math.floor(mins / 60);
     const minPart = mins % 60;
@@ -419,18 +375,13 @@ el.nameInput.addEventListener('input', () => {
   const name = sanitizeName(el.nameInput.value);
   el.nameInput.value = name;
   el.previewUrl.textContent = `https://${name || '[name]'}.log-in.co.za`;
-  // debounce name check a little
   if (el.nameInput._timer) clearTimeout(el.nameInput._timer);
   el.nameInput._timer = setTimeout(() => refreshButtonsBasedOnName(), 300);
 });
 
 el.copyBtn.addEventListener('click', async () => {
-  try {
-    await navigator.clipboard.writeText(el.finalUrl.textContent);
-    showNotification('URL copied!');
-  } catch {
-    showNotification('Failed to copy');
-  }
+  try { await navigator.clipboard.writeText(el.finalUrl.textContent); showNotification('URL copied!'); }
+  catch { showNotification('Failed to copy'); }
 });
 
 /* ---------- init ---------- */
