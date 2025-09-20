@@ -19,7 +19,6 @@
       --success: #34A853;
       --warning: #FBBC05;
       --danger: #EA4335;
-      --card-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     * {
@@ -56,67 +55,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .header-controls {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .refresh-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 24px;
-    }
-
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .toggle-slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: var(--border);
-      transition: .4s;
-      border-radius: 24px;
-    }
-
-    .toggle-slider:before {
-      position: absolute;
-      content: "";
-      height: 16px;
-      width: 16px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      transition: .4s;
-      border-radius: 50%;
-    }
-
-    input:checked + .toggle-slider {
-      background-color: var(--primary);
-    }
-
-    input:checked + .toggle-slider:before {
-      transform: translateX(26px);
     }
 
     .main {
@@ -166,15 +104,9 @@
       background-color: var(--card-bg);
       border-radius: 8px;
       padding: 1.25rem;
-      box-shadow: var(--card-shadow);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       text-align: center;
       border-left: 4px solid var(--primary);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .metric-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }
 
     .metric-value {
@@ -204,13 +136,8 @@
     .data-panel {
       background-color: var(--card-bg);
       border-radius: 8px;
-      box-shadow: var(--card-shadow);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       overflow: hidden;
-      transition: transform 0.2s;
-    }
-
-    .data-panel:hover {
-      transform: translateY(-2px);
     }
 
     .panel-header {
@@ -241,6 +168,9 @@
       padding: 1rem;
       border-bottom: 1px solid var(--border);
       transition: background-color 0.2s;
+      background-color: rgba(255, 255, 255, 0.03);
+      margin-bottom: 0.5rem;
+      border-radius: 4px;
     }
 
     .entry-item:hover {
@@ -254,15 +184,6 @@
       font-size: 0.95rem;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    .entry-time-ago {
-      font-size: 0.8rem;
-      color: var(--text-light);
-      background-color: var(--secondary);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
     }
 
     .entry-content {
@@ -284,7 +205,6 @@
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
     .property-badge .property-name {
@@ -354,11 +274,6 @@
 
     .btn-outline:hover {
       background-color: rgba(66, 133, 244, 0.1);
-    }
-
-    .btn-sm {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.85rem;
     }
 
     .loading {
@@ -434,22 +349,15 @@
       background-color: var(--secondary-light);
       border-radius: 6px;
       margin-bottom: 0.75rem;
-      gap: 1rem;
-    }
-
-    .url-info {
-      flex: 1;
-      min-width: 0;
-      overflow: hidden;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .url-name {
       font-weight: 500;
       color: var(--primary);
-      margin-bottom: 0.25rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      flex: 1;
+      min-width: 150px;
     }
 
     .url-value {
@@ -458,12 +366,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      flex: 2;
+      min-width: 200px;
     }
 
     .url-actions {
       display: flex;
       gap: 0.5rem;
-      flex-shrink: 0;
     }
 
     .empty-state {
@@ -487,13 +396,15 @@
       color: white;
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: var(--card-shadow);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       transform: translateY(100px);
       opacity: 0;
       transition: all 0.3s ease;
       z-index: 1000;
       border-left: 4px solid var(--primary);
-      max-width: 350px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .toast.show {
@@ -502,6 +413,10 @@
     }
 
     /* Export options */
+    .export-container {
+      position: relative;
+    }
+
     .export-options {
       display: none;
       position: absolute;
@@ -509,10 +424,11 @@
       top: 100%;
       background-color: var(--card-bg);
       border-radius: 8px;
-      box-shadow: var(--card-shadow);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       padding: 0.5rem;
       z-index: 10;
       min-width: 200px;
+      margin-top: 0.5rem;
     }
 
     .export-options.show {
@@ -523,7 +439,9 @@
       padding: 0.75rem;
       cursor: pointer;
       border-radius: 4px;
-      transition: background-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .export-option:hover {
@@ -560,26 +478,12 @@
       opacity: 1;
     }
 
-    /* Highlight new entries */
-    .new-entry {
-      animation: highlight 2s ease;
-    }
-
-    @keyframes highlight {
-      0% { background-color: rgba(66, 133, 244, 0.2); }
-      100% { background-color: transparent; }
-    }
-
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .header-content {
         flex-direction: column;
+        gap: 1rem;
         align-items: flex-start;
-      }
-      
-      .header-controls {
-        width: 100%;
-        justify-content: space-between;
       }
       
       .url-form {
@@ -596,6 +500,16 @@
         justify-content: flex-end;
       }
     }
+
+    /* Animation for new entries */
+    @keyframes highlight {
+      0% { background-color: rgba(66, 133, 244, 0.3); }
+      100% { background-color: rgba(255, 255, 255, 0.03); }
+    }
+    
+    .new-entry {
+      animation: highlight 2s ease;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
@@ -603,22 +517,22 @@
   <header class="header">
     <div class="header-content">
       <h1>🌐 URL Analytics Dashboard</h1>
-      <div class="header-controls">
-        <div class="refresh-toggle">
-          <label class="toggle-switch">
-            <input type="checkbox" id="autoRefreshToggle">
-            <span class="toggle-slider"></span>
-          </label>
-          <span>Auto Refresh</span>
-        </div>
-        <div style="position: relative;">
-          <button id="downloadBtn" class="btn btn-primary">
-            <span>⬇️ Export Data</span>
-          </button>
-          <div id="exportOptions" class="export-options">
-            <div class="export-option" data-format="json">JSON (Original)</div>
-            <div class="export-option" data-format="json-short">JSON (With Short Names)</div>
-            <div class="export-option" data-format="csv">CSV (With Short Names)</div>
+      <div class="export-container">
+        <button id="downloadBtn" class="btn btn-primary">
+          <span>⬇️ Export Data</span>
+        </button>
+        <div id="exportOptions" class="export-options">
+          <div class="export-option" data-format="json">
+            <span>📊</span>
+            <span>JSON (Original)</span>
+          </div>
+          <div class="export-option" data-format="json-short">
+            <span>📝</span>
+            <span>JSON (With Short Names)</span>
+          </div>
+          <div class="export-option" data-format="csv">
+            <span>📋</span>
+            <span>CSV (With Short Names)</span>
           </div>
         </div>
       </div>
@@ -636,7 +550,12 @@
           <div class="panel-header">
             <span>📅</span>
             <span>Recent Activity</span>
-            <button id="refreshDataBtn" class="btn btn-outline btn-sm" style="margin-left: auto;">🔄 Refresh</button>
+            <div style="margin-left: auto;">
+              <button id="refreshBtn" class="btn btn-outline" style="font-size: 0.8rem;">
+                <span>🔄</span>
+                <span>Refresh</span>
+              </button>
+            </div>
           </div>
           <div class="panel-body" id="entriesContainer">
             <div class="loading">Loading entries...</div>
@@ -661,15 +580,24 @@
           <span>🔗</span>
           <span>URL Short Names</span>
           <div style="margin-left: auto; display: flex; gap: 0.5rem;">
-            <button id="importUrlsBtn" class="btn btn-outline btn-sm">Import</button>
-            <button id="exportUrlsBtn" class="btn btn-outline btn-sm">Export</button>
+            <button id="importUrlsBtn" class="btn btn-outline" style="font-size: 0.8rem;">
+              <span>📥</span>
+              <span>Import</span>
+            </button>
+            <button id="exportUrlsBtn" class="btn btn-outline" style="font-size: 0.8rem;">
+              <span>📤</span>
+              <span>Export</span>
+            </button>
           </div>
         </div>
         <div class="panel-body">
           <div class="url-form">
             <input type="text" id="urlInput" class="url-input" placeholder="Enter full URL">
             <input type="text" id="nameInput" class="url-input" placeholder="Enter short name">
-            <button id="addUrlBtn" class="btn btn-primary">Add</button>
+            <button id="addUrlBtn" class="btn btn-primary">
+              <span>➕</span>
+              <span>Add</span>
+            </button>
           </div>
           <div class="url-list" id="urlList">
             <div class="empty-state">No URLs added yet</div>
@@ -694,13 +622,10 @@
 
   <!-- Hidden file input for import -->
   <input type="file" id="fileImport" style="display: none;" accept=".json,.csv">
-  
-  <!-- Hidden textarea for JSON data storage -->
-  <textarea id="jsonViewer" style="display: none;"></textarea>
 
   <script>
     // URL naming system in localStorage
-    const urlMappings = JSON.parse(localStorage.getItem('urlMappings')) || {};
+    let urlMappings = JSON.parse(localStorage.getItem('urlMappings')) || {};
 
     // Get user info from localStorage
     const userInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {};
@@ -722,13 +647,8 @@
     const exportUrlsBtn = document.getElementById('exportUrlsBtn');
     const fileImport = document.getElementById('fileImport');
     const toast = document.getElementById('toast');
-    const jsonViewer = document.getElementById('jsonViewer');
-    const autoRefreshToggle = document.getElementById('autoRefreshToggle');
-    const refreshDataBtn = document.getElementById('refreshDataBtn');
-
-    // Auto refresh variables
-    let autoRefreshInterval = null;
-    let lastDataHash = null;
+    const refreshBtn = document.getElementById('refreshBtn');
+    let jsonData = null;
 
     // Initialize the app
     document.addEventListener('DOMContentLoaded', () => {
@@ -745,15 +665,17 @@
       });
 
       // Close export options when clicking elsewhere
-      document.addEventListener('click', () => {
-        exportOptions.classList.remove('show');
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.export-container')) {
+          exportOptions.classList.remove('show');
+        }
       });
 
       // Handle export option selection
       exportOptions.querySelectorAll('.export-option').forEach(option => {
         option.addEventListener('click', (e) => {
           e.stopPropagation();
-          const format = e.target.getAttribute('data-format');
+          const format = e.currentTarget.getAttribute('data-format');
           exportData(format);
           exportOptions.classList.remove('show');
         });
@@ -764,36 +686,10 @@
       exportUrlsBtn.addEventListener('click', exportUrlMappings);
       fileImport.addEventListener('change', handleFileImport);
       
-      // Auto refresh toggle
-      autoRefreshToggle.addEventListener('change', function() {
-        if (this.checked) {
-          startAutoRefresh();
-        } else {
-          stopAutoRefresh();
-        }
-      });
-      
-      // Manual refresh button
-      refreshDataBtn.addEventListener('click', () => {
+      // Refresh button
+      refreshBtn.addEventListener('click', () => {
         loadGistJSON();
-        showToast('Data refreshed');
       });
-    }
-
-    function startAutoRefresh() {
-      // Refresh every 30 seconds
-      autoRefreshInterval = setInterval(() => {
-        loadGistJSON();
-      }, 30000);
-      showToast('Auto refresh enabled');
-    }
-
-    function stopAutoRefresh() {
-      if (autoRefreshInterval) {
-        clearInterval(autoRefreshInterval);
-        autoRefreshInterval = null;
-        showToast('Auto refresh disabled');
-      }
     }
 
     function showToast(message, duration = 3000) {
@@ -832,10 +728,9 @@
         urlInput.value = '';
         nameInput.value = '';
         
-        // Refresh the data to apply the new mappings
-        if (jsonViewer.value) {
-          const data = JSON.parse(jsonViewer.value);
-          analyzeData(data);
+        // Refresh data display if we already have data
+        if (jsonData) {
+          analyzeData(jsonData);
         }
       });
     }
@@ -851,13 +746,13 @@
         const urlItem = document.createElement('div');
         urlItem.className = 'url-item';
         urlItem.innerHTML = `
-          <div class="url-info">
+          <div>
             <div class="url-name">${name}</div>
-            <div class="url-value" title="${url}">${truncate(url, 50)}</div>
+            <div class="url-value">${truncate(url, 50)}</div>
           </div>
           <div class="url-actions">
-            <button class="btn btn-outline btn-sm" data-url="${url}">Edit</button>
-            <button class="btn btn-outline btn-sm" data-url="${url}">Remove</button>
+            <button class="btn btn-outline" data-url="${url}">Edit</button>
+            <button class="btn btn-outline" data-url="${url}">Remove</button>
           </div>
         `;
         urlList.appendChild(urlItem);
@@ -873,10 +768,9 @@
             showToast('URL mapping removed');
             renderUrlList();
             
-            // Refresh the data to apply the removed mappings
-            if (jsonViewer.value) {
-              const data = JSON.parse(jsonViewer.value);
-              analyzeData(data);
+            // Refresh data display
+            if (jsonData) {
+              analyzeData(jsonData);
             }
           } else {
             const newName = prompt('Enter new name for this URL:', urlMappings[url]);
@@ -886,10 +780,9 @@
               showToast('URL mapping updated');
               renderUrlList();
               
-              // Refresh the data to apply the updated mappings
-              if (jsonViewer.value) {
-                const data = JSON.parse(jsonViewer.value);
-                analyzeData(data);
+              // Refresh data display
+              if (jsonData) {
+                analyzeData(jsonData);
               }
             }
           }
@@ -925,10 +818,9 @@
             showToast(`${Object.keys(importedMappings).length} URLs imported`);
             renderUrlList();
             
-            // Refresh the data to apply the imported mappings
-            if (jsonViewer.value) {
-              const data = JSON.parse(jsonViewer.value);
-              analyzeData(data);
+            // Refresh data display
+            if (jsonData) {
+              analyzeData(jsonData);
             }
           } else {
             showToast('Invalid file format');
@@ -948,33 +840,31 @@
 
     // Export data in different formats
     function exportData(format) {
-      if (!jsonViewer.value) {
+      if (!jsonData) {
         showToast('No data to export');
         return;
       }
-
-      const rawData = JSON.parse(jsonViewer.value);
 
       let data, filename, mimeType;
 
       switch (format) {
         case 'json':
           // Original JSON
-          data = JSON.stringify(rawData, null, 2);
+          data = JSON.stringify(jsonData, null, 2);
           filename = 'data-original.json';
           mimeType = 'application/json';
           break;
 
         case 'json-short':
           // JSON with short names
-          data = JSON.stringify(processDataForDownload(rawData), null, 2);
+          data = JSON.stringify(processDataForDownload(jsonData), null, 2);
           filename = 'data-with-short-names.json';
           mimeType = 'application/json';
           break;
 
         case 'csv':
           // CSV with short names
-          const processedData = processDataForDownload(rawData);
+          const processedData = processDataForDownload(jsonData);
           data = convertToCSV(processedData);
           filename = 'data-with-short-names.csv';
           mimeType = 'text/csv';
@@ -1029,7 +919,7 @@
       });
 
       const headers = Array.from(allKeys);
-      let csv = headers.join(',') + '\n';
+      let csv = headers.map(header => `"${header.replace(/"/g, '""')}"`).join(',') + '\n';
 
       // Process each entry
       Object.values(data).forEach(entry => {
@@ -1038,10 +928,9 @@
             const value = entry[header];
             if (value === undefined || value === null) return '';
 
-            // Escape quotes and wrap in quotes if contains commas
+            // Escape quotes and wrap in quotes
             let str = String(value).replace(/"/g, '""');
-            if (str.includes(',')) str = `"${str}"`;
-            return str;
+            return `"${str}"`;
           });
           csv += row.join(',') + '\n';
         }
@@ -1052,42 +941,24 @@
 
     async function loadGistJSON() {
       try {
+        showToast('Loading data...', 2000);
+        
         const response = await fetch(rawURL);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const text = await response.text();
         
-        // Check if data has actually changed
-        const newHash = hashString(text);
-        if (newHash === lastDataHash) {
-          // Data hasn't changed, no need to update UI
-          return;
-        }
-        lastDataHash = newHash;
-        
-        jsonViewer.value = text;
-
-        let jsonData;
         try {
           jsonData = JSON.parse(text);
           analyzeData(jsonData);
+          showToast('Data loaded successfully');
         } catch (err) {
           throw new Error("Data is not valid JSON");
         }
       } catch (err) {
         showError("Error loading data: " + err.message);
+        showToast('Error loading data');
       }
-    }
-
-    // Simple hash function to detect changes
-    function hashString(str) {
-      let hash = 0;
-      for (let i = 0; i < str.length; i++) {
-        const char = str.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash; // Convert to 32bit integer
-      }
-      return hash;
     }
 
     function analyzeData(data) {
@@ -1214,12 +1085,12 @@
       const entriesHTML = sortedEntries.slice(0, 30).map(entry => `
         <div class="entry-item">
           <div class="entry-date">
-            ${formatDate(entry.date)}
-            <span class="entry-time-ago">${timeAgo(entry.date)}</span>
+            <span>${formatDate(entry.date)}</span>
+            <span>${timeAgo(entry.date)}</span>
           </div>
           <div class="entry-content">
             ${Object.entries(entry.data).map(([key, value]) => `
-              <span class="property-badge" title="${key}: ${value}">
+              <span class="property-badge">
                 <span class="property-name">${key}:</span> ${truncate(value, 25)}
               </span>
             `).join('')}
