@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>D-TECH JSON Data Analytics Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #4285F4;
-      --primary-dark: #1A73E8;
-      --primary-light: #E8F0FE;
-      --secondary: #0F0F0F;
-      --secondary-light: #2D2D2D;
-      --background: #1E1E1E;
-      --card-bg: #2D2D2D;
-      --text: #E0E0E0;
-      --text-light: #9E9E9E;
-      --border: #424242;
+      --primary: #2C6BED;
+      --primary-dark: #1A5FD0;
+      --primary-light: #E1EBFD;
+      --accent: #FF6B35;
+      --secondary: #0F172A;
+      --secondary-light: #1E293B;
+      --card-bg: #27303F;
+      --text: #F1F5F9;
+      --text-light: #94A3B8;
+      --border: #334155;
       --success: #34A853;
       --warning: #FBBC05;
       --danger: #EA4335;
-      --accent: #FF6B6B;
+      --gradient-start: #2C6BED;
+      --gradient-end: #8B46FF;
     }
 
     * {
@@ -31,7 +33,7 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: var(--secondary);
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
       color: var(--text);
       line-height: 1.6;
       display: flex;
@@ -41,10 +43,10 @@
     }
 
     .header {
-      background: linear-gradient(135deg, var(--secondary-light), var(--secondary));
+      background: linear-gradient(95deg, var(--secondary-light), var(--secondary));
       color: white;
-      padding: 1.2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      padding: 1.2rem 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -66,16 +68,40 @@
     }
 
     .logo-icon {
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: var(--primary);
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .logo-text {
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.8rem;
       font-weight: 700;
       background: linear-gradient(45deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+
+    .branding {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+      display: flex;
+      gap: 15px;
+    }
+
+    .branding a {
+      color: var(--primary-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .branding a:hover {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
     .main {
@@ -100,23 +126,37 @@
 
     .metric-card {
       background: linear-gradient(145deg, var(--card-bg), var(--secondary-light));
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border-radius: 16px;
+      padding: 1.8rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
       text-align: center;
       border-left: 5px solid var(--primary);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
     }
 
     .metric-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
     }
 
     .metric-value {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .metric-label {
@@ -139,8 +179,8 @@
 
     .data-panel {
       background: linear-gradient(145deg, var(--card-bg), var(--secondary-light));
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -149,65 +189,69 @@
     .panel-header {
       background: linear-gradient(90deg, var(--secondary-light), var(--card-bg));
       color: var(--primary);
-      padding: 1.2rem;
+      padding: 1.5rem;
       font-weight: 600;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       display: flex;
       align-items: center;
       gap: 12px;
       border-bottom: 1px solid var(--border);
+      font-family: 'Montserrat', sans-serif;
     }
 
     .panel-body {
-      padding: 1.2rem;
+      padding: 1.5rem;
       overflow-y: auto;
       flex: 1;
     }
 
     .entry-item {
-      padding: 1.2rem;
+      padding: 1.5rem;
       border-bottom: 1px solid var(--border);
       transition: all 0.3s ease;
-      background-color: rgba(255, 255, 255, 0.03);
-      margin-bottom: 0.8rem;
-      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      margin-bottom: 1rem;
+      border-radius: 12px;
       display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 1rem;
+      grid-template-columns: 140px 1fr;
+      gap: 1.2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .entry-item:hover {
-      background-color: var(--secondary-light);
+      background: linear-gradient(145deg, var(--secondary-light), var(--card-bg));
       transform: translateX(5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
 
     .entry-date {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--primary);
-      font-size: 0.95rem;
+      font-size: 1rem;
       display: flex;
       flex-direction: column;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .entry-time {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--text-light);
-      margin-top: 0.3rem;
+      margin-top: 0.5rem;
     }
 
     .entry-content {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 1rem;
       align-items: center;
     }
 
     .property-badge {
       display: inline-flex;
-      padding: 0.6rem 0.9rem;
-      background-color: var(--secondary-light);
-      border-radius: 8px;
-      font-size: 0.9rem;
+      padding: 0.8rem 1rem;
+      background: linear-gradient(145deg, var(--secondary-light), var(--card-bg));
+      border-radius: 10px;
+      font-size: 0.95rem;
       color: var(--text);
       border: 1px solid var(--border);
       max-width: 100%;
@@ -215,70 +259,84 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+    }
+
+    .property-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .property-badge .property-name {
       color: var(--primary);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .stat-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
+      gap: 1.8rem;
     }
 
     .stat-card {
       background: linear-gradient(145deg, var(--secondary-light), var(--card-bg));
-      padding: 1.5rem;
-      border-radius: 12px;
+      padding: 1.8rem;
+      border-radius: 16px;
       border-left: 5px solid var(--primary);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
     }
 
     .stat-title {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: var(--text-light);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       font-weight: 500;
     }
 
     .stat-value {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .stat-description {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-light);
     }
 
     .btn {
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
+      padding: 1rem 1.8rem;
+      border-radius: 12px;
       border: none;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.8rem;
       transition: all 0.3s ease;
-      font-size: 0.95rem;
+      font-size: 1rem;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      box-shadow: 0 4px 8px rgba(66, 133, 244, 0.3);
+      box-shadow: 0 6px 15px rgba(66, 133, 244, 0.3);
     }
 
     .btn-primary:hover {
       background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(66, 133, 244, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(66, 133, 244, 0.4);
     }
 
     .btn-outline {
@@ -289,7 +347,7 @@
 
     .btn-outline:hover {
       background-color: rgba(66, 133, 244, 0.1);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .loading {
@@ -304,8 +362,8 @@
     .loading::after {
       content: "";
       display: inline-block;
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border: 3px solid rgba(255,255,255,0.1);
       border-radius: 50%;
       border-top-color: var(--primary);
@@ -318,61 +376,70 @@
     }
 
     .bar-chart {
-      height: 10px;
+      height: 12px;
       background-color: var(--border);
-      border-radius: 5px;
-      margin: 1rem 0;
+      border-radius: 6px;
+      margin: 1.2rem 0;
       overflow: hidden;
     }
 
     .bar {
       height: 100%;
       background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-      border-radius: 5px;
+      border-radius: 6px;
     }
 
     .url-manager {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
     }
 
     .url-form {
       display: grid;
       grid-template-columns: 1fr 1fr auto;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
     }
 
     .url-input {
-      padding: 0.9rem;
-      border-radius: 8px;
+      padding: 1rem;
+      border-radius: 10px;
       border: 1px solid var(--border);
       background-color: var(--secondary-light);
       color: var(--text);
-      font-size: 0.95rem;
+      font-size: 1rem;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .url-list {
-      margin-top: 1.5rem;
+      margin-top: 1.8rem;
     }
 
     .url-item {
       display: grid;
       grid-template-columns: 1fr 2fr auto;
-      gap: 1rem;
+      gap: 1.2rem;
       align-items: center;
-      padding: 1rem;
-      background-color: var(--secondary-light);
-      border-radius: 8px;
-      margin-bottom: 1rem;
+      padding: 1.2rem;
+      background: linear-gradient(145deg, var(--secondary-light), var(--card-bg));
+      border-radius: 12px;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .url-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
 
     .url-name {
       font-weight: 600;
       color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
     }
 
     .url-value {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-light);
       overflow: hidden;
       text-overflow: ellipsis;
@@ -386,26 +453,27 @@
 
     .empty-state {
       text-align: center;
-      padding: 2.5rem;
+      padding: 3rem;
       color: var(--text-light);
+      font-size: 1.1rem;
     }
 
     .section-divider {
       height: 2px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
-      margin: 2.5rem 0;
+      margin: 3rem 0;
     }
 
     /* Toast notification */
     .toast {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: var(--card-bg);
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(145deg, var(--card-bg), var(--secondary-light));
       color: white;
-      padding: 1.2rem;
-      border-radius: 10px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
       transform: translateY(100px);
       opacity: 0;
       transition: all 0.3s ease;
@@ -413,8 +481,8 @@
       border-left: 5px solid var(--primary);
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      max-width: 350px;
+      gap: 1rem;
+      max-width: 380px;
     }
 
     .toast.show {
@@ -432,13 +500,13 @@
       position: absolute;
       right: 0;
       top: 100%;
-      background-color: var(--card-bg);
-      border-radius: 10px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-      padding: 1rem;
+      background: linear-gradient(145deg, var(--card-bg), var(--secondary-light));
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      padding: 1.5rem;
       z-index: 10;
-      width: 300px;
-      margin-top: 0.8rem;
+      width: 380px;
+      margin-top: 1rem;
     }
 
     .export-options.show {
@@ -446,14 +514,15 @@
     }
 
     .export-option {
-      padding: 1rem;
+      padding: 1.2rem;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 0.5rem;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
       transition: background-color 0.2s;
+      font-weight: 500;
     }
 
     .export-option:hover {
@@ -461,25 +530,42 @@
     }
 
     .date-range-selector {
-      margin-top: 1rem;
-      padding: 1rem;
+      margin-top: 1.5rem;
+      padding: 1.2rem;
       background-color: var(--secondary-light);
-      border-radius: 8px;
+      border-radius: 12px;
     }
 
     .date-inputs {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin: 1rem 0;
+      gap: 1.2rem;
+      margin: 1.2rem 0;
     }
 
     .date-input {
-      padding: 0.8rem;
-      border-radius: 6px;
+      padding: 1rem;
+      border-radius: 8px;
       border: 1px solid var(--border);
       background-color: var(--card-bg);
       color: var(--text);
+      font-size: 1rem;
+    }
+
+    .shortname-selector {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      background-color: var(--secondary-light);
+      border-radius: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .shortname-option {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
     }
 
     /* Footer */
@@ -487,18 +573,19 @@
       background: linear-gradient(135deg, var(--secondary-light), var(--secondary));
       color: var(--text-light);
       text-align: center;
-      padding: 1.5rem;
-      margin-top: 3rem;
+      padding: 2rem;
+      margin-top: 4rem;
       border-top: 1px solid var(--border);
     }
 
     .footer-text {
-      font-size: 0.9rem;
+      font-size: 1rem;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .footer-highlight {
       color: var(--primary);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     /* Tooltip */
@@ -509,21 +596,22 @@
 
     .tooltip .tooltiptext {
       visibility: hidden;
-      width: 140px;
+      width: 160px;
       background-color: var(--card-bg);
       color: var(--text);
       text-align: center;
-      border-radius: 6px;
-      padding: 8px;
+      border-radius: 8px;
+      padding: 10px;
       position: absolute;
       z-index: 1;
       bottom: 125%;
       left: 50%;
-      margin-left: -70px;
+      margin-left: -80px;
       opacity: 0;
       transition: opacity 0.3s;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .tooltip:hover .tooltiptext {
@@ -547,21 +635,26 @@
       
       .url-item {
         grid-template-columns: 1fr;
-        gap: 0.8rem;
+        gap: 1rem;
       }
       
       .url-actions {
         justify-content: flex-end;
       }
-    }
-
-    @media (max-width: 768px) {
+      
       .header-content {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.2rem;
         align-items: flex-start;
       }
       
+      .export-options {
+        width: 320px;
+        right: -50px;
+      }
+    }
+
+    @media (max-width: 768px) {
       .metrics-row {
         grid-template-columns: 1fr;
       }
@@ -572,6 +665,15 @@
       
       .date-inputs {
         grid-template-columns: 1fr;
+      }
+      
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .export-options {
+        width: 280px;
+        right: -80px;
       }
     }
 
@@ -589,53 +691,13 @@
     .toggle-container {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      margin: 1rem 0;
+      gap: 1rem;
+      margin: 1.2rem 0;
     }
     
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 24px;
-    }
-    
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: var(--border);
-      transition: .4s;
-      border-radius: 24px;
-    }
-    
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: .4s;
-      border-radius: 50%;
-    }
-    
-    input:checked + .slider {
-      background-color: var(--primary);
-    }
-    
-    input:checked + .slider:before {
-      transform: translateX(26px);
+    .toggle-label {
+      font-size: 0.95rem;
+      color: var(--text-light);
     }
   </style>
 </head>
@@ -643,8 +705,14 @@
   <header class="header">
     <div class="header-content">
       <div class="logo">
-        <div class="logo-icon"><i class="fas fa-chart-network"></i></div>
-        <div class="logo-text">D-TECH ANALYTICS</div>
+        <div class="logo-icon"><i class="fas fa-analytics"></i></div>
+        <div>
+          <div class="logo-text">D-TECH ANALYTICS</div>
+          <div class="branding">
+            <span>Property of <a href="https://t.me/DTECHX24" target="_blank">DTECH</a></span>
+            <span>Affiliated with <a href="https://t.me/thelastofus9999" target="_blank">THELASTOFUS9999</a></span>
+          </div>
+        </div>
       </div>
       <div class="export-container">
         <button id="downloadBtn" class="btn btn-primary">
@@ -652,27 +720,26 @@
           <span>Export Data</span>
         </button>
         <div id="exportOptions" class="export-options">
-          <h3 style="margin-bottom: 1rem;">Export Options</h3>
-          
-          <div class="toggle-container">
-            <span>Include D-TECH branding</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="brandingToggle" checked>
-              <span class="slider"></span>
-            </label>
-          </div>
+          <h3 style="margin-bottom: 1.2rem; color: var(--primary);">D-TECH Export Options</h3>
           
           <div class="date-range-selector">
             <h4>Select Date Range</h4>
             <div class="date-inputs">
-              <input type="date" id="startDate" class="date-input">
-              <input type="date" id="endDate" class="date-input">
+              <input type="datetime-local" id="startDate" class="date-input">
+              <input type="datetime-local" id="endDate" class="date-input">
+            </div>
+          </div>
+          
+          <div class="shortname-selector">
+            <h4>Select Short Names to Export</h4>
+            <div id="shortnameOptions" class="shortname-options">
+              <div class="loading">Loading short names...</div>
             </div>
           </div>
           
           <div class="export-option" data-format="json">
             <i class="fas fa-file-code"></i>
-            <span>JSON (Original)</span>
+            <span>JSON (With D-TECH Branding)</span>
           </div>
           <div class="export-option" data-format="json-short">
             <i class="fas fa-file-code"></i>
@@ -690,7 +757,7 @@
   <main class="main">
     <div class="dashboard-grid">
       <div class="metrics-row" id="metricsBar">
-        <div class="loading">Loading metrics...</div>
+        <div class="loading">Loading D-TECH metrics...</div>
       </div>
 
       <div class="content-row">
@@ -766,7 +833,7 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-text">Powered by <span class="footer-highlight">preasx24</span> | D-TECH Analytics Dashboard</div>
+    <div class="footer-text">Powered by <span class="footer-highlight">@PREASX24</span> | D-TECH Analytics Dashboard</div>
   </footer>
 
   <!-- Toast notification -->
@@ -802,7 +869,7 @@
     const refreshBtn = document.getElementById('refreshBtn');
     const startDateInput = document.getElementById('startDate');
     const endDateInput = document.getElementById('endDate');
-    const brandingToggle = document.getElementById('brandingToggle');
+    const shortnameOptions = document.getElementById('shortnameOptions');
     let jsonData = null;
 
     // Set default date values (last 7 days)
@@ -810,8 +877,8 @@
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(today.getDate() - 7);
     
-    startDateInput.value = oneWeekAgo.toISOString().split('T')[0];
-    endDateInput.value = today.toISOString().split('T')[0];
+    startDateInput.value = formatDateTimeLocal(oneWeekAgo);
+    endDateInput.value = formatDateTimeLocal(today);
 
     // Initialize the app
     document.addEventListener('DOMContentLoaded', () => {
@@ -824,6 +891,7 @@
       // Toggle export options
       downloadBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        populateShortnameOptions();
         exportOptions.classList.toggle('show');
       });
 
@@ -839,10 +907,10 @@
         option.addEventListener('click', (e) => {
           e.stopPropagation();
           const format = e.currentTarget.getAttribute('data-format');
-          const includeBranding = brandingToggle.checked;
           const startDate = startDateInput.value;
           const endDate = endDateInput.value;
-          exportData(format, includeBranding, startDate, endDate);
+          const selectedShortnames = getSelectedShortnames();
+          exportData(format, startDate, endDate, selectedShortnames);
           exportOptions.classList.remove('show');
         });
       });
@@ -856,6 +924,65 @@
       refreshBtn.addEventListener('click', () => {
         loadGistJSON();
       });
+    }
+
+    function formatDateTimeLocal(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      
+      return `${year}-${month}-${day}T${hours}:${minutes}`;
+    }
+
+    function populateShortnameOptions() {
+      if (Object.keys(urlMappings).length === 0) {
+        shortnameOptions.innerHTML = '<div class="empty-state">No short names available</div>';
+        return;
+      }
+
+      let optionsHTML = '';
+      Object.entries(urlMappings).forEach(([url, name]) => {
+        optionsHTML += `
+          <div class="shortname-option">
+            <input type="checkbox" id="shortname-${url}" name="shortname" value="${url}" checked>
+            <label for="shortname-${url}">${name} (${truncate(url, 25)})</label>
+          </div>
+        `;
+      });
+      
+      // Add select all/none buttons
+      optionsHTML = `
+        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+          <button id="selectAllShortnames" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Select All</button>
+          <button id="deselectAllShortnames" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Deselect All</button>
+        </div>
+        ${optionsHTML}
+      `;
+      
+      shortnameOptions.innerHTML = optionsHTML;
+      
+      // Add event listeners to select all/none buttons
+      document.getElementById('selectAllShortnames').addEventListener('click', () => {
+        document.querySelectorAll('input[name="shortname"]').forEach(checkbox => {
+          checkbox.checked = true;
+        });
+      });
+      
+      document.getElementById('deselectAllShortnames').addEventListener('click', () => {
+        document.querySelectorAll('input[name="shortname"]').forEach(checkbox => {
+          checkbox.checked = false;
+        });
+      });
+    }
+
+    function getSelectedShortnames() {
+      const selected = [];
+      document.querySelectorAll('input[name="shortname"]:checked').forEach(checkbox => {
+        selected.push(checkbox.value);
+      });
+      return selected;
     }
 
     function showToast(message, duration = 3000) {
@@ -1003,17 +1130,17 @@
     }
 
     // Export data in different formats
-    function exportData(format, includeBranding, startDate, endDate) {
+    function exportData(format, startDate, endDate, selectedShortnames) {
       if (!jsonData) {
         showToast('No data to export');
         return;
       }
 
-      // Filter data by date range
-      const filteredData = filterDataByDate(jsonData, startDate, endDate);
+      // Filter data by date range and short names
+      const filteredData = filterDataByDateAndShortnames(jsonData, startDate, endDate, selectedShortnames);
       
       if (Object.keys(filteredData).length === 0) {
-        showToast('No data found in the selected date range');
+        showToast('No data found with the selected filters');
         return;
       }
 
@@ -1021,31 +1148,25 @@
 
       switch (format) {
         case 'json':
-          // Original JSON with optional branding
-          data = includeBranding 
-            ? addBrandingToData(JSON.stringify(filteredData, null, 2), format) 
-            : JSON.stringify(filteredData, null, 2);
-          filename = includeBranding ? 'D-TECH-data-export.json' : 'data-export.json';
+          // JSON with D-TECH branding
+          data = addBrandingToData(JSON.stringify(filteredData, null, 2), format);
+          filename = 'D-TECH-data-export.json';
           mimeType = 'application/json';
           break;
 
         case 'json-short':
-          // JSON with short names and optional branding
+          // JSON with short names and D-TECH branding
           const processedData = processDataForDownload(filteredData);
-          data = includeBranding 
-            ? addBrandingToData(JSON.stringify(processedData, null, 2), format) 
-            : JSON.stringify(processedData, null, 2);
-          filename = includeBranding ? 'D-TECH-data-with-short-names.json' : 'data-with-short-names.json';
+          data = addBrandingToData(JSON.stringify(processedData, null, 2), format);
+          filename = 'D-TECH-data-with-short-names.json';
           mimeType = 'application/json';
           break;
 
         case 'csv':
-          // CSV with short names and optional branding
+          // CSV with short names and D-TECH branding
           const processedDataCSV = processDataForDownload(filteredData);
-          data = includeBranding 
-            ? addBrandingToData(convertToCSV(processedDataCSV), format) 
-            : convertToCSV(processedDataCSV);
-          filename = includeBranding ? 'D-TECH-data-export.csv' : 'data-export.csv';
+          data = addBrandingToData(convertToCSV(processedDataCSV), format);
+          filename = 'D-TECH-data-export.csv';
           mimeType = 'text/csv';
           break;
 
@@ -1062,20 +1183,44 @@
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast(`Exported as ${filename}`);
+      showToast(`D-TECH data exported as ${filename}`);
     }
 
-    function filterDataByDate(data, startDate, endDate) {
+    function filterDataByDateAndShortnames(data, startDate, endDate, selectedShortnames) {
       const filtered = {};
       const start = new Date(startDate);
       const end = new Date(endDate);
-      end.setHours(23, 59, 59, 999); // Include entire end date
+      
+      // If no shortnames selected, include all
+      const includeAllShortnames = selectedShortnames.length === 0;
 
       for (const key in data) {
         if (key.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
           const entryDate = new Date(key);
+          
+          // Check date range
           if (entryDate >= start && entryDate <= end) {
-            filtered[key] = data[key];
+            const entry = data[key];
+            
+            // Check if entry has any URL that matches selected shortnames
+            let hasMatchingShortname = includeAllShortnames;
+            
+            if (!includeAllShortnames) {
+              // Check all URL properties in the entry
+              for (const prop in entry) {
+                if ((prop === 'page_url' || prop === 'url') && entry[prop]) {
+                  const url = entry[prop];
+                  if (selectedShortnames.includes(url)) {
+                    hasMatchingShortname = true;
+                    break;
+                  }
+                }
+              }
+            }
+            
+            if (hasMatchingShortname) {
+              filtered[key] = entry;
+            }
           }
         }
       }
@@ -1086,12 +1231,12 @@
     function addBrandingToData(data, format) {
       const timestamp = new Date().toISOString();
       const header = format === 'csv' 
-        ? `"D-TECH Data Export","Generated on: ${timestamp}"\n"Powered by preasx24","www.d-tech.com"\n\n`
-        : `// D-TECH Data Export\n// Generated on: ${timestamp}\n// Powered by preasx24 - www.d-tech.com\n\n`;
+        ? `"D-TECH Data Export - Property of DTECH","Generated on: ${timestamp}"\n"Affiliated with THELASTOFUS9999","Powered by @PREASX24"\n"Export Timestamp: ${new Date().toLocaleString()}",""\n\n`
+        : `// D-TECH Data Export - Property of DTECH\n// Generated on: ${timestamp}\n// Affiliated with THELASTOFUS9999\n// Powered by @PREASX24\n// Export Timestamp: ${new Date().toLocaleString()}\n\n`;
       
       const footer = format === 'csv' 
-        ? `\n\n"End of Report","D-TECH Analytics"` 
-        : `\n// End of Report - D-TECH Analytics`;
+        ? `\n\n"End of D-TECH Report","© DTECH Analytics"` 
+        : `\n// End of D-TECH Report - © DTECH Analytics`;
       
       return header + data + footer;
     }
@@ -1151,7 +1296,7 @@
 
     async function loadGistJSON() {
       try {
-        showToast('Loading data...', 2000);
+        showToast('Loading D-TECH data...', 2000);
         
         const response = await fetch(rawURL);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -1161,13 +1306,13 @@
         try {
           jsonData = JSON.parse(text);
           analyzeData(jsonData);
-          showToast('Data loaded successfully');
+          showToast('D-TECH data loaded successfully');
         } catch (err) {
           throw new Error("Data is not valid JSON");
         }
       } catch (err) {
         showError("Error loading data: " + err.message);
-        showToast('Error loading data');
+        showToast('Error loading D-TECH data');
       }
     }
 
