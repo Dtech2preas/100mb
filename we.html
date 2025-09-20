@@ -58,8 +58,8 @@ const MAPPING_RAW_URL = "https://gist.githubusercontent.com/Preasx24/451a35def0d
 const TOKEN_RAW_URL = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
 const GIST_ID = "451a35def0daf123212fcb9729d3dfdd";
 const CACHE_TTL = 30000;
-const INITIAL_DURATION = 7200;
-const EXTENSION_DURATION = 43200;
+const INITIAL_DURATION = 7200;       // 2 hours
+const EXTENSION_DURATION = 43200;    // 12 hours
 
 let mappingCache = null;
 let lastCacheTime = 0;
@@ -179,13 +179,14 @@ const handleAction = async (mode) => {
     const mapping = await getMapping();
     if (!mapping._expires) mapping._expires = {};
 
+    const currentExpiry = mapping._expires[name] || getUnix();
     if (mode === "create") {
         mapping[name] = url;
-        mapping._expires[name] = getUnix() + INITIAL_DURATION;
+        mapping._expires[name] = Math.max(currentExpiry, getUnix()) + INITIAL_DURATION;
         elements.finalUrl.textContent = `https://${name}.log-in.co.za`;
         elements.urlDisplay.style.display = "block";
     } else if (mode === "extend") {
-        mapping._expires[name] = (mapping._expires[name] || getUnix()) + EXTENSION_DURATION;
+        mapping._expires[name] = Math.max(currentExpiry, getUnix()) + EXTENSION_DURATION;
     }
 
     credits--;
