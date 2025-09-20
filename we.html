@@ -9,79 +9,63 @@
 <div id="notification-container"></div>
 
 <h1>D-TECH Subdomain Creator</h1>
-<p>Create custom subdomains for your gist URLs</p>
-
-<div>
-    <p>Important Notice: Your URL: <strong>https://[name].log-in.co.za</strong></p>
-    <p>Subdomains with &lt;1 hour may be removed at any time</p>
-    <p>Activation Notice: URL may take 1-2 minutes to become active. IF IT DOESN'T WORK THE FIRST TIME, THE SECOND TIME IT WILL 100% WORK</p>
-</div>
 
 <div>
     <label for="name">Subdomain Name</label>
-    <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" />
+    <input type="text" id="name" placeholder="Enter your subdomain name" />
     <div id="name-status"></div>
-    <p>Use lowercase letters and dashes (-) only</p>
     <p>Result: <span id="preview-url">https://.log-in.co.za</span></p>
 </div>
 
 <div>
-    <label for="url">Gist URL (Required for creation)</label>
+    <label for="url">Gist URL (Required)</label>
     <input type="url" id="url" placeholder="https://gist.github.com/..." />
 </div>
 
 <div>
-    <button id="ad-btn">Press Ad (must wait 15s)</button>
+    <button id="ad-btn">Press Ad to Get 2 Actions (Must Wait 15s)</button>
     <button id="create-btn" disabled>Create (2h)</button>
-    <button id="extend-btn">Extend 12h</button>
+    <button id="extend-btn" disabled>Extend 12h</button>
     <button id="check-btn">Check Time</button>
-</div>
-
-<div>
-    URL activation may take 1-2 minutes
 </div>
 
 <div id="url-display" style="display:none;">
     <h3>Your Subdomain URL</h3>
-    <div id="final-url">https://example.log-in.co.za</div>
+    <div id="final-url"></div>
     <button id="copy-btn">Copy</button>
 </div>
 
 <div>
     <h3>System Log</h3>
-    <span id="status-indicator"></span>
-    <pre id="log">System ready. Enter details to begin.</pre>
+    <pre id="log">System ready.</pre>
 </div>
 
 <script>
-const INITIAL_DURATION = 7200;
-const EXTENSION_DURATION = 43200;
+const INITIAL_DURATION = 7200;   // 2h
+const EXTENSION_DURATION = 43200; // 12h
 
-let adPassed = false;
-let adStartTime = 0;
 let adWindow = null;
+let adStartTime = 0;
+let credits = 0;
 
 const elements = {
     log: document.getElementById("log"),
-    statusIndicator: document.getElementById("status-indicator"),
-    previewUrl: document.getElementById("preview-url"),
-    finalUrl: document.getElementById("final-url"),
-    urlDisplay: document.getElementById("url-display"),
-    copyBtn: document.getElementById("copy-btn"),
     notificationContainer: document.getElementById("notification-container"),
     nameInput: document.getElementById("name"),
-    nameStatus: document.getElementById("name-status"),
+    previewUrl: document.getElementById("preview-url"),
+    urlInput: document.getElementById("url"),
     createBtn: document.getElementById("create-btn"),
     extendBtn: document.getElementById("extend-btn"),
     checkBtn: document.getElementById("check-btn"),
-    urlInput: document.getElementById("url"),
-    adBtn: document.getElementById("ad-btn")
+    adBtn: document.getElementById("ad-btn"),
+    finalUrl: document.getElementById("final-url"),
+    urlDisplay: document.getElementById("url-display")
 };
 
 const log = (msg) => {
     const timestamp = new Date().toLocaleTimeString();
-    const logEntries = elements.log.textContent.split('\n').slice(0, 5);
-    elements.log.textContent = `[${timestamp}] ${msg}\n${logEntries.join('\n')}`;
+    const lines = elements.log.textContent.split('\n').slice(0, 10);
+    elements.log.textContent = `[${timestamp}] ${msg}\n${lines.join('\n')}`;
 };
 
 const showNotification = (msg) => {
@@ -91,22 +75,46 @@ const showNotification = (msg) => {
     setTimeout(() => n.remove(), 3500);
 };
 
-const sanitizeName = (name) => {
-    return name.toLowerCase()
-               .replace(/[^a-z0-9-]/g,'')
-               .replace(/-+/g,'-')
-               .replace(/^-|-$/g,'');
-};
+const sanitizeName = (name) => name.toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
 
-const handleAction = async (mode) => {
-    if (!adPassed) return showNotification("Press the ad button and wait 15s first!");
+const saveMapping = (mapping) => localStorage.setItem("mapping", JSON.stringify(mapping));
+const loadMapping = () => JSON.parse(localStorage.getItem("mapping") || "{}");
 
+// --- AD LOGIC ---
+elements.adBtn.addEventListener("click", () => {
+    adWindow = window.open("https://otieu.com/4/9630811", "_blank");
+    adStartTime = Date.now();
+    showNotification("Ad opened! Return after 15s to get 2 actions.");
+});
+
+document.addEventListener("visibilitychange", () => {
+    if (!adWindow) return;
+    if (!document.hidden) { 
+        const elapsed = (Date.now() - adStartTime)/1000;
+        if (elapsed >= 15) {
+            credits += 2;
+            adWindow.close();
+            adWindow = null;
+            elements.createBtn.disabled = false;
+            elements.extendBtn.disabled = false;
+            showNotification(`Ad complete! You now have ${credits} credits.`);
+            log(`Credits available: ${credits}`);
+        } else {
+            showNotification(`Wait at least 15s. You returned too early (${Math.floor(elapsed)}s).`);
+        }
+    }
+});
+
+// --- ACTIONS ---
+const handleAction = (mode) => {
     const name = sanitizeName(elements.nameInput.value.trim());
     const url = elements.urlInput.value.trim();
-    if (!name) return log("Name is required");
-    if (mode === "create" && !url) return log("URL is required");
+    if (!name) return log("Enter a subdomain name.");
+    if (mode==="create" && !url) return log("Enter a gist URL to create.");
 
-    let mapping = JSON.parse(localStorage.getItem("mapping") || "{}");
+    if (credits <= 0) return showNotification("No credits left! Watch the ad to get more.");
+
+    const mapping = loadMapping();
     if (!mapping._expires) mapping._expires = {};
 
     if (mode === "create") {
@@ -118,68 +126,50 @@ const handleAction = async (mode) => {
         mapping._expires[name] = (mapping._expires[name] || Math.floor(Date.now()/1000)) + EXTENSION_DURATION;
     }
 
-    localStorage.setItem("mapping", JSON.stringify(mapping));
-    log(`${mode} action done for ${name}`);
+    credits--;
+    if (credits === 0) {
+        elements.createBtn.disabled = true;
+        elements.extendBtn.disabled = true;
+    }
+
+    saveMapping(mapping);
+    showNotification(`${mode} successful. Remaining credits: ${credits}`);
+    log(`${mode} done for ${name}. Credits left: ${credits}`);
 };
 
+// --- CHECK TIME ---
 const checkTime = () => {
     const name = sanitizeName(elements.nameInput.value.trim());
     if (!name) return log("Enter a name first");
 
-    const mapping = JSON.parse(localStorage.getItem("mapping") || "{}");
+    const mapping = loadMapping();
     const expires = mapping._expires?.[name];
     if (!expires) return log("No expiry set");
 
     const remaining = expires - Math.floor(Date.now()/1000);
-    const mins = Math.floor(remaining / 60);
-    const hrs = Math.floor(mins / 60);
+    const mins = Math.floor(remaining/60);
+    const hrs = Math.floor(mins/60);
     const minPart = mins % 60;
-    log(`Time remaining: ${hrs}h ${minPart}m`);
+    log(`Time remaining for ${name}: ${hrs}h ${minPart}m`);
 };
 
+// --- INPUT HANDLERS ---
 elements.nameInput.addEventListener("input", function() {
     const name = sanitizeName(this.value);
     this.value = name;
     elements.previewUrl.textContent = `https://${name || "[name]"}.log-in.co.za`;
 });
 
-elements.copyBtn.addEventListener("click", async () => {
-    try {
-        await navigator.clipboard.writeText(elements.finalUrl.textContent);
-        showNotification("URL copied!");
-    } catch {
-        showNotification("Failed to copy");
-    }
-});
-
-// AD BUTTON LOGIC
-elements.adBtn.addEventListener("click", () => {
-    adWindow = window.open("https://otieu.com/4/9630811", "_blank");
-    adStartTime = Date.now();
-    showNotification("Ad opened! Return after 15s.");
-});
-
-document.addEventListener("visibilitychange", () => {
-    if (!adWindow) return;
-    if (!document.hidden) {
-        const elapsed = (Date.now() - adStartTime)/1000;
-        if (elapsed >= 15) {
-            adPassed = true;
-            adWindow.close();
-            adWindow = null;
-            showNotification("You waited long enough. You can now create/extend.");
-        } else {
-            adPassed = false;
-            showNotification(`Wait at least 15s. You returned too early (${Math.floor(elapsed)}s).`);
-        }
-    }
+elements.copyBtn?.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(elements.finalUrl.textContent); showNotification("URL copied!"); }
+    catch { showNotification("Failed to copy"); }
 });
 
 elements.createBtn.addEventListener("click", () => handleAction("create"));
 elements.extendBtn.addEventListener("click", () => handleAction("extend"));
 elements.checkBtn.addEventListener("click", checkTime);
 
-log("System ready.");
+log("System ready. Press the ad button to start.");
 </script>
 </body>
 </html>
