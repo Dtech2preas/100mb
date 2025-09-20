@@ -149,6 +149,7 @@
   #ad-btn {
     background: linear-gradient(to right, #7e22ce, #3b82f6);
     color: white;
+    position: relative;
   }
   
   #ad-btn:hover:not(:disabled) {
@@ -270,9 +271,24 @@
     color: var(--text-primary);
   }
   
+  .ad-timer {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+    color: var(--accent-blue-light);
+  }
+  
   .instructions {
     color: var(--text-muted);
     font-size: 14px;
+  }
+  
+  .ad-status {
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--card-bg);
+    border-radius: 6px;
+    border-left: 4px solid var(--warning);
   }
   
   @media (max-width: 768px) {
@@ -335,6 +351,11 @@
     <div class="credits">Credits: <span id="credits-display">0</span></div>
   </div>
 
+  <div id="ad-status" class="ad-status" style="display: none;">
+    <strong>Ad Status:</strong> <span id="ad-status-text">Waiting for you to view the ad...</span>
+    <div>Time spent viewing ad: <span id="ad-time-spent">0</span> seconds</div>
+  </div>
+
   <p class="instructions">URL activation may take 1-2 minutes</p>
 </div>
 
@@ -373,6 +394,14 @@ let credits = 0;
 let pollingInterval = null;
 let opInProgress = false;               // single UI-level mutex
 let liveTimerInterval = null;
+let adTimerInterval = null;
+let adTimerElement = null;
+let adTimeSpent = 0;
+let adStatusElement = null;
+let adStatusTextElement = null;
+let adTimeSpentElement = null;
+let pageHiddenTime = 0;
+let pageVisibleTime = 0;
 
 /* ---------- ELEMENTS ---------- */
 const el = {
@@ -390,7 +419,10 @@ const el = {
   urlDisplay: document.getElementById('url-display'),
   copyBtn: document.getElementById('copy-btn'),
   creditsDisplay: document.getElementById('credits-display'),
-  timeRemaining: document.getElementById('time-remaining')
+  timeRemaining: document.getElementById('time-remaining'),
+  adStatus: document.getElementById('ad-status'),
+  adStatusText: document.getElementById('ad-status-text'),
+  adTimeSpent: document.getElementById('ad-time-spent')
 };
 
 /* ---------- UTIL ---------- */
@@ -527,27 +559,118 @@ async function updateMapping(newMapping) {
 /* ---------- AD / CREDITS logic ---------- */
 function startAdFlow() {
   if (adPending) return showNotification('Ad already open — return after 15s');
-  try { adWindow = window.open('https://otieu.com/4/9630811', '_blank'); } catch (e) { adWindow = null; }
+  try { 
+    adWindow = window.open('https://otieu.com/4/9630811', '_blank'); 
+    if (!adWindow || adWindow.closed || typeof adWindow.closed == 'undefined') {
+      showNotification('Please allow popups for this site to view ads');
+      return;
+    }
+  } catch (e) { 
+    showNotification('Please allow popups for this site to view ads');
+    adWindow = null; 
+    return;
+  }
+  
   adStartTime = nowMs();
   adPending = true;
+  adTimeSpent = 0;
   lastAdAwardAt = 0;
-  showNotification('Ad opened. Return after at least 15 seconds.');
+  
+  // Show ad status panel
+  el.adStatus.style.display = 'block';
+  el.adStatusText.textContent = 'Ad opened. Please view the ad for 15 seconds.';
+  el.adTimeSpent.textContent = '0';
+  
+  // Create and show timer element
+  if (adTimerElement) {
+    adTimerElement.remove();
+  }
+  adTimerElement = document.createElement('span');
+  adTimerElement.className = 'ad-timer';
+  adTimerElement.textContent = '15s';
+  el.adBtn.appendChild(adTimerElement);
+  
+  showNotification('Ad opened. View the ad for at least 15 seconds.');
   log(`Ad started at ${new Date(adStartTime).toLocaleTimeString()}`);
+  
+  // Start timer to track ad viewing time
+  adTimerInterval = setInterval(() => {
+    // If the page is visible, the user is likely not viewing the ad
+    if (document.visibilityState === 'visible') {
+      el.adStatusText.textContent = 'Please focus on the ad tab for 15 seconds.';
+    } else {
+      // Page is hidden, user is likely viewing the ad
+      adTimeSpent += 1;
+      el.adTimeSpent.textContent = adTimeSpent;
+      el.adStatusText.textContent = 'Viewing ad...';
+      
+      if (adTimeSpent >= 15) {
+        el.adStatusText.textContent = 'Ad complete! Return to this tab.';
+        el.adStatus.style.borderLeftColor = 'var(--success)';
+      }
+    }
+    
+    if (adTimerElement) {
+      const timeLeft = Math.max(0, 15 - adTimeSpent);
+      adTimerElement.textContent = `${timeLeft}s`;
+    }
+  }, 1000);
+  
+  // Check if ad window is closed
   if (pollingInterval) clearInterval(pollingInterval);
   pollingInterval = setInterval(() => {
-    if (!adPending) { clearInterval(pollingInterval); pollingInterval = null; return; }
-    if (adWindow && adWindow.closed) handleReturnFromAd();
-  }, 800);
+    if (!adPending) { 
+      clearInterval(pollingInterval); 
+      pollingInterval = null; 
+      return; 
+    }
+    
+    try {
+      if (adWindow && adWindow.closed) {
+        handleReturnFromAd();
+      }
+    } catch (e) {
+      // Cross-origin issue, we can't check if the window is closed
+      // We'll rely on the visibility change events instead
+    }
+  }, 1000);
 }
 
 function awardAdCreditsIfEligible() {
   if (!adPending) return;
-  const elapsed = nowMs() - adStartTime;
-  if (elapsed < AD_WAIT_MS) {
-    showNotification(`You returned too early (${Math.floor(elapsed/1000)}s). Wait at least 15s.`);
-    log(`Ad returned too early: ${Math.floor(elapsed/1000)}s`);
+  
+  // Check if user spent enough time with the page hidden (viewing the ad)
+  if (adTimeSpent < 15) {
+    showNotification(`You didn't view the ad long enough (${adTimeSpent}s). Please view the ad for at least 15 seconds.`);
+    log(`Ad viewed for only ${adTimeSpent} seconds. Credits not awarded.`);
+    
+    // Reset the ad flow so they can try again
+    adPending = false;
+    try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
+    adWindow = null;
+    
+    // Remove timer element
+    if (adTimerElement) {
+      adTimerElement.remove();
+      adTimerElement = null;
+    }
+    
+    if (pollingInterval) { 
+      clearInterval(pollingInterval); 
+      pollingInterval = null; 
+    }
+    
+    if (adTimerInterval) {
+      clearInterval(adTimerInterval);
+      adTimerInterval = null;
+    }
+    
+    // Hide ad status panel
+    el.adStatus.style.display = 'none';
+    
     return;
   }
+  
   if (lastAdAwardAt && Math.abs(lastAdAwardAt - adStartTime) < 1000) return;
   lastAdAwardAt = adStartTime;
   credits += 2;
@@ -557,16 +680,75 @@ function awardAdCreditsIfEligible() {
   adPending = false;
   try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
   adWindow = null;
-  if (pollingInterval) { clearInterval(pollingInterval); pollingInterval = null; }
+  
+  // Remove timer element
+  if (adTimerElement) {
+    adTimerElement.remove();
+    adTimerElement = null;
+  }
+  
+  if (pollingInterval) { 
+    clearInterval(pollingInterval); 
+    pollingInterval = null; 
+  }
+  
+  if (adTimerInterval) {
+    clearInterval(adTimerInterval);
+    adTimerInterval = null;
+  }
+  
+  // Hide ad status panel
+  el.adStatus.style.display = 'none';
+  
   refreshButtonsBasedOnName();
 }
 
 function handleReturnFromAd() {
-  try { awardAdCreditsIfEligible(); } catch (e) { log('Error awarding ad credits: ' + e.message); }
+  try { 
+    awardAdCreditsIfEligible(); 
+  } catch (e) { 
+    log('Error awarding ad credits: ' + e.message); 
+  }
 }
 
-window.addEventListener('focus', () => { if (adPending) handleReturnFromAd(); });
-document.addEventListener('visibilitychange', () => { if (adPending && !document.hidden) handleReturnFromAd(); });
+// Enhanced visibility change detection
+document.addEventListener('visibilitychange', () => {
+  if (adPending) {
+    if (document.visibilityState === 'hidden') {
+      // Page hidden - user likely switched to ad tab
+      pageHiddenTime = nowMs();
+      log('User switched away from page (likely to ad)');
+    } else {
+      // Page visible - user returned
+      pageVisibleTime = nowMs();
+      const timeAway = pageVisibleTime - pageHiddenTime;
+      
+      if (timeAway >= 15000) {
+        // User was away for at least 15 seconds
+        log(`User returned after ${Math.floor(timeAway/1000)} seconds - eligible for credits`);
+        handleReturnFromAd();
+      } else {
+        // User returned too quickly
+        log(`User returned too quickly after ${Math.floor(timeAway/1000)} seconds`);
+        el.adStatusText.textContent = `You returned too quickly. Please view the ad for 15 seconds.`;
+      }
+    }
+  }
+});
+
+// Fallback for window focus
+window.addEventListener('focus', () => {
+  if (adPending) {
+    const timeAway = nowMs() - pageHiddenTime;
+    if (timeAway >= 15000) {
+      handleReturnFromAd();
+    } else {
+      log(`User returned too quickly after ${Math.floor(timeAway/1000)} seconds`);
+      el.adStatusText.textContent = `You returned too quickly. Please view the ad for 15 seconds.`;
+    }
+  }
+});
+
 el.adBtn.addEventListener('click', () => startAdFlow());
 
 /* ---------- UI state based on name ---------- */
