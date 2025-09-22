@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DTECH Website Creator</title>
   <style>
-    /* General body styling */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #0f0f0f;
@@ -19,22 +18,23 @@
     h1 {
       color: #00a8ff;
       margin-bottom: 30px;
+      text-shadow: 0 0 8px #0088cc;
     }
 
     /* Card styling */
     .ai-card {
       background: #1a1a1a;
       border: 2px solid #333;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-      margin: 20px auto;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      margin: 25px auto;
       padding: 25px 20px;
-      max-width: 450px;
+      max-width: 480px;
       transition: transform 0.3s, border-color 0.3s;
     }
 
     .ai-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
       border-color: #00a8ff;
     }
 
@@ -44,27 +44,28 @@
     }
 
     .ai-card .description {
-      font-size: 14px;
+      font-size: 15px;
       color: #ccc;
       margin: 12px 0;
+      line-height: 1.5;
     }
 
     /* Buttons */
     .ai-card a {
       display: inline-block;
       padding: 12px 25px;
-      margin-top: 10px;
+      margin-top: 12px;
       background: #00a8ff;
       color: white;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: bold;
       transition: background 0.3s, transform 0.2s;
     }
 
     .ai-card a:hover {
       background: #0088cc;
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
     .secondary-btn {
@@ -81,15 +82,30 @@
       background: #cc5252;
     }
 
-    /* Footer / workflow note */
-    .note {
-      max-width: 700px;
-      margin: 40px auto;
-      font-size: 15px;
-      color: #aaa;
-      line-height: 1.5;
+    .extra-btn {
+      background: #9b59b6;
+    }
+    .extra-btn:hover {
+      background: #7d3c98;
     }
 
+    /* Workflow note */
+    .note {
+      max-width: 720px;
+      margin: 50px auto;
+      font-size: 15px;
+      color: #aaa;
+      line-height: 1.7;
+      text-align: left;
+      background: #141414;
+      border-left: 4px solid #00a8ff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .note strong {
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -98,18 +114,22 @@
 
   <!-- ChatGPT Card -->
   <div class="ai-card">
-    <h2>ChatGPT</h2>
+    <h2>ChatGPT (Fast & Accurate)</h2>
     <p class="description">
-      Generate manageable and accurate HTML code. Paste your prompt and optional image URL for full customization.
+      Use this for <strong>quick and accurate HTML code</strong>.  
+      Always include the words <strong>"html code"</strong> when writing your instructions.  
+      Perfect for speed and reliability.
     </p>
     <a href="https://chatgpt.com/" target="_blank">Go to ChatGPT</a>
   </div>
 
   <!-- DeepSeek Card -->
   <div class="ai-card">
-    <h2>DeepSeek</h2>
+    <h2>DeepSeek (Better Design Quality)</h2>
     <p class="description">
-      Generate advanced, powerful HTML code. Results may require verification. Include your image URL for logos or banners.
+      Use this for <strong>improved display and design</strong>.  
+      Always include the words <strong>"html code"</strong> in your request.  
+      Great for websites that need stronger visuals.
     </p>
     <a href="https://chat.deepseek.com/" target="_blank">Go to DeepSeek</a>
   </div>
@@ -118,26 +138,37 @@
   <div class="ai-card">
     <h2>Upload Logo / Picture</h2>
     <p class="description">
-      Upload your picture/logo to get a URL. Paste that URL into your AI prompt so your generated website includes it.
+      If you want a <strong>logo or picture</strong> in your website, upload it here first.  
+      Copy the generated URL and add it into your AI prompt.
     </p>
-    <a href="pic.html" target="_blank" class="secondary-btn">Upload Pic</a>
+    <a href="pic.html" target="_blank" class="secondary-btn">Upload Picture</a>
   </div>
 
-  <!-- Error / Live URL Card -->
+  <!-- Paste & Go Live Card -->
   <div class="ai-card">
     <h2>Paste & Go Live</h2>
     <p class="description">
-      After generating HTML code with AI, paste it here to get a live website URL.
+      After you have your <strong>HTML code</strong>, paste it here to get your live website.  
     </p>
-    <a href="err.html" target="_blank" class="tertiary-btn">Go to Live URL Page</a>
+    <a href="err.html" target="_blank" class="tertiary-btn">Upload Your HTML Code</a>
+  </div>
+
+  <!-- Subdomain Card -->
+  <div class="ai-card">
+    <h2>Custom Subdomain</h2>
+    <p class="description">
+      Manage your subdomain: check time left or extend it here.  
+    </p>
+    <a href="we.html" target="_blank" class="extra-btn">Manage Subdomain</a>
   </div>
 
   <div class="note">
-    <strong>Workflow:</strong><br>
-    1. Click one of the AI options to generate your HTML code.<br>
-    2. If you want an image/logo in your site, upload it via the Pic button and copy the URL.<br>
-    3. Include the image URL in your AI prompt to customize the code.<br>
-    4. After generating the code, go to the "Paste & Go Live" button (err.html) to view your website online.
+    <strong>Workflow:</strong><br><br>
+    1. Choose <strong>ChatGPT</strong> (fast & accurate) or <strong>DeepSeek</strong> (better design).  
+    2. Always include the words <strong>"html code"</strong> when describing your website idea.  
+    3. If you need a logo or picture, upload it via the <strong>Upload Picture</strong> button and add its URL to your AI request.  
+    4. Once your HTML code is ready, go to <strong>Upload Your HTML Code</strong> to make your website live.  
+    5. To check or extend your subdomain time, use the <strong>Manage Subdomain</strong> button.  
   </div>
 
 </body>
