@@ -1,340 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feature Moved to Telegram</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 600px;
-            overflow: hidden;
-            text-align: center;
-        }
-        
-        .header {
-            background: linear-gradient(to right, #0088cc, #00a8ff);
-            color: white;
-            padding: 30px 20px;
-            position: relative;
-        }
-        
-        .header i {
-            font-size: 80px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 500px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        .content {
-            padding: 40px 30px;
-        }
-        
-        .instructions {
-            background: #f0f9ff;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border-left: 5px solid #00a8ff;
-        }
-        
-        .instructions h2 {
-            color: #0088cc;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-        
-        .step {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .step-number {
-            background: #0088cc;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-            font-weight: bold;
-        }
-        
-        .step-content {
-            flex: 1;
-        }
-        
-        .step-content h3 {
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .step-content p {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .url-container {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .url-box {
-            display: flex;
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .url-input {
-            flex: 1;
-            padding: 18px 20px;
-            font-size: 1.1rem;
-            border: none;
-            outline: none;
-            background: #f8f9fa;
-            font-family: monospace;
-            color: #333;
-        }
-        
-        .copy-btn {
-            background: linear-gradient(to right, #0088cc, #00a8ff);
-            color: white;
-            border: none;
-            padding: 0 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .copy-btn:hover {
-            background: linear-gradient(to right, #0077b3, #0099e6);
-            transform: translateY(-2px);
-        }
-        
-        .copy-btn:active {
-            transform: translateY(1px);
-        }
-        
-        .copy-btn.copied {
-            background: linear-gradient(to right, #4CAF50, #2E7D32);
-        }
-        
-        .copy-btn.copied i {
-            animation: bounce 0.5s ease;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        
-        .note {
-            background: #fff8e1;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 30px;
-            border-left: 5px solid #ffc107;
-        }
-        
-        .note h3 {
-            color: #ff9800;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .note p {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .telegram-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(to right, #0088cc, #00a8ff);
-            color: white;
-            text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 20px;
-            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
-            transition: all 0.3s ease;
-        }
-        
-        .telegram-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.6);
-        }
-        
-        .telegram-btn:active {
-            transform: translateY(1px);
-        }
-        
-        .footer {
-            padding: 20px;
-            background: #f8f9fa;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-        }
-        
-        @media (max-width: 500px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .header p {
-                font-size: 1rem;
-            }
-            
-            .step {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .copy-btn span {
-                display: none;
-            }
-            
-            .copy-btn {
-                padding: 0 20px;
-            }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>D-TECH Subdomain Creator</title>
+<style>
+  :root {
+    --primary-bg: #0a0a14;
+    --secondary-bg: #12121f;
+    --card-bg: #161627;
+    --accent-blue: #2563eb;
+    --accent-blue-light: #3b82f6;
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --border-color: #2d2d42;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  h1, h2, h3 {
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+  }
+
+  .container {
+    background-color: var(--secondary-bg);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+  }
+
+  .notice {
+    background-color: rgba(37, 99, 235, 0.1);
+    border-left: 4px solid var(--accent-blue);
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  .notice strong {
+    color: var(--accent-blue-light);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 6px 0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 16px;
+    transition: all 0.2s ease;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  }
+
+  .status {
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 8px 0;
+    font-weight: 600;
+  }
+
+  .url-preview {
+    background-color: var(--card-bg);
+    padding: 12px;
+    border-radius: 6px;
+    margin: 12px 0;
+    border: 1px solid var(--border-color);
+  }
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  #ad-btn {
+    background: linear-gradient(to right, #7e22ce, #3b82f6);
+    color: white;
+    position: relative;
+  }
+
+  #ad-btn:hover:not(:disabled) {
+    background: linear-gradient(to right, #6b21a8, #2563eb);
+    transform: translateY(-2px);
+  }
+
+  #create-btn {
+    background-color: var(--accent-blue);
+    color: white;
+  }
+
+  #create-btn:hover:not(:disabled) {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+  }
+
+  #extend-btn {
+    background-color: #10b981;
+    color: white;
+  }
+
+  #extend-btn:hover:not(:disabled) {
+    background-color: #059669;
+    transform: translateY(-2px);
+  }
+
+  #check-btn {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+
+  #check-btn:hover:not(:disabled) {
+    background-color: #2d2d42;
+  }
+
+  #copy-btn {
+    background-color: var(--accent-blue);
+    color: white;
+    margin-top: 12px;
+  }
+
+  #copy-btn:hover {
+    background-color: #1d4ed8;
+  }
+
+  .credits {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-left: 12px;
+  }
+
+  .credits::before {
+    content: "🪙";
+    margin-right: 8px;
+  }
+
+  #url-display {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+  }
+
+  #final-url {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent-blue-light);
+    margin-bottom: 12px;
+    word-break: break-all;
+  }
+
+  .time-remaining {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+
+  #time-remaining {
+    font-weight: 700;
+    margin-left: 8px;
+    color: var(--accent-blue-light);
+  }
+
+  .log-container {
+    background-color: var(--primary-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+  }
+
+  #log {
+    height: 220px;
+    overflow: auto;
+    background-color: #111;
+    color: #bfb;
+    padding: 16px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    margin-top: 12px;
+    border: 1px solid #2d2d42;
+  }
+
+  #notification-container > div {
+    padding: 12px 16px;
+    margin: 8px 0;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 6px;
+    border-left: 4px solid var(--accent-blue);
+    color: var(--text-primary);
+  }
+
+  .ad-timer {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+    color: var(--accent-blue-light);
+  }
+
+  .instructions {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .ad-status {
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--card-bg);
+    border-radius: 6px;
+    border-left: 4px solid var(--warning);
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 12px;
+    }
+
+    .button-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    button {
+      width: 100%;
+      margin: 4px 0;
+    }
+
+    .credits {
+      margin: 12px 0;
+      justify-content: center;
+    }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <i class="fab fa-telegram"></i>
-            <h1>Feature Moved to Telegram</h1>
-            <p>This feature has been moved to our Telegram Mini App due to ad complications.</p>
-        </div>
-        
-        <div class="content">
-            <div class="instructions">
-                <h2>How to Access the Feature</h2>
-                
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Copy the Link</h3>
-                        <p>Click the button below to copy the special Telegram link to your clipboard.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Paste in Telegram</h3>
-                        <p>Open your Telegram app and paste the link in your saved messages, any chat, or the search bar.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Press the Link</h3>
-                        <p>Simply tap the link to open and access the feature in Telegram's Mini App environment.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="url-container">
-                <div class="url-box">
-                    <input type="text" class="url-input" value="https://t.me/DTECHURL_bot/ADD" id="telegramUrl" readonly>
-                    <button class="copy-btn" id="copyButton">
-                        <i class="fas fa-copy"></i>
-                        <span>Copy Link</span>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="note">
-                <h3><i class="fas fa-lightbulb"></i> Why we moved to Telegram</h3>
-                <p>To provide a better user experience without intrusive advertisements, we've transitioned this feature to Telegram's Mini App platform. This allows us to offer a cleaner, faster, and more reliable service.</p>
-            </div>
-            
-            <a href="https://telegram.org/" class="telegram-btn" target="_blank">
-                <i class="fab fa-telegram"></i>
-                Get Telegram
-            </a>
-        </div>
-        
-        <div class="footer">
-            <p>© 2025 DTECHURL Services. All rights reserved. | Feature available on Telegram</p>
-        </div>
-    </div>
+<div id="notification-container"></div>
 
-    <script>
-        document.getElementById('copyButton').addEventListener('click', function() {
-            const urlInput = document.getElementById('telegramUrl');
-            urlInput.select();
-            urlInput.setSelectionRange(0, 99999); // For mobile devices
-            
-            navigator.clipboard.writeText(urlInput.value).then(() => {
-                const originalText = this.innerHTML;
-                this.classList.add('copied');
-                this.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
-                
-                setTimeout(() => {
-                    this.classList.remove('copied');
-                    this.innerHTML = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-                alert('Failed to copy text. Please try again.');
-            });
-        });
-    </script>
+<div class="container">
+  <h1>D-TECH Subdomain Creator</h1>
+  <p>Create custom subdomains for your gist URLs</p>
+</div>
+
+<div class="container notice">
+  <p><strong>Important Notice:</strong> Your URL: <strong>https://[name].log-in.co.za</strong></p>
+  <p>Subdomains with &lt;1 hour may be removed at any time</p>
+  <p><strong>Activation Notice:</strong> URL may take 1-2 minutes to become active. IF IT DOESN'T WORK THE FIRST TIME, THE SECOND TIME IT WILL 100% WORK</p>
+</div>
+
+<div class="container">
+  <div class="form-group">
+    <label for="name">Subdomain Name</label>
+    <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" autocomplete="off" />
+    <div id="name-status" class="status"></div>
+    <p class="instructions">Use lowercase letters and dashes (-) only</p>
+    <div class="url-preview">
+      Result: <span id="preview-url">https://.log-in.co.za</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="url">Gist URL (Required for creation)</label>
+    <input type="url" id="url" placeholder="https://gist.github.com/..." />
+  </div>
+
+  <div class="button-group">
+    <button id="ad-btn">Press Ad to Get 2 Actions (Must Wait 15s)</button>
+    <button id="create-btn" disabled>Create (2h)</button>
+    <button id="extend-btn" disabled>Extend 12h</button>
+    <button id="check-btn">Check Time</button>
+    <div class="credits">Credits: <span id="credits-display">0</span></div>
+  </div>
+
+  <div id="ad-status" class="ad-status" style="display: none;">
+    <strong>Ad Status:</strong> <span id="ad-status-text">Waiting for you to view the ad...</span>
+    <div>Time spent viewing ad: <span id="ad-time-spent">0</span> seconds</div>
+  </div>
+
+  <p class="instructions">URL activation may take 1-2 minutes</p>
+</div>
+
+<div class="container" id="url-display" style="display:none;">
+  <h3>Your Subdomain URL</h3>
+  <div id="final-url">https://example.log-in.co.za</div>
+  <div class="time-remaining">Time remaining: <span id="time-remaining">--:--:--</span></div>
+  <button id="copy-btn">Copy URL</button>
+</div>
+
+<div class="container log-container">
+  <h3>System Log</h3>
+  <span id="status-indicator"></span>
+  <pre id="log">System ready. Press the ad button to get credits.</pre>
+</div>
+
+<script>
+/* ---------- CONFIG ---------- */
+const MAPPING_RAW_URL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
+const TOKEN_RAW_URL   = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
+const GIST_ID         = "451a35def0daf123212fcb9729d3dfdd";
+const FILE_NAME       = "gistfile1.txt";          // explicit file name we PATCH
+const CACHE_TTL       = 30000;                    // 30s cache for mapping
+const INITIAL_DURATION = 7200;                    // 2 hours (seconds)
+const EXTENSION_DURATION = 43200;                 // 12 hours (seconds)
+const AD_WAIT_MS      = 15000;                    // 15 seconds required
+
+/* ---------- STATE ---------- */
+let mappingCache = null;
+let lastCacheTime = 0;
+let adWindow = null;
+let adStartTime = 0;
+let adPending = false;
+let lastAdAwardAt = 0;
+let credits = 0;
+let pollingInterval = null;
+let opInProgress = false;               // single UI-level mutex
+let liveTimerInterval = null;
+let adTimerInterval = null;
+let adTimerElement = null;
+let adTimeSpent = 0;
+let adStatusElement = null;
+let adStatusTextElement = null;
+let adTimeSpentElement = null;
+let pageHiddenTime = 0;
+let pageVisibleTime = 0;
+
+/* ---------- ELEMENTS ---------- */
+const el = {
+  notif: document.getElementById('notification-container'),
+  log: document.getElementById('log'),
+  nameInput: document.getElementById('name'),
+  nameStatus: document.getElementById('name-status'),
+  previewUrl: document.getElementById('preview-url'),
+  urlInput: document.getElementById('url'),
+  adBtn: document.getElementById('ad-btn'),
+  createBtn: document.getElementById('create-btn'),
+  extendBtn: document.getElementById('extend-btn'),
+  checkBtn: document.getElementById('check-btn'),
+  finalUrl: document.getElementById('final-url'),
+  urlDisplay: document.getElementById('url-display'),
+  copyBtn: document.getElementById('copy-btn'),
+  creditsDisplay: document.getElementById('credits-display'),
+  timeRemaining: document.getElementById('time-remaining'),
+  adStatus: document.getElementById('ad-status'),
+  adStatusText: document.getElementById('ad-status-text'),
+  adTimeSpent: document.getElementById('ad-time-spent')
+};
+
+/* ---------- UTIL ---------- */
+const getUnix = () => Math.floor(Date.now() / 1000);
+const nowMs = () => Date.now();
+
+const sanitizeName = (s) => (s||'').toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
+
+const showNotification = (msg, timeout = 3500) => {
+  const d = document.createElement('div'); d.textContent = msg; el.notif.appendChild(d);
+  setTimeout(() => d.remove(), timeout);
+};
+
+const log = (msg) => {
+  const t = new Date().toLocaleTimeString();
+  const lines = el.log.textContent.split('\n').slice(0, 200);
+  el.log.textContent = `[${t}] ${msg}\n${lines.join('\n')}`;
+  el.log.scrollTop = el.log.scrollHeight;
+};
+
+const updateCreditsUI = () => {
+  el.creditsDisplay.textContent = credits;
+};
+
+/* ---------- NETWORK ---------- */
+async function fetchRawText(url) {
+  const r = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return await r.text();
+}
+
+async function getMapping() {
+  try {
+    const now = nowMs();
+    if (mappingCache && now - lastCacheTime < CACHE_TTL) return mappingCache;
+    const text = await fetchRawText(MAPPING_RAW_URL);
+    let parsed = {};
+    if (!text || !text.trim()) parsed = {};
+    else {
+      try { parsed = JSON.parse(text); } 
+      catch(e) {
+        const maybeStart = text.indexOf('{'), maybeEnd = text.lastIndexOf('}');
+        if (maybeStart >= 0 && maybeEnd > maybeStart) {
+          try { parsed = JSON.parse(text.substring(maybeStart, maybeEnd+1)); }
+          catch(_) { parsed = {}; log('Warning: mapping parse failed, using empty mapping'); }
+        } else parsed = {};
+      }
+    }
+    if (!parsed || typeof parsed !== 'object') parsed = {};
+    if (!parsed._expires) parsed._expires = {};
+    // normalize expiry to numbers
+    for (const k of Object.keys(parsed._expires || {})) parsed._expires[k] = Number(parsed._expires[k]) || 0;
+    mappingCache = parsed;
+    lastCacheTime = now;
+    return parsed;
+  } catch (e) {
+    log(`Failed to fetch mapping: ${e.message}`);
+    return { _expires: {} };
+  }
+}
+
+/**
+ * updateMapping: merge with latest and PATCH to the exact GIST_ID and FILE_NAME.
+ * After PATCH we fetch the raw mapping and verify the gist content matches what we wrote.
+ */
+async function updateMapping(newMapping) {
+  if (!newMapping) throw new Error('No mapping provided');
+  // conservative merge with latest
+  const latestText = await fetchRawText(MAPPING_RAW_URL);
+  let latest = {};
+  if (latestText && latestText.trim()) {
+    try { latest = JSON.parse(latestText); } catch(e) { latest = {}; }
+  }
+  const merged = Object.assign({}, latest, newMapping);
+  if (!merged._expires) merged._expires = {};
+  // prefer larger expiry for safety
+  for (const k of Object.keys(latest._expires || {})) {
+    const lv = Number((latest._expires||{})[k]) || 0;
+    const mv = Number((merged._expires||{})[k]) || 0;
+    merged._expires[k] = Math.max(lv, mv);
+  }
+
+  // fetch token (from TOKEN_RAW_URL)
+  const tokenRes = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`, { cache: "no-store" });
+  if (!tokenRes.ok) throw new Error(`Token fetch failed ${tokenRes.status}`);
+  const tokenText = await tokenRes.text();
+  const token = tokenText.split('\n')[0].trim();
+  if (!token) throw new Error('No token available');
+
+  // PATCH the gist
+  const patchRes = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ files: { [FILE_NAME]: { content: JSON.stringify(merged, null, 2) } } })
+  });
+
+  const patchText = await patchRes.text();
+  log(`PATCH response: ${patchRes.status} ${patchRes.statusText} — body (first 1000 chars): ${patchText.slice(0,1000)}`);
+  if (!patchRes.ok) {
+    throw new Error(`Gist PATCH failed: ${patchRes.status} ${patchRes.statusText}`);
+  }
+
+  // update local cache (optimistically)
+  mappingCache = merged;
+  lastCacheTime = nowMs();
+
+  // Verification: re-fetch raw mapping and compare
+  try {
+    const verifyRaw = await fetchRawText(MAPPING_RAW_URL);
+    let verifyParsed = {};
+    try { verifyParsed = JSON.parse(verifyRaw); } catch(e) { verifyParsed = {}; }
+    // simple deep compare by stringifying both (deterministic)
+    const written = JSON.stringify(merged, Object.keys(merged).sort());
+    const fetched = JSON.stringify(verifyParsed, Object.keys(verifyParsed).sort());
+    if (written !== fetched) {
+      log('Warning: verification mismatch — remote gist content does not match what we wrote.');
+      log('Written (first 200 chars): ' + written.slice(0,200));
+      log('Fetched (first 200 chars): ' + fetched.slice(0,200));
+      showNotification('Warning: gist verification mismatch. Check console/log. The script attempted to write to the gist but the raw file content differs.');
+    } else {
+      log('Verification OK — gist raw content matches what we wrote.');
+    }
+  } catch (e) {
+    log('Warning: verification fetch failed: ' + e.message);
+  }
+
+  return merged;
+}
+
+/* ---------- AD / CREDITS logic ---------- */
+function startAdFlow() {
+  if (adPending) return showNotification('Ad already open — return after 15s');
+  try { 
+    adWindow = window.open('https://otieu.com/4/9630811', '_blank'); 
+    if (!adWindow || adWindow.closed || typeof adWindow.closed == 'undefined') {
+      showNotification('Please allow popups for this site to view ads');
+      return;
+    }
+  } catch (e) { 
+    showNotification('Please allow popups for this site to view ads');
+    adWindow = null; 
+    return;
+  }
+
+  adStartTime = nowMs();
+  adPending = true;
+  adTimeSpent = 0;
+  lastAdAwardAt = 0;
+
+  // Show ad status panel
+  el.adStatus.style.display = 'block';
+  el.adStatusText.textContent = 'Ad opened. Please view the ad for 15 seconds.';
+  el.adTimeSpent.textContent = '0';
+
+  // Create and show timer element
+  if (adTimerElement) {
+    adTimerElement.remove();
+  }
+  adTimerElement = document.createElement('span');
+  adTimerElement.className = 'ad-timer';
+  adTimerElement.textContent = '15s';
+  el.adBtn.appendChild(adTimerElement);
+
+  showNotification('Ad opened. View the ad for at least 15 seconds.');
+  log(`Ad started at ${new Date(adStartTime).toLocaleTimeString()}`);
+
+  // Start timer to track ad viewing time
+  adTimerInterval = setInterval(() => {
+    // If the page is visible, the user is likely not viewing the ad
+    if (document.visibilityState === 'visible') {
+      el.adStatusText.textContent = 'Please focus on the ad tab for 15 seconds.';
+    } else {
+      // Page is hidden, user is likely viewing the ad
+      adTimeSpent += 1;
+      el.adTimeSpent.textContent = adTimeSpent;
+      el.adStatusText.textContent = 'Viewing ad...';
+
+      if (adTimeSpent >= 15) {
+        el.adStatusText.textContent = 'Ad complete! Return to this tab.';
+        el.adStatus.style.borderLeftColor = 'var(--success)';
+      }
+    }
+
+    if (adTimerElement) {
+      const timeLeft = Math.max(0, 15 - adTimeSpent);
+      adTimerElement.textContent = `${timeLeft}s`;
+    }
+  }, 1000);
+
+  // Check if ad window is closed
+  if (pollingInterval) clearInterval(pollingInterval);
+  pollingInterval = setInterval(() => {
+    if (!adPending) { 
+      clearInterval(pollingInterval); 
+      pollingInterval = null; 
+      return; 
+    }
+
+    try {
+      if (adWindow && adWindow.closed) {
+        handleReturnFromAd();
+      }
+    } catch (e) {
+      // Cross-origin issue, we can't check if the window is closed
+      // We'll rely on the visibility change events instead
+    }
+  }, 1000);
+}
+
+function awardAdCreditsIfEligible() {
+  if (!adPending) return;
+
+  // Check if user spent enough time with the page hidden (viewing the ad)
+  if (adTimeSpent < 15) {
+    showNotification(`You didn't view the ad long enough (${adTimeSpent}s). Please view the ad for at least 15 seconds.`);
+    log(`Ad viewed for only ${adTimeSpent} seconds. Credits not awarded.`);
+
+    // Reset the ad flow so they can try again
+    adPending = false;
+    try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
+    adWindow = null;
+
+    // Remove timer element
+    if (adTimerElement) {
+      adTimerElement.remove();
+      adTimerElement = null;
+    }
+
+    if (pollingInterval) { 
+      clearInterval(pollingInterval); 
+      pollingInterval = null; 
+    }
+
+    if (adTimerInterval) {
+      clearInterval(adTimerInterval);
+      adTimerInterval = null;
+    }
+
+    // Hide ad status panel
+    el.adStatus.style.display = 'none';
+
+    return;
+  }
+
+  if (lastAdAwardAt && Math.abs(lastAdAwardAt - adStartTime) < 1000) return;
+  lastAdAwardAt = adStartTime;
+  credits += 2;
+  updateCreditsUI();
+  showNotification(`Ad complete — awarded 2 credits. Credits: ${credits}`);
+  log(`Ad awarded 2 credits at ${new Date().toLocaleTimeString()}. Total credits: ${credits}`);
+  adPending = false;
+  try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
+  adWindow = null;
+
+  // Remove timer element
+  if (adTimerElement) {
+    adTimerElement.remove();
+    adTimerElement = null;
+  }
+
+  if (pollingInterval) { 
+    clearInterval(pollingInterval); 
+    pollingInterval = null; 
+  }
+
+  if (adTimerInterval) {
+    clearInterval(adTimerInterval);
+    adTimerInterval = null;
+  }
+
+  // Hide ad status panel
+  el.adStatus.style.display = 'none';
+
+  refreshButtonsBasedOnName();
+}
+
+function handleReturnFromAd() {
+  try { 
+    awardAdCreditsIfEligible(); 
+  } catch (e) { 
+    log('Error awarding ad credits: ' + e.message); 
+  }
+}
+
+// Enhanced visibility change detection
+document.addEventListener('visibilitychange', () => {
+  if (adPending) {
+    if (document.visibilityState === 'hidden') {
+      // Page hidden - user likely switched to ad tab
+      pageHiddenTime = nowMs();
+      log('User switched away from page (likely to ad)');
+    } else {
+      // Page visible - user returned
+      pageVisibleTime = nowMs();
+      const timeAway = pageVisibleTime - pageHiddenTime;
+
+      if (timeAway >= 15000) {
+        // User was away for at least 15 seconds
+        log(`User returned after ${Math.floor(timeAway/1000)} seconds - eligible for credits`);
+        handleReturnFromAd();
+      } else {
+        // User returned too quickly
+        log(`User returned too quickly after ${Math.floor(timeAway/1000)} seconds`);
+        el.adStatusText.textContent = `You returned too quickly. Please view the ad for 15 seconds.`;
+      }
+    }
+  }
+});
+
+// Fallback for window focus
+window.addEventListener('focus', () => {
+  if (adPending) {
+    const timeAway = nowMs() - pageHiddenTime;
+    if (timeAway >= 15000) {
+      handleReturnFromAd();
+    } else {
+      log(`User returned too quickly after ${Math.floor(timeAway/1000)} seconds`);
+      el.adStatusText.textContent = `You returned too quickly. Please view the ad for 15 seconds.`;
+    }
+  }
+});
+
+el.adBtn.addEventListener('click', () => startAdFlow());
+
+/* ---------- UI state based on name ---------- */
+async function refreshButtonsBasedOnName() {
+  const name = sanitizeName(el.nameInput.value.trim());
+  if (!name) {
+    el.nameStatus.textContent = '';
+    el.createBtn.disabled = true;
+    el.extendBtn.disabled = true;
+    stopLiveTimer();
+    return;
+  }
+  try {
+    const mapping = await getMapping();
+    const exists = Boolean(mapping[name]);
+    if (exists) {
+      el.nameStatus.textContent = `"${name}" already exists — you can extend (if you have credits).`;
+      el.createBtn.disabled = true;
+      el.extendBtn.disabled = opInProgress || credits <= 0;
+      startLiveTimerForName(name, mapping);
+    } else {
+      el.nameStatus.textContent = `"${name}" is available — you can create it (if you have credits).`;
+      el.createBtn.disabled = opInProgress || credits <= 0;
+      el.extendBtn.disabled = true;
+      stopLiveTimer();
+      el.timeRemaining.textContent = '--:--:--';
+    }
+  } catch (e) {
+    el.nameStatus.textContent = 'Name check failed';
+    el.createBtn.disabled = true;
+    el.extendBtn.disabled = true;
+    stopLiveTimer();
+  }
+  updateCreditsUI();
+}
+
+/* ---------- LIVE timer (updates UI each second) ---------- */
+function formatHMS(totalSeconds) {
+  if (totalSeconds <= 0) return '00:00:00';
+  const hrs = Math.floor(totalSeconds/3600);
+  const mins = Math.floor((totalSeconds%3600)/60);
+  const secs = Math.floor(totalSeconds%60);
+  const pad = v => String(v).padStart(2,'0');
+  return `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
+}
+
+function startLiveTimerForName(name, mapping) {
+  stopLiveTimer();
+  liveTimerInterval = setInterval(async () => {
+    try {
+      const latest = await getMapping();
+      const expires = Number(latest._expires?.[name] || 0);
+      const rem = Math.max(0, expires - getUnix());
+      el.timeRemaining.textContent = formatHMS(rem);
+    } catch (e) {
+      el.timeRemaining.textContent = '--:--:--';
+    }
+  }, 1000);
+}
+
+function stopLiveTimer() {
+  if (liveTimerInterval) { clearInterval(liveTimerInterval); liveTimerInterval = null; }
+}
+
+/* ---------- CORE: create / extend / check ---------- */
+async function handleAction(mode) {
+  if (opInProgress) return showNotification('Operation in progress — please wait...');
+  const name = sanitizeName(el.nameInput.value.trim());
+  const url = el.urlInput.value.trim();
+  if (!name) return showNotification('Enter subdomain name.');
+  if (mode === 'create' && !url) return showNotification('Enter URL to point the subdomain to.');
+  if (credits <= 0) return showNotification('No credits — press the ad button and wait 15s.');
+
+  opInProgress = true;
+  el.createBtn.disabled = true;
+  el.extendBtn.disabled = true;
+
+  try {
+    log(`Starting ${mode} for ${name} ...`);
+    const mapping = await getMapping();
+    if (!mapping._expires) mapping._expires = {};
+    const rawExpiry = mapping._expires[name];
+    const currentExpiry = (typeof rawExpiry === 'number' && rawExpiry > 0) ? rawExpiry : getUnix();
+
+    if (mode === 'create') {
+      if (mapping[name]) {
+        showNotification('Subdomain already exists — cannot create. Use extend.');
+        log('Create aborted: already exists.');
+        return;
+      }
+      mapping[name] = url;
+      mapping._expires[name] = Math.max(currentExpiry, getUnix()) + INITIAL_DURATION;
+      el.finalUrl.textContent = `https://${name}.log-in.co.za`;
+      el.urlDisplay.style.display = 'block';
+    } else { // extend
+      if (!mapping[name]) {
+        showNotification('Subdomain does not exist — create it first.');
+        log('Extend aborted: does not exist.');
+        return;
+      }
+      mapping._expires[name] = Math.max(currentExpiry, getUnix()) + EXTENSION_DURATION;
+    }
+
+    // attempt update
+    const updated = await updateMapping(mapping);
+
+    // consume credit only after successful update
+    credits = Math.max(0, credits - 1);
+    updateCreditsUI();
+    showNotification(`${mode} successful. Credits left: ${credits}`);
+    log(`${mode} done for ${name}. Credits left: ${credits}. New expiry: ${Number(updated._expires[name]||0)}`);
+
+    await refreshButtonsBasedOnName();
+  } catch (e) {
+    log(`Error during ${mode}: ${e.message}`);
+    showNotification(`Operation failed: ${e.message}`);
+  } finally {
+    opInProgress = false;
+    await refreshButtonsBasedOnName();
+  }
+}
+
+el.createBtn.addEventListener('click', () => handleAction('create'));
+el.extendBtn.addEventListener('click', () => handleAction('extend'));
+
+/* ---------- check time ---------- */
+async function checkTime() {
+  const name = sanitizeName(el.nameInput.value.trim());
+  if (!name) return showNotification('Enter a name first');
+  try {
+    const mapping = await getMapping();
+    const expires = mapping._expires?.[name];
+    if (!expires) { log('No expiry set'); showNotification('No expiry set'); return; }
+    const remaining = Math.max(0, Number(expires) - getUnix());
+    const mins = Math.floor(remaining / 60);
+    const hrs = Math.floor(mins / 60);
+    const minPart = mins % 60;
+    log(`Time remaining for ${name}: ${hrs}h ${minPart}m`);
+  } catch (e) {
+    log('Check time failed: ' + e.message);
+    showNotification('Check failed');
+  }
+}
+el.checkBtn.addEventListener('click', checkTime);
+
+/* ---------- input handlers ---------- */
+el.nameInput.addEventListener('input', () => {
+  const name = sanitizeName(el.nameInput.value);
+  el.nameInput.value = name;
+  el.previewUrl.textContent = `https://${name || '[name]'}.log-in.co.za`;
+  if (el.nameInput._timer) clearTimeout(el.nameInput._timer);
+  el.nameInput._timer = setTimeout(() => refreshButtonsBasedOnName(), 300);
+});
+
+el.copyBtn.addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(el.finalUrl.textContent); showNotification('URL copied!'); }
+  catch { showNotification('Failed to copy'); }
+});
+
+/* ---------- init ---------- */
+(async function init() {
+  try {
+    await refreshButtonsBasedOnName();
+    log('System ready. Press the ad button to get credits.');
+  } catch (e) {
+    log('Init error: ' + e.message);
+  }
+})();
+</script>
 </body>
 </html>
