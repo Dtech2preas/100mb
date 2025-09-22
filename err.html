@@ -5,201 +5,563 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DTECH HTML to Live Website Converter</title>
 <style>
+  :root {
+    --primary-bg: #0a0a14;
+    --secondary-bg: #12121f;
+    --card-bg: #161627;
+    --accent-blue: #2563eb;
+    --accent-blue-light: #3b82f6;
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --border-color: #2d2d42;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 0;
-    background: #0f0f15; color: #fff;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
   }
-  h1, h2 {
-    text-align: center; color: #00ffcc;
-    margin-top: 1rem; margin-bottom: 1rem;
+  
+  .app-container {
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  h2 { font-size: 1.4rem; color: #00d1ff; }
-  .container {
-    max-width: 900px; margin: 20px auto; padding: 20px;
-    background: #1a1a2e; border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,255,200,0.2);
+  
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--secondary-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
+  
+  h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    color: var(--accent-blue-light);
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    background-color: var(--secondary-bg);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+  }
+  
+  .input-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  
+  @media (max-width: 900px) {
+    .input-section {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
   textarea {
-    width: 100%; border-radius: 8px; padding: 10px;
-    background: #12121f; color: #00ffcc; border: 1px solid #00ffcc;
-    font-family: monospace; font-size: 14px; resize: vertical;
+    width: 100%;
+    height: 200px;
+    padding: 16px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: monospace;
+    font-size: 14px;
+    resize: vertical;
   }
-  input[type="file"] { display:block; margin:10px 0; color:#00ffcc; }
-  #previewContainer {
-    border: 1px solid #00ffcc; height:400px; width:100%;
-    position:relative; border-radius:10px; overflow:hidden; margin-top:15px;
+  
+  textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
   }
-  #previewIframe { width:100%; height:100%; border:none; }
-  #fullscreenBtn {
-    position:absolute; top:10px; right:10px; background:#00ffcc; color:#000;
-    border:none; padding:5px 10px; border-radius:5px; cursor:pointer; font-weight:bold;
-    transition:0.3s;
+  
+  .file-upload {
+    background-color: var(--card-bg);
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
-  #fullscreenBtn:hover { background:#00d1ff; }
+  
+  .file-upload:hover {
+    border-color: var(--accent-blue);
+  }
+  
+  .file-upload input {
+    display: none;
+  }
+  
+  .preview-container {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+  }
+  
+  #previewIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+  }
+  
+  .preview-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
   button {
-    background:#00ffcc; color:#000; border:none; padding:10px 20px;
-    margin:10px 5px 0 0; border-radius:8px; cursor:pointer; font-weight:bold;
-    transition:0.3s;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
-  button:hover { background:#00d1ff; }
-  #uploadStatus { margin-top:10px; color:#ff6a00; }
-  a { color:#00ffcc; text-decoration:underline; }
-  a:hover { color:#00d1ff; }
-  #resultContainer {
-    margin-top:20px; text-align:center; background:#12121f; padding:15px;
-    border-radius:12px; box-shadow:0 0 10px rgba(0,255,200,0.3);
+  
+  .primary-btn {
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-blue-light));
+    color: white;
+  }
+  
+  .primary-btn:hover:not(:disabled) {
+    background: linear-gradient(to right, #1d4ed8, #2563eb);
+    transform: translateY(-2px);
+  }
+  
+  .secondary-btn {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+  
+  .secondary-btn:hover:not(:disabled) {
+    background-color: #2d2d42;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .action-section {
+    text-align: center;
+    margin: 30px 0;
+  }
+  
+  .status-indicator {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .status-loading {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue-light);
+  }
+  
+  .status-error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+  }
+  
+  .status-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+  }
+  
+  .result-container {
+    text-align: center;
+    padding: 30px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin-top: 30px;
+    border: 1px solid var(--border-color);
+    display: none;
+  }
+  
+  .live-url {
+    display: block;
+    margin: 20px 0;
+    padding: 15px;
+    background: var(--secondary-bg);
+    border-radius: 8px;
+    font-size: 18px;
+    word-break: break-all;
+    color: var(--accent-blue-light);
+    text-decoration: none;
+  }
+  
+  .live-url:hover {
+    text-decoration: underline;
+  }
+  
+  .ad-notification {
+    padding: 15px;
+    margin: 20px 0;
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 4px solid var(--warning);
+    border-radius: 6px;
+  }
+  
+  .timer-display {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--warning);
+    margin: 10px 0;
+  }
+  
+  .instructions {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
   }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>DTECH HTML to Live Website Converter</h1>
+<div class="app-container">
+  <header>
+    <h1>DTECH HTML to Live Website Converter</h1>
+    <p>Convert your HTML code into a live website with a single click</p>
+  </header>
 
-  <div>
-    <h2>Step 1: Input HTML</h2>
-    <textarea id="htmlInput" rows="10" placeholder="Paste your HTML here"></textarea><br>
-    <label>Or upload an HTML file:</label>
-    <input type="file" id="htmlFile" accept=".html,.htm">
-
-    <div id="previewContainer">
-      <button id="fullscreenBtn">Full Screen</button>
-      <iframe id="previewIframe"></iframe>
+  <div class="input-section">
+    <div class="card">
+      <h2>Step 1: Input HTML</h2>
+      
+      <div class="form-group">
+        <label for="htmlInput">Paste your HTML code:</label>
+        <textarea id="htmlInput" placeholder="Paste your HTML code here..."></textarea>
+      </div>
+      
+      <div class="file-upload" id="fileUploadArea">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-blue); margin-bottom: 10px;">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <p>Or upload an HTML file</p>
+        <input type="file" id="htmlFile" accept=".html,.htm">
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>HTML Preview</h2>
+      <div class="preview-container">
+        <div class="preview-controls">
+          <button class="secondary-btn" id="fullscreenBtn">Fullscreen</button>
+        </div>
+        <iframe id="previewIframe"></iframe>
+      </div>
     </div>
   </div>
 
-  <div>
-    <h2>Step 2: Upload & Generate</h2>
-    <button id="uploadBtn">Upload & Generate Live URL</button>
-    <div id="uploadStatus" style="display:none;">Uploading...</div>
+  <div class="card">
+    <h2>Step 2: Generate Live URL</h2>
+    
+    <div class="ad-notification">
+      <p><strong>Ad Requirement:</strong> You must watch an ad for 10 seconds to generate your live URL</p>
+      <div class="timer-display" id="timerDisplay">00:10</div>
+      <p class="instructions" id="adInstructions">Click the button below to open the ad</p>
+    </div>
+    
+    <div class="action-section">
+      <button class="primary-btn" id="adBtn">Watch Ad to Unlock</button>
+      <button class="primary-btn" id="uploadBtn" disabled>Upload & Generate Live URL</button>
+      
+      <div class="status-indicator" id="uploadStatus" style="display: none;">
+        Uploading your website...
+      </div>
+    </div>
   </div>
 
-  <div id="resultContainer" style="display:none;">
-    <h2>🎉 Success! Your website is live</h2>
-    <div><strong>Live URL:</strong> <a href="#" id="liveUrl" target="_blank"></a></div>
-    <button id="copyLiveUrl">Copy Live URL</button>
-    <button onclick="window.location.href='we.html'">Go to we.html</button>
+  <div class="result-container" id="resultContainer">
+    <h2>🎉 Success! Your Website is Live</h2>
+    <p>Your HTML has been converted to a live website</p>
+    
+    <a href="#" id="liveUrl" class="live-url" target="_blank"></a>
+    
+    <div class="button-group">
+      <button class="primary-btn" id="copyLiveUrl">Copy URL</button>
+      <button class="secondary-btn" onclick="window.location.href='we.html'">Go to we.html</button>
+    </div>
   </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
+  // Elements
   const htmlInput = document.getElementById('htmlInput');
   const htmlFile = document.getElementById('htmlFile');
+  const fileUploadArea = document.getElementById('fileUploadArea');
   const previewIframe = document.getElementById('previewIframe');
+  const adBtn = document.getElementById('adBtn');
   const uploadBtn = document.getElementById('uploadBtn');
   const uploadStatus = document.getElementById('uploadStatus');
   const resultContainer = document.getElementById('resultContainer');
   const liveUrl = document.getElementById('liveUrl');
   const copyLiveUrl = document.getElementById('copyLiveUrl');
   const fullscreenBtn = document.getElementById('fullscreenBtn');
-  const previewContainer = document.getElementById('previewContainer');
+  const timerDisplay = document.getElementById('timerDisplay');
+  const adInstructions = document.getElementById('adInstructions');
 
+  // State
   let htmlContent = '';
   let selectedToken = null;
-  const UPLOAD_KEY = 'dtech_upload_timer';
+  let adWindow = null;
+  let adStartTime = 0;
+  let adTimeSpent = 0;
+  let adTimerInterval = null;
+  const AD_REQUIRED_TIME = 10; // seconds
 
-  function getRemainingTime() {
-    const endTime = parseInt(localStorage.getItem(UPLOAD_KEY) || '0');
-    return Math.max(0, endTime - Date.now());
-  }
+  // Initialize
+  updatePreview(''); // Clear preview
 
-  function startUploadDelay() {
-    const delay = 10 * 1000; // 10s
-    const endTime = Date.now() + delay;
-    localStorage.setItem(UPLOAD_KEY, endTime);
-  }
+  // Event Listeners
+  htmlInput.addEventListener('input', () => {
+    htmlContent = htmlInput.value;
+    updatePreview(htmlContent);
+  });
 
-  function updateButtonState() {
-    const remaining = getRemainingTime();
-    if(remaining>0){
-      uploadBtn.textContent = `Click ad and wait ${Math.ceil(remaining/1000)}s`;
-    } else {
-      uploadBtn.textContent = 'Upload & Generate Live URL';
-    }
-  }
+  fileUploadArea.addEventListener('click', () => {
+    htmlFile.click();
+  });
 
-  setInterval(updateButtonState, 500);
-
-  async function fetchTokens() {
-    try {
-      const res = await fetch('https://gist.githubusercontent.com/Dtech2preas/8a30b80295920ae54ce13af87b7c162d/raw/gistfile1.txt');
-      const text = await res.text();
-      const tokens = text.split('\n').map(l=>l.trim()).filter(l=>l.startsWith('ghp_'));
-      if(tokens.length<2) throw new Error('Need at least 2 tokens');
-      selectedToken = tokens[Math.floor(Math.random()*2)];
-    } catch(e){ alert('Error loading tokens: '+e.message); }
-  }
-  fetchTokens();
-
-  function updatePreview(content){ previewIframe.srcdoc = content; }
-
-  htmlInput.addEventListener('input', ()=>{ htmlContent = htmlInput.value; updatePreview(htmlContent); });
-
-  htmlFile.addEventListener('change', (e)=>{
-    const file=e.target.files[0];
-    if(file){
-      const reader=new FileReader();
-      reader.onload=ev=>{ htmlContent=ev.target.result; updatePreview(htmlContent); htmlInput.value=htmlContent; }
+  htmlFile.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        htmlContent = ev.target.result;
+        updatePreview(htmlContent);
+        htmlInput.value = htmlContent;
+      };
       reader.readAsText(file);
     }
   });
 
-  uploadBtn.addEventListener('click', async ()=>{
-    if(!selectedToken){ alert('Token not ready'); return; }
-    if(!htmlContent){ alert('Provide HTML content'); return; }
+  adBtn.addEventListener('click', startAdFlow);
+  uploadBtn.addEventListener('click', uploadAndGenerate);
+  copyLiveUrl.addEventListener('click', () => {
+    navigator.clipboard.writeText(liveUrl.href);
+    copyLiveUrl.textContent = 'Copied!';
+    setTimeout(() => {
+      copyLiveUrl.textContent = 'Copy URL';
+    }, 2000);
+  });
 
-    const remaining = getRemainingTime();
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      previewIframe.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  });
 
-    if(remaining>0){
-      // Reset timer if they press too early
-      startUploadDelay();
-      window.open('https://otieu.com/4/9630811','_blank');
-      alert('Click the ad link and wait 10s before coming back, then press again.');
+  // Functions
+  function updatePreview(content) {
+    previewIframe.srcdoc = content || '<div style="display:flex; justify-content:center; align-items:center; height:100%; color:#666;"><p>Preview will appear here</p></div>';
+  }
+
+  function startAdFlow() {
+    if (!htmlContent) {
+      alert('Please provide HTML content first');
       return;
+    }
+
+    try {
+      adWindow = window.open('https://otieu.com/4/9630811', '_blank');
+      if (!adWindow || adWindow.closed || typeof adWindow.closed == 'undefined') {
+        alert('Please allow popups for this site to view ads');
+        return;
+      }
+    } catch (e) {
+      alert('Please allow popups for this site to view ads');
+      return;
+    }
+
+    adStartTime = Date.now();
+    adTimeSpent = 0;
+    adBtn.disabled = true;
+    adBtn.textContent = 'Watching Ad...';
+    adInstructions.textContent = 'Please keep the ad tab open for 10 seconds';
+
+    // Start timer
+    let remainingTime = AD_REQUIRED_TIME;
+    timerDisplay.textContent = `00:${remainingTime.toString().padStart(2, '0')}`;
+    
+    adTimerInterval = setInterval(() => {
+      remainingTime--;
+      timerDisplay.textContent = `00:${remainingTime.toString().padStart(2, '0')}`;
+      
+      if (remainingTime <= 0) {
+        clearInterval(adTimerInterval);
+        adComplete();
+      }
+    }, 1000);
+
+    // Check if user closed the ad window
+    const checkAdWindow = setInterval(() => {
+      try {
+        if (adWindow.closed) {
+          clearInterval(checkAdWindow);
+          if (adTimeSpent < AD_REQUIRED_TIME) {
+            adFailed('You closed the ad too early. Please watch for 10 seconds.');
+          }
+        }
+      } catch (e) {
+        // Cross-origin issue, we can't check if the window is closed
+      }
+    }, 1000);
+  }
+
+  function adComplete() {
+    adBtn.style.display = 'none';
+    uploadBtn.disabled = false;
+    timerDisplay.textContent = '00:00';
+    timerDisplay.style.color = 'var(--success)';
+    adInstructions.textContent = 'Ad requirement complete! You can now generate your live URL';
+    adInstructions.style.color = 'var(--success)';
+    
+    try {
+      if (adWindow && !adWindow.closed) {
+        adWindow.close();
+      }
+    } catch (e) {
+      // Cross-origin issue
+    }
+  }
+
+  function adFailed(message) {
+    clearInterval(adTimerInterval);
+    adBtn.disabled = false;
+    adBtn.textContent = 'Watch Ad to Unlock';
+    timerDisplay.textContent = '00:10';
+    adInstructions.textContent = message;
+    adInstructions.style.color = 'var(--error)';
+    
+    setTimeout(() => {
+      adInstructions.textContent = 'Click the button below to open the ad';
+      adInstructions.style.color = '';
+    }, 3000);
+  }
+
+  async function uploadAndGenerate() {
+    if (!htmlContent) {
+      alert('Please provide HTML content first');
+      return;
+    }
+
+    // Fetch tokens if not already available
+    if (!selectedToken) {
+      try {
+        const res = await fetch('https://gist.githubusercontent.com/Dtech2preas/8a30b80295920ae54ce13af87b7c162d/raw/gistfile1.txt');
+        const text = await res.text();
+        const tokens = text.split('\n').map(l => l.trim()).filter(l => l.startsWith('ghp_'));
+        if (tokens.length < 2) throw new Error('Need at least 2 tokens');
+        selectedToken = tokens[Math.floor(Math.random() * 2)];
+      } catch (e) {
+        uploadStatus.textContent = 'Error: Failed to load tokens';
+        uploadStatus.style.display = 'block';
+        uploadStatus.className = 'status-indicator status-error';
+        return;
+      }
     }
 
     // Execute upload
     uploadBtn.disabled = true;
     uploadStatus.style.display = 'block';
-    uploadStatus.textContent = 'Uploading...';
+    uploadStatus.className = 'status-indicator status-loading';
+    uploadStatus.textContent = 'Uploading your website...';
 
-    try{
-      const gistResponse = await fetch('https://api.github.com/gists',{
-        method:'POST',
-        headers:{
-          'Authorization':'token '+selectedToken,
-          'Accept':'application/vnd.github.v3+json',
-          'Content-Type':'application/json'
+    try {
+      const gistResponse = await fetch('https://api.github.com/gists', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'token ' + selectedToken,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
         },
-        body:JSON.stringify({
-          description:'Live website '+new Date().toISOString(),
-          public:true,
-          files:{'index.html':{content:htmlContent}}
+        body: JSON.stringify({
+          description: 'Live website ' + new Date().toISOString(),
+          public: true,
+          files: { 'index.html': { content: htmlContent } }
         })
       });
+      
       const gistData = await gistResponse.json();
-      if(!gistData.id) throw new Error(gistData.message||'Failed to create gist');
+      if (!gistData.id) throw new Error(gistData.message || 'Failed to create gist');
 
-      const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login||'anonymous'}/${gistData.id}/raw/index.html`;
+      const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
 
       liveUrl.textContent = liveRenderUrl;
       liveUrl.href = liveRenderUrl;
-      uploadStatus.style.display='none';
-      resultContainer.style.display='block';
-    }catch(err){
-      uploadStatus.textContent='Error: '+err.message;
-      uploadBtn.disabled=false;
+      uploadStatus.style.display = 'none';
+      resultContainer.style.display = 'block';
+    } catch (err) {
+      uploadStatus.textContent = 'Error: ' + err.message;
+      uploadStatus.className = 'status-indicator status-error';
+      uploadBtn.disabled = false;
     }
-  });
-
-  copyLiveUrl.addEventListener('click', ()=>{ navigator.clipboard.writeText(liveUrl.href); copyLiveUrl.textContent='Copied!'; setTimeout(()=>{ copyLiveUrl.textContent='Copy Live URL'; },2000); });
-
-  fullscreenBtn.addEventListener('click', ()=>{
-    if(!document.fullscreenElement){ previewContainer.requestFullscreen(); } else { document.exitFullscreen(); }
-  });
-
-  updateButtonState();
+  }
 });
 </script>
 </body>
