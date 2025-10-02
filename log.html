@@ -279,7 +279,7 @@
       }
 
       h2 {
-        fontSize: 1.5rem;
+        font-size: 1.5rem;
       }
       
       .logo {
@@ -385,15 +385,43 @@ async function getToken() {
 }
 
 async function fetchGist(gistId, filename, token) {
-  const res = await fetch(`https://api.github.com/gists/${gistId}`, {
-    headers: {
-      "Authorization": `token ${token}`
+  try {
+    const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+      headers: {
+        "Authorization": `token ${token}`
+      }
+    });
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
-  });
-  const gist = await res.json();
-  const content = gist.files[filename]?.content;
-  if (!content) throw new Error(`Missing file ${filename}`);
-  return { gist, usersData: JSON.parse(content) };
+    
+    const gist = await res.json();
+    
+    // Check if files exist and get the correct file
+    if (!gist.files) {
+      throw new Error("No files found in gist");
+    }
+    
+    // Find the file by name (case insensitive)
+    const fileKey = Object.keys(gist.files).find(key => 
+      key.toLowerCase() === filename.toLowerCase()
+    );
+    
+    if (!fileKey) {
+      throw new Error(`File ${filename} not found in gist`);
+    }
+    
+    const content = gist.files[fileKey].content;
+    if (!content) {
+      throw new Error(`No content found in file ${filename}`);
+    }
+    
+    return { gist, usersData: JSON.parse(content) };
+  } catch (error) {
+    console.error('Error fetching gist:', error);
+    throw new Error(`Failed to fetch gist ${gistId}: ${error.message}`);
+  }
 }
 
 async function fetchAllUsers(token) {
@@ -401,30 +429,50 @@ async function fetchAllUsers(token) {
   const results = await Promise.all(promises);
   allUsers = [];
   results.forEach(({gist, usersData}, i) => {
-    usersData.users.forEach(user => {
-      allUsers.push({
-        ...user,
-        gistId: GISTS[i].id,
-        filename: GISTS[i].filename
+    // Check if usersData has the expected structure
+    if (usersData && usersData.users && Array.isArray(usersData.users)) {
+      usersData.users.forEach(user => {
+        allUsers.push({
+          ...user,
+          gistId: GISTS[i].id,
+          filename: GISTS[i].filename
+        });
       });
-    });
+    } else {
+      console.warn(`Invalid data structure in gist ${GISTS[i].id}`);
+    }
   });
 }
 
 async function updateGist(gistId, filename, updatedUsers, token) {
-  const payload = {
-    files: {
-      [filename]: { content: JSON.stringify({ users: updatedUsers }, null, 2) }
+  try {
+    // First get the current gist to preserve structure
+    const currentGist = await fetchGist(gistId, filename, token);
+    
+    const payload = {
+      files: {
+        [filename]: { 
+          content: JSON.stringify({ users: updatedUsers }, null, 2) 
+        }
+      }
+    };
+    
+    const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+      method: "PATCH",
+      headers: {
+        "Authorization": `token ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
-  };
-  await fetch(`https://api.github.com/gists/${gistId}`, {
-    method: "PATCH",
-    headers: {
-      "Authorization": `token ${token}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  });
+  } catch (error) {
+    console.error('Error updating gist:', error);
+    throw new Error(`Failed to update gist: ${error.message}`);
+  }
 }
 
 async function getIP() {
@@ -443,6 +491,7 @@ async function createPersonalGist(username, token) {
       }
     }
   };
+  
   const res = await fetch("https://api.github.com/gists", {
     method: "POST",
     headers: {
@@ -451,6 +500,11 @@ async function createPersonalGist(username, token) {
     },
     body: JSON.stringify(payload)
   });
+  
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+  
   return await res.json();
 }
 
@@ -562,11 +616,15 @@ document.getElementById("signup-btn").addEventListener("click", async () => {
     availableUser.taken = true;
     availableUser.ip = ip;
 
-    const batch = allUsers.filter(u => u.gistId === availableUser.gistId);
-    const idx = batch.findIndex(u => u.username === availableUser.username);
-    if (idx !== -1) batch[idx] = availableUser;
+    // Find all users from the same gist
+    const batchUsers = allUsers.filter(u => u.gistId === availableUser.gistId);
+    
+    // Update the specific user in the batch
+    const updatedBatch = batchUsers.map(u => 
+      u.username === availableUser.username ? availableUser : u
+    );
 
-    await updateGist(availableUser.gistId, availableUser.filename, batch, GITHUB_TOKEN);
+    await updateGist(availableUser.gistId, availableUser.filename, updatedBatch, GITHUB_TOKEN);
 
     showMessage(msg, "Creating secure gist...", false);
     const gist = await createPersonalGist(availableUser.username, GITHUB_TOKEN);
