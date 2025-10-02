@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(s=>{s.dataset.zone=9809250,s.src='https://groleegni.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>HTML to Live Website Converter</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #2563eb;
-    --primary-hover: #1d4ed8;
-    --success: #10b981;
-    --error: #ef4444;
-    --bg: #f8fafc;
+    --primary: #4361ee;
+    --primary-hover: #3a56d4;
+    --secondary: #7209b7;
+    --success: #06d6a0;
+    --error: #ef476f;
+    --warning: #ffd166;
+    --bg: #f8f9fa;
     --card: #ffffff;
-    --text: #1e293b;
-    --text-light: #64748b;
-    --border: #e2e8f0;
+    --text: #1a1a2e;
+    --text-light: #6c757d;
+    --border: #dee2e6;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --gradient: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
   }
 
   * {
@@ -31,7 +34,7 @@
     background-color: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    line-height: 1.5;
+    line-height: 1.6;
     padding: 0;
   }
 
@@ -42,79 +45,149 @@
     min-height: 100vh;
   }
 
-  h1 {
-    color: var(--primary);
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+  header {
     text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .logo {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  h1 {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .card {
     background-color: var(--card);
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    padding: 2.5rem;
     margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  h2 {
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-description {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
   }
 
   label {
     display: block;
     font-weight: 500;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
   }
 
   input {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.875rem 1rem;
     border: 1px solid var(--border);
-    border-radius: 0.375rem;
+    border-radius: 0.75rem;
     font-size: 1rem;
     margin-bottom: 1rem;
+    transition: all 0.2s;
+    background-color: #f8f9fa;
   }
 
   input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    background-color: white;
   }
 
   button {
-    background-color: var(--primary);
+    background: var(--gradient);
     color: white;
     border: none;
-    border-radius: 0.375rem;
-    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    padding: 0.875rem 1.5rem;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
     width: 100%;
     margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
   }
 
   button:hover {
-    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.4);
   }
 
   button:disabled {
-    background-color: var(--text-light);
+    background: var(--text-light);
+    transform: none;
+    box-shadow: none;
     cursor: not-allowed;
   }
 
   .preview-container {
     border: 1px solid var(--border);
-    border-radius: 0.375rem;
+    border-radius: 0.75rem;
     margin: 1.5rem 0;
     overflow: hidden;
     height: 400px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
   .preview-header {
-    background-color: var(--bg);
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--border);
+    background: var(--gradient);
+    padding: 0.875rem 1.25rem;
+    color: white;
     font-weight: 500;
     display: flex;
     justify-content: space-between;
@@ -124,10 +197,12 @@
   .preview-content {
     flex-grow: 1;
     overflow: auto;
-    padding: 1rem;
-    background-color: white;
-    font-family: monospace;
+    padding: 1.25rem;
+    background-color: #f8f9fa;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
     white-space: pre-wrap;
+    line-height: 1.5;
   }
 
   .result-container {
@@ -136,52 +211,69 @@
   }
 
   .result-card {
-    background-color: var(--success);
+    background: var(--gradient);
     color: white;
-    padding: 1rem;
-    border-radius: 0.375rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .success-icon {
+    font-size: 3rem;
     margin-bottom: 1rem;
   }
 
   .url-container {
     background-color: var(--card);
     border: 1px solid var(--border);
-    border-radius: 0.375rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
     word-break: break-all;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
   .url-label {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-light);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     display: block;
+    font-size: 0.9rem;
   }
 
   .url-link {
     color: var(--primary);
     text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+    display: block;
+    padding: 0.5rem 0;
   }
 
   .url-link:hover {
     text-decoration: underline;
+    color: var(--primary-hover);
   }
 
   .status {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     margin: 1rem 0;
     font-weight: 500;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background-color: rgba(67, 97, 238, 0.05);
   }
 
   .spinner {
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(67, 97, 238, 0.3);
     border-radius: 50%;
     border-top: 2px solid var(--primary);
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     animation: spin 1s linear infinite;
   }
 
@@ -193,20 +285,25 @@
   .step {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1.25rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
   .step-number {
-    background-color: var(--primary);
+    background: var(--gradient);
     color: white;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.875rem;
+    font-weight: 600;
   }
 
   .step-text {
@@ -214,32 +311,37 @@
   }
 
   .step.completed .step-number {
-    background-color: var(--success);
+    background: var(--success);
   }
 
   /* Token selection styles */
   .token-options {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
   }
 
   .token-option {
-    padding: 1rem;
+    padding: 1.25rem;
     border: 1px solid var(--border);
-    border-radius: 0.375rem;
+    border-radius: 0.75rem;
     cursor: pointer;
     transition: all 0.2s;
+    background-color: #f8f9fa;
   }
 
   .token-option:hover {
     border-color: var(--primary);
+    background-color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .token-option.selected {
-    background-color: rgba(37, 99, 235, 0.1);
+    background-color: rgba(67, 97, 238, 0.1);
     border-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(67, 97, 238, 0.15);
   }
 
   .token-option input {
@@ -251,28 +353,89 @@
     margin-bottom: 0;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .token-option .token-name {
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .token-loading {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     color: var(--text-light);
+    padding: 1.5rem;
+    justify-content: center;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .action-buttons button {
+    margin-top: 0;
+  }
+
+  .secondary-btn {
+    background: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }
+
+  .secondary-btn:hover {
+    background: rgba(67, 97, 238, 0.05);
+    transform: translateY(-2px);
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-light);
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 1.5rem;
+    }
+    
+    .card {
+      padding: 1.5rem;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .action-buttons {
+      flex-direction: column;
+    }
   }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>HTML to Live Website Converter</h1>
+  <header>
+    <div class="logo">🚀</div>
+    <h1>HTML to Live Website Converter</h1>
+    <p class="subtitle">Transform your HTML code into a live website with just a few clicks using GitHub Gists</p>
+  </header>
 
   <div class="card">
-    <h2>Step 1: Authentication</h2>
+    <div class="card-header">
+      <div class="card-icon">1</div>
+      <div>
+        <h2>Authentication</h2>
+        <p class="card-description">Select a GitHub token to authenticate with GitHub API</p>
+      </div>
+    </div>
+    
     <label>Select GitHub Token:</label>
 
     <div class="token-options" id="tokenOptionsContainer">
@@ -283,13 +446,18 @@
     </div>
 
     <p style="color: var(--text-light); font-size: 0.875rem;">
-      Need a token? <a href="https://github.com/settings/tokens/new?description=Gist%20Uploader&scopes=gist" target="_blank">Create one here</a>
+      Need a token? <a href="https://github.com/settings/tokens/new?description=Gist%20Uploader&scopes=gist" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 500;">Create one here</a>
     </p>
   </div>
 
   <div class="card">
-    <h2>Step 2: Verify Your HTML</h2>
-    <p>We've automatically loaded your HTML from localStorage (data2step):</p>
+    <div class="card-header">
+      <div class="card-icon">2</div>
+      <div>
+        <h2>Verify Your HTML</h2>
+        <p class="card-description">Preview and validate your HTML code before uploading</p>
+      </div>
+    </div>
 
     <div class="preview-container">
       <div class="preview-header">
@@ -306,8 +474,14 @@
   </div>
 
   <div class="card">
-    <h2>Step 3: Upload & Convert</h2>
-    <p>Upload your HTML to GitHub Gist and get a live-rendering URL:</p>
+    <div class="card-header">
+      <div class="card-icon">3</div>
+      <div>
+        <h2>Upload & Convert</h2>
+        <p class="card-description">Upload your HTML to GitHub Gist and get a live-rendering URL</p>
+      </div>
+    </div>
+    
     <button id="uploadBtn" disabled>Upload & Generate Live URL</button>
 
     <div class="status" id="uploadStatus" style="display: none;">
@@ -318,8 +492,9 @@
 
   <div class="result-container" id="resultContainer">
     <div class="result-card">
-      <h2>🎉 Success! Your website is live</h2>
-      <p>Here are your links:</p>
+      <div class="success-icon">🎉</div>
+      <h2>Success! Your website is live</h2>
+      <p>Your HTML has been successfully converted to a live website</p>
     </div>
 
     <div class="step completed">
@@ -347,8 +522,15 @@
       <a href="#" class="url-link" id="liveUrl" target="_blank"></a>
     </div>
 
-    <button id="copyLiveUrl" style="background-color: var(--success);">Copy Live URL</button>
+    <div class="action-buttons">
+      <button id="copyLiveUrl">Copy & Open Live URL</button>
+      <button class="secondary-btn" id="openGistUrl">Open Gist</button>
+    </div>
   </div>
+
+  <footer>
+    <p>HTML to Live Website Converter &copy; 2023</p>
+  </footer>
 </div>
 
 <script>
@@ -364,6 +546,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const gistUrl = document.getElementById('gistUrl');
   const liveUrl = document.getElementById('liveUrl');
   const copyLiveUrl = document.getElementById('copyLiveUrl');
+  const openGistUrl = document.getElementById('openGistUrl');
   const gistUrlContainer = document.getElementById('gistUrlContainer');
   const liveUrlContainer = document.getElementById('liveUrlContainer');
 
@@ -539,24 +722,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // Copy URL button
+  // Copy URL button - now also opens the URL
   copyLiveUrl.addEventListener('click', () => {
     navigator.clipboard.writeText(liveUrl.href);
+    
+    // Open the URL in a new tab
+    window.open(liveUrl.href, '_blank');
+    
     const originalText = copyLiveUrl.textContent;
-    copyLiveUrl.textContent = 'Copied!';
-    copyLiveUrl.style.backgroundColor = 'var(--success)';
+    copyLiveUrl.textContent = 'Copied & Opened!';
+    copyLiveUrl.style.background = 'var(--success)';
     setTimeout(() => {
       copyLiveUrl.textContent = originalText;
+      copyLiveUrl.style.background = '';
     }, 2000);
+  });
+
+  // Open Gist button
+  openGistUrl.addEventListener('click', () => {
+    window.open(gistUrl.href, '_blank');
   });
 });
 </script>
 
-<script type="text/javascript">
-   var uid = '484938';
-   var wid = '743587';
-   var pop_tag = document.createElement('script');pop_tag.src='//cdn.popcash.net/show.js';document.body.appendChild(pop_tag);
-   pop_tag.onerror = function() {pop_tag = document.createElement('script');pop_tag.src='//cdn2.popcash.net/show.js';document.body.appendChild(pop_tag)};
+<script>
+  // Original scripts preserved
+  (s=>{s.dataset.zone=9809250,s.src='https://groleegni.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+  
+  var uid = '484938';
+  var wid = '743587';
+  var pop_tag = document.createElement('script');pop_tag.src='//cdn.popcash.net/show.js';document.body.appendChild(pop_tag);
+  pop_tag.onerror = function() {pop_tag = document.createElement('script');pop_tag.src='//cdn2.popcash.net/show.js';document.body.appendChild(pop_tag)};
 </script>
 
 </body>
