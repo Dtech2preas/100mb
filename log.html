@@ -293,7 +293,7 @@
 <!-- Auto-login overlay -->
 <div id="auto-login-overlay" style="display: none;">
   <h2 class="glow">AUTO-LOGIN IN PROGRESS</h2>
-  <p>Click anywhere to continue...</p>
+  <p>Click anywhere to open external link...</p>
   <div class="loading" style="width: 40px; height: 40px;"></div>
 </div>
 
@@ -335,6 +335,7 @@
 <script>
 const TOKEN_URL = "https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/a9f82f8fef545600174cdf9b5b1735b865bf5582/gistfile1.txt";
 const REDIRECT_URL = "https://otieu.com/4/9630811";
+const MAIN_PAGE = "nex.html";
 
 const GISTS = [
   { id: "5ddeaa7e65d1f9717c8ab83d5d2c7380", filename: "users_batch_1.json" },
@@ -346,7 +347,7 @@ const GISTS = [
 
 let GITHUB_TOKEN = null;
 let allUsers = [];
-let isFirstLogin = false;
+let isAutoLoginInProgress = false;
 
 // Check for existing login on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -358,22 +359,32 @@ async function checkAutoLogin() {
   if (storedUser) {
     try {
       const userInfo = JSON.parse(storedUser);
+      isAutoLoginInProgress = true;
+      
       // Show auto-login overlay
-      document.getElementById('auto-login-overlay').style.display = 'flex';
+      const overlay = document.getElementById('auto-login-overlay');
+      overlay.style.display = 'flex';
       
-      // Auto-redirect after a short delay
-      setTimeout(() => {
-        window.open(REDIRECT_URL, '_blank');
-      }, 1000);
+      // Auto-redirect to main page after 2 seconds if user doesn't click
+      const mainRedirectTimer = setTimeout(() => {
+        overlay.style.display = 'none';
+        window.location.href = MAIN_PAGE;
+        isAutoLoginInProgress = false;
+      }, 2000);
       
-      // Add click event to overlay for immediate redirect
-      document.getElementById('auto-login-overlay').addEventListener('click', function() {
+      // Add click event to overlay for opening external URL
+      overlay.addEventListener('click', function() {
+        clearTimeout(mainRedirectTimer);
         window.open(REDIRECT_URL, '_blank');
+        overlay.style.display = 'none';
+        window.location.href = MAIN_PAGE;
+        isAutoLoginInProgress = false;
       });
       
     } catch (error) {
       console.error('Auto-login error:', error);
       document.getElementById('auto-login-overlay').style.display = 'none';
+      isAutoLoginInProgress = false;
     }
   }
 }
@@ -562,19 +573,22 @@ document.getElementById("login-btn").addEventListener("click", async () => {
     localStorage.setItem("loggedInUser", JSON.stringify(info));
     showMessage(errorMsg, "Authentication successful! Redirecting...", false);
 
-    isFirstLogin = true;
-    
     // Show auto-login overlay and redirect
-    document.getElementById('auto-login-overlay').style.display = 'flex';
+    const overlay = document.getElementById('auto-login-overlay');
+    overlay.style.display = 'flex';
     
-    // Auto-redirect after a short delay
-    setTimeout(() => {
-      window.open(REDIRECT_URL, '_blank');
-    }, 1000);
+    // Auto-redirect to main page after 2 seconds if user doesn't click
+    const mainRedirectTimer = setTimeout(() => {
+      overlay.style.display = 'none';
+      window.location.href = MAIN_PAGE;
+    }, 2000);
     
-    // Add click event to overlay for immediate redirect
-    document.getElementById('auto-login-overlay').addEventListener('click', function() {
+    // Add click event to overlay for opening external URL
+    overlay.addEventListener('click', function() {
+      clearTimeout(mainRedirectTimer);
       window.open(REDIRECT_URL, '_blank');
+      overlay.style.display = 'none';
+      window.location.href = MAIN_PAGE;
     });
     
     hideLoading(loginBtn);
