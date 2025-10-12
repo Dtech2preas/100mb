@@ -11,7 +11,6 @@
     --card-bg: #161627;
     --accent-blue: #2563eb;
     --accent-blue-light: #3b82f6;
-    --accent-purple: #7e22ce;
     --text-primary: #f3f4f6;
     --text-secondary: #d1d5db;
     --text-muted: #9ca3af;
@@ -36,9 +35,6 @@
     padding: 20px;
     max-width: 1000px;
     margin: 0 auto;
-    background-image: 
-      radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 20%),
-      radial-gradient(circle at 85% 30%, rgba(126, 34, 206, 0.1) 0%, transparent 20%);
   }
 
   h1, h2, h3 {
@@ -47,14 +43,12 @@
   }
 
   h1 {
-    font-size: 32px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    font-size: 28px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-light));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     margin-bottom: 8px;
-    text-align: center;
-    padding: 10px;
   }
 
   p {
@@ -67,73 +61,20 @@
     border-radius: 12px;
     padding: 24px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .container:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
   }
 
   .notice {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(59, 130, 246, 0.1));
+    background-color: rgba(37, 99, 235, 0.1);
     border-left: 4px solid var(--accent-blue);
     padding: 16px;
-    border-radius: 8px;
+    border-radius: 4px;
     margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .notice::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
   }
 
   .notice strong {
     color: var(--accent-blue-light);
-  }
-
-  .support-notice {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.1));
-    border-left: 4px solid var(--success);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .support-notice p {
-    margin-bottom: 0;
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .support-btn {
-    background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    white-space: nowrap;
-  }
-
-  .support-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   }
 
   .form-group {
@@ -178,8 +119,6 @@
     border-radius: 6px;
     margin: 12px 0;
     border: 1px solid var(--border-color);
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 14px;
   }
 
   .button-group {
@@ -208,7 +147,7 @@
   }
 
   #ad-btn {
-    background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+    background: linear-gradient(to right, #7e22ce, #3b82f6);
     color: white;
     position: relative;
   }
@@ -216,29 +155,26 @@
   #ad-btn:hover:not(:disabled) {
     background: linear-gradient(to right, #6b21a8, #2563eb);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(126, 34, 206, 0.3);
   }
 
   #create-btn {
-    background: linear-gradient(to right, var(--accent-blue), var(--info));
+    background-color: var(--accent-blue);
     color: white;
   }
 
   #create-btn:hover:not(:disabled) {
-    background: linear-gradient(to right, #1d4ed8, #2563eb);
+    background-color: #1d4ed8;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
   }
 
   #extend-btn {
-    background: linear-gradient(to right, var(--success), #0ea5e9);
+    background-color: #10b981;
     color: white;
   }
 
   #extend-btn:hover:not(:disabled) {
-    background: linear-gradient(to right, #059669, #0284c7);
+    background-color: #059669;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
   }
 
   #check-btn {
@@ -252,25 +188,23 @@
   }
 
   #copy-btn {
-    background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+    background-color: var(--accent-blue);
     color: white;
     margin-top: 12px;
   }
 
   #copy-btn:hover {
-    background: linear-gradient(to right, #1d4ed8, #6b21a8);
-    transform: translateY(-2px);
+    background-color: #1d4ed8;
   }
 
   .credits {
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--card-bg), #1e1e2f);
+    background-color: var(--card-bg);
     padding: 8px 16px;
     border-radius: 20px;
     font-weight: 600;
     margin-left: 12px;
-    border: 1px solid var(--border-color);
   }
 
   .credits::before {
@@ -284,7 +218,6 @@
     border-radius: 8px;
     margin: 20px 0;
     border: 1px solid var(--border-color);
-    text-align: center;
   }
 
   #final-url {
@@ -293,18 +226,12 @@
     color: var(--accent-blue-light);
     margin-bottom: 12px;
     word-break: break-all;
-    font-family: 'Consolas', 'Monaco', monospace;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
   }
 
   .time-remaining {
     display: flex;
     align-items: center;
     font-size: 16px;
-    justify-content: center;
-    margin-bottom: 15px;
   }
 
   #time-remaining {
@@ -342,12 +269,6 @@
     border-radius: 6px;
     border-left: 4px solid var(--accent-blue);
     color: var(--text-primary);
-    animation: slideIn 0.3s ease;
-  }
-
-  @keyframes slideIn {
-    from { transform: translateX(-10px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
   }
 
   .ad-timer {
@@ -370,10 +291,6 @@
     border-left: 4px solid var(--warning);
   }
 
-  .header-glow {
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-  }
-
   @media (max-width: 768px) {
     body {
       padding: 12px;
@@ -393,11 +310,6 @@
       margin: 12px 0;
       justify-content: center;
     }
-
-    .support-notice {
-      flex-direction: column;
-      text-align: center;
-    }
   }
 </style>
 </head>
@@ -405,19 +317,14 @@
 <div id="notification-container"></div>
 
 <div class="container">
-  <h1 class="header-glow">D-TECH Subdomain Creator</h1>
-  <p style="text-align: center;">Create custom subdomains for your gist URLs</p>
+  <h1>D-TECH Subdomain Creator</h1>
+  <p>Create custom subdomains for your gist URLs</p>
 </div>
 
 <div class="container notice">
-  <p><strong>Important Notice:</strong> Your URL: <strong>https://[name].account-login.co.za</strong></p>
+  <p><strong>Important Notice:</strong> Your URL: <strong>https://[name].log-in.co.za</strong></p>
   <p>Subdomains with &lt;1 hour may be removed at any time</p>
   <p><strong>Activation Notice:</strong> URL may take 1-2 minutes to become active. IF IT DOESN'T WORK THE FIRST TIME, THE SECOND TIME IT WILL 100% WORK</p>
-</div>
-
-<div class="container notice support-notice">
-  <p><strong>Support:</strong> If you encounter any issues, please DM Preasx24 on Telegram</p>
-  <a href="https://t.me/preasx24" target="_blank" class="support-btn">Contact Preasx24</a>
 </div>
 
 <div class="container">
@@ -427,7 +334,7 @@
     <div id="name-status" class="status"></div>
     <p class="instructions">Use lowercase letters and dashes (-) only</p>
     <div class="url-preview">
-      Result: <span id="preview-url">https://.account-login.co.za</span>
+      Result: <span id="preview-url">https://.log-in.co.za</span>
     </div>
   </div>
 
@@ -454,7 +361,7 @@
 
 <div class="container" id="url-display" style="display:none;">
   <h3>Your Subdomain URL</h3>
-  <div id="final-url">https://example.account-login.co.za</div>
+  <div id="final-url">https://example.log-in.co.za</div>
   <div class="time-remaining">Time remaining: <span id="time-remaining">--:--:--</span></div>
   <button id="copy-btn">Copy URL</button>
 </div>
@@ -934,7 +841,7 @@ async function handleAction(mode) {
       }
       mapping[name] = url;
       mapping._expires[name] = Math.max(currentExpiry, getUnix()) + INITIAL_DURATION;
-      el.finalUrl.textContent = `https://${name}.account-login.co.za`;
+      el.finalUrl.textContent = `https://${name}.log-in.co.za`;
       el.urlDisplay.style.display = 'block';
     } else { // extend
       if (!mapping[name]) {
@@ -991,7 +898,7 @@ el.checkBtn.addEventListener('click', checkTime);
 el.nameInput.addEventListener('input', () => {
   const name = sanitizeName(el.nameInput.value);
   el.nameInput.value = name;
-  el.previewUrl.textContent = `https://${name || '[name]'}.account-login.co.za`;
+  el.previewUrl.textContent = `https://${name || '[name]'}.log-in.co.za`;
   if (el.nameInput._timer) clearTimeout(el.nameInput._timer);
   el.nameInput._timer = setTimeout(() => refreshButtonsBasedOnName(), 300);
 });
