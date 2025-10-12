@@ -525,6 +525,14 @@
     color: var(--text-muted);
   }
 
+  .auto-verification {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: rgba(37, 99, 235, 0.1);
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
+  }
+
   @media (max-width: 768px) {
     .container {
       padding: 1.5rem 1rem;
@@ -647,17 +655,22 @@
 
       <ol class="ad-steps">
         <li>Click the "Visit Sponsor Page" button below</li>
-        <li>Wait for the page to fully load and stay for at least <strong>10 seconds</strong></li>
-        <li>Return to this page and click "Verify Ad View"</li>
+        <li>Stay on the sponsor page for at least <strong>10 seconds</strong></li>
+        <li>Return to this page - verification happens automatically</li>
       </ol>
+
+      <div class="auto-verification">
+        <strong>Automatic Verification:</strong> We track your time on the sponsor page automatically.
+        You cannot cheat this system.
+      </div>
 
       <div class="progress-container">
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
         </div>
         <div class="progress-text">
-          <span>Verification Progress</span>
-          <span id="progressText">0%</span>
+          <span>Time on Sponsor Page</span>
+          <span id="progressText">0 seconds</span>
         </div>
       </div>
 
@@ -666,7 +679,7 @@
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        <span id="timerText">Required time: 10 seconds</span>
+        <span id="timerText">Click the sponsor link to start verification</span>
       </div>
 
       <div class="ad-actions">
@@ -678,13 +691,6 @@
           </svg>
           Visit Sponsor Page
         </a>
-        
-        <button id="verifyAdBtn" class="btn-secondary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          Verify Ad View
-        </button>
       </div>
 
       <div id="adMessage" class="ad-message" style="display: none;"></div>
@@ -725,7 +731,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const adTimer = document.getElementById('adTimer');
   const timerText = document.getElementById('timerText');
   const adMessage = document.getElementById('adMessage');
-  const verifyAdBtn = document.getElementById('verifyAdBtn');
   const adLink = document.getElementById('adLink');
   const progressFill = document.getElementById('progressFill');
   const progressText = document.getElementById('progressText');
@@ -734,32 +739,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   let githubToken = '';
   let currentHtml = '';
   let gistData = null;
-  let adInterval = null;
-
-  // Check if returning from ad with verification
-  function checkReturnFromAd() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('ad_verified')) {
-      const liveUrlFromStorage = localStorage.getItem('liveUrl');
-      if (liveUrlFromStorage) {
-        // Check if they waited at least 10 seconds
-        const adStartTime = localStorage.getItem('adStartTime');
-        if (adStartTime) {
-          const now = new Date().getTime();
-          const timePassed = now - parseInt(adStartTime);
-          const requiredTime = 10000; // 10 seconds
-          
-          if (timePassed >= requiredTime) {
-            showLiveUrl(liveUrlFromStorage);
-          } else {
-            showAdMessage(`Please wait ${Math.ceil((requiredTime - timePassed) / 1000)} more seconds before verifying`, false);
-          }
-        }
-        // Clean the URL
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }
-    }
-  }
+  let adCheckInterval = null;
+  let adTab = null;
+  let verificationComplete = false;
 
   // Validate HTML content
   function validateHtml() {
@@ -855,9 +837,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     validateHtml();
   }
 
-  // Check for returning from ad on page load
-  checkReturnFromAd();
-
   // Upload button click handler
   uploadBtn.addEventListener('click', async () => {
     if (!githubToken) {
@@ -908,11 +887,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Store the live URL in localStorage
       localStorage.setItem('liveUrl', liveRenderUrl);
 
-      // Set ad start time when user clicks the ad link
-      adLink.addEventListener('click', () => {
-        localStorage.setItem('adStartTime', new Date().getTime().toString());
-        startAdTimer();
-      });
+      // Set up ad verification
+      setupAdVerification(liveRenderUrl);
 
       // Show result container with ad verification
       resultContainer.style.display = 'block';
@@ -934,92 +910,149 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // Start the ad timer visualization
-  function startAdTimer() {
-    if (adInterval) clearInterval(adInterval);
+  // Set up automatic ad verification
+  function setupAdVerification(liveUrl) {
+    let adStartTime = null;
+    let totalTimeOnAd = 0;
+    let lastCheckTime = null;
+
+    // Remove any existing click handlers and add new one
+    adLink.replaceWith(adLink.cloneNode(true));
+    const newAdLink = document.getElementById('adLink');
     
-    adInterval = setInterval(() => {
-      const now = new Date().getTime();
-      const adStartTime = localStorage.getItem('adStartTime');
+    newAdLink.addEventListener('click', (e) => {
+      e.preventDefault();
       
-      if (!adStartTime) {
-        clearInterval(adInterval);
-        return;
+      // Open ad in new tab
+      adTab = window.open('https://otieu.com/4/10030125', '_blank');
+      
+      if (adTab) {
+        adStartTime = Date.now();
+        lastCheckTime = Date.now();
+        timerText.textContent = 'Tracking time on sponsor page...';
+        showAdMessage('Sponsor page opened. Please stay on that page for 10 seconds.', true);
+        
+        // Start checking if user is still on ad page
+        if (adCheckInterval) clearInterval(adCheckInterval);
+        adCheckInterval = setInterval(() => {
+          checkAdViewTime();
+        }, 1000);
+      } else {
+        showAdMessage('Please allow popups to open the sponsor page.', false);
+      }
+    });
+
+    // Check ad view time
+    function checkAdViewTime() {
+      if (!adStartTime) return;
+
+      const now = Date.now();
+      
+      try {
+        // Check if ad tab is still open and focused
+        if (adTab && !adTab.closed) {
+          // User is still on ad page - count this time
+          const timeSinceLastCheck = now - lastCheckTime;
+          totalTimeOnAd += timeSinceLastCheck;
+          lastCheckTime = now;
+          
+          // Update progress
+          const seconds = Math.floor(totalTimeOnAd / 1000);
+          const progress = Math.min(100, (seconds / 10) * 100);
+          
+          progressFill.style.width = `${progress}%`;
+          progressText.textContent = `${seconds} seconds`;
+          timerText.textContent = `Time on sponsor page: ${seconds}/10 seconds`;
+          
+          // Check if completed
+          if (seconds >= 10 && !verificationComplete) {
+            completeVerification(liveUrl);
+          }
+        } else {
+          // Ad tab closed or not focused
+          if (adTab && adTab.closed) {
+            // Tab was closed
+            if (totalTimeOnAd < 10000) {
+              showAdMessage('Sponsor page closed too soon. Please click the link again and stay for 10 seconds.', false);
+              resetVerification();
+            }
+          } else {
+            // User switched tabs - pause timing
+            lastCheckTime = now;
+          }
+        }
+      } catch (error) {
+        // Security error - tab is from different origin
+        // Assume user is still on ad page but we can't check directly
+        const timeSinceLastCheck = now - lastCheckTime;
+        totalTimeOnAd += timeSinceLastCheck;
+        lastCheckTime = now;
+        
+        const seconds = Math.floor(totalTimeOnAd / 1000);
+        const progress = Math.min(100, (seconds / 10) * 100);
+        
+        progressFill.style.width = `${progress}%`;
+        progressText.textContent = `${seconds} seconds`;
+        timerText.textContent = `Time on sponsor page: ${seconds}/10 seconds`;
+        
+        if (seconds >= 10 && !verificationComplete) {
+          completeVerification(liveUrl);
+        }
+      }
+    }
+
+    function resetVerification() {
+      adStartTime = null;
+      totalTimeOnAd = 0;
+      lastCheckTime = null;
+      progressFill.style.width = '0%';
+      progressText.textContent = '0 seconds';
+      timerText.textContent = 'Click the sponsor link to start verification';
+      
+      if (adCheckInterval) {
+        clearInterval(adCheckInterval);
+        adCheckInterval = null;
+      }
+    }
+
+    function completeVerification(url) {
+      verificationComplete = true;
+      
+      if (adCheckInterval) {
+        clearInterval(adCheckInterval);
+        adCheckInterval = null;
       }
       
-      const timePassed = now - parseInt(adStartTime);
-      const requiredTime = 10000; // 10 seconds
-      const progress = Math.min(100, Math.floor((timePassed / requiredTime) * 100));
+      // Mark step 3 as completed
+      document.querySelectorAll('.step')[2].classList.add('completed');
       
-      progressFill.style.width = `${progress}%`;
-      progressText.textContent = `${progress}%`;
+      adVerificationContainer.style.display = 'none';
+      liveUrlContainer.style.display = 'block';
+      copyLiveUrl.style.display = 'block';
       
-      const remaining = Math.ceil((requiredTime - timePassed) / 1000);
-      timerText.textContent = remaining > 0 ? 
-        `Required time: ${remaining} seconds remaining` : 
-        'Verification ready - click Verify Ad View';
+      liveUrl.textContent = url;
+      liveUrl.href = url;
       
-      if (timePassed >= requiredTime) {
-        clearInterval(adInterval);
-        progressFill.style.width = '100%';
-        progressText.textContent = '100%';
-        timerText.textContent = 'Verification ready - click Verify Ad View';
+      showAdMessage('✓ Ad verification successful! Your URL is now available.', true);
+      
+      // Close the ad tab if still open
+      if (adTab && !adTab.closed) {
+        setTimeout(() => {
+          try {
+            adTab.close();
+          } catch (e) {
+            // Ignore errors from closing tab
+          }
+        }, 1000);
       }
-    }, 500);
+    }
   }
-
-  // Verify ad button click handler - STRICT 10 SECOND REQUIREMENT
-  verifyAdBtn.addEventListener('click', () => {
-    const now = new Date().getTime();
-    const adStartTime = localStorage.getItem('adStartTime');
-
-    if (!adStartTime) {
-      showAdMessage('Please visit the sponsor page first by clicking the button above', false);
-      return;
-    }
-
-    const timePassed = now - parseInt(adStartTime);
-    const requiredTime = 10000; // 10 seconds
-
-    // STRICT CHECK: Only show URL if user waited at least 10 seconds
-    if (timePassed >= requiredTime) {
-      const liveUrlFromStorage = localStorage.getItem('liveUrl');
-      if (liveUrlFromStorage) {
-        showLiveUrl(liveUrlFromStorage);
-      }
-    } else {
-      // User returned too soon - show error message
-      const remaining = Math.ceil((requiredTime - timePassed) / 1000);
-      showAdMessage(`Please wait ${remaining} more seconds before verifying. You returned too quickly.`, false);
-    }
-  });
 
   // Function to show ad verification message
   function showAdMessage(message, isSuccess) {
     adMessage.textContent = message;
     adMessage.className = isSuccess ? 'ad-message ad-success' : 'ad-message ad-error';
     adMessage.style.display = 'flex';
-  }
-
-  // Function to show live URL after ad verification
-  function showLiveUrl(url) {
-    if (!url) return;
-
-    // Mark step 3 as completed
-    document.querySelectorAll('.step')[2].classList.add('completed');
-
-    adVerificationContainer.style.display = 'none';
-    liveUrlContainer.style.display = 'block';
-    copyLiveUrl.style.display = 'block';
-
-    liveUrl.textContent = url;
-    liveUrl.href = url;
-
-    // Show success message
-    showAdMessage('✓ Ad verification successful! Your URL is now available.', true);
-    
-    // Clear the interval if it's still running
-    if (adInterval) clearInterval(adInterval);
   }
 
   // Copy URL button - clears storage and reloads after copy
