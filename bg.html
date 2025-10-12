@@ -6,20 +6,24 @@
 <title>D-TECH Subdomain Creator</title>
 <style>
   :root {
-    --primary-bg: #0a0a14;
-    --secondary-bg: #12121f;
-    --card-bg: #161627;
+    --primary-bg: #1a1a2e;
+    --secondary-bg: #16213e;
+    --card-bg: #1e2a4a;
     --accent-blue: #2563eb;
     --accent-blue-light: #3b82f6;
     --accent-purple: #7e22ce;
-    --text-primary: #f3f4f6;
-    --text-secondary: #d1d5db;
-    --text-muted: #9ca3af;
-    --border-color: #2d2d42;
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
     --success: #10b981;
+    --success-light: #34d399;
     --warning: #f59e0b;
     --error: #ef4444;
+    --error-light: #f87171;
     --info: #3b82f6;
+    --available: #10b981;
+    --taken: #ef4444;
   }
 
   * {
@@ -37,8 +41,8 @@
     max-width: 1000px;
     margin: 0 auto;
     background-image: 
-      radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 20%),
-      radial-gradient(circle at 85% 30%, rgba(126, 34, 206, 0.1) 0%, transparent 20%);
+      radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(126, 34, 206, 0.15) 0%, transparent 25%);
   }
 
   h1, h2, h3 {
@@ -166,10 +170,29 @@
   }
 
   .status {
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 12px 16px;
+    border-radius: 8px;
     margin: 8px 0;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .status-available {
+    background-color: rgba(16, 185, 129, 0.15);
+    border-left: 4px solid var(--available);
+    color: var(--success-light);
+  }
+
+  .status-taken {
+    background-color: rgba(239, 68, 68, 0.15);
+    border-left: 4px solid var(--taken);
+    color: var(--error-light);
+  }
+
+  .status-icon {
+    font-size: 18px;
   }
 
   .url-preview {
@@ -248,7 +271,7 @@
   }
 
   #check-btn:hover:not(:disabled) {
-    background-color: #2d2d42;
+    background-color: #2d3748;
   }
 
   #copy-btn {
@@ -299,6 +322,16 @@
     border-radius: 6px;
   }
 
+  .time-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 6px;
+    margin: 15px 0;
+  }
+
   .time-remaining {
     display: flex;
     align-items: center;
@@ -311,6 +344,7 @@
     font-weight: 700;
     margin-left: 8px;
     color: var(--accent-blue-light);
+    font-size: 18px;
   }
 
   .log-container {
@@ -345,6 +379,16 @@
     animation: slideIn 0.3s ease;
   }
 
+  .notification-error {
+    background: rgba(239, 68, 68, 0.1) !important;
+    border-left: 4px solid var(--error) !important;
+  }
+
+  .notification-success {
+    background: rgba(16, 185, 129, 0.1) !important;
+    border-left: 4px solid var(--success) !important;
+  }
+
   @keyframes slideIn {
     from { transform: translateX(-10px); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
@@ -372,6 +416,14 @@
 
   .header-glow {
     text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+
+  .expiry-display {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid var(--border-color);
   }
 
   @media (max-width: 768px) {
@@ -412,7 +464,7 @@
 <div class="container notice">
   <p><strong>Important Notice:</strong> Your URL: <strong>https://[name].account-login.co.za</strong></p>
   <p>Subdomains with &lt;1 hour may be removed at any time</p>
-  <p><strong>Activation Notice:</strong> URL may take 1-2 minutes to become active. IF IT DOESN'T WORK THE FIRST TIME, THE SECOND TIME IT WILL 100% WORK</p>
+  <p><strong>Activation Notice:</strong> URL will be available immediately after creation</p>
 </div>
 
 <div class="container notice support-notice">
@@ -449,14 +501,21 @@
     <div>Time spent viewing ad: <span id="ad-time-spent">0</span> seconds</div>
   </div>
 
-  <p class="instructions">URL activation may take 1-2 minutes</p>
+  <p class="instructions">URL will be available immediately after creation</p>
 </div>
 
 <div class="container" id="url-display" style="display:none;">
   <h3>Your Subdomain URL</h3>
   <div id="final-url">https://example.account-login.co.za</div>
-  <div class="time-remaining">Time remaining: <span id="time-remaining">--:--:--</span></div>
+  <div class="time-display">
+    <div class="time-remaining">Time remaining: <span id="time-remaining">--:--:--</span></div>
+  </div>
   <button id="copy-btn">Copy URL</button>
+</div>
+
+<div class="container expiry-display" id="expiry-display" style="display:none;">
+  <h3>Subdomain Expiry Information</h3>
+  <div id="expiry-details">No information available</div>
 </div>
 
 <div class="container log-container">
@@ -515,7 +574,9 @@ const el = {
   timeRemaining: document.getElementById('time-remaining'),
   adStatus: document.getElementById('ad-status'),
   adStatusText: document.getElementById('ad-status-text'),
-  adTimeSpent: document.getElementById('ad-time-spent')
+  adTimeSpent: document.getElementById('ad-time-spent'),
+  expiryDisplay: document.getElementById('expiry-display'),
+  expiryDetails: document.getElementById('expiry-details')
 };
 
 /* ---------- UTIL ---------- */
@@ -524,8 +585,12 @@ const nowMs = () => Date.now();
 
 const sanitizeName = (s) => (s||'').toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
 
-const showNotification = (msg, timeout = 3500) => {
-  const d = document.createElement('div'); d.textContent = msg; el.notif.appendChild(d);
+const showNotification = (msg, type = 'info', timeout = 3500) => {
+  const d = document.createElement('div'); 
+  d.textContent = msg; 
+  if (type === 'error') d.classList.add('notification-error');
+  if (type === 'success') d.classList.add('notification-success');
+  el.notif.appendChild(d);
   setTimeout(() => d.remove(), timeout);
 };
 
@@ -638,7 +703,7 @@ async function updateMapping(newMapping) {
       log('Warning: verification mismatch — remote gist content does not match what we wrote.');
       log('Written (first 200 chars): ' + written.slice(0,200));
       log('Fetched (first 200 chars): ' + fetched.slice(0,200));
-      showNotification('Warning: gist verification mismatch. Check console/log. The script attempted to write to the gist but the raw file content differs.');
+      showNotification('Warning: gist verification mismatch. Check console/log. The script attempted to write to the gist but the raw file content differs.', 'error');
     } else {
       log('Verification OK — gist raw content matches what we wrote.');
     }
@@ -651,15 +716,15 @@ async function updateMapping(newMapping) {
 
 /* ---------- AD / CREDITS logic ---------- */
 function startAdFlow() {
-  if (adPending) return showNotification('Ad already open — return after 15s');
+  if (adPending) return showNotification('Ad already open — return after 15s', 'error');
   try { 
     adWindow = window.open('https://otieu.com/4/9630811', '_blank'); 
     if (!adWindow || adWindow.closed || typeof adWindow.closed == 'undefined') {
-      showNotification('Please allow popups for this site to view ads');
+      showNotification('Please allow popups for this site to view ads', 'error');
       return;
     }
   } catch (e) { 
-    showNotification('Please allow popups for this site to view ads');
+    showNotification('Please allow popups for this site to view ads', 'error');
     adWindow = null; 
     return;
   }
@@ -683,7 +748,7 @@ function startAdFlow() {
   adTimerElement.textContent = '15s';
   el.adBtn.appendChild(adTimerElement);
 
-  showNotification('Ad opened. View the ad for at least 15 seconds.');
+  showNotification('Ad opened. View the ad for at least 15 seconds.', 'info');
   log(`Ad started at ${new Date(adStartTime).toLocaleTimeString()}`);
 
   // Start timer to track ad viewing time
@@ -734,7 +799,7 @@ function awardAdCreditsIfEligible() {
 
   // Check if user spent enough time with the page hidden (viewing the ad)
   if (adTimeSpent < 15) {
-    showNotification(`You didn't view the ad long enough (${adTimeSpent}s). Please view the ad for at least 15 seconds.`);
+    showNotification(`You didn't view the ad long enough (${adTimeSpent}s). Please view the ad for at least 15 seconds.`, 'error');
     log(`Ad viewed for only ${adTimeSpent} seconds. Credits not awarded.`);
 
     // Reset the ad flow so they can try again
@@ -768,7 +833,7 @@ function awardAdCreditsIfEligible() {
   lastAdAwardAt = adStartTime;
   credits += 2;
   updateCreditsUI();
-  showNotification(`Ad complete — awarded 2 credits. Credits: ${credits}`);
+  showNotification(`Ad complete — awarded 2 credits. Credits: ${credits}`, 'success');
   log(`Ad awarded 2 credits at ${new Date().toLocaleTimeString()}. Total credits: ${credits}`);
   adPending = false;
   try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
@@ -824,6 +889,7 @@ document.addEventListener('visibilitychange', () => {
         // User returned too quickly
         log(`User returned too quickly after ${Math.floor(timeAway/1000)} seconds`);
         el.adStatusText.textContent = `You returned too quickly. Please view the ad for 15 seconds.`;
+        showNotification(`You returned too quickly after ${Math.floor(timeAway/1000)} seconds. Please view the ad for 15 seconds.`, 'error');
       }
     }
   }
@@ -838,6 +904,7 @@ window.addEventListener('focus', () => {
     } else {
       log(`User returned too quickly after ${Math.floor(timeAway/1000)} seconds`);
       el.adStatusText.textContent = `You returned too quickly. Please view the ad for 15 seconds.`;
+      showNotification(`You returned too quickly after ${Math.floor(timeAway/1000)} seconds. Please view the ad for 15 seconds.`, 'error');
     }
   }
 });
@@ -849,31 +916,39 @@ async function refreshButtonsBasedOnName() {
   const name = sanitizeName(el.nameInput.value.trim());
   if (!name) {
     el.nameStatus.textContent = '';
+    el.nameStatus.className = 'status';
     el.createBtn.disabled = true;
     el.extendBtn.disabled = true;
     stopLiveTimer();
+    el.expiryDisplay.style.display = 'none';
     return;
   }
   try {
     const mapping = await getMapping();
     const exists = Boolean(mapping[name]);
     if (exists) {
-      el.nameStatus.textContent = `"${name}" already exists — you can extend (if you have credits).`;
+      el.nameStatus.innerHTML = `<span class="status-icon">❌</span> <span>"${name}" is already taken — you can extend (if you have credits).</span>`;
+      el.nameStatus.className = 'status status-taken';
       el.createBtn.disabled = true;
       el.extendBtn.disabled = opInProgress || credits <= 0;
       startLiveTimerForName(name, mapping);
+      el.expiryDisplay.style.display = 'block';
     } else {
-      el.nameStatus.textContent = `"${name}" is available — you can create it (if you have credits).`;
+      el.nameStatus.innerHTML = `<span class="status-icon">✅</span> <span>"${name}" is available — you can create it (if you have credits).</span>`;
+      el.nameStatus.className = 'status status-available';
       el.createBtn.disabled = opInProgress || credits <= 0;
       el.extendBtn.disabled = true;
       stopLiveTimer();
       el.timeRemaining.textContent = '--:--:--';
+      el.expiryDisplay.style.display = 'none';
     }
   } catch (e) {
-    el.nameStatus.textContent = 'Name check failed';
+    el.nameStatus.innerHTML = `<span class="status-icon">⚠️</span> <span>Name check failed</span>`;
+    el.nameStatus.className = 'status';
     el.createBtn.disabled = true;
     el.extendBtn.disabled = true;
     stopLiveTimer();
+    el.expiryDisplay.style.display = 'none';
   }
   updateCreditsUI();
 }
@@ -896,6 +971,23 @@ function startLiveTimerForName(name, mapping) {
       const expires = Number(latest._expires?.[name] || 0);
       const rem = Math.max(0, expires - getUnix());
       el.timeRemaining.textContent = formatHMS(rem);
+      
+      // Update expiry details
+      if (rem > 0) {
+        const hrs = Math.floor(rem/3600);
+        const mins = Math.floor((rem%3600)/60);
+        el.expiryDetails.innerHTML = `
+          <p><strong>Subdomain:</strong> ${name}</p>
+          <p><strong>Expires in:</strong> ${hrs}h ${mins}m (${formatHMS(rem)})</p>
+          <p><strong>Full URL:</strong> https://${name}.account-login.co.za</p>
+        `;
+      } else {
+        el.expiryDetails.innerHTML = `
+          <p><strong>Subdomain:</strong> ${name}</p>
+          <p><strong>Status:</strong> Expired</p>
+          <p><strong>Full URL:</strong> https://${name}.account-login.co.za</p>
+        `;
+      }
     } catch (e) {
       el.timeRemaining.textContent = '--:--:--';
     }
@@ -908,12 +1000,12 @@ function stopLiveTimer() {
 
 /* ---------- CORE: create / extend / check ---------- */
 async function handleAction(mode) {
-  if (opInProgress) return showNotification('Operation in progress — please wait...');
+  if (opInProgress) return showNotification('Operation in progress — please wait...', 'error');
   const name = sanitizeName(el.nameInput.value.trim());
   const url = el.urlInput.value.trim();
-  if (!name) return showNotification('Enter subdomain name.');
-  if (mode === 'create' && !url) return showNotification('Enter URL to point the subdomain to.');
-  if (credits <= 0) return showNotification('No credits — press the ad button and wait 15s.');
+  if (!name) return showNotification('Enter subdomain name.', 'error');
+  if (mode === 'create' && !url) return showNotification('Enter URL to point the subdomain to.', 'error');
+  if (credits <= 0) return showNotification('No credits — press the ad button and wait 15s.', 'error');
 
   opInProgress = true;
   el.createBtn.disabled = true;
@@ -928,7 +1020,7 @@ async function handleAction(mode) {
 
     if (mode === 'create') {
       if (mapping[name]) {
-        showNotification('Subdomain already exists — cannot create. Use extend.');
+        showNotification('Subdomain already exists — cannot create. Use extend.', 'error');
         log('Create aborted: already exists.');
         return;
       }
@@ -938,7 +1030,7 @@ async function handleAction(mode) {
       el.urlDisplay.style.display = 'block';
     } else { // extend
       if (!mapping[name]) {
-        showNotification('Subdomain does not exist — create it first.');
+        showNotification('Subdomain does not exist — create it first.', 'error');
         log('Extend aborted: does not exist.');
         return;
       }
@@ -951,13 +1043,13 @@ async function handleAction(mode) {
     // consume credit only after successful update
     credits = Math.max(0, credits - 1);
     updateCreditsUI();
-    showNotification(`${mode} successful. Credits left: ${credits}`);
+    showNotification(`${mode} successful. Credits left: ${credits}`, 'success');
     log(`${mode} done for ${name}. Credits left: ${credits}. New expiry: ${Number(updated._expires[name]||0)}`);
 
     await refreshButtonsBasedOnName();
   } catch (e) {
     log(`Error during ${mode}: ${e.message}`);
-    showNotification(`Operation failed: ${e.message}`);
+    showNotification(`Operation failed: ${e.message}`, 'error');
   } finally {
     opInProgress = false;
     await refreshButtonsBasedOnName();
@@ -970,19 +1062,33 @@ el.extendBtn.addEventListener('click', () => handleAction('extend'));
 /* ---------- check time ---------- */
 async function checkTime() {
   const name = sanitizeName(el.nameInput.value.trim());
-  if (!name) return showNotification('Enter a name first');
+  if (!name) return showNotification('Enter a name first', 'error');
   try {
     const mapping = await getMapping();
     const expires = mapping._expires?.[name];
-    if (!expires) { log('No expiry set'); showNotification('No expiry set'); return; }
+    if (!expires) { 
+      log('No expiry set'); 
+      showNotification('No expiry set for this subdomain', 'error'); 
+      return; 
+    }
     const remaining = Math.max(0, Number(expires) - getUnix());
     const mins = Math.floor(remaining / 60);
     const hrs = Math.floor(mins / 60);
     const minPart = mins % 60;
-    log(`Time remaining for ${name}: ${hrs}h ${minPart}m`);
+    const message = `Time remaining for ${name}: ${hrs}h ${minPart}m (${formatHMS(remaining)})`;
+    log(message);
+    showNotification(message, 'info');
+    
+    // Update expiry display
+    el.expiryDisplay.style.display = 'block';
+    el.expiryDetails.innerHTML = `
+      <p><strong>Subdomain:</strong> ${name}</p>
+      <p><strong>Expires in:</strong> ${hrs}h ${minPart}m (${formatHMS(remaining)})</p>
+      <p><strong>Full URL:</strong> https://${name}.account-login.co.za</p>
+    `;
   } catch (e) {
     log('Check time failed: ' + e.message);
-    showNotification('Check failed');
+    showNotification('Check failed: ' + e.message, 'error');
   }
 }
 el.checkBtn.addEventListener('click', checkTime);
@@ -997,8 +1103,13 @@ el.nameInput.addEventListener('input', () => {
 });
 
 el.copyBtn.addEventListener('click', async () => {
-  try { await navigator.clipboard.writeText(el.finalUrl.textContent); showNotification('URL copied!'); }
-  catch { showNotification('Failed to copy'); }
+  try { 
+    await navigator.clipboard.writeText(el.finalUrl.textContent); 
+    showNotification('URL copied!', 'success'); 
+  }
+  catch { 
+    showNotification('Failed to copy', 'error'); 
+  }
 });
 
 /* ---------- init ---------- */
