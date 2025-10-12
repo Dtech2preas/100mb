@@ -742,7 +742,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (urlParams.has('ad_verified')) {
       const liveUrlFromStorage = localStorage.getItem('liveUrl');
       if (liveUrlFromStorage) {
-        showLiveUrl(liveUrlFromStorage);
+        // Check if they waited at least 10 seconds
+        const adStartTime = localStorage.getItem('adStartTime');
+        if (adStartTime) {
+          const now = new Date().getTime();
+          const timePassed = now - parseInt(adStartTime);
+          const requiredTime = 10000; // 10 seconds
+          
+          if (timePassed >= requiredTime) {
+            showLiveUrl(liveUrlFromStorage);
+          } else {
+            showAdMessage(`Please wait ${Math.ceil((requiredTime - timePassed) / 1000)} more seconds before verifying`, false);
+          }
+        }
         // Clean the URL
         window.history.replaceState({}, document.title, window.location.pathname);
       }
@@ -956,7 +968,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, 500);
   }
 
-  // Verify ad button click handler
+  // Verify ad button click handler - STRICT 10 SECOND REQUIREMENT
   verifyAdBtn.addEventListener('click', () => {
     const now = new Date().getTime();
     const adStartTime = localStorage.getItem('adStartTime');
@@ -969,14 +981,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const timePassed = now - parseInt(adStartTime);
     const requiredTime = 10000; // 10 seconds
 
+    // STRICT CHECK: Only show URL if user waited at least 10 seconds
     if (timePassed >= requiredTime) {
       const liveUrlFromStorage = localStorage.getItem('liveUrl');
       if (liveUrlFromStorage) {
         showLiveUrl(liveUrlFromStorage);
       }
     } else {
+      // User returned too soon - show error message
       const remaining = Math.ceil((requiredTime - timePassed) / 1000);
-      showAdMessage(`Please stay on the sponsor page for ${remaining} more seconds before verifying`, false);
+      showAdMessage(`Please wait ${remaining} more seconds before verifying. You returned too quickly.`, false);
     }
   });
 
