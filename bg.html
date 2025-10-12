@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>D-TECH Subdomain Creator</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HTML to Live Website Converter</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary-bg: #1a1a2e;
-    --secondary-bg: #16213e;
-    --card-bg: #1e2a4a;
-    --accent-blue: #2563eb;
-    --accent-blue-light: #3b82f6;
-    --accent-purple: #7e22ce;
-    --text-primary: #f8fafc;
-    --text-secondary: #e2e8f0;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-light: #60a5fa;
+    --success: #059669;
+    --error: #dc2626;
+    --warning: #d97706;
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card-light: #334155;
+    --text: #f8fafc;
+    --text-light: #cbd5e1;
     --text-muted: #94a3b8;
-    --border-color: #334155;
-    --success: #10b981;
-    --success-light: #34d399;
-    --warning: #f59e0b;
-    --error: #ef4444;
-    --error-light: #f87171;
-    --info: #3b82f6;
-    --available: #10b981;
-    --taken: #ef4444;
+    --border: #334155;
+    --accent: #4f46e5;
+    --radius: 8px;
   }
 
   * {
@@ -33,1094 +32,1043 @@
   }
 
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--primary-bg);
-    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
     line-height: 1.6;
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    background-image: 
-      radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 25%),
-      radial-gradient(circle at 85% 30%, rgba(126, 34, 206, 0.15) 0%, transparent 25%);
-  }
-
-  h1, h2, h3 {
-    color: var(--text-primary);
-    margin-bottom: 16px;
-  }
-
-  h1 {
-    font-size: 32px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 8px;
-    text-align: center;
-    padding: 10px;
-  }
-
-  p {
-    margin-bottom: 12px;
-    color: var(--text-secondary);
+    padding: 0;
   }
 
   .container {
-    background-color: var(--secondary-bg);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-height: 100vh;
   }
 
-  .container:hover {
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+
+  .card {
+    background-color: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
   }
 
-  .notice {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(59, 130, 246, 0.1));
-    border-left: 4px solid var(--accent-blue);
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .notice::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-  }
-
-  .notice strong {
-    color: var(--accent-blue-light);
-  }
-
-  .support-notice {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(59, 130, 246, 0.1));
-    border-left: 4px solid var(--success);
+  h2 {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 0.75rem;
   }
 
-  .support-notice p {
-    margin-bottom: 0;
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .support-btn {
-    background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
-    color: white;
-    border: none;
-    padding: 10px 20px;
+  h2 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary);
     border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    white-space: nowrap;
-  }
-
-  .support-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  }
-
-  .form-group {
-    margin-bottom: 20px;
+    color: white;
+    font-size: 0.9rem;
   }
 
   label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
   }
 
-  input {
+  input, textarea {
     width: 100%;
-    padding: 12px 16px;
-    margin: 6px 0;
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    color: var(--text-primary);
-    font-size: 16px;
-    transition: all 0.2s ease;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    font-family: 'Fira Code', monospace, 'Inter', sans-serif;
+    background-color: rgba(15, 23, 42, 0.5);
+    color: var(--text);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  input:focus {
+  textarea {
+    min-height: 250px;
+    resize: vertical;
+  }
+
+  input:focus, textarea:focus {
     outline: none;
-    border-color: var(--accent-blue);
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
   }
 
-  .status {
-    padding: 12px 16px;
-    border-radius: 8px;
-    margin: 8px 0;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .status-available {
-    background-color: rgba(16, 185, 129, 0.15);
-    border-left: 4px solid var(--available);
-    color: var(--success-light);
-  }
-
-  .status-taken {
-    background-color: rgba(239, 68, 68, 0.15);
-    border-left: 4px solid var(--taken);
-    color: var(--error-light);
-  }
-
-  .status-icon {
-    font-size: 18px;
-  }
-
-  .url-preview {
-    background-color: var(--card-bg);
-    padding: 12px;
-    border-radius: 6px;
-    margin: 12px 0;
-    border: 1px solid var(--border-color);
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 14px;
-  }
-
-  .button-group {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    margin: 16px 0;
-  }
-
   button {
-    padding: 12px 20px;
+    background-color: var(--primary);
+    color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--radius);
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    display: inline-flex;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
+  }
+
+  button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
   }
 
   button:disabled {
-    opacity: 0.5;
+    background-color: #475569;
     cursor: not-allowed;
+    transform: none;
+    opacity: 0.7;
   }
 
-  #ad-btn {
-    background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
-    color: white;
-    position: relative;
+  .btn-secondary {
+    background-color: var(--card-light);
+    color: var(--text);
   }
 
-  #ad-btn:hover:not(:disabled) {
-    background: linear-gradient(to right, #6b21a8, #2563eb);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(126, 34, 206, 0.3);
+  .btn-secondary:hover {
+    background-color: var(--border);
   }
 
-  #create-btn {
-    background: linear-gradient(to right, var(--accent-blue), var(--info));
-    color: white;
-  }
-
-  #create-btn:hover:not(:disabled) {
-    background: linear-gradient(to right, #1d4ed8, #2563eb);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-  }
-
-  #extend-btn {
-    background: linear-gradient(to right, var(--success), #0ea5e9);
-    color: white;
-  }
-
-  #extend-btn:hover:not(:disabled) {
-    background: linear-gradient(to right, #059669, #0284c7);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-  }
-
-  #check-btn {
-    background-color: var(--card-bg);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-  }
-
-  #check-btn:hover:not(:disabled) {
-    background-color: #2d3748;
-  }
-
-  #copy-btn {
-    background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
-    color: white;
-    margin-top: 12px;
-  }
-
-  #copy-btn:hover {
-    background: linear-gradient(to right, #1d4ed8, #6b21a8);
-    transform: translateY(-2px);
-  }
-
-  .credits {
-    display: inline-flex;
-    align-items: center;
-    background: linear-gradient(135deg, var(--card-bg), #1e1e2f);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    margin-left: 12px;
-    border: 1px solid var(--border-color);
-  }
-
-  .credits::before {
-    content: "🪙";
-    margin-right: 8px;
-  }
-
-  #url-display {
-    background-color: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-    border: 1px solid var(--border-color);
-    text-align: center;
-  }
-
-  #final-url {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--accent-blue-light);
-    margin-bottom: 12px;
-    word-break: break-all;
-    font-family: 'Consolas', 'Monaco', monospace;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-  }
-
-  .time-display {
+  .preview-container {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
+    overflow: hidden;
+    height: 300px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 6px;
-    margin: 15px 0;
+    flex-direction: column;
+    background-color: rgba(15, 23, 42, 0.5);
   }
 
-  .time-remaining {
+  .preview-header {
+    background-color: var(--card);
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    font-size: 16px;
-    justify-content: center;
-    margin-bottom: 15px;
+    color: var(--text-light);
+    font-size: 0.9rem;
   }
 
-  #time-remaining {
-    font-weight: 700;
-    margin-left: 8px;
-    color: var(--accent-blue-light);
-    font-size: 18px;
-  }
-
-  .log-container {
-    background-color: var(--primary-bg);
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 20px;
-    border: 1px solid var(--border-color);
-  }
-
-  #log {
-    height: 220px;
+  .preview-content {
+    flex-grow: 1;
     overflow: auto;
-    background-color: #111;
-    color: #bfb;
-    padding: 16px;
-    border-radius: 6px;
-    white-space: pre-wrap;
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 14px;
-    margin-top: 12px;
-    border: 1px solid #2d2d42;
+    padding: 1.5rem;
+    background-color: rgba(2, 6, 23, 0.7);
+    font-family: 'Fira Code', monospace;
+    white-space: pre;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    tab-size: 2;
   }
 
-  #notification-container > div {
-    padding: 12px 16px;
-    margin: 8px 0;
-    background: rgba(37, 99, 235, 0.1);
-    border-radius: 6px;
-    border-left: 4px solid var(--accent-blue);
-    color: var(--text-primary);
-    animation: slideIn 0.3s ease;
+  .result-container {
+    display: none;
+    margin-top: 2rem;
+    animation: fadeIn 0.5s ease;
   }
 
-  .notification-error {
-    background: rgba(239, 68, 68, 0.1) !important;
-    border-left: 4px solid var(--error) !important;
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  .notification-success {
-    background: rgba(16, 185, 129, 0.1) !important;
-    border-left: 4px solid var(--success) !important;
+  .result-card {
+    background-color: var(--card);
+    border-left: 4px solid var(--success);
+    padding: 2rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
   }
 
-  @keyframes slideIn {
-    from { transform: translateX(-10px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+  .result-card h2 {
+    color: var(--success);
+    margin-bottom: 1rem;
+  }
+
+  .url-container {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    word-break: break-all;
+    transition: all 0.3s ease;
+  }
+
+  .url-container:hover {
+    border-color: var(--primary);
+  }
+
+  .url-label {
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    display: block;
+    font-size: 0.9rem;
+  }
+
+  .url-link {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+    display: inline-block;
+    transition: color 0.3s ease;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+  }
+
+  .url-link:hover {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    font-weight: 500;
+    color: var(--text-light);
+  }
+
+  .spinner {
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-radius: 50%;
+    border-top: 2px solid var(--primary);
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: rgba(30, 41, 59, 0.5);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+  }
+
+  .step:hover {
+    background-color: rgba(30, 41, 59, 0.8);
+  }
+
+  .step-number {
+    background-color: var(--card-light);
+    color: var(--text-muted);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    font-weight: 500;
+    color: var(--text-light);
+  }
+
+  .step.completed .step-number {
+    background-color: var(--success);
+    color: white;
+  }
+
+  .step.completed .step-text {
+    color: var(--text);
+  }
+
+  .step.active .step-number {
+    background-color: var(--primary);
+    color: white;
+  }
+
+  .token-status {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    background-color: rgba(30, 41, 59, 0.5);
+  }
+
+  .ad-verification {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ad-verification h3 {
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
   }
 
   .ad-timer {
-    display: inline-block;
-    margin-left: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.5rem 0;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: rgba(37, 99, 235, 0.1);
+    border-radius: var(--radius);
+  }
+
+  .ad-button {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    margin: 0;
+  }
+
+  .ad-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+
+  .ad-message {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .ad-success {
+    background-color: rgba(5, 150, 105, 0.1);
+    color: var(--success);
+    border: 1px solid var(--success);
+  }
+
+  .ad-error {
+    background-color: rgba(220, 38, 38, 0.1);
+    color: var(--error);
+    border: 1px solid var(--error);
+  }
+
+  .ad-steps {
+    text-align: left;
+    margin: 1.5rem auto;
+    max-width: 500px;
+  }
+
+  .ad-steps li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .ad-steps li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
     font-weight: bold;
-    color: var(--accent-blue-light);
   }
 
-  .instructions {
+  .file-upload {
+    position: relative;
+    margin-bottom: 1.25rem;
+  }
+
+  .file-upload input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .file-upload-label {
+    display: block;
+    padding: 1rem;
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-light);
+  }
+
+  .file-upload-label:hover {
+    border-color: var(--primary);
+    background-color: rgba(59, 130, 246, 0.05);
+  }
+
+  .file-upload-label span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
-    font-size: 14px;
   }
 
-  .ad-status {
-    margin-top: 10px;
-    padding: 10px;
-    background: var(--card-bg);
-    border-radius: 6px;
-    border-left: 4px solid var(--warning);
+  .ad-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
   }
 
-  .header-glow {
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  .ad-actions button {
+    flex: 1;
+    margin: 0;
   }
 
-  .expiry-display {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-    border: 1px solid var(--border-color);
+  .progress-container {
+    margin: 1.5rem 0;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background-color: var(--card-light);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background-color: var(--primary);
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  .progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-muted);
   }
 
   @media (max-width: 768px) {
-    body {
-      padding: 12px;
+    .container {
+      padding: 1.5rem 1rem;
     }
 
-    .button-group {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .card {
+      padding: 1.5rem;
+    }
+
+    .ad-actions {
       flex-direction: column;
-      align-items: stretch;
-    }
-
-    button {
-      width: 100%;
-      margin: 4px 0;
-    }
-
-    .credits {
-      margin: 12px 0;
-      justify-content: center;
-    }
-
-    .support-notice {
-      flex-direction: column;
-      text-align: center;
     }
   }
 </style>
 </head>
 <body>
-<div id="notification-container"></div>
 
 <div class="container">
-  <h1 class="header-glow">D-TECH Subdomain Creator</h1>
-  <p style="text-align: center;">Create custom subdomains for your gist URLs</p>
-</div>
+  <header>
+    <h1>HTML to Live Website Converter</h1>
+    <p class="subtitle">Convert your HTML code to a live website with one click</p>
+  </header>
 
-<div class="container notice">
-  <p><strong>Important Notice:</strong> Your URL: <strong>https://[name].account-login.co.za</strong></p>
-  <p>Subdomains with &lt;1 hour may be removed at any time</p>
-  <p><strong>Activation Notice:</strong> URL will be available immediately after creation</p>
-</div>
-
-<div class="container notice support-notice">
-  <p><strong>Support:</strong> If you encounter any issues, please DM Preasx24 on Telegram</p>
-  <a href="https://t.me/preasx24" target="_blank" class="support-btn">Contact Preasx24</a>
-</div>
-
-<div class="container">
-  <div class="form-group">
-    <label for="name">Subdomain Name</label>
-    <input type="text" id="name" placeholder="Enter your subdomain name (e.g. lefa)" autocomplete="off" />
-    <div id="name-status" class="status"></div>
-    <p class="instructions">Use lowercase letters and dashes (-) only</p>
-    <div class="url-preview">
-      Result: <span id="preview-url">https://.account-login.co.za</span>
+  <div class="card">
+    <h2><span class="icon">1</span> Authentication</h2>
+    <div class="token-status" id="tokenStatus">
+      <div class="token-loading">
+        <div class="spinner"></div>
+        <span>Loading GitHub token...</span>
+      </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="url">Gist URL (Required for creation)</label>
-    <input type="url" id="url" placeholder="https://gist.github.com/..." />
+  <div class="card">
+    <h2><span class="icon">2</span> Enter Your HTML</h2>
+    <label for="htmlInput">Paste your HTML code below:</label>
+    <textarea id="htmlInput" placeholder="<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+</head>
+<body>
+  <!-- Your HTML content here -->
+</body>
+</html>"></textarea>
+
+    <div class="file-upload">
+      <label class="file-upload-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        Or upload HTML file
+        <span>(Click to browse or drag & drop)</span>
+        <input type="file" id="fileInput" accept=".html,.htm,.txt" />
+      </label>
+    </div>
+
+    <div class="preview-container">
+      <div class="preview-header">
+        <span>HTML Preview</span>
+        <span id="html-length">0 characters</span>
+      </div>
+      <div class="preview-content" id="htmlPreview"></div>
+    </div>
+
+    <div class="status" id="htmlStatus">
+      <div class="spinner"></div>
+      <span>Waiting for HTML content...</span>
+    </div>
   </div>
 
-  <div class="button-group">
-    <button id="ad-btn">Press Ad to Get 2 Actions (Must Wait 15s)</button>
-    <button id="create-btn" disabled>Create (2h)</button>
-    <button id="extend-btn" disabled>Extend 12h</button>
-    <button id="check-btn">Check Time</button>
-    <div class="credits">Credits: <span id="credits-display">0</span></div>
+  <div class="card">
+    <h2><span class="icon">3</span> Upload & Convert</h2>
+    <p>Upload your HTML to GitHub Gist and get a live-rendering URL:</p>
+    <button id="uploadBtn" disabled>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+      Upload & Generate Live URL
+    </button>
+
+    <div class="status" id="uploadStatus" style="display: none;">
+      <div class="spinner"></div>
+      <span id="uploadStatusText">Uploading to GitHub...</span>
+    </div>
   </div>
 
-  <div id="ad-status" class="ad-status" style="display: none;">
-    <strong>Ad Status:</strong> <span id="ad-status-text">Waiting for you to view the ad...</span>
-    <div>Time spent viewing ad: <span id="ad-time-spent">0</span> seconds</div>
+  <div class="result-container" id="resultContainer">
+    <div class="result-card">
+      <h2>Website Successfully Created</h2>
+      <p>Your HTML has been uploaded and converted to a live website. Complete the verification to access your URL.</p>
+    </div>
+
+    <div class="step completed">
+      <div class="step-number">1</div>
+      <div class="step-text">HTML loaded and validated</div>
+    </div>
+
+    <div class="step completed">
+      <div class="step-number">2</div>
+      <div class="step-text">Uploaded to GitHub Gist</div>
+    </div>
+
+    <div class="step active">
+      <div class="step-number">3</div>
+      <div class="step-text">Complete ad verification</div>
+    </div>
+
+    <div id="adVerificationContainer" class="ad-verification">
+      <h3>Ad Verification Required</h3>
+      <p>To access your live website URL, please complete the following steps:</p>
+
+      <ol class="ad-steps">
+        <li>Click the "Visit Sponsor Page" button below</li>
+        <li>Wait for the page to fully load and stay for at least <strong>10 seconds</strong></li>
+        <li>Return to this page and click "Verify Ad View"</li>
+      </ol>
+
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text">
+          <span>Verification Progress</span>
+          <span id="progressText">0%</span>
+        </div>
+      </div>
+
+      <div class="ad-timer" id="adTimer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span id="timerText">Required time: 10 seconds</span>
+      </div>
+
+      <div class="ad-actions">
+        <a href="https://otieu.com/4/10030125" target="_blank" class="ad-button" id="adLink">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          Visit Sponsor Page
+        </a>
+        
+        <button id="verifyAdBtn" class="btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Verify Ad View
+        </button>
+      </div>
+
+      <div id="adMessage" class="ad-message" style="display: none;"></div>
+    </div>
+
+    <div class="url-container" id="liveUrlContainer" style="display: none;">
+      <span class="url-label">Live Website URL:</span>
+      <a href="#" class="url-link" id="liveUrl" target="_blank"></a>
+    </div>
+
+    <button id="copyLiveUrl" style="background-color: var(--success); display: none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy Live URL
+    </button>
   </div>
-
-  <p class="instructions">URL will be available immediately after creation</p>
-</div>
-
-<div class="container" id="url-display" style="display:none;">
-  <h3>Your Subdomain URL</h3>
-  <div id="final-url">https://example.account-login.co.za</div>
-  <div class="time-display">
-    <div class="time-remaining">Time remaining: <span id="time-remaining">--:--:--</span></div>
-  </div>
-  <button id="copy-btn">Copy URL</button>
-</div>
-
-<div class="container expiry-display" id="expiry-display" style="display:none;">
-  <h3>Subdomain Expiry Information</h3>
-  <div id="expiry-details">No information available</div>
-</div>
-
-<div class="container log-container">
-  <h3>System Log</h3>
-  <span id="status-indicator"></span>
-  <pre id="log">System ready. Press the ad button to get credits.</pre>
 </div>
 
 <script>
-/* ---------- CONFIG ---------- */
-const MAPPING_RAW_URL = "https://gist.githubusercontent.com/Preasx24/451a35def0daf123212fcb9729d3dfdd/raw/gistfile1.txt";
-const TOKEN_RAW_URL   = "https://gist.githubusercontent.com/Preasx24/137f29d4b3b32c251bf6b7ab2b3fae28/raw/gistfile1.txt";
-const GIST_ID         = "451a35def0daf123212fcb9729d3dfdd";
-const FILE_NAME       = "gistfile1.txt";          // explicit file name we PATCH
-const CACHE_TTL       = 30000;                    // 30s cache for mapping
-const INITIAL_DURATION = 7200;                    // 2 hours (seconds)
-const EXTENSION_DURATION = 43200;                 // 12 hours (seconds)
-const AD_WAIT_MS      = 15000;                    // 15 seconds required
+document.addEventListener('DOMContentLoaded', async () => {
+  // DOM Elements
+  const tokenStatus = document.getElementById('tokenStatus');
+  const htmlInput = document.getElementById('htmlInput');
+  const fileInput = document.getElementById('fileInput');
+  const htmlPreview = document.getElementById('htmlPreview');
+  const htmlLength = document.getElementById('html-length');
+  const htmlStatus = document.getElementById('htmlStatus');
+  const uploadBtn = document.getElementById('uploadBtn');
+  const uploadStatus = document.getElementById('uploadStatus');
+  const uploadStatusText = document.getElementById('uploadStatusText');
+  const resultContainer = document.getElementById('resultContainer');
+  const liveUrl = document.getElementById('liveUrl');
+  const copyLiveUrl = document.getElementById('copyLiveUrl');
+  const liveUrlContainer = document.getElementById('liveUrlContainer');
+  const adVerificationContainer = document.getElementById('adVerificationContainer');
+  const adTimer = document.getElementById('adTimer');
+  const timerText = document.getElementById('timerText');
+  const adMessage = document.getElementById('adMessage');
+  const verifyAdBtn = document.getElementById('verifyAdBtn');
+  const adLink = document.getElementById('adLink');
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
 
-/* ---------- STATE ---------- */
-let mappingCache = null;
-let lastCacheTime = 0;
-let adWindow = null;
-let adStartTime = 0;
-let adPending = false;
-let lastAdAwardAt = 0;
-let credits = 0;
-let pollingInterval = null;
-let opInProgress = false;               // single UI-level mutex
-let liveTimerInterval = null;
-let adTimerInterval = null;
-let adTimerElement = null;
-let adTimeSpent = 0;
-let adStatusElement = null;
-let adStatusTextElement = null;
-let adTimeSpentElement = null;
-let pageHiddenTime = 0;
-let pageVisibleTime = 0;
+  // Store token and HTML
+  let githubToken = '';
+  let currentHtml = '';
+  let gistData = null;
+  let adInterval = null;
 
-/* ---------- ELEMENTS ---------- */
-const el = {
-  notif: document.getElementById('notification-container'),
-  log: document.getElementById('log'),
-  nameInput: document.getElementById('name'),
-  nameStatus: document.getElementById('name-status'),
-  previewUrl: document.getElementById('preview-url'),
-  urlInput: document.getElementById('url'),
-  adBtn: document.getElementById('ad-btn'),
-  createBtn: document.getElementById('create-btn'),
-  extendBtn: document.getElementById('extend-btn'),
-  checkBtn: document.getElementById('check-btn'),
-  finalUrl: document.getElementById('final-url'),
-  urlDisplay: document.getElementById('url-display'),
-  copyBtn: document.getElementById('copy-btn'),
-  creditsDisplay: document.getElementById('credits-display'),
-  timeRemaining: document.getElementById('time-remaining'),
-  adStatus: document.getElementById('ad-status'),
-  adStatusText: document.getElementById('ad-status-text'),
-  adTimeSpent: document.getElementById('ad-time-spent'),
-  expiryDisplay: document.getElementById('expiry-display'),
-  expiryDetails: document.getElementById('expiry-details')
-};
-
-/* ---------- UTIL ---------- */
-const getUnix = () => Math.floor(Date.now() / 1000);
-const nowMs = () => Date.now();
-
-const sanitizeName = (s) => (s||'').toLowerCase().replace(/[^a-z0-9-]/g,'').replace(/-+/g,'-').replace(/^-|-$/g,'');
-
-const showNotification = (msg, type = 'info', timeout = 3500) => {
-  const d = document.createElement('div'); 
-  d.textContent = msg; 
-  if (type === 'error') d.classList.add('notification-error');
-  if (type === 'success') d.classList.add('notification-success');
-  el.notif.appendChild(d);
-  setTimeout(() => d.remove(), timeout);
-};
-
-const log = (msg) => {
-  const t = new Date().toLocaleTimeString();
-  const lines = el.log.textContent.split('\n').slice(0, 200);
-  el.log.textContent = `[${t}] ${msg}\n${lines.join('\n')}`;
-  el.log.scrollTop = el.log.scrollHeight;
-};
-
-const updateCreditsUI = () => {
-  el.creditsDisplay.textContent = credits;
-};
-
-/* ---------- NETWORK ---------- */
-async function fetchRawText(url) {
-  const r = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" });
-  if (!r.ok) throw new Error(`HTTP ${r.status}`);
-  return await r.text();
-}
-
-async function getMapping() {
-  try {
-    const now = nowMs();
-    if (mappingCache && now - lastCacheTime < CACHE_TTL) return mappingCache;
-    const text = await fetchRawText(MAPPING_RAW_URL);
-    let parsed = {};
-    if (!text || !text.trim()) parsed = {};
-    else {
-      try { parsed = JSON.parse(text); } 
-      catch(e) {
-        const maybeStart = text.indexOf('{'), maybeEnd = text.lastIndexOf('}');
-        if (maybeStart >= 0 && maybeEnd > maybeStart) {
-          try { parsed = JSON.parse(text.substring(maybeStart, maybeEnd+1)); }
-          catch(_) { parsed = {}; log('Warning: mapping parse failed, using empty mapping'); }
-        } else parsed = {};
+  // Check if returning from ad with verification
+  function checkReturnFromAd() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('ad_verified')) {
+      const liveUrlFromStorage = localStorage.getItem('liveUrl');
+      if (liveUrlFromStorage) {
+        showLiveUrl(liveUrlFromStorage);
+        // Clean the URL
+        window.history.replaceState({}, document.title, window.location.pathname);
       }
     }
-    if (!parsed || typeof parsed !== 'object') parsed = {};
-    if (!parsed._expires) parsed._expires = {};
-    // normalize expiry to numbers
-    for (const k of Object.keys(parsed._expires || {})) parsed._expires[k] = Number(parsed._expires[k]) || 0;
-    mappingCache = parsed;
-    lastCacheTime = now;
-    return parsed;
-  } catch (e) {
-    log(`Failed to fetch mapping: ${e.message}`);
-    return { _expires: {} };
-  }
-}
-
-/**
- * updateMapping: merge with latest and PATCH to the exact GIST_ID and FILE_NAME.
- * After PATCH we fetch the raw mapping and verify the gist content matches what we wrote.
- */
-async function updateMapping(newMapping) {
-  if (!newMapping) throw new Error('No mapping provided');
-  // conservative merge with latest
-  const latestText = await fetchRawText(MAPPING_RAW_URL);
-  let latest = {};
-  if (latestText && latestText.trim()) {
-    try { latest = JSON.parse(latestText); } catch(e) { latest = {}; }
-  }
-  const merged = Object.assign({}, latest, newMapping);
-  if (!merged._expires) merged._expires = {};
-  // prefer larger expiry for safety
-  for (const k of Object.keys(latest._expires || {})) {
-    const lv = Number((latest._expires||{})[k]) || 0;
-    const mv = Number((merged._expires||{})[k]) || 0;
-    merged._expires[k] = Math.max(lv, mv);
   }
 
-  // fetch token (from TOKEN_RAW_URL)
-  const tokenRes = await fetch(`${TOKEN_RAW_URL}?t=${Date.now()}`, { cache: "no-store" });
-  if (!tokenRes.ok) throw new Error(`Token fetch failed ${tokenRes.status}`);
-  const tokenText = await tokenRes.text();
-  const token = tokenText.split('\n')[0].trim();
-  if (!token) throw new Error('No token available');
-
-  // PATCH the gist
-  const patchRes = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
-    method: 'PATCH',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Accept': 'application/vnd.github.v3+json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ files: { [FILE_NAME]: { content: JSON.stringify(merged, null, 2) } } })
-  });
-
-  const patchText = await patchRes.text();
-  log(`PATCH response: ${patchRes.status} ${patchRes.statusText} — body (first 1000 chars): ${patchText.slice(0,1000)}`);
-  if (!patchRes.ok) {
-    throw new Error(`Gist PATCH failed: ${patchRes.status} ${patchRes.statusText}`);
-  }
-
-  // update local cache (optimistically)
-  mappingCache = merged;
-  lastCacheTime = nowMs();
-
-  // Verification: re-fetch raw mapping and compare
-  try {
-    const verifyRaw = await fetchRawText(MAPPING_RAW_URL);
-    let verifyParsed = {};
-    try { verifyParsed = JSON.parse(verifyRaw); } catch(e) { verifyParsed = {}; }
-    // simple deep compare by stringifying both (deterministic)
-    const written = JSON.stringify(merged, Object.keys(merged).sort());
-    const fetched = JSON.stringify(verifyParsed, Object.keys(verifyParsed).sort());
-    if (written !== fetched) {
-      log('Warning: verification mismatch — remote gist content does not match what we wrote.');
-      log('Written (first 200 chars): ' + written.slice(0,200));
-      log('Fetched (first 200 chars): ' + fetched.slice(0,200));
-      showNotification('Warning: gist verification mismatch. Check console/log. The script attempted to write to the gist but the raw file content differs.', 'error');
+  // Validate HTML content
+  function validateHtml() {
+    if (currentHtml.length > 0) {
+      if (currentHtml.includes('<html') && currentHtml.includes('</html>')) {
+        htmlStatus.innerHTML = `<span style="color: var(--success)">✓ Valid HTML document</span>`;
+      } else {
+        htmlStatus.innerHTML = `<span style="color: var(--warning)">⚠ This doesn't look like a complete HTML document</span>`;
+      }
+      uploadBtn.disabled = !githubToken;
     } else {
-      log('Verification OK — gist raw content matches what we wrote.');
+      htmlStatus.innerHTML = `<span style="color: var(--text-light)">Waiting for HTML content...</span>`;
+      uploadBtn.disabled = true;
     }
-  } catch (e) {
-    log('Warning: verification fetch failed: ' + e.message);
   }
 
-  return merged;
-}
+  // Handle file upload
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-/* ---------- AD / CREDITS logic ---------- */
-function startAdFlow() {
-  if (adPending) return showNotification('Ad already open — return after 15s', 'error');
-  try { 
-    adWindow = window.open('https://otieu.com/4/9630811', '_blank'); 
-    if (!adWindow || adWindow.closed || typeof adWindow.closed == 'undefined') {
-      showNotification('Please allow popups for this site to view ads', 'error');
+    // Check file type
+    if (!file.name.match(/\.(html|htm|txt)$/i)) {
+      showAdMessage('Please upload an HTML file (.html, .htm) or text file (.txt)', false);
       return;
     }
-  } catch (e) { 
-    showNotification('Please allow popups for this site to view ads', 'error');
-    adWindow = null; 
-    return;
-  }
 
-  adStartTime = nowMs();
-  adPending = true;
-  adTimeSpent = 0;
-  lastAdAwardAt = 0;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      currentHtml = event.target.result;
+      htmlInput.value = currentHtml;
+      htmlPreview.textContent = currentHtml;
+      htmlLength.textContent = `${currentHtml.length} characters`;
+      validateHtml();
+      localStorage.setItem('currentHtml', currentHtml);
+    };
+    reader.readAsText(file);
+  });
 
-  // Show ad status panel
-  el.adStatus.style.display = 'block';
-  el.adStatusText.textContent = 'Ad opened. Please view the ad for 15 seconds.';
-  el.adTimeSpent.textContent = '0';
+  // Update HTML preview when input changes
+  htmlInput.addEventListener('input', () => {
+    currentHtml = htmlInput.value;
+    htmlPreview.textContent = currentHtml;
+    htmlLength.textContent = `${currentHtml.length} characters`;
+    validateHtml();
+    localStorage.setItem('currentHtml', currentHtml);
+  });
 
-  // Create and show timer element
-  if (adTimerElement) {
-    adTimerElement.remove();
-  }
-  adTimerElement = document.createElement('span');
-  adTimerElement.className = 'ad-timer';
-  adTimerElement.textContent = '15s';
-  el.adBtn.appendChild(adTimerElement);
+  // Fetch first token from GitHub Gist
+  async function fetchToken() {
+    try {
+      const response = await fetch('https://gist.githubusercontent.com/Dtech2preas/8a30b80295920ae54ce13af87b7c162d/raw/gistfile1.txt');
+      if (!response.ok) throw new Error('Failed to fetch tokens');
 
-  showNotification('Ad opened. View the ad for at least 15 seconds.', 'info');
-  log(`Ad started at ${new Date(adStartTime).toLocaleTimeString()}`);
+      const text = await response.text();
+      const tokens = text.split('\n')
+        .map(line => line.trim())
+        .filter(line => line.startsWith('ghp_'));
 
-  // Start timer to track ad viewing time
-  adTimerInterval = setInterval(() => {
-    // If the page is visible, the user is likely not viewing the ad
-    if (document.visibilityState === 'visible') {
-      el.adStatusText.textContent = 'Please focus on the ad tab for 15 seconds.';
-    } else {
-      // Page is hidden, user is likely viewing the ad
-      adTimeSpent += 1;
-      el.adTimeSpent.textContent = adTimeSpent;
-      el.adStatusText.textContent = 'Viewing ad...';
+      if (tokens.length === 0) throw new Error('No valid tokens found');
 
-      if (adTimeSpent >= 15) {
-        el.adStatusText.textContent = 'Ad complete! Return to this tab.';
-        el.adStatus.style.borderLeftColor = 'var(--success)';
+      githubToken = tokens[0];
+      tokenStatus.innerHTML = `
+        <span style="color: var(--success)">
+          ✓ Using GitHub token (automatically selected)
+        </span>
+      `;
+
+      // Enable upload if we have HTML
+      if (currentHtml.length > 0) {
+        uploadBtn.disabled = false;
       }
+    } catch (error) {
+      tokenStatus.innerHTML = `
+        <span style="color: var(--error)">
+          Error loading token: ${error.message}
+        </span>
+      `;
+      console.error('Token loading error:', error);
+    }
+  }
+
+  // Initialize token loading
+  fetchToken();
+
+  // Restore HTML from localStorage if available
+  const savedHtml = localStorage.getItem('currentHtml');
+  if (savedHtml) {
+    currentHtml = savedHtml;
+    htmlInput.value = currentHtml;
+    htmlPreview.textContent = currentHtml;
+    htmlLength.textContent = `${currentHtml.length} characters`;
+    validateHtml();
+  }
+
+  // Check for returning from ad on page load
+  checkReturnFromAd();
+
+  // Upload button click handler
+  uploadBtn.addEventListener('click', async () => {
+    if (!githubToken) {
+      alert('GitHub token not available');
+      return;
     }
 
-    if (adTimerElement) {
-      const timeLeft = Math.max(0, 15 - adTimeSpent);
-      adTimerElement.textContent = `${timeLeft}s`;
+    if (!currentHtml || currentHtml.length === 0) {
+      alert('Please enter HTML content');
+      return;
     }
-  }, 1000);
 
-  // Check if ad window is closed
-  if (pollingInterval) clearInterval(pollingInterval);
-  pollingInterval = setInterval(() => {
-    if (!adPending) { 
-      clearInterval(pollingInterval); 
-      pollingInterval = null; 
-      return; 
-    }
+    uploadBtn.disabled = true;
+    uploadStatus.style.display = 'flex';
+    uploadStatusText.textContent = 'Uploading to GitHub...';
 
     try {
-      if (adWindow && adWindow.closed) {
-        handleReturnFromAd();
+      // Create a new gist with timestamp
+      const timestamp = new Date().toISOString();
+      const randomSuffix = Math.random().toString(36).substring(2, 8);
+      const gistResponse = await fetch('https://api.github.com/gists', {
+        method: 'POST',
+        headers: {
+          'Authorization': `token ${githubToken}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          description: `Live website ${timestamp} - ${randomSuffix}`,
+          public: true,
+          files: {
+            'index.html': {
+              content: currentHtml
+            }
+          }
+        })
+      });
+
+      gistData = await gistResponse.json();
+
+      if (!gistData.id) {
+        throw new Error(gistData.message || 'Failed to create gist');
       }
-    } catch (e) {
-      // Cross-origin issue, we can't check if the window is closed
-      // We'll rely on the visibility change events instead
+
+      // Generate the live URL
+      const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
+
+      // Store the live URL in localStorage
+      localStorage.setItem('liveUrl', liveRenderUrl);
+
+      // Set ad start time when user clicks the ad link
+      adLink.addEventListener('click', () => {
+        localStorage.setItem('adStartTime', new Date().getTime().toString());
+        startAdTimer();
+      });
+
+      // Show result container with ad verification
+      resultContainer.style.display = 'block';
+      uploadStatus.style.display = 'none';
+
+      // Scroll to results
+      setTimeout(() => {
+        resultContainer.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+
+    } catch (err) {
+      uploadStatus.innerHTML = `
+        <span style="color: var(--error)">
+          Error: ${err.message}
+        </span>
+      `;
+      uploadBtn.disabled = false;
+      console.error('Upload error:', err);
     }
-  }, 1000);
-}
+  });
 
-function awardAdCreditsIfEligible() {
-  if (!adPending) return;
-
-  // Check if user spent enough time with the page hidden (viewing the ad)
-  if (adTimeSpent < 15) {
-    showNotification(`You didn't view the ad long enough (${adTimeSpent}s). Please view the ad for at least 15 seconds.`, 'error');
-    log(`Ad viewed for only ${adTimeSpent} seconds. Credits not awarded.`);
-
-    // Reset the ad flow so they can try again
-    adPending = false;
-    try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
-    adWindow = null;
-
-    // Remove timer element
-    if (adTimerElement) {
-      adTimerElement.remove();
-      adTimerElement = null;
-    }
-
-    if (pollingInterval) { 
-      clearInterval(pollingInterval); 
-      pollingInterval = null; 
-    }
-
-    if (adTimerInterval) {
-      clearInterval(adTimerInterval);
-      adTimerInterval = null;
-    }
-
-    // Hide ad status panel
-    el.adStatus.style.display = 'none';
-
-    return;
-  }
-
-  if (lastAdAwardAt && Math.abs(lastAdAwardAt - adStartTime) < 1000) return;
-  lastAdAwardAt = adStartTime;
-  credits += 2;
-  updateCreditsUI();
-  showNotification(`Ad complete — awarded 2 credits. Credits: ${credits}`, 'success');
-  log(`Ad awarded 2 credits at ${new Date().toLocaleTimeString()}. Total credits: ${credits}`);
-  adPending = false;
-  try { if (adWindow && !adWindow.closed) adWindow.close(); } catch(e){}
-  adWindow = null;
-
-  // Remove timer element
-  if (adTimerElement) {
-    adTimerElement.remove();
-    adTimerElement = null;
-  }
-
-  if (pollingInterval) { 
-    clearInterval(pollingInterval); 
-    pollingInterval = null; 
-  }
-
-  if (adTimerInterval) {
-    clearInterval(adTimerInterval);
-    adTimerInterval = null;
-  }
-
-  // Hide ad status panel
-  el.adStatus.style.display = 'none';
-
-  refreshButtonsBasedOnName();
-}
-
-function handleReturnFromAd() {
-  try { 
-    awardAdCreditsIfEligible(); 
-  } catch (e) { 
-    log('Error awarding ad credits: ' + e.message); 
-  }
-}
-
-// Enhanced visibility change detection
-document.addEventListener('visibilitychange', () => {
-  if (adPending) {
-    if (document.visibilityState === 'hidden') {
-      // Page hidden - user likely switched to ad tab
-      pageHiddenTime = nowMs();
-      log('User switched away from page (likely to ad)');
-    } else {
-      // Page visible - user returned
-      pageVisibleTime = nowMs();
-      const timeAway = pageVisibleTime - pageHiddenTime;
-
-      if (timeAway >= 15000) {
-        // User was away for at least 15 seconds
-        log(`User returned after ${Math.floor(timeAway/1000)} seconds - eligible for credits`);
-        handleReturnFromAd();
-      } else {
-        // User returned too quickly
-        log(`User returned too quickly after ${Math.floor(timeAway/1000)} seconds`);
-        el.adStatusText.textContent = `You returned too quickly. Please view the ad for 15 seconds.`;
-        showNotification(`You returned too quickly after ${Math.floor(timeAway/1000)} seconds. Please view the ad for 15 seconds.`, 'error');
-      }
-    }
-  }
-});
-
-// Fallback for window focus
-window.addEventListener('focus', () => {
-  if (adPending) {
-    const timeAway = nowMs() - pageHiddenTime;
-    if (timeAway >= 15000) {
-      handleReturnFromAd();
-    } else {
-      log(`User returned too quickly after ${Math.floor(timeAway/1000)} seconds`);
-      el.adStatusText.textContent = `You returned too quickly. Please view the ad for 15 seconds.`;
-      showNotification(`You returned too quickly after ${Math.floor(timeAway/1000)} seconds. Please view the ad for 15 seconds.`, 'error');
-    }
-  }
-});
-
-el.adBtn.addEventListener('click', () => startAdFlow());
-
-/* ---------- UI state based on name ---------- */
-async function refreshButtonsBasedOnName() {
-  const name = sanitizeName(el.nameInput.value.trim());
-  if (!name) {
-    el.nameStatus.textContent = '';
-    el.nameStatus.className = 'status';
-    el.createBtn.disabled = true;
-    el.extendBtn.disabled = true;
-    stopLiveTimer();
-    el.expiryDisplay.style.display = 'none';
-    return;
-  }
-  try {
-    const mapping = await getMapping();
-    const exists = Boolean(mapping[name]);
-    if (exists) {
-      el.nameStatus.innerHTML = `<span class="status-icon">❌</span> <span>"${name}" is already taken — you can extend (if you have credits).</span>`;
-      el.nameStatus.className = 'status status-taken';
-      el.createBtn.disabled = true;
-      el.extendBtn.disabled = opInProgress || credits <= 0;
-      startLiveTimerForName(name, mapping);
-      el.expiryDisplay.style.display = 'block';
-    } else {
-      el.nameStatus.innerHTML = `<span class="status-icon">✅</span> <span>"${name}" is available — you can create it (if you have credits).</span>`;
-      el.nameStatus.className = 'status status-available';
-      el.createBtn.disabled = opInProgress || credits <= 0;
-      el.extendBtn.disabled = true;
-      stopLiveTimer();
-      el.timeRemaining.textContent = '--:--:--';
-      el.expiryDisplay.style.display = 'none';
-    }
-  } catch (e) {
-    el.nameStatus.innerHTML = `<span class="status-icon">⚠️</span> <span>Name check failed</span>`;
-    el.nameStatus.className = 'status';
-    el.createBtn.disabled = true;
-    el.extendBtn.disabled = true;
-    stopLiveTimer();
-    el.expiryDisplay.style.display = 'none';
-  }
-  updateCreditsUI();
-}
-
-/* ---------- LIVE timer (updates UI each second) ---------- */
-function formatHMS(totalSeconds) {
-  if (totalSeconds <= 0) return '00:00:00';
-  const hrs = Math.floor(totalSeconds/3600);
-  const mins = Math.floor((totalSeconds%3600)/60);
-  const secs = Math.floor(totalSeconds%60);
-  const pad = v => String(v).padStart(2,'0');
-  return `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
-}
-
-function startLiveTimerForName(name, mapping) {
-  stopLiveTimer();
-  liveTimerInterval = setInterval(async () => {
-    try {
-      const latest = await getMapping();
-      const expires = Number(latest._expires?.[name] || 0);
-      const rem = Math.max(0, expires - getUnix());
-      el.timeRemaining.textContent = formatHMS(rem);
-      
-      // Update expiry details
-      if (rem > 0) {
-        const hrs = Math.floor(rem/3600);
-        const mins = Math.floor((rem%3600)/60);
-        el.expiryDetails.innerHTML = `
-          <p><strong>Subdomain:</strong> ${name}</p>
-          <p><strong>Expires in:</strong> ${hrs}h ${mins}m (${formatHMS(rem)})</p>
-          <p><strong>Full URL:</strong> https://${name}.account-login.co.za</p>
-        `;
-      } else {
-        el.expiryDetails.innerHTML = `
-          <p><strong>Subdomain:</strong> ${name}</p>
-          <p><strong>Status:</strong> Expired</p>
-          <p><strong>Full URL:</strong> https://${name}.account-login.co.za</p>
-        `;
-      }
-    } catch (e) {
-      el.timeRemaining.textContent = '--:--:--';
-    }
-  }, 1000);
-}
-
-function stopLiveTimer() {
-  if (liveTimerInterval) { clearInterval(liveTimerInterval); liveTimerInterval = null; }
-}
-
-/* ---------- CORE: create / extend / check ---------- */
-async function handleAction(mode) {
-  if (opInProgress) return showNotification('Operation in progress — please wait...', 'error');
-  const name = sanitizeName(el.nameInput.value.trim());
-  const url = el.urlInput.value.trim();
-  if (!name) return showNotification('Enter subdomain name.', 'error');
-  if (mode === 'create' && !url) return showNotification('Enter URL to point the subdomain to.', 'error');
-  if (credits <= 0) return showNotification('No credits — press the ad button and wait 15s.', 'error');
-
-  opInProgress = true;
-  el.createBtn.disabled = true;
-  el.extendBtn.disabled = true;
-
-  try {
-    log(`Starting ${mode} for ${name} ...`);
-    const mapping = await getMapping();
-    if (!mapping._expires) mapping._expires = {};
-    const rawExpiry = mapping._expires[name];
-    const currentExpiry = (typeof rawExpiry === 'number' && rawExpiry > 0) ? rawExpiry : getUnix();
-
-    if (mode === 'create') {
-      if (mapping[name]) {
-        showNotification('Subdomain already exists — cannot create. Use extend.', 'error');
-        log('Create aborted: already exists.');
-        return;
-      }
-      mapping[name] = url;
-      mapping._expires[name] = Math.max(currentExpiry, getUnix()) + INITIAL_DURATION;
-      el.finalUrl.textContent = `https://${name}.account-login.co.za`;
-      el.urlDisplay.style.display = 'block';
-    } else { // extend
-      if (!mapping[name]) {
-        showNotification('Subdomain does not exist — create it first.', 'error');
-        log('Extend aborted: does not exist.');
-        return;
-      }
-      mapping._expires[name] = Math.max(currentExpiry, getUnix()) + EXTENSION_DURATION;
-    }
-
-    // attempt update
-    const updated = await updateMapping(mapping);
-
-    // consume credit only after successful update
-    credits = Math.max(0, credits - 1);
-    updateCreditsUI();
-    showNotification(`${mode} successful. Credits left: ${credits}`, 'success');
-    log(`${mode} done for ${name}. Credits left: ${credits}. New expiry: ${Number(updated._expires[name]||0)}`);
-
-    await refreshButtonsBasedOnName();
-  } catch (e) {
-    log(`Error during ${mode}: ${e.message}`);
-    showNotification(`Operation failed: ${e.message}`, 'error');
-  } finally {
-    opInProgress = false;
-    await refreshButtonsBasedOnName();
-  }
-}
-
-el.createBtn.addEventListener('click', () => handleAction('create'));
-el.extendBtn.addEventListener('click', () => handleAction('extend'));
-
-/* ---------- check time ---------- */
-async function checkTime() {
-  const name = sanitizeName(el.nameInput.value.trim());
-  if (!name) return showNotification('Enter a name first', 'error');
-  try {
-    const mapping = await getMapping();
-    const expires = mapping._expires?.[name];
-    if (!expires) { 
-      log('No expiry set'); 
-      showNotification('No expiry set for this subdomain', 'error'); 
-      return; 
-    }
-    const remaining = Math.max(0, Number(expires) - getUnix());
-    const mins = Math.floor(remaining / 60);
-    const hrs = Math.floor(mins / 60);
-    const minPart = mins % 60;
-    const message = `Time remaining for ${name}: ${hrs}h ${minPart}m (${formatHMS(remaining)})`;
-    log(message);
-    showNotification(message, 'info');
+  // Start the ad timer visualization
+  function startAdTimer() {
+    if (adInterval) clearInterval(adInterval);
     
-    // Update expiry display
-    el.expiryDisplay.style.display = 'block';
-    el.expiryDetails.innerHTML = `
-      <p><strong>Subdomain:</strong> ${name}</p>
-      <p><strong>Expires in:</strong> ${hrs}h ${minPart}m (${formatHMS(remaining)})</p>
-      <p><strong>Full URL:</strong> https://${name}.account-login.co.za</p>
-    `;
-  } catch (e) {
-    log('Check time failed: ' + e.message);
-    showNotification('Check failed: ' + e.message, 'error');
+    adInterval = setInterval(() => {
+      const now = new Date().getTime();
+      const adStartTime = localStorage.getItem('adStartTime');
+      
+      if (!adStartTime) {
+        clearInterval(adInterval);
+        return;
+      }
+      
+      const timePassed = now - parseInt(adStartTime);
+      const requiredTime = 10000; // 10 seconds
+      const progress = Math.min(100, Math.floor((timePassed / requiredTime) * 100));
+      
+      progressFill.style.width = `${progress}%`;
+      progressText.textContent = `${progress}%`;
+      
+      const remaining = Math.ceil((requiredTime - timePassed) / 1000);
+      timerText.textContent = remaining > 0 ? 
+        `Required time: ${remaining} seconds remaining` : 
+        'Verification ready - click Verify Ad View';
+      
+      if (timePassed >= requiredTime) {
+        clearInterval(adInterval);
+        progressFill.style.width = '100%';
+        progressText.textContent = '100%';
+        timerText.textContent = 'Verification ready - click Verify Ad View';
+      }
+    }, 500);
   }
-}
-el.checkBtn.addEventListener('click', checkTime);
 
-/* ---------- input handlers ---------- */
-el.nameInput.addEventListener('input', () => {
-  const name = sanitizeName(el.nameInput.value);
-  el.nameInput.value = name;
-  el.previewUrl.textContent = `https://${name || '[name]'}.account-login.co.za`;
-  if (el.nameInput._timer) clearTimeout(el.nameInput._timer);
-  el.nameInput._timer = setTimeout(() => refreshButtonsBasedOnName(), 300);
+  // Verify ad button click handler
+  verifyAdBtn.addEventListener('click', () => {
+    const now = new Date().getTime();
+    const adStartTime = localStorage.getItem('adStartTime');
+
+    if (!adStartTime) {
+      showAdMessage('Please visit the sponsor page first by clicking the button above', false);
+      return;
+    }
+
+    const timePassed = now - parseInt(adStartTime);
+    const requiredTime = 10000; // 10 seconds
+
+    if (timePassed >= requiredTime) {
+      const liveUrlFromStorage = localStorage.getItem('liveUrl');
+      if (liveUrlFromStorage) {
+        showLiveUrl(liveUrlFromStorage);
+      }
+    } else {
+      const remaining = Math.ceil((requiredTime - timePassed) / 1000);
+      showAdMessage(`Please stay on the sponsor page for ${remaining} more seconds before verifying`, false);
+    }
+  });
+
+  // Function to show ad verification message
+  function showAdMessage(message, isSuccess) {
+    adMessage.textContent = message;
+    adMessage.className = isSuccess ? 'ad-message ad-success' : 'ad-message ad-error';
+    adMessage.style.display = 'flex';
+  }
+
+  // Function to show live URL after ad verification
+  function showLiveUrl(url) {
+    if (!url) return;
+
+    // Mark step 3 as completed
+    document.querySelectorAll('.step')[2].classList.add('completed');
+
+    adVerificationContainer.style.display = 'none';
+    liveUrlContainer.style.display = 'block';
+    copyLiveUrl.style.display = 'block';
+
+    liveUrl.textContent = url;
+    liveUrl.href = url;
+
+    // Show success message
+    showAdMessage('✓ Ad verification successful! Your URL is now available.', true);
+    
+    // Clear the interval if it's still running
+    if (adInterval) clearInterval(adInterval);
+  }
+
+  // Copy URL button - clears storage and reloads after copy
+  copyLiveUrl.addEventListener('click', () => {
+    if (liveUrl.href) {
+      navigator.clipboard.writeText(liveUrl.href)
+        .then(() => {
+          const originalText = copyLiveUrl.textContent;
+          copyLiveUrl.textContent = 'Copied!';
+          copyLiveUrl.style.backgroundColor = 'var(--success)';
+
+          // Clear all storage and reload after short delay
+          setTimeout(() => {
+            localStorage.clear();
+            window.location.reload();
+          }, 1500);
+        })
+        .catch(err => {
+          console.error('Failed to copy URL:', err);
+        });
+    }
+  });
+
+  // Handle drag and drop for file upload
+  const fileUploadLabel = document.querySelector('.file-upload-label');
+
+  fileUploadLabel.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    fileUploadLabel.style.borderColor = 'var(--primary)';
+    fileUploadLabel.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+  });
+
+  fileUploadLabel.addEventListener('dragleave', () => {
+    fileUploadLabel.style.borderColor = 'var(--border)';
+    fileUploadLabel.style.backgroundColor = '';
+  });
+
+  fileUploadLabel.addEventListener('drop', (e) => {
+    e.preventDefault();
+    fileUploadLabel.style.borderColor = 'var(--border)';
+    fileUploadLabel.style.backgroundColor = '';
+
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+
+    // Check if file is HTML or text
+    if (!file.name.match(/\.(html|htm|txt)$/i)) {
+      showAdMessage('Please upload an HTML file (.html, .htm) or text file (.txt)', false);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      currentHtml = event.target.result;
+      htmlInput.value = currentHtml;
+      htmlPreview.textContent = currentHtml;
+      htmlLength.textContent = `${currentHtml.length} characters`;
+      validateHtml();
+      localStorage.setItem('currentHtml', currentHtml);
+    };
+    reader.readAsText(file);
+  });
 });
-
-el.copyBtn.addEventListener('click', async () => {
-  try { 
-    await navigator.clipboard.writeText(el.finalUrl.textContent); 
-    showNotification('URL copied!', 'success'); 
-  }
-  catch { 
-    showNotification('Failed to copy', 'error'); 
-  }
-});
-
-/* ---------- init ---------- */
-(async function init() {
-  try {
-    await refreshButtonsBasedOnName();
-    log('System ready. Press the ad button to get credits.');
-  } catch (e) {
-    log('Init error: ' + e.message);
-  }
-})();
 </script>
 </body>
 </html>
