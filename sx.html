@@ -8,17 +8,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #3b82f6;
-    --primary-hover: #2563eb;
-    --primary-light: #93c5fd;
-    --success: #10b981;
-    --error: #ef4444;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-light: #60a5fa;
+    --success: #059669;
+    --error: #dc2626;
+    --warning: #d97706;
     --bg: #0f172a;
     --card: #1e293b;
+    --card-light: #334155;
     --text: #f8fafc;
-    --text-light: #e2e8f0;
+    --text-light: #cbd5e1;
+    --text-muted: #94a3b8;
     --border: #334155;
-    --accent: #6366f1;
+    --accent: #4f46e5;
+    --radius: 8px;
   }
 
   * {
@@ -43,50 +47,62 @@
     min-height: 100vh;
   }
 
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
   h1 {
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
     font-weight: 700;
     font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--text);
     letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    font-weight: 400;
   }
 
   .card {
     background-color: var(--card);
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     padding: 2rem;
     margin-bottom: 2rem;
     border: 1px solid var(--border);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
   }
 
   h2 {
-    color: var(--primary-light);
+    color: var(--text);
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
   }
 
-  h2::before {
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
+  h2 .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     background-color: var(--primary);
-    border-radius: 50%;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.9rem;
   }
 
   label {
@@ -94,17 +110,18 @@
     font-weight: 500;
     margin-bottom: 0.75rem;
     color: var(--text-light);
+    font-size: 0.95rem;
   }
 
   input, textarea {
     width: 100%;
     padding: 1rem;
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    font-size: 1rem;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
     margin-bottom: 1.25rem;
     font-family: 'Fira Code', monospace, 'Inter', sans-serif;
-    background-color: rgba(30, 41, 59, 0.5);
+    background-color: rgba(15, 23, 42, 0.5);
     color: var(--text);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
@@ -117,14 +134,14 @@
   input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
   }
 
   button {
     background-color: var(--primary);
     color: white;
     border: none;
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     padding: 1rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
@@ -140,24 +157,31 @@
 
   button:hover {
     background-color: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
   }
 
   button:disabled {
     background-color: #475569;
     cursor: not-allowed;
     transform: none;
-    box-shadow: none;
     opacity: 0.7;
+  }
+
+  .btn-secondary {
+    background-color: var(--card-light);
+    color: var(--text);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--border);
   }
 
   .preview-container {
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     margin: 1.5rem 0;
     overflow: hidden;
-    height: 400px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     background-color: rgba(15, 23, 42, 0.5);
@@ -171,7 +195,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--primary-light);
+    color: var(--text-light);
+    font-size: 0.9rem;
   }
 
   .preview-content {
@@ -182,7 +207,7 @@
     font-family: 'Fira Code', monospace;
     white-space: pre;
     color: var(--text-light);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     line-height: 1.7;
     tab-size: 2;
   }
@@ -199,27 +224,22 @@
   }
 
   .result-card {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
-    padding: 1.5rem;
-    border-radius: 0.75rem;
+    background-color: var(--card);
+    border-left: 4px solid var(--success);
+    padding: 2rem;
+    border-radius: var(--radius);
     margin-bottom: 1.5rem;
-    text-align: center;
   }
 
   .result-card h2 {
-    color: white;
-    justify-content: center;
-  }
-
-  .result-card h2::before {
-    background-color: white;
+    color: var(--success);
+    margin-bottom: 1rem;
   }
 
   .url-container {
     background-color: var(--card);
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     word-break: break-all;
@@ -228,28 +248,29 @@
 
   .url-container:hover {
     border-color: var(--primary);
-    transform: translateY(-3px);
   }
 
   .url-label {
     font-weight: 600;
-    color: var(--primary-light);
+    color: var(--text-light);
     margin-bottom: 0.75rem;
     display: block;
     font-size: 0.9rem;
   }
 
   .url-link {
-    color: var(--text);
+    color: var(--primary-light);
     text-decoration: none;
     font-weight: 500;
     word-break: break-all;
     display: inline-block;
     transition: color 0.3s ease;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
   }
 
   .url-link:hover {
-    color: var(--primary-light);
+    color: var(--primary);
     text-decoration: underline;
   }
 
@@ -263,11 +284,11 @@
   }
 
   .spinner {
-    border: 3px solid rgba(59, 130, 246, 0.2);
+    border: 2px solid rgba(59, 130, 246, 0.2);
     border-radius: 50%;
-    border-top: 3px solid var(--primary);
-    width: 20px;
-    height: 20px;
+    border-top: 2px solid var(--primary);
+    width: 16px;
+    height: 16px;
     animation: spin 1s linear infinite;
   }
 
@@ -283,7 +304,7 @@
     margin-bottom: 1rem;
     padding: 1rem;
     background-color: rgba(30, 41, 59, 0.5);
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     transition: all 0.3s ease;
   }
 
@@ -292,8 +313,8 @@
   }
 
   .step-number {
-    background-color: var(--primary);
-    color: white;
+    background-color: var(--card-light);
+    color: var(--text-muted);
     width: 28px;
     height: 28px;
     border-radius: 50%;
@@ -312,85 +333,82 @@
 
   .step.completed .step-number {
     background-color: var(--success);
+    color: white;
   }
 
   .step.completed .step-text {
     color: var(--text);
   }
 
+  .step.active .step-number {
+    background-color: var(--primary);
+    color: white;
+  }
+
   .token-status {
     padding: 1.25rem;
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     margin-bottom: 1.5rem;
     background-color: rgba(30, 41, 59, 0.5);
   }
 
   .ad-verification {
-    background-color: rgba(30, 41, 59, 0.8);
+    background-color: var(--card);
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     padding: 2rem;
     margin-bottom: 1.5rem;
-    text-align: center;
     position: relative;
     overflow: hidden;
   }
 
-  .ad-verification::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-  }
-
   .ad-verification h3 {
-    color: var(--primary-light);
-    margin-bottom: 1.5rem;
+    color: var(--text);
+    margin-bottom: 1rem;
     font-size: 1.25rem;
   }
 
   .ad-timer {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 600;
     margin: 1.5rem 0;
     color: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-  }
-
-  .ad-timer::before {
-    content: "⏱️";
-    font-size: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(37, 99, 235, 0.1);
+    border-radius: var(--radius);
   }
 
   .ad-button {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background-color: var(--primary);
     color: white;
     font-weight: 600;
     padding: 1rem 2rem;
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
     transition: all 0.3s ease;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    margin: 0;
   }
 
   .ad-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
   }
 
   .ad-message {
     margin: 1.5rem 0;
     padding: 1rem;
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -399,13 +417,13 @@
   }
 
   .ad-success {
-    background-color: rgba(16, 185, 129, 0.1);
+    background-color: rgba(5, 150, 105, 0.1);
     color: var(--success);
     border: 1px solid var(--success);
   }
 
   .ad-error {
-    background-color: rgba(239, 68, 68, 0.1);
+    background-color: rgba(220, 38, 38, 0.1);
     color: var(--error);
     border: 1px solid var(--error);
   }
@@ -421,10 +439,11 @@
     padding-left: 1.5rem;
     position: relative;
     color: var(--text-light);
+    line-height: 1.6;
   }
 
   .ad-steps li::before {
-    content: "→";
+    content: "•";
     position: absolute;
     left: 0;
     color: var(--primary);
@@ -450,35 +469,85 @@
     display: block;
     padding: 1rem;
     border: 2px dashed var(--border);
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    color: var(--text-light);
   }
 
   .file-upload-label:hover {
     border-color: var(--primary);
-    background-color: rgba(59, 130, 246, 0.1);
+    background-color: rgba(59, 130, 246, 0.05);
   }
 
   .file-upload-label span {
     display: block;
     margin-top: 0.5rem;
     font-size: 0.9rem;
-    color: var(--text-light);
+    color: var(--text-muted);
+  }
+
+  .ad-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .ad-actions button {
+    flex: 1;
+    margin: 0;
+  }
+
+  .progress-container {
+    margin: 1.5rem 0;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background-color: var(--card-light);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background-color: var(--primary);
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  .progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .auto-verification {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: rgba(37, 99, 235, 0.1);
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
   }
 
   @media (max-width: 768px) {
     .container {
       padding: 1.5rem 1rem;
     }
-    
+
     h1 {
       font-size: 2rem;
     }
-    
+
     .card {
       padding: 1.5rem;
+    }
+
+    .ad-actions {
+      flex-direction: column;
     }
   }
 </style>
@@ -486,10 +555,13 @@
 <body>
 
 <div class="container">
-  <h1>HTML to Live Website Converter</h1>
+  <header>
+    <h1>HTML to Live Website Converter</h1>
+    <p class="subtitle">Convert your HTML code to a live website with one click</p>
+  </header>
 
   <div class="card">
-    <h2>Step 1: Authentication</h2>
+    <h2><span class="icon">1</span> Authentication</h2>
     <div class="token-status" id="tokenStatus">
       <div class="token-loading">
         <div class="spinner"></div>
@@ -499,7 +571,7 @@
   </div>
 
   <div class="card">
-    <h2>Step 2: Enter Your HTML</h2>
+    <h2><span class="icon">2</span> Enter Your HTML</h2>
     <label for="htmlInput">Paste your HTML code below:</label>
     <textarea id="htmlInput" placeholder="<!DOCTYPE html>
 <html>
@@ -510,7 +582,7 @@
   <!-- Your HTML content here -->
 </body>
 </html>"></textarea>
-    
+
     <div class="file-upload">
       <label class="file-upload-label">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -523,7 +595,7 @@
         <input type="file" id="fileInput" accept=".html,.htm,.txt" />
       </label>
     </div>
-    
+
     <div class="preview-container">
       <div class="preview-header">
         <span>HTML Preview</span>
@@ -539,7 +611,7 @@
   </div>
 
   <div class="card">
-    <h2>Step 3: Upload & Convert</h2>
+    <h2><span class="icon">3</span> Upload & Convert</h2>
     <p>Upload your HTML to GitHub Gist and get a live-rendering URL:</p>
     <button id="uploadBtn" disabled>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -558,13 +630,13 @@
 
   <div class="result-container" id="resultContainer">
     <div class="result-card">
-      <h2>🎉 Success! Your website is live</h2>
-      <p>Complete these steps to view your URL:</p>
+      <h2>Website Successfully Created</h2>
+      <p>Your HTML has been uploaded and converted to a live website. Complete the verification to access your URL.</p>
     </div>
 
     <div class="step completed">
       <div class="step-number">1</div>
-      <div class="step-text">HTML loaded</div>
+      <div class="step-text">HTML loaded and validated</div>
     </div>
 
     <div class="step completed">
@@ -572,42 +644,56 @@
       <div class="step-text">Uploaded to GitHub Gist</div>
     </div>
 
-    <div class="step">
+    <div class="step active">
       <div class="step-number">3</div>
       <div class="step-text">Complete ad verification</div>
     </div>
 
     <div id="adVerificationContainer" class="ad-verification">
       <h3>Ad Verification Required</h3>
-      <p>To view your live website URL, please complete these steps:</p>
-      
+      <p>To access your live website URL, please complete the following steps:</p>
+
       <ol class="ad-steps">
         <li>Click the "Visit Sponsor Page" button below</li>
-        <li>Stay on that page for at least <strong>10 seconds</strong></li>
-        <li>Return here and click "Verify Ad View"</li>
+        <li>Stay on the sponsor page for at least <strong>10 seconds</strong></li>
+        <li>Return to this page - verification happens automatically</li>
       </ol>
-      
-      <div class="ad-timer" id="adTimer">Required time: 10 seconds</div>
-      
-      <a href="#" target="_blank" class="url-link" id="adLink">
-        <button class="ad-button">
+
+      <div class="auto-verification">
+        <strong>Automatic Verification:</strong> We track your time on the sponsor page automatically.
+        You cannot cheat this system.
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text">
+          <span>Time on Sponsor Page</span>
+          <span id="progressText">0 seconds</span>
+        </div>
+      </div>
+
+      <div class="ad-timer" id="adTimer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span id="timerText">Click the sponsor link to start verification</span>
+      </div>
+
+      <div class="ad-actions">
+        <a href="https://otieu.com/4/10030125" target="_blank" class="ad-button" id="adLink">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
             <polyline points="15 3 21 3 21 9"></polyline>
             <line x1="10" y1="14" x2="21" y2="3"></line>
           </svg>
           Visit Sponsor Page
-        </button>
-      </a>
-      
+        </a>
+      </div>
+
       <div id="adMessage" class="ad-message" style="display: none;"></div>
-      
-      <button id="verifyAdBtn" style="margin-top: 1.5rem;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>
-        Verify Ad View
-      </button>
     </div>
 
     <div class="url-container" id="liveUrlContainer" style="display: none;">
@@ -643,50 +729,31 @@ document.addEventListener('DOMContentLoaded', async () => {
   const liveUrlContainer = document.getElementById('liveUrlContainer');
   const adVerificationContainer = document.getElementById('adVerificationContainer');
   const adTimer = document.getElementById('adTimer');
+  const timerText = document.getElementById('timerText');
   const adMessage = document.getElementById('adMessage');
-  const verifyAdBtn = document.getElementById('verifyAdBtn');
   const adLink = document.getElementById('adLink');
-
-  // Ad URLs array
-  const adUrls = [
-    "https://gapcontroversialprodigal.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365",
-    "https://gapcontroversialprodigal.com/r4xi2y93d?key=15dfa2df783ad560869b4cd10d94bb0d",
-    "https://gapcontroversialprodigal.com/qqn3dsg1k?key=1c7efe0549f34497bcd9d2e5edc1f5c6"
-  ];
-
-  // Select random ad URL
-  const randomAdUrl = adUrls[Math.floor(Math.random() * adUrls.length)];
-  adLink.href = randomAdUrl;
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
 
   // Store token and HTML
   let githubToken = '';
   let currentHtml = '';
   let gistData = null;
-
-  // Check if returning from ad with verification
-  function checkReturnFromAd() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('ad_verified')) {
-      const liveUrlFromStorage = localStorage.getItem('liveUrl');
-      if (liveUrlFromStorage) {
-        showLiveUrl(liveUrlFromStorage);
-        // Clean the URL
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }
-    }
-  }
+  let adCheckInterval = null;
+  let adTab = null;
+  let verificationComplete = false;
 
   // Validate HTML content
   function validateHtml() {
     if (currentHtml.length > 0) {
       if (currentHtml.includes('<html') && currentHtml.includes('</html>')) {
-        htmlStatus.innerHTML = `<span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--success')}">✓ Valid HTML document</span>`;
+        htmlStatus.innerHTML = `<span style="color: var(--success)">✓ Valid HTML document</span>`;
       } else {
-        htmlStatus.innerHTML = `<span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--error')}">⚠ This doesn't look like a complete HTML document</span>`;
+        htmlStatus.innerHTML = `<span style="color: var(--warning)">⚠ This doesn't look like a complete HTML document</span>`;
       }
       uploadBtn.disabled = !githubToken;
     } else {
-      htmlStatus.innerHTML = `<span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--text-light')}">Waiting for HTML content...</span>`;
+      htmlStatus.innerHTML = `<span style="color: var(--text-light)">Waiting for HTML content...</span>`;
       uploadBtn.disabled = true;
     }
   }
@@ -695,13 +762,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    
+
     // Check file type
     if (!file.name.match(/\.(html|htm|txt)$/i)) {
       showAdMessage('Please upload an HTML file (.html, .htm) or text file (.txt)', false);
       return;
     }
-    
+
     const reader = new FileReader();
     reader.onload = (event) => {
       currentHtml = event.target.result;
@@ -738,18 +805,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       githubToken = tokens[0];
       tokenStatus.innerHTML = `
-        <span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--success')}">
+        <span style="color: var(--success)">
           ✓ Using GitHub token (automatically selected)
         </span>
       `;
-      
+
       // Enable upload if we have HTML
       if (currentHtml.length > 0) {
         uploadBtn.disabled = false;
       }
     } catch (error) {
       tokenStatus.innerHTML = `
-        <span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--error')}">
+        <span style="color: var(--error)">
           Error loading token: ${error.message}
         </span>
       `;
@@ -769,9 +836,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     htmlLength.textContent = `${currentHtml.length} characters`;
     validateHtml();
   }
-
-  // Check for returning from ad on page load
-  checkReturnFromAd();
 
   // Upload button click handler
   uploadBtn.addEventListener('click', async () => {
@@ -819,14 +883,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // Generate the live URL
       const liveRenderUrl = `https://gist.githack.com/${gistData.owner?.login || 'anonymous'}/${gistData.id}/raw/index.html`;
-      
+
       // Store the live URL in localStorage
       localStorage.setItem('liveUrl', liveRenderUrl);
-      
-      // Set ad start time when user clicks the ad link
-      adLink.addEventListener('click', () => {
-        localStorage.setItem('adStartTime', new Date().getTime().toString());
-      });
+
+      // Set up ad verification
+      setupAdVerification(liveRenderUrl);
 
       // Show result container with ad verification
       resultContainer.style.display = 'block';
@@ -839,7 +901,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     } catch (err) {
       uploadStatus.innerHTML = `
-        <span style="color: ${getComputedStyle(document.documentElement).getPropertyValue('--error')}">
+        <span style="color: var(--error)">
           Error: ${err.message}
         </span>
       `;
@@ -848,53 +910,149 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // Verify ad button click handler
-  verifyAdBtn.addEventListener('click', () => {
-    const now = new Date().getTime();
-    const adStartTime = localStorage.getItem('adStartTime');
+  // Set up automatic ad verification
+  function setupAdVerification(liveUrl) {
+    let adStartTime = null;
+    let totalTimeOnAd = 0;
+    let lastCheckTime = null;
+
+    // Remove any existing click handlers and add new one
+    adLink.replaceWith(adLink.cloneNode(true));
+    const newAdLink = document.getElementById('adLink');
     
-    if (!adStartTime) {
-      showAdMessage('Please visit the sponsor page first by clicking the button above', false);
-      return;
-    }
-
-    const timePassed = now - parseInt(adStartTime);
-    const requiredTime = 10000; // 10 seconds
-
-    if (timePassed >= requiredTime) {
-      const liveUrlFromStorage = localStorage.getItem('liveUrl');
-      if (liveUrlFromStorage) {
-        showLiveUrl(liveUrlFromStorage);
+    newAdLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Open ad in new tab
+      adTab = window.open('https://otieu.com/4/10030125', '_blank');
+      
+      if (adTab) {
+        adStartTime = Date.now();
+        lastCheckTime = Date.now();
+        timerText.textContent = 'Tracking time on sponsor page...';
+        showAdMessage('Sponsor page opened. Please stay on that page for 10 seconds.', true);
+        
+        // Start checking if user is still on ad page
+        if (adCheckInterval) clearInterval(adCheckInterval);
+        adCheckInterval = setInterval(() => {
+          checkAdViewTime();
+        }, 1000);
+      } else {
+        showAdMessage('Please allow popups to open the sponsor page.', false);
       }
-    } else {
-      const remaining = Math.ceil((requiredTime - timePassed) / 1000);
-      showAdMessage(`Please stay on the sponsor page for ${remaining} more seconds before verifying`, false);
+    });
+
+    // Check ad view time
+    function checkAdViewTime() {
+      if (!adStartTime) return;
+
+      const now = Date.now();
+      
+      try {
+        // Check if ad tab is still open and focused
+        if (adTab && !adTab.closed) {
+          // User is still on ad page - count this time
+          const timeSinceLastCheck = now - lastCheckTime;
+          totalTimeOnAd += timeSinceLastCheck;
+          lastCheckTime = now;
+          
+          // Update progress
+          const seconds = Math.floor(totalTimeOnAd / 1000);
+          const progress = Math.min(100, (seconds / 10) * 100);
+          
+          progressFill.style.width = `${progress}%`;
+          progressText.textContent = `${seconds} seconds`;
+          timerText.textContent = `Time on sponsor page: ${seconds}/10 seconds`;
+          
+          // Check if completed
+          if (seconds >= 10 && !verificationComplete) {
+            completeVerification(liveUrl);
+          }
+        } else {
+          // Ad tab closed or not focused
+          if (adTab && adTab.closed) {
+            // Tab was closed
+            if (totalTimeOnAd < 10000) {
+              showAdMessage('Sponsor page closed too soon. Please click the link again and stay for 10 seconds.', false);
+              resetVerification();
+            }
+          } else {
+            // User switched tabs - pause timing
+            lastCheckTime = now;
+          }
+        }
+      } catch (error) {
+        // Security error - tab is from different origin
+        // Assume user is still on ad page but we can't check directly
+        const timeSinceLastCheck = now - lastCheckTime;
+        totalTimeOnAd += timeSinceLastCheck;
+        lastCheckTime = now;
+        
+        const seconds = Math.floor(totalTimeOnAd / 1000);
+        const progress = Math.min(100, (seconds / 10) * 100);
+        
+        progressFill.style.width = `${progress}%`;
+        progressText.textContent = `${seconds} seconds`;
+        timerText.textContent = `Time on sponsor page: ${seconds}/10 seconds`;
+        
+        if (seconds >= 10 && !verificationComplete) {
+          completeVerification(liveUrl);
+        }
+      }
     }
-  });
+
+    function resetVerification() {
+      adStartTime = null;
+      totalTimeOnAd = 0;
+      lastCheckTime = null;
+      progressFill.style.width = '0%';
+      progressText.textContent = '0 seconds';
+      timerText.textContent = 'Click the sponsor link to start verification';
+      
+      if (adCheckInterval) {
+        clearInterval(adCheckInterval);
+        adCheckInterval = null;
+      }
+    }
+
+    function completeVerification(url) {
+      verificationComplete = true;
+      
+      if (adCheckInterval) {
+        clearInterval(adCheckInterval);
+        adCheckInterval = null;
+      }
+      
+      // Mark step 3 as completed
+      document.querySelectorAll('.step')[2].classList.add('completed');
+      
+      adVerificationContainer.style.display = 'none';
+      liveUrlContainer.style.display = 'block';
+      copyLiveUrl.style.display = 'block';
+      
+      liveUrl.textContent = url;
+      liveUrl.href = url;
+      
+      showAdMessage('✓ Ad verification successful! Your URL is now available.', true);
+      
+      // Close the ad tab if still open
+      if (adTab && !adTab.closed) {
+        setTimeout(() => {
+          try {
+            adTab.close();
+          } catch (e) {
+            // Ignore errors from closing tab
+          }
+        }, 1000);
+      }
+    }
+  }
 
   // Function to show ad verification message
   function showAdMessage(message, isSuccess) {
     adMessage.textContent = message;
     adMessage.className = isSuccess ? 'ad-message ad-success' : 'ad-message ad-error';
-    adMessage.style.display = 'block';
-  }
-
-  // Function to show live URL after ad verification
-  function showLiveUrl(url) {
-    if (!url) return;
-    
-    // Mark step 3 as completed
-    document.querySelectorAll('.step')[2].classList.add('completed');
-    
-    adVerificationContainer.style.display = 'none';
-    liveUrlContainer.style.display = 'block';
-    copyLiveUrl.style.display = 'block';
-
-    liveUrl.textContent = url;
-    liveUrl.href = url;
-
-    // Show success message
-    showAdMessage('✓ Ad verification successful! Your URL is now available.', true);
+    adMessage.style.display = 'flex';
   }
 
   // Copy URL button - clears storage and reloads after copy
@@ -905,12 +1063,12 @@ document.addEventListener('DOMContentLoaded', async () => {
           const originalText = copyLiveUrl.textContent;
           copyLiveUrl.textContent = 'Copied!';
           copyLiveUrl.style.backgroundColor = 'var(--success)';
-          
+
           // Clear all storage and reload after short delay
           setTimeout(() => {
             localStorage.clear();
             window.location.reload();
-          }, 1000);
+          }, 1500);
         })
         .catch(err => {
           console.error('Failed to copy URL:', err);
@@ -920,32 +1078,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Handle drag and drop for file upload
   const fileUploadLabel = document.querySelector('.file-upload-label');
-  
+
   fileUploadLabel.addEventListener('dragover', (e) => {
     e.preventDefault();
     fileUploadLabel.style.borderColor = 'var(--primary)';
-    fileUploadLabel.style.backgroundColor = 'rgba(59, 130, 246, 0.2)';
+    fileUploadLabel.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
   });
-  
+
   fileUploadLabel.addEventListener('dragleave', () => {
     fileUploadLabel.style.borderColor = 'var(--border)';
     fileUploadLabel.style.backgroundColor = '';
   });
-  
+
   fileUploadLabel.addEventListener('drop', (e) => {
     e.preventDefault();
     fileUploadLabel.style.borderColor = 'var(--border)';
     fileUploadLabel.style.backgroundColor = '';
-    
+
     const file = e.dataTransfer.files[0];
     if (!file) return;
-    
+
     // Check if file is HTML or text
     if (!file.name.match(/\.(html|htm|txt)$/i)) {
       showAdMessage('Please upload an HTML file (.html, .htm) or text file (.txt)', false);
       return;
     }
-    
+
     const reader = new FileReader();
     reader.onload = (event) => {
       currentHtml = event.target.result;
@@ -956,13 +1114,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       localStorage.setItem('currentHtml', currentHtml);
     };
     reader.readAsText(file);
-  });
-
-  // Modify the ad link to include return parameter
-  adLink.addEventListener('click', () => {
-    const returnUrl = encodeURIComponent(window.location.href.split('?')[0] + '?ad_verified=true');
-    adLink.href = `${randomAdUrl}&return=${returnUrl}`;
-    localStorage.setItem('adStartTime', new Date().getTime().toString());
   });
 });
 </script>
