@@ -136,42 +136,33 @@
       gap: 10px;
     }
 
-    .filter-title i {
-      font-size: 20px;
-    }
-
-    .filter-grid {
+    .filter-options {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 15px;
     }
 
-    .filter-option {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 229, 255, 0.3);
-      border-radius: 8px;
+    select {
+      width: 100%;
       padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
       cursor: pointer;
       transition: all 0.3s ease;
-      text-align: center;
     }
 
-    .filter-option:hover {
-      background: rgba(0, 229, 255, 0.1);
+    select:hover {
       border-color: var(--primary);
+      background: rgba(0, 229, 255, 0.1);
     }
 
-    .filter-option.active {
-      background: rgba(0, 229, 255, 0.2);
+    select:focus {
+      outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-    }
-
-    .filter-option .count {
-      display: block;
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 5px;
     }
 
     .results-container {
@@ -190,27 +181,6 @@
     .results-count {
       color: var(--text-light);
       font-size: 16px;
-    }
-
-    .sort-options {
-      display: flex;
-      gap: 10px;
-    }
-
-    .sort-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 229, 255, 0.3);
-      border-radius: 8px;
-      padding: 8px 15px;
-      color: var(--text-light);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 14px;
-    }
-
-    .sort-btn.active {
-      background: rgba(0, 229, 255, 0.2);
-      border-color: var(--primary);
     }
 
     .papers-grid {
@@ -238,22 +208,9 @@
 
     .paper-name {
       font-weight: 500;
-      margin-bottom: 10px;
-      flex-grow: 1;
-    }
-
-    .paper-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      color: var(--text-muted);
       margin-bottom: 15px;
-    }
-
-    .paper-year, .paper-date {
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      flex-grow: 1;
+      color: var(--text-light);
     }
 
     .download-btn {
@@ -288,25 +245,9 @@
       color: var(--text-muted);
     }
 
-    .reset-filters {
-      display: block;
-      margin: 20px auto 0;
-      background: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      padding: 8px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .reset-filters:hover {
-      background: rgba(0, 229, 255, 0.1);
-    }
-
     @media (max-width: 768px) {
-      .filter-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      .filter-options {
+        grid-template-columns: 1fr;
       }
       
       .papers-grid {
@@ -345,43 +286,40 @@
   <div class="filters-container">
     <div class="filter-section">
       <h2 class="filter-title">
-        <i>📚</i> Subjects
+        <i>📚</i> Filter Papers
       </h2>
-      <div class="filter-grid" id="subject-filters">
-        <!-- Subjects will be populated by JavaScript -->
-      </div>
-    </div>
+      <div class="filter-options">
+        <select id="subject-filter" title="Filter by Subject">
+          <option value="">All Subjects</option>
+        </select>
 
-    <div class="filter-section">
-      <h2 class="filter-title">
-        <i>📅</i> Exam Dates
-      </h2>
-      <div class="filter-grid" id="date-filters">
-        <div class="filter-option" data-value="all">All Dates</div>
-        <div class="filter-option" data-value="March">March</div>
-        <div class="filter-option" data-value="June">June</div>
-        <div class="filter-option" data-value="Nov">November</div>
-      </div>
-    </div>
+        <select id="date-filter" title="Filter by Exam Date">
+          <option value="">All Dates</option>
+          <option value="March">March</option>
+          <option value="June">June</option>
+          <option value="Nov">November</option>
+        </select>
 
-    <div class="filter-section">
-      <h2 class="filter-title">
-        <i>🗓️</i> Years
-      </h2>
-      <div class="filter-grid" id="year-filters">
-        <div class="filter-option" data-value="all">All Years</div>
-        <!-- Years will be populated by JavaScript -->
+        <select id="year-filter" title="Filter by Year">
+          <option value="">All Years</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+        </select>
       </div>
     </div>
   </div>
 
   <div class="results-container">
     <div class="results-header">
-      <div class="results-count" id="results-count">Showing all papers</div>
-      <div class="sort-options">
-        <button class="sort-btn active" data-sort="name">Name A-Z</button>
-        <button class="sort-btn" data-sort="year">Newest First</button>
-      </div>
+      <div class="results-count" id="results-count">Loading papers...</div>
     </div>
 
     <div class="papers-grid" id="results">
@@ -391,188 +329,70 @@
 
   <script>
     let papers = [];
-    let activeFilters = {
-      subject: 'all',
-      date: 'all',
-      year: 'all'
-    };
-    let currentSort = 'name';
 
     async function loadData() {
-      // In a real implementation, this would fetch from papers.json
-      // For demo purposes, we'll use mock data
-      papers = [
-        { name: "Mathematics June 2024", file: "math_june_2024.pdf", year: "2024", date: "June" },
-        { name: "Mathematics November 2023", file: "math_nov_2023.pdf", year: "2023", date: "Nov" },
-        { name: "Physics June 2024", file: "physics_june_2024.pdf", year: "2024", date: "June" },
-        { name: "Physics March 2023", file: "physics_march_2023.pdf", year: "2023", date: "March" },
-        { name: "Chemistry November 2022", file: "chemistry_nov_2022.pdf", year: "2022", date: "Nov" },
-        { name: "Biology June 2021", file: "biology_june_2021.pdf", year: "2021", date: "June" },
-        { name: "English March 2020", file: "english_march_2020.pdf", year: "2020", date: "March" },
-        { name: "History November 2019", file: "history_nov_2019.pdf", year: "2019", date: "Nov" },
-        { name: "Geography June 2018", file: "geography_june_2018.pdf", year: "2018", date: "June" },
-        { name: "Mathematics March 2017", file: "math_march_2017.pdf", year: "2017", date: "March" },
-        { name: "Physics November 2016", file: "physics_nov_2016.pdf", year: "2016", date: "Nov" },
-        { name: "Chemistry June 2015", file: "chemistry_june_2015.pdf", year: "2015", date: "June" }
-      ];
-      
-      populateFilters();
-      filterAndDisplayPapers();
+      try {
+        const response = await fetch('papers.json');
+        papers = await response.json();
+        populateSubjects();
+        filterPapers();
+      } catch (error) {
+        console.error('Error loading papers:', error);
+        document.getElementById('results').innerHTML = '<div class="no-results">Error loading papers. Please try again later.</div>';
+      }
     }
 
-    function populateFilters() {
-      // Populate subjects
+    function populateSubjects() {
       const subjects = new Set();
       papers.forEach(p => {
         let subject = p.name.split(" ")[0];
         if (subject) subjects.add(subject);
       });
 
-      const subjectFilters = document.getElementById("subject-filters");
-      subjectFilters.innerHTML = '<div class="filter-option active" data-value="all">All Subjects</div>';
-      
+      const subjectFilter = document.getElementById("subject-filter");
       subjects.forEach(subj => {
-        const option = document.createElement("div");
-        option.className = "filter-option";
-        option.dataset.value = subj;
+        const option = document.createElement("option");
+        option.value = subj;
         option.textContent = subj;
-        
-        // Add count
-        const count = papers.filter(p => p.name.startsWith(subj)).length;
-        const countSpan = document.createElement("span");
-        countSpan.className = "count";
-        countSpan.textContent = `${count} papers`;
-        option.appendChild(countSpan);
-        
-        subjectFilters.appendChild(option);
-      });
-
-      // Populate years
-      const years = new Set();
-      papers.forEach(p => years.add(p.year));
-      const sortedYears = Array.from(years).sort((a, b) => b - a);
-
-      const yearFilters = document.getElementById("year-filters");
-      
-      sortedYears.forEach(year => {
-        const option = document.createElement("div");
-        option.className = "filter-option";
-        option.dataset.value = year;
-        option.textContent = year;
-        
-        // Add count
-        const count = papers.filter(p => p.year === year).length;
-        const countSpan = document.createElement("span");
-        countSpan.className = "count";
-        countSpan.textContent = `${count} papers`;
-        option.appendChild(countSpan);
-        
-        yearFilters.appendChild(option);
-      });
-
-      // Add event listeners to filter options
-      document.querySelectorAll('.filter-option').forEach(option => {
-        option.addEventListener('click', function() {
-          const filterType = this.parentElement.id.replace('-filters', '');
-          const value = this.dataset.value;
-          
-          // Update active filter
-          activeFilters[filterType] = value;
-          
-          // Update UI
-          document.querySelectorAll(`#${filterType}-filters .filter-option`).forEach(opt => {
-            opt.classList.remove('active');
-          });
-          this.classList.add('active');
-          
-          // Apply filters
-          filterAndDisplayPapers();
-        });
-      });
-
-      // Add event listeners to sort buttons
-      document.querySelectorAll('.sort-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          currentSort = this.dataset.sort;
-          filterAndDisplayPapers();
-        });
+        subjectFilter.appendChild(option);
       });
     }
 
-    function filterAndDisplayPapers() {
+    function filterPapers() {
+      const subject = document.getElementById("subject-filter").value.toLowerCase();
+      const date = document.getElementById("date-filter").value.toLowerCase();
+      const year = document.getElementById("year-filter").value;
+
       let filtered = papers;
 
-      // Apply subject filter
-      if (activeFilters.subject !== 'all') {
-        filtered = filtered.filter(p => p.name.startsWith(activeFilters.subject));
+      if (subject) {
+        filtered = filtered.filter(p => p.name.toLowerCase().startsWith(subject));
       }
 
-      // Apply date filter
-      if (activeFilters.date !== 'all') {
-        filtered = filtered.filter(p => p.date === activeFilters.date);
+      if (date) {
+        filtered = filtered.filter(p => p.name.toLowerCase().includes(date));
       }
 
-      // Apply year filter
-      if (activeFilters.year !== 'all') {
-        filtered = filtered.filter(p => p.year === activeFilters.year);
-      }
-
-      // Apply sorting
-      if (currentSort === 'name') {
-        filtered.sort((a, b) => a.name.localeCompare(b.name));
-      } else if (currentSort === 'year') {
-        filtered.sort((a, b) => b.year - a.year);
+      if (year) {
+        filtered = filtered.filter(p => p.name.includes(year));
       }
 
       // Update results count
       const resultsCount = document.getElementById("results-count");
       resultsCount.textContent = `Showing ${filtered.length} of ${papers.length} papers`;
 
-      // Display results
       const resultsContainer = document.getElementById("results");
-      
-      if (filtered.length === 0) {
-        resultsContainer.innerHTML = `
-          <div class="no-results">
+      resultsContainer.innerHTML = filtered.length
+        ? filtered.map(p => `
+          <div class="paper-card">
+            <div class="paper-name">${p.name}</div>
+            <a href="${p.file}" class="download-btn" onclick="handleDownload('${p.file}'); return false;">Download</a>
+          </div>`).join('')
+        : `<div class="no-results">
             <i>🔍</i>
             <h3>No papers found</h3>
             <p>Try adjusting your filters to see more results</p>
-            <button class="reset-filters" id="reset-filters">Reset All Filters</button>
-          </div>
-        `;
-        
-        document.getElementById('reset-filters').addEventListener('click', resetFilters);
-      } else {
-        resultsContainer.innerHTML = filtered.map(p => `
-          <div class="paper-card">
-            <div class="paper-name">${p.name}</div>
-            <div class="paper-meta">
-              <span class="paper-year"><i>📅</i> ${p.year}</span>
-              <span class="paper-date"><i>🗓️</i> ${p.date}</span>
-            </div>
-            <a href="#" class="download-btn" onclick="handleDownload('${p.file}'); return false;">Download</a>
-          </div>
-        `).join('');
-      }
-    }
-
-    function resetFilters() {
-      activeFilters = {
-        subject: 'all',
-        date: 'all',
-        year: 'all'
-      };
-      
-      document.querySelectorAll('.filter-option').forEach(option => {
-        option.classList.remove('active');
-        if (option.dataset.value === 'all') {
-          option.classList.add('active');
-        }
-      });
-      
-      filterAndDisplayPapers();
+          </div>`;
     }
 
     function handleDownload(fileUrl) {
@@ -584,6 +404,11 @@
       a.click();
       document.body.removeChild(a);
     }
+
+    // Add event listeners to filters
+    document.getElementById("subject-filter").addEventListener("change", filterPapers);
+    document.getElementById("date-filter").addEventListener("change", filterPapers);
+    document.getElementById("year-filter").addEventListener("change", filterPapers);
 
     // Initialize the page
     loadData();
