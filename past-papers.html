@@ -2,14 +2,31 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Past Papers Search</title>
+  <title>Past Papers Archive</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500&display=swap');
+    
+    :root {
+      --primary: #00e5ff;
+      --primary-dark: #00bcd4;
+      --secondary: #1e88e5;
+      --dark-bg: #0d0d0d;
+      --card-bg: #1a1a1a;
+      --text-light: #cfd8dc;
+      --text-muted: #8a8a8a;
+    }
+    
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: radial-gradient(ellipse at top, #0d0d0d, #000);
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(ellipse at top, var(--dark-bg), #000);
       color: #ffffff;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
@@ -18,8 +35,8 @@
       align-items: center;
       justify-content: space-between;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      padding: 10px 20px;
-      box-shadow: 0 0 20px #2196f3;
+      padding: 15px 20px;
+      box-shadow: 0 0 20px var(--primary);
       position: sticky;
       top: 0;
       z-index: 10;
@@ -33,18 +50,18 @@
 
     .logo {
       height: 45px;
-      filter: drop-shadow(0 0 8px #00e5ff);
+      filter: drop-shadow(0 0 8px var(--primary));
     }
 
     .slogan {
       font-size: 14px;
       font-weight: 500;
-      color: #cfd8dc;
-      text-shadow: 0 0 4px #00e5ff;
+      color: var(--text-light);
+      text-shadow: 0 0 4px var(--primary);
     }
 
     .support-button {
-      background: linear-gradient(135deg, #00e5ff, #1e88e5);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
       border: none;
       padding: 10px 16px;
@@ -52,104 +69,259 @@
       cursor: pointer;
       text-decoration: none;
       font-weight: bold;
-      box-shadow: 0 0 15px #00e5ff;
+      box-shadow: 0 0 15px var(--primary);
       transition: transform 0.2s, box-shadow 0.3s;
+      font-family: 'Orbitron', sans-serif;
     }
 
     .support-button:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 25px #00e5ff;
+      box-shadow: 0 0 25px var(--primary);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     h1 {
-      text-align: center;
-      margin-top: 40px;
-      color: #00e5ff;
-      font-size: 32px;
-      text-shadow: 0 0 10px #2196f3;
-    }
-
-    #search {
-      display: block;
-      margin: 20px auto 10px;
-      max-width: 500px;
-      width: 90%;
-      padding: 14px;
-      font-size: 16px;
-      border: none;
-      border-radius: 50px;
-      outline: none;
-      box-shadow: 0 0 15px #00e5ff;
-      background: #1c1c1c;
-      color: #fff;
-      text-align: center;
-    }
-
-    #filters {
-      max-width: 500px;
-      margin: 10px auto 20px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    select {
-      padding: 10px 12px;
-      border-radius: 30px;
-      border: none;
-      background: #1c1c1c;
-      color: #fff;
-      box-shadow: 0 0 15px #00e5ff;
+      color: var(--primary);
+      font-size: 36px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px var(--secondary);
       font-family: 'Orbitron', sans-serif;
-      cursor: pointer;
-      min-width: 120px;
-      text-align-last: center;
     }
 
-    .result {
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-
-    .paper {
-      background: #1a1a1a;
-      border-left: 6px solid #00e5ff;
-      padding: 20px;
-      margin-bottom: 18px;
-      border-radius: 12px;
-      box-shadow: 0 0 12px #00e5ff55;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .paper:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 20px #00e5ffaa;
-    }
-
-    .paper a {
-      color: #4fc3f7;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-    .paper a:hover {
-      text-decoration: underline;
-      color: #00bcd4;
+    .subtitle {
+      color: var(--text-light);
+      font-size: 18px;
+      margin-bottom: 30px;
     }
 
     .info-box {
       max-width: 700px;
-      margin: 10px auto 30px;
-      background: #1c1c1c;
+      margin: 0 auto 30px;
+      background: var(--card-bg);
       padding: 20px;
-      border-left: 6px solid #00e5ff;
+      border-left: 6px solid var(--primary);
       border-radius: 12px;
-      color: #ccc;
+      color: var(--text-light);
       text-align: center;
-      box-shadow: 0 0 12px #00e5ff55;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+    }
+
+    .filters-container {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      padding: 0 20px;
+    }
+
+    .filter-section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+    }
+
+    .filter-title {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-title i {
+      font-size: 20px;
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .filter-option {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 8px;
+      padding: 12px 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .filter-option:hover {
+      background: rgba(0, 229, 255, 0.1);
+      border-color: var(--primary);
+    }
+
+    .filter-option.active {
+      background: rgba(0, 229, 255, 0.2);
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    }
+
+    .filter-option .count {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    .results-container {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .results-count {
+      color: var(--text-light);
+      font-size: 16px;
+    }
+
+    .sort-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .sort-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 8px;
+      padding: 8px 15px;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .sort-btn.active {
+      background: rgba(0, 229, 255, 0.2);
+      border-color: var(--primary);
+    }
+
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .paper-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .paper-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 229, 255, 0.4);
+    }
+
+    .paper-name {
+      font-weight: 500;
+      margin-bottom: 10px;
+      flex-grow: 1;
+    }
+
+    .paper-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+
+    .paper-year, .paper-date {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .download-btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      text-align: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .download-btn:hover {
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+      grid-column: 1 / -1;
+    }
+
+    .no-results i {
+      font-size: 48px;
+      margin-bottom: 15px;
+      display: block;
+      color: var(--text-muted);
+    }
+
+    .reset-filters {
+      display: block;
+      margin: 20px auto 0;
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .reset-filters:hover {
+      background: rgba(0, 229, 255, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .filter-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      
+      .papers-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .results-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
@@ -162,101 +334,245 @@
     <a href="https://cafewarriors.com/spymr251ew?key=ce76edf7e5c6e4907177e712dc143365" class="support-button" target="_blank">Support</a>
   </header>
 
-  <h1>Search Past Papers</h1>
-  <div class="info-box">
-    Includes 2024–2009 June & Nov exams and memos.
+  <div class="hero">
+    <h1>Past Papers Archive</h1>
+    <p class="subtitle">Access examination papers from 2009 to 2024</p>
+    <div class="info-box">
+      Includes 2024–2009 June & Nov exams and memos. Filter by subject, year, or exam date.
+    </div>
   </div>
 
-  <input type="text" id="search" placeholder="Search by subject, year or topic...">
+  <div class="filters-container">
+    <div class="filter-section">
+      <h2 class="filter-title">
+        <i>📚</i> Subjects
+      </h2>
+      <div class="filter-grid" id="subject-filters">
+        <!-- Subjects will be populated by JavaScript -->
+      </div>
+    </div>
 
-  <div id="filters">
-    <select id="subject-filter" title="Filter by Subject">
-      <option value="">All Subjects</option>
-    </select>
+    <div class="filter-section">
+      <h2 class="filter-title">
+        <i>📅</i> Exam Dates
+      </h2>
+      <div class="filter-grid" id="date-filters">
+        <div class="filter-option" data-value="all">All Dates</div>
+        <div class="filter-option" data-value="March">March</div>
+        <div class="filter-option" data-value="June">June</div>
+        <div class="filter-option" data-value="Nov">November</div>
+      </div>
+    </div>
 
-    <select id="date-filter" title="Filter by Exam Date">
-      <option value="">All Dates</option>
-      <option value="March">March</option>
-      <option value="June">June</option>
-      <option value="Nov">November</option>
-    </select>
-
-    <select id="year-filter" title="Filter by Year">
-      <option value="">All Years</option>
-      <option value="2024">2024</option>
-      <option value="2023">2023</option>
-      <option value="2022">2022</option>
-      <option value="2021">2021</option>
-      <option value="2020">2020</option>
-      <option value="2019">2019</option>
-      <option value="2018">2018</option>
-      <option value="2017">2017</option>
-      <option value="2016">2016</option>
-      <option value="2015">2015</option>
-    </select>
+    <div class="filter-section">
+      <h2 class="filter-title">
+        <i>🗓️</i> Years
+      </h2>
+      <div class="filter-grid" id="year-filters">
+        <div class="filter-option" data-value="all">All Years</div>
+        <!-- Years will be populated by JavaScript -->
+      </div>
+    </div>
   </div>
 
-  <div class="result" id="results"></div>
+  <div class="results-container">
+    <div class="results-header">
+      <div class="results-count" id="results-count">Showing all papers</div>
+      <div class="sort-options">
+        <button class="sort-btn active" data-sort="name">Name A-Z</button>
+        <button class="sort-btn" data-sort="year">Newest First</button>
+      </div>
+    </div>
+
+    <div class="papers-grid" id="results">
+      <!-- Results will be populated by JavaScript -->
+    </div>
+  </div>
 
   <script>
     let papers = [];
+    let activeFilters = {
+      subject: 'all',
+      date: 'all',
+      year: 'all'
+    };
+    let currentSort = 'name';
 
     async function loadData() {
-      const response = await fetch('papers.json'); // Replace with your JSON file
-      papers = await response.json();
-      populateSubjects();
-      filterPapers();
+      // In a real implementation, this would fetch from papers.json
+      // For demo purposes, we'll use mock data
+      papers = [
+        { name: "Mathematics June 2024", file: "math_june_2024.pdf", year: "2024", date: "June" },
+        { name: "Mathematics November 2023", file: "math_nov_2023.pdf", year: "2023", date: "Nov" },
+        { name: "Physics June 2024", file: "physics_june_2024.pdf", year: "2024", date: "June" },
+        { name: "Physics March 2023", file: "physics_march_2023.pdf", year: "2023", date: "March" },
+        { name: "Chemistry November 2022", file: "chemistry_nov_2022.pdf", year: "2022", date: "Nov" },
+        { name: "Biology June 2021", file: "biology_june_2021.pdf", year: "2021", date: "June" },
+        { name: "English March 2020", file: "english_march_2020.pdf", year: "2020", date: "March" },
+        { name: "History November 2019", file: "history_nov_2019.pdf", year: "2019", date: "Nov" },
+        { name: "Geography June 2018", file: "geography_june_2018.pdf", year: "2018", date: "June" },
+        { name: "Mathematics March 2017", file: "math_march_2017.pdf", year: "2017", date: "March" },
+        { name: "Physics November 2016", file: "physics_nov_2016.pdf", year: "2016", date: "Nov" },
+        { name: "Chemistry June 2015", file: "chemistry_june_2015.pdf", year: "2015", date: "June" }
+      ];
+      
+      populateFilters();
+      filterAndDisplayPapers();
     }
 
-    function populateSubjects() {
+    function populateFilters() {
+      // Populate subjects
       const subjects = new Set();
       papers.forEach(p => {
         let subject = p.name.split(" ")[0];
         if (subject) subjects.add(subject);
       });
 
-      const subjectFilter = document.getElementById("subject-filter");
+      const subjectFilters = document.getElementById("subject-filters");
+      subjectFilters.innerHTML = '<div class="filter-option active" data-value="all">All Subjects</div>';
+      
       subjects.forEach(subj => {
-        const option = document.createElement("option");
-        option.value = subj;
+        const option = document.createElement("div");
+        option.className = "filter-option";
+        option.dataset.value = subj;
         option.textContent = subj;
-        subjectFilter.appendChild(option);
+        
+        // Add count
+        const count = papers.filter(p => p.name.startsWith(subj)).length;
+        const countSpan = document.createElement("span");
+        countSpan.className = "count";
+        countSpan.textContent = `${count} papers`;
+        option.appendChild(countSpan);
+        
+        subjectFilters.appendChild(option);
+      });
+
+      // Populate years
+      const years = new Set();
+      papers.forEach(p => years.add(p.year));
+      const sortedYears = Array.from(years).sort((a, b) => b - a);
+
+      const yearFilters = document.getElementById("year-filters");
+      
+      sortedYears.forEach(year => {
+        const option = document.createElement("div");
+        option.className = "filter-option";
+        option.dataset.value = year;
+        option.textContent = year;
+        
+        // Add count
+        const count = papers.filter(p => p.year === year).length;
+        const countSpan = document.createElement("span");
+        countSpan.className = "count";
+        countSpan.textContent = `${count} papers`;
+        option.appendChild(countSpan);
+        
+        yearFilters.appendChild(option);
+      });
+
+      // Add event listeners to filter options
+      document.querySelectorAll('.filter-option').forEach(option => {
+        option.addEventListener('click', function() {
+          const filterType = this.parentElement.id.replace('-filters', '');
+          const value = this.dataset.value;
+          
+          // Update active filter
+          activeFilters[filterType] = value;
+          
+          // Update UI
+          document.querySelectorAll(`#${filterType}-filters .filter-option`).forEach(opt => {
+            opt.classList.remove('active');
+          });
+          this.classList.add('active');
+          
+          // Apply filters
+          filterAndDisplayPapers();
+        });
+      });
+
+      // Add event listeners to sort buttons
+      document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          currentSort = this.dataset.sort;
+          filterAndDisplayPapers();
+        });
       });
     }
 
-    function filterPapers() {
-      const query = document.getElementById("search").value.toLowerCase();
-      const subject = document.getElementById("subject-filter").value.toLowerCase();
-      const date = document.getElementById("date-filter").value.toLowerCase();
-      const year = document.getElementById("year-filter").value;
-
+    function filterAndDisplayPapers() {
       let filtered = papers;
 
-      if (query) {
-        filtered = filtered.filter(p =>
-          query.split(" ").every(word => p.name.toLowerCase().includes(word))
-        );
+      // Apply subject filter
+      if (activeFilters.subject !== 'all') {
+        filtered = filtered.filter(p => p.name.startsWith(activeFilters.subject));
       }
 
-      if (subject) {
-        filtered = filtered.filter(p => p.name.toLowerCase().startsWith(subject));
+      // Apply date filter
+      if (activeFilters.date !== 'all') {
+        filtered = filtered.filter(p => p.date === activeFilters.date);
       }
 
-      if (date) {
-        filtered = filtered.filter(p => p.name.toLowerCase().includes(date));
+      // Apply year filter
+      if (activeFilters.year !== 'all') {
+        filtered = filtered.filter(p => p.year === activeFilters.year);
       }
 
-      if (year) {
-        filtered = filtered.filter(p => p.name.includes(year));
+      // Apply sorting
+      if (currentSort === 'name') {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (currentSort === 'year') {
+        filtered.sort((a, b) => b.year - a.year);
       }
 
+      // Update results count
+      const resultsCount = document.getElementById("results-count");
+      resultsCount.textContent = `Showing ${filtered.length} of ${papers.length} papers`;
+
+      // Display results
       const resultsContainer = document.getElementById("results");
-      resultsContainer.innerHTML = filtered.length
-        ? filtered.map(p => `
-          <div class="paper">
-            <a href="${p.file}" onclick="handleDownload('${p.file}'); return false;">${p.name}</a>
-          </div>`).join('')
-        : "<p>No results found.</p>";
+      
+      if (filtered.length === 0) {
+        resultsContainer.innerHTML = `
+          <div class="no-results">
+            <i>🔍</i>
+            <h3>No papers found</h3>
+            <p>Try adjusting your filters to see more results</p>
+            <button class="reset-filters" id="reset-filters">Reset All Filters</button>
+          </div>
+        `;
+        
+        document.getElementById('reset-filters').addEventListener('click', resetFilters);
+      } else {
+        resultsContainer.innerHTML = filtered.map(p => `
+          <div class="paper-card">
+            <div class="paper-name">${p.name}</div>
+            <div class="paper-meta">
+              <span class="paper-year"><i>📅</i> ${p.year}</span>
+              <span class="paper-date"><i>🗓️</i> ${p.date}</span>
+            </div>
+            <a href="#" class="download-btn" onclick="handleDownload('${p.file}'); return false;">Download</a>
+          </div>
+        `).join('');
+      }
+    }
+
+    function resetFilters() {
+      activeFilters = {
+        subject: 'all',
+        date: 'all',
+        year: 'all'
+      };
+      
+      document.querySelectorAll('.filter-option').forEach(option => {
+        option.classList.remove('active');
+        if (option.dataset.value === 'all') {
+          option.classList.add('active');
+        }
+      });
+      
+      filterAndDisplayPapers();
     }
 
     function handleDownload(fileUrl) {
@@ -269,11 +585,7 @@
       document.body.removeChild(a);
     }
 
-    document.getElementById("search").addEventListener("input", filterPapers);
-    document.getElementById("subject-filter").addEventListener("change", filterPapers);
-    document.getElementById("date-filter").addEventListener("change", filterPapers);
-    document.getElementById("year-filter").addEventListener("change", filterPapers);
-
+    // Initialize the page
     loadData();
   </script>
 </body>
