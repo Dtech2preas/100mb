@@ -14,8 +14,7 @@
       justify-content: center;
       min-height: 100vh;
       margin: 0;
-      padding: 0; /* Remove padding to allow edge-to-edge video */
-      overflow: hidden; /* Prevent body scroll when zoomed */
+      padding: 20px;
     }
 
     #back {
@@ -29,17 +28,12 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
-      z-index: 10;
-      opacity: 1; /* Start visible */
-      transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
     }
 
     #loading {
-      position: absolute; /* Place loading over video area */
       font-size: 20px;
       color: yellow;
       text-align: center;
-      z-index: 5;
     }
 
     #rotate-tip {
@@ -52,14 +46,11 @@
 
     #video-container {
       display: none;
-      /* 🌟 FULL SCREEN/ZOOM EFFECT */
-      width: 100vw; /* Take full viewport width */
-      height: 100vh; /* Take full viewport height */
-      max-width: 100vw; /* Ensure it's not constrained by original 960px */
-      aspect-ratio: auto; /* Remove fixed 16/9 aspect ratio for stretching */
-      margin-top: 0; /* Remove top margin */
+      width: 100%;
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
+      margin-top: 20px;
       animation: fadeIn 1s ease-in-out forwards;
-      cursor: none; /* Hide mouse cursor over video area */
     }
 
     iframe {
@@ -89,62 +80,23 @@
     const videoContainer = document.getElementById("video-container");
     const loadingMsg = document.getElementById("loading");
     const rotateTip = document.getElementById("rotate-tip");
-    const backButton = document.getElementById("back");
-    let hideTimer = null;
 
     const jsonFiles = [
       "popular.json", "action.json", "slice_of_life.json",
       "sci-fi.json", "drama.json", "comedy.json", "fantasy.json"
     ];
 
-    function hideBackButton() {
-      backButton.style.opacity = '0';
-    }
-
-    function showBackButton() {
-      // Clear any existing timer to prevent immediate hiding
-      clearTimeout(hideTimer);
-      backButton.style.opacity = '1';
-      
-      // Set a new timer to hide the button after 3 seconds
-      hideTimer = setTimeout(hideBackButton, 3000);
-    }
-    
-    function setupVideoControls() {
-        // Initial hide after a short delay
-        setTimeout(hideBackButton, 3000); 
-
-        // Listen for mouse movement or touch on the container
-        // These events are used to detect user interaction
-        videoContainer.addEventListener('mousemove', showBackButton);
-        videoContainer.addEventListener('touchstart', showBackButton);
-    }
-
-
     async function requestLandscapeMode() {
-      // Keep original logic, but check if we're on a non-mobile device 
-      // where rotation attempts fail and cause issues.
-      const isMobile = window.innerWidth <= 768 || window.innerHeight <= 768;
-
-      if (!isMobile) {
-        // Only attempt fullscreen on PC, skip orientation lock
-        try {
-          await document.documentElement.requestFullscreen();
-        } catch (err) {
-          console.log("Fullscreen failed on PC, continuing without it.");
-        }
-        return;
-      }
-      
-      // Mobile logic
       try {
+        // Request fullscreen
         await document.documentElement.requestFullscreen();
+
+        // Lock orientation to landscape
         if (screen.orientation && screen.orientation.lock) {
           await screen.orientation.lock('landscape');
-          rotateTip.style.display = "none";
         }
       } catch (err) {
-        console.warn("Orientation lock/Fullscreen failed:", err);
+        console.warn("Orientation lock failed:", err);
         rotateTip.style.display = "block";
       }
     }
@@ -159,25 +111,21 @@
         const anime = allAnime.find(a => a.anime_name?.toLowerCase() === title.toLowerCase());
 
         if (!anime) {
-          loadingMsg.innerText = \`❌ Anime "\${title}" not found.\`;
+          loadingMsg.innerText = `❌ Anime "${title}" not found.`;
           return;
         }
 
         const episode = anime.episodes?.find(ep => ep.episode?.toLowerCase() === epNum.toLowerCase());
         if (!episode) {
-          loadingMsg.innerText = \`❌ Episode "\${epNum}" not found.\`;
+          loadingMsg.innerText = `❌ Episode "${epNum}" not found.`;
           return;
         }
 
         setTimeout(() => {
           loadingMsg.style.display = "none";
-          // We must remove the existing back button from the body's flow 
-          // before adding the video controls logic.
           videoContainer.innerHTML = episode.iframe;
           videoContainer.style.display = "block";
-          
-          setupVideoControls(); // Start the timer to hide the back button
-          requestLandscapeMode(); // attempt full screen/rotation
+          requestLandscapeMode(); // attempt to rotate
         }, 1500);
       } catch (err) {
         loadingMsg.innerText = "⚠️ Failed to load video. Please try again later.";
