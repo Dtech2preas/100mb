@@ -3,20 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Video Player</title>
-  <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self' data:;
-    script-src 'self' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
-    connect-src 'self';
-    img-src 'self' data:;
-    media-src *;
-    frame-src *;
-    frame-ancestors 'self';
-    base-uri 'self';
-    form-action 'none';
-    object-src 'none';
-    sandbox allow-scripts allow-same-origin allow-popups allow-forms;
-  ">
   <style>
     body {
       background: #000;
@@ -28,8 +14,8 @@
       justify-content: center;
       min-height: 100vh;
       margin: 0;
-      padding: 20px;
-      overflow: hidden; /* Prevent body scroll on fullscreen */
+      padding: 0; /* Changed from 20px to 0 for better edge-to-edge on PC */
+      overflow: hidden;
     }
 
     #back {
@@ -43,7 +29,7 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
-      z-index: 10; /* Ensure button is above video */
+      z-index: 10;
     }
 
     #loading {
@@ -63,29 +49,24 @@
     #video-container {
       display: none;
       width: 100%;
-      max-width: 960px;
+      max-width: 960px; /* Original max width */
       aspect-ratio: 16 / 9;
       margin-top: 20px;
       animation: fadeIn 1s ease-in-out forwards;
-      flex-grow: 1; /* Allows container to grow */
+      flex-grow: 1; /* Allows it to take more vertical space */
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Full screen style for PC/Larger Screens */
+    /* 🖥️ PC/Desktop View Enhancement: make it take up more space */
     @media (min-width: 769px) {
-      body {
-        padding: 0;
-      }
       #video-container {
-        width: 100vw;
-        height: 100vh;
-        max-width: none;
+        max-width: 100%; /* Allows it to expand horizontally */
+        height: calc(100vh - 40px); /* Fill most vertical space */
         aspect-ratio: auto;
         margin-top: 0;
       }
-      /* Hide the back button and tip on full-screen PC view if desired, but keeping them for now */
     }
 
     iframe {
@@ -115,38 +96,12 @@
 
     const videoContainer = document.getElementById("video-container");
     const loadingMsg = document.getElementById("loading");
-    const rotateTip = document.getElementById("rotate-tip");
+    // const rotateTip = document.getElementById("rotate-tip"); // Not used anymore
 
     const jsonFiles = [
       "popular.json", "action.json", "slice_of_life.json",
       "sci-fi.json", "drama.json", "comedy.json", "fantasy.json"
     ];
-
-    const MOBILE_THRESHOLD = 768; // Screens wider than this are treated as PC/Tablet
-
-    async function requestLandscapeMode() {
-      // 💻 Skip fullscreen/orientation lock on PC/large screens
-      if (window.innerWidth > MOBILE_THRESHOLD || window.innerHeight > MOBILE_THRESHOLD) {
-        console.log("Desktop view: Skipping orientation lock/fullscreen request.");
-        return;
-      }
-
-      // 📱 Mobile Logic: Request fullscreen and orientation lock
-      try {
-        // Request fullscreen on the body element for better coverage
-        await document.body.requestFullscreen();
-
-        // Lock orientation to landscape
-        if (screen.orientation && screen.orientation.lock) {
-          await screen.orientation.lock('landscape');
-        }
-        rotateTip.style.display = "none"; // Hide tip if successful
-      } catch (err) {
-        console.warn("Orientation lock/Fullscreen failed (expected on some mobile/PC browsers):", err);
-        // Display tip if fullscreen/lock fails (mainly for mobile)
-        rotateTip.style.display = "block";
-      }
-    }
 
     async function loadAndDisplayVideo() {
       try {
@@ -170,10 +125,18 @@
 
         setTimeout(() => {
           loadingMsg.style.display = "none";
-          // Inject the iframe content
-          videoContainer.innerHTML = episode.iframe;
-          videoContainer.style.display = "flex"; // Changed from 'block' to 'flex' for better centering if needed
-          requestLandscapeMode(); // Attempt to adjust screen/orientation
+
+          // 🛡️ AD/REDIRECTION BLOCKING FIX: Apply sandbox directly to the iframe
+          // This prevents the embedded player from navigating the top page,
+          // opening popups, or running potentially malicious scripts that cause redirects.
+          // It allows: scripts, same origin, popups, and fullscreen access within the iframe itself.
+          let iframeHtml = episode.iframe.replace(
+            /<iframe/i,
+            '<iframe sandbox="allow-scripts allow-same-origin allow-popups allow-fullscreen"'
+          );
+
+          videoContainer.innerHTML = iframeHtml;
+          videoContainer.style.display = "flex";
         }, 1500);
       } catch (err) {
         loadingMsg.innerText = "⚠️ Failed to load video. Please try again later.";
