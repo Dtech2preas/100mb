@@ -53,7 +53,7 @@
       animation: fadeIn 1s ease-in-out forwards;
     }
 
-    #video-container iframe {
+    iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -66,62 +66,29 @@
   </style>
 </head>
 <body>
-  <button id="back" onclick="window.history.back()">Back</button>
-  <div id="loading">... Loading video ...</div>
-  <div id="rotate-tip">⚠️ Please rotate your device to landscape mode for a better view.</div>
+
+  <button id="back" onclick="history.back()">⬅️ Back</button>
+  <div id="loading">⏳ Loading video...</div>
+  <div id="rotate-tip">🔄 For the best experience, please rotate your device to landscape.</div>
   <div id="video-container"></div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const title = urlParams.get('title');
-    const epNum = urlParams.get('ep');
+    const params = new URLSearchParams(window.location.search);
+    const title = decodeURIComponent(params.get("title") || "").trim();
+    const epNum = decodeURIComponent(params.get("ep") || "").trim();
 
-    const loadingMsg = document.getElementById('loading');
-    const videoContainer = document.getElementById('video-container');
-    const rotateTip = document.getElementById('rotate-tip');
+    const videoContainer = document.getElementById("video-container");
+    const loadingMsg = document.getElementById("loading");
+    const rotateTip = document.getElementById("rotate-tip");
 
-    // List of JSON files to fetch (assuming they are in the same directory or accessible)
-    const jsonFiles = ['animedataset.json', 'animedataset2.json'];
+    const jsonFiles = [
+      "popular.json", "action.json", "slice_of_life.json",
+      "sci-fi.json", "drama.json", "comedy.json", "fantasy.json"
+    ];
 
-    // --- START MODIFICATION for Pop-up/Redirect Blocking ---
-    function preventPopupsAndRedirects() {
-        // 1. Override window.open to silently do nothing for pop-ups
-        window.open = function() { 
-            console.log("Blocked window.open call.");
-            return null; // Return null as if a browser pop-up blocker caught it
-        };
-
-        // 2. Block 'frame-busting' (iframe trying to redirect the parent window)
-        // This is a common pattern:
-        // top.location = self.location;
-        try {
-            // We temporarily redefine the setter for the 'location' property on the parent window (top/self) 
-            // to a function that throws an error, which stops the redirect attempt.
-            Object.defineProperty(window.top, 'location', {
-                value: self.location, // Keep the value as the current location to prevent simple comparisons
-                set: function(url) {
-                    console.log(`Blocked frame-busting redirect to: ${url}`);
-                    // Throwing an error is the standard way to stop the navigation without erroring the page
-                    throw 'Redirect blocked'; 
-                }
-            });
-        } catch (e) {
-            // This catch is necessary if the iframe is from a different domain (cross-origin), 
-            // as the browser will throw a security error when trying to access 'window.top.location', 
-            // which in itself prevents the frame-busting. We log the action, but no further code is needed.
-            console.warn("Could not set top.location property due to cross-origin security, but this also prevents frame-busting.");
-        }
-    }
-    
-    // Call the function immediately to set up the blockers
-    preventPopupsAndRedirects();
-
-    // --- END MODIFICATION ---
-
-    // Function to request landscape mode on mobile devices
     async function requestLandscapeMode() {
       try {
-        // Request fullscreen mode first
+        // Request fullscreen
         await document.documentElement.requestFullscreen();
 
         // Lock orientation to landscape
@@ -144,19 +111,18 @@
         const anime = allAnime.find(a => a.anime_name?.toLowerCase() === title.toLowerCase());
 
         if (!anime) {
-          loadingMsg.innerText = `❌ Anime \"${title}\" not found.`;
+          loadingMsg.innerText = `❌ Anime "${title}" not found.`;
           return;
         }
 
         const episode = anime.episodes?.find(ep => ep.episode?.toLowerCase() === epNum.toLowerCase());
         if (!episode) {
-          loadingMsg.innerText = `❌ Episode \"${epNum}\" not found.`;
+          loadingMsg.innerText = `❌ Episode "${epNum}" not found.`;
           return;
         }
 
         setTimeout(() => {
           loadingMsg.style.display = "none";
-          // Use the original iframe string without the sandbox attribute
           videoContainer.innerHTML = episode.iframe;
           videoContainer.style.display = "block";
           requestLandscapeMode(); // attempt to rotate
