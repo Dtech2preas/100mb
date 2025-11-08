@@ -793,7 +793,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Fetch first token from GitHub Gist
   async function fetchToken() {
     try {
-      const response = await fetch('https://gist.githubusercontent.com/Dtech2preas/8a30b80295920ae54ce13af87b7c162d/raw/gistfile1.txt');
+      const response = await fetch('https://gist.githubusercontent.com/Dtech2preas/498a03fc1467fc14c66358e0f5721517/raw/gistfile1.txt');
       if (!response.ok) throw new Error('Failed to fetch tokens');
 
       const text = await response.text();
