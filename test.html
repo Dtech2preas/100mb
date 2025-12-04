@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-TECH Secure Inbox</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f0f5; padding: 20px; text-align: center; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { color: #4b0082; } /* Dark Purple for D-TECH */
+        
+        .box { border: 2px dashed #4b0082; padding: 15px; margin: 20px 0; border-radius: 8px; background: #f9f9ff; }
+        #emailDisplay { font-size: 1.2em; font-weight: bold; color: #333; }
+        
+        button { background: #4b0082; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #3a006b; }
+        
+        #inbox { text-align: left; margin-top: 20px; }
+        .email-item { background: #fff; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+        .email-subject { font-weight: bold; color: #4b0082; }
+        .email-body { margin-top: 5px; font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>D-TECH Unlimited Mail</h1>
+    
+    <div id="setupSection">
+        <p>Click below to generate a secure, temporary inbox.</p>
+        <button onclick="generateEmail()">Generate Inbox</button>
+    </div>
+
+    <div id="inboxSection" style="display:none;">
+        <div class="box">
+            Your Address:<br>
+            <span id="emailDisplay">...</span>
+        </div>
+        <p>Waiting for emails... (Auto-refreshes every 5s)</p>
+        <div id="inbox"></div>
+    </div>
+</div>
+
+<script>
+    // ----------------------------------------------------
+    // PASTE YOUR WORKER URL HERE (Keep the https://)
+    // ----------------------------------------------------
+    const API_URL = "https://crimson-cherry-ee99.dtechxpreas.workers.dev"; 
+    // ----------------------------------------------------
+
+    let currentEmail = "";
+
+    async function generateEmail() {
+        try {
+            const btn = document.querySelector("button");
+            btn.innerText = "Creating...";
+            
+            // Call the Generator API
+            const res = await fetch(`${API_URL}/generate`, { method: "POST" });
+            const data = await res.json();
+            
+            currentEmail = data.email;
+            
+            // Show the Inbox UI
+            document.getElementById("setupSection").style.display = "none";
+            document.getElementById("inboxSection").style.display = "block";
+            document.getElementById("emailDisplay").innerText = currentEmail;
+            
+            // Start checking for mail
+            setInterval(checkInbox, 5000); 
+        } catch (e) {
+            alert("Error connecting to Backend: " + e);
+        }
+    }
+
+    async function checkInbox() {
+        if (!currentEmail) return;
+        
+        try {
+            const res = await fetch(`${API_URL}/view?user=${currentEmail}`);
+            const emails = await res.json();
+            
+            const list = document.getElementById("inbox");
+            list.innerHTML = ""; // Clear list
+            
+            if (emails.length === 0) {
+                list.innerHTML = "<p>No emails yet.</p>";
+                return;
+            }
+
+            emails.forEach(email => {
+                const item = document.createElement("div");
+                item.className = "email-item";
+                item.innerHTML = `
+                    <div class="email-subject">${email.subject}</div>
+                    <div style="font-size:0.8em; color:#888;">From: ${email.sender}</div>
+                    <div class="email-body">${email.body}</div>
+                `;
+                list.appendChild(item);
+            });
+        } catch (e) {
+            console.log("Inbox check failed", e);
+        }
+    }
+</script>
+
+</body>
+</html>
