@@ -3,77 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D-TECH Debugger</title>
+    <title>D-TECH Unlimited Mail</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; text-align: center; }
-        button { background: #4b0082; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 5px; cursor: pointer; }
-        .error-log { color: red; background: #ffe6e6; padding: 10px; margin-top: 20px; text-align: left; border: 1px solid red; display: none; }
-        .success-log { color: green; background: #e6ffe6; padding: 10px; margin-top: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f4f9; padding: 20px; text-align: center; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h1 { color: #4b0082; margin-bottom: 10px; }
+        .subtitle { color: #666; font-size: 0.9em; margin-bottom: 30px; }
+        
+        /* Button Styles */
+        button { background: #4b0082; color: white; border: none; padding: 15px 40px; font-size: 18px; border-radius: 25px; cursor: pointer; transition: transform 0.2s; }
+        button:active { transform: scale(0.95); }
+        
+        /* The Green Address Box */
+        .address-box { background: #e8f5e9; color: #2e7d32; border: 2px dashed #66bb6a; padding: 15px; margin: 20px 0; border-radius: 8px; font-weight: bold; font-size: 1.1em; display: none; }
+        
+        /* Inbox Styles */
+        #inboxSection { display: none; text-align: left; margin-top: 20px; }
+        .email-card { background: #fff; border-left: 5px solid #4b0082; padding: 15px; margin-bottom: 15px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); animation: fadeIn 0.5s; }
+        .email-subject { font-weight: bold; font-size: 1.1em; color: #333; }
+        .email-meta { font-size: 0.8em; color: #888; margin-bottom: 8px; }
+        .email-body { color: #555; line-height: 1.5; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <h1>D-TECH Inbox</h1>
+<div class="container">
+    <h1>D-TECH Mail</h1>
+    <p class="subtitle">Secure, Temporary, Unlimited.</p>
     
-    <button id="genBtn">Generate Inbox</button>
-    
-    <div id="debugLog" class="error-log"></div>
-    <div id="result" class="success-log" style="display:none;"></div>
+    <div id="startScreen">
+        <button id="genBtn" onclick="createInbox()">Generate Secure Inbox</button>
+    </div>
+
+    <div id="inboxUI" style="display:none;">
+        <div id="myAddress" class="address-box"></div>
+        <div style="margin-bottom: 15px; color: #888; font-size: 0.9em;">
+            <span id="statusText">Waiting for emails...</span> <span id="timer">(Autorefresh: 5s)</span>
+        </div>
+        <div id="emailList"></div>
+    </div>
+</div>
 
 <script>
-    // ----------------------------------------------------
-    // IMPORTANT: Check this URL carefully!
+    // ------------------------------------------------
+    // YOUR WORKER URL
     const API_URL = "https://crimson-cherry-ee99.dtechxpreas.workers.dev"; 
-    // ----------------------------------------------------
+    // ------------------------------------------------
 
-    // This function prints messages to your screen
-    function logError(msg) {
-        const logBox = document.getElementById("debugLog");
-        logBox.style.display = "block";
-        logBox.innerHTML += "<b>ERROR:</b> " + msg + "<br>";
-    }
+    let activeEmail = "";
 
-    const btn = document.getElementById("genBtn");
-
-    btn.addEventListener("click", async function() {
+    async function createInbox() {
+        const btn = document.getElementById("genBtn");
+        btn.innerText = "Creating...";
+        
         try {
-            // 1. Change Button Text
-            btn.innerText = "Connecting...";
-            document.getElementById("debugLog").style.display = "none";
-            document.getElementById("debugLog").innerHTML = "";
+            // 1. Generate Email
+            const res = await fetch(`${API_URL}/generate`, { method: "POST" });
+            const data = await res.json();
+            activeEmail = data.email;
 
-            // 2. Start the Fetch
-            const response = await fetch(`${API_URL}/generate`, { 
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            });
-
-            // 3. Check for Network Errors
-            if (!response.ok) {
-                throw new Error(`Server Status: ${response.status}`);
-            }
-
-            // 4. Read Data
-            const data = await response.json();
+            // 2. Switch UI
+            document.getElementById("startScreen").style.display = "none";
+            document.getElementById("inboxUI").style.display = "block";
             
-            // 5. Success!
-            btn.innerText = "Success!";
-            const resultBox = document.getElementById("result");
-            resultBox.style.display = "block";
-            resultBox.innerText = "New Email: " + data.email;
+            const addrBox = document.getElementById("myAddress");
+            addrBox.innerText = activeEmail;
+            addrBox.style.display = "block";
+
+            // 3. Start Polling
+            checkMail(); // Check immediately
+            setInterval(checkMail, 5000); // Then every 5 seconds
 
         } catch (e) {
+            alert("Error: " + e.message);
             btn.innerText = "Try Again";
-            // Print the specific error to the screen
-            logError(e.message);
-            
-            if (e.message.includes("Failed to fetch")) {
-                logError("CORS Blocked or Worker Offline. Check if your Worker URL allows 'https://preasx24.co.za'");
-            }
         }
-    });
+    }
+
+    async function checkMail() {
+        if (!activeEmail) return;
+        
+        try {
+            // Fetch emails for this user
+            const res = await fetch(`${API_URL}/view?user=${activeEmail}`);
+            const emails = await res.json();
+            
+            const list = document.getElementById("emailList");
+            const status = document.getElementById("statusText");
+
+            if (emails.length > 0) {
+                status.innerText = `You have ${emails.length} message(s)`;
+                list.innerHTML = ""; // Clear current list to rebuild
+                
+                // Add each email to the screen
+                emails.forEach(email => {
+                    const card = document.createElement("div");
+                    card.className = "email-card";
+                    card.innerHTML = `
+                        <div class="email-subject">${email.subject}</div>
+                        <div class="email-meta">From: ${email.sender}</div>
+                        <div class="email-body">${email.body}</div>
+                    `;
+                    list.appendChild(card);
+                });
+            } else {
+                status.innerText = "Inbox empty. Waiting for mail...";
+            }
+        } catch (e) {
+            console.log("Connection issue...");
+        }
+    }
 </script>
 
 </body>
