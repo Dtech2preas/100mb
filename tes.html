@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-TECH Debugger</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        button { background: #4b0082; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 5px; cursor: pointer; }
+        .error-log { color: red; background: #ffe6e6; padding: 10px; margin-top: 20px; text-align: left; border: 1px solid red; display: none; }
+        .success-log { color: green; background: #e6ffe6; padding: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>D-TECH Inbox</h1>
+    
+    <button id="genBtn">Generate Inbox</button>
+    
+    <div id="debugLog" class="error-log"></div>
+    <div id="result" class="success-log" style="display:none;"></div>
+
+<script>
+    // ----------------------------------------------------
+    // IMPORTANT: Check this URL carefully!
+    const API_URL = "https://crimson-cherry-ee99.dtechxpreas.workers.dev"; 
+    // ----------------------------------------------------
+
+    // This function prints messages to your screen
+    function logError(msg) {
+        const logBox = document.getElementById("debugLog");
+        logBox.style.display = "block";
+        logBox.innerHTML += "<b>ERROR:</b> " + msg + "<br>";
+    }
+
+    const btn = document.getElementById("genBtn");
+
+    btn.addEventListener("click", async function() {
+        try {
+            // 1. Change Button Text
+            btn.innerText = "Connecting...";
+            document.getElementById("debugLog").style.display = "none";
+            document.getElementById("debugLog").innerHTML = "";
+
+            // 2. Start the Fetch
+            const response = await fetch(`${API_URL}/generate`, { 
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+            // 3. Check for Network Errors
+            if (!response.ok) {
+                throw new Error(`Server Status: ${response.status}`);
+            }
+
+            // 4. Read Data
+            const data = await response.json();
+            
+            // 5. Success!
+            btn.innerText = "Success!";
+            const resultBox = document.getElementById("result");
+            resultBox.style.display = "block";
+            resultBox.innerText = "New Email: " + data.email;
+
+        } catch (e) {
+            btn.innerText = "Try Again";
+            // Print the specific error to the screen
+            logError(e.message);
+            
+            if (e.message.includes("Failed to fetch")) {
+                logError("CORS Blocked or Worker Offline. Check if your Worker URL allows 'https://preasx24.co.za'");
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
