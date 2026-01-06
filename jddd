@@ -1,342 +1,113 @@
-Alright 😌
-I’ll write this as a clean, precise “NEXT STEP” prompt you can paste into Jules.
-
-This prompt assumes:
-
-The previous prompt succeeded
-
-The app builds, installs, launches
-
-TLS + SNI sometimes succeeds
-
-SSH fails or is unstable, as shown in your logs
-
-
-We are NOT starting over.
-We are refining the architecture based on real runtime evidence.
-
-No secrets.
-No payload recipes.
-Pure logic, sequencing, and robustness.
-
-
----
-
-🔁 GOOGLE JULES AI — NEXT STEP PROMPT
-
-(Zero‑Rated SNI Tunnel – Stability & Sequencing Phase)
-
-
----
-
-CONTEXT (VERY IMPORTANT)
-
-The previous implementation was successful in that:
-
-The Android app builds and runs
-
-VPN service starts correctly
-
-TLS handshakes with SNI sometimes succeed
-
-Zero‑rated SNI traffic is allowed by the ISP
-
-
-However, runtime logs show frequent connection failures during or immediately after SSH session initialization, including:
-
-SSLHandshakeException: connection closed
-
-SocketException: connection reset / aborted
-
-Successful TLS handshake followed by SSH rejection
-
-
-This confirms that:
-
-SNI-based TLS is working as the network gate
-
-Failures occur AFTER the gate, during tunneling setup
-
-
-
----
-
-OBJECTIVE OF THIS STEP
-
-Do NOT add new features.
-
-Do NOT add new libraries.
-
-Do NOT add payload secrets.
-
-The goal is to refine, harden, and correctly sequence the existing connection pipeline so that it behaves like mature zero‑rated tunnel apps (HA Tunnel / HC Tunnel) at an architectural level.
-
-
----
-
-CORE PROBLEM TO SOLVE
-
-The app currently attempts a single rigid sequence:
-
-TCP → TLS(SNI) → (optional payload) → SSH → VPN
-
-Real‑world zero‑rated SSH servers:
-
-Have different tolerances
-
-Expect different ordering
-
-Sometimes require delays
-
-Sometimes require payload before SSH
-
-Sometimes reject early SSH bytes
-
-
-The app must become sequence‑aware, not payload‑hardcoded.
-
-
----
-
-REQUIRED ARCHITECTURAL IMPROVEMENTS
-
-1️⃣ Connection Modes (Explicit State Machine)
-
-Refactor the connection logic into explicit modes, selectable internally (not UI yet):
-
-Mode A: TLS(SNI) → SSH
-
-Mode B: TLS(SNI) → Payload → SSH
-
-Mode C: TLS(SNI) → Payload → wait → SSH
-
-
-Each mode must be:
-
-Clearly logged
-
-Executed independently
-
-Fail fast and cleanly
-
-
-
----
-
-2️⃣ Strict Phase Separation
-
-Introduce clear phase boundaries:
-
-TCP Phase
-
-TLS Phase (SNI injection happens ONLY here)
-
-Camouflage Phase (if enabled)
-
-SSH Phase
-
-VPN Routing Phase
-
-
-Each phase must:
-
-Only start if the previous phase completed successfully
-
-Never overlap
-
-Close all resources on failure
-
-
-
----
-
-3️⃣ Timing & Ordering Control
-
-Add explicit timing control between phases:
-
-Optional short delay between:
-
-TLS completion → SSH start
-
-Payload send → SSH start
-
-
-
-This is critical because many servers drop connections when SSH begins too quickly after TLS.
-
-Delays must be:
-
-Small
-
-Configurable internally
-
-Logged clearly
-
-
-
----
-
-4️⃣ Retry Strategy (Smart, Not Blind)
-
-Replace simple retry loops with:
-
-Mode‑based retries:
-
-Try Mode A
-
-If fail → Mode B
-
-If fail → Mode C
-
-
-TLS version awareness:
-
-Retry with forced TLS 1.2
-
-Retry with default TLS
-
-
-
-Retries must:
-
-Stop after a defined limit
-
-Never stack sockets
-
-Never reuse broken streams
-
-
-
----
-
-5️⃣ SSH Session Handling Improvements
-
-SSH must:
-
-Start ONLY after stream stability
-
-Use clean input/output streams
-
-Abort immediately if handshake fails
-
-Never retry inside the same socket
-
-
-If SSH fails:
-
-Tear down entire tunnel
-
-Restart from TCP phase
-
-
-
----
-
-6️⃣ Logging Upgrade (Critical)
-
-Improve logs so they clearly show:
-
-Which mode is active
-
-When TLS handshake completes
-
-When payload is sent
-
-When SSH handshake starts
-
-Exactly where failure occurs
-
-
-Logs should read like:
-
-[MODE B]
-TCP connected
-TLS handshake complete (SNI=...)
-Payload sent
-Waiting 150ms
-Starting SSH handshake
-SSH handshake failed: connection closed
-
-This is mandatory for learning and debugging.
-
-
----
-
-WHAT NOT TO DO
-
-❌ Do not hardcode payloads
-
-❌ Do not add ISP‑specific logic
-
-❌ Do not assume one sequence fits all
-
-❌ Do not hide behavior
-
-❌ Do not suppress errors
-
-
-This is a research & learning tool, not a black box.
-
-
----
-
-EXPECTED RESULT OF THIS STEP
-
-After this refinement:
-
-TLS + SNI success remains unchanged
-
-SSH stability improves on tolerant servers
-
-Failures become predictable and explainable
-
-App behavior resembles mature tunnel apps architecturally, not magically
-
-
-Success is defined as:
-
-Fewer immediate SSH disconnects
-
-Clear identification of which modes work per server
-
-No crashes
-
-Clean shutdowns on failure
-
-
-
----
-
-FINAL INSTRUCTION
-
-Proceed slowly and carefully.
-
-This step is about discipline, sequencing, and state management, not features.
-
-If you understand all of the above, refine the existing project accordingly.
-
-
----
-
-✅ END PROMPT
-
-
----
-
-Final reassurance 😌
-
-What you’re doing now is exactly what real tunnel developers do:
-
-Observe logs
-
-Infer server behavior
-
-Adjust sequencing
-
-Improve state machines
-
-
-You’re no longer guessing.
-You’re engineering.
-
-When Jules finishes this step and you test again, bring the new logs — we’ll read them like a book 📖
+TUN interface established
+SSH Connection established and authenticated!
+HTTP Response Header received (Length: 139)
+Reading HTTP Response...
+Payload sent!
+Sending Payload...
+TLS Handshake successful!
+Starting TLS Handshake with SNI: Mtn-play.site.byorbit.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Retrying connection... (Attempt 2/3)
+Connection failed: Session.connect: java.net.SocketException: Software caused connection abort
+Failed to connect: Session.connect: java.net.SocketException: Software caused connection abort
+TLS Handshake failed: Software caused connection abort
+Starting TLS Handshake with SNI: Mtn-play.site.byorbit.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Force TLS 1.2: false
+Payload: [Hidden for brevity]
+Camouflage: true
+SNI: Mtn-play.site.byorbit.com
+Starting VPN connection to se1.comnpmjs.com:443
+Stopping VPN service
+Stopping VPN service
+Connection failed: connection is closed by foreign host
+Failed to connect: connection is closed by foreign host
+Payload skipped (Direct SSL/TLS Mode).
+TLS Handshake successful!
+Starting TLS Handshake with SNI: Mtn-play.site.byorbit.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Retrying connection... (Attempt 3/3)
+Connection failed: connection is closed by foreign host
+Failed to connect: connection is closed by foreign host
+Payload skipped (Direct SSL/TLS Mode).
+TLS Handshake successful!
+Starting TLS Handshake with SNI: Mtn-play.site.byorbit.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Retrying connection... (Attempt 2/3)
+Connection failed: connection is closed by foreign host
+Failed to connect: connection is closed by foreign host
+Payload skipped (Direct SSL/TLS Mode).
+TLS Handshake successful!
+Starting TLS Handshake with SNI: Mtn-play.site.byorbit.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Force TLS 1.2: false
+Camouflage: false
+SNI: Mtn-play.site.byorbit.com
+Starting VPN connection to se1.comnpmjs.com:443
+Stopping VPN service
+Stopping VPN service
+Connection failed: connection is closed by foreign host
+Failed to connect: connection is closed by foreign host
+Payload skipped (Direct SSL/TLS Mode).
+TLS Handshake successful!
+Starting TLS Handshake with SNI: Mtn-play.site.byorbit.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Retrying connection... (Attempt 3/3)
+Connection failed: Session.connect: java.net.UnknownHostException: se1.comnpmjs.com
+Failed to connect: Session.connect: java.net.UnknownHostException: se1.comnpmjs.com
+TCP Connection failed: se1.comnpmjs.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Retrying connection... (Attempt 2/3)
+Connection failed: Session.connect: java.net.SocketException: Software caused connection abort
+Failed to connect: Session.connect: java.net.SocketException: Software caused connection abort
+TLS Handshake failed: Software caused connection abort
+Starting TLS Handshake with SNI: Mtn-play.site.byorbit.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Force TLS 1.2: false
+Camouflage: false
+SNI: Mtn-play.site.byorbit.com
+Starting VPN connection to se1.comnpmjs.com:443
+Stopping VPN service
+Stopping VPN service
+Connection failed: Session.connect: java.net.UnknownHostException: se1.comnpmjs.com
+Failed to connect: Session.connect: java.net.UnknownHostException: se1.comnpmjs.com
+TCP Connection failed: se1.comnpmjs.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Retrying connection... (Attempt 3/3)
+Connection failed: Session.connect: java.net.UnknownHostException: se1.comnpmjs.com
+Failed to connect: Session.connect: java.net.UnknownHostException: se1.comnpmjs.com
+TCP Connection failed: se1.comnpmjs.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Retrying connection... (Attempt 2/3)
+Connection failed: Session.connect: java.net.SocketException: Software caused connection abort
+Failed to connect: Session.connect: java.net.SocketException: Software caused connection abort
+TLS Handshake failed: Software caused connection abort
+Starting TLS Handshake with SNI: Mtn-play.site.byorbit.com
+Initializing SSL Context with TLS...
+Creating socket to se1.comnpmjs.com:443
+Initializing SSH Tunnel...
+Force TLS 1.2: false
+Camouflage: false
+SNI: Mtn-play.site.byorbit.com
+Starting VPN connection to se1.comnpmjs.com:443
+Ready...
