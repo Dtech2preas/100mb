@@ -440,7 +440,15 @@
           isAIProcessing = false;
       }
       history.pop(); // Remove failed message
-      aiDiv.innerHTML = '<div class="content" style="color:red">Error: ' + err.message + '</div>';
+      
+      let errorMsg = err.message;
+      try {
+          // Try to parse JSON error from Worker
+          const jsonErr = JSON.parse(errorMsg);
+          if (jsonErr.error) errorMsg = jsonErr.error;
+      } catch (e) {}
+
+      aiDiv.innerHTML = '<div class="content" style="color:#ff6b6b; border: 1px solid #ff6b6b; padding: 10px; border-radius: 8px; background: rgba(255, 107, 107, 0.1);"><strong>Error:</strong> ' + errorMsg + '</div>';
     }
   });
 </script>
