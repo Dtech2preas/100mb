@@ -375,7 +375,13 @@
 
   <script>
     let processedHTML = '';
-    const proxy = "https://api.allorigins.win/raw?url=";
+
+    // Proxy list for fallback
+    const PROXY_LIST = [
+      { name: 'AllOrigins', url: 'https://api.allorigins.win/raw?url=' },
+      { name: 'CorsProxy', url: 'https://corsproxy.io/?' },
+      { name: 'CodeTabs', url: 'https://api.codetabs.com/v1/proxy/?quest=' }
+    ];
 
     // Add log entry
     function addLog(message, type = 'info') {
@@ -413,7 +419,7 @@
       }
     }
 
-    // Fetch content with error handling
+    // Fetch content with error handling and proxy fallback
     async function fetchContent(url, options = {}) {
       try {
         // Try direct fetch first (works for local files if CORS allows)
@@ -422,14 +428,12 @@
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return await response.text();
       } catch (e) {
-        // Fall back to proxy for remote URLs if direct fetch fails
+        // Fall back to proxies for remote URLs if direct fetch fails
         if (!url.startsWith('http')) {
           throw new Error('Local file access blocked by CORS. Try running this tool locally.');
         }
-        addLog(`Using proxy for: ${url}`, 'warning');
-        const proxyUrl = proxy + encodeURIComponent(url);
-        const response = await fetch(proxyUrl);
-        return await response.text();
+
+        return await fetchWithProxies(url, options, 'text');
       }
     }
 
@@ -444,11 +448,36 @@
         if (!url.startsWith('http')) {
           throw new Error('Local file access blocked by CORS.');
         }
-        addLog(`Using proxy for binary: ${url}`, 'warning');
-        const proxyUrl = proxy + encodeURIComponent(url);
-        const response = await fetch(proxyUrl);
-        return await response.blob();
+
+        return await fetchWithProxies(url, options, 'blob');
       }
+    }
+
+    // Helper to try multiple proxies
+    async function fetchWithProxies(url, options, type) {
+      let lastError = null;
+
+      for (const proxy of PROXY_LIST) {
+        try {
+          addLog(`Trying proxy (${proxy.name}): ${url}`, 'warning');
+          // Some proxies work better with encoded URLs, some without.
+          // Safest bet for these specific proxies is encoded.
+          const proxyUrl = proxy.url + encodeURIComponent(url);
+
+          const response = await fetch(proxyUrl, options);
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+          addLog(`Success with ${proxy.name}`, 'success');
+          return type === 'blob' ? await response.blob() : await response.text();
+        } catch (err) {
+          console.warn(`Proxy ${proxy.name} failed:`, err);
+          lastError = err;
+          // Continue to next proxy
+        }
+      }
+
+      // If we get here, all proxies failed
+      throw new Error(`All proxies failed. Last error: ${lastError ? lastError.message : 'Unknown error'}`);
     }
 
     // Process CSS resources with @import handling
