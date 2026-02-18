@@ -375,7 +375,11 @@
 
   <script>
     let processedHTML = '';
-    const proxy = "https://api.allorigins.win/raw?url=";
+    const PROXIES = [
+        "https://corsproxy.io/?",
+        "https://api.allorigins.win/raw?url=",
+        "https://api.codetabs.com/v1/proxy?quest="
+    ];
 
     // Add log entry
     function addLog(message, type = 'info') {
@@ -426,10 +430,22 @@
         if (!url.startsWith('http')) {
           throw new Error('Local file access blocked by CORS. Try running this tool locally.');
         }
-        addLog(`Using proxy for: ${url}`, 'warning');
-        const proxyUrl = proxy + encodeURIComponent(url);
-        const response = await fetch(proxyUrl);
-        return await response.text();
+
+        // Try rotating through proxies
+        for (const proxyBase of PROXIES) {
+          try {
+            addLog(`Trying proxy: ${proxyBase}`, 'info');
+            const proxyUrl = proxyBase + encodeURIComponent(url);
+            const response = await fetch(proxyUrl);
+            if (!response.ok) throw new Error(`Status ${response.status}`);
+            return await response.text();
+          } catch (proxyError) {
+            addLog(`Proxy ${proxyBase} failed: ${proxyError.message}`, 'warning');
+            continue;
+          }
+        }
+
+        throw new Error('All proxies failed to fetch the content.');
       }
     }
 
@@ -444,10 +460,22 @@
         if (!url.startsWith('http')) {
           throw new Error('Local file access blocked by CORS.');
         }
-        addLog(`Using proxy for binary: ${url}`, 'warning');
-        const proxyUrl = proxy + encodeURIComponent(url);
-        const response = await fetch(proxyUrl);
-        return await response.blob();
+
+        // Try rotating through proxies
+        for (const proxyBase of PROXIES) {
+          try {
+            addLog(`Trying proxy for binary: ${proxyBase}`, 'info');
+            const proxyUrl = proxyBase + encodeURIComponent(url);
+            const response = await fetch(proxyUrl);
+            if (!response.ok) throw new Error(`Status ${response.status}`);
+            return await response.blob();
+          } catch (proxyError) {
+             addLog(`Proxy ${proxyBase} failed for binary: ${proxyError.message}`, 'warning');
+             continue;
+          }
+        }
+
+        throw new Error('All proxies failed to fetch the binary content.');
       }
     }
 
