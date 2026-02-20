@@ -76,6 +76,93 @@
     <h1>Empowering the Youth Through Digital Innovation</h1>
   </header>
 
+
+<style>
+  /* Scoped CSS for View Counter Widget */
+  .vc-widget {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e1e1e1;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .vc-stat {
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .vc-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+  }
+
+  .vc-count {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.2;
+  }
+
+  /* Optional: Highlight global count */
+  .vc-global .vc-count {
+    color: #0070f3;
+  }
+</style>
+
+<div class="vc-widget" id="vc-widget">
+  <div class="vc-stat">
+    <div class="vc-label">Page Views</div>
+    <div class="vc-count" id="vc-site-count">-</div>
+  </div>
+  <div class="vc-stat vc-global">
+    <div class="vc-label">Total Views</div>
+    <div class="vc-count" id="vc-global-count">-</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // CONFIGURATION: Replace with your deployed Worker URL
+  const WORKER_URL = 'https://your-worker.your-subdomain.workers.dev';
+
+  // Get current page identifier (hostname is usually best for site-wide counts)
+  const currentUrl = window.location.hostname;
+  // If you want to track specific pages, use window.location.href instead
+
+  // Fetch stats from Worker
+  fetch(`${WORKER_URL}?url=${encodeURIComponent(currentUrl)}`)
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
+    .then(data => {
+      // Update the DOM elements
+      const siteCountEl = document.getElementById('vc-site-count');
+      const globalCountEl = document.getElementById('vc-global-count');
+
+      if (siteCountEl) siteCountEl.innerText = data.site_views;
+      if (globalCountEl) globalCountEl.innerText = data.total_global_views;
+    })
+    .catch(error => {
+      console.error('Error fetching view counts:', error);
+      // Optional: show error state in UI
+      document.getElementById('vc-site-count').innerText = '?';
+      document.getElementById('vc-global-count').innerText = '?';
+    });
+})();
+</script>
+
   <main>
     <section>
       <h2>What Is NSFAS?</h2>
