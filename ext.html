@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Email:Password Extractor – Clean & Export Tool</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f5f7fc 0%, #eef2f7 100%);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1.5rem;
+    }
+
+    /* main card */
+    .card {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(0px);
+      border-radius: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    /* header */
+    .header {
+      background: #1e2a3e;
+      padding: 1.5rem 2rem;
+      color: white;
+    }
+    .header h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1.7rem;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header h1:before {
+      content: "📄";
+      font-size: 1.8rem;
+    }
+    .header p {
+      margin: 0.5rem 0 0;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    /* content */
+    .content {
+      padding: 2rem;
+    }
+
+    /* upload zone */
+    .upload-area {
+      background: #f8fafd;
+      border: 2px dashed #b9c8e8;
+      border-radius: 1.5rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-bottom: 2rem;
+    }
+    .upload-area:hover {
+      background: #f1f5f9;
+      border-color: #3b82f6;
+    }
+    .upload-icon {
+      font-size: 2.8rem;
+      margin-bottom: 0.75rem;
+    }
+    .upload-btn {
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 0.5rem;
+      display: inline-block;
+    }
+    .upload-btn:hover {
+      background: #1e40af;
+      transform: scale(0.98);
+    }
+    .file-info {
+      font-size: 0.85rem;
+      color: #2c3e66;
+      margin-top: 1rem;
+    }
+
+    /* stats + action bar */
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: #eef3ff;
+      padding: 1rem 1.2rem;
+      border-radius: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .stats {
+      font-weight: 600;
+      color: #0f2b3d;
+    }
+    .stats span {
+      background: white;
+      padding: 0.2rem 0.7rem;
+      border-radius: 40px;
+      margin-left: 0.5rem;
+      font-family: monospace;
+      font-size: 1.1rem;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: none;
+      background: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      border: 1px solid #cfdfed;
+    }
+    .btn-primary {
+      background: #0f3b5e;
+      border-color: #0f3b5e;
+      color: white;
+      box-shadow: 0 2px 6px rgba(15,59,94,0.2);
+    }
+    .btn-primary:hover {
+      background: #0a2c46;
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: #ffffff;
+      border-color: #bdd4e7;
+    }
+    .btn-secondary:hover {
+      background: #f0f4f9;
+      border-color: #8fafcf;
+    }
+    .btn-copy {
+      background: #2b5e3b;
+      border-color: #2b5e3b;
+      color: white;
+    }
+    .btn-copy:hover {
+      background: #1f452b;
+    }
+
+    /* text output */
+    .output-container {
+      margin-top: 1rem;
+      border-radius: 1.2rem;
+      background: #0f1722;
+      color: #e2e8f0;
+      overflow: hidden;
+      border: 1px solid #283548;
+    }
+    .output-header {
+      background: #0a0f18;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border-bottom: 1px solid #1e2a3a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    pre {
+      margin: 0;
+      padding: 1.2rem;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      max-height: 380px;
+      overflow-y: auto;
+      background: #0f1722;
+    }
+    .placeholder-text {
+      color: #94a3b8;
+      font-style: italic;
+      padding: 1.5rem;
+      text-align: center;
+      background: #0f1722;
+      margin: 0;
+    }
+    .footer-note {
+      font-size: 0.7rem;
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #5b6e8c;
+    }
+    @media (max-width: 640px) {
+      .content {
+        padding: 1.2rem;
+      }
+      .stats-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="header">
+    <h1>🔐 Email:Password Extractor</h1>
+    <p>Upload any .txt file → automatically extract valid email:password pairs → clean & export</p>
+  </div>
+
+  <div class="content">
+    <!-- Upload zone -->
+    <div class="upload-area" id="uploadZone">
+      <div class="upload-icon">📂</div>
+      <div>Drag & drop or click to upload a .txt file</div>
+      <input type="file" id="fileInput" accept=".txt, .text/plain" style="display: none;">
+      <div>
+        <button class="upload-btn" id="triggerFileBtn">📁 Choose file</button>
+      </div>
+      <div class="file-info" id="fileInfo">No file selected</div>
+    </div>
+
+    <!-- Stats and controls -->
+    <div class="stats-bar" id="statsBar" style="display: none;">
+      <div class="stats">✅ Extracted pairs: <span id="pairCount">0</span></div>
+      <div class="action-buttons">
+        <button class="btn btn-secondary" id="downloadBtn">💾 Download .txt</button>
+        <button class="btn btn-copy" id="copyBtn">📋 Copy all</button>
+      </div>
+    </div>
+
+    <!-- Output preview -->
+    <div class="output-container">
+      <div class="output-header">
+        <span>📋 Clean output (email:password per line)</span>
+        <span style="font-size:0.7rem;">⚡ unique pairs preserved</span>
+      </div>
+      <pre id="outputPreview"><span class="placeholder-text">✨ Upload a text file to extract email:password lines. <br>Supports formats like "user@domain.com:pass123", "user@domain.com|pass", "email=user@domain.com&password=xyz", etc.<br>Smart extraction keeps only valid email:password pairs.</span></pre>
+    </div>
+    <div class="footer-note">
+      ⚡ Extracts email:password patterns from any messy text — keeps original order, removes duplicates, filters invalid emails.
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    // DOM elements
+    const fileInput = document.getElementById('fileInput');
+    const triggerBtn = document.getElementById('triggerFileBtn');
+    const uploadZone = document.getElementById('uploadZone');
+    const fileInfoSpan = document.getElementById('fileInfo');
+    const statsBar = document.getElementById('statsBar');
+    const pairCountSpan = document.getElementById('pairCount');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const outputPreview = document.getElementById('outputPreview');
+
+    // Store latest extracted pairs array (strings like "email:password")
+    let currentPairs = []; 
+
+    // ---------- HELPER: robust email validation ----------
+    function isValidEmail(email) {
+      if (!email || typeof email !== 'string') return false;
+      const trimmed = email.trim();
+      if (trimmed.length > 254) return false;
+      // RFC 5322 inspired but more practical: local@domain.tld
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return emailRegex.test(trimmed);
+    }
+
+    // ---------- CORE EXTRACTOR: find email:password pairs from raw text ----------
+    function extractEmailPasswordPairs(rawText) {
+      // We'll try multiple strategies, but the ultimate output is a Map (preserve order but deduplicate by email:pass)
+      // However we need to preserve first occurrence order (important)
+      const pairsMap = new Map();  // key = "email:password" lowercase? Actually keep case sensitive but avoid duplicates case-insensitively? preserve exact.
+      // But to avoid duplicate same email:pass we can store lowercased key? We'll store as seen but use a set for case-insensitive comparison of email+pass? 
+      // Better: key = `${email.toLowerCase()}:${password}`? But password case matters? keep exact password but treat duplicate email:password as duplicate.
+      // We'll use a Map with key = `${email}|${password}` and value = `${email}:${password}` (original casing from first capture)
+      const uniqueMap = new Map(); 
+      const orderList = [];
+
+      // Helper to add pair
+      function addPair(emailRaw, passwordRaw) {
+        let email = emailRaw.trim();
+        let password = passwordRaw.trim();
+        if (!email || !password) return false;
+        if (!isValidEmail(email)) return false;
+        // password must be non-empty (can contain any char but at least 1)
+        if (password.length === 0) return false;
+        const pairString = `${email}:${password}`;
+        const key = `${email.toLowerCase()}:${password}`; // case-insensitive email but keep pass as given (for unique)
+        if (!uniqueMap.has(key)) {
+          uniqueMap.set(key, pairString);
+          orderList.push(pairString);
+        }
+        return true;
+      }
+
+      // Strategy 1: direct lines with colon ':' pattern (most common: email:password)
+      const lines = rawText.split(/\r?\n/);
+      for (const line of lines) {
+        // look for pattern where we have something like xxx@yyy.zz:pass
+        const colonMatch = line.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*[:=]\s*([^\s]+)/);
+        if (colonMatch) {
+          let emailCandidate = colonMatch[1];
+          let passCandidate = colonMatch[2];
+          // avoid capturing trailing characters if pass includes spaces? we stop at whitespace or end
+          // but regex already captures up to next whitespace or end
+          addPair(emailCandidate, passCandidate);
+          continue;
+        }
+        // Also handle lines with pipe "email|pass"
+        const pipeMatch = line.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*[|]\s*([^\s|]+)/);
+        if (pipeMatch) {
+          addPair(pipeMatch[1], pipeMatch[2]);
+          continue;
+        }
+        // handle formats: "email=user@domain.com&password=secret" or "user=email@dom.com&pwd=123"
+        const queryLike = line.match(/email[=:]\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*[&;]\s*password[=:]\s*([^&\s]+)/i);
+        if (queryLike) {
+          addPair(queryLike[1], queryLike[2]);
+          continue;
+        }
+        // reversed: password first then email? less common but we can try: password=xxx&email=yyy
+        const reversedQuery = line.match(/password[=:]\s*([^&\s]+)\s*[&;]\s*email[=:]\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/i);
+        if (reversedQuery) {
+          addPair(reversedQuery[2], reversedQuery[1]);
+          continue;
+        }
+        // Also find any "email:pass" that might be surrounded by spaces or brackets, but the colon regex already caught typical.
+        // Extra: sometimes lines contain multiple pairs separated by spaces, but we can scan for any email followed by colon/pass inside line via global search
+      }
+
+      // Strategy 2: global regex scanning for any email followed by colon or equals and then capture password (handles inline without line breaks)
+      // For robustness, scan the entire text for patterns that might have been missed in line-by-line due to complex formatting
+      const globalPatterns = [
+        /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*[:=]\s*([^\s,;]+)/g,
+        /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*[|]\s*([^\s|]+)/g,
+        /email[=:]\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*[&;]\s*password[=:]\s*([^&\s]+)/gi,
+        /password[=:]\s*([^\s&]+)\s*[&;]\s*email[=:]\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/gi
+      ];
+      
+      for (const regex of globalPatterns) {
+        let match;
+        // reset lastIndex to avoid issues
+        regex.lastIndex = 0;
+        while ((match = regex.exec(rawText)) !== null) {
+          if (regex.source.includes('password[=:]\\s*([^\\s&]+)\\s*[&;]\\s*email')) {
+            // reversed case: match[1] = password, match[2] = email
+            if (match[2] && match[1]) addPair(match[2], match[1]);
+          } 
+          else if (regex.source.includes('email[=:]')) {
+            // match email first and password after: typical groups: [1]=email, [2]=password
+            if (match[1] && match[2]) addPair(match[1], match[2]);
+          }
+          else {
+            // standard colon/pipe: first group email, second group password
+            if (match[1] && match[2]) addPair(match[1], match[2]);
+          }
+        }
+      }
+      
+      // final pass: also look for lines that have email:pass but maybe there are extra spaces or multiple delimiters, we already covered.
+      // fallback: try splitting text on newlines and commas, but main logic is solid.
+
+      return orderList; // array of "email:password" strings in order of first appearance
+    }
+
+    // ---------- process uploaded file ----------
+    function processFile(file) {
+      if (!file) {
+        resetUI("No file selected.");
+        return;
+      }
+      if (!file.name.endsWith('.txt') && file.type !== 'text/plain') {
+        // still allow .txt but if mime unknown, we can still try reading
+        if (!file.name.toLowerCase().endsWith('.txt')) {
+          resetUI("⚠️ Please upload a .txt file (plain text).");
+          return;
+        }
+      }
+      fileInfoSpan.innerText = `📄 ${file.name} (${(file.size / 1024).toFixed(1)} KB) — parsing...`;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const content = e.target.result;
+        if (!content || content.length === 0) {
+          resetUI("Empty file. Nothing to extract.");
+          return;
+        }
+        // extract pairs
+        const extracted = extractEmailPasswordPairs(content);
+        currentPairs = [...extracted];
+        
+        if (currentPairs.length === 0) {
+          outputPreview.innerHTML = '<span class="placeholder-text">⚠️ No valid email:password pairs found. Ensure file contains patterns like "user@domain.com:pass123" or similar.</span>';
+          statsBar.style.display = "none";
+          fileInfoSpan.innerText = `📄 ${file.name} — 0 pairs extracted`;
+          pairCountSpan.innerText = "0";
+          return;
+        }
+        
+        // display preview
+        const previewText = currentPairs.join('\n');
+        outputPreview.innerHTML = escapeHtml(previewText);
+        pairCountSpan.innerText = currentPairs.length;
+        statsBar.style.display = "flex";
+        fileInfoSpan.innerText = `📄 ${file.name} — ✅ ${currentPairs.length} valid email:password pairs found`;
+      };
+      reader.onerror = function() {
+        resetUI("Error reading file. Please try again.");
+      };
+      reader.readAsText(file, "UTF-8");
+    }
+    
+    // helper to reset UI state on error or empty
+    function resetUI(message) {
+      currentPairs = [];
+      statsBar.style.display = "none";
+      pairCountSpan.innerText = "0";
+      outputPreview.innerHTML = `<span class="placeholder-text">⚠️ ${message || "Upload a .txt file to extract email:password pairs."}</span>`;
+      if (message && !message.includes("Upload")) {
+        fileInfoSpan.innerText = `⚠️ ${message.substring(0, 60)}`;
+      } else if (!message) {
+        fileInfoSpan.innerText = "No file selected";
+      }
+    }
+    
+    // simple escape for safe display
+    function escapeHtml(str) {
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+        return c;
+      });
+    }
+    
+    // ----- download currentPairs as .txt file -----
+    function downloadPairs() {
+      if (!currentPairs.length) {
+        alert("No data to download. Please upload a file with valid email:password pairs first.");
+        return;
+      }
+      const content = currentPairs.join('\n');
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `extracted_emails_passwords_${new Date().toISOString().slice(0,19).replace(/:/g, '-')}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+    
+    // ----- copy pairs to clipboard -----
+    async function copyPairs() {
+      if (!currentPairs.length) {
+        alert("No extracted pairs to copy. Upload a file first.");
+        return;
+      }
+      const textToCopy = currentPairs.join('\n');
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        // temporary visual feedback on copy button
+        const originalText = copyBtn.innerHTML;
+        copyBtn.innerHTML = '✅ Copied!';
+        setTimeout(() => {
+          copyBtn.innerHTML = originalText;
+        }, 1500);
+      } catch (err) {
+        alert("Could not copy. You can manually select text from preview.");
+      }
+    }
+    
+    // ---- file upload triggers ----
+    triggerBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+    uploadZone.addEventListener('click', (e) => {
+      // avoid double trigger if clicked on button inside
+      if (e.target === triggerBtn || e.target.closest('.upload-btn')) return;
+      fileInput.click();
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (fileInput.files && fileInput.files.length > 0) {
+        processFile(fileInput.files[0]);
+      } else {
+        resetUI("No file selected.");
+      }
+    });
+    
+    // drag & drop support
+    uploadZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadZone.style.background = "#e9f0fe";
+      uploadZone.style.borderColor = "#3b82f6";
+    });
+    uploadZone.addEventListener('dragleave', (e) => {
+      uploadZone.style.background = "#f8fafd";
+      uploadZone.style.borderColor = "#b9c8e8";
+    });
+    uploadZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadZone.style.background = "#f8fafd";
+      uploadZone.style.borderColor = "#b9c8e8";
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        const droppedFile = files[0];
+        if (droppedFile.name.endsWith('.txt') || droppedFile.type === 'text/plain') {
+          fileInput.files = files; // sync input
+          processFile(droppedFile);
+        } else {
+          resetUI("Please drop a .txt file containing email:password data.");
+        }
+      }
+    });
+    
+    // Buttons events
+    downloadBtn.addEventListener('click', downloadPairs);
+    copyBtn.addEventListener('click', copyPairs);
+    
+    // initial UI reset
+    resetUI(null);
+    statsBar.style.display = "none";
+  })();
+</script>
+</body>
+</html>
