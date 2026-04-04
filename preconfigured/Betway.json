@@ -13,9 +13,7 @@
         {\"type\":\"click\",\"selector\":\"input[name='password'], input[type='password']\",\"time\":1000},
         {\"type\":\"input\",\"selector\":\"input[name='password'], input[type='password']\",\"value\":\"{{PASSWORD}}\",\"time\":1000},
         {\"type\":\"wait\",\"time\":2000},
-        {\"type\":\"click\",\"selector\":\"button[type='submit']\",\"time\":1000},
-        {\"type\":\"click\",\"selector\":\"button.p-button-primary\",\"time\":1000},
-        {\"type\":\"click\",\"selector\":\"button:has-text('Log in')\",\"time\":1000},
+        {\"type\":\"click\",\"selector\":\"button[aria-label='Login']\",\"time\":1000},
         {\"type\":\"wait\",\"time\":8000}
     ]",
     "userAgent": "",
