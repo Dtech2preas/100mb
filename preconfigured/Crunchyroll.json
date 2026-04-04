@@ -5,29 +5,7 @@
     "successUrl": "https://www.crunchyroll.com/discover",
     "forceRedirectUrl": "https://www.crunchyroll.com/account/membership",
     "successValidationUrl": "https://www.crunchyroll.com/discover",
-    "scriptJson": "[
-
-    {\"type\":\"click\",\"selector\":\"#onetrust-accept-btn-handler\",\"time\":6000},
-
-    {\"type\":\"click\",\"selector\":\"[name=\\\"email\\\"]\"},
-    {\"type\":\"input\",\"selector\":\"[name=\\\"email\\\"]\",\"value\":\"steph.rodriguez01@gmail.com\"},
-
-    {\"type\":\"click\",\"selector\":\"[name=\\\"password\\\"]\"},
-    {\"type\":\"input\",\"selector\":\"[name=\\\"password\\\"]\",\"value\":\"301227@Se\"},
-
-    {\"type\":\"click\",\"selector\":\"button[type=\\\"submit\\\"]\"},
-
-    {\"type\":\"wait\",\"time\":5000},
-
-    {\"type\":\"click\",\"selector\":\"#onetrust-accept-btn-handler\",\"time\":2000},
-
-    {\"type\":\"wait\",\"time\":4000},
-
-    {\"type\":\"click\",\"selector\":\"button figure\"},
-
-    {\"type\":\"wait\",\"time\":4000}
-
-    ]",
+    "scriptJson": "[\n    {\"type\":\"click\",\"selector\":\"#onetrust-accept-btn-handler\",\"time\":6000},\n\n    {\"type\":\"click\",\"selector\":\"[name=\\\"email\\\"]\"},\n    {\"type\":\"input\",\"selector\":\"[name=\\\"email\\\"]\",\"value\":\"steph.rodriguez01@gmail.com\"},\n\n    {\"type\":\"click\",\"selector\":\"[name=\\\"password\\\"]\"},\n    {\"type\":\"input\",\"selector\":\"[name=\\\"password\\\"]\",\"value\":\"301227@Se\"},\n\n    {\"type\":\"click\",\"selector\":\"button[type=\\\"submit\\\"]\"},\n\n    {\"type\":\"wait\",\"time\":8000},\n\n    {\"type\":\"click\",\"selector\":\"#onetrust-accept-btn-handler\",\"time\":2000},\n\n    {\"type\":\"wait\",\"time\":6000},\n\n    {\"type\":\"click\",\"selector\":\"button:has(figure)\"},\n\n    {\"type\":\"wait\",\"time\":5000}\n]",
     "userAgent": "",
     "useOcrForSuccess": false,
     "successKeywords": [],
