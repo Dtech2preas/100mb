@@ -1,4 +1,4 @@
+Netflix.json
 Betway.json
 Crunchyroll.json
 b.json
-Netflix.json
