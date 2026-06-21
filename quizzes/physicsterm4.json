@@ -1,376 +1,981 @@
 [
   {
-    "question": "Which type of spectrum is produced when white light passes through a cool gas and then through a prism?",
-    "correct_answer": "Absorption spectrum",
+    "question": "What is the velocity of an object thrown vertically upwards when it reaches its maximum height?",
+    "correct_answer": "0 m/s",
     "incorrect_answers": [
-      "Emission spectrum",
-      "Continuous spectrum",
-      "Ultraviolet spectrum",
-      "X-ray spectrum",
-      "Gamma ray spectrum"
+      "9.8 m/s",
+      "-9.8 m/s",
+      "Maximum velocity",
+      "Depends on initial velocity",
+      "9.8 m/s\u00b2"
     ]
   },
   {
-    "question": "Which element emits a red emission line visible in hydrogen's spectrum?",
-    "correct_answer": "Hydrogen",
+    "question": "A vehicle traveling at 10 m/s applies its brakes, causing a uniform acceleration of -5 m/s\u00b2. What is the displacement after 4 seconds?",
+    "correct_answer": "0.0 m",
     "incorrect_answers": [
-      "Helium",
-      "Sodium",
-      "Neon",
-      "Oxygen",
-      "Carbon"
+      "5.0 m",
+      "-5.0 m",
+      "40 m",
+      "-40.0 m",
+      "60 m"
     ]
   },
   {
-    "question": "What causes the lines in an atomic emission spectrum?",
-    "correct_answer": "Electrons moving from higher to lower energy levels",
+    "question": "A car sounds its horn with a frequency of 1000 Hz while moving towards a stationary observer at 30 m/s. The speed of sound in air is 340 m/s. Calculate the frequency heard by the observer.",
+    "correct_answer": "1096.77 Hz",
     "incorrect_answers": [
-      "Protons combining with electrons",
-      "Atoms losing neutrons",
-      "Electrons moving from lower to higher energy levels",
-      "Absorption of thermal radiation",
-      "Collisions between nuclei"
+      "918.92 Hz",
+      "1000 Hz",
+      "1645.16 Hz",
+      "731.18 Hz",
+      "1030 Hz"
     ]
   },
   {
-    "question": "What does a line in an atomic absorption spectrum represent?",
-    "correct_answer": "A specific wavelength absorbed by an electron",
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 2 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "15 m/s",
     "incorrect_answers": [
-      "A missing photon in the nucleus",
-      "Energy released by an atom",
-      "Proton transitions",
-      "Radioactive decay",
-      "Emission due to collisions"
+      "17 m/s",
+      "13 m/s",
+      "7 m/s",
+      "25 m/s",
+      "10 m/s"
     ]
   },
   {
-    "question": "In atomic spectra, what is the name of the series that corresponds to visible light in hydrogen?",
-    "correct_answer": "Balmer series",
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 2 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "16 m/s",
     "incorrect_answers": [
-      "Lyman series",
-      "Paschen series",
-      "Rydberg series",
-      "Alpha series",
-      "Bohr series"
+      "18 m/s",
+      "14 m/s",
+      "12 m/s",
+      "30 m/s",
+      "6 m/s"
     ]
   },
   {
-    "question": "Which transition in a hydrogen atom will produce the highest energy photon?",
-    "correct_answer": "From n=6 to n=1",
+    "question": "A 2 kg trolley moving at 6 m/s collides with a stationary 1 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "4.0 m/s",
     "incorrect_answers": [
-      "From n=2 to n=1",
-      "From n=3 to n=2",
-      "From n=5 to n=4",
-      "From n=4 to n=3",
-      "From n=3 to n=1"
+      "8.0 m/s",
+      "6 m/s",
+      "2.0 m/s",
+      "12.0 m/s",
+      "6 m/s"
     ]
   },
   {
-    "question": "What is the result when an electron absorbs energy?",
-    "correct_answer": "It moves to a higher energy level",
+    "question": "The peak current in an AC circuit is 10 A. What is the rms current?",
+    "correct_answer": "7.07 A",
     "incorrect_answers": [
-      "It loses mass",
-      "It emits a photon",
-      "It becomes a neutron",
-      "It splits into two particles",
-      "It ionizes immediately"
+      "14.14 A",
+      "10 A",
+      "3.54 A",
+      "5.0 A",
+      "20 A"
     ]
   },
   {
-    "question": "Which instrument is used to study spectra of light?",
-    "correct_answer": "Spectroscope",
+    "question": "A 3 \u03a9 and a 6 \u03a9 resistor are connected in parallel across a 12 V source. What is the total current supplied by the source?",
+    "correct_answer": "6.0 A",
     "incorrect_answers": [
-      "Microscope",
-      "Telescope",
-      "Voltmeter",
-      "Oscilloscope",
-      "Thermometer"
+      "1.33 A",
+      "4.0 A",
+      "2.0 A",
+      "12.0 A",
+      "3.0 A"
     ]
   },
   {
-    "question": "Which scientist explained the line spectrum of hydrogen using quantized energy levels?",
-    "correct_answer": "Niels Bohr",
+    "question": "State the work-energy theorem.",
+    "correct_answer": "The net work done on an object is equal to the change in the object's kinetic energy.",
     "incorrect_answers": [
-      "Albert Einstein",
-      "James Clerk Maxwell",
-      "Michael Faraday",
-      "Isaac Newton",
-      "Werner Heisenberg"
+      "Work is equal to force times distance.",
+      "Energy cannot be created or destroyed.",
+      "Power is the rate at which work is done.",
+      "Kinetic energy is equal to potential energy.",
+      "The total mechanical energy remains constant."
     ]
   },
   {
-    "question": "Which type of spectrum is produced by heated solids or dense gases?",
-    "correct_answer": "Continuous spectrum",
+    "question": "Calculate the magnitude of the electric field at a distance of 0.1 m from a point charge of +10 \u00b5C. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "9.0e+06 N/C",
     "incorrect_answers": [
-      "Line emission spectrum",
-      "Line absorption spectrum",
-      "Photoelectric spectrum",
-      "Dark-line spectrum",
-      "Spectral gap"
+      "1.8e+07 N/C",
+      "4.5e+06 N/C",
+      "9.0e+05 N/C",
+      "9.0e+05 N/C",
+      "9.0e+07 N/C"
     ]
   },
   {
-    "question": "The bright lines in a line emission spectrum are caused by...",
-    "correct_answer": "Electrons releasing energy as they return to lower energy levels",
+    "question": "Calculate the energy of a photon of light with a frequency of 2.0e+15 Hz. (h = 6.63 x 10^-34 J.s)",
+    "correct_answer": "1.33e-18 J",
     "incorrect_answers": [
-      "Electrons gaining kinetic energy",
-      "Atoms colliding and emitting sound",
-      "Neutrons losing charge",
-      "Nuclei fusing together",
-      "Electrons leaving the atom permanently"
+      "2.65e-18 J",
+      "6.63e-19 J",
+      "3.32e-49 J",
+      "3.02e+48 J",
+      "1.33e-17 J"
     ]
   },
   {
-    "question": "What is the main difference between an emission and absorption spectrum?",
-    "correct_answer": "Emission shows light emitted; absorption shows light absorbed",
+    "question": "What is the gravitational potential energy of a 5 kg object at a height of 10 m? (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "490.0 J",
     "incorrect_answers": [
-      "Emission is black and white; absorption is colored",
-      "Emission is random; absorption is ordered",
-      "Emission happens in cold gases only",
-      "There is no difference",
-      "Emission involves nuclear decay"
+      "980.0 J",
+      "50 J",
+      "49.99999999999999 J",
+      "245.0 J",
+      "4.9 J"
     ]
   },
   {
-    "question": "Which color of light has the shortest wavelength?",
-    "correct_answer": "Violet",
+    "question": "Why is alternating current (AC) preferred for long-distance power transmission?",
+    "correct_answer": "AC can easily be stepped up or down using transformers to minimize power loss.",
     "incorrect_answers": [
-      "Red",
-      "Orange",
-      "Yellow",
-      "Green",
-      "Blue-green"
+      "AC travels faster than DC.",
+      "AC is less dangerous than DC.",
+      "AC requires thicker wires.",
+      "DC cannot be generated.",
+      "DC loses no energy as heat."
     ]
   },
   {
-    "question": "Which formula relates the energy of a photon to its frequency?",
-    "correct_answer": "E = hf",
+    "question": "Calculate the magnitude of the electric field at a distance of 0.05 m from a point charge of +5 \u00b5C. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "1.8e+07 N/C",
     "incorrect_answers": [
-      "E = mc²",
-      "F = ma",
-      "E = ½mv²",
-      "E = qV",
-      "E = λf"
+      "3.6e+07 N/C",
+      "9.0e+06 N/C",
+      "9.0e+05 N/C",
+      "9.0e+05 N/C",
+      "3.6e+08 N/C"
     ]
   },
   {
-    "question": "Calculate the energy of a photon with frequency 6 × 10¹⁴ Hz. (Use h = 6.63 × 10⁻³⁴ J·s)",
-    "correct_answer": "3.98 × 10⁻¹⁹ J",
+    "question": "Which of the following electromagnetic waves has the highest frequency?",
+    "correct_answer": "Gamma rays",
     "incorrect_answers": [
-      "9.95 × 10⁻¹⁷ J",
-      "1.50 × 10⁻²⁰ J",
-      "3.00 × 10⁸ J",
-      "2.18 × 10⁻¹⁸ J",
-      "7.45 × 10⁻²⁰ J"
+      "Radio waves",
+      "Microwaves",
+      "Visible light",
+      "X-rays",
+      "Ultraviolet"
     ]
   },
   {
-    "question": "What does the intensity of a spectral line represent?",
-    "correct_answer": "The number of photons emitted at that wavelength",
+    "question": "Calculate the energy of a photon of light with a frequency of 1.0e+15 Hz. (h = 6.63 x 10^-34 J.s)",
+    "correct_answer": "6.63e-19 J",
     "incorrect_answers": [
-      "The mass of electrons in orbit",
-      "The temperature of the gas",
-      "The speed of light",
-      "The angle of reflection",
-      "The refractive index"
+      "1.33e-18 J",
+      "3.31e-19 J",
+      "6.63e-49 J",
+      "1.51e+48 J",
+      "6.63e-18 J"
     ]
   },
   {
-    "question": "Which spectrum would you observe if white light passes through hydrogen gas and then through a prism?",
-    "correct_answer": "Absorption spectrum",
+    "question": "What is the gravitational potential energy of a 2 kg object at a height of 20 m? (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "392.0 J",
     "incorrect_answers": [
-      "Emission spectrum",
-      "Gamma ray spectrum",
-      "Microwave spectrum",
-      "Infrared emission",
-      "UV line spectrum"
+      "784.0 J",
+      "40 J",
+      "40.0 J",
+      "196.0 J",
+      "0.9800000000000001 J"
     ]
   },
   {
-    "question": "Which energy level transition emits the longest wavelength in hydrogen?",
-    "correct_answer": "From n=3 to n=2",
+    "question": "Calculate the kinetic energy of a 5 kg object moving at 4 m/s.",
+    "correct_answer": "40.0 J",
     "incorrect_answers": [
-      "From n=6 to n=1",
-      "From n=4 to n=2",
-      "From n=5 to n=1",
-      "From n=4 to n=3",
-      "From n=2 to n=1"
+      "80.0 J",
+      "20 J",
+      "10.0 J",
+      "20.0 J",
+      "80 J"
     ]
   },
   {
-    "question": "If the wavelength of a photon is 500 nm, what is its frequency? (c = 3 × 10⁸ m/s)",
-    "correct_answer": "6 × 10¹⁴ Hz",
+    "question": "What energy conversion takes place in an electric generator?",
+    "correct_answer": "Mechanical energy to electrical energy.",
     "incorrect_answers": [
-      "3 × 10⁸ Hz",
-      "1.5 × 10¹⁴ Hz",
-      "9 × 10¹³ Hz",
-      "7 × 10¹² Hz",
-      "2 × 10⁹ Hz"
+      "Electrical energy to mechanical energy.",
+      "Chemical energy to electrical energy.",
+      "Thermal energy to electrical energy.",
+      "Electrical energy to chemical energy.",
+      "Mechanical energy to thermal energy."
     ]
   },
   {
-    "question": "What is the role of quantized energy levels in atoms?",
-    "correct_answer": "They allow only specific energy transitions",
+    "question": "An AC supply has an rms voltage of 240 V. It is connected to a 20 \u03a9 resistor. Calculate the average power dissipated by the resistor.",
+    "correct_answer": "2880.0 W",
     "incorrect_answers": [
-      "They create infinite energy storage",
-      "They eliminate the uncertainty principle",
-      "They restrict atomic size",
-      "They cause radioactive decay",
-      "They slow down electron movement"
-    ]
-  },
-{
-    "question": "What is a continuous emission spectrum?",
-    "correct_answer": "A spectrum showing all wavelengths of light without interruption.",
-    "incorrect_answers": [
-      "A spectrum with only discrete lines.",
-      "A spectrum showing only infrared light.",
-      "A spectrum of absorbed colors.",
-      "A spectrum with missing wavelengths.",
-      "A spectrum produced by cooled gases."
+      "5760.0 W",
+      "1440.0 W",
+      "16.97 W",
+      "12.0 W",
+      "4800 W"
     ]
   },
   {
-    "question": "Which source produces a continuous spectrum?",
-    "correct_answer": "Incandescent solid or dense gas",
+    "question": "An applied force of 100 N acts horizontally on a 10 kg block on a rough surface. The kinetic frictional force is 20 N. Calculate the acceleration of the block.",
+    "correct_answer": "8.0 m/s\u00b2",
     "incorrect_answers": [
-      "Low-pressure gas discharge",
-      "Cold gas cloud",
-      "Fluorescent lamp",
-      "Laser beam",
-      "Monochromator"
+      "10.0 m/s\u00b2",
+      "2.0 m/s\u00b2",
+      "12.0 m/s\u00b2",
+      "16.0 m/s\u00b2",
+      "4.0 m/s\u00b2"
     ]
   },
   {
-    "question": "What are atomic emission spectra?",
-    "correct_answer": "Discrete lines emitted by excited atoms.",
+    "question": "An applied force of 50 N acts horizontally on a 5 kg block on a rough surface. The kinetic frictional force is 20 N. Calculate the acceleration of the block.",
+    "correct_answer": "6.0 m/s\u00b2",
     "incorrect_answers": [
-      "A continuous rainbow of light.",
-      "Absorption lines in a star.",
-      "A spectrum from a diffraction grating.",
-      "Scattered sunlight.",
-      "Thermal radiation peaks."
+      "10.0 m/s\u00b2",
+      "4.0 m/s\u00b2",
+      "14.0 m/s\u00b2",
+      "12.0 m/s\u00b2",
+      "3.0 m/s\u00b2"
     ]
   },
   {
-    "question": "What causes the lines in atomic emission spectra?",
-    "correct_answer": "Electron transitions between energy levels.",
+    "question": "What does RMS stand for in AC circuits?",
+    "correct_answer": "Root Mean Square",
     "incorrect_answers": [
-      "Nuclear decay events.",
-      "Vibrational modes in molecules.",
-      "Electron spin flips.",
-      "Thermal expansion.",
-      "Ion collisions only."
+      "Rate of Mean Speed",
+      "Ratio of Maximum Sine",
+      "Real Maximum Signal",
+      "Reverse Motor System",
+      "Rotational Magnetic Strength"
     ]
   },
   {
-    "question": "Which element’s emission spectrum is characterized by a prominent yellow doublet?",
-    "correct_answer": "Sodium",
+    "question": "A 3 kg trolley moving at 4 m/s collides with a stationary 2 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "2.4 m/s",
     "incorrect_answers": [
-      "Hydrogen",
-      "Helium",
-      "Neon",
-      "Potassium",
-      "Calcium"
+      "4.8 m/s",
+      "4 m/s",
+      "1.2 m/s",
+      "6.0 m/s",
+      "4 m/s"
     ]
   },
   {
-    "question": "What is an absorption spectrum?",
-    "correct_answer": "Dark lines where light at specific wavelengths is absorbed.",
+    "question": "Light consisting of photons with energy 6.0e-19 J shines on a metal surface. The work function of the metal is 4.0e-19 J. Calculate the maximum kinetic energy of the emitted photoelectrons.",
+    "correct_answer": "2.0e-19 J",
     "incorrect_answers": [
-      "Bright lines of emitted light.",
-      "Continuous rainbow without gaps.",
-      "Radio frequency peaks.",
-      "Thermal emission peaks.",
-      "Ultraviolet continuum."
+      "1.0e-18 J",
+      "1.5e+00 J",
+      "4.0e-19 J",
+      "6.0e-19 J",
+      "-2.0e-19 J"
     ]
   },
   {
-    "question": "How does an absorption spectrum relate to emission spectrum?",
-    "correct_answer": "Absorption lines appear at same wavelengths as emission lines.",
+    "question": "A 2 kg trolley moving at 4 m/s collides with a stationary 2 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "2.0 m/s",
     "incorrect_answers": [
-      "Absorption lines are at different wavelengths.",
-      "Emission lines fill gaps in absorption.",
-      "They have no relation.",
-      "Emission lines are continuous where absorption is discrete.",
-      "Absorption is only infrared."
+      "4.0 m/s",
+      "4 m/s",
+      "1.0 m/s",
+      "4.0 m/s",
+      "4 m/s"
     ]
   },
   {
-    "question": "A hydrogen Balmer line has wavelength 656 nm. What is its frequency? (c=3×10^8 m/s)",
-    "correct_answer": "4.57×10^14 Hz",
+    "question": "An AC supply has an rms voltage of 240 V. It is connected to a 10 \u03a9 resistor. Calculate the average power dissipated by the resistor.",
+    "correct_answer": "5760.0 W",
     "incorrect_answers": [
-      "2.02×10^15 Hz",
-      "4.57×10^12 Hz",
-      "6.56×10^14 Hz",
-      "3.00×10^8 Hz",
-      "1.82×10^14 Hz"
+      "11520.0 W",
+      "2880.0 W",
+      "33.94 W",
+      "24.0 W",
+      "2400 W"
     ]
   },
   {
-    "question": "Calculate the energy of a photon at 486 nm (E=hc/λ, h=6.63×10^-34 J·s).",
-    "correct_answer": "4.09×10^-19 J",
+    "question": "Calculate the kinetic energy of a 10 kg object moving at 4 m/s.",
+    "correct_answer": "80.0 J",
     "incorrect_answers": [
-      "3.27×10^-19 J",
-      "5.00×10^-19 J",
-      "2.03×10^-19 J",
-      "4.09×10^-18 J",
-      "1.23×10^-19 J"
+      "160.0 J",
+      "40 J",
+      "20.0 J",
+      "40.0 J",
+      "160 J"
     ]
   },
   {
-    "question": "Which series in hydrogen corresponds to transitions ending at n=2?",
-    "correct_answer": "Balmer series",
+    "question": "A 6 \u03a9 and a 12 \u03a9 resistor are connected in parallel across a 12 V source. What is the total current supplied by the source?",
+    "correct_answer": "3.0 A",
     "incorrect_answers": [
-      "Lyman series",
-      "Paschen series",
-      "Brackett series",
-      "Pfund series",
-      "Pfennig series"
+      "0.67 A",
+      "2.0 A",
+      "1.0 A",
+      "6.0 A",
+      "1.5 A"
     ]
   },
   {
-    "question": "What region does the Lyman series lie in?",
-    "correct_answer": "Ultraviolet",
+    "question": "State Ohm's Law.",
+    "correct_answer": "The potential difference across a conductor is directly proportional to the current in the conductor at constant temperature.",
     "incorrect_answers": [
-      "Visible",
-      "Infrared",
-      "X-ray",
-      "Radio",
-      "Microwave"
+      "The current is directly proportional to resistance.",
+      "Power is equal to voltage times current.",
+      "The total resistance in series is less than the smallest resistor.",
+      "The voltage is constant in a series circuit.",
+      "Current divides equally in a parallel circuit regardless of resistance."
     ]
   },
   {
-    "question": "Calculate the wavelength of a photon with energy 2.5 eV (1 eV=1.6×10^-19 J).",
-    "correct_answer": "496 nm",
+    "question": "All electromagnetic waves travel at what speed in a vacuum?",
+    "correct_answer": "3 x 10^8 m/s",
     "incorrect_answers": [
-      "250 nm",
-      "1248 nm",
-      "310 nm",
-      "800 nm",
-      "4960 nm"
+      "340 m/s",
+      "3 x 10^5 m/s",
+      "9.8 m/s",
+      "1500 m/s",
+      "Depends on their frequency"
     ]
   },
   {
-    "question": "Which element shows a red line at 656 nm in its emission spectrum?",
-    "correct_answer": "Hydrogen",
+    "question": "Calculate the kinetic energy of a 2 kg object moving at 6 m/s.",
+    "correct_answer": "36.0 J",
     "incorrect_answers": [
-      "Helium",
-      "Neon",
-      "Argon",
-      "Sodium",
-      "Potassium"
+      "72.0 J",
+      "12 J",
+      "6.0 J",
+      "18.0 J",
+      "72 J"
     ]
   },
   {
-    "question": "Atomic absorption lines in the solar spectrum reveal presence of which element at 589 nm?",
-    "correct_answer": "Sodium",
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 2 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "10 m/s",
     "incorrect_answers": [
-      "Calcium",
-      "Iron",
-      "Hydrogen",
-      "Helium",
-      "Magnesium"
+      "12 m/s",
+      "8 m/s",
+      "2 m/s",
+      "0 m/s",
+      "10 m/s"
+    ]
+  },
+  {
+    "question": "Which rule is used to determine the direction of the induced current in a generator?",
+    "correct_answer": "Fleming's Right-Hand Rule",
+    "incorrect_answers": [
+      "Fleming's Left-Hand Rule",
+      "Right-Hand Grip Rule",
+      "Maxwell's Corkscrew Rule",
+      "Lenz's Rule",
+      "Ampere's Rule"
+    ]
+  },
+  {
+    "question": "Two resistors of 2 \u03a9 and 4 \u03a9 are connected in series across a 12 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "2.0 A",
+    "incorrect_answers": [
+      "6.0 A",
+      "3.0 A",
+      "4.0 A",
+      "16.0 A",
+      "1.0 A"
+    ]
+  },
+  {
+    "question": "State Coulomb's Law.",
+    "correct_answer": "The magnitude of the electrostatic force exerted by one point charge on another is directly proportional to the product of the magnitudes of the charges and inversely proportional to the square of the distance between them.",
+    "incorrect_answers": [
+      "The electric field is uniform between two parallel plates.",
+      "Like charges attract and unlike charges repel.",
+      "The total charge in an isolated system is conserved.",
+      "Voltage is directly proportional to current.",
+      "The force is inversely proportional to the charges."
+    ]
+  },
+  {
+    "question": "What is the gravitational potential energy of a 5 kg object at a height of 20 m? (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "980.0 J",
+    "incorrect_answers": [
+      "1960.0 J",
+      "100 J",
+      "99.99999999999999 J",
+      "490.0 J",
+      "2.45 J"
+    ]
+  },
+  {
+    "question": "What happens to the total resistance when resistors are added in series?",
+    "correct_answer": "It increases.",
+    "incorrect_answers": [
+      "It decreases.",
+      "It stays the same.",
+      "It becomes zero.",
+      "It depends on the voltage.",
+      "It halves."
+    ]
+  },
+  {
+    "question": "What is the relationship between frequency and wavelength for electromagnetic waves?",
+    "correct_answer": "They are inversely proportional.",
+    "incorrect_answers": [
+      "They are directly proportional.",
+      "They are independent of each other.",
+      "Frequency is the square of the wavelength.",
+      "Wavelength is the square of frequency.",
+      "They sum to a constant."
+    ]
+  },
+  {
+    "question": "A net force of 10 N acts on an object of mass 2 kg. What is the acceleration of the object?",
+    "correct_answer": "5.0 m/s\u00b2",
+    "incorrect_answers": [
+      "10.0 m/s\u00b2",
+      "0.2 m/s\u00b2",
+      "20 m/s\u00b2",
+      "6.0 m/s\u00b2",
+      "2.5 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "Which component in a DC generator ensures that the induced current flows in one direction in the external circuit?",
+    "correct_answer": "Split-ring commutator",
+    "incorrect_answers": [
+      "Slip rings",
+      "Carbon brushes",
+      "Armature",
+      "Field magnets",
+      "Galvanometer"
+    ]
+  },
+  {
+    "question": "A stone is projected vertically upwards with a velocity of 20 m/s. What is its maximum height? (Use g = 9.8 m/s\u00b2 and ignore air resistance)",
+    "correct_answer": "20.41 m",
+    "incorrect_answers": [
+      "40.82 m",
+      "2.04 m",
+      "196.0 m",
+      "10.2 m",
+      "40 m"
+    ]
+  },
+  {
+    "question": "An applied force of 50 N acts horizontally on a 5 kg block on a rough surface. The kinetic frictional force is 10 N. Calculate the acceleration of the block.",
+    "correct_answer": "8.0 m/s\u00b2",
+    "incorrect_answers": [
+      "10.0 m/s\u00b2",
+      "2.0 m/s\u00b2",
+      "12.0 m/s\u00b2",
+      "16.0 m/s\u00b2",
+      "4.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "Light consisting of photons with energy 6.0e-19 J shines on a metal surface. The work function of the metal is 3.0e-19 J. Calculate the maximum kinetic energy of the emitted photoelectrons.",
+    "correct_answer": "3.0e-19 J",
+    "incorrect_answers": [
+      "9.0e-19 J",
+      "2.0e+00 J",
+      "3.0e-19 J",
+      "6.0e-19 J",
+      "-3.0e-19 J"
+    ]
+  },
+  {
+    "question": "A 2 kg trolley moving at 6 m/s collides with a stationary 2 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "3.0 m/s",
+    "incorrect_answers": [
+      "6.0 m/s",
+      "6 m/s",
+      "1.5 m/s",
+      "6.0 m/s",
+      "6 m/s"
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 20 m/s applies its brakes, causing a uniform acceleration of -5 m/s\u00b2. What is the displacement after 2 seconds?",
+    "correct_answer": "30.0 m",
+    "incorrect_answers": [
+      "35.0 m",
+      "25.0 m",
+      "40 m",
+      "-10.0 m",
+      "50 m"
+    ]
+  },
+  {
+    "question": "Calculate the kinetic energy of a 5 kg object moving at 8 m/s.",
+    "correct_answer": "160.0 J",
+    "incorrect_answers": [
+      "320.0 J",
+      "40 J",
+      "20.0 J",
+      "80.0 J",
+      "320 J"
+    ]
+  },
+  {
+    "question": "An AC supply has an rms voltage of 220 V. It is connected to a 20 \u03a9 resistor. Calculate the average power dissipated by the resistor.",
+    "correct_answer": "2420.0 W",
+    "incorrect_answers": [
+      "4840.0 W",
+      "1210.0 W",
+      "15.56 W",
+      "11.0 W",
+      "4400 W"
+    ]
+  },
+  {
+    "question": "Two resistors of 2 \u03a9 and 6 \u03a9 are connected in series across a 12 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "1.5 A",
+    "incorrect_answers": [
+      "6.0 A",
+      "2.0 A",
+      "3.0 A",
+      "18.0 A",
+      "0.75 A"
+    ]
+  },
+  {
+    "question": "Two point charges, +2 \u00b5C and +5 \u00b5C, are separated by a distance of 0.1 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "9.0 N",
+    "incorrect_answers": [
+      "18.0 N",
+      "4.5 N",
+      "900000000000.0 N",
+      "9000000.0 N",
+      "0.0 N"
+    ]
+  },
+  {
+    "question": "Two resistors of 2 \u03a9 and 4 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "4.0 A",
+    "incorrect_answers": [
+      "12.0 A",
+      "6.0 A",
+      "8.0 A",
+      "32.0 A",
+      "2.0 A"
+    ]
+  },
+  {
+    "question": "An applied force of 100 N acts horizontally on a 5 kg block on a rough surface. The kinetic frictional force is 20 N. Calculate the acceleration of the block.",
+    "correct_answer": "16.0 m/s\u00b2",
+    "incorrect_answers": [
+      "20.0 m/s\u00b2",
+      "4.0 m/s\u00b2",
+      "24.0 m/s\u00b2",
+      "32.0 m/s\u00b2",
+      "8.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "Light consisting of photons with energy 5.0e-19 J shines on a metal surface. The work function of the metal is 4.0e-19 J. Calculate the maximum kinetic energy of the emitted photoelectrons.",
+    "correct_answer": "1.0e-19 J",
+    "incorrect_answers": [
+      "9.0e-19 J",
+      "1.3e+00 J",
+      "4.0e-19 J",
+      "5.0e-19 J",
+      "-1.0e-19 J"
+    ]
+  },
+  {
+    "question": "What is threshold frequency?",
+    "correct_answer": "The minimum frequency of incident radiation required to emit an electron from a metal surface.",
+    "incorrect_answers": [
+      "The maximum frequency of incident radiation.",
+      "The frequency of the emitted electron.",
+      "The frequency at which maximum kinetic energy is zero.",
+      "The frequency of visible light.",
+      "The frequency of the work function."
+    ]
+  },
+  {
+    "question": "What does the gradient of a position-time graph represent?",
+    "correct_answer": "Velocity",
+    "incorrect_answers": [
+      "Acceleration",
+      "Displacement",
+      "Speed",
+      "Time",
+      "Distance"
+    ]
+  },
+  {
+    "question": "An AC generator produces a maximum voltage of 311 V. What is the root-mean-square (rms) voltage?",
+    "correct_answer": "220 V",
+    "incorrect_answers": [
+      "311 V",
+      "440 V",
+      "155 V",
+      "110 V",
+      "622 V"
+    ]
+  },
+  {
+    "question": "The peak current in an AC circuit is 20 A. What is the rms current?",
+    "correct_answer": "14.14 A",
+    "incorrect_answers": [
+      "28.28 A",
+      "20 A",
+      "7.07 A",
+      "10.0 A",
+      "40 A"
+    ]
+  },
+  {
+    "question": "A net force of 20 N acts on an object of mass 10 kg. What is the acceleration of the object?",
+    "correct_answer": "2.0 m/s\u00b2",
+    "incorrect_answers": [
+      "4.0 m/s\u00b2",
+      "0.5 m/s\u00b2",
+      "200 m/s\u00b2",
+      "3.0 m/s\u00b2",
+      "1.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 4 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "17 m/s",
+    "incorrect_answers": [
+      "21 m/s",
+      "13 m/s",
+      "9 m/s",
+      "15 m/s",
+      "12 m/s"
+    ]
+  },
+  {
+    "question": "Calculate the wavelength of light with a frequency of 6.0e+14 Hz in a vacuum. (c = 3 x 10^8 m/s)",
+    "correct_answer": "5.00e-07 m",
+    "incorrect_answers": [
+      "1.80e+23 m",
+      "2.00e+06 m",
+      "1.00e-06 m",
+      "2.50e-07 m",
+      "5.67e-13 m"
+    ]
+  },
+  {
+    "question": "An ambulance siren emits a sound of frequency 800 Hz. It moves away from a stationary observer at 25 m/s. Assuming the speed of sound is 340 m/s, what is the frequency detected by the observer?",
+    "correct_answer": "745.21 Hz",
+    "incorrect_answers": [
+      "863.49 Hz",
+      "800 Hz",
+      "645.21 Hz",
+      "845.21 Hz",
+      "775 Hz"
+    ]
+  },
+  {
+    "question": "Two resistors of 4 \u03a9 and 6 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "2.4 A",
+    "incorrect_answers": [
+      "6.0 A",
+      "4.0 A",
+      "4.8 A",
+      "57.6 A",
+      "1.2 A"
+    ]
+  },
+  {
+    "question": "An AC supply has an rms voltage of 220 V. It is connected to a 10 \u03a9 resistor. Calculate the average power dissipated by the resistor.",
+    "correct_answer": "4840.0 W",
+    "incorrect_answers": [
+      "9680.0 W",
+      "2420.0 W",
+      "31.11 W",
+      "22.0 W",
+      "2200 W"
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 2 kg object moving at 3 m/s.",
+    "correct_answer": "6 kg\u00b7m/s",
+    "incorrect_answers": [
+      "12 kg\u00b7m/s",
+      "3.0 kg\u00b7m/s",
+      "5 kg\u00b7m/s",
+      "0.6666666666666666 kg\u00b7m/s",
+      "1.5 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "What energy conversion takes place in an electric motor?",
+    "correct_answer": "Electrical energy to mechanical energy.",
+    "incorrect_answers": [
+      "Mechanical energy to electrical energy.",
+      "Chemical energy to electrical energy.",
+      "Thermal energy to mechanical energy.",
+      "Electrical energy to chemical energy.",
+      "Kinetic energy to potential energy."
+    ]
+  },
+  {
+    "question": "A 20 kg block falls freely from rest from a height of 10 m. Using the conservation of mechanical energy, calculate its velocity just before it hits the ground. (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "14.0 m/s",
+    "incorrect_answers": [
+      "28.0 m/s",
+      "7.0 m/s",
+      "98.0 m/s",
+      "9.9 m/s",
+      "1960.0 m/s"
+    ]
+  },
+  {
+    "question": "Light consisting of photons with energy 5.0e-19 J shines on a metal surface. The work function of the metal is 3.0e-19 J. Calculate the maximum kinetic energy of the emitted photoelectrons.",
+    "correct_answer": "2.0e-19 J",
+    "incorrect_answers": [
+      "8.0e-19 J",
+      "1.7e+00 J",
+      "3.0e-19 J",
+      "5.0e-19 J",
+      "-2.0e-19 J"
+    ]
+  },
+  {
+    "question": "Two resistors of 4 \u03a9 and 4 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "3.0 A",
+    "incorrect_answers": [
+      "6.0 A",
+      "6.0 A",
+      "6.0 A",
+      "48.0 A",
+      "1.5 A"
+    ]
+  },
+  {
+    "question": "A ball is thrown vertically upwards with an initial velocity of 19.6 m/s. How long does it take to reach its maximum height? (Ignore air resistance)",
+    "correct_answer": "2.0 s",
+    "incorrect_answers": [
+      "4.0 s",
+      "1.0 s",
+      "3.0 s",
+      "9.8 s",
+      "1 s"
+    ]
+  },
+  {
+    "question": "State Lenz's Law.",
+    "correct_answer": "The induced current flows in a direction so as to set up a magnetic field that opposes the change in magnetic flux that caused it.",
+    "incorrect_answers": [
+      "The magnitude of the induced emf is proportional to the rate of change of magnetic flux.",
+      "The force on a current-carrying conductor is proportional to the magnetic field.",
+      "Like magnetic poles repel each other.",
+      "The magnetic field around a wire forms concentric circles.",
+      "Current is inversely proportional to resistance."
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 20 m/s applies its brakes, causing a uniform acceleration of -2 m/s\u00b2. What is the displacement after 2 seconds?",
+    "correct_answer": "36.0 m",
+    "incorrect_answers": [
+      "41.0 m",
+      "31.0 m",
+      "40 m",
+      "-4.0 m",
+      "44 m"
+    ]
+  },
+  {
+    "question": "What is the photoelectric effect?",
+    "correct_answer": "The emission of electrons from a metal surface when light of a suitable frequency shines on it.",
+    "incorrect_answers": [
+      "The emission of light from a heated metal.",
+      "The creation of an electric current from heat.",
+      "The bending of light around an obstacle.",
+      "The separation of white light into a spectrum.",
+      "The absorption of electrons by a metal."
+    ]
+  },
+  {
+    "question": "A 10 kg block falls freely from rest from a height of 5 m. Using the conservation of mechanical energy, calculate its velocity just before it hits the ground. (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "9.9 m/s",
+    "incorrect_answers": [
+      "19.8 m/s",
+      "4.95 m/s",
+      "49.0 m/s",
+      "7.0 m/s",
+      "490.0 m/s"
+    ]
+  },
+  {
+    "question": "An ambulance siren emits a sound of frequency 800 Hz. It moves away from a stationary observer at 35 m/s. Assuming the speed of sound is 340 m/s, what is the frequency detected by the observer?",
+    "correct_answer": "725.33 Hz",
+    "incorrect_answers": [
+      "891.8 Hz",
+      "800 Hz",
+      "625.33 Hz",
+      "825.33 Hz",
+      "765 Hz"
+    ]
+  },
+  {
+    "question": "Two point charges, +2 \u00b5C and +4 \u00b5C, are separated by a distance of 0.1 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "7.2 N",
+    "incorrect_answers": [
+      "14.4 N",
+      "3.6 N",
+      "720000000000.0 N",
+      "7200000.0 N",
+      "0.0 N"
+    ]
+  },
+  {
+    "question": "A force of 50 N acts at an angle of 30\u00b0 above the horizontal. What is the vertical component of the force? (sin 30\u00b0 = 0.5, cos 30\u00b0 = 0.866)",
+    "correct_answer": "25 N",
+    "incorrect_answers": [
+      "43.3 N",
+      "50 N",
+      "0 N",
+      "100 N",
+      "12.5 N"
+    ]
+  },
+  {
+    "question": "The peak current in an AC circuit is 14.14 A. What is the rms current?",
+    "correct_answer": "10.0 A",
+    "incorrect_answers": [
+      "20.0 A",
+      "14.14 A",
+      "5.0 A",
+      "7.07 A",
+      "28.28 A"
+    ]
+  },
+  {
+    "question": "What is the unit of Work and Energy?",
+    "correct_answer": "Joule (J)",
+    "incorrect_answers": [
+      "Newton (N)",
+      "Watt (W)",
+      "Volt (V)",
+      "Ampere (A)",
+      "Pascal (Pa)"
+    ]
+  },
+  {
+    "question": "Calculate the kinetic energy of a 5 kg object moving at 6 m/s.",
+    "correct_answer": "90.0 J",
+    "incorrect_answers": [
+      "180.0 J",
+      "30 J",
+      "15.0 J",
+      "45.0 J",
+      "180 J"
+    ]
+  },
+  {
+    "question": "A net force of 20 N acts on an object of mass 2 kg. What is the acceleration of the object?",
+    "correct_answer": "10.0 m/s\u00b2",
+    "incorrect_answers": [
+      "20.0 m/s\u00b2",
+      "0.1 m/s\u00b2",
+      "40 m/s\u00b2",
+      "11.0 m/s\u00b2",
+      "5.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "Two resistors of 2 \u03a9 and 6 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "3.0 A",
+    "incorrect_answers": [
+      "12.0 A",
+      "4.0 A",
+      "6.0 A",
+      "36.0 A",
+      "1.5 A"
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 5 kg object moving at 5 m/s.",
+    "correct_answer": "25 kg\u00b7m/s",
+    "incorrect_answers": [
+      "50 kg\u00b7m/s",
+      "12.5 kg\u00b7m/s",
+      "10 kg\u00b7m/s",
+      "1.0 kg\u00b7m/s",
+      "1.0 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "Two forces, 10 N East and 6 N West, act simultaneously on an object. What is the resultant force?",
+    "correct_answer": "4 N East",
+    "incorrect_answers": [
+      "16 N East",
+      "4 N West",
+      "16 N West",
+      "60 N",
+      "10 N East"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 4 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "13 m/s",
+    "incorrect_answers": [
+      "17 m/s",
+      "9 m/s",
+      "9 m/s",
+      "10 m/s",
+      "8 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 5 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "35 m/s",
+    "incorrect_answers": [
+      "40 m/s",
+      "30 m/s",
+      "15 m/s",
+      "50 m/s",
+      "25 m/s"
+    ]
+  },
+  {
+    "question": "State Faraday's Law of electromagnetic induction.",
+    "correct_answer": "The magnitude of the induced emf across the ends of a conductor is directly proportional to the rate of change of magnetic flux linkage.",
+    "incorrect_answers": [
+      "The induced current always flows in a direction that opposes the change that caused it.",
+      "The magnetic field is proportional to the current.",
+      "Force is equal to the product of magnetic field, current and length.",
+      "Voltage is directly proportional to current.",
+      "Energy cannot be created or destroyed."
+    ]
+  },
+  {
+    "question": "Calculate the wavelength of light with a frequency of 5.0e+14 Hz in a vacuum. (c = 3 x 10^8 m/s)",
+    "correct_answer": "6.00e-07 m",
+    "incorrect_answers": [
+      "1.50e+23 m",
+      "1.67e+06 m",
+      "1.20e-06 m",
+      "3.00e-07 m",
+      "6.80e-13 m"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 4 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "25 m/s",
+    "incorrect_answers": [
+      "29 m/s",
+      "21 m/s",
+      "9 m/s",
+      "25 m/s",
+      "20 m/s"
+    ]
+  },
+  {
+    "question": "A 3 kg trolley moving at 6 m/s collides with a stationary 2 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "3.6 m/s",
+    "incorrect_answers": [
+      "7.2 m/s",
+      "6 m/s",
+      "1.8 m/s",
+      "9.0 m/s",
+      "6 m/s"
     ]
   }
 ]

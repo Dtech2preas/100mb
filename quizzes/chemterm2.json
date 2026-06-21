@@ -1,711 +1,222 @@
 [
   {
-    "question": "What is the general formula for alkanes?",
-    "correct_answer": "CnH2n+2",
+    "question": "Which of the following factors does NOT affect the rate of a chemical reaction?",
+    "correct_answer": "The molar mass of the products",
     "incorrect_answers": [
-      "CnH2n",
-      "CnH2n-2",
-      "CnH2n+1",
-      "CnHn",
-      "CnH2n+4"
+      "Temperature",
+      "Concentration of reactants",
+      "Surface area of solid reactants",
+      "Presence of a catalyst",
+      "Pressure of gaseous reactants"
     ]
   },
   {
-    "question": "Which type of bond is found in alkenes but not in alkanes?",
-    "correct_answer": "Double bond",
+    "question": "Does a catalyst affect the position of equilibrium?",
+    "correct_answer": "No, it increases the rate of both forward and reverse reactions equally.",
     "incorrect_answers": [
-      "Single bond",
-      "Triple bond",
-      "Ionic bond",
-      "Hydrogen bond",
-      "Peptide bond"
+      "Yes, it shifts equilibrium to the right.",
+      "Yes, it shifts equilibrium to the left.",
+      "Yes, it changes the value of Kc.",
+      "Yes, it lowers the enthalpy change.",
+      "Yes, it favors the exothermic reaction."
     ]
   },
   {
-    "question": "What is the IUPAC name of CH3CH2OH?",
-    "correct_answer": "Ethanol",
+    "question": "Why does an increase in concentration increase the rate of reaction?",
+    "correct_answer": "There are more particles per unit volume, leading to more frequent effective collisions.",
     "incorrect_answers": [
-      "Methanol",
-      "Propanol",
-      "Ethanoic acid",
-      "Ethanone",
-      "Ethene"
+      "The particles move faster.",
+      "The activation energy is lowered.",
+      "The particles have more kinetic energy.",
+      "The volume of the container increases.",
+      "The temperature increases."
     ]
   },
   {
-    "question": "Which compound is an example of a carboxylic acid?",
-    "correct_answer": "CH3COOH",
+    "question": "Consider the reaction: N2(g) + 3H2(g) \u21cc 2NH3(g). What will happen if the pressure is increased by decreasing the volume?",
+    "correct_answer": "The equilibrium will shift to the right, favoring the production of NH3.",
     "incorrect_answers": [
-      "CH3OH",
-      "CH3CH2CH3",
-      "CH3Cl",
-      "CH3OCH3",
-      "CH2CH2"
+      "The equilibrium will shift to the left.",
+      "The equilibrium will not shift.",
+      "The number of moles of N2 will increase.",
+      "The value of Kc will increase.",
+      "The rate of the reverse reaction will initially decrease."
     ]
   },
   {
-    "question": "Which of the following is a characteristic of esters?",
-    "correct_answer": "Pleasant fruity smell",
+    "question": "Consider the equilibrium: 2SO2(g) + O2(g) <-> 2SO3(g) (\u0394H < 0). How can the yield of SO3 be increased?",
+    "correct_answer": "Decrease temperature and increase pressure.",
     "incorrect_answers": [
-      "Strong acid",
-      "Metallic luster",
-      "High boiling point",
-      "Rotten egg smell",
-      "Basic pH"
+      "Increase temperature and increase pressure.",
+      "Decrease temperature and decrease pressure.",
+      "Increase temperature and decrease pressure.",
+      "Add a catalyst and increase temperature.",
+      "Remove SO2 and decrease pressure."
     ]
   },
   {
-    "question": "What functional group is present in alcohols?",
-    "correct_answer": "Hydroxyl (-OH)",
+    "question": "What is activation energy?",
+    "correct_answer": "The minimum energy required for a chemical reaction to occur.",
     "incorrect_answers": [
-      "Carbonyl",
-      "Carboxyl",
-      "Amine",
-      "Alkyl",
-      "Ester"
+      "The energy released during a chemical reaction.",
+      "The energy absorbed during a chemical reaction.",
+      "The total kinetic energy of the particles.",
+      "The difference in energy between products and reactants.",
+      "The energy of the activated complex."
     ]
   },
   {
-    "question": "What is the IUPAC name for CH≡CH?",
-    "correct_answer": "Ethyne",
+    "question": "According to the collision theory, for a reaction to occur, particles must collide with sufficient energy and...",
+    "correct_answer": "Correct orientation.",
     "incorrect_answers": [
-      "Ethene",
-      "Ethane",
-      "Methyne",
-      "Propene",
-      "Butyne"
+      "High speed.",
+      "Equal masses.",
+      "Low temperature.",
+      "In the presence of a catalyst.",
+      "In a gaseous state."
     ]
   },
   {
-    "question": "What is the product when ethene reacts with hydrogen?",
-    "correct_answer": "Ethane",
+    "question": "What is the unit for the rate of a chemical reaction measuring concentration change over time?",
+    "correct_answer": "mol.dm^-3.s^-1",
     "incorrect_answers": [
-      "Ethyne",
-      "Methane",
-      "Ethanol",
-      "Ethanoic acid",
-      "Acetylene"
+      "mol.s^-1",
+      "g.s^-1",
+      "dm^3.s^-1",
+      "s^-1",
+      "mol.dm^-3"
     ]
   },
   {
-    "question": "Which of these has a halogen functional group?",
-    "correct_answer": "CH3Cl",
+    "question": "Consider the exothermic reaction: N2(g) + 3H2(g) \u21cc 2NH3(g). What will happen if the temperature is increased?",
+    "correct_answer": "The equilibrium will shift to the left, favoring the reverse reaction.",
     "incorrect_answers": [
-      "CH3OH",
-      "CH3COOH",
-      "CH4",
-      "CH3NH2",
-      "CH3CH2OH"
+      "The equilibrium will shift to the right, favoring the forward reaction.",
+      "The equilibrium will not shift.",
+      "The concentration of NH3 will increase.",
+      "The value of the equilibrium constant (Kc) will increase.",
+      "Both forward and reverse reactions will stop."
     ]
   },
   {
-    "question": "Which hydrocarbon has the highest number of hydrogen atoms per carbon atom?",
-    "correct_answer": "Alkane",
+    "question": "If Kc > 1 for a reaction at equilibrium, what does this indicate?",
+    "correct_answer": "The equilibrium mixture contains mostly products.",
     "incorrect_answers": [
-      "Alkene",
-      "Alkyne",
-      "Aromatic compound",
-      "Ketone",
-      "Ester"
+      "The equilibrium mixture contains mostly reactants.",
+      "The reaction is fast.",
+      "The reaction is slow.",
+      "The reaction is exothermic.",
+      "The reaction is endothermic."
     ]
   },
   {
-    "question": "What is the molecular formula of butane?",
-    "correct_answer": "C4H10",
+    "question": "How does a catalyst increase the rate of a chemical reaction?",
+    "correct_answer": "By providing an alternative reaction pathway with a lower activation energy.",
     "incorrect_answers": [
-      "C4H8",
-      "C3H8",
-      "C4H6",
-      "C5H12",
-      "C2H6"
+      "By increasing the kinetic energy of the particles.",
+      "By increasing the concentration of the reactants.",
+      "By increasing the temperature of the reaction.",
+      "By decreasing the enthalpy change of the reaction.",
+      "By increasing the surface area of the reactants."
     ]
   },
   {
-    "question": "Which of these compounds is a structural isomer of butanol?",
-    "correct_answer": "2-butanol",
+    "question": "Which of the following changes will affect the value of the equilibrium constant (Kc)?",
+    "correct_answer": "A change in temperature.",
     "incorrect_answers": [
-      "Butanoic acid",
-      "Ethanol",
-      "Propanol",
-      "Methanol",
-      "Pentanol"
+      "A change in pressure.",
+      "A change in concentration of a reactant.",
+      "A change in concentration of a product.",
+      "The addition of a catalyst.",
+      "A change in volume."
     ]
   },
   {
-    "question": "What is the product of the reaction between a carboxylic acid and an alcohol?",
-    "correct_answer": "Ester",
+    "question": "Define dynamic chemical equilibrium.",
+    "correct_answer": "The state in a reversible chemical reaction where the rate of the forward reaction equals the rate of the reverse reaction.",
     "incorrect_answers": [
-      "Aldehyde",
-      "Amine",
-      "Ketone",
-      "Hydrocarbon",
-      "Ether"
+      "The state where the concentrations of reactants and products are equal.",
+      "The state where the reaction has stopped completely.",
+      "The state where all reactants have been converted to products.",
+      "The state where the forward reaction is faster than the reverse reaction.",
+      "The state where only products are present."
     ]
   },
   {
-    "question": "Which compound is the product of the oxidation of ethanol?",
-    "correct_answer": "Ethanoic acid",
+    "question": "For the reaction aA + bB \u21cc cC + dD, what is the expression for the equilibrium constant (Kc)?",
+    "correct_answer": "Kc = ([C]^c * [D]^d) / ([A]^a * [B]^b)",
     "incorrect_answers": [
-      "Methanol",
-      "Ethene",
-      "Ethanol",
-      "Acetone",
-      "Ethanone"
+      "Kc = ([A]^a * [B]^b) / ([C]^c * [D]^d)",
+      "Kc = ([C] * [D]) / ([A] * [B])",
+      "Kc = ([A] + [B]) / ([C] + [D])",
+      "Kc = ([C] + [D]) / ([A] + [B])",
+      "Kc = [C]^c * [D]^d * [A]^a * [B]^b"
     ]
   },
   {
-    "question": "What is the correct IUPAC name for CH3COOCH2CH3?",
-    "correct_answer": "Ethyl ethanoate",
+    "question": "What happens to the color of a CoCl4^2- (blue) + 6H2O <-> Co(H2O)6^2+ (pink) + 4Cl- equilibrium mixture if HCl is added?",
+    "correct_answer": "It turns bluer as the equilibrium shifts to the left.",
     "incorrect_answers": [
-      "Ethanoic ethanoate",
-      "Methyl acetate",
-      "Propyl ethanoate",
-      "Ethyl methanoate",
-      "Acetic ether"
+      "It turns pinker as the equilibrium shifts to the right.",
+      "The color does not change.",
+      "It turns clear.",
+      "It precipitates.",
+      "It turns green."
     ]
   },
   {
-    "question": "Which reaction involves the addition of HBr to an alkene?",
-    "correct_answer": "Electrophilic addition",
+    "question": "If a reaction produces a gas, which method can be used to measure the rate of reaction?",
+    "correct_answer": "Measuring the volume of gas produced over time.",
     "incorrect_answers": [
-      "Nucleophilic substitution",
-      "Elimination",
-      "Combustion",
-      "Hydrolysis",
-      "Cracking"
+      "Measuring the temperature change over time.",
+      "Measuring the change in color over time.",
+      "Measuring the change in pH over time.",
+      "Measuring the change in electrical conductivity over time.",
+      "Measuring the change in concentration of a solid over time."
     ]
   },
   {
-    "question": "What type of reaction converts an alkane to a halogenoalkane?",
-    "correct_answer": "Substitution",
+    "question": "In the Maxwell-Boltzmann distribution curve, what is the effect of increasing the temperature?",
+    "correct_answer": "The peak shifts to the right and becomes lower, with more particles having energy greater than the activation energy.",
     "incorrect_answers": [
-      "Addition",
-      "Hydrogenation",
-      "Polymerisation",
-      "Oxidation",
-      "Condensation"
+      "The peak shifts to the left and becomes higher.",
+      "The curve remains the same, but the activation energy decreases.",
+      "The curve becomes narrower and taller.",
+      "The total area under the curve increases.",
+      "The peak shifts to the right and becomes higher."
     ]
   },
   {
-    "question": "Which reagent is used to test for alkenes?",
-    "correct_answer": "Bromine water",
+    "question": "How does increasing the surface area of a solid reactant affect the reaction rate?",
+    "correct_answer": "It increases the rate by providing more area for collisions to occur.",
     "incorrect_answers": [
-      "Benedict's solution",
-      "Hydrochloric acid",
-      "Sulfuric acid",
-      "Tollens reagent",
-      "Limewater"
+      "It decreases the rate by spreading out the particles.",
+      "It has no effect on the rate.",
+      "It lowers the activation energy.",
+      "It changes the enthalpy of the reaction.",
+      "It increases the kinetic energy of the particles."
     ]
   },
   {
-    "question": "How many carbon atoms are in propane?",
-    "correct_answer": "3",
+    "question": "In a potential energy diagram for an endothermic reaction, which has higher potential energy?",
+    "correct_answer": "The products",
     "incorrect_answers": [
-      "2",
-      "4",
-      "5",
-      "6",
-      "1"
+      "The reactants",
+      "The activated complex",
+      "The catalyst",
+      "The intermediate",
+      "They are equal"
     ]
   },
   {
-    "question": "Which of the following is a saturated hydrocarbon?",
-    "correct_answer": "Ethane",
+    "question": "State Le Chatelier's Principle.",
+    "correct_answer": "When a stress is applied to a system in dynamic equilibrium, the system will shift to relieve the stress.",
     "incorrect_answers": [
-      "Ethene",
-      "Ethyne",
-      "Benzene",
-      "Butene",
-      "Propene"
-    ]
-  },
-  {
-    "question": "The boiling point of alcohols is higher than alkanes due to...",
-    "correct_answer": "Hydrogen bonding",
-    "incorrect_answers": [
-      "Ionic bonding",
-      "Van der Waals forces",
-      "Covalent bonding",
-      "Electrostatic attraction",
-      "Lattice energy"
-    ]
-  },
-  {
-    "question": "What is the name of the simplest alkyne?",
-    "correct_answer": "Ethyne",
-    "incorrect_answers": [
-      "Methyne",
-      "Propene",
-      "Ethanol",
-      "Methanol",
-      "Ethene"
-    ]
-  },
-  {
-    "question": "What does 'structural isomer' mean?",
-    "correct_answer": "Same molecular formula but different structure",
-    "incorrect_answers": [
-      "Different molecular formula but same structure",
-      "Same formula and structure",
-      "Different elements",
-      "Same boiling point",
-      "Same melting point"
-    ]
-  },
-  {
-    "question": "What is the IUPAC name of CH3CH2COOH?",
-    "correct_answer": "Propanoic acid",
-    "incorrect_answers": [
-      "Propionic acid",
-      "Butanoic acid",
-      "Acetic acid",
-      "Ethanoic acid",
-      "Methanoic acid"
-    ]
-  },
-  {
-    "question": "Which of the following is the correct name for CH3CH2CH2Br?",
-    "correct_answer": "1-bromopropane",
-    "incorrect_answers": [
-      "Propyl bromide",
-      "2-bromopropane",
-      "Methyl bromide",
-      "Isopropyl bromide",
-      "Butyl bromide"
-    ]
-  },
-  {
-    "question": "What kind of reaction is the combustion of an alkane?",
-    "correct_answer": "Exothermic",
-    "incorrect_answers": [
-      "Endothermic",
-      "Isomerization",
-      "Substitution",
-      "Hydrolysis",
-      "Neutralisation"
-    ]
-  },
-  {
-    "question": "What functional group does a ketone contain?",
-    "correct_answer": "Carbonyl group within the carbon chain",
-    "incorrect_answers": [
-      "Carbonyl group at end",
-      "Hydroxyl group",
-      "Amine group",
-      "Carboxyl group",
-      "Ester group"
-    ]
-  },
-  {
-    "question": "What is the IUPAC name of CH3CH2CH2CH3?",
-    "correct_answer": "Butane",
-    "incorrect_answers": [
-      "Methane",
-      "Ethane",
-      "Propane",
-      "Pentane",
-      "Butene"
-    ]
-  },
-{
-    "question": "What type of bond is found in alkanes?",
-    "correct_answer": "Single covalent bonds",
-    "incorrect_answers": [
-      "Double covalent bonds",
-      "Triple covalent bonds",
-      "Ionic bonds",
-      "Metallic bonds"
-    ]
-  },
-  {
-    "question": "Which of the following is a saturated hydrocarbon?",
-    "correct_answer": "Alkane",
-    "incorrect_answers": [
-      "Alkene",
-      "Alkyne",
-      "Alcohol",
-      "Ester"
-    ]
-  },
-  {
-    "question": "What is the IUPAC name for CH₄?",
-    "correct_answer": "Methane",
-    "incorrect_answers": [
-      "Ethane",
-      "Propane",
-      "Butane",
-      "Methanol"
-    ]
-  },
-  {
-    "question": "Which functional group is present in carboxylic acids?",
-    "correct_answer": "Carboxyl (-COOH)",
-    "incorrect_answers": [
-      "Hydroxyl (-OH)",
-      "Carbonyl (C=O)",
-      "Amino (-NH2)",
-      "Ester (-COO-)"
-    ]
-  },
-  {
-    "question": "Which compound is an ester?",
-    "correct_answer": "CH₃COOCH₃",
-    "incorrect_answers": [
-      "CH₃COOH",
-      "CH₃OH",
-      "CH₄",
-      "C₂H₆"
-    ]
-  },
-  {
-    "question": "What is the correct IUPAC name for CH₃CH₂CH₂OH?",
-    "correct_answer": "Propan-1-ol",
-    "incorrect_answers": [
-      "Ethanol",
-      "Methanol",
-      "Butan-1-ol",
-      "Propan-2-ol"
-    ]
-  },
-  {
-    "question": "Which hydrocarbon has a triple bond?",
-    "correct_answer": "Alkyne",
-    "incorrect_answers": [
-      "Alkane",
-      "Alkene",
-      "Alcohol",
-      "Ester"
-    ]
-  },
-  {
-    "question": "Which of these is the correct name for C₂H₂?",
-    "correct_answer": "Ethyne",
-    "incorrect_answers": [
-      "Ethene",
-      "Ethane",
-      "Methyne",
-      "Propene"
-    ]
-  },
-  {
-    "question": "What is the product of esterification?",
-    "correct_answer": "Ester and water",
-    "incorrect_answers": [
-      "Acid and alcohol",
-      "Alcohol and water",
-      "Ketone and acid",
-      "Ether and alcohol"
-    ]
-  },
-  {
-    "question": "What type of isomerism do alkenes exhibit?",
-    "correct_answer": "Geometric (cis-trans)",
-    "incorrect_answers": [
-      "Chain",
-      "Positional",
-      "Functional",
-      "Tautomeric"
-    ]
-  },
-
-  {
-    "question": "What is the general formula for alkanes?",
-    "correct_answer": "CₙH₂ₙ₊₂",
-    "incorrect_answers": [
-      "CₙH₂ₙ",
-      "CₙH₂ₙ₋₂",
-      "CₙHₙ",
-      "CₙH₂ₙ₊₁"
-    ]
-  },
-  {
-    "question": "What is the IUPAC name for CH₃CH=CH₂?",
-    "correct_answer": "Propene",
-    "incorrect_answers": [
-      "Propane",
-      "Propyne",
-      "Methene",
-      "Butene"
-    ]
-  },
-  {
-    "question": "What happens during combustion of hydrocarbons?",
-    "correct_answer": "CO₂ and H₂O are produced",
-    "incorrect_answers": [
-      "Alcohol is produced",
-      "Only water is produced",
-      "Ester is formed",
-      "Methane is formed"
-    ]
-  },
-  {
-    "question": "Which compound contains a halogen?",
-    "correct_answer": "CH₃Cl",
-    "incorrect_answers": [
-      "CH₄",
-      "CH₃OH",
-      "CH₃COOH",
-      "C₂H₄"
-    ]
-  },
-  {
-    "question": "What is the IUPAC name for CH₃COOH?",
-    "correct_answer": "Ethanoic acid",
-    "incorrect_answers": [
-      "Methanoic acid",
-      "Acetic acid",
-      "Propanoic acid",
-      "Formic acid"
-    ]
-  },
-  {
-    "question": "Which formula represents a primary alcohol?",
-    "correct_answer": "CH₃CH₂OH",
-    "incorrect_answers": [
-      "CH₃OH",
-      "CH₃CH(OH)CH₃",
-      "CH₃COOH",
-      "CH₃OCH₃"
-    ]
-  },
-  {
-    "question": "Which of the following is an unsaturated hydrocarbon?",
-    "correct_answer": "Alkene",
-    "incorrect_answers": [
-      "Alkane",
-      "Alcohol",
-      "Ketone",
-      "Carboxylic acid"
-    ]
-  },
-  {
-    "question": "What is a structural isomer?",
-    "correct_answer": "Compounds with same molecular formula but different structure",
-    "incorrect_answers": [
-      "Compounds with same structure and properties",
-      "Same number of atoms and bonds",
-      "Different molecular formulas",
-      "Same empirical formula"
-    ]
-  },
-  {
-    "question": "What reagent is needed to convert an alcohol to a carboxylic acid?",
-    "correct_answer": "Oxidizing agent",
-    "incorrect_answers": [
-      "Reducing agent",
-      "Catalyst",
-      "Water",
-      "Acid"
-    ]
-  },
-  {
-    "question": "Which organic compound has the highest boiling point?",
-    "correct_answer": "Carboxylic acid",
-    "incorrect_answers": [
-      "Alkane",
-      "Alkene",
-      "Alcohol",
-      "Ester"
-    ]
-  },
-{
-    "question": "Which type of reaction involves the breaking of a C=C double bond in an alkene?",
-    "correct_answer": "Addition reaction",
-    "incorrect_answers": [
-      "Elimination reaction",
-      "Substitution reaction",
-      "Combustion reaction",
-      "Oxidation reaction"
-    ]
-  },
-  {
-    "question": "Which compound can be classified as an alkene?",
-    "correct_answer": "C₂H₄",
-    "incorrect_answers": [
-      "C₂H₆",
-      "C₂H₂",
-      "CH₄",
-      "C₃H₈"
-    ]
-  },
-  {
-    "question": "What is the IUPAC name for CH≡CH?",
-    "correct_answer": "Ethyne",
-    "incorrect_answers": [
-      "Ethene",
-      "Ethane",
-      "Methyne",
-      "Acetylene"
-    ]
-  },
-  {
-    "question": "Which compound is a secondary alcohol?",
-    "correct_answer": "CH₃CH(OH)CH₃",
-    "incorrect_answers": [
-      "CH₃CH₂OH",
-      "CH₃OH",
-      "CH₃COOH",
-      "CH₃OCH₃"
-    ]
-  },
-  {
-    "question": "What is the suffix used for naming esters?",
-    "correct_answer": "-oate",
-    "incorrect_answers": [
-      "-ol",
-      "-al",
-      "-one",
-      "-ene"
-    ]
-  },
-  {
-    "question": "Which of the following is the correct name for an alkane with 4 carbon atoms?",
-    "correct_answer": "Butane",
-    "incorrect_answers": [
-      "Propane",
-      "Pentane",
-      "Ethane",
-      "Methane"
-    ]
-  },
-  {
-    "question": "What is the product of the reaction between an alcohol and a carboxylic acid?",
-    "correct_answer": "Ester",
-    "incorrect_answers": [
-      "Alkane",
-      "Ketone",
-      "Aldehyde",
-      "Ether"
-    ]
-  },
-  {
-    "question": "Which compound is commonly used as a fuel?",
-    "correct_answer": "Octane",
-    "incorrect_answers": [
-      "Ethanol",
-      "Methanoic acid",
-      "Ethene",
-      "Acetone"
-    ]
-  },
-  {
-    "question": "Which compound is an aldehyde?",
-    "correct_answer": "CH₃CHO",
-    "incorrect_answers": [
-      "CH₃COOH",
-      "CH₃CH₂OH",
-      "CH₃COCH₃",
-      "CH₄"
-    ]
-  },
-  {
-    "question": "Which functional group is present in esters?",
-    "correct_answer": "-COO-",
-    "incorrect_answers": [
-      "-OH",
-      "-COOH",
-      "-CHO",
-      "-NH₂"
-    ]
-  },
-  {
-    "question": "Which of the following is the molecular formula for ethanoic acid?",
-    "correct_answer": "CH₃COOH",
-    "incorrect_answers": [
-      "C₂H₅OH",
-      "CH₃CHO",
-      "CH₃OH",
-      "CH₄"
-    ]
-  },
-  {
-    "question": "What is the general formula for alkenes?",
-    "correct_answer": "CₙH₂ₙ",
-    "incorrect_answers": [
-      "CₙH₂ₙ₊₂",
-      "CₙH₂ₙ₋₂",
-      "CₙHₙ",
-      "CₙH₃ₙ"
-    ]
-  },
-  {
-    "question": "What type of reaction occurs when an alcohol is dehydrated?",
-    "correct_answer": "Elimination",
-    "incorrect_answers": [
-      "Addition",
-      "Substitution",
-      "Combustion",
-      "Oxidation"
-    ]
-  },
-  {
-    "question": "Which reagent is used to test for alkenes?",
-    "correct_answer": "Bromine water",
-    "incorrect_answers": [
-      "Limewater",
-      "Potassium dichromate",
-      "Fehling’s solution",
-      "Tollen’s reagent"
-    ]
-  },
-  {
-    "question": "What is a feature of homologous series?",
-    "correct_answer": "Successive members differ by –CH₂–",
-    "incorrect_answers": [
-      "Same density",
-      "Same mass",
-      "Different functional groups",
-      "Same IUPAC name"
-    ]
-  },
-  {
-    "question": "Which functional group is responsible for alcohols?",
-    "correct_answer": "-OH",
-    "incorrect_answers": [
-      "-COOH",
-      "-CHO",
-      "-COO-",
-      "-NH₂"
-    ]
-  },
-  {
-    "question": "Which of the following is a halogenated compound?",
-    "correct_answer": "CH₃Br",
-    "incorrect_answers": [
-      "CH₄",
-      "CH₃CH₂OH",
-      "CH₃COOH",
-      "CH₃CH=CH₂"
-    ]
-  },
-  {
-    "question": "What is the IUPAC name for isopropyl alcohol?",
-    "correct_answer": "Propan-2-ol",
-    "incorrect_answers": [
-      "Propan-1-ol",
-      "Methanol",
-      "Butan-2-ol",
-      "Propanal"
-    ]
-  },
-  {
-    "question": "What is the structure of ethene?",
-    "correct_answer": "CH₂=CH₂",
-    "incorrect_answers": [
-      "CH₃CH₃",
-      "CH≡CH",
-      "CH₄",
-      "CH₃CH₂CH₃"
-    ]
-  },
-  {
-    "question": "Which compound is used in vinegar?",
-    "correct_answer": "Ethanoic acid",
-    "incorrect_answers": [
-      "Ethanol",
-      "Methanoic acid",
-      "Methanol",
-      "Ethene"
+      "The rate of a reaction is directly proportional to the concentration of reactants.",
+      "Energy cannot be created or destroyed, only transferred.",
+      "The total mass of reactants equals the total mass of products.",
+      "A catalyst increases the rate of both forward and reverse reactions equally.",
+      "The pressure of a gas is inversely proportional to its volume."
     ]
   }
 ]

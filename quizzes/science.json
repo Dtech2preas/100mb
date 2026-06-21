@@ -1,1 +1,1124 @@
-g
+[
+  {
+    "question": "What are the raw materials used in the chlor-alkali industry?",
+    "correct_answer": "Concentrated sodium chloride solution (brine) and water.",
+    "incorrect_answers": [
+      "Molten sodium chloride.",
+      "Sodium metal and chlorine gas.",
+      "Seawater and sulfuric acid.",
+      "Bauxite and cryolite.",
+      "Limestone and clay."
+    ]
+  },
+  {
+    "question": "Given the standard reduction potentials: Zn^2+ + 2e- -> Zn (-0.76 V) and Cu^2+ + 2e- -> Cu (+0.34 V). Calculate the standard emf of a Zn-Cu galvanic cell.",
+    "correct_answer": "+1.10 V",
+    "incorrect_answers": [
+      "-1.10 V",
+      "+0.42 V",
+      "-0.42 V",
+      "+1.52 V",
+      "0.00 V"
+    ]
+  },
+  {
+    "question": "What is threshold frequency?",
+    "correct_answer": "The minimum frequency of incident radiation required to emit an electron from a metal surface.",
+    "incorrect_answers": [
+      "The maximum frequency of incident radiation.",
+      "The frequency of the emitted electron.",
+      "The frequency at which maximum kinetic energy is zero.",
+      "The frequency of visible light.",
+      "The frequency of the work function."
+    ]
+  },
+  {
+    "question": "Calculate the wavelength of light with a frequency of 5.0e+14 Hz in a vacuum. (c = 3 x 10^8 m/s)",
+    "correct_answer": "6.00e-07 m",
+    "incorrect_answers": [
+      "1.50e+23 m",
+      "1.67e+06 m",
+      "1.20e-06 m",
+      "3.00e-07 m",
+      "6.80e-13 m"
+    ]
+  },
+  {
+    "question": "What are the products of the complete combustion of a hydrocarbon?",
+    "correct_answer": "Carbon dioxide and water",
+    "incorrect_answers": [
+      "Carbon monoxide and water",
+      "Carbon and hydrogen",
+      "Carbon dioxide and hydrogen",
+      "Methane and oxygen",
+      "Only carbon dioxide"
+    ]
+  },
+  {
+    "question": "Calculate the magnitude of the electric field at a distance of 0.1 m from a point charge of +5 \u00b5C. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "4.5e+06 N/C",
+    "incorrect_answers": [
+      "9.0e+06 N/C",
+      "2.2e+06 N/C",
+      "4.5e+05 N/C",
+      "4.5e+05 N/C",
+      "4.5e+07 N/C"
+    ]
+  },
+  {
+    "question": "What does the area under a velocity-time graph represent?",
+    "correct_answer": "Displacement",
+    "incorrect_answers": [
+      "Acceleration",
+      "Velocity",
+      "Jerk",
+      "Force",
+      "Momentum"
+    ]
+  },
+  {
+    "question": "What is the IUPAC name for CH3-CH2-CH2-OH?",
+    "correct_answer": "Propan-1-ol",
+    "incorrect_answers": [
+      "Propan-2-ol",
+      "Ethanol",
+      "Butan-1-ol",
+      "Propanoic acid",
+      "Propanal"
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 4 kg object moving at 10 m/s.",
+    "correct_answer": "40 kg\u00b7m/s",
+    "incorrect_answers": [
+      "80 kg\u00b7m/s",
+      "20.0 kg\u00b7m/s",
+      "14 kg\u00b7m/s",
+      "0.4 kg\u00b7m/s",
+      "2.5 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "Does a catalyst affect the position of equilibrium?",
+    "correct_answer": "No, it increases the rate of both forward and reverse reactions equally.",
+    "incorrect_answers": [
+      "Yes, it shifts equilibrium to the right.",
+      "Yes, it shifts equilibrium to the left.",
+      "Yes, it changes the value of Kc.",
+      "Yes, it lowers the enthalpy change.",
+      "Yes, it favors the exothermic reaction."
+    ]
+  },
+  {
+    "question": "Calculate the pH of a 0.01 mol.dm^-3 HCl solution.",
+    "correct_answer": "2.0",
+    "incorrect_answers": [
+      "12.0",
+      "0.01",
+      "4.0",
+      "1.0",
+      "7.00"
+    ]
+  },
+  {
+    "question": "Define an acid according to the Arrhenius theory.",
+    "correct_answer": "A substance that produces hydrogen ions (H+) in aqueous solution.",
+    "incorrect_answers": [
+      "A substance that produces hydroxide ions (OH-) in aqueous solution.",
+      "A proton donor.",
+      "A proton acceptor.",
+      "An electron pair donor.",
+      "An electron pair acceptor."
+    ]
+  },
+  {
+    "question": "An AC supply has an rms voltage of 240 V. It is connected to a 20 \u03a9 resistor. Calculate the average power dissipated by the resistor.",
+    "correct_answer": "2880.0 W",
+    "incorrect_answers": [
+      "5760.0 W",
+      "1440.0 W",
+      "16.97 W",
+      "12.0 W",
+      "4800 W"
+    ]
+  },
+  {
+    "question": "Which of the following is an unsaturated hydrocarbon?",
+    "correct_answer": "Ethene",
+    "incorrect_answers": [
+      "Ethane",
+      "Propane",
+      "Butane",
+      "Methane",
+      "Pentane"
+    ]
+  },
+  {
+    "question": "During the electrolysis of aqueous CuCl2, what is observed at the cathode?",
+    "correct_answer": "A brown layer of copper forms.",
+    "incorrect_answers": [
+      "Chlorine gas bubbles form.",
+      "Oxygen gas bubbles form.",
+      "Hydrogen gas bubbles form.",
+      "The electrode dissolves.",
+      "Nothing happens."
+    ]
+  },
+  {
+    "question": "How does increasing the surface area of a solid reactant affect the reaction rate?",
+    "correct_answer": "It increases the rate by providing more area for collisions to occur.",
+    "incorrect_answers": [
+      "It decreases the rate by spreading out the particles.",
+      "It has no effect on the rate.",
+      "It lowers the activation energy.",
+      "It changes the enthalpy of the reaction.",
+      "It increases the kinetic energy of the particles."
+    ]
+  },
+  {
+    "question": "What is eutrophication?",
+    "correct_answer": "The over-enrichment of a body of water with nutrients, leading to excessive plant growth and oxygen depletion.",
+    "incorrect_answers": [
+      "The depletion of nutrients in soil due to over-farming.",
+      "The process of fixing atmospheric nitrogen.",
+      "The industrial production of ammonia.",
+      "The purification of water using chlorine.",
+      "The breakdown of organic matter by bacteria."
+    ]
+  },
+  {
+    "question": "Which of the following factors does NOT affect the rate of a chemical reaction?",
+    "correct_answer": "The molar mass of the products",
+    "incorrect_answers": [
+      "Temperature",
+      "Concentration of reactants",
+      "Surface area of solid reactants",
+      "Presence of a catalyst",
+      "Pressure of gaseous reactants"
+    ]
+  },
+  {
+    "question": "An AC generator produces a maximum voltage of 311 V. What is the root-mean-square (rms) voltage?",
+    "correct_answer": "220 V",
+    "incorrect_answers": [
+      "311 V",
+      "440 V",
+      "155 V",
+      "110 V",
+      "622 V"
+    ]
+  },
+  {
+    "question": "Which of the following classes of compounds contain a carbonyl group?",
+    "correct_answer": "Aldehydes and Ketones",
+    "incorrect_answers": [
+      "Alkanes and Alkenes",
+      "Alcohols and Ethers",
+      "Carboxylic acids and Alcohols",
+      "Amines and Amides",
+      "Haloalkanes and Alkanes"
+    ]
+  },
+  {
+    "question": "Calculate the magnitude of the electric field at a distance of 0.1 m from a point charge of +10 \u00b5C. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "9.0e+06 N/C",
+    "incorrect_answers": [
+      "1.8e+07 N/C",
+      "4.5e+06 N/C",
+      "9.0e+05 N/C",
+      "9.0e+05 N/C",
+      "9.0e+07 N/C"
+    ]
+  },
+  {
+    "question": "What is the primary function of nitrogen in NPK fertilisers?",
+    "correct_answer": "Promotes leaf and stem growth.",
+    "incorrect_answers": [
+      "Promotes root development.",
+      "Promotes flower and fruit development.",
+      "Increases disease resistance.",
+      "Improves water retention in the soil.",
+      "Changes soil pH."
+    ]
+  },
+  {
+    "question": "Two resistors of 4 \u03a9 and 6 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "2.4 A",
+    "incorrect_answers": [
+      "6.0 A",
+      "4.0 A",
+      "4.8 A",
+      "57.6 A",
+      "1.2 A"
+    ]
+  },
+  {
+    "question": "Consider the reaction: N2(g) + 3H2(g) \u21cc 2NH3(g). What will happen if the pressure is increased by decreasing the volume?",
+    "correct_answer": "The equilibrium will shift to the right, favoring the production of NH3.",
+    "incorrect_answers": [
+      "The equilibrium will shift to the left.",
+      "The equilibrium will not shift.",
+      "The number of moles of N2 will increase.",
+      "The value of Kc will increase.",
+      "The rate of the reverse reaction will initially decrease."
+    ]
+  },
+  {
+    "question": "State Lenz's Law.",
+    "correct_answer": "The induced current flows in a direction so as to set up a magnetic field that opposes the change in magnetic flux that caused it.",
+    "incorrect_answers": [
+      "The magnitude of the induced emf is proportional to the rate of change of magnetic flux.",
+      "The force on a current-carrying conductor is proportional to the magnetic field.",
+      "Like magnetic poles repel each other.",
+      "The magnetic field around a wire forms concentric circles.",
+      "Current is inversely proportional to resistance."
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 4 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "13 m/s",
+    "incorrect_answers": [
+      "17 m/s",
+      "9 m/s",
+      "9 m/s",
+      "10 m/s",
+      "8 m/s"
+    ]
+  },
+  {
+    "question": "Why does an increase in concentration increase the rate of reaction?",
+    "correct_answer": "There are more particles per unit volume, leading to more frequent effective collisions.",
+    "incorrect_answers": [
+      "The particles move faster.",
+      "The activation energy is lowered.",
+      "The particles have more kinetic energy.",
+      "The volume of the container increases.",
+      "The temperature increases."
+    ]
+  },
+  {
+    "question": "State Le Chatelier's Principle.",
+    "correct_answer": "When a stress is applied to a system in dynamic equilibrium, the system will shift to relieve the stress.",
+    "incorrect_answers": [
+      "The rate of a reaction is directly proportional to the concentration of reactants.",
+      "Energy cannot be created or destroyed, only transferred.",
+      "The total mass of reactants equals the total mass of products.",
+      "A catalyst increases the rate of both forward and reverse reactions equally.",
+      "The pressure of a gas is inversely proportional to its volume."
+    ]
+  },
+  {
+    "question": "Two point charges, +3 \u00b5C and +4 \u00b5C, are separated by a distance of 0.2 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "2.7 N",
+    "incorrect_answers": [
+      "5.4 N",
+      "1.35 N",
+      "540000000000.0 N",
+      "2700000.0 N",
+      "0.0 N"
+    ]
+  },
+  {
+    "question": "Two point charges, +3 \u00b5C and +4 \u00b5C, are separated by a distance of 0.1 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "10.8 N",
+    "incorrect_answers": [
+      "21.6 N",
+      "5.4 N",
+      "1080000000000.0 N",
+      "10800000.0 N",
+      "0.0 N"
+    ]
+  },
+  {
+    "question": "What is the molecular formula of benzene?",
+    "correct_answer": "C6H6",
+    "incorrect_answers": [
+      "C6H12",
+      "C6H14",
+      "C6H10",
+      "CH4",
+      "C2H4"
+    ]
+  },
+  {
+    "question": "In a potential energy diagram for an endothermic reaction, which has higher potential energy?",
+    "correct_answer": "The products",
+    "incorrect_answers": [
+      "The reactants",
+      "The activated complex",
+      "The catalyst",
+      "The intermediate",
+      "They are equal"
+    ]
+  },
+  {
+    "question": "Calculate the wavelength of light with a frequency of 6.0e+14 Hz in a vacuum. (c = 3 x 10^8 m/s)",
+    "correct_answer": "5.00e-07 m",
+    "incorrect_answers": [
+      "1.80e+23 m",
+      "2.00e+06 m",
+      "1.00e-06 m",
+      "2.50e-07 m",
+      "5.67e-13 m"
+    ]
+  },
+  {
+    "question": "Calculate the pH of a 0.1 mol.dm^-3 HCl solution.",
+    "correct_answer": "1.0",
+    "incorrect_answers": [
+      "13.0",
+      "0.1",
+      "2.0",
+      "0.5",
+      "7.00"
+    ]
+  },
+  {
+    "question": "What catalyst is typically used in an esterification reaction?",
+    "correct_answer": "Concentrated sulfuric acid",
+    "incorrect_answers": [
+      "Platinum",
+      "Nickel",
+      "Dilute hydrochloric acid",
+      "Sodium hydroxide",
+      "Iron"
+    ]
+  },
+  {
+    "question": "A stone is projected vertically upwards with a velocity of 10 m/s. What is its maximum height? (Use g = 9.8 m/s\u00b2 and ignore air resistance)",
+    "correct_answer": "5.1 m",
+    "incorrect_answers": [
+      "10.2 m",
+      "1.02 m",
+      "98.0 m",
+      "2.55 m",
+      "20 m"
+    ]
+  },
+  {
+    "question": "What energy conversion takes place in an electric generator?",
+    "correct_answer": "Mechanical energy to electrical energy.",
+    "incorrect_answers": [
+      "Electrical energy to mechanical energy.",
+      "Chemical energy to electrical energy.",
+      "Thermal energy to electrical energy.",
+      "Electrical energy to chemical energy.",
+      "Mechanical energy to thermal energy."
+    ]
+  },
+  {
+    "question": "But-1-ene and but-2-ene are examples of which type of isomers?",
+    "correct_answer": "Positional isomers",
+    "incorrect_answers": [
+      "Chain isomers",
+      "Functional isomers",
+      "Optical isomers",
+      "Structural isomers",
+      "Geometric isomers"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 2 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "15 m/s",
+    "incorrect_answers": [
+      "17 m/s",
+      "13 m/s",
+      "7 m/s",
+      "25 m/s",
+      "10 m/s"
+    ]
+  },
+  {
+    "question": "What is the function of a salt bridge in a galvanic cell?",
+    "correct_answer": "To complete the circuit and maintain electrical neutrality in the half-cells.",
+    "incorrect_answers": [
+      "To transfer electrons between half-cells.",
+      "To provide a surface for oxidation.",
+      "To provide a surface for reduction.",
+      "To generate the electromotive force.",
+      "To prevent the flow of ions."
+    ]
+  },
+  {
+    "question": "Which of the following describes a cracking reaction?",
+    "correct_answer": "The breaking down of long-chain hydrocarbon molecules into shorter, more useful molecules.",
+    "incorrect_answers": [
+      "The joining of small molecules to form a polymer.",
+      "The reaction of an acid and an alcohol to form an ester.",
+      "The substitution of a halogen atom for a hydrogen atom.",
+      "The complete combustion of a hydrocarbon.",
+      "The addition of water to an alkene."
+    ]
+  },
+  {
+    "question": "Define dynamic chemical equilibrium.",
+    "correct_answer": "The state in a reversible chemical reaction where the rate of the forward reaction equals the rate of the reverse reaction.",
+    "incorrect_answers": [
+      "The state where the concentrations of reactants and products are equal.",
+      "The state where the reaction has stopped completely.",
+      "The state where all reactants have been converted to products.",
+      "The state where the forward reaction is faster than the reverse reaction.",
+      "The state where only products are present."
+    ]
+  },
+  {
+    "question": "Calculate the energy of a photon of light with a frequency of 1.0e+15 Hz. (h = 6.63 x 10^-34 J.s)",
+    "correct_answer": "6.63e-19 J",
+    "incorrect_answers": [
+      "1.33e-18 J",
+      "3.31e-19 J",
+      "6.63e-49 J",
+      "1.51e+48 J",
+      "6.63e-18 J"
+    ]
+  },
+  {
+    "question": "What is an isomer?",
+    "correct_answer": "Compounds with the same molecular formula but different structural formulae.",
+    "incorrect_answers": [
+      "Compounds with the same structural formula but different molecular formulae.",
+      "Compounds with the same functional group but different molar masses.",
+      "Atoms of the same element with different numbers of neutrons.",
+      "Compounds with different molecular formulas but similar chemical properties.",
+      "Compounds that contain the same number of carbon atoms only."
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 4 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "17 m/s",
+    "incorrect_answers": [
+      "21 m/s",
+      "13 m/s",
+      "9 m/s",
+      "15 m/s",
+      "12 m/s"
+    ]
+  },
+  {
+    "question": "The peak current in an AC circuit is 10 A. What is the rms current?",
+    "correct_answer": "7.07 A",
+    "incorrect_answers": [
+      "14.14 A",
+      "10 A",
+      "3.54 A",
+      "5.0 A",
+      "20 A"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 2 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "16 m/s",
+    "incorrect_answers": [
+      "18 m/s",
+      "14 m/s",
+      "12 m/s",
+      "30 m/s",
+      "6 m/s"
+    ]
+  },
+  {
+    "question": "Two resistors of 2 \u03a9 and 6 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "3.0 A",
+    "incorrect_answers": [
+      "12.0 A",
+      "4.0 A",
+      "6.0 A",
+      "36.0 A",
+      "1.5 A"
+    ]
+  },
+  {
+    "question": "What catalyst is used in the Haber process?",
+    "correct_answer": "Iron (Fe) or iron oxide",
+    "incorrect_answers": [
+      "Vanadium pentoxide (V2O5)",
+      "Platinum (Pt)",
+      "Nickel (Ni)",
+      "Manganese dioxide (MnO2)",
+      "Copper (Cu)"
+    ]
+  },
+  {
+    "question": "Consider the exothermic reaction: N2(g) + 3H2(g) \u21cc 2NH3(g). What will happen if the temperature is increased?",
+    "correct_answer": "The equilibrium will shift to the left, favoring the reverse reaction.",
+    "incorrect_answers": [
+      "The equilibrium will shift to the right, favoring the forward reaction.",
+      "The equilibrium will not shift.",
+      "The concentration of NH3 will increase.",
+      "The value of the equilibrium constant (Kc) will increase.",
+      "Both forward and reverse reactions will stop."
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 5 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "20 m/s",
+    "incorrect_answers": [
+      "25 m/s",
+      "15 m/s",
+      "10 m/s",
+      "15 m/s",
+      "15 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 5 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "25 m/s",
+    "incorrect_answers": [
+      "30 m/s",
+      "20 m/s",
+      "15 m/s",
+      "30 m/s",
+      "15 m/s"
+    ]
+  },
+  {
+    "question": "A net force of 10 N acts on an object of mass 5 kg. What is the acceleration of the object?",
+    "correct_answer": "2.0 m/s\u00b2",
+    "incorrect_answers": [
+      "4.0 m/s\u00b2",
+      "0.5 m/s\u00b2",
+      "50 m/s\u00b2",
+      "3.0 m/s\u00b2",
+      "1.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "What does NPK stand for in fertilisers?",
+    "correct_answer": "Nitrogen, Phosphorus, Potassium",
+    "incorrect_answers": [
+      "Neon, Phosphorus, Krypton",
+      "Nitrogen, Potassium, Krypton",
+      "Sodium, Phosphorus, Potassium",
+      "Nitrates, Phosphates, Potassium",
+      "Nitrogen, Phosphorus, Calcium"
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 2 kg object moving at 10 m/s.",
+    "correct_answer": "20 kg\u00b7m/s",
+    "incorrect_answers": [
+      "40 kg\u00b7m/s",
+      "10.0 kg\u00b7m/s",
+      "12 kg\u00b7m/s",
+      "0.2 kg\u00b7m/s",
+      "5.0 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "Which industrial process is used to manufacture ammonia?",
+    "correct_answer": "Haber process",
+    "incorrect_answers": [
+      "Contact process",
+      "Ostwald process",
+      "Chlor-alkali process",
+      "Fractional distillation",
+      "Cracking"
+    ]
+  },
+  {
+    "question": "What catalyst is used in the Contact process?",
+    "correct_answer": "Vanadium pentoxide (V2O5)",
+    "incorrect_answers": [
+      "Iron (Fe)",
+      "Platinum (Pt)",
+      "Nickel (Ni)",
+      "Zeolite",
+      "Aluminium oxide (Al2O3)"
+    ]
+  },
+  {
+    "question": "Calculate the kinetic energy of a 10 kg object moving at 8 m/s.",
+    "correct_answer": "320.0 J",
+    "incorrect_answers": [
+      "640.0 J",
+      "80 J",
+      "40.0 J",
+      "160.0 J",
+      "640 J"
+    ]
+  },
+  {
+    "question": "How does a catalyst increase the rate of a chemical reaction?",
+    "correct_answer": "By providing an alternative reaction pathway with a lower activation energy.",
+    "incorrect_answers": [
+      "By increasing the kinetic energy of the particles.",
+      "By increasing the concentration of the reactants.",
+      "By increasing the temperature of the reaction.",
+      "By decreasing the enthalpy change of the reaction.",
+      "By increasing the surface area of the reactants."
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 10 m/s applies its brakes, causing a uniform acceleration of -2 m/s\u00b2. What is the displacement after 2 seconds?",
+    "correct_answer": "16.0 m",
+    "incorrect_answers": [
+      "21.0 m",
+      "11.0 m",
+      "20 m",
+      "-4.0 m",
+      "24 m"
+    ]
+  },
+  {
+    "question": "Define a base according to the Lowry-Bronsted theory.",
+    "correct_answer": "A proton (H+) acceptor.",
+    "incorrect_answers": [
+      "A proton (H+) donor.",
+      "A substance that produces OH- ions in solution.",
+      "A substance that produces H+ ions in solution.",
+      "An electron pair acceptor.",
+      "An electron pair donor."
+    ]
+  },
+  {
+    "question": "If a reaction produces a gas, which method can be used to measure the rate of reaction?",
+    "correct_answer": "Measuring the volume of gas produced over time.",
+    "incorrect_answers": [
+      "Measuring the temperature change over time.",
+      "Measuring the change in color over time.",
+      "Measuring the change in pH over time.",
+      "Measuring the change in electrical conductivity over time.",
+      "Measuring the change in concentration of a solid over time."
+    ]
+  },
+  {
+    "question": "What is the conjugate base of HSO4-?",
+    "correct_answer": "SO4^2-",
+    "incorrect_answers": [
+      "H2SO4",
+      "H3O+",
+      "OH-",
+      "HSO3-",
+      "SO3^2-"
+    ]
+  },
+  {
+    "question": "What is the pH of a neutral solution at 25 \u00b0C?",
+    "correct_answer": "7",
+    "incorrect_answers": [
+      "0",
+      "14",
+      "1",
+      "10",
+      "7.5"
+    ]
+  },
+  {
+    "question": "What is the unit of Work and Energy?",
+    "correct_answer": "Joule (J)",
+    "incorrect_answers": [
+      "Newton (N)",
+      "Watt (W)",
+      "Volt (V)",
+      "Ampere (A)",
+      "Pascal (Pa)"
+    ]
+  },
+  {
+    "question": "If Kc > 1 for a reaction at equilibrium, what does this indicate?",
+    "correct_answer": "The equilibrium mixture contains mostly products.",
+    "incorrect_answers": [
+      "The equilibrium mixture contains mostly reactants.",
+      "The reaction is fast.",
+      "The reaction is slow.",
+      "The reaction is exothermic.",
+      "The reaction is endothermic."
+    ]
+  },
+  {
+    "question": "An AC supply has an rms voltage of 220 V. It is connected to a 20 \u03a9 resistor. Calculate the average power dissipated by the resistor.",
+    "correct_answer": "2420.0 W",
+    "incorrect_answers": [
+      "4840.0 W",
+      "1210.0 W",
+      "15.56 W",
+      "11.0 W",
+      "4400 W"
+    ]
+  },
+  {
+    "question": "Which industrial process is used to manufacture nitric acid?",
+    "correct_answer": "Ostwald process",
+    "incorrect_answers": [
+      "Haber process",
+      "Contact process",
+      "Chlor-alkali process",
+      "Bayer process",
+      "Frasch process"
+    ]
+  },
+  {
+    "question": "The peak current in an AC circuit is 20 A. What is the rms current?",
+    "correct_answer": "14.14 A",
+    "incorrect_answers": [
+      "28.28 A",
+      "20 A",
+      "7.07 A",
+      "10.0 A",
+      "40 A"
+    ]
+  },
+  {
+    "question": "A net force of 10 N acts on an object of mass 10 kg. What is the acceleration of the object?",
+    "correct_answer": "1.0 m/s\u00b2",
+    "incorrect_answers": [
+      "2.0 m/s\u00b2",
+      "1.0 m/s\u00b2",
+      "100 m/s\u00b2",
+      "2.0 m/s\u00b2",
+      "0.5 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "Two resistors of 4 \u03a9 and 6 \u03a9 are connected in series across a 12 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "1.2 A",
+    "incorrect_answers": [
+      "3.0 A",
+      "2.0 A",
+      "2.4 A",
+      "28.8 A",
+      "0.6 A"
+    ]
+  },
+  {
+    "question": "Calculate the kinetic energy of a 2 kg object moving at 6 m/s.",
+    "correct_answer": "36.0 J",
+    "incorrect_answers": [
+      "72.0 J",
+      "12 J",
+      "6.0 J",
+      "18.0 J",
+      "72 J"
+    ]
+  },
+  {
+    "question": "What type of reaction is the reaction between an alcohol and a carboxylic acid?",
+    "correct_answer": "Esterification",
+    "incorrect_answers": [
+      "Hydration",
+      "Hydrogenation",
+      "Halogenation",
+      "Hydrolysis",
+      "Polymerisation"
+    ]
+  },
+  {
+    "question": "What are the three main products of the chlor-alkali process?",
+    "correct_answer": "Chlorine gas, hydrogen gas, and sodium hydroxide.",
+    "incorrect_answers": [
+      "Chlorine gas, oxygen gas, and sodium.",
+      "Hydrogen gas, oxygen gas, and sodium chloride.",
+      "Sodium, chlorine gas, and water.",
+      "Hydrochloric acid, sodium hydroxide, and water.",
+      "Bleach, hydrogen gas, and salt."
+    ]
+  },
+  {
+    "question": "All electromagnetic waves travel at what speed in a vacuum?",
+    "correct_answer": "3 x 10^8 m/s",
+    "incorrect_answers": [
+      "340 m/s",
+      "3 x 10^5 m/s",
+      "9.8 m/s",
+      "1500 m/s",
+      "Depends on their frequency"
+    ]
+  },
+  {
+    "question": "What is the SI unit of electric charge?",
+    "correct_answer": "Coulomb (C)",
+    "incorrect_answers": [
+      "Ampere (A)",
+      "Volt (V)",
+      "Joule (J)",
+      "Watt (W)",
+      "Ohm (\u03a9)"
+    ]
+  },
+  {
+    "question": "State Newton's First Law of Motion.",
+    "correct_answer": "An object will remain at rest or continue to move at a constant velocity unless acted upon by a net external force.",
+    "incorrect_answers": [
+      "For every action, there is an equal and opposite reaction.",
+      "The net force is equal to the rate of change of momentum.",
+      "Force equals mass times acceleration.",
+      "The force of friction opposes motion.",
+      "An object will eventually stop unless a force is continuously applied."
+    ]
+  },
+  {
+    "question": "Consider the equilibrium: 2SO2(g) + O2(g) <-> 2SO3(g) (\u0394H < 0). How can the yield of SO3 be increased?",
+    "correct_answer": "Decrease temperature and increase pressure.",
+    "incorrect_answers": [
+      "Increase temperature and increase pressure.",
+      "Decrease temperature and decrease pressure.",
+      "Increase temperature and decrease pressure.",
+      "Add a catalyst and increase temperature.",
+      "Remove SO2 and decrease pressure."
+    ]
+  },
+  {
+    "question": "In a galvanic cell, where does oxidation take place?",
+    "correct_answer": "At the anode.",
+    "incorrect_answers": [
+      "At the cathode.",
+      "In the salt bridge.",
+      "In the external circuit.",
+      "At the voltmeter.",
+      "In the electrolyte only."
+    ]
+  },
+  {
+    "question": "Calculate the kinetic energy of a 5 kg object moving at 8 m/s.",
+    "correct_answer": "160.0 J",
+    "incorrect_answers": [
+      "320.0 J",
+      "40 J",
+      "20.0 J",
+      "80.0 J",
+      "320 J"
+    ]
+  },
+  {
+    "question": "Which type of cell is commonly used in the modern chlor-alkali industry to prevent the products from mixing?",
+    "correct_answer": "Membrane cell",
+    "incorrect_answers": [
+      "Diaphragm cell",
+      "Mercury cell",
+      "Galvanic cell",
+      "Fuel cell",
+      "Daniell cell"
+    ]
+  },
+  {
+    "question": "For the reaction aA + bB \u21cc cC + dD, what is the expression for the equilibrium constant (Kc)?",
+    "correct_answer": "Kc = ([C]^c * [D]^d) / ([A]^a * [B]^b)",
+    "incorrect_answers": [
+      "Kc = ([A]^a * [B]^b) / ([C]^c * [D]^d)",
+      "Kc = ([C] * [D]) / ([A] * [B])",
+      "Kc = ([A] + [B]) / ([C] + [D])",
+      "Kc = ([C] + [D]) / ([A] + [B])",
+      "Kc = [C]^c * [D]^d * [A]^a * [B]^b"
+    ]
+  },
+  {
+    "question": "Which industrial process is used to manufacture sulfuric acid?",
+    "correct_answer": "Contact process",
+    "incorrect_answers": [
+      "Haber process",
+      "Ostwald process",
+      "Chlor-alkali process",
+      "Solvay process",
+      "Hall-H\u00e9roult process"
+    ]
+  },
+  {
+    "question": "Light consisting of photons with energy 6.0e-19 J shines on a metal surface. The work function of the metal is 4.0e-19 J. Calculate the maximum kinetic energy of the emitted photoelectrons.",
+    "correct_answer": "2.0e-19 J",
+    "incorrect_answers": [
+      "1.0e-18 J",
+      "1.5e+00 J",
+      "4.0e-19 J",
+      "6.0e-19 J",
+      "-2.0e-19 J"
+    ]
+  },
+  {
+    "question": "What happens to the color of a CoCl4^2- (blue) + 6H2O <-> Co(H2O)6^2+ (pink) + 4Cl- equilibrium mixture if HCl is added?",
+    "correct_answer": "It turns bluer as the equilibrium shifts to the left.",
+    "incorrect_answers": [
+      "It turns pinker as the equilibrium shifts to the right.",
+      "The color does not change.",
+      "It turns clear.",
+      "It precipitates.",
+      "It turns green."
+    ]
+  },
+  {
+    "question": "What is the conjugate acid of NH3?",
+    "correct_answer": "NH4+",
+    "incorrect_answers": [
+      "NH2-",
+      "H3O+",
+      "OH-",
+      "HNO3",
+      "NH4"
+    ]
+  },
+  {
+    "question": "What is the general formula for alkanes?",
+    "correct_answer": "CnH2n+2",
+    "incorrect_answers": [
+      "CnH2n",
+      "CnH2n-2",
+      "CnH2n+1",
+      "CnHn",
+      "CnH2n-1"
+    ]
+  },
+  {
+    "question": "Which of the following is a strong acid?",
+    "correct_answer": "Nitric acid (HNO3)",
+    "incorrect_answers": [
+      "Ethanoic acid (CH3COOH)",
+      "Carbonic acid (H2CO3)",
+      "Phosphoric acid (H3PO4)",
+      "Oxalic acid (H2C2O4)",
+      "Citric acid"
+    ]
+  },
+  {
+    "question": "Calculate the energy of a photon of light with a frequency of 2.0e+15 Hz. (h = 6.63 x 10^-34 J.s)",
+    "correct_answer": "1.33e-18 J",
+    "incorrect_answers": [
+      "2.65e-18 J",
+      "6.63e-19 J",
+      "3.32e-49 J",
+      "3.02e+48 J",
+      "1.33e-17 J"
+    ]
+  },
+  {
+    "question": "What is an ampholyte (amphiprotic substance)?",
+    "correct_answer": "A substance that can act as either an acid or a base.",
+    "incorrect_answers": [
+      "A substance that is neutral.",
+      "A substance that only acts as an acid.",
+      "A substance that only acts as a base.",
+      "A strong acid.",
+      "A strong base."
+    ]
+  },
+  {
+    "question": "What is the functional group of a carboxylic acid?",
+    "correct_answer": "-COOH",
+    "incorrect_answers": [
+      "-OH",
+      "-CHO",
+      "-COO-",
+      "-NH2",
+      "-X"
+    ]
+  },
+  {
+    "question": "If a sound source moves towards a stationary observer, the observed frequency is:",
+    "correct_answer": "Higher than the source frequency",
+    "incorrect_answers": [
+      "Lower than the source frequency",
+      "The same as the source frequency",
+      "Zero",
+      "Fluctuating",
+      "Depends on the amplitude"
+    ]
+  },
+  {
+    "question": "What is the functional group of an aldehyde?",
+    "correct_answer": "-CHO",
+    "incorrect_answers": [
+      "-COOH",
+      "-OH",
+      "-C=O (internal)",
+      "-COO-",
+      "-NH2"
+    ]
+  },
+  {
+    "question": "An AC supply has an rms voltage of 240 V. It is connected to a 10 \u03a9 resistor. Calculate the average power dissipated by the resistor.",
+    "correct_answer": "5760.0 W",
+    "incorrect_answers": [
+      "11520.0 W",
+      "2880.0 W",
+      "33.94 W",
+      "24.0 W",
+      "2400 W"
+    ]
+  },
+  {
+    "question": "What catalyst is used in the first step of the Ostwald process (oxidation of ammonia)?",
+    "correct_answer": "Platinum/Rhodium gauze",
+    "incorrect_answers": [
+      "Iron (Fe)",
+      "Vanadium pentoxide (V2O5)",
+      "Nickel (Ni)",
+      "Palladium (Pd)",
+      "Silver (Ag)"
+    ]
+  },
+  {
+    "question": "Which energy conversion takes place in an electrolytic cell?",
+    "correct_answer": "Electrical energy to chemical energy.",
+    "incorrect_answers": [
+      "Chemical energy to electrical energy.",
+      "Mechanical energy to electrical energy.",
+      "Thermal energy to chemical energy.",
+      "Electrical energy to mechanical energy.",
+      "Chemical energy to thermal energy."
+    ]
+  },
+  {
+    "question": "During the dehydrohalogenation of a haloalkane, what is the major product formed according to Zaitsev's rule?",
+    "correct_answer": "The more highly substituted alkene.",
+    "incorrect_answers": [
+      "The less substituted alkene.",
+      "An alcohol.",
+      "An alkane.",
+      "A carboxylic acid.",
+      "A polymer."
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 4 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "22 m/s",
+    "incorrect_answers": [
+      "26 m/s",
+      "18 m/s",
+      "14 m/s",
+      "30 m/s",
+      "12 m/s"
+    ]
+  },
+  {
+    "question": "Calculate the magnitude of the electric field at a distance of 0.05 m from a point charge of +5 \u00b5C. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "1.8e+07 N/C",
+    "incorrect_answers": [
+      "3.6e+07 N/C",
+      "9.0e+06 N/C",
+      "9.0e+05 N/C",
+      "9.0e+05 N/C",
+      "3.6e+08 N/C"
+    ]
+  },
+  {
+    "question": "Which of the following is a strong base?",
+    "correct_answer": "Sodium hydroxide (NaOH)",
+    "incorrect_answers": [
+      "Ammonia (NH3)",
+      "Water (H2O)",
+      "Ethanoic acid (CH3COOH)",
+      "Sodium carbonate (Na2CO3)",
+      "Sodium chloride (NaCl)"
+    ]
+  },
+  {
+    "question": "A 3 \u03a9 and a 6 \u03a9 resistor are connected in parallel across a 12 V source. What is the total current supplied by the source?",
+    "correct_answer": "6.0 A",
+    "incorrect_answers": [
+      "1.33 A",
+      "4.0 A",
+      "2.0 A",
+      "12.0 A",
+      "3.0 A"
+    ]
+  },
+  {
+    "question": "Name the alkane with 4 carbon atoms.",
+    "correct_answer": "Butane",
+    "incorrect_answers": [
+      "Methane",
+      "Ethane",
+      "Propane",
+      "Pentane",
+      "Hexane"
+    ]
+  }
+]
