@@ -1,0 +1,58 @@
+# System Analysis: DTECH High School Learning Portal (Preasx24)
+
+## 1. Overview & Purpose
+
+The **DTECH High School Learning Portal (Preasx24)** is a static educational ecosystem created by Seakwa Jonas Mochebane. Its primary purpose is to provide South African high school students with offline and low-data access to essential academic resources, including past examination papers, study guides, school-based assessment (SBA) materials, Practical Assessment Tasks (PATs), quizzes, and information regarding universities and NSFAS (National Student Financial Aid Scheme).
+
+The platform is designed with accessibility in mind, heavily utilizing static files (HTML, CSS, JS, JSON) ensuring it functions efficiently even in low-connectivity environments. The branding consistently features the "DTECH" moniker and "Empowering the Youth Through Digital Innovation."
+
+## 2. Architecture & Data Flow
+
+The architecture of the website is entirely **serverless and front-end driven**.
+- **Frontend Stack:** HTML5, CSS3 (with custom variables and keyframe animations), and Vanilla JavaScript. Tailwind CSS is utilized on the index page via CDN.
+- **Data Storage:** Content is strictly stored in local `.json` files. These files act as simple databases.
+- **Data Flow (Requests):** When a user navigates to a specific page (e.g., `past-papers.html`), JavaScript executes an asynchronous `fetch()` request to retrieve the corresponding JSON file (e.g., `papers.json`). The JSON array is parsed, and the DOM is dynamically manipulated using `document.createElement()` or `innerHTML` to render the content (cards, buttons, dropdown options) onto the screen.
+- **Interactivity:** Many pages include filtering mechanisms (like searching past papers by year or subject) which are handled purely client-side using JavaScript `Array.prototype.filter()`.
+- **Ads & Tracking:** The system incorporates ad networks (like `cafewarriors`, `admaven`, `monetag`) and tracking mechanisms (like GoatCounter) to monetize downloads and monitor traffic. Often, "Download" buttons are configured to trigger ad popups alongside or before the actual file download.
+
+## 3. File-by-File Breakdown
+
+### 3.1. Main Entry & Navigation
+- **`index.html`:** The core hub of the ecosystem. It presents a grid of buttons leading to various sections (Past Papers, Study Guides, Vid & Audio, SBA Guide, PATs, Eligibility, Quizzes, NSFAS Info, University, Notes, and Daily Quiz). It includes extensive metadata for SEO and structured data for organization and author profiling.
+- **`style.css`:** The primary stylesheet for the DTECH aesthetic. It defines the dark theme, glassmorphism effects (`--glass-bg`, `--glass-border`), glowing buttons, and key animations (like `fadeInUp`, `glowPulse`) used heavily in the quiz hubs (`quizes.html`, `dtechh.html`).
+- **`script.js`:** The logic driver for the "Daily Quiz & Quote" (`dtechh.html`). It handles stage progression (Quiz -> Quote -> Video), checks answers, dynamically injects Google Drive video iframes, and uses `localStorage` to track the user's progress across days.
+
+### 3.2. Core Content Pages
+- **`past-papers.html`:** Fetches `papers.json`. Renders a filterable list of past exam papers from 2009-2024. Allows filtering by subject, month, and year. Downloads trigger an external URL open.
+- **`study-guides.html`:** Fetches `guide.json`. Renders a list of study guide PDFs with direct download links.
+- **`learner-guide.html`:** Fetches `a.json`. Renders links to video and audio lessons.
+- **`sba.html`:** Fetches `SBA.json`. Displays School Based Assessment documents.
+- **`pats.html`:** Fetches `PAT.json`. Displays Practical Assessment Task guides.
+- **`nsfas.html`:** A static informational page providing a comprehensive guide to applying for NSFAS, including dates, criteria, allowances, and contact info. It includes a custom Cloudflare worker script for page view counting.
+- **`university-applications.html`:** Fetches `data.json`. Displays a dynamic list of universities. Clicking a university card expands it to show details like application dates, faculties, NSFAS acceptance, map links, and social media.
+- **`note.html`:** A "Smart Notes" application. Allows students to select a subject and write their own notes using a rich text editor (with highlighting, titles, and definitions). Data is saved locally using `localStorage`. It includes a feature to generate and download the notes as a PDF using `html2pdf.js`.
+
+### 3.3. The Quiz Ecosystem
+- **`quizes.html`:** The hub for subject-specific quizzes. Provides links to subjects like Physical Science, Mathematics, Life Sciences, etc.
+- **Subject Hubs (`physical-science.html`, `mathematics.html`, `life-sciences.html`, `history.html`, `business-studies.html`, `mathsli.html`):** These pages present terms or papers for the specific subject, linking to individual quiz tests.
+- **Quiz Test Pages (e.g., `mathpp1-term1.html`, `ls-p1-opt1.html`, `chemistry-term1.html`):** These are the actual test environments.
+  - They fetch specific JSON files from the `quizzes/` directory (e.g., `quizzes/mathpp1term1.json`).
+  - They feature a dynamic question UI, a toggle between 30 and 50 question modes, and score calculation.
+  - Upon completion, they generate an interactive review of right/wrong answers.
+  - They utilize `jspdf` to dynamically generate a stylized "D-TECH Certificate of Achievement" PDF for the user to download with their score.
+
+### 3.4. Daily Challenge Page
+- **`dtechh.html`:** The "Daily Quiz & Quote" feature linked from `index.html`. It works directly with `script.js` to cycle through 3 stages: a daily question (from `questions.json`), a daily quote (from `quotes.json`), and a daily video (from `videos.json`).
+
+### 3.5. JSON Data Stores
+- **`papers.json`**: An array of objects `{"name": "...", "file": "url"}` containing links to past papers.
+- **`guide.json`**: Links for study guides.
+- **`SBA.json`**: Links for SBA materials.
+- **`PAT.json`**: Links for Practical Assessment Tasks.
+- **`data.json`**: Complex objects detailing University information (motto, dates, fees, faculties, links).
+- **`a.json`, `b.json`, `e.json`, `m.json`, `p.json` etc.:** Smaller data lists serving links for specific subjects/categories.
+- **`questions.json`, `quotes.json`, `videos.json`**: Content arrays feeding the daily `dtechh.html` challenge.
+- **`quizzes/*.json`**: Arrays containing multiple-choice questions for the quiz testing engine. Format: `{"question": "...", "correct_answer": "...", "incorrect_answers": [...]}`.
+
+## 4. Summary
+The DTECH Learning Portal is a highly cohesive, client-side application. It relies on fetching localized JSON structures to populate a stylized, gamified, and offline-capable interface, prioritizing educational accessibility and student engagement via integrated quizzes and comprehensive resource tracking.
