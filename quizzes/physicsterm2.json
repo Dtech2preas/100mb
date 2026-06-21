@@ -1,552 +1,607 @@
 [
   {
-    "question": "What is the relationship between wave speed (v), frequency (f) and wavelength (λ)?",
-    "correct_answer": "v = f × λ",
+    "question": "Two point charges, +2 \u00b5C and +4 \u00b5C, are separated by a distance of 0.1 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "7.2 N",
     "incorrect_answers": [
-      "v = f + λ",
-      "v = f / λ",
-      "v = λ / f",
-      "f = v − λ",
-      "λ = v + f"
+      "14.4 N",
+      "3.6 N",
+      "720000000000.0 N",
+      "7200000.0 N",
+      "0.0 N"
     ]
   },
   {
-    "question": "What type of wave is sound in air?",
-    "correct_answer": "Longitudinal wave",
+    "question": "A 20 kg block falls freely from rest from a height of 5 m. Using the conservation of mechanical energy, calculate its velocity just before it hits the ground. (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "9.9 m/s",
     "incorrect_answers": [
-      "Transverse wave",
-      "Surface wave",
-      "Standing wave",
-      "Electromagnetic wave",
-      "Torsional wave"
+      "19.8 m/s",
+      "4.95 m/s",
+      "49.0 m/s",
+      "7.0 m/s",
+      "980.0 m/s"
     ]
   },
   {
-    "question": "Which quantity is the reciprocal of frequency?",
-    "correct_answer": "Period",
+    "question": "Two resistors of 2 \u03a9 and 6 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "3.0 A",
     "incorrect_answers": [
-      "Wavelength",
-      "Amplitude",
-      "Wave speed",
-      "Intensity",
-      "Phase"
+      "12.0 A",
+      "4.0 A",
+      "6.0 A",
+      "36.0 A",
+      "1.5 A"
     ]
   },
   {
-    "question": "What happens to wave speed when it travels into a denser medium?",
-    "correct_answer": "It usually decreases",
+    "question": "Two point charges, +3 \u00b5C and +5 \u00b5C, are separated by a distance of 0.2 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "3.375 N",
     "incorrect_answers": [
-      "It always doubles",
-      "It remains constant",
-      "It becomes zero",
-      "It becomes infinite",
-      "It reverses direction"
+      "6.75 N",
+      "1.687 N",
+      "675000000000.0 N",
+      "3375000.0 N",
+      "0.0 N"
     ]
   },
   {
-    "question": "Which phenomenon occurs when two waves overlap?",
-    "correct_answer": "Interference",
+    "question": "Calculate the kinetic energy of a 5 kg object moving at 4 m/s.",
+    "correct_answer": "40.0 J",
     "incorrect_answers": [
-      "Refraction",
-      "Diffraction",
-      "Polarization",
-      "Dispersion",
-      "Absorption"
+      "80.0 J",
+      "20 J",
+      "10.0 J",
+      "20.0 J",
+      "80 J"
     ]
   },
   {
-    "question": "Which graph plots displacement vs. time for a vibrating particle?",
-    "correct_answer": "Oscillatory waveform",
+    "question": "State the work-energy theorem.",
+    "correct_answer": "The net work done on an object is equal to the change in the object's kinetic energy.",
     "incorrect_answers": [
-      "Straight line",
-      "Hyperbola",
-      "Parabola",
-      "Step function",
-      "Exponential curve"
+      "Work is equal to force times distance.",
+      "Energy cannot be created or destroyed.",
+      "Power is the rate at which work is done.",
+      "Kinetic energy is equal to potential energy.",
+      "The total mechanical energy remains constant."
     ]
   },
   {
-    "question": "What is the crest of a wave?",
-    "correct_answer": "Point of maximum positive displacement",
+    "question": "What is the gravitational potential energy of a 5 kg object at a height of 20 m? (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "980.0 J",
     "incorrect_answers": [
-      "Point of zero displacement",
-      "Point of maximum negative displacement",
-      "Point halfway between nodes",
-      "Point where speed is zero",
-      "Point of minimum wavelength"
+      "1960.0 J",
+      "100 J",
+      "99.99999999999999 J",
+      "490.0 J",
+      "2.45 J"
     ]
   },
   {
-    "question": "What is the trough of a wave?",
-    "correct_answer": "Point of maximum negative displacement",
+    "question": "A car sounds its horn with a frequency of 500 Hz while moving towards a stationary observer at 30 m/s. The speed of sound in air is 340 m/s. Calculate the frequency heard by the observer.",
+    "correct_answer": "548.39 Hz",
     "incorrect_answers": [
-      "Point of maximum positive displacement",
-      "Mean position",
-      "Node position",
-      "Antinode position",
-      "Point of zero frequency"
+      "459.46 Hz",
+      "500 Hz",
+      "822.58 Hz",
+      "365.59 Hz",
+      "530 Hz"
     ]
   },
   {
-    "question": "Which term describes the distance between two successive crests?",
-    "correct_answer": "Wavelength",
+    "question": "A 20 kg block falls freely from rest from a height of 10 m. Using the conservation of mechanical energy, calculate its velocity just before it hits the ground. (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "14.0 m/s",
     "incorrect_answers": [
-      "Amplitude",
-      "Period",
-      "Frequency",
-      "Phase",
-      "Intensity"
+      "28.0 m/s",
+      "7.0 m/s",
+      "98.0 m/s",
+      "9.9 m/s",
+      "1960.0 m/s"
     ]
   },
   {
-    "question": "When a wave passes from air into water at an angle, what happens?",
-    "correct_answer": "It refracts (changes direction)",
+    "question": "What is the Doppler effect?",
+    "correct_answer": "The change in frequency (or pitch) of the sound detected by a listener because the sound source and the listener have different velocities relative to the medium of sound propagation.",
     "incorrect_answers": [
-      "It disappears",
-      "It speeds up indefinitely",
-      "It reflects only",
-      "It stops",
-      "It polarizes spontaneously"
+      "The bending of waves around obstacles.",
+      "The interference of two sound waves.",
+      "The reflection of sound waves off a surface.",
+      "The absorption of sound by a medium.",
+      "The change in speed of sound in different temperatures."
     ]
   },
   {
-    "question": "What is the Doppler Effect?",
-    "correct_answer": "Change in observed frequency due to relative motion",
+    "question": "Two point charges, +2 \u00b5C and +5 \u00b5C, are separated by a distance of 0.1 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "9.0 N",
     "incorrect_answers": [
-      "Change in amplitude over time",
-      "Loss of energy in waves",
-      "Change in wave speed only",
-      "Variation in intensity with distance",
-      "Phase shift between sources"
+      "18.0 N",
+      "4.5 N",
+      "900000000000.0 N",
+      "9000000.0 N",
+      "0.0 N"
     ]
   },
   {
-    "question": "If a source moves toward an observer, the observed frequency:",
-    "correct_answer": "Increases",
+    "question": "Calculate the magnitude of the electric field at a distance of 0.05 m from a point charge of +10 \u00b5C. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "3.6e+07 N/C",
     "incorrect_answers": [
-      "Decreases",
-      "Stays the same",
-      "Becomes zero",
-      "Becomes infinite",
-      "Reverses sign"
+      "7.2e+07 N/C",
+      "1.8e+07 N/C",
+      "1.8e+06 N/C",
+      "1.8e+06 N/C",
+      "7.2e+08 N/C"
     ]
   },
   {
-    "question": "If an observer moves away from a stationary source, the observed frequency:",
-    "correct_answer": "Decreases",
+    "question": "Calculate the kinetic energy of a 2 kg object moving at 6 m/s.",
+    "correct_answer": "36.0 J",
     "incorrect_answers": [
-      "Increases",
-      "Stays the same",
-      "Becomes zero",
-      "Becomes double",
-      "Reverses phase"
+      "72.0 J",
+      "12 J",
+      "6.0 J",
+      "18.0 J",
+      "72 J"
     ]
   },
   {
-    "question": "Which formula gives observed frequency f′ for moving source and observer?",
-    "correct_answer": "f′ = f (v + v_o)/(v − v_s)",
+    "question": "What is the gravitational potential energy of a 2 kg object at a height of 20 m? (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "392.0 J",
     "incorrect_answers": [
-      "f′ = f (v − v_o)/(v + v_s)",
-      "f′ = f (v − v_s)/(v + v_o)",
-      "f′ = f v/(v − v_o − v_s)",
-      "f′ = f (v_s + v_o)/v",
-      "f′ = f/[(v + v_o)(v − v_s)]"
+      "784.0 J",
+      "40 J",
+      "40.0 J",
+      "196.0 J",
+      "0.9800000000000001 J"
     ]
   },
   {
-    "question": "When both source and observer move toward each other, the frequency shift is:",
-    "correct_answer": "Larger than if only one moves",
+    "question": "Calculate the magnitude of the electric field at a distance of 0.05 m from a point charge of +5 \u00b5C. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "1.8e+07 N/C",
     "incorrect_answers": [
-      "Smaller than if only one moves",
+      "3.6e+07 N/C",
+      "9.0e+06 N/C",
+      "9.0e+05 N/C",
+      "9.0e+05 N/C",
+      "3.6e+08 N/C"
+    ]
+  },
+  {
+    "question": "State Coulomb's Law.",
+    "correct_answer": "The magnitude of the electrostatic force exerted by one point charge on another is directly proportional to the product of the magnitudes of the charges and inversely proportional to the square of the distance between them.",
+    "incorrect_answers": [
+      "The electric field is uniform between two parallel plates.",
+      "Like charges attract and unlike charges repel.",
+      "The total charge in an isolated system is conserved.",
+      "Voltage is directly proportional to current.",
+      "The force is inversely proportional to the charges."
+    ]
+  },
+  {
+    "question": "Two point charges, +3 \u00b5C and +5 \u00b5C, are separated by a distance of 0.1 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "13.5 N",
+    "incorrect_answers": [
+      "27.0 N",
+      "6.75 N",
+      "1350000000000.0 N",
+      "13500000.0 N",
+      "0.0 N"
+    ]
+  },
+  {
+    "question": "A 10 kg block falls freely from rest from a height of 10 m. Using the conservation of mechanical energy, calculate its velocity just before it hits the ground. (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "14.0 m/s",
+    "incorrect_answers": [
+      "28.0 m/s",
+      "7.0 m/s",
+      "98.0 m/s",
+      "9.9 m/s",
+      "980.0 m/s"
+    ]
+  },
+  {
+    "question": "What is the gravitational potential energy of a 5 kg object at a height of 10 m? (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "490.0 J",
+    "incorrect_answers": [
+      "980.0 J",
+      "50 J",
+      "49.99999999999999 J",
+      "245.0 J",
+      "4.9 J"
+    ]
+  },
+  {
+    "question": "Two point charges, +3 \u00b5C and +4 \u00b5C, are separated by a distance of 0.2 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "2.7 N",
+    "incorrect_answers": [
+      "5.4 N",
+      "1.35 N",
+      "540000000000.0 N",
+      "2700000.0 N",
+      "0.0 N"
+    ]
+  },
+  {
+    "question": "An ambulance siren emits a sound of frequency 800 Hz. It moves away from a stationary observer at 35 m/s. Assuming the speed of sound is 340 m/s, what is the frequency detected by the observer?",
+    "correct_answer": "725.33 Hz",
+    "incorrect_answers": [
+      "891.8 Hz",
+      "800 Hz",
+      "625.33 Hz",
+      "825.33 Hz",
+      "765 Hz"
+    ]
+  },
+  {
+    "question": "What is the gravitational potential energy of a 2 kg object at a height of 10 m? (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "196.0 J",
+    "incorrect_answers": [
+      "392.0 J",
+      "20 J",
+      "20.0 J",
+      "98.0 J",
+      "1.9600000000000002 J"
+    ]
+  },
+  {
+    "question": "If a sound source moves towards a stationary observer, the observed frequency is:",
+    "correct_answer": "Higher than the source frequency",
+    "incorrect_answers": [
+      "Lower than the source frequency",
+      "The same as the source frequency",
       "Zero",
-      "Equal to original frequency",
-      "Negative",
-      "Independent of speeds"
+      "Fluctuating",
+      "Depends on the amplitude"
     ]
   },
   {
-    "question": "What happens to wavelength when observed frequency increases (sound in air)?",
-    "correct_answer": "Wavelength decreases",
+    "question": "A 6 \u03a9 and a 12 \u03a9 resistor are connected in parallel across a 12 V source. What is the total current supplied by the source?",
+    "correct_answer": "3.0 A",
     "incorrect_answers": [
-      "Wavelength increases",
-      "Wavelength stays same",
-      "Wavelength doubles",
-      "Wavelength becomes zero",
-      "Wavelength reverses"
+      "0.67 A",
+      "2.0 A",
+      "1.0 A",
+      "6.0 A",
+      "1.5 A"
     ]
   },
   {
-    "question": "What is a practical application of the Doppler Effect in meteorology?",
-    "correct_answer": "Radar for tracking storms",
+    "question": "Calculate the kinetic energy of a 2 kg object moving at 4 m/s.",
+    "correct_answer": "16.0 J",
     "incorrect_answers": [
-      "Measuring humidity directly",
-      "Forecasting earthquakes",
-      "Measuring soil moisture",
-      "Detecting ozone layer thickness",
-      "Monitoring UV index"
+      "32.0 J",
+      "8 J",
+      "4.0 J",
+      "8.0 J",
+      "32 J"
     ]
   },
   {
-    "question": "Which medical device uses ultrasound Doppler to image blood flow?",
-    "correct_answer": "Ultrasound Doppler scanner",
+    "question": "Two resistors of 4 \u03a9 and 6 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "2.4 A",
     "incorrect_answers": [
-      "MRI machine",
-      "X-ray fluoroscope",
-      "Electrocardiograph",
-      "CT scanner",
-      "PET scanner"
+      "6.0 A",
+      "4.0 A",
+      "4.8 A",
+      "57.6 A",
+      "1.2 A"
     ]
   },
   {
-    "question": "How does Doppler ultrasound detect blood flow?",
-    "correct_answer": "By measuring frequency shifts from moving blood cells",
+    "question": "What happens to the total resistance when resistors are added in series?",
+    "correct_answer": "It increases.",
     "incorrect_answers": [
-      "By measuring amplitude changes in echoes",
-      "By using magnetic resonance",
-      "By detecting changes in polarization",
-      "By tracking echo delay times",
-      "By direct visual imaging"
+      "It decreases.",
+      "It stays the same.",
+      "It becomes zero.",
+      "It depends on the voltage.",
+      "It halves."
     ]
   },
   {
-    "question": "What shift is detected when blood flows toward the ultrasound probe?",
-    "correct_answer": "Positive frequency shift",
+    "question": "State Ohm's Law.",
+    "correct_answer": "The potential difference across a conductor is directly proportional to the current in the conductor at constant temperature.",
     "incorrect_answers": [
-      "Negative frequency shift",
-      "No shift",
-      "Phase shift only",
-      "Amplitude increase",
-      "Wavelength increase"
+      "The current is directly proportional to resistance.",
+      "Power is equal to voltage times current.",
+      "The total resistance in series is less than the smallest resistor.",
+      "The voltage is constant in a series circuit.",
+      "Current divides equally in a parallel circuit regardless of resistance."
     ]
   },
   {
-    "question": "Which Doppler mode shows blood flow velocity as a waveform over time?",
-    "correct_answer": "Spectral Doppler",
+    "question": "Calculate the magnitude of the electric field at a distance of 0.1 m from a point charge of +10 \u00b5C. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "9.0e+06 N/C",
     "incorrect_answers": [
-      "B-mode Doppler",
-      "Color Doppler",
-      "M-mode Doppler",
-      "Power Doppler",
-      "Phase Doppler"
+      "1.8e+07 N/C",
+      "4.5e+06 N/C",
+      "9.0e+05 N/C",
+      "9.0e+05 N/C",
+      "9.0e+07 N/C"
     ]
   },
   {
-    "question": "Color Doppler ultrasound maps flow direction by:",
-    "correct_answer": "Encoding frequency shifts into colors",
+    "question": "A car sounds its horn with a frequency of 1000 Hz while moving towards a stationary observer at 20 m/s. The speed of sound in air is 340 m/s. Calculate the frequency heard by the observer.",
+    "correct_answer": "1062.5 Hz",
     "incorrect_answers": [
-      "Recording echo amplitudes",
-      "Measuring sound intensity",
-      "Tracking probe movement",
-      "Measuring pressure changes",
-      "Analyzing tissue stiffness"
+      "944.44 Hz",
+      "1000 Hz",
+      "1593.75 Hz",
+      "708.33 Hz",
+      "1020 Hz"
     ]
   },
   {
-    "question": "What is a limitation of ultrasound Doppler in deep vessels?",
-    "correct_answer": "Signal attenuation reduces accuracy",
+    "question": "Two resistors of 2 \u03a9 and 4 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "4.0 A",
     "incorrect_answers": [
-      "Speed increases too much",
-      "Wavelength becomes infinite",
-      "Amplitude becomes zero",
-      "Probe cannot emit waves",
-      "Doppler formula fails"
+      "12.0 A",
+      "6.0 A",
+      "8.0 A",
+      "32.0 A",
+      "2.0 A"
     ]
   },
   {
-    "question": "What effect does a higher ultrasound frequency have on Doppler sensitivity?",
-    "correct_answer": "Improves sensitivity but reduces penetration depth",
+    "question": "A 3 \u03a9 and a 6 \u03a9 resistor are connected in parallel across a 12 V source. What is the total current supplied by the source?",
+    "correct_answer": "6.0 A",
     "incorrect_answers": [
-      "Improves both sensitivity and depth",
-      "Reduces sensitivity and depth",
-      "Has no effect",
-      "Reverses Doppler shift",
-      "Invalidates Doppler equation"
+      "1.33 A",
+      "4.0 A",
+      "2.0 A",
+      "12.0 A",
+      "3.0 A"
     ]
   },
   {
-    "question": "Which application uses Doppler Effect with light rather than sound?",
-    "correct_answer": "Measuring galaxy recession speeds",
+    "question": "Calculate the magnitude of the electric field at a distance of 0.1 m from a point charge of +5 \u00b5C. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "4.5e+06 N/C",
     "incorrect_answers": [
-      "Ultrasound imaging",
-      "Radar speed guns",
-      "Sonar depth finding",
-      "Acoustic flow meters",
-      "Geiger counters"
+      "9.0e+06 N/C",
+      "2.2e+06 N/C",
+      "4.5e+05 N/C",
+      "4.5e+05 N/C",
+      "4.5e+07 N/C"
     ]
   },
   {
-    "question": "What shift of spectral lines occurs when a star moves away?",
-    "correct_answer": "Red shift",
+    "question": "Calculate the kinetic energy of a 5 kg object moving at 8 m/s.",
+    "correct_answer": "160.0 J",
     "incorrect_answers": [
-      "Blue shift",
-      "Green shift",
-      "Ultra shift",
-      "Infra shift",
-      "Yellow shift"
+      "320.0 J",
+      "40 J",
+      "20.0 J",
+      "80.0 J",
+      "320 J"
     ]
   },
   {
-    "question": "What shift of spectral lines occurs when a star approaches?",
-    "correct_answer": "Blue shift",
+    "question": "What is the SI unit of electric charge?",
+    "correct_answer": "Coulomb (C)",
     "incorrect_answers": [
-      "Red shift",
-      "Infra shift",
-      "Ultra shift",
-      "Green shift",
-      "Yellow shift"
+      "Ampere (A)",
+      "Volt (V)",
+      "Joule (J)",
+      "Watt (W)",
+      "Ohm (\u03a9)"
     ]
   },
   {
-    "question": "Which law relates red shift to velocity of a galaxy?",
-    "correct_answer": "Hubble’s law",
+    "question": "Two resistors of 4 \u03a9 and 4 \u03a9 are connected in series across a 24 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "3.0 A",
     "incorrect_answers": [
-      "Ohm’s law",
-      "Kepler’s law",
-      "Snell’s law",
-      "Planck’s law",
-      "Hooke’s law"
+      "6.0 A",
+      "6.0 A",
+      "6.0 A",
+      "48.0 A",
+      "1.5 A"
     ]
   },
   {
-    "question": "Police radar guns use the Doppler Effect to measure:",
-    "correct_answer": "Vehicle speed by frequency shift",
+    "question": "Two point charges, +2 \u00b5C and +5 \u00b5C, are separated by a distance of 0.2 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "2.25 N",
     "incorrect_answers": [
-      "Engine temperature",
-      "Fuel efficiency",
-      "Tire pressure",
-      "Air quality",
-      "Weight of car"
+      "4.5 N",
+      "1.125 N",
+      "450000000000.0 N",
+      "2250000.0 N",
+      "0.0 N"
     ]
   },
   {
-    "question": "What happens to Doppler shift if target moves perpendicular to radar beam?",
-    "correct_answer": "Shift goes to zero",
+    "question": "Calculate the kinetic energy of a 10 kg object moving at 6 m/s.",
+    "correct_answer": "180.0 J",
     "incorrect_answers": [
-      "Shift doubles",
-      "Shift reverses",
-      "Shift becomes infinite",
-      "Shift remains same",
-      "Shift negative"
+      "360.0 J",
+      "60 J",
+      "30.0 J",
+      "90.0 J",
+      "360 J"
     ]
   },
   {
-    "question": "In astronomy, Doppler shift helps determine:",
-    "correct_answer": "Radial velocity of objects",
+    "question": "Two point charges, +2 \u00b5C and +4 \u00b5C, are separated by a distance of 0.2 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "1.8 N",
     "incorrect_answers": [
-      "Transverse velocity only",
-      "Mass of objects",
-      "Chemical composition",
-      "Distance by parallax",
-      "Magnetic field strength"
+      "3.6 N",
+      "0.9 N",
+      "360000000000.0 N",
+      "1800000.0 N",
+      "0.0 N"
     ]
   },
   {
-    "question": "What happens to observed frequency when both observer and source recede?",
-    "correct_answer": "Frequency decreases more than one moving alone",
+    "question": "A car sounds its horn with a frequency of 1000 Hz while moving towards a stationary observer at 30 m/s. The speed of sound in air is 340 m/s. Calculate the frequency heard by the observer.",
+    "correct_answer": "1096.77 Hz",
     "incorrect_answers": [
-      "Frequency increases",
-      "Frequency stays same",
-      "Frequency doubles",
-      "Frequency reverses sign",
-      "Frequency equals zero"
+      "918.92 Hz",
+      "1000 Hz",
+      "1645.16 Hz",
+      "731.18 Hz",
+      "1030 Hz"
     ]
   },
   {
-    "question": "Why does Doppler shift of light require relativistic formula at high speeds?",
-    "correct_answer": "Because time dilation affects observed frequency",
+    "question": "Calculate the kinetic energy of a 10 kg object moving at 8 m/s.",
+    "correct_answer": "320.0 J",
     "incorrect_answers": [
-      "Because light speed changes",
-      "Because mass changes",
-      "Because wavelength is constant",
-      "Because gravity dominates",
-      "Because amplitude shifts"
+      "640.0 J",
+      "80 J",
+      "40.0 J",
+      "160.0 J",
+      "640 J"
     ]
   },
   {
-    "question": "Which device uses optical Doppler to measure blood flow in the retina?",
-    "correct_answer": "Laser Doppler flowmeter",
+    "question": "Two point charges, +3 \u00b5C and +4 \u00b5C, are separated by a distance of 0.1 m in a vacuum. Calculate the electrostatic force between them. (k = 9 x 10^9 N.m\u00b2/C\u00b2)",
+    "correct_answer": "10.8 N",
     "incorrect_answers": [
-      "Ultrasound transducer",
-      "MRI coil",
-      "CT detector",
-      "PET scanner",
-      "Infrared camera"
+      "21.6 N",
+      "5.4 N",
+      "1080000000000.0 N",
+      "10800000.0 N",
+      "0.0 N"
     ]
   },
   {
-    "question": "What is Doppler broadening in spectroscopy?",
-    "correct_answer": "Widening of spectral lines due to velocity spread",
+    "question": "An ambulance siren emits a sound of frequency 800 Hz. It moves away from a stationary observer at 25 m/s. Assuming the speed of sound is 340 m/s, what is the frequency detected by the observer?",
+    "correct_answer": "745.21 Hz",
     "incorrect_answers": [
-      "Narrowing of lines at high pressure",
-      "Shift of all lines uniformly",
-      "Appearance of new lines",
-      "Disappearance of lines",
-      "Coloration of lines"
+      "863.49 Hz",
+      "800 Hz",
+      "645.21 Hz",
+      "845.21 Hz",
+      "775 Hz"
     ]
   },
   {
-    "question": "Which principle underlies LIDAR speed measurement?",
-    "correct_answer": "Optical Doppler shift",
+    "question": "Two resistors of 2 \u03a9 and 4 \u03a9 are connected in series across a 12 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "2.0 A",
     "incorrect_answers": [
-      "Acoustic reflection",
-      "Magnetic resonance",
-      "Thermal expansion",
-      "Ultrasonic echo",
-      "Electrical conductivity"
+      "6.0 A",
+      "3.0 A",
+      "4.0 A",
+      "16.0 A",
+      "1.0 A"
     ]
   },
   {
-    "question": "How does weather radar detect wind velocities?",
-    "correct_answer": "By measuring Doppler shift of returned microwaves",
+    "question": "Calculate the kinetic energy of a 10 kg object moving at 4 m/s.",
+    "correct_answer": "80.0 J",
     "incorrect_answers": [
-      "By measuring sound delay",
-      "By using infrared imaging",
-      "By detecting raindrop size",
-      "By timing echo strength",
-      "By analyzing polarization"
+      "160.0 J",
+      "40 J",
+      "20.0 J",
+      "40.0 J",
+      "160 J"
     ]
   },
   {
-    "question": "What shift is used in cosmology to measure universe expansion?",
-    "correct_answer": "Cosmological red shift",
+    "question": "Two resistors of 4 \u03a9 and 4 \u03a9 are connected in series across a 12 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "1.5 A",
     "incorrect_answers": [
-      "Acoustic shift",
-      "Thermal shift",
-      "Magnetic shift",
-      "Gravitational shift",
-      "Infrared shift"
+      "3.0 A",
+      "3.0 A",
+      "3.0 A",
+      "24.0 A",
+      "0.75 A"
     ]
   },
   {
-    "question": "What is the effect of source speed approaching the wave speed in medium?",
-    "correct_answer": "Apparent frequency tends to infinity (sonic boom)",
+    "question": "Calculate the kinetic energy of a 5 kg object moving at 6 m/s.",
+    "correct_answer": "90.0 J",
     "incorrect_answers": [
-      "Frequency becomes zero",
-      "Frequency stays same",
-      "Frequency reverses",
-      "Frequency equals source frequency",
-      "Frequency negative"
+      "180.0 J",
+      "30 J",
+      "15.0 J",
+      "45.0 J",
+      "180 J"
     ]
   },
   {
-    "question": "What phenomenon occurs when a source moves at exactly wave speed?",
-    "correct_answer": "Wavefronts pile up (sonic boom)",
+    "question": "Two resistors of 2 \u03a9 and 6 \u03a9 are connected in series across a 12 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "1.5 A",
     "incorrect_answers": [
-      "Wavefronts vanish",
-      "Wavefronts slow down",
-      "Wavefronts cross",
-      "Wavefronts refract",
-      "Wavefronts polarize"
+      "6.0 A",
+      "2.0 A",
+      "3.0 A",
+      "18.0 A",
+      "0.75 A"
     ]
   },
   {
-    "question": "What is shock wave formation in supersonic flight?",
-    "correct_answer": "Boundary where pressure jumps due to wavefront overlap",
+    "question": "A 10 kg block falls freely from rest from a height of 5 m. Using the conservation of mechanical energy, calculate its velocity just before it hits the ground. (Use g = 9.8 m/s\u00b2)",
+    "correct_answer": "9.9 m/s",
     "incorrect_answers": [
-      "Area of zero pressure",
-      "Reflection of waves",
-      "Absorption zone",
-      "Interference pattern",
-      "Diffraction pattern"
+      "19.8 m/s",
+      "4.95 m/s",
+      "49.0 m/s",
+      "7.0 m/s",
+      "490.0 m/s"
     ]
   },
   {
-    "question": "Which formula describes relativistic Doppler for light?",
-    "correct_answer": "f′ = f √((1 ± β)/(1 ∓ β)), β = v/c",
+    "question": "Calculate the kinetic energy of a 2 kg object moving at 8 m/s.",
+    "correct_answer": "64.0 J",
     "incorrect_answers": [
-      "f′ = f (v ± c)/(v ∓ c)",
-      "f′ = f (c ± v)/v",
-      "f′ = f v/c",
-      "f′ = f(c² − v²)",
-      "f′ = f/(1 ∓ β)"
+      "128.0 J",
+      "16 J",
+      "8.0 J",
+      "32.0 J",
+      "128 J"
     ]
   },
   {
-    "question": "What is the acoustic Doppler current profiler used for?",
-    "correct_answer": "Measuring water current velocities",
+    "question": "A car sounds its horn with a frequency of 500 Hz while moving towards a stationary observer at 20 m/s. The speed of sound in air is 340 m/s. Calculate the frequency heard by the observer.",
+    "correct_answer": "531.25 Hz",
     "incorrect_answers": [
-      "Measuring air speed",
-      "Measuring blood pressure",
-      "Measuring seismic waves",
-      "Measuring light intensity",
-      "Measuring magnetic fields"
+      "472.22 Hz",
+      "500 Hz",
+      "796.88 Hz",
+      "354.17 Hz",
+      "520 Hz"
     ]
   },
   {
-    "question": "Which astrophysical measurement relies on red shift?",
-    "correct_answer": "Determining galaxy distances",
+    "question": "A 3 \u03a9 and a 12 \u03a9 resistor are connected in parallel across a 12 V source. What is the total current supplied by the source?",
+    "correct_answer": "5.0 A",
     "incorrect_answers": [
-      "Measuring star temperatures",
-      "Measuring star masses",
-      "Measuring star rotations",
-      "Measuring planet orbits",
-      "Measuring cosmic rays"
+      "0.8 A",
+      "4.0 A",
+      "1.0 A",
+      "10.0 A",
+      "2.5 A"
     ]
   },
   {
-    "question": "What shift is observed in GPS signals due to satellite motion?",
-    "correct_answer": "Doppler shift",
+    "question": "Two resistors of 4 \u03a9 and 6 \u03a9 are connected in series across a 12 V battery. What is the current flowing through the circuit? (Assume no internal resistance)",
+    "correct_answer": "1.2 A",
     "incorrect_answers": [
-      "Red shift",
-      "Blue shift",
-      "Cosmological shift",
-      "Magnetic shift",
-      "Thermal shift"
+      "3.0 A",
+      "2.0 A",
+      "2.4 A",
+      "28.8 A",
+      "0.6 A"
     ]
   },
   {
-    "question": "Why must Doppler shift be corrected in GPS receivers?",
-    "correct_answer": "To maintain accurate position fixes",
+    "question": "What is the unit of Work and Energy?",
+    "correct_answer": "Joule (J)",
     "incorrect_answers": [
-      "To reduce battery drain",
-      "To avoid interference",
-      "To improve signal strength",
-      "To change map datum",
-      "To calibrate antenna"
+      "Newton (N)",
+      "Watt (W)",
+      "Volt (V)",
+      "Ampere (A)",
+      "Pascal (Pa)"
     ]
   },
   {
-    "question": "What effect does turbulence have on Doppler radar readings?",
-    "correct_answer": "Causes broadening of returned signal spectrum",
+    "question": "A 6 \u03a9 and a 6 \u03a9 resistor are connected in parallel across a 12 V source. What is the total current supplied by the source?",
+    "correct_answer": "4.0 A",
     "incorrect_answers": [
-      "Eliminates Doppler shift",
-      "Reverses shift sign",
-      "Increases wave speed",
-      "Lowers transmitted power",
-      "Creates standing waves"
+      "1.0 A",
+      "2.0 A",
+      "2.0 A",
+      "8.0 A",
+      "2.0 A"
     ]
-  },
-  {
-    "question": "How is Doppler ultrasound used in fetal monitoring?",
-    "correct_answer": "By tracking fetal heartbeat frequency shifts",
-    "incorrect_answers": [
-      "By imaging bone density",
-      "By measuring amniotic fluid temperature",
-      "By mapping placenta shape",
-      "By measuring maternal brain waves",
-      "By detecting maternal blood pressure"
-    ]
-  },
-  {
-    "question": "What is the main advantage of continuous-wave Doppler?",
-    "correct_answer": "Can measure high velocities without aliasing",
-    "incorrect_answers": [
-      "Can image structure in detail",
-      "Uses no moving parts",
-      "Has unlimited penetration depth",
-      "Requires no calibration",
-      "Consumes no power"
-    ]
-  },
-  {
-    "question": "What is aliasing in pulsed Doppler ultrasound?",
-    "correct_answer": "Misinterpretation of velocity due to sampling limit",
-    "incorrect_answers": [
-      "Loss of signal entirely",
-      "Excessive signal strength",
-      "Complete absence of shift",
-      "Reversal of frequency",
-      "Overheating of probe"
-    ]
-  },
-{ "question": "What is an electric charge?", "correct_answer": "A property of matter that causes it to experience a force in an electric field.", "incorrect_answers": [ "A force between magnetic objects.", "A type of gravitational energy.", "A property of metals only.", "The ability to conduct heat.", "The same as mass." ] }, { "question": "What are the two types of electric charge?", "correct_answer": "Positive and negative", "incorrect_answers": [ "Up and down", "High and low", "North and south", "Left and right", "Forward and backward" ] }, { "question": "Which law states that charge cannot be created nor destroyed?", "correct_answer": "Law of conservation of charge", "incorrect_answers": [ "Coulomb's Law", "Ohm's Law", "Newton's Law", "Law of energy conservation", "Faraday's Law" ] }, { "question": "What is Coulomb’s Law?", "correct_answer": "F = k·Q·q / r²", "incorrect_answers": [ "F = m·a / r²", "F = k·Q + q / r", "F = k·Q·q·r²", "F = Q·q / k·r²", "F = k·(Q−q)/r²" ] }, { "question": "In Coulomb’s Law, what does k represent?", "correct_answer": "Coulomb’s constant", "incorrect_answers": [ "Boltzmann’s constant", "Planck’s constant", "Gravitational constant", "Magnetic constant", "Dielectric constant" ] }, { "question": "What happens to the force if the distance between two charges is tripled?", "correct_answer": "It becomes one-ninth as strong.", "incorrect_answers": [ "It triples.", "It becomes nine times as strong.", "It stays the same.", "It halves.", "It doubles." ] }, { "question": "What is the unit of electric force in SI?", "correct_answer": "Newton", "incorrect_answers": [ "Coulomb", "Volt", "Ampere", "Joule", "Ohm" ] }, { "question": "How are electric field lines oriented around a positive point charge?", "correct_answer": "Radiating outward", "incorrect_answers": [ "Radiating inward", "Forming closed loops", "Parallel to each other", "Randomly oriented", "Concentric circles" ] }, { "question": "How do field lines behave between opposite charges?", "correct_answer": "They begin on the positive charge and end on the negative charge.", "incorrect_answers": [ "They form closed loops around each charge.", "They radiate outward from both charges.", "They are parallel between charges.", "They do not exist between opposite charges.", "They cancel out entirely." ] }, { "question": "What does the density of field lines indicate?", "correct_answer": "Field strength", "incorrect_answers": [ "Charge sign", "Potential energy", "Current flow", "Magnetic field strength", "Temperature" ] }, { "question": "What is the formula for electric field strength E due to a point charge?", "correct_answer": "E = k·Q / r²", "incorrect_answers": [ "E = Q / k·r", "E = k·r² / Q", "E = k·Q·r", "E = Q² / k·r²", "E = k·r / Q" ] }, { "question": "In which direction does the electric force act on a positive test charge?", "correct_answer": "In the direction of the electric field", "incorrect_answers": [ "Opposite to the field", "Perpendicular to the field", "Radially inward always", "Randomly oriented", "Along equipotential surfaces" ] }, { "question": "What is an equipotential surface?", "correct_answer": "A surface where potential is the same at every point.", "incorrect_answers": [ "A surface where field is zero.", "A surface where field lines cross.", "A surface of constant force.", "A surface of varying potential.", "A surface where charges accumulate." ] }, { "question": "What is the potential at infinity for a point charge?", "correct_answer": "Zero", "incorrect_answers": [ "Positive", "Negative", "Undefined", "Depends on charge sign", "Equal to k·Q" ] }, { "question": "Which principle explains why conductors have zero electric field inside?", "correct_answer": "Electrostatic equilibrium", "incorrect_answers": [ "Gauss’s Law", "Faraday’s Law", "Lenz’s Law", "Ampere’s Law", "Ohm’s Law" ] }, { "question": "What is the net charge on a neutral conductor?", "correct_answer": "Zero", "incorrect_answers": [ "One Coulomb", "One Ampere", "One Volt", "Undefined", "Dependent on size" ] }, { "question": "Where does excess charge reside on a conductor?", "correct_answer": "On the surface", "incorrect_answers": [ "At the center", "Uniformly throughout", "At the edges only", "Inside the volume", "Nowhere" ] }, { "question": "What is the electric field inside a hollow conductor?", "correct_answer": "Zero", "incorrect_answers": [ "k·Q/r²", "Constant non-zero", "Variable", "Infinite", "Equal to surface field" ] }, { "question": "Which surface has constant electric potential?", "correct_answer": "Equipotential surface", "incorrect_answers": [ "Electric field surface", "Magnetic surface", "Conductor surface only", "Isothermal surface", "Stress surface" ] }, { "question": "How is work done moving a charge between two equipotentials?", "correct_answer": "Zero", "incorrect_answers": [ "Positive", "Negative", "Infinite", "Depends on path", "Depends on speed" ] }, { "question": "What affects the capacitance of a parallel-plate capacitor?", "correct_answer": "Plate area and separation", "incorrect_answers": [ "Voltage only", "Charge only", "Field strength only", "Material’s mass", "Current flow" ] }, { "question": "Which equation relates capacitance C, charge Q, and potential V?", "correct_answer": "Q = C·V", "incorrect_answers": [ "V = Q/C²", "C = Q²/V", "Q = V²/C", "C = V·Q", "Q = C/V" ] }, { "question": "What is the field between parallel charged plates?", "correct_answer": "Uniform", "incorrect_answers": [ "Radial", "Zero", "Variable", "Circular", "Spherical" ] }, { "question": "Which device stores charge?", "correct_answer": "Capacitor", "incorrect_answers": [ "Transformer", "Resistor", "Inductor", "Diode", "Battery" ] }, { "question": "What is the energy stored in a capacitor?", "correct_answer": "½ C·V²", "incorrect_answers": [ "C·V", "½ Q·V", "C·Q²", "V²/Q", "Q·V²" ] }, { "question": "What principle allows using Gauss’s Law for symmetrical charge distributions?", "correct_answer": "Symmetry of the field", "incorrect_answers": [ "Ohm’s Law", "Coulomb’s Law", "Superposition principle", "Ampere’s Law", "Faraday’s Law" ] }, { "question": "In which medium is Coulomb’s constant k = 1/(4πε₀)?", "correct_answer": "Vacuum", "incorrect_answers": [ "Water", "Air", "Glass", "Copper", "Steel" ] }, { "question": "What does ε₀ represent?", "correct_answer": "Permittivity of free space", "incorrect_answers": [ "Permeability of free space", "Permittivity of a material", "Electric field constant", "Magnetic constant", "Resistance constant" ] }, { "question": "What is the effect of a dielectric between capacitor plates?", "correct_answer": "Increases capacitance", "incorrect_answers": [ "Decreases capacitance", "Nullifies charge", "Increases resistance", "Increases voltage", "Has no effect" ] }, { "question": "Which field is present around any charged object?", "correct_answer": "Electric field", "incorrect_answers": [ "Magnetic field only", "Gravitational field only", "Acoustic field", "Thermal field", "None" ] }, { "question": "What element of charge distribution gives zero field outside?", "correct_answer": "Neutral distribution", "incorrect_answers": [ "Positive distribution", "Negative distribution", "Uneven distribution", "Random distribution", "Dipole distribution" ] }, { "question": "What is the field inside a uniformly charged spherical shell?", "correct_answer": "Zero", "incorrect_answers": [ "kQ/r²", "Uniform non-zero", "Variable", "Infinite", "Equal to surface field" ] }, { "question": "What is the field on the surface of a conductor carrying charge?", "correct_answer": "Perpendicular to surface", "incorrect_answers": [ "Parallel to surface", "Zero", "Random", "Circular", "Tangential" ] } ]
+  }
+]

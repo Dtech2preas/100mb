@@ -1,1 +1,134 @@
-h
+[
+  {
+    "question": "What catalyst is used in the Haber process?",
+    "correct_answer": "Iron (Fe) or iron oxide",
+    "incorrect_answers": [
+      "Vanadium pentoxide (V2O5)",
+      "Platinum (Pt)",
+      "Nickel (Ni)",
+      "Manganese dioxide (MnO2)",
+      "Copper (Cu)"
+    ]
+  },
+  {
+    "question": "What is the primary function of nitrogen in NPK fertilisers?",
+    "correct_answer": "Promotes leaf and stem growth.",
+    "incorrect_answers": [
+      "Promotes root development.",
+      "Promotes flower and fruit development.",
+      "Increases disease resistance.",
+      "Improves water retention in the soil.",
+      "Changes soil pH."
+    ]
+  },
+  {
+    "question": "Which industrial process is used to manufacture sulfuric acid?",
+    "correct_answer": "Contact process",
+    "incorrect_answers": [
+      "Haber process",
+      "Ostwald process",
+      "Chlor-alkali process",
+      "Solvay process",
+      "Hall-H\u00e9roult process"
+    ]
+  },
+  {
+    "question": "What is eutrophication?",
+    "correct_answer": "The over-enrichment of a body of water with nutrients, leading to excessive plant growth and oxygen depletion.",
+    "incorrect_answers": [
+      "The depletion of nutrients in soil due to over-farming.",
+      "The process of fixing atmospheric nitrogen.",
+      "The industrial production of ammonia.",
+      "The purification of water using chlorine.",
+      "The breakdown of organic matter by bacteria."
+    ]
+  },
+  {
+    "question": "What catalyst is used in the first step of the Ostwald process (oxidation of ammonia)?",
+    "correct_answer": "Platinum/Rhodium gauze",
+    "incorrect_answers": [
+      "Iron (Fe)",
+      "Vanadium pentoxide (V2O5)",
+      "Nickel (Ni)",
+      "Palladium (Pd)",
+      "Silver (Ag)"
+    ]
+  },
+  {
+    "question": "Which industrial process is used to manufacture ammonia?",
+    "correct_answer": "Haber process",
+    "incorrect_answers": [
+      "Contact process",
+      "Ostwald process",
+      "Chlor-alkali process",
+      "Fractional distillation",
+      "Cracking"
+    ]
+  },
+  {
+    "question": "What does NPK stand for in fertilisers?",
+    "correct_answer": "Nitrogen, Phosphorus, Potassium",
+    "incorrect_answers": [
+      "Neon, Phosphorus, Krypton",
+      "Nitrogen, Potassium, Krypton",
+      "Sodium, Phosphorus, Potassium",
+      "Nitrates, Phosphates, Potassium",
+      "Nitrogen, Phosphorus, Calcium"
+    ]
+  },
+  {
+    "question": "Which type of cell is commonly used in the modern chlor-alkali industry to prevent the products from mixing?",
+    "correct_answer": "Membrane cell",
+    "incorrect_answers": [
+      "Diaphragm cell",
+      "Mercury cell",
+      "Galvanic cell",
+      "Fuel cell",
+      "Daniell cell"
+    ]
+  },
+  {
+    "question": "What are the raw materials used in the chlor-alkali industry?",
+    "correct_answer": "Concentrated sodium chloride solution (brine) and water.",
+    "incorrect_answers": [
+      "Molten sodium chloride.",
+      "Sodium metal and chlorine gas.",
+      "Seawater and sulfuric acid.",
+      "Bauxite and cryolite.",
+      "Limestone and clay."
+    ]
+  },
+  {
+    "question": "What are the three main products of the chlor-alkali process?",
+    "correct_answer": "Chlorine gas, hydrogen gas, and sodium hydroxide.",
+    "incorrect_answers": [
+      "Chlorine gas, oxygen gas, and sodium.",
+      "Hydrogen gas, oxygen gas, and sodium chloride.",
+      "Sodium, chlorine gas, and water.",
+      "Hydrochloric acid, sodium hydroxide, and water.",
+      "Bleach, hydrogen gas, and salt."
+    ]
+  },
+  {
+    "question": "What catalyst is used in the Contact process?",
+    "correct_answer": "Vanadium pentoxide (V2O5)",
+    "incorrect_answers": [
+      "Iron (Fe)",
+      "Platinum (Pt)",
+      "Nickel (Ni)",
+      "Zeolite",
+      "Aluminium oxide (Al2O3)"
+    ]
+  },
+  {
+    "question": "Which industrial process is used to manufacture nitric acid?",
+    "correct_answer": "Ostwald process",
+    "incorrect_answers": [
+      "Haber process",
+      "Contact process",
+      "Chlor-alkali process",
+      "Bayer process",
+      "Frasch process"
+    ]
+  }
+]

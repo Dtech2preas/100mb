@@ -1,5 +1,676 @@
 [
   {
+    "question": "Calculate the momentum of a 4 kg object moving at 5 m/s.",
+    "correct_answer": "20 kg\u00b7m/s",
+    "incorrect_answers": [
+      "40 kg\u00b7m/s",
+      "10.0 kg\u00b7m/s",
+      "9 kg\u00b7m/s",
+      "0.8 kg\u00b7m/s",
+      "1.25 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "What is the definition of a resultant vector?",
+    "correct_answer": "The single vector which has the same effect as the original vectors acting together.",
+    "incorrect_answers": [
+      "The sum of the magnitudes of the vectors.",
+      "The difference between two vectors.",
+      "A vector that acts in the opposite direction.",
+      "The product of two vectors.",
+      "A vector with zero magnitude."
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 5 kg object moving at 3 m/s.",
+    "correct_answer": "15 kg\u00b7m/s",
+    "incorrect_answers": [
+      "30 kg\u00b7m/s",
+      "7.5 kg\u00b7m/s",
+      "8 kg\u00b7m/s",
+      "1.6666666666666667 kg\u00b7m/s",
+      "0.6 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 10 m/s applies its brakes, causing a uniform acceleration of -2 m/s\u00b2. What is the displacement after 2 seconds?",
+    "correct_answer": "16.0 m",
+    "incorrect_answers": [
+      "21.0 m",
+      "11.0 m",
+      "20 m",
+      "-4.0 m",
+      "24 m"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 4 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "30 m/s",
+    "incorrect_answers": [
+      "34 m/s",
+      "26 m/s",
+      "14 m/s",
+      "50 m/s",
+      "20 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 2 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "10 m/s",
+    "incorrect_answers": [
+      "12 m/s",
+      "8 m/s",
+      "2 m/s",
+      "0 m/s",
+      "10 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 5 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "35 m/s",
+    "incorrect_answers": [
+      "40 m/s",
+      "30 m/s",
+      "15 m/s",
+      "50 m/s",
+      "25 m/s"
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 20 m/s applies its brakes, causing a uniform acceleration of -2 m/s\u00b2. What is the displacement after 4 seconds?",
+    "correct_answer": "64.0 m",
+    "incorrect_answers": [
+      "69.0 m",
+      "59.0 m",
+      "80 m",
+      "-16.0 m",
+      "88 m"
+    ]
+  },
+  {
+    "question": "Which of the following is a vector quantity?",
+    "correct_answer": "Velocity",
+    "incorrect_answers": [
+      "Speed",
+      "Mass",
+      "Time",
+      "Energy",
+      "Temperature"
+    ]
+  },
+  {
+    "question": "A net force of 10 N acts on an object of mass 10 kg. What is the acceleration of the object?",
+    "correct_answer": "1.0 m/s\u00b2",
+    "incorrect_answers": [
+      "2.0 m/s\u00b2",
+      "1.0 m/s\u00b2",
+      "100 m/s\u00b2",
+      "2.0 m/s\u00b2",
+      "0.5 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 4 kg object moving at 10 m/s.",
+    "correct_answer": "40 kg\u00b7m/s",
+    "incorrect_answers": [
+      "80 kg\u00b7m/s",
+      "20.0 kg\u00b7m/s",
+      "14 kg\u00b7m/s",
+      "0.4 kg\u00b7m/s",
+      "2.5 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "An applied force of 100 N acts horizontally on a 5 kg block on a rough surface. The kinetic frictional force is 20 N. Calculate the acceleration of the block.",
+    "correct_answer": "16.0 m/s\u00b2",
+    "incorrect_answers": [
+      "20.0 m/s\u00b2",
+      "4.0 m/s\u00b2",
+      "24.0 m/s\u00b2",
+      "32.0 m/s\u00b2",
+      "8.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A 2 kg trolley moving at 4 m/s collides with a stationary 2 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "2.0 m/s",
+    "incorrect_answers": [
+      "4.0 m/s",
+      "4 m/s",
+      "1.0 m/s",
+      "4.0 m/s",
+      "4 m/s"
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 20 m/s applies its brakes, causing a uniform acceleration of -5 m/s\u00b2. What is the displacement after 4 seconds?",
+    "correct_answer": "40.0 m",
+    "incorrect_answers": [
+      "45.0 m",
+      "35.0 m",
+      "80 m",
+      "-40.0 m",
+      "100 m"
+    ]
+  },
+  {
+    "question": "An applied force of 100 N acts horizontally on a 5 kg block on a rough surface. The kinetic frictional force is 10 N. Calculate the acceleration of the block.",
+    "correct_answer": "18.0 m/s\u00b2",
+    "incorrect_answers": [
+      "20.0 m/s\u00b2",
+      "2.0 m/s\u00b2",
+      "22.0 m/s\u00b2",
+      "36.0 m/s\u00b2",
+      "9.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 4 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "8 m/s",
+    "incorrect_answers": [
+      "12 m/s",
+      "4 m/s",
+      "4 m/s",
+      "0 m/s",
+      "8 m/s"
+    ]
+  },
+  {
+    "question": "A person walks 4 km East and then 3 km North. What is the magnitude of their resultant displacement?",
+    "correct_answer": "5 km",
+    "incorrect_answers": [
+      "7 km",
+      "1 km",
+      "25 km",
+      "12 km",
+      "4.5 km"
+    ]
+  },
+  {
+    "question": "What is the acceleration of a projectile in free fall near the Earth's surface? (Ignore air resistance)",
+    "correct_answer": "9.8 m/s\u00b2 downward",
+    "incorrect_answers": [
+      "9.8 m/s\u00b2 upward",
+      "0 m/s\u00b2",
+      "9.8 m/s",
+      "Depends on its mass",
+      "Increasing as it falls"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 5 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "30 m/s",
+    "incorrect_answers": [
+      "35 m/s",
+      "25 m/s",
+      "10 m/s",
+      "25 m/s",
+      "25 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 4 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "22 m/s",
+    "incorrect_answers": [
+      "26 m/s",
+      "18 m/s",
+      "14 m/s",
+      "30 m/s",
+      "12 m/s"
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 4 kg object moving at 3 m/s.",
+    "correct_answer": "12 kg\u00b7m/s",
+    "incorrect_answers": [
+      "24 kg\u00b7m/s",
+      "6.0 kg\u00b7m/s",
+      "7 kg\u00b7m/s",
+      "1.3333333333333333 kg\u00b7m/s",
+      "0.75 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 10 m/s applies its brakes, causing a uniform acceleration of -5 m/s\u00b2. What is the displacement after 4 seconds?",
+    "correct_answer": "0.0 m",
+    "incorrect_answers": [
+      "5.0 m",
+      "-5.0 m",
+      "40 m",
+      "-40.0 m",
+      "60 m"
+    ]
+  },
+  {
+    "question": "A ball is thrown vertically upwards with an initial velocity of 19.6 m/s. How long does it take to reach its maximum height? (Ignore air resistance)",
+    "correct_answer": "2.0 s",
+    "incorrect_answers": [
+      "4.0 s",
+      "1.0 s",
+      "3.0 s",
+      "9.8 s",
+      "1 s"
+    ]
+  },
+  {
+    "question": "A 3 kg trolley moving at 6 m/s collides with a stationary 2 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "3.6 m/s",
+    "incorrect_answers": [
+      "7.2 m/s",
+      "6 m/s",
+      "1.8 m/s",
+      "9.0 m/s",
+      "6 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 4 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "12 m/s",
+    "incorrect_answers": [
+      "16 m/s",
+      "8 m/s",
+      "4 m/s",
+      "0 m/s",
+      "12 m/s"
+    ]
+  },
+  {
+    "question": "What is impulse?",
+    "correct_answer": "Impulse is the product of the net force acting on an object and the time the force acts.",
+    "incorrect_answers": [
+      "Impulse is the object's velocity divided by time.",
+      "Impulse is the change in gravitational energy.",
+      "Impulse is the power exerted over time.",
+      "Impulse is the force divided by acceleration.",
+      "Impulse is work times time."
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 2 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "11 m/s",
+    "incorrect_answers": [
+      "13 m/s",
+      "9 m/s",
+      "7 m/s",
+      "15 m/s",
+      "6 m/s"
+    ]
+  },
+  {
+    "question": "An airplane flies at 200 km/h due North. A crosswind blows at 50 km/h due East. What is the magnitude of the airplane's resultant velocity relative to the ground?",
+    "correct_answer": "206.16 km/h",
+    "incorrect_answers": [
+      "250 km/h",
+      "150 km/h",
+      "200 km/h",
+      "40000 km/h",
+      "50 km/h"
+    ]
+  },
+  {
+    "question": "A stone is projected vertically upwards with a velocity of 20 m/s. What is its maximum height? (Use g = 9.8 m/s\u00b2 and ignore air resistance)",
+    "correct_answer": "20.41 m",
+    "incorrect_answers": [
+      "40.82 m",
+      "2.04 m",
+      "196.0 m",
+      "10.2 m",
+      "40 m"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 5 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "15 m/s",
+    "incorrect_answers": [
+      "20 m/s",
+      "10 m/s",
+      "10 m/s",
+      "10 m/s",
+      "10 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 2 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "15 m/s",
+    "incorrect_answers": [
+      "17 m/s",
+      "13 m/s",
+      "7 m/s",
+      "25 m/s",
+      "10 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 5 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "10 m/s",
+    "incorrect_answers": [
+      "15 m/s",
+      "5 m/s",
+      "5 m/s",
+      "0 m/s",
+      "10 m/s"
+    ]
+  },
+  {
+    "question": "A stone is projected vertically upwards with a velocity of 10 m/s. What is its maximum height? (Use g = 9.8 m/s\u00b2 and ignore air resistance)",
+    "correct_answer": "5.1 m",
+    "incorrect_answers": [
+      "10.2 m",
+      "1.02 m",
+      "98.0 m",
+      "2.55 m",
+      "20 m"
+    ]
+  },
+  {
+    "question": "A net force of 20 N acts on an object of mass 2 kg. What is the acceleration of the object?",
+    "correct_answer": "10.0 m/s\u00b2",
+    "incorrect_answers": [
+      "20.0 m/s\u00b2",
+      "0.1 m/s\u00b2",
+      "40 m/s\u00b2",
+      "11.0 m/s\u00b2",
+      "5.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 10 m/s applies its brakes, causing a uniform acceleration of -5 m/s\u00b2. What is the displacement after 2 seconds?",
+    "correct_answer": "10.0 m",
+    "incorrect_answers": [
+      "15.0 m",
+      "5.0 m",
+      "20 m",
+      "-10.0 m",
+      "30 m"
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 2 kg object moving at 5 m/s.",
+    "correct_answer": "10 kg\u00b7m/s",
+    "incorrect_answers": [
+      "20 kg\u00b7m/s",
+      "5.0 kg\u00b7m/s",
+      "7 kg\u00b7m/s",
+      "0.4 kg\u00b7m/s",
+      "2.5 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "A 2 kg trolley moving at 4 m/s collides with a stationary 1 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "2.67 m/s",
+    "incorrect_answers": [
+      "5.33 m/s",
+      "4 m/s",
+      "1.33 m/s",
+      "8.0 m/s",
+      "4 m/s"
+    ]
+  },
+  {
+    "question": "A stone is projected vertically upwards with a velocity of 30 m/s. What is its maximum height? (Use g = 9.8 m/s\u00b2 and ignore air resistance)",
+    "correct_answer": "45.92 m",
+    "incorrect_answers": [
+      "91.84 m",
+      "3.06 m",
+      "294.0 m",
+      "22.96 m",
+      "60 m"
+    ]
+  },
+  {
+    "question": "A force of 50 N acts at an angle of 30\u00b0 above the horizontal. What is the vertical component of the force? (sin 30\u00b0 = 0.5, cos 30\u00b0 = 0.866)",
+    "correct_answer": "25 N",
+    "incorrect_answers": [
+      "43.3 N",
+      "50 N",
+      "0 N",
+      "100 N",
+      "12.5 N"
+    ]
+  },
+  {
+    "question": "An applied force of 100 N acts horizontally on a 10 kg block on a rough surface. The kinetic frictional force is 20 N. Calculate the acceleration of the block.",
+    "correct_answer": "8.0 m/s\u00b2",
+    "incorrect_answers": [
+      "10.0 m/s\u00b2",
+      "2.0 m/s\u00b2",
+      "12.0 m/s\u00b2",
+      "16.0 m/s\u00b2",
+      "4.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "What does the gradient of a position-time graph represent?",
+    "correct_answer": "Velocity",
+    "incorrect_answers": [
+      "Acceleration",
+      "Displacement",
+      "Speed",
+      "Time",
+      "Distance"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 4 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "17 m/s",
+    "incorrect_answers": [
+      "21 m/s",
+      "13 m/s",
+      "9 m/s",
+      "15 m/s",
+      "12 m/s"
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 2 kg object moving at 10 m/s.",
+    "correct_answer": "20 kg\u00b7m/s",
+    "incorrect_answers": [
+      "40 kg\u00b7m/s",
+      "10.0 kg\u00b7m/s",
+      "12 kg\u00b7m/s",
+      "0.2 kg\u00b7m/s",
+      "5.0 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "A ball is thrown vertically upwards with an initial velocity of 9.8 m/s. How long does it take to reach its maximum height? (Ignore air resistance)",
+    "correct_answer": "1.0 s",
+    "incorrect_answers": [
+      "2.0 s",
+      "0.5 s",
+      "2.0 s",
+      "9.8 s",
+      "1 s"
+    ]
+  },
+  {
+    "question": "A net force of 10 N acts on an object of mass 5 kg. What is the acceleration of the object?",
+    "correct_answer": "2.0 m/s\u00b2",
+    "incorrect_answers": [
+      "4.0 m/s\u00b2",
+      "0.5 m/s\u00b2",
+      "50 m/s\u00b2",
+      "3.0 m/s\u00b2",
+      "1.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 10 m/s applies its brakes, causing a uniform acceleration of -2 m/s\u00b2. What is the displacement after 4 seconds?",
+    "correct_answer": "24.0 m",
+    "incorrect_answers": [
+      "29.0 m",
+      "19.0 m",
+      "40 m",
+      "-16.0 m",
+      "48 m"
+    ]
+  },
+  {
+    "question": "A net force of 50 N acts on an object of mass 2 kg. What is the acceleration of the object?",
+    "correct_answer": "25.0 m/s\u00b2",
+    "incorrect_answers": [
+      "50.0 m/s\u00b2",
+      "0.04 m/s\u00b2",
+      "100 m/s\u00b2",
+      "26.0 m/s\u00b2",
+      "12.5 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 2 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "9 m/s",
+    "incorrect_answers": [
+      "11 m/s",
+      "7 m/s",
+      "7 m/s",
+      "10 m/s",
+      "4 m/s"
+    ]
+  },
+  {
+    "question": "Calculate the momentum of a 2 kg object moving at 3 m/s.",
+    "correct_answer": "6 kg\u00b7m/s",
+    "incorrect_answers": [
+      "12 kg\u00b7m/s",
+      "3.0 kg\u00b7m/s",
+      "5 kg\u00b7m/s",
+      "0.6666666666666666 kg\u00b7m/s",
+      "1.5 kg\u00b7m/s"
+    ]
+  },
+  {
+    "question": "A net force of 50 N acts on an object of mass 5 kg. What is the acceleration of the object?",
+    "correct_answer": "10.0 m/s\u00b2",
+    "incorrect_answers": [
+      "20.0 m/s\u00b2",
+      "0.1 m/s\u00b2",
+      "250 m/s\u00b2",
+      "11.0 m/s\u00b2",
+      "5.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A net force of 10 N acts on an object of mass 2 kg. What is the acceleration of the object?",
+    "correct_answer": "5.0 m/s\u00b2",
+    "incorrect_answers": [
+      "10.0 m/s\u00b2",
+      "0.2 m/s\u00b2",
+      "20 m/s\u00b2",
+      "6.0 m/s\u00b2",
+      "2.5 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A vehicle traveling at 20 m/s applies its brakes, causing a uniform acceleration of -5 m/s\u00b2. What is the displacement after 2 seconds?",
+    "correct_answer": "30.0 m",
+    "incorrect_answers": [
+      "35.0 m",
+      "25.0 m",
+      "40 m",
+      "-10.0 m",
+      "50 m"
+    ]
+  },
+  {
+    "question": "A 2 kg trolley moving at 6 m/s collides with a stationary 2 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "3.0 m/s",
+    "incorrect_answers": [
+      "6.0 m/s",
+      "6 m/s",
+      "1.5 m/s",
+      "6.0 m/s",
+      "6 m/s"
+    ]
+  },
+  {
+    "question": "An applied force of 50 N acts horizontally on a 10 kg block on a rough surface. The kinetic frictional force is 10 N. Calculate the acceleration of the block.",
+    "correct_answer": "4.0 m/s\u00b2",
+    "incorrect_answers": [
+      "5.0 m/s\u00b2",
+      "1.0 m/s\u00b2",
+      "6.0 m/s\u00b2",
+      "8.0 m/s\u00b2",
+      "2.0 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 5 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "25 m/s",
+    "incorrect_answers": [
+      "30 m/s",
+      "20 m/s",
+      "5 m/s",
+      "0 m/s",
+      "25 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 4 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "25 m/s",
+    "incorrect_answers": [
+      "29 m/s",
+      "21 m/s",
+      "9 m/s",
+      "25 m/s",
+      "20 m/s"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 2 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "14 m/s",
+    "incorrect_answers": [
+      "16 m/s",
+      "12 m/s",
+      "12 m/s",
+      "20 m/s",
+      "4 m/s"
+    ]
+  },
+  {
+    "question": "A net force of 50 N acts on an object of mass 10 kg. What is the acceleration of the object?",
+    "correct_answer": "5.0 m/s\u00b2",
+    "incorrect_answers": [
+      "10.0 m/s\u00b2",
+      "0.2 m/s\u00b2",
+      "500 m/s\u00b2",
+      "6.0 m/s\u00b2",
+      "2.5 m/s\u00b2"
+    ]
+  },
+  {
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 4 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "20 m/s",
+    "incorrect_answers": [
+      "24 m/s",
+      "16 m/s",
+      "4 m/s",
+      "0 m/s",
+      "20 m/s"
+    ]
+  },
+  {
+    "question": "Which of the following is a scalar quantity?",
+    "correct_answer": "Distance",
+    "incorrect_answers": [
+      "Displacement",
+      "Velocity",
+      "Acceleration",
+      "Force",
+      "Weight"
+    ]
+  },
+  {
+    "question": "A 3 kg trolley moving at 6 m/s collides with a stationary 1 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "4.5 m/s",
+    "incorrect_answers": [
+      "9.0 m/s",
+      "6 m/s",
+      "2.25 m/s",
+      "18.0 m/s",
+      "6 m/s"
+    ]
+  },
+  {
     "question": "Define momentum.",
     "correct_answer": "Momentum is the product of an object's mass and its velocity.",
     "incorrect_answers": [
@@ -11,2401 +682,311 @@
     ]
   },
   {
-    "question": "Define impulse.",
-    "correct_answer": "Impulse is the product of the net force acting on an object and the time the force acts.",
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 4 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "13 m/s",
     "incorrect_answers": [
-      "Impulse is the object's velocity divided by time.",
-      "Impulse is the change in gravitational energy.",
-      "Impulse is the power exerted over time.",
-      "Impulse is the force divided by acceleration.",
-      "Impulse is work times time."
+      "17 m/s",
+      "9 m/s",
+      "9 m/s",
+      "10 m/s",
+      "8 m/s"
     ]
   },
   {
-    "question": "State the principle of conservation of linear momentum.",
-    "correct_answer": "The total linear momentum of a closed, isolated system remains constant.",
+    "question": "Which physical quantity is a measure of the inertia of a body?",
+    "correct_answer": "Mass",
     "incorrect_answers": [
-      "Momentum increases if the velocity increases.",
-      "Momentum is always zero in a system.",
-      "Momentum is not conserved in elastic collisions.",
-      "Momentum changes only in gravity.",
-      "Momentum is conserved only if mass is constant."
+      "Weight",
+      "Velocity",
+      "Acceleration",
+      "Force",
+      "Momentum"
     ]
   },
   {
-    "question": "Define a system.",
-    "correct_answer": "A system is a group of interacting objects being considered.",
+    "question": "A 2 kg trolley moving at 6 m/s collides with a stationary 1 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "4.0 m/s",
     "incorrect_answers": [
-      "A system is a single object in motion.",
-      "A system is an object at rest.",
-      "A system is only one force.",
-      "A system is any non-physical interaction.",
-      "A system is defined by speed alone."
+      "8.0 m/s",
+      "6 m/s",
+      "2.0 m/s",
+      "12.0 m/s",
+      "6 m/s"
     ]
   },
   {
-    "question": "Define an isolated system.",
-    "correct_answer": "An isolated system is one that does not interact with its surroundings (no external forces).",
+    "question": "An applied force of 50 N acts horizontally on a 5 kg block on a rough surface. The kinetic frictional force is 20 N. Calculate the acceleration of the block.",
+    "correct_answer": "6.0 m/s\u00b2",
     "incorrect_answers": [
-      "A system that is only affected by friction.",
-      "A system with changing energy.",
-      "A system under constant force.",
-      "A system that does work continuously.",
-      "A system with variable mass."
+      "10.0 m/s\u00b2",
+      "4.0 m/s\u00b2",
+      "14.0 m/s\u00b2",
+      "12.0 m/s\u00b2",
+      "3.0 m/s\u00b2"
     ]
   },
   {
-    "question": "Define an inelastic collision.",
-    "correct_answer": "A collision where kinetic energy is not conserved.",
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 5 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "25 m/s",
     "incorrect_answers": [
-      "A collision where mass is lost.",
-      "A collision that involves no forces.",
-      "A collision where momentum is not conserved.",
-      "A collision that is perfectly balanced.",
-      "A collision that does not change speed."
+      "30 m/s",
+      "20 m/s",
+      "15 m/s",
+      "30 m/s",
+      "15 m/s"
     ]
   },
   {
-    "question": "Define a perfectly inelastic collision.",
-    "correct_answer": "A collision in which the objects stick together after colliding.",
+    "question": "What is the velocity of an object thrown vertically upwards when it reaches its maximum height?",
+    "correct_answer": "0 m/s",
     "incorrect_answers": [
-      "A collision where both objects bounce apart.",
-      "A collision where velocity increases.",
-      "A collision without any heat loss.",
-      "A collision with no motion.",
-      "A collision in a vacuum."
+      "9.8 m/s",
+      "-9.8 m/s",
+      "Maximum velocity",
+      "Depends on initial velocity",
+      "9.8 m/s\u00b2"
     ]
   },
   {
-    "question": "Define a perfectly elastic collision.",
-    "correct_answer": "A collision where both momentum and kinetic energy are conserved.",
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 2 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "6 m/s",
     "incorrect_answers": [
-      "A collision where only momentum is conserved.",
-      "A collision where all energy is lost.",
-      "A collision with friction.",
-      "A collision with mass change.",
-      "A collision with no velocity change."
-    ]
-  },
-  {
-    "question": "Define work (physics).",
-    "correct_answer": "Work is the product of force and displacement in the direction of the force.",
-    "incorrect_answers": [
-      "Work is mass times velocity.",
-      "Work is energy minus distance.",
-      "Work is time divided by force.",
-      "Work is force plus distance.",
-      "Work is the object's speed squared."
-    ]
-  },
-  {
-    "question": "State the work-energy theorem.",
-    "correct_answer": "The net work done on an object is equal to the change in its kinetic energy.",
-    "incorrect_answers": [
-      "Work equals the change in gravitational energy.",
-      "Work is equal to momentum times time.",
-      "Work is the total energy of the system.",
-      "Work is not related to motion.",
-      "Work equals the force divided by mass."
-    ]
-  },
-  {
-    "question": "Define power.",
-    "correct_answer": "Power is the rate at which work is done or energy is transferred.",
-    "incorrect_answers": [
-      "Power is energy times time.",
-      "Power is velocity divided by force.",
-      "Power is mass over displacement.",
-      "Power is momentum times distance.",
-      "Power is force times speed."
-    ]
-  },
-  {
-    "question": "Define kinetic energy.",
-    "correct_answer": "Kinetic energy is the energy an object has due to its motion.",
-    "incorrect_answers": [
-      "Kinetic energy is stored in springs.",
-      "Kinetic energy is the energy of heat.",
-      "Kinetic energy is the energy of gravity.",
-      "Kinetic energy is only in solids.",
-      "Kinetic energy is a type of momentum."
-    ]
-  },
-  {
-    "question": "Define potential energy.",
-    "correct_answer": "Potential energy is the stored energy an object has due to its position in a field (e.g., gravitational).",
-    "incorrect_answers": [
-      "Potential energy is motion-based.",
-      "Potential energy is sound energy.",
-      "Potential energy is used up immediately.",
-      "Potential energy is equal to speed squared.",
-      "Potential energy is always zero."
-    ]
-  },
-  {
-    "question": "What is a conservative force?",
-    "correct_answer": "A force for which the work done is path-independent and can be fully recovered.",
-    "incorrect_answers": [
-      "A force that always opposes motion.",
-      "A force that increases with speed.",
-      "A force that causes energy loss.",
-      "A force with changing direction.",
-      "A force that does no work."
-    ]
-  },
-  {
-    "question": "What is a non-conservative force?",
-    "correct_answer": "A force where the work done depends on the path taken, and energy is not fully recoverable.",
-    "incorrect_answers": [
-      "A force that stores energy.",
-      "A force with no direction.",
-      "A force that increases energy.",
-      "A force always equal to gravity.",
-      "A force that follows Newton's first law."
+      "8 m/s",
+      "4 m/s",
+      "2 m/s",
+      "0 m/s",
+      "6 m/s"
     ]
   },
   {
     "question": "State Newton's First Law of Motion.",
-    "correct_answer": "An object remains in a state of rest or uniform motion unless acted upon by a net external force.",
+    "correct_answer": "An object will remain at rest or continue to move at a constant velocity unless acted upon by a net external force.",
     "incorrect_answers": [
-      "An object accelerates unless no force is present.",
-      "An object moves due to energy.",
-      "Force is equal to mass times energy.",
-      "Objects change velocity due to inertia.",
-      "Only gravity affects objects."
+      "For every action, there is an equal and opposite reaction.",
+      "The net force is equal to the rate of change of momentum.",
+      "Force equals mass times acceleration.",
+      "The force of friction opposes motion.",
+      "An object will eventually stop unless a force is continuously applied."
     ]
   },
   {
-    "question": "State Newton’s Second Law of Motion.",
-    "correct_answer": "The net force acting on an object is equal to the rate of change of momentum (F = ma).",
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 2 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "16 m/s",
     "incorrect_answers": [
-      "Force is mass divided by velocity.",
-      "Acceleration causes force to increase.",
-      "Objects move due to gravity alone.",
-      "The net force is always conserved.",
-      "Speed determines force."
+      "18 m/s",
+      "14 m/s",
+      "12 m/s",
+      "30 m/s",
+      "6 m/s"
     ]
   },
   {
-    "question": "State Newton’s Third Law of Motion.",
-    "correct_answer": "For every action, there is an equal and opposite reaction.",
+    "question": "A 3 kg trolley moving at 4 m/s collides with a stationary 1 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "3.0 m/s",
     "incorrect_answers": [
-      "Motion is equal in all directions.",
-      "Force is always attractive.",
-      "Mass causes motion.",
-      "Inertia opposes gravity.",
-      "Energy is equal to speed squared."
+      "6.0 m/s",
+      "4 m/s",
+      "1.5 m/s",
+      "12.0 m/s",
+      "4 m/s"
     ]
   },
-{
-    "question": "What is the definition of work in physics?",
-    "correct_answer": "The product of the net force on an object and the displacement in the force’s direction.",
-    "incorrect_answers": [
-      "The product of mass and acceleration.",
-      "The sum of kinetic and potential energy.",
-      "The force divided by time.",
-      "The change in momentum.",
-      "The energy stored in a spring."
-    ]
-  },
-  {
-    "question": "When is the work done by a force zero?",
-    "correct_answer": "When the force is perpendicular to the displacement.",
-    "incorrect_answers": [
-      "When the force is parallel to displacement.",
-      "When the force is in the direction of motion.",
-      "When the displacement is zero.",
-      "When the force is variable.",
-      "When the mass is constant."
-    ]
-  },
-  {
-    "question": "If you lift a book upward at constant speed, what is the work done by gravity?",
-    "correct_answer": "Negative, equal in magnitude to the lifting work.",
-    "incorrect_answers": [
-      "Positive and equal to lifting work.",
-      "Zero, since speed is constant.",
-      "Positive and double the lifting work.",
-      "Zero, because displacement is upward.",
-      "Negative, but half the lifting work."
-    ]
-  },
-  {
-    "question": "What is the work done by friction when an object slides at constant speed?",
-    "correct_answer": "Negative, equal to the applied work in magnitude.",
-    "incorrect_answers": [
-      "Positive, equal to applied work.",
-      "Zero, because speed is constant.",
-      "Positive, but less than applied work.",
-      "Zero, because friction does no work.",
-      "Negative, but double the applied work."
-    ]
-  },
-  {
-    "question": "The work–energy theorem relates work done to:",
-    "correct_answer": "Change in kinetic energy.",
-    "incorrect_answers": [
-      "Change in potential energy.",
-      "Total mechanical energy.",
-      "Total displacement.",
-      "Total power.",
-      "Impulse."
-    ]
-  },
-  {
-    "question": "What is kinetic energy for a mass m moving at speed v?",
-    "correct_answer": "½ m v²",
-    "incorrect_answers": [
-      "m g v",
-      "m v",
-      "m v²",
-      "½ m g v",
-      "m² v"
-    ]
-  },
-  {
-    "question": "Which expression gives gravitational potential energy near Earth’s surface?",
-    "correct_answer": "m g h",
-    "incorrect_answers": [
-      "½ m g h",
-      "m g / h",
-      "m v h",
-      "m g² h",
-      "m h²"
-    ]
-  },
-  {
-    "question": "What happens to kinetic and potential energy in absence of friction on a pendulum?",
-    "correct_answer": "They interchange but total mechanical energy stays constant.",
-    "incorrect_answers": [
-      "Both increase together.",
-      "Both decrease together.",
-      "Kinetic stays constant, potential changes.",
-      "Potential stays constant, kinetic changes.",
-      "Total energy increases."
-    ]
-  },
-  {
-    "question": "When a spring is compressed, what type of energy increases?",
-    "correct_answer": "Elastic potential energy.",
-    "incorrect_answers": [
-      "Kinetic energy.",
-      "Gravitational potential energy.",
-      "Thermal energy only.",
-      "Chemical energy.",
-      "Electrical energy."
-    ]
-  },
-  {
-    "question": "What is the unit of power in the SI system?",
-    "correct_answer": "Watt (Joule per second)",
-    "incorrect_answers": [
-      "Newton (kg·m/s²)",
-      "Joule (N·m)",
-      "Pascal (N/m²)",
-      "Newton-meter per second (N·m/s)",
-      "Kilogram (kg)"
-    ]
-  },
-  {
-    "question": "How is average power defined?",
-    "correct_answer": "Work done divided by the time interval.",
-    "incorrect_answers": [
-      "Force times displacement.",
-      "Change in energy times time.",
-      "Energy divided by displacement.",
-      "Work done multiplied by time.",
-      "Energy per unit displacement."
-    ]
-  },
-  {
-    "question": "What is instantaneous power?",
-    "correct_answer": "The derivative of work with respect to time.",
-    "incorrect_answers": [
-      "The average over a long interval.",
-      "Force times mass.",
-      "Potential energy per second.",
-      "Momentum per second.",
-      "Energy squared per time."
-    ]
-  },
-  {
-    "question": "If a 2 kg object moves at 3 m/s, what is its kinetic energy?",
-    "correct_answer": "9 J",
-    "incorrect_answers": [
-      "6 J",
-      "18 J",
-      "3 J",
-      "12 J",
-      "4 J"
-    ]
-  },
-  {
-    "question": "What is the change in potential energy when an object of mass m is lowered by height h?",
-    "correct_answer": "−m g h",
-    "incorrect_answers": [
-      "m g h",
-      "0",
-      "−½ m g h",
-      "½ m g h",
-      "m v²/2"
-    ]
-  },
-  {
-    "question": "Which work is done when a person holds a weight stationary?",
-    "correct_answer": "Zero",
-    "incorrect_answers": [
-      "Positive equal to m g h.",
-      "Negative equal to m g h.",
-      "Positive but smaller than m g h.",
-      "Negative but smaller than m g h.",
-      "Constant nonzero."
-    ]
-  },
-  {
-    "question": "When a force and displacement are in opposite directions, work is:",
-    "correct_answer": "Negative",
-    "incorrect_answers": [
-      "Positive",
-      "Zero",
-      "Undefined",
-      "Infinite",
-      "Always equal to force"
-    ]
-  },
-  {
-    "question": "How much work is done lifting 10 kg through 2 m against gravity?",
-    "correct_answer": "196 J",
-    "incorrect_answers": [
-      "98 J",
-      "392 J",
-      "49 J",
-      "20 J",
-      "400 J"
-    ]
-  },
-  {
-    "question": "What is the work done by gravity when an object falls freely through h?",
-    "correct_answer": "m g h",
-    "incorrect_answers": [
-      "−m g h",
-      "0",
-      "½ m g h",
-      "m v²/2",
-      "m g / h"
-    ]
-  },
-  {
-    "question": "Which theorem links net work to kinetic energy change?",
-    "correct_answer": "Work–energy theorem",
-    "incorrect_answers": [
-      "Conservation of energy",
-      "Impulse–momentum theorem",
-      "Conservation of momentum",
-      "Hooke’s law",
-      "Pascal’s principle"
-    ]
-  },
-  {
-    "question": "A 5 N force moves an object 4 m in its direction. How much work is done?",
-    "correct_answer": "20 J",
-    "incorrect_answers": [
-      "9 J",
-      "5 J",
-      "10 J",
-      "2 J",
-      "25 J"
-    ]
-  },
-  {
-    "question": "What is the potential energy at the lowest point of a frictionless roller coaster (relative to start)?",
-    "correct_answer": "Zero",
-    "incorrect_answers": [
-      "Maximum",
-      "Same as start",
-      "Negative maximum",
-      "Equal to kinetic energy",
-      "Undefined"
-    ]
-  },
-  {
-    "question": "When mechanical energy is conserved, what remains constant?",
-    "correct_answer": "Sum of kinetic and potential energies.",
-    "incorrect_answers": [
-      "Kinetic energy only.",
-      "Potential energy only.",
-      "Work done only.",
-      "Force applied only.",
-      "Total displacement."
-    ]
-  },
-  {
-    "question": "If a 100 W motor runs for 10 s, how much energy does it deliver?",
-    "correct_answer": "1000 J",
-    "incorrect_answers": [
-      "100 J",
-      "10 J",
-      "100 kJ",
-      "1 J",
-      "10 kJ"
-    ]
-  },
-  {
-    "question": "What is the work done by a variable force represented by a force–distance graph?",
-    "correct_answer": "Area under the curve.",
-    "incorrect_answers": [
-      "Slope of the curve.",
-      "Width of the curve.",
-      "Height of the curve.",
-      "Perimeter of the curve.",
-      "Maximum force times distance."
-    ]
-  },
-  {
-    "question": "Which quantity has units of Joules?",
-    "correct_answer": "Work",
-    "incorrect_answers": [
-      "Power",
-      "Force",
-      "Pressure",
-      "Frequency",
-      "Velocity"
-    ]
-  },
-  {
-    "question": "What is the gravitational potential energy of a 3 kg object 5 m high?",
-    "correct_answer": "147 J",
-    "incorrect_answers": [
-      "15 J",
-      "75 J",
-      "294 J",
-      "98 J",
-      "3 J"
-    ]
-  },
-  {
-    "question": "When a car brake does negative work on a car, what happens to the car’s energy?",
-    "correct_answer": "Kinetic energy decreases and is dissipated as heat.",
-    "incorrect_answers": [
-      "Potential energy increases.",
-      "Mass increases.",
-      "Momentum increases.",
-      "Energy remains constant.",
-      "Work becomes positive."
-    ]
-  },
-  {
-    "question": "How is instantaneous power related to force and velocity?",
-    "correct_answer": "P = F · v",
-    "incorrect_answers": [
-      "P = F / v",
-      "P = v / F",
-      "P = F + v",
-      "P = F − v",
-      "P = F · t"
-    ]
-  },
-  {
-    "question": "What is the work done by the normal force on a horizontal surface?",
-    "correct_answer": "Zero",
-    "incorrect_answers": [
-      "Positive equal to m g h.",
-      "Negative equal to m g h.",
-      "Equal to friction work.",
-      "Equal to applied force.",
-      "Equal to potential energy."
-    ]
-  },
-  {
-    "question": "If mechanical energy is not conserved, which is present?",
-    "correct_answer": "Nonconservative forces like friction.",
-    "incorrect_answers": [
-      "Only gravity.",
-      "Only spring forces.",
-      "No forces at all.",
-      "Only conservative forces.",
-      "Only inertial forces."
-    ]
-  },
-  {
-    "question": "What is the power output of a 50 J/s device in Watts?",
-    "correct_answer": "50 W",
-    "incorrect_answers": [
-      "5 W",
-      "500 W",
-      "0.5 W",
-      "100 W",
-      "1 W"
-    ]
-  },
-  {
-    "question": "How much work does a 20 N force do over 3 m at 60° to direction of motion?",
-    "correct_answer": "30 J",
-    "incorrect_answers": [
-      "60 J",
-      "40 J",
-      "20 J",
-      "10 J",
-      "0 J"
-    ]
-  },
-  {
-    "question": "What is kinetic energy change if speed doubles?",
-    "correct_answer": "Quadruples",
-    "incorrect_answers": [
-      "Doubles",
-      "Halves",
-      "Remains same",
-      "Triples",
-      "Becomes zero"
-    ]
-  },
-  {
-    "question": "What is the potential energy of a mass at the reference level?",
-    "correct_answer": "Zero",
-    "incorrect_answers": [
-      "Maximum",
-      "Undefined",
-      "Negative",
-      "Equal to kinetic energy",
-      "Equal to work done"
-    ]
-  },
-  {
-    "question": "Which scenario does positive work on an object?",
-    "correct_answer": "Pulling a sled uphill.",
-    "incorrect_answers": [
-      "Holding a book stationary.",
-      "Sliding with friction uphill.",
-      "Pulling a box with perpendicular force.",
-      "Lowering a weight slowly.",
-      "Carrying a weight horizontally."
-    ]
-  },
-  {
-    "question": "What is the average power if 200 J work is done in 4 s?",
-    "correct_answer": "50 W",
-    "incorrect_answers": [
-      "800 W",
-      "200 W",
-      "4 W",
-      "500 W",
-      "2 W"
-    ]
-  },
-  {
-    "question": "Which energy is highest at the top of a frictionless roller coaster?",
-    "correct_answer": "Potential energy",
-    "incorrect_answers": [
-      "Kinetic energy",
-      "Thermal energy",
-      "Elastic energy",
-      "Chemical energy",
-      "Electrical energy"
-    ]
-  },
-  {
-    "question": "The work done by gravity in raising an object is positive when:",
-    "correct_answer": "Object moves downward while force and displacement align.",
-    "incorrect_answers": [
-      "Object moves upward.",
-      "Object remains at rest.",
-      "Force is perpendicular.",
-      "Displacement is zero.",
-      "Object moves horizontally."
-    ]
-  },
-  {
-    "question": "What is the instantaneous power of a 10 N force moving at 2 m/s?",
-    "correct_answer": "20 W",
-    "incorrect_answers": [
-      "5 W",
-      "12 W",
-      "10 W",
-      "2 W",
-      "200 W"
-    ]
-  },
-  {
-    "question": "Which expression represents total mechanical energy?",
-    "correct_answer": "KE + PE",
-    "incorrect_answers": [
-      "KE − PE",
-      "Work × time",
-      "Force × displacement",
-      "Power × time",
-      "Momentum × velocity"
-    ]
-  },
-  {
-    "question": "What is the work done on a mass sliding at constant speed on horizontal ice?",
-    "correct_answer": "Zero net work",
-    "incorrect_answers": [
-      "Positive work by friction",
-      "Negative work by applied force",
-      "Positive work by normal force",
-      "Negative work by gravity",
-      "Positive work by gravity"
-    ]
-  },
-  {
-    "question": "How does adding friction affect conservation of mechanical energy?",
-    "correct_answer": "Total mechanical energy decreases over time.",
-    "incorrect_answers": [
-      "Total mechanical energy increases.",
-      "Mechanical energy remains constant.",
-      "Potential energy is destroyed.",
-      "Kinetic energy becomes potential.",
-      "Work–energy theorem fails."
-    ]
-  },
-  {
-    "question": "A 3 kg object has 45 J kinetic energy. What is its speed?",
-    "correct_answer": "√(30) ≈ 5.48 m/s",
-    "incorrect_answers": [
-      "3 m/s",
-      "15 m/s",
-      "√(15) m/s",
-      "9 m/s",
-      "6 m/s"
-    ]
-  },
-  {
-    "question": "What is the work done by gravity when lifting an object slowly?",
-    "correct_answer": "Negative, equal to m g h",
-    "incorrect_answers": [
-      "Positive, equal to m g h",
-      "Zero",
-      "Positive, equal to ½ m g h",
-      "Negative, equal to ½ m g h",
-      "Positive, equal to 2 m g h"
-    ]
-  },
-  {
-    "question": "Which power output corresponds to lifting 100 kg at 0.5 m/s?",
-    "correct_answer": "490 W",
-    "incorrect_answers": [
-      "50 W",
-      "980 W",
-      "100 W",
-      "245 W",
-      "4900 W"
-    ]
-  },
-  {
-    "question": "In a frictionless pendulum, what is maximum kinetic energy point?",
-    "correct_answer": "Lowest point of the swing",
-    "incorrect_answers": [
-      "Highest point",
-      "Midway on ascent",
-      "At release",
-      "When it stops",
-      "At 45°"
-    ]
-  },
-  {
-    "question": "How much work is done compressing a spring (k) by x?",
-    "correct_answer": "½ k x²",
-    "incorrect_answers": [
-      "k x",
-      "k x²",
-      "½ k x",
-      "m g x",
-      "k / x"
-    ]
-  },
-  {
-    "question": "What is the mechanical energy of a 2 kg object at rest 5 m high?",
-    "correct_answer": "98 J",
-    "incorrect_answers": [
-      "49 J",
-      "0 J",
-      "196 J",
-      "25 J",
-      "10 J"
-    ]
-  },
-  {
-    "question": "When instantaneous power is zero?",
-    "correct_answer": "When either force or velocity is zero.",
-    "incorrect_answers": [
-      "When acceleration is zero.",
-      "When work is positive.",
-      "When energy is conserved.",
-      "When mass is zero.",
-      "When time is zero."
-    ]
-  },
-{
-    "question": "What is the standard acceleration due to gravity near Earth's surface?",
-    "correct_answer": "9.8 m/s² downward",
-    "incorrect_answers": [
-      "9.8 m/s² upward",
-      "9.8 N/kg downward",
-      "10 m/s² upward",
-      "9.8 m/s² sideways",
-      "1 g upward"
-    ]
-  },
-  {
-    "question": "Which equation relates final velocity v, initial velocity u, acceleration a, and time t?",
-    "correct_answer": "v = u + a·t",
-    "incorrect_answers": [
-      "v = u · a · t",
-      "v² = u² + 2a·t",
-      "s = u·t + ½a·t²",
-      "v = u − a·t²",
-      "s = u + a·t"
-    ]
-  },
-  {
-    "question": "Which equation gives displacement s under constant acceleration?",
-    "correct_answer": "s = u·t + ½a·t²",
-    "incorrect_answers": [
-      "s = u + a·t",
-      "s = ut − ½a·t²",
-      "s = v·t + ½a·t²",
-      "v² = u² + 2as",
-      "s = u² + a·t"
-    ]
-  },
-  {
-    "question": "What is the equation that does not include time explicitly?",
-    "correct_answer": "v² = u² + 2a·s",
-    "incorrect_answers": [
-      "s = ut + ½a·t²",
-      "v = u + a·t",
-      "s = vt − ½a·t²",
-      "a = (v − u)/t",
-      "s = u² + v²"
-    ]
-  },
-  {
-    "question": "In free fall, which quantity is zero at the maximum height?",
-    "correct_answer": "Instantaneous velocity",
-    "incorrect_answers": [
-      "Acceleration",
-      "Displacement",
-      "Acceleration due to gravity",
-      "Time",
-      "Initial velocity"
-    ]
-  },
-  {
-    "question": "What is the time to reach maximum height for a projectile thrown upward with initial speed u?",
-    "correct_answer": "t = u/g",
-    "incorrect_answers": [
-      "t = 2u/g",
-      "t = u/(2g)",
-      "t = √(2u/g)",
-      "t = g/u",
-      "t = u²/(2g)"
-    ]
-  },
-  {
-    "question": "How high will a projectile rise if launched upward with speed u?",
-    "correct_answer": "h = u²/(2g)",
-    "incorrect_answers": [
-      "h = 2u/g",
-      "h = u/g",
-      "h = u²/g",
-      "h = u²/(g)",
-      "h = u·t"
-    ]
-  },
   {
-    "question": "What is the total time of flight for vertical throw up and down with initial speed u?",
-    "correct_answer": "2u/g",
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 5 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "15 m/s",
     "incorrect_answers": [
-      "u/g",
-      "u/2g",
-      "u²/g",
-      "g/2u",
-      "u·g"
+      "20 m/s",
+      "10 m/s",
+      "5 m/s",
+      "0 m/s",
+      "15 m/s"
     ]
   },
   {
-    "question": "Which graph shows constant downward acceleration?",
-    "correct_answer": "Acceleration vs. time is a horizontal line at −g",
+    "question": "A car accelerates uniformly from an initial velocity of 0 m/s at a rate of 2 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "4 m/s",
     "incorrect_answers": [
-      "Velocity vs. time is a horizontal line at −g",
-      "Position vs. time is a horizontal line at −g",
-      "Acceleration vs. time is a sloping line",
-      "Velocity vs. time is a parabola",
-      "Position vs. time is linear"
+      "6 m/s",
+      "2 m/s",
+      "2 m/s",
+      "0 m/s",
+      "4 m/s"
     ]
   },
   {
-    "question": "On a velocity vs. time graph for free fall, what is the slope?",
-    "correct_answer": "Constant −g",
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 2 m/s\u00b2 for 5 s. What is its final velocity?",
+    "correct_answer": "20 m/s",
     "incorrect_answers": [
-      "Zero",
-      "v/t",
-      "g upward",
-      "Parabolic",
-      "Variable"
+      "22 m/s",
+      "18 m/s",
+      "12 m/s",
+      "50 m/s",
+      "10 m/s"
     ]
   },
   {
-    "question": "What shape is a position vs. time graph under constant acceleration?",
-    "correct_answer": "Parabola",
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 4 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "18 m/s",
     "incorrect_answers": [
-      "Straight line",
-      "Hyperbola",
-      "Circle",
-      "Exponential curve",
-      "Sinusoid"
+      "22 m/s",
+      "14 m/s",
+      "14 m/s",
+      "20 m/s",
+      "8 m/s"
     ]
   },
   {
-    "question": "If an object is dropped from rest, its initial velocity is:",
-    "correct_answer": "0 m/s",
+    "question": "A 3 kg trolley moving at 4 m/s collides with a stationary 2 kg trolley. They stick together after the collision. What is their common final velocity?",
+    "correct_answer": "2.4 m/s",
     "incorrect_answers": [
-      "g m/s",
-      "g t m/s",
-      "9.8 m/s",
-      "v²/(2g)",
-      "Unknown"
+      "4.8 m/s",
+      "4 m/s",
+      "1.2 m/s",
+      "6.0 m/s",
+      "4 m/s"
     ]
   },
   {
-    "question": "What is the displacement after time t for object dropped from rest?",
-    "correct_answer": "½g·t² downward",
+    "question": "A vehicle traveling at 20 m/s applies its brakes, causing a uniform acceleration of -2 m/s\u00b2. What is the displacement after 2 seconds?",
+    "correct_answer": "36.0 m",
     "incorrect_answers": [
-      "g·t² upward",
-      "g·t² downward",
-      "½u·t²",
-      "u·t",
-      "gt"
+      "41.0 m",
+      "31.0 m",
+      "40 m",
+      "-4.0 m",
+      "44 m"
     ]
   },
   {
-    "question": "Which quantity is negative for a projectile thrown upward when moving upward?",
-    "correct_answer": "Acceleration",
+    "question": "Two forces, 10 N East and 6 N West, act simultaneously on an object. What is the resultant force?",
+    "correct_answer": "4 N East",
     "incorrect_answers": [
-      "Displacement",
-      "Time",
-      "Initial speed",
-      "Velocity",
-      "Maximum height"
+      "16 N East",
+      "4 N West",
+      "16 N West",
+      "60 N",
+      "10 N East"
     ]
   },
   {
-    "question": "What is the velocity of a free-falling object after time t from rest?",
-    "correct_answer": "v = g·t downward",
+    "question": "Calculate the momentum of a 5 kg object moving at 10 m/s.",
+    "correct_answer": "50 kg\u00b7m/s",
     "incorrect_answers": [
-      "v = ½g·t",
-      "v = g·t upward",
-      "v = g·t²",
-      "v = u + g·t",
-      "v = t/(2g)"
+      "100 kg\u00b7m/s",
+      "25.0 kg\u00b7m/s",
+      "15 kg\u00b7m/s",
+      "0.5 kg\u00b7m/s",
+      "2.0 kg\u00b7m/s"
     ]
   },
   {
-    "question": "If a ball is thrown downward with initial speed u, its velocity after time t is:",
-    "correct_answer": "v = u + g·t downward",
+    "question": "A car accelerates uniformly from an initial velocity of 5 m/s at a rate of 5 m/s\u00b2 for 3 s. What is its final velocity?",
+    "correct_answer": "20 m/s",
     "incorrect_answers": [
-      "v = u − g·t downward",
-      "v = u + ½g·t",
-      "v = g·t − u",
-      "v = u + g·t upward",
-      "v = ut + gt"
+      "25 m/s",
+      "15 m/s",
+      "10 m/s",
+      "15 m/s",
+      "15 m/s"
     ]
   },
   {
-    "question": "What is the displacement of a ball thrown downward with initial speed u after time t?",
-    "correct_answer": "s = u·t + ½g·t² downward",
+    "question": "A net force of 20 N acts on an object of mass 5 kg. What is the acceleration of the object?",
+    "correct_answer": "4.0 m/s\u00b2",
     "incorrect_answers": [
-      "s = u·t − ½g·t²",
-      "s = ½u·t²",
-      "s = g·t²",
-      "s = ut",
-      "s = ½gt² upward"
+      "8.0 m/s\u00b2",
+      "0.25 m/s\u00b2",
+      "100 m/s\u00b2",
+      "5.0 m/s\u00b2",
+      "2.0 m/s\u00b2"
     ]
   },
   {
-    "question": "How does the time to fall from height h compare to rise time from ground to same height?",
-    "correct_answer": "They are equal.",
+    "question": "A car accelerates uniformly from an initial velocity of 10 m/s at a rate of 5 m/s\u00b2 for 2 s. What is its final velocity?",
+    "correct_answer": "20 m/s",
     "incorrect_answers": [
-      "Fall time is half rise time.",
-      "Fall time is double rise time.",
-      "Fall time is zero.",
-      "They differ depending on u.",
-      "Fall time is g-dependent only."
+      "25 m/s",
+      "15 m/s",
+      "15 m/s",
+      "20 m/s",
+      "10 m/s"
     ]
   },
   {
-    "question": "What is the average velocity for free fall from rest over time t?",
-    "correct_answer": "½g·t downward",
+    "question": "A net force of 20 N acts on an object of mass 10 kg. What is the acceleration of the object?",
+    "correct_answer": "2.0 m/s\u00b2",
     "incorrect_answers": [
-      "g·t downward",
-      "g·t upward",
-      "g·t²",
-      "u/max",
-      "0"
+      "4.0 m/s\u00b2",
+      "0.5 m/s\u00b2",
+      "200 m/s\u00b2",
+      "3.0 m/s\u00b2",
+      "1.0 m/s\u00b2"
     ]
   },
   {
-    "question": "Which statement about free fall is correct?",
-    "correct_answer": "All objects accelerate at g regardless of mass (neglecting air resistance).",
+    "question": "An applied force of 100 N acts horizontally on a 10 kg block on a rough surface. The kinetic frictional force is 10 N. Calculate the acceleration of the block.",
+    "correct_answer": "9.0 m/s\u00b2",
     "incorrect_answers": [
-      "Heavier objects fall faster.",
-      "Lighter objects fall faster.",
-      "Acceleration depends on shape.",
-      "Velocity is constant.",
-      "Displacement is linear"
+      "10.0 m/s\u00b2",
+      "1.0 m/s\u00b2",
+      "11.0 m/s\u00b2",
+      "18.0 m/s\u00b2",
+      "4.5 m/s\u00b2"
     ]
   },
   {
-    "question": "In a velocity vs. time graph for upward throw, what is the intercept?",
-    "correct_answer": "Initial velocity u",
+    "question": "A ball is thrown vertically upwards with an initial velocity of 29.4 m/s. How long does it take to reach its maximum height? (Ignore air resistance)",
+    "correct_answer": "2.9999999999999996 s",
     "incorrect_answers": [
-      "Zero",
-      "−g",
-      "Maximum height",
-      "Time to fall",
-      "g·t"
+      "5.999999999999999 s",
+      "1.4999999999999998 s",
+      "3.9999999999999996 s",
+      "9.8 s",
+      "1 s"
     ]
   },
   {
-    "question": "What does the area under a velocity vs. time curve represent?",
+    "question": "What does the area under a velocity-time graph represent?",
     "correct_answer": "Displacement",
     "incorrect_answers": [
       "Acceleration",
-      "Velocity change",
-      "Time",
+      "Velocity",
+      "Jerk",
       "Force",
-      "Energy"
+      "Momentum"
     ]
   },
   {
-    "question": "For an object thrown upward, what is the sign of displacement at maximum height relative to launch point?",
-    "correct_answer": "Positive",
+    "question": "An applied force of 50 N acts horizontally on a 10 kg block on a rough surface. The kinetic frictional force is 20 N. Calculate the acceleration of the block.",
+    "correct_answer": "3.0 m/s\u00b2",
     "incorrect_answers": [
-      "Zero",
-      "Negative",
-      "Undefined",
-      "Depends on time",
-      "Depends on mass"
+      "5.0 m/s\u00b2",
+      "2.0 m/s\u00b2",
+      "7.0 m/s\u00b2",
+      "6.0 m/s\u00b2",
+      "1.5 m/s\u00b2"
     ]
   },
   {
-    "question": "Which of these is not a valid kinematic equation for vertical motion?",
-    "correct_answer": "v = u² + 2gt",
+    "question": "Calculate the momentum of a 5 kg object moving at 5 m/s.",
+    "correct_answer": "25 kg\u00b7m/s",
     "incorrect_answers": [
-      "v = u + gt",
-      "s = ut + ½gt²",
-      "v² = u² + 2gs",
-      "a = (v − u)/t",
-      "s = vt − ½gt²"
+      "50 kg\u00b7m/s",
+      "12.5 kg\u00b7m/s",
+      "10 kg\u00b7m/s",
+      "1.0 kg\u00b7m/s",
+      "1.0 kg\u00b7m/s"
     ]
   },
   {
-    "question": "What is the velocity squared at maximum height for upward projectile?",
-    "correct_answer": "0",
+    "question": "An applied force of 50 N acts horizontally on a 5 kg block on a rough surface. The kinetic frictional force is 10 N. Calculate the acceleration of the block.",
+    "correct_answer": "8.0 m/s\u00b2",
     "incorrect_answers": [
-      "u²",
-      "2gh",
-      "g·t²",
-      "u + gt",
-      "u·g"
-    ]
-  },
-  {
-    "question": "On a position vs. time graph for upward throw, how does position change after launch?",
-    "correct_answer": "Increases, then decreases symmetrically.",
-    "incorrect_answers": [
-      "Decreases linearly.",
-      "Stays constant.",
-      "Oscillates.",
-      "Increases exponentially.",
-      "Decreases then increases."
-    ]
-  },
-  {
-    "question": "What is the slope of a position vs. time graph at any instant?",
-    "correct_answer": "Instantaneous velocity",
-    "incorrect_answers": [
-      "Instantaneous acceleration",
-      "Average velocity",
-      "Average acceleration",
-      "Displacement",
-      "Time rate"
-    ]
-  },
-  {
-    "question": "Which best describes a velocity vs. time graph of free-fall throw up?",
-    "correct_answer": "Straight line with slope −g crossing zero at top.",
-    "incorrect_answers": [
-      "Parabola opening upward.",
-      "Horizontal line at u.",
-      "Sine curve.",
-      "Hyperbola.",
-      "Exponential decay."
-    ]
-  },
-  {
-    "question": "What is the acceleration vs. time graph for vertical motion with air resistance neglected?",
-    "correct_answer": "Horizontal line at −g.",
-    "incorrect_answers": [
-      "Horizontal line at +g.",
-      "Linearly decreasing line.",
-      "Parabola shape.",
-      "Sinusoidal wave.",
-      "Vertical line."
-    ]
-  },
-  {
-    "question": "Which point on v–t graph corresponds to maximum height?",
-    "correct_answer": "Where v = 0",
-    "incorrect_answers": [
-      "Where a = 0",
-      "Where t = 0",
-      "Where s = 0",
-      "Where slope is maximum",
-      "Where curvature is maximum"
-    ]
-  },
-  {
-    "question": "What is the instantaneous acceleration at top of projectile when air resistance is negligible?",
-    "correct_answer": "−g",
-    "incorrect_answers": [
-      "0",
-      "+g",
-      "Depends on u",
-      "Depends on height",
-      "Cannot be determined"
-    ]
-  },
-  {
-    "question": "Which graph shows symmetric ascent and descent times?",
-    "correct_answer": "Position vs. time is symmetric about peak.",
-    "incorrect_answers": [
-      "Acceleration vs. time symmetric.",
-      "Velocity vs. time symmetric.",
-      "Force vs. time symmetric.",
-      "Energy vs. time symmetric.",
-      "Displacement vs. velocity symmetric."
-    ]
-  },
-  {
-    "question": "What does negative area under velocity–time graph indicate?",
-    "correct_answer": "Displacement in negative direction",
-    "incorrect_answers": [
-      "Negative acceleration",
-      "Negative time",
-      "Negative energy",
-      "Negative force",
-      "No motion"
-    ]
-  },
-  {
-    "question": "If a ball is thrown upward with 20 m/s, how long until it returns to launch height?",
-    "correct_answer": "4.08 s",
-    "incorrect_answers": [
-      "2.04 s",
-      "9.8 s",
-      "20 s",
-      "1.02 s",
-      "5 s"
-    ]
-  },
-  {
-    "question": "What is the maximum height reached by a ball thrown at 20 m/s?",
-    "correct_answer": "20.4 m",
-    "incorrect_answers": [
-      "10 m",
-      "40.8 m",
-      "9.8 m",
-      "20 m",
-      "30 m"
-    ]
-  },
-  {
-    "question": "Which describes vertical motion of a dropped object from rest?",
-    "correct_answer": "s ∝ t²",
-    "incorrect_answers": [
-      "s ∝ t",
-      "v ∝ t²",
-      "v ∝ t³",
-      "a ∝ t",
-      "a ∝ t²"
-    ]
-  },
-  {
-    "question": "What is the initial acceleration of a thrown ball at t = 0?",
-    "correct_answer": "−g",
-    "incorrect_answers": [
-      "0",
-      "+g",
-      "u/t",
-      "u",
-      "Depends on v"
-    ]
-  },
-  {
-    "question": "How is instantaneous displacement determined from a velocity–time graph?",
-    "correct_answer": "By computing the area under the curve",
-    "incorrect_answers": [
-      "By measuring the slope",
-      "By finding the slope at peak",
-      "By reading the intercept",
-      "By computing curvature",
-      "By summing velocities"
-    ]
-  },
-  {
-    "question": "If v = u − g·t, what is the intercept on v–t graph?",
-    "correct_answer": "u",
-    "incorrect_answers": [
-      "−g",
-      "0",
-      "g·t",
-      "s",
-      "−u"
-    ]
-  },
-  {
-    "question": "A stone is released from rest at height h. What is its speed just before impact?",
-    "correct_answer": "√(2gh)",
-    "incorrect_answers": [
-      "gh",
-      "gh/2",
-      "g·t",
-      "gt²",
-      "g/h"
-    ]
-  },
-  {
-    "question": "What is the shape of the acceleration vs. time graph for any vertical motion in vacuum?",
-    "correct_answer": "Constant horizontal line",
-    "incorrect_answers": [
-      "Upward parabola",
-      "Downward parabola",
-      "Sloping line up",
-      "Sloping line down",
-      "Sine wave"
-    ]
-  },
-  {
-    "question": "What is the average acceleration for free fall from rest over time t?",
-    "correct_answer": "−g",
-    "incorrect_answers": [
-      "0",
-      "−g/2",
-      "g/2",
-      "g",
-      "Depends on t"
-    ]
-  },
-  {
-    "question": "Which graph segment corresponds to deceleration during ascent?",
-    "correct_answer": "Negative slope on v–t graph",
-    "incorrect_answers": [
-      "Positive slope on v–t graph",
-      "Horizontal segment on v–t graph",
-      "Vertical segment on s–t graph",
-      "Curved segment on a–t graph",
-      "Sinusoidal segment on v–t graph"
-    ]
-  },
-  {
-    "question": "How does the displacement–time graph behave for constant negative acceleration?",
-    "correct_answer": "Concave downward parabola",
-    "incorrect_answers": [
-      "Concave upward parabola",
-      "Straight line",
-      "Exponential decay",
-      "Circular arc",
-      "Sinusoid"
-    ]
-  },
-  {
-    "question": "What is the significance of the inflection point on an s–t graph for vertical motion?",
-    "correct_answer": "None; parabolic s–t has no inflection",
-    "incorrect_answers": [
-      "Time of maximum height",
-      "Point of zero acceleration",
-      "Change of concavity",
-      "Change of direction",
-      "Maximum velocity"
-    ]
-  },
-{
-    "question": "What is the SI unit of linear momentum?",
-    "correct_answer": "Kilogram metre per second (kg·m/s)",
-    "incorrect_answers": [
-      "Newton metre (N·m)",
-      "Joule (J)",
-      "Watt (W)",
-      "Pascal (Pa)",
-      "Kilogram second (kg·s)"
-    ]
-  },
-  {
-    "question": "Which expression gives the vector nature of momentum?",
-    "correct_answer": "p = m · v (with direction of v)",
-    "incorrect_answers": [
-      "p = F · t",
-      "p = v / m",
-      "p = m + v",
-      "p = m / t",
-      "p = m² · v"
-    ]
-  },
-  {
-    "question": "According to the conservation of momentum, when is total momentum constant?",
-    "correct_answer": "When no external forces act on the system.",
-    "incorrect_answers": [
-      "When energy is added continuously.",
-      "If objects remain at rest.",
-      "When mass changes in the system.",
-      "Only in elastic collisions.",
-      "If velocity is constant."
-    ]
-  },
-  {
-    "question": "In a perfectly inelastic 1D collision, what happens?",
-    "correct_answer": "The two bodies stick and move together.",
-    "incorrect_answers": [
-      "They bounce off with equal speeds.",
-      "They exchange velocities fully.",
-      "They separate with no energy loss.",
-      "They reverse direction instantly.",
-      "They pass through each other."
-    ]
-  },
-  {
-    "question": "Which quantity is always conserved in both elastic and inelastic collisions (absent external forces)?",
-    "correct_answer": "Total momentum",
-    "incorrect_answers": [
-      "Total kinetic energy",
-      "Total speed",
-      "Total displacement",
-      "Total acceleration",
-      "Total velocity"
-    ]
-  },
-  {
-    "question": "How is impulse defined?",
-    "correct_answer": "Product of net force and time interval.",
-    "incorrect_answers": [
-      "Force divided by velocity.",
-      "Mass times acceleration.",
-      "Energy per unit distance.",
-      "Velocity multiplied by distance.",
-      "Power over time."
-    ]
-  },
-  {
-    "question": "What effect does a short, large force have compared to a small force over a long time, if impulse is same?",
-    "correct_answer": "Both yield the same change in momentum.",
-    "incorrect_answers": [
-      "The short force changes direction.",
-      "Long force increases mass.",
-      "Only the large force changes energy.",
-      "Only the long force conserves momentum.",
-      "They produce different impulses."
-    ]
-  },
-  {
-    "question": "Which scenario describes an elastic collision in 1D?",
-    "correct_answer": "Two billiard balls striking and separating.",
-    "incorrect_answers": [
-      "Clay blobs merging on impact.",
-      "Cars crumpling after crash.",
-      "Mud splats sticking.",
-      "Dough pieces fusing.",
-      "Gum balls gluing together."
-    ]
-  },
-  {
-    "question": "What does the change in momentum equal?",
-    "correct_answer": "Impulse applied.",
-    "incorrect_answers": [
-      "Force squared.",
-      "Kinetic energy lost.",
-      "Velocity times mass squared.",
-      "Distance times force.",
-      "Power times time."
-    ]
-  },
-  {
-    "question": "If a 2 kg object moves at 3 m/s east, what is its momentum?",
-    "correct_answer": "6 kg·m/s east",
-    "incorrect_answers": [
-      "5 kg·m/s west",
-      "6 kg·m/s north",
-      "3 kg·m/s east",
-      "9 kg·m/s east",
-      "6 kg·m/s (no direction)"
-    ]
-  },
-  {
-    "question": "What is true for momentum vectors of two objects before collision in an isolated system?",
-    "correct_answer": "Their vector sum equals the sum after.",
-    "incorrect_answers": [
-      "Each is unchanged individually.",
-      "One reverses direction.",
-      "They always cancel out.",
-      "They add to zero.",
-      "They rotate by 90°."
-    ]
-  },
-  {
-    "question": "Which is a scalar quantity?",
-    "correct_answer": "Impulse magnitude",
-    "incorrect_answers": [
-      "Momentum vector",
-      "Velocity vector",
-      "Force vector",
-      "Displacement vector",
-      "Acceleration vector"
-    ]
-  },
-  {
-    "question": "During a collision, momentum is conserved in which direction?",
-    "correct_answer": "Along the line of impact.",
-    "incorrect_answers": [
-      "Perpendicular to force.",
-      "At right angles always.",
-      "Upward only.",
-      "Circularly around center.",
-      "Diagonally always."
-    ]
-  },
-  {
-    "question": "Which condition is necessary for conservation of momentum?",
-    "correct_answer": "No net external impulse.",
-    "incorrect_answers": [
-      "No gravity present.",
-      "Velocities equal.",
-      "Mass constant only.",
-      "Energy constant only.",
-      "Distance small."
-    ]
-  },
-  {
-    "question": "How does a perfectly elastic collision differ from a perfectly inelastic one?",
-    "correct_answer": "Kinetic energy is conserved only in elastic.",
-    "incorrect_answers": [
-      "Momentum lost in elastic.",
-      "Mass lost in elastic.",
-      "Force disappears in elastic.",
-      "Time stops in elastic.",
-      "Velocity resets in elastic."
-    ]
-  },
-  {
-    "question": "What is the impulse on a 5 N force acting for 4 s?",
-    "correct_answer": "20 N·s",
-    "incorrect_answers": [
-      "1.25 N·s",
-      "9 N·s",
-      "5 N·s",
-      "20 J",
-      "20 kg·m"
-    ]
-  },
-  {
-    "question": "Which law explains why a gun recoils when fired?",
-    "correct_answer": "Conservation of momentum.",
-    "incorrect_answers": [
-      "Newton’s law of cooling.",
-      "Conservation of energy.",
-      "Hooke’s law.",
-      "Law of gravitation.",
-      "Ohm’s law."
-    ]
-  },
-  {
-    "question": "How is vector momentum represented graphically?",
-    "correct_answer": "Arrow whose length ∝ magnitude and orientation ∝ direction.",
-    "incorrect_answers": [
-      "Circle area ∝ magnitude.",
-      "Bar height ∝ direction.",
-      "Line thickness ∝ magnitude.",
-      "Pie slice angle ∝ direction.",
-      "Dot size ∝ magnitude."
-    ]
-  },
-  {
-    "question": "What happens to momentum when two equal masses collide elastically head-on with equal and opposite speeds?",
-    "correct_answer": "Each reverses speed, so total stays zero.",
-    "incorrect_answers": [
-      "They stick and remain at rest.",
-      "They both stop momentarily.",
-      "Speeds double in same direction.",
-      "Total becomes nonzero.",
-      "They spiral outward."
-    ]
-  },
-  {
-    "question": "Which factor does NOT affect impulse?",
-    "correct_answer": "Mass of Earth.",
-    "incorrect_answers": [
-      "Magnitude of force.",
-      "Time over which force acts.",
-      "Net external force.",
-      "Contact duration.",
-      "Impulse itself."
-    ]
-  },
-  {
-    "question": "What is the result if impulse is zero?",
-    "correct_answer": "No change in momentum.",
-    "incorrect_answers": [
-      "Maximum speed reached.",
-      "Mass doubles.",
-      "Direction reverses.",
-      "Energy lost.",
-      "Time stops."
-    ]
-  },
-  {
-    "question": "Which property distinguishes elastic from inelastic collisions?",
-    "correct_answer": "Kinetic energy conservation.",
-    "incorrect_answers": [
-      "Mass conservation.",
-      "Velocity magnitude.",
-      "Momentum sign.",
-      "Force sign.",
-      "Time interval."
-    ]
-  },
-  {
-    "question": "If two objects collide and stick, what type of collision occurred?",
-    "correct_answer": "Perfectly inelastic collision.",
-    "incorrect_answers": [
-      "Elastic collision.",
-      "Superelastic collision.",
-      "Explosive separation.",
-      "Partially elastic collision.",
-      "Reversible collision."
-    ]
-  },
-  {
-    "question": "How do you compute the total momentum of two bodies moving in 1D?",
-    "correct_answer": "Sum of their individual momenta algebraically.",
-    "incorrect_answers": [
-      "Multiply their momenta.",
-      "Subtract smaller from larger.",
-      "Add magnitudes only.",
-      "Divide by total mass.",
-      "Average their speeds."
-    ]
-  },
-  {
-    "question": "What is required to change an object’s momentum?",
-    "correct_answer": "An impulse.",
-    "incorrect_answers": [
-      "A displacement.",
-      "Uniform motion.",
-      "No atmosphere.",
-      "Constant speed.",
-      "Zero force."
-    ]
-  },
-  {
-    "question": "Which statement about impulse and area under a force–time graph is correct?",
-    "correct_answer": "Impulse equals area under the curve.",
-    "incorrect_answers": [
-      "Impulse equals peak force.",
-      "Impulse equals time only.",
-      "Impulse equals force only.",
-      "Impulse equals slope.",
-      "Impulse equals y-intercept."
-    ]
-  },
-  {
-    "question": "A force acts on a 4 kg mass, changing its velocity from 3 m/s to 7 m/s. What impulse occurred?",
-    "correct_answer": "16 N·s",
-    "incorrect_answers": [
-      "10 N·s",
-      "4 N·s",
-      "28 N·s",
-      "12 J",
-      "16 kg·m"
-    ]
-  },
-  {
-    "question": "During an elastic collision, what happens to internal energy?",
-    "correct_answer": "Remains unchanged.",
-    "incorrect_answers": [
-      "Increases always.",
-      "Decreases to zero.",
-      "Converts to mass.",
-      "Dissipates as heat.",
-      "Doubles immediately."
-    ]
-  },
-  {
-    "question": "Which momentum component changes when a car turns left on a frictionless track?",
-    "correct_answer": "Direction only.",
-    "incorrect_answers": [
-      "Magnitude only.",
-      "Mass only.",
-      "Time component.",
-      "Energy component.",
-      "Speed only."
-    ]
-  },
-  {
-    "question": "What is the combined momentum of a 1 kg mass at 2 m/s and a 3 kg mass at –1 m/s?",
-    "correct_answer": "–1 kg·m/s",
-    "incorrect_answers": [
-      "1 kg·m/s",
-      "5 kg·m/s",
-      "–5 kg·m/s",
-      "3 kg·m/s",
-      "0 kg·m/s"
-    ]
-  },
-  {
-    "question": "If two carts of different masses collide elastically, which remains constant?",
-    "correct_answer": "Total momentum and total KE.",
-    "incorrect_answers": [
-      "Individual speeds.",
-      "Individual momenta.",
-      "Relative separation.",
-      "Net force.",
-      "External impulse."
-    ]
-  },
-  {
-    "question": "How does impulse relate to area if force is not constant?",
-    "correct_answer": "Integral of force over time.",
-    "incorrect_answers": [
-      "Force peak times duration.",
-      "Force divided by time.",
-      "Time squared times force.",
-      "Force minus time.",
-      "Average force only."
-    ]
-  },
-  {
-    "question": "What does a negative impulse indicate?",
-    "correct_answer": "Momentum decreased in chosen direction.",
-    "incorrect_answers": [
-      "Mass decreased.",
-      "Time reversed.",
-      "Force was zero.",
-      "Speed increased.",
-      "Energy input."
-    ]
-  },
-  {
-    "question": "Why do rockets use staged separation to conserve momentum?",
-    "correct_answer": "To shed mass and maintain thrust efficiency.",
-    "incorrect_answers": [
-      "To increase gravitational pull.",
-      "To reduce velocity.",
-      "To change direction only.",
-      "To store energy.",
-      "To slow descent."
-    ]
-  },
-  {
-    "question": "A bullet of mass 0.01 kg strikes and embeds in a 0.99 kg block at rest. If the combined speed is 1 m/s, what was bullet speed before?",
-    "correct_answer": "100 m/s",
-    "incorrect_answers": [
-      "1 m/s",
-      "0.01 m/s",
-      "10 m/s",
-      "0.1 m/s",
-      "50 m/s"
-    ]
-  },
-  {
-    "question": "Which collision converts some KE into internal energy?",
-    "correct_answer": "Inelastic collision.",
-    "incorrect_answers": [
-      "Elastic collision.",
-      "Perfectly elastic collision.",
-      "Superelastic collision.",
-      "Magnetic collision.",
-      "Frictionless collision."
-    ]
-  },
-  {
-    "question": "What kind of collision has coefficient of restitution equal to zero?",
-    "correct_answer": "Perfectly inelastic collision.",
-    "incorrect_answers": [
-      "Perfectly elastic collision.",
-      "Partially elastic collision.",
-      "Superelastic collision.",
-      "Frictionless collision.",
-      "Explosive separation."
-    ]
-  },
-  {
-    "question": "Which parameter does NOT change in an isolated system?",
-    "correct_answer": "Total momentum.",
-    "incorrect_answers": [
-      "Total temperature.",
-      "Total volume.",
-      "Total charge.",
-      "Total pressure.",
-      "Total speed."
-    ]
-  },
-  {
-    "question": "How is average force calculated from impulse Δp over Δt?",
-    "correct_answer": "F_avg = Δp/Δt",
-    "incorrect_answers": [
-      "F_avg = Δt/Δp",
-      "F_avg = Δp × Δt",
-      "F_avg = p · t",
-      "F_avg = m · a",
-      "F_avg = v/t"
-    ]
-  },
-  {
-    "question": "Which collision in 1D has maximum rebound speed?",
-    "correct_answer": "Elastic collision with equal masses.",
-    "incorrect_answers": [
-      "Inelastic collision.",
-      "Perfectly inelastic collision.",
-      "Collision with massless object.",
-      "Sticky collision.",
-      "Superelastic collision."
-    ]
-  },
-  {
-    "question": "What determines the sign of impulse?",
-    "correct_answer": "Direction of force relative to chosen axis.",
-    "incorrect_answers": [
-      "Magnitude of mass only.",
-      "Size of object.",
-      "Distance covered.",
-      "Time alone.",
-      "Speed only."
-    ]
-  },
-  {
-    "question": "In a two-body system, if body A exerts impulse on B, what does B exert on A?",
-    "correct_answer": "Equal and opposite impulse.",
-    "incorrect_answers": [
-      "Twice the impulse.",
-      "No impulse.",
-      "Half the impulse.",
-      "Infinite impulse.",
-      "Impulse in same direction."
-    ]
-  },
-  {
-    "question": "Why is momentum a vector but mass is not?",
-    "correct_answer": "Momentum depends on velocity direction.",
-    "incorrect_answers": [
-      "Mass changes direction.",
-      "Mass is time-dependent.",
-      "Momentum has no units.",
-      "Mass depends on speed.",
-      "Momentum is scalar."
-    ]
-  },
-  {
-    "question": "Which is NOT a valid way to increase impulse on an object?",
-    "correct_answer": "Reducing force but shortening time so product unchanged.",
-    "incorrect_answers": [
-      "Applying a larger force.",
-      "Extending the contact time.",
-      "Applying the same force twice.",
-      "Applying force in opposite direction.",
-      "Increasing duration of impact."
-    ]
-  },
-  {
-    "question": "What is the coefficient of restitution for a perfectly elastic collision?",
-    "correct_answer": "One",
-    "incorrect_answers": [
-      "Zero",
-      "Greater than one",
-      "Between zero and one",
-      "Minus one",
-      "Undefined"
-    ]
-  },
-  {
-    "question": "A car traveling east collides with a truck traveling west. Total momentum before collision is zero. What is it afterward?",
-    "correct_answer": "Zero",
-    "incorrect_answers": [
-      "Positive",
-      "Negative",
-      "Infinite",
-      "Depends on speed",
-      "Depends on mass"
-    ]
-  },
-  {
-    "question": "What ensures real-world collisions are never perfectly elastic?",
-    "correct_answer": "Some kinetic energy always converts to heat or sound.",
-    "incorrect_answers": [
-      "Mass is lost.",
-      "Momentum disappears.",
-      "Time reverses.",
-      "Velocity doubles.",
-      "Direction is random."
-    ]
-  },
-  {
-    "question": "When hockey puck and stick collide, which is conserved?",
-    "correct_answer": "Total momentum of puck+stick if no external force.",
-    "incorrect_answers": [
-      "Total speed of puck only.",
-      "Energy in stick only.",
-      "Momentum of puck only.",
-      "Momentum if friction present.",
-      "Velocity magnitude."
-    ]
-  },
-  {
-    "question": "In a force–time graph, what does a steeper slope represent?",
-    "correct_answer": "Rate of change of force with time.",
-    "incorrect_answers": [
-      "Higher impulse directly.",
-      "Greater distance covered.",
-      "Constant momentum.",
-      "Zero impulse.",
-      "Mass increase."
-    ]
-  },
-  {
-    "question": "How does a padded surface reduce impulse felt?",
-    "correct_answer": "It extends the time of impact.",
-    "incorrect_answers": [
-      "It increases force abruptly.",
-      "It reduces mass.",
-      "It removes gravity.",
-      "It reverses direction.",
-      "It halves distance."
-    ]
-  },
-  {
-    "question": "If two objects have equal momentum, which may differ?",
-    "correct_answer": "Their masses and speeds.",
-    "incorrect_answers": [
-      "Their combined momentum.",
-      "Their combined impulse.",
-      "Their vector nature.",
-      "Their directions always.",
-      "Their energy always."
-    ]
-  },
-  {
-    "question": "What is the change in momentum if both mass and velocity remain constant?",
-    "correct_answer": "Zero",
-    "incorrect_answers": [
-      "Equal to mass times velocity.",
-      "Equal to force only.",
-      "Equal to time only.",
-      "Infinite.",
-      "Momentum doubles."
-    ]
-  },
-  {
-    "question": "Which aspect of momentum makes it useful in analyzing collisions?",
-    "correct_answer": "Its vector conservation property.",
-    "incorrect_answers": [
-      "Its scalar simplicity.",
-      "Its independence from velocity.",
-      "Its conversion to energy.",
-      "Its unitless nature.",
-      "Its dependence on displacement."
-    ]
-  },
-  {
-    "question": "What happens to an object’s momentum if its velocity doubles?",
-    "correct_answer": "Momentum doubles.",
-    "incorrect_answers": [
-      "Momentum quadruples.",
-      "Momentum halves.",
-      "Momentum stays same.",
-      "Momentum triples.",
-      "Momentum reverses."
-    ]
-  },
-  {
-    "question": "Why is impulse a vector quantity?",
-    "correct_answer": "Because it results from force, a vector.",
-    "incorrect_answers": [
-      "Because time is vector.",
-      "Because mass is vector.",
-      "Because distance is vector.",
-      "Because energy is vector.",
-      "Because velocity is scalar."
-    ]
-  },
-  {
-    "question": "Which quantity can be determined directly from the slope of a momentum–velocity graph?",
-    "correct_answer": "Mass of the object.",
-    "incorrect_answers": [
-      "Impulse.",
-      "Force.",
-      "Distance.",
-      "Time.",
-      "Energy."
-    ]
-  },
-  {
-    "question": "A 3 kg object moving at 4 m/s collides elastically with a 3 kg object at rest. What is their speed exchange outcome?",
-    "correct_answer": "First stops, second moves at 4 m/s.",
-    "incorrect_answers": [
-      "Both move at 2 m/s.",
-      "First moves at 8 m/s.",
-      "Second stops.",
-      "Both stop.",
-      "Both move at 4 m/s."
-    ]
-  },
-{
-    "question": "Which statement best describes Newton’s First Law?",
-    "correct_answer": "An object remains at rest or in uniform motion unless acted upon by a net external force.",
-    "incorrect_answers": [
-      "Force equals mass times velocity.",
-      "Every action has an equal and opposite reaction.",
-      "Objects accelerate in proportion to force.",
-      "Energy cannot be created or destroyed.",
-      "Acceleration is zero when forces are balanced."
-    ]
-  },
-  {
-    "question": "What does Newton’s Second Law quantify?",
-    "correct_answer": "The relationship between net force, mass, and acceleration (F = ma).",
-    "incorrect_answers": [
-      "The tendency of objects to resist motion.",
-      "The fact that acceleration is constant under gravity.",
-      "The conservation of momentum in closed systems.",
-      "The equivalence of mass and energy.",
-      "That action and reaction forces are equal."
-    ]
-  },
-  {
-    "question": "Newton’s Third Law can be stated as:",
-    "correct_answer": "For every action force there is an equal and opposite reaction force.",
-    "incorrect_answers": [
-      "Objects at rest tend to stay at rest.",
-      "Net force equals zero when acceleration is zero.",
-      "Force is always perpendicular to displacement.",
-      "Momentum is conserved in collisions.",
-      "Energy is the capacity to do work."
-    ]
-  },
-  {
-    "question": "In a free-body diagram, which force should be drawn if an object is on a horizontal surface with friction?",
-    "correct_answer": "Weight downward, normal upward, friction opposite motion, applied force in direction of pull.",
-    "incorrect_answers": [
-      "Only weight and applied force.",
-      "Only normal and friction.",
-      "Only weight and normal.",
-      "Only friction and applied force.",
-      "Only weight, normal, and tension."
-    ]
-  },
-  {
-    "question": "What distinguishes static friction from kinetic friction?",
-    "correct_answer": "Static friction acts before motion starts and can be greater than kinetic friction.",
-    "incorrect_answers": [
-      "Static friction acts during motion and is less than kinetic.",
-      "Kinetic friction acts before motion and equals static friction.",
-      "Kinetic friction varies with surface area.",
-      "Static friction does not depend on normal force.",
-      "Kinetic friction can be zero on surfaces."
-    ]
-  },
-  {
-    "question": "What is the typical direction of kinetic friction on a sliding block?",
-    "correct_answer": "Opposite to the direction of motion.",
-    "incorrect_answers": [
-      "In the same direction as motion.",
-      "Upward perpendicular to surface.",
-      "Downward along the surface.",
-      "At right angles to motion.",
-      "At 45° to the motion."
-    ]
-  },
-  {
-    "question": "Which formula gives the maximum static frictional force?",
-    "correct_answer": "f_s ≤ μ_s N",
-    "incorrect_answers": [
-      "f_k = μ_s N",
-      "f_s = μ_k N",
-      "f = m a",
-      "F = m g",
-      "f_k ≤ μ_s N"
-    ]
-  },
-  {
-    "question": "On an inclined plane at angle θ with no friction, what is the acceleration down the plane?",
-    "correct_answer": "a = g·sinθ",
-    "incorrect_answers": [
-      "a = g·cosθ",
-      "a = g·tanθ",
-      "a = g/ sinθ",
-      "a = g/ cosθ",
-      "a = g"
-    ]
-  },
-  {
-    "question": "How does the normal force on an inclined plane compare to weight?",
-    "correct_answer": "N = mg·cosθ",
-    "incorrect_answers": [
-      "N = mg·sinθ",
-      "N = mg",
-      "N = mg·tanθ",
-      "N = mg/ cosθ",
-      "N = mg/ sinθ"
-    ]
-  },
-  {
-    "question": "In an Atwood machine with masses m1 and m2, what is the system acceleration?",
-    "correct_answer": "a = (m2 − m1)·g / (m1 + m2)",
-    "incorrect_answers": [
-      "a = (m1 + m2)·g / (m2 − m1)",
-      "a = (m1 − m2)·g / (m1 + m2)",
-      "a = g·(m1 + m2)",
-      "a = g·(m2 − m1)",
-      "a = g / (m1 + m2)"
-    ]
-  },
-  {
-    "question": "When drawing a free-body diagram for an object in an elevator accelerating upward, which force diagram is correct?",
-    "correct_answer": "Weight downward and a larger normal force upward.",
-    "incorrect_answers": [
-      "Weight downward only.",
-      "Normal upward only.",
-      "Weight upward, normal downward.",
-      "Weight downward and equal normal upward.",
-      "No forces if acceleration is present."
-    ]
-  },
-  {
-    "question": "What net force acts on a 10 kg mass accelerating at 2 m/s²?",
-    "correct_answer": "20 N",
-    "incorrect_answers": [
-      "5 N",
-      "10 N",
-      "12 N",
-      "8 N",
-      "15 N"
-    ]
-  },
-  {
-    "question": "Which quantity remains constant for an object under only its weight near Earth’s surface?",
-    "correct_answer": "Gravitational acceleration (g).",
-    "incorrect_answers": [
-      "Velocity.",
-      "Momentum.",
-      "Net force.",
-      "Normal force.",
-      "Kinetic energy."
-    ]
-  },
-  {
-    "question": "What is the third law pair when you push on a wall?",
-    "correct_answer": "Wall pushes back on you with equal and opposite force.",
-    "incorrect_answers": [
-      "Friction pushes wall forward.",
-      "Gravity pulls the wall down.",
-      "Wall’s weight increases.",
-      "Wall’s acceleration increases.",
-      "Wall’s normal force disappears."
-    ]
-  },
-  {
-    "question": "If static friction coefficient μ_s = 0.5 and N = 100 N, what is maximum static friction?",
-    "correct_answer": "50 N",
-    "incorrect_answers": [
-      "150 N",
-      "5 N",
-      "500 N",
-      "100 N",
-      "0 N"
-    ]
-  },
-  {
-    "question": "In horizontal motion with no friction, what happens to velocity if no net force acts?",
-    "correct_answer": "It remains constant.",
-    "incorrect_answers": [
-      "It increases linearly.",
-      "It decreases linearly.",
-      "It oscillates.",
-      "It reverses direction.",
-      "It becomes zero."
-    ]
-  },
-  {
-    "question": "On a rough horizontal surface, how do you determine kinetic friction?",
-    "correct_answer": "f_k = μ_k · N",
-    "incorrect_answers": [
-      "f_k = μ_s · N²",
-      "f_k = m · a",
-      "f_k = m · g",
-      "f_k = μ_k / N",
-      "f_k = mg·sinθ"
-    ]
-  },
-  {
-    "question": "Which diagram correctly shows forces on a block pulled rightward at constant speed?",
-    "correct_answer": "Tension right, friction left, weight down, normal up.",
-    "incorrect_answers": [
-      "Tension up, friction down, weight left.",
-      "Weight up, normal down, tension left.",
-      "Friction right, tension left, no weight.",
-      "Tension right, no friction, weight down.",
-      "Only weight and tension."
-    ]
-  },
-  {
-    "question": "What net force acts on a car of mass 800 kg if it accelerates at 1.5 m/s²?",
-    "correct_answer": "1200 N",
-    "incorrect_answers": [
-      "800 N",
-      "1500 N",
-      "120 N",
-      "533 N",
-      "2000 N"
-    ]
-  },
-  {
-    "question": "Which free-body diagram is correct for a block sliding down an incline with friction?",
-    "correct_answer": "Weight down, normal perpendicular up, friction up the plane.",
-    "incorrect_answers": [
-      "Weight perpendicular, friction down the plane.",
-      "Normal down, friction up, weight sideways.",
-      "Friction absent, only weight and normal.",
-      "Weight up, friction down, normal sideways.",
-      "Normal and friction only."
-    ]
-  },
-  {
-    "question": "What does a steeper slope in a force vs. acceleration graph represent?",
-    "correct_answer": "Smaller mass (steeper F–a relation).",
-    "incorrect_answers": [
-      "Greater friction.",
-      "Higher force at zero acceleration.",
-      "Less force required.",
-      "Higher acceleration at zero force.",
-      "Constant velocity."
-    ]
-  },
-  {
-    "question": "How does tension compare on either side of a massless, frictionless pulley?",
-    "correct_answer": "Tension is the same on both sides.",
-    "incorrect_answers": [
-      "Tension is higher on the heavier side.",
-      "Tension is zero on one side.",
-      "Tension doubles on the light side.",
-      "Tension is opposite in direction only.",
-      "Tension varies with speed."
-    ]
-  },
-  {
-    "question": "In a system of two blocks connected by a rope over a pulley, acceleration depends on:",
-    "correct_answer": "The difference of their weights divided by total mass.",
-    "incorrect_answers": [
-      "Sum of their masses times gravity.",
-      "Product of their masses.",
-      "Sum of their weights only.",
-      "Difference of rope tension.",
-      "Their coefficients of friction only."
-    ]
-  },
-  {
-    "question": "Which of the following forces always acts perpendicular to a surface?",
-    "correct_answer": "Normal force",
-    "incorrect_answers": [
-      "Frictional force",
-      "Applied force",
-      "Tension force",
-      "Gravitational force",
-      "Centripetal force"
-    ]
-  },
-  {
-    "question": "What effect does increasing the mass on an inclined plane have on acceleration (neglecting friction)?",
-    "correct_answer": "Acceleration remains g·sinθ, independent of mass.",
-    "incorrect_answers": [
-      "Acceleration increases linearly with mass.",
-      "Acceleration decreases with mass.",
-      "Acceleration becomes zero.",
-      "Acceleration doubles.",
-      "Acceleration halves."
-    ]
-  },
-  {
-    "question": "For a block dragged at constant speed on a flat surface, net force is:",
-    "correct_answer": "Zero",
-    "incorrect_answers": [
-      "Equal to applied force.",
-      "Equal to friction plus weight.",
-      "Equal to mass times gravity.",
-      "Equal to tension.",
-      "Equal to normal force."
-    ]
-  },
-  {
-    "question": "A block on a horizontal table is pulled with force F. If μ_k > μ_s, what happens when F exceeds μ_s·N but is less than μ_k·N?",
-    "correct_answer": "Block begins to move and friction drops to kinetic value.",
-    "incorrect_answers": [
-      "Block remains at rest.",
-      "Block moves with increasing acceleration.",
-      "Block moves with decreasing friction.",
-      "Block stops instantly.",
-      "Block moves without friction."
-    ]
-  },
-  {
-    "question": "Which scenario demonstrates an application of Newton’s Third Law?",
-    "correct_answer": "A swimmer pushes water backward and moves forward.",
-    "incorrect_answers": [
-      "A rock hangs stationary on a rope.",
-      "A car coasts without engine.",
-      "A ball rolling at constant speed.",
-      "A book resting on a table.",
-      "A falling object accelerating."
-    ]
-  },
-  {
-    "question": "What net force acts on an object in uniform circular motion?",
-    "correct_answer": "A centripetal force directed toward the center.",
-    "incorrect_answers": [
-      "A centrifugal force outward.",
-      "No force since speed is constant.",
-      "A tangential force.",
-      "A force opposite velocity.",
-      "A vertical force only."
-    ]
-  },
-  {
-    "question": "How do you resolve weight into components on an inclined plane?",
-    "correct_answer": "mg·sinθ parallel, mg·cosθ perpendicular.",
-    "incorrect_answers": [
-      "mg·cosθ parallel, mg·sinθ perpendicular.",
-      "mg·tanθ parallel, mg·secθ perpendicular.",
-      "mg·θ parallel, mg·(1−θ) perpendicular.",
-      "mg·sinθ perpendicular, mg·cosθ parallel.",
-      "mg parallel only."
-    ]
-  },
-  {
-    "question": "An object is dropped in vacuum. Which law governs its motion?",
-    "correct_answer": "Newton’s Second Law with only weight acting.",
-    "incorrect_answers": [
-      "Newton’s First Law only.",
-      "Newton’s Third Law only.",
-      "Law of conservation of energy only.",
-      "Law of conservation of momentum only.",
-      "Hooke’s Law."
-    ]
-  },
-  {
-    "question": "When two ice skaters push off each other, what is conserved?",
-    "correct_answer": "Total momentum of the pair.",
-    "incorrect_answers": [
-      "Total kinetic energy always.",
-      "Total velocity always.",
-      "Total acceleration always.",
-      "Total force always.",
-      "Total displacement always."
-    ]
-  },
-  {
-    "question": "In a force diagram for a block on a ramp with friction, which way does kinetic friction point?",
-    "correct_answer": "Up the ramp, opposing motion.",
-    "incorrect_answers": [
-      "Down the ramp, with motion.",
-      "Perpendicular to the ramp.",
-      "Toward the pivot.",
-      "Toward the center of Earth.",
-      "At 90° to motion."
-    ]
-  },
-  {
-    "question": "Which factor affects both static and kinetic friction?",
-    "correct_answer": "Normal force between surfaces.",
-    "incorrect_answers": [
-      "Contact area (neglecting special cases).",
-      "Speed of sliding.",
-      "Volume of object.",
-      "Length of surface.",
-      "Temperature only."
-    ]
-  },
-  {
-    "question": "A 2 kg block on a 30° incline has μ_k = 0.2. What is its acceleration down the plane?",
-    "correct_answer": "a = g·(sin30° − 0.2·cos30°)",
-    "incorrect_answers": [
-      "a = g·sin30°",
-      "a = g·cos30°",
-      "a = g·(sin30° + 0.2·cos30°)",
-      "a = g/2",
-      "a = g·0.2"
-    ]
-  },
-  {
-    "question": "What happens to acceleration if the applied force doubles on a constant mass?",
-    "correct_answer": "Acceleration doubles.",
-    "incorrect_answers": [
-      "Acceleration halves.",
-      "Acceleration remains same.",
-      "Acceleration quadruples.",
-      "Acceleration becomes zero.",
-      "Acceleration reverses."
-    ]
-  },
-  {
-    "question": "Which feature distinguishes a free-body diagram?",
-    "correct_answer": "It shows only external forces on the object of interest.",
-    "incorrect_answers": [
-      "It shows internal forces between parts.",
-      "It includes motion paths.",
-      "It shows all interactions in system.",
-      "It shows energy changes.",
-      "It shows force magnitudes only."
-    ]
-  },
-  {
-    "question": "In an elevator accelerating downward, how does normal force compare to weight?",
-    "correct_answer": "Normal is less than weight.",
-    "incorrect_answers": [
-      "Normal equals weight.",
-      "Normal is greater than weight.",
-      "Normal is zero.",
-      "Normal is negative.",
-      "Normal is infinite."
-    ]
-  },
-  {
-    "question": "Which equation applies to a falling body with air resistance proportional to velocity?",
-    "correct_answer": "m·a = mg − b·v",
-    "incorrect_answers": [
-      "m·a = mg + b·v",
-      "m·v = mg − b·a",
-      "F = m·g·v",
-      "F = b·v²",
-      "m·a = b·v"
-    ]
-  },
-  {
-    "question": "Why can’t a single isolated force change an object’s motion indefinitely?",
-    "correct_answer": "Because an equal and opposite reaction prevents net force.",
-    "incorrect_answers": [
-      "Because friction always stops it.",
-      "Because mass increases.",
-      "Because energy is lost.",
-      "Because gravity balances it.",
-      "Because velocity is constant."
-    ]
-  },
-  {
-    "question": "Which motion illustrates Newton’s First Law most clearly?",
-    "correct_answer": "A puck gliding on frictionless ice remains in motion.",
-    "incorrect_answers": [
-      "A weight hanging stationary.",
-      "A car accelerating uphill.",
-      "A ball bouncing.",
-      "A mass oscillating on a spring.",
-      "A rocket launching."
-    ]
-  },
-  {
-    "question": "On a flat surface with friction, what is needed to keep an object moving at constant speed?",
-    "correct_answer": "A forward applied force equal to kinetic friction.",
-    "incorrect_answers": [
-      "No force at all.",
-      "Any small force.",
-      "Backward force equal to weight.",
-      "Upward force equal to normal.",
-      "Force exceeding weight."
-    ]
-  },
-  {
-    "question": "When two ice blocks collide and bounce off, what stays the same if collision is elastic?",
-    "correct_answer": "Both momentum and kinetic energy.",
-    "incorrect_answers": [
-      "Only momentum.",
-      "Only kinetic energy.",
-      "Only speed.",
-      "Only acceleration.",
-      "Only force."
-    ]
-  },
-  {
-    "question": "Which free-body diagram is correct for a hanging mass at rest?",
-    "correct_answer": "Weight downward and tension upward of equal magnitude.",
-    "incorrect_answers": [
-      "Weight only downward.",
-      "Tension only upward.",
-      "Weight upward and tension downward.",
-      "Weight and friction.",
-      "No forces if at rest."
-    ]
-  },
-  {
-    "question": "What does μ_k = 0.3 mean physically?",
-    "correct_answer": "Kinetic friction is 0.3 times the normal force.",
-    "incorrect_answers": [
-      "Static friction equals kinetic friction.",
-      "Friction is 30 N regardless of N.",
-      "Normal force is 0.3 N.",
-      "Coefficient of restitution is 0.3.",
-      "Friction depends on speed."
-    ]
-  },
-  {
-    "question": "In horizontal circular motion, what provides centripetal force?",
-    "correct_answer": "The net radial force toward center.",
-    "incorrect_answers": [
-      "Tangential component of gravity.",
-      "Friction perpendicular to motion.",
-      "Air resistance only.",
-      "Normal force only.",
-      "Weight only."
-    ]
-  },
-  {
-    "question": "Which situation violates Newton’s First Law?",
-    "correct_answer": "An object changes speed without any net force acting.",
-    "incorrect_answers": [
-      "A ball rolls to rest due to friction.",
-      "A spaceship coasts in vacuum.",
-      "A book stays on a table.",
-      "A pendulum swings under gravity.",
-      "A car cruises at constant speed."
-    ]
-  },
-  {
-    "question": "For a mass on a frictionless surface pulled by F, what work does friction do?",
-    "correct_answer": "Zero",
-    "incorrect_answers": [
-      "F·s",
-      "μ_k·N·s",
-      "m·a·s",
-      "mg·s",
-      "−F·s"
-    ]
-  },
-  {
-    "question": "When hauling a box up at constant speed, which forces balance?",
-    "correct_answer": "Applied force plus normal equals weight plus friction horizontally and vertically.",
-    "incorrect_answers": [
-      "Weight equals zero.",
-      "Applied force equals zero.",
-      "Friction equals weight.",
-      "Normal equals applied force.",
-      "Normal equals friction."
-    ]
-  },
-  {
-    "question": "What is required to draw a correct free-body diagram?",
-    "correct_answer": "Identify the object, isolate it, and draw all external forces acting on it.",
-    "incorrect_answers": [
-      "Include forces between all system parts.",
-      "Show motion trajectory.",
-      "Show internal stresses.",
-      "Show energy changes.",
-      "Show forces on other objects."
+      "10.0 m/s\u00b2",
+      "2.0 m/s\u00b2",
+      "12.0 m/s\u00b2",
+      "16.0 m/s\u00b2",
+      "4.0 m/s\u00b2"
     ]
   }
 ]

@@ -1,992 +1,244 @@
 [
   {
-    "question": "According to the Arrhenius definition, an acid is any substance that:",
-    "correct_answer": "Produces H⁺ ions in aqueous solution",
+    "question": "Write the standard cell notation for a galvanic cell consisting of a zinc half-cell and a copper half-cell.",
+    "correct_answer": "Zn(s) | Zn^2+(aq) || Cu^2+(aq) | Cu(s)",
     "incorrect_answers": [
-      "Accepts electron pairs",
-      "Donates OH⁻ ions in water",
-      "Donates protons to bases",
-      "Has a pH above 7",
-      "Produces H₂ gas in water"
+      "Cu(s) | Cu^2+(aq) || Zn^2+(aq) | Zn(s)",
+      "Zn^2+(aq) | Zn(s) || Cu(s) | Cu^2+(aq)",
+      "Zn(s) | Cu^2+(aq) || Zn^2+(aq) | Cu(s)",
+      "Cu^2+(aq) | Cu(s) || Zn(s) | Zn^2+(aq)",
+      "Zn(s) || Cu(s) | Zn^2+(aq) | Cu^2+(aq)"
     ]
   },
   {
-    "question": "According to the Brønsted–Lowry definition, a base is any substance that:",
-    "correct_answer": "Accepts a proton (H⁺)",
+    "question": "What is the conjugate base of HSO4-?",
+    "correct_answer": "SO4^2-",
     "incorrect_answers": [
-      "Donates an electron",
-      "Produces OH⁻ ions only",
-      "Has a pH below 7",
-      "Produces H⁺ ions",
-      "Accepts electrons in redox"
+      "H2SO4",
+      "H3O+",
+      "OH-",
+      "HSO3-",
+      "SO3^2-"
     ]
   },
   {
-    "question": "Which of the following is a strong acid?",
-    "correct_answer": "HCl",
+    "question": "During the electrolysis of aqueous CuCl2, what is observed at the cathode?",
+    "correct_answer": "A brown layer of copper forms.",
     "incorrect_answers": [
-      "CH₃COOH",
-      "HF",
-      "H₂CO₃",
-      "H₃PO₄",
-      "NH₄Cl"
-    ]
-  },
-  {
-    "question": "Which base is considered weak?",
-    "correct_answer": "NH₃",
-    "incorrect_answers": [
-      "NaOH",
-      "KOH",
-      "Ba(OH)₂",
-      "Ca(OH)₂",
-      "RbOH"
-    ]
-  },
-  {
-    "question": "What is the pH of a neutral solution at 25 °C?",
-    "correct_answer": "7.00",
-    "incorrect_answers": [
-      "14.00",
-      "0.00",
-      "1.00",
-      "6.00",
-      "8.00"
-    ]
-  },
-  {
-    "question": "Calculate the pOH of a solution whose pH is 4.00.",
-    "correct_answer": "10.00",
-    "incorrect_answers": [
-      "4.00",
-      "2.00",
-      "14.00",
-      "0.00",
-      "6.00"
-    ]
-  },
-  {
-    "question": "What is [H₃O⁺] in a solution of pH 3.00?",
-    "correct_answer": "1.0 × 10⁻³ M",
-    "incorrect_answers": [
-      "3.0 M",
-      "1.0 × 10⁻¹ M",
-      "1.0 × 10³ M",
-      "1.0 × 10⁻⁶ M",
-      "1.0 × 10⁻¹² M"
-    ]
-  },
-  {
-    "question": "Which salt in water produces an acidic solution by hydrolysis?",
-    "correct_answer": "NH₄Cl",
-    "incorrect_answers": [
-      "KCl",
-      "NaNO₃",
-      "NaCl",
-      "KBr",
-      "LiClO₄"
-    ]
-  },
-  {
-    "question": "Which salt produces a basic solution upon hydrolysis?",
-    "correct_answer": "Na₂CO₃",
-    "incorrect_answers": [
-      "NH₄Cl",
-      "AlCl₃",
-      "FeCl₃",
-      "ZnSO₄",
-      "NaCl"
-    ]
-  },
-  {
-    "question": "In a strong acid–strong base titration, the equivalence point pH is:",
-    "correct_answer": "7.00",
-    "incorrect_answers": [
-      "Below 7",
-      "Above 7",
-      "Depends on indicator",
-      "0",
-      "14"
-    ]
-  },
-  {
-    "question": "Which indicator is suitable for titrating a weak acid with a strong base?",
-    "correct_answer": "Phenolphthalein",
-    "incorrect_answers": [
-      "Methyl orange",
-      "Bromothymol blue",
-      "Litmus",
-      "Thymol blue",
-      "Congo red"
-    ]
-  },
-  {
-    "question": "For the reaction HA + OH⁻ → A⁻ + H₂O, the equivalence point pH will be:",
-    "correct_answer": "Above 7",
-    "incorrect_answers": [
-      "Below 7",
-      "Exactly 7",
-      "0",
-      "14",
-      "Depends on concentration"
-    ]
-  },
-  {
-    "question": "Which of these reactions is a neutralisation reaction?",
-    "correct_answer": "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O",
-    "incorrect_answers": [
-      "NaCl + AgNO₃ → AgCl + NaNO₃",
-      "CaCO₃ → CaO + CO₂",
-      "2H₂O₂ → 2H₂O + O₂",
-      "2NO₂ → N₂O₄",
-      "NH₄NO₃ → N₂O + 2H₂O"
-    ]
-  },
-  {
-    "question": "Calculate q (heat) when 50.0 g of water (c=4.18 J/g·K) is cooled from 80 °C to 20 °C.",
-    "correct_answer": "−12 540 J",
-    "incorrect_answers": [
-      "12 540 J",
-      "−4 180 J",
-      "−25 080 J",
-      "4 180 J",
-      "25 080 J"
-    ]
-  },
-  {
-    "question": "A solution has [OH⁻] = 1 × 10⁻⁵ M. What is its pH?",
-    "correct_answer": "9.00",
-    "incorrect_answers": [
-      "5.00",
-      "4.00",
-      "11.00",
-      "3.00",
-      "7.00"
-    ]
-  },
-  {
-    "question": "The Ka for acetic acid is 1.8 × 10⁻⁵. What is the pH of a 0.10 M solution? (Ka = x²/(c−x))",
-    "correct_answer": "2.87",
-    "incorrect_answers": [
-      "5.00",
-      "7.00",
-      "3.00",
-      "4.50",
-      "2.00"
-    ]
-  },
-  {
-    "question": "Determine [H⁺] in a 0.010 M HCl solution.",
-    "correct_answer": "1.0 × 10⁻² M",
-    "incorrect_answers": [
-      "1.0 × 10⁻⁴ M",
-      "1.0 × 10⁻¹ M",
-      "0 M",
-      "0.010 M OH⁻",
-      "1.0 M"
-    ]
-  },
-  {
-    "question": "What is pOH of a 0.001 M NaOH solution?",
-    "correct_answer": "3.00",
-    "incorrect_answers": [
-      "11.00",
-      "1.00",
-      "7.00",
-      "12.00",
-      "0.00"
-    ]
-  },
-  {
-    "question": "Calculate the pH after mixing 25.0 cm³ of 0.10 M HCl with 25.0 cm³ of 0.10 M NaOH.",
-    "correct_answer": "7.00",
-    "incorrect_answers": [
-      "1.00",
-      "6.00",
-      "8.00",
-      "14.00",
-      "4.00"
-    ]
-  },
-  {
-    "question": "In titration, the end point is detected by:",
-    "correct_answer": "Indicator color change",
-    "incorrect_answers": [
-      "pH meter reading zero",
-      "Temperature change",
-      "Gas evolution",
-      "Precipitate formation",
-      "Conductivity zero"
-    ]
-  },
-  {
-    "question": "What is the pH of a 0.001 M solution of a weak base with Kb = 1 × 10⁻⁵?",
-    "correct_answer": "8.00",
-    "incorrect_answers": [
-      "6.00",
-      "7.00",
-      "9.00",
-      "11.00",
-      "5.00"
-    ]
-  },
-  {
-    "question": "Which salt solution is neutral when dissolved in water?",
-    "correct_answer": "NaCl",
-    "incorrect_answers": [
-      "NH₄Cl",
-      "Na₂CO₃",
-      "AlCl₃",
-      "FeCl₃",
-      "NH₄NO₃"
-    ]
-  },
-  {
-    "question": "Compute the pH of a 0.050 M HNO₃ solution.",
-    "correct_answer": "1.30",
-    "incorrect_answers": [
-      "0.30",
-      "2.00",
-      "3.00",
-      "1.70",
-      "1.00"
-    ]
-  },
-  {
-    "question": "A 100 cm³ sample of 0.20 M HCl is titrated with 0.10 M NaOH. What volume of NaOH is needed to reach equivalence?",
-    "correct_answer": "200 cm³",
-    "incorrect_answers": [
-      "100 cm³",
-      "50 cm³",
-      "20 cm³",
-      "400 cm³",
-      "150 cm³"
-    ]
-  },
-  {
-    "question": "What is the pH at half-neutralisation point for a weak acid titrated with strong base?",
-    "correct_answer": "pKa of the acid",
-    "incorrect_answers": [
-      "pH 7",
-      "pKb of the conjugate base",
-      "pH 14",
-      "pH zero",
-      "pH mid-point"
-    ]
-  },
-  {
-    "question": "Which gas evolution indicates acid–carbonate reaction?",
-    "correct_answer": "CO₂",
-    "incorrect_answers": [
-      "H₂",
-      "O₂",
-      "NH₃",
-      "SO₂",
-      "Cl₂"
-    ]
-  },
-  {
-    "question": "Calculate ΔH when 5.00 g of NaOH dissolves in water absorbing 2.50 kJ of heat. q = mcΔT concept applies?",
-    "correct_answer": "Not applicable – solution calorimetry differs",
-    "incorrect_answers": [
-      "5.00 kJ",
-      "2.50 kJ/g",
-      "12.50 kJ",
-      "0.50 kJ",
-      "25.00 kJ"
-    ]
-  },
-  {
-    "question": "Which indicator changes color at pH around 8.2?",
-    "correct_answer": "Phenolphthalein",
-    "incorrect_answers": [
-      "Methyl orange",
-      "Bromocresol green",
-      "Thymol blue",
-      "Litmus",
-      "Bromothymol blue"
-    ]
-  },
-  {
-    "question": "Find [OH⁻] in neutral water at 25 °C.",
-    "correct_answer": "1.0 × 10⁻⁷ M",
-    "incorrect_answers": [
-      "1.0 × 10⁻¹⁴ M",
-      "1.0 × 10⁻³ M",
-      "0 M",
-      "1.0 × 10⁻⁸ M",
-      "1.0 × 10⁻⁶ M"
-    ]
-  },
-  {
-    "question": "What is the pKa of an acid whose Ka = 1 × 10⁻⁴?",
-    "correct_answer": "4.00",
-    "incorrect_answers": [
-      "10.00",
-      "1.00",
-      "14.00",
-      "0.00",
-      "2.00"
-    ]
-  },
-  {
-    "question": "Calculate the pH of a solution where [H₃O⁺] = 2.5 × 10⁻³ M.",
-    "correct_answer": "2.60",
-    "incorrect_answers": [
-      "3.60",
-      "1.60",
-      "2.40",
-      "2.00",
-      "4.60"
-    ]
-  },
-  {
-    "question": "Which salt solution of a strong base and weak acid is basic in water?",
-    "correct_answer": "CH₃COONa",
-    "incorrect_answers": [
-      "NH₄Cl",
-      "NaCl",
-      "K₂SO₄",
-      "FeCl₃",
-      "CuSO₄"
-    ]
-  },
-  {
-    "question": "A buffer resists pH change because it contains:",
-    "correct_answer": "Weak acid and its conjugate base",
-    "incorrect_answers": [
-      "Strong acid and strong base",
-      "Only strong acid",
-      "Only salt",
-      "Only water",
-      "Only metal ions"
-    ]
-  },
-  {
-    "question": "Calculate the pH of a buffer made from 0.10 M HA and 0.10 M A⁻ if pKa=4.75.",
-    "correct_answer": "4.75",
-    "incorrect_answers": [
-      "7.00",
-      "4.00",
-      "5.00",
-      "3.75",
-      "6.50"
-    ]
-  },
-  {
-    "question": "During titration of weak acid with strong base, the pH at equivalence is:",
-    "correct_answer": "Greater than 7",
-    "incorrect_answers": [
-      "Less than 7",
-      "Exactly 7",
-      "Zero",
-      "Depends on indicator",
-      "Always 14"
-    ]
-  },
-  {
-    "question": "Which of the following salts produces an acidic solution when dissolved?",
-    "correct_answer": "NH₄NO₃",
-    "incorrect_answers": [
-      "NaCl",
-      "KBr",
-      "Ba(NO₃)₂",
-      "K₂SO₄",
-      "CaCl₂"
-    ]
-  },
-  {
-    "question": "What is the pH of a 0.25 M solution of a strong base?",
-    "correct_answer": "13.60",
-    "incorrect_answers": [
-      "0.40",
-      "10.40",
-      "1.60",
-      "2.40",
-      "12.00"
-    ]
-  },
-  {
-    "question": "Find [H⁺] if pH = 5.50.",
-    "correct_answer": "3.16 × 10⁻⁶ M",
-    "incorrect_answers": [
-      "5.50 M",
-      "2.00 × 10⁻⁷ M",
-      "5.00 × 10⁻⁶ M",
-      "1.00 × 10⁻⁵ M",
-      "3.16 × 10⁻⁵ M"
-    ]
-  },
-  {
-    "question": "Which titration curve shows an initial pH above 7?",
-    "correct_answer": "Weak base titrated with strong acid",
-    "incorrect_answers": [
-      "Strong acid with strong base",
-      "Strong base with strong acid",
-      "Weak acid with weak base",
-      "Strong acid with weak base",
-      "Neutral salt titration"
-    ]
-  },
-  {
-    "question": "During hydrolysis of NaF, the pH is:",
-    "correct_answer": "Basic",
-    "incorrect_answers": [
-      "Acidic",
-      "Neutral",
-      "Cannot determine",
-      "Always 7",
-      "Always 0"
-    ]
-  },
-  {
-    "question": "A solution of 0.010 M acetic acid has a pH of 3.42. Calculate Ka.",
-    "correct_answer": "1.8 × 10⁻⁵",
-    "incorrect_answers": [
-      "1.0 × 10⁻⁷",
-      "3.42",
-      "0.010",
-      "1.8 × 10⁻³",
-      "4.18"
-    ]
-  },
-  {
-    "question": "What is the pH of a 1.00 × 10⁻⁸ M HCl solution?",
-    "correct_answer": "6.00",
-    "incorrect_answers": [
-      "8.00",
-      "7.00",
-      "1.00",
-      "2.00",
-      "6.80"
-    ]
-  },
-  {
-    "question": "Which indicator would be best for titrating a strong acid with a weak base?",
-    "correct_answer": "Methyl orange",
-    "incorrect_answers": [
-      "Phenolphthalein",
-      "Bromothymol blue",
-      "Litmus",
-      "Thymol blue",
-      "Cresol red"
-    ]
-  },
-  {
-    "question": "What is the percent ionisation of a 0.10 M NH₃ solution if [NH₄⁺] = 1.0 × 10⁻³ M at equilibrium?",
-    "correct_answer": "1.0%",
-    "incorrect_answers": [
-      "10.0%",
-      "0.1%",
-      "0.01%",
-      "100%",
-      "50%"
-    ]
-  },
-  {
-    "question": "Which salt solution of a strong acid and weak base gives an acidic pH?",
-    "correct_answer": "NH₄Cl",
-    "incorrect_answers": [
-      "NaCl",
-      "KBr",
-      "BaCl₂",
-      "LiNO₃",
-      "CaCl₂"
-    ]
-  },
-{
-    "question": "According to the Arrhenius definition, an acid is any substance that:",
-    "correct_answer": "Produces H⁺ ions in aqueous solution",
-    "incorrect_answers": [
-      "Accepts electron pairs",
-      "Donates OH⁻ ions in water",
-      "Donates protons to bases",
-      "Has a pH above 7",
-      "Produces H₂ gas in water"
-    ]
-  },
-  {
-    "question": "According to the Brønsted–Lowry definition, a base is any substance that:",
-    "correct_answer": "Accepts a proton (H⁺)",
-    "incorrect_answers": [
-      "Donates an electron",
-      "Produces OH⁻ ions only",
-      "Has a pH below 7",
-      "Produces H⁺ ions",
-      "Accepts electrons in redox"
+      "Chlorine gas bubbles form.",
+      "Oxygen gas bubbles form.",
+      "Hydrogen gas bubbles form.",
+      "The electrode dissolves.",
+      "Nothing happens."
     ]
   },
   {
     "question": "Which of the following is a strong acid?",
-    "correct_answer": "HCl",
+    "correct_answer": "Nitric acid (HNO3)",
     "incorrect_answers": [
-      "CH₃COOH",
-      "HF",
-      "H₂CO₃",
-      "H₃PO₄",
-      "NH₄Cl"
+      "Ethanoic acid (CH3COOH)",
+      "Carbonic acid (H2CO3)",
+      "Phosphoric acid (H3PO4)",
+      "Oxalic acid (H2C2O4)",
+      "Citric acid"
     ]
   },
   {
-    "question": "Which base is considered weak?",
-    "correct_answer": "NH₃",
+    "question": "What is an ampholyte (amphiprotic substance)?",
+    "correct_answer": "A substance that can act as either an acid or a base.",
     "incorrect_answers": [
-      "NaOH",
-      "KOH",
-      "Ba(OH)₂",
-      "Ca(OH)₂",
-      "RbOH"
+      "A substance that is neutral.",
+      "A substance that only acts as an acid.",
+      "A substance that only acts as a base.",
+      "A strong acid.",
+      "A strong base."
     ]
   },
   {
-    "question": "What is the pH of a neutral solution at 25 °C?",
-    "correct_answer": "7.00",
+    "question": "Given the standard reduction potentials: Zn^2+ + 2e- -> Zn (-0.76 V) and Cu^2+ + 2e- -> Cu (+0.34 V). Calculate the standard emf of a Zn-Cu galvanic cell.",
+    "correct_answer": "+1.10 V",
     "incorrect_answers": [
-      "14.00",
-      "0.00",
-      "1.00",
-      "6.00",
-      "8.00"
+      "-1.10 V",
+      "+0.42 V",
+      "-0.42 V",
+      "+1.52 V",
+      "0.00 V"
     ]
   },
   {
-    "question": "Calculate the pOH of a solution whose pH is 4.00.",
-    "correct_answer": "10.00",
+    "question": "Define a base according to the Lowry-Bronsted theory.",
+    "correct_answer": "A proton (H+) acceptor.",
     "incorrect_answers": [
-      "4.00",
-      "2.00",
-      "14.00",
-      "0.00",
-      "6.00"
+      "A proton (H+) donor.",
+      "A substance that produces OH- ions in solution.",
+      "A substance that produces H+ ions in solution.",
+      "An electron pair acceptor.",
+      "An electron pair donor."
     ]
   },
   {
-    "question": "What is [H₃O⁺] in a solution of pH 3.00?",
-    "correct_answer": "1.0 × 10⁻³ M",
+    "question": "Calculate the pH of a 0.05 mol.dm^-3 HCl solution.",
+    "correct_answer": "1.3",
     "incorrect_answers": [
-      "3.0 M",
-      "1.0 × 10⁻¹ M",
-      "1.0 × 10³ M",
-      "1.0 × 10⁻⁶ M",
-      "1.0 × 10⁻¹² M"
-    ]
-  },
-  {
-    "question": "Which salt in water produces an acidic solution by hydrolysis?",
-    "correct_answer": "NH₄Cl",
-    "incorrect_answers": [
-      "KCl",
-      "NaNO₃",
-      "NaCl",
-      "KBr",
-      "LiClO₄"
-    ]
-  },
-  {
-    "question": "Which salt produces a basic solution upon hydrolysis?",
-    "correct_answer": "Na₂CO₃",
-    "incorrect_answers": [
-      "NH₄Cl",
-      "AlCl₃",
-      "FeCl₃",
-      "ZnSO₄",
-      "NaCl"
-    ]
-  },
-  {
-    "question": "In a strong acid–strong base titration, the equivalence point pH is:",
-    "correct_answer": "7.00",
-    "incorrect_answers": [
-      "Below 7",
-      "Above 7",
-      "Depends on indicator",
-      "0",
-      "14"
-    ]
-  },
-  {
-    "question": "Which indicator is suitable for titrating a weak acid with a strong base?",
-    "correct_answer": "Phenolphthalein",
-    "incorrect_answers": [
-      "Methyl orange",
-      "Bromothymol blue",
-      "Litmus",
-      "Thymol blue",
-      "Congo red"
-    ]
-  },
-  {
-    "question": "For the reaction HA + OH⁻ → A⁻ + H₂O, the equivalence point pH will be:",
-    "correct_answer": "Above 7",
-    "incorrect_answers": [
-      "Below 7",
-      "Exactly 7",
-      "0",
-      "14",
-      "Depends on concentration"
-    ]
-  },
-  {
-    "question": "Which of these reactions is a neutralisation reaction?",
-    "correct_answer": "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O",
-    "incorrect_answers": [
-      "NaCl + AgNO₃ → AgCl + NaNO₃",
-      "CaCO₃ → CaO + CO₂",
-      "2H₂O₂ → 2H₂O + O₂",
-      "2NO₂ → N₂O₄",
-      "NH₄NO₃ → N₂O + 2H₂O"
-    ]
-  },
-  {
-    "question": "Calculate q (heat) when 50.0 g of water (c=4.18 J/g·K) is cooled from 80 °C to 20 °C.",
-    "correct_answer": "−12 540 J",
-    "incorrect_answers": [
-      "12 540 J",
-      "−4 180 J",
-      "−25 080 J",
-      "4 180 J",
-      "25 080 J"
-    ]
-  },
-  {
-    "question": "A solution has [OH⁻] = 1 × 10⁻⁵ M. What is its pH?",
-    "correct_answer": "9.00",
-    "incorrect_answers": [
-      "5.00",
-      "4.00",
-      "11.00",
-      "3.00",
+      "12.7",
+      "0.05",
+      "2.6",
+      "0.65",
       "7.00"
     ]
   },
   {
-    "question": "The Ka for acetic acid is 1.8 × 10⁻⁵. What is the pH of a 0.10 M solution? (Ka = x²/(c−x))",
-    "correct_answer": "2.87",
+    "question": "In a galvanic cell, where does oxidation take place?",
+    "correct_answer": "At the anode.",
     "incorrect_answers": [
-      "5.00",
-      "7.00",
-      "3.00",
-      "4.50",
-      "2.00"
+      "At the cathode.",
+      "In the salt bridge.",
+      "In the external circuit.",
+      "At the voltmeter.",
+      "In the electrolyte only."
     ]
   },
   {
-    "question": "Determine [H⁺] in a 0.010 M HCl solution.",
-    "correct_answer": "1.0 × 10⁻² M",
+    "question": "Which of the following is a strong base?",
+    "correct_answer": "Sodium hydroxide (NaOH)",
     "incorrect_answers": [
-      "1.0 × 10⁻⁴ M",
-      "1.0 × 10⁻¹ M",
-      "0 M",
-      "0.010 M OH⁻",
-      "1.0 M"
+      "Ammonia (NH3)",
+      "Water (H2O)",
+      "Ethanoic acid (CH3COOH)",
+      "Sodium carbonate (Na2CO3)",
+      "Sodium chloride (NaCl)"
     ]
   },
   {
-    "question": "What is pOH of a 0.001 M NaOH solution?",
-    "correct_answer": "3.00",
+    "question": "What is the conjugate acid of NH3?",
+    "correct_answer": "NH4+",
     "incorrect_answers": [
-      "11.00",
-      "1.00",
-      "7.00",
-      "12.00",
-      "0.00"
+      "NH2-",
+      "H3O+",
+      "OH-",
+      "HNO3",
+      "NH4"
     ]
   },
   {
-    "question": "Calculate the pH after mixing 25.0 cm³ of 0.10 M HCl with 25.0 cm³ of 0.10 M NaOH.",
-    "correct_answer": "7.00",
+    "question": "In the standard hydrogen electrode, what is the pressure of the hydrogen gas?",
+    "correct_answer": "1 atm (101.3 kPa)",
     "incorrect_answers": [
-      "1.00",
-      "6.00",
-      "8.00",
-      "14.00",
-      "4.00"
+      "2 atm",
+      "100 kPa",
+      "1 Pa",
+      "0.1 atm",
+      "Standard room pressure"
     ]
   },
   {
-    "question": "In titration, the end point is detected by:",
-    "correct_answer": "Indicator color change",
+    "question": "What is the standard condition for concentration in a standard half-cell?",
+    "correct_answer": "1 mol.dm^-3",
     "incorrect_answers": [
-      "pH meter reading zero",
-      "Temperature change",
-      "Gas evolution",
-      "Precipitate formation",
-      "Conductivity zero"
+      "0.1 mol.dm^-3",
+      "10 mol.dm^-3",
+      "1 Molar",
+      "Standard pressure",
+      "1 g.dm^-3"
     ]
   },
   {
-    "question": "What is the pH of a 0.001 M solution of a weak base with Kb = 1 × 10⁻⁵?",
-    "correct_answer": "8.00",
+    "question": "Define an acid according to the Arrhenius theory.",
+    "correct_answer": "A substance that produces hydrogen ions (H+) in aqueous solution.",
     "incorrect_answers": [
-      "6.00",
-      "7.00",
-      "9.00",
-      "11.00",
-      "5.00"
+      "A substance that produces hydroxide ions (OH-) in aqueous solution.",
+      "A proton donor.",
+      "A proton acceptor.",
+      "An electron pair donor.",
+      "An electron pair acceptor."
     ]
   },
   {
-    "question": "Which salt solution is neutral when dissolved in water?",
-    "correct_answer": "NaCl",
+    "question": "Which energy conversion takes place in an electrolytic cell?",
+    "correct_answer": "Electrical energy to chemical energy.",
     "incorrect_answers": [
-      "NH₄Cl",
-      "Na₂CO₃",
-      "AlCl₃",
-      "FeCl₃",
-      "NH₄NO₃"
+      "Chemical energy to electrical energy.",
+      "Mechanical energy to electrical energy.",
+      "Thermal energy to chemical energy.",
+      "Electrical energy to mechanical energy.",
+      "Chemical energy to thermal energy."
     ]
   },
   {
-    "question": "Compute the pH of a 0.050 M HNO₃ solution.",
-    "correct_answer": "1.30",
+    "question": "Calculate the pH of a 0.01 mol.dm^-3 HCl solution.",
+    "correct_answer": "2.0",
     "incorrect_answers": [
-      "0.30",
-      "2.00",
-      "3.00",
-      "1.70",
-      "1.00"
+      "12.0",
+      "0.01",
+      "4.0",
+      "1.0",
+      "7.00"
     ]
   },
   {
-    "question": "A 100 cm³ sample of 0.20 M HCl is titrated with 0.10 M NaOH. What volume of NaOH is needed to reach equivalence?",
-    "correct_answer": "200 cm³",
+    "question": "What is the pH of a neutral solution at 25 \u00b0C?",
+    "correct_answer": "7",
     "incorrect_answers": [
-      "100 cm³",
-      "50 cm³",
-      "20 cm³",
-      "400 cm³",
-      "150 cm³"
+      "0",
+      "14",
+      "1",
+      "10",
+      "7.5"
     ]
   },
   {
-    "question": "What is the pH at half-neutralisation point for a weak acid titrated with strong base?",
-    "correct_answer": "pKa of the acid",
+    "question": "Which of the following processes occurs in the chlor-alkali industry?",
+    "correct_answer": "Electrolysis of brine (concentrated NaCl solution).",
     "incorrect_answers": [
-      "pH 7",
-      "pKb of the conjugate base",
-      "pH 14",
-      "pH zero",
-      "pH mid-point"
+      "Electrolysis of molten NaCl.",
+      "Fractional distillation of liquid air.",
+      "The Haber process.",
+      "The Contact process.",
+      "The Ostwald process."
     ]
   },
   {
-    "question": "Which gas evolution indicates acid–carbonate reaction?",
-    "correct_answer": "CO₂",
+    "question": "In an electrolytic cell, the anode is...",
+    "correct_answer": "The positive electrode where oxidation occurs.",
     "incorrect_answers": [
-      "H₂",
-      "O₂",
-      "NH₃",
-      "SO₂",
-      "Cl₂"
+      "The negative electrode where oxidation occurs.",
+      "The positive electrode where reduction occurs.",
+      "The negative electrode where reduction occurs.",
+      "The neutral electrode.",
+      "The salt bridge."
     ]
   },
   {
-    "question": "Calculate ΔH when 5.00 g of NaOH dissolves in water absorbing 2.50 kJ of heat. q = mcΔT concept applies?",
-    "correct_answer": "Not applicable – solution calorimetry differs",
+    "question": "Calculate the pH of a 0.1 mol.dm^-3 HCl solution.",
+    "correct_answer": "1.0",
     "incorrect_answers": [
-      "5.00 kJ",
-      "2.50 kJ/g",
-      "12.50 kJ",
-      "0.50 kJ",
-      "25.00 kJ"
+      "13.0",
+      "0.1",
+      "2.0",
+      "0.5",
+      "7.00"
     ]
   },
   {
-    "question": "Which indicator changes color at pH around 8.2?",
-    "correct_answer": "Phenolphthalein",
+    "question": "What is the function of a salt bridge in a galvanic cell?",
+    "correct_answer": "To complete the circuit and maintain electrical neutrality in the half-cells.",
     "incorrect_answers": [
-      "Methyl orange",
-      "Bromocresol green",
-      "Thymol blue",
-      "Litmus",
-      "Bromothymol blue"
+      "To transfer electrons between half-cells.",
+      "To provide a surface for oxidation.",
+      "To provide a surface for reduction.",
+      "To generate the electromotive force.",
+      "To prevent the flow of ions."
     ]
   },
   {
-    "question": "Find [OH⁻] in neutral water at 25 °C.",
-    "correct_answer": "1.0 × 10⁻⁷ M",
+    "question": "In a titration, what is the endpoint?",
+    "correct_answer": "The point at which the indicator changes color.",
     "incorrect_answers": [
-      "1.0 × 10⁻¹⁴ M",
-      "1.0 × 10⁻³ M",
-      "0 M",
-      "1.0 × 10⁻⁸ M",
-      "1.0 × 10⁻⁶ M"
-    ]
-  },
-  {
-    "question": "What is the pKa of an acid whose Ka = 1 × 10⁻⁴?",
-    "correct_answer": "4.00",
-    "incorrect_answers": [
-      "10.00",
-      "1.00",
-      "14.00",
-      "0.00",
-      "2.00"
-    ]
-  },
-  {
-    "question": "Calculate the pH of a solution where [H₃O⁺] = 2.5 × 10⁻³ M.",
-    "correct_answer": "2.60",
-    "incorrect_answers": [
-      "3.60",
-      "1.60",
-      "2.40",
-      "2.00",
-      "4.60"
-    ]
-  },
-  {
-    "question": "Which salt solution of a strong base and weak acid is basic in water?",
-    "correct_answer": "CH₃COONa",
-    "incorrect_answers": [
-      "NH₄Cl",
-      "NaCl",
-      "K₂SO₄",
-      "FeCl₃",
-      "CuSO₄"
-    ]
-  },
-  {
-    "question": "A buffer resists pH change because it contains:",
-    "correct_answer": "Weak acid and its conjugate base",
-    "incorrect_answers": [
-      "Strong acid and strong base",
-      "Only strong acid",
-      "Only salt",
-      "Only water",
-      "Only metal ions"
-    ]
-  },
-  {
-    "question": "Calculate the pH of a buffer made from 0.10 M HA and 0.10 M A⁻ if pKa=4.75.",
-    "correct_answer": "4.75",
-    "incorrect_answers": [
-      "7.00",
-      "4.00",
-      "5.00",
-      "3.75",
-      "6.50"
-    ]
-  },
-  {
-    "question": "During titration of weak acid with strong base, the pH at equivalence is:",
-    "correct_answer": "Greater than 7",
-    "incorrect_answers": [
-      "Less than 7",
-      "Exactly 7",
-      "Zero",
-      "Depends on indicator",
-      "Always 14"
-    ]
-  },
-  {
-    "question": "Which of the following salts produces an acidic solution when dissolved?",
-    "correct_answer": "NH₄NO₃",
-    "incorrect_answers": [
-      "NaCl",
-      "KBr",
-      "Ba(NO₃)₂",
-      "K₂SO₄",
-      "CaCl₂"
-    ]
-  },
-  {
-    "question": "What is the pH of a 0.25 M solution of a strong base?",
-    "correct_answer": "13.60",
-    "incorrect_answers": [
-      "0.40",
-      "10.40",
-      "1.60",
-      "2.40",
-      "12.00"
-    ]
-  },
-  {
-    "question": "Find [H⁺] if pH = 5.50.",
-    "correct_answer": "3.16 × 10⁻⁶ M",
-    "incorrect_answers": [
-      "5.50 M",
-      "2.00 × 10⁻⁷ M",
-      "5.00 × 10⁻⁶ M",
-      "1.00 × 10⁻⁵ M",
-      "3.16 × 10⁻⁵ M"
-    ]
-  },
-  {
-    "question": "Which titration curve shows an initial pH above 7?",
-    "correct_answer": "Weak base titrated with strong acid",
-    "incorrect_answers": [
-      "Strong acid with strong base",
-      "Strong base with strong acid",
-      "Weak acid with weak base",
-      "Strong acid with weak base",
-      "Neutral salt titration"
-    ]
-  },
-  {
-    "question": "During hydrolysis of NaF, the pH is:",
-    "correct_answer": "Basic",
-    "incorrect_answers": [
-      "Acidic",
-      "Neutral",
-      "Cannot determine",
-      "Always 7",
-      "Always 0"
-    ]
-  },
-  {
-    "question": "A solution of 0.010 M acetic acid has a pH of 3.42. Calculate Ka.",
-    "correct_answer": "1.8 × 10⁻⁵",
-    "incorrect_answers": [
-      "1.0 × 10⁻⁷",
-      "3.42",
-      "0.010",
-      "1.8 × 10⁻³",
-      "4.18"
-    ]
-  },
-  {
-    "question": "What is the pH of a 1.00 × 10⁻⁸ M HCl solution?",
-    "correct_answer": "6.00",
-    "incorrect_answers": [
-      "8.00",
-      "7.00",
-      "1.00",
-      "2.00",
-      "6.80"
-    ]
-  },
-  {
-    "question": "Which indicator would be best for titrating a strong acid with a weak base?",
-    "correct_answer": "Methyl orange",
-    "incorrect_answers": [
-      "Phenolphthalein",
-      "Bromothymol blue",
-      "Litmus",
-      "Thymol blue",
-      "Cresol red"
-    ]
-  },
-  {
-    "question": "What is the percent ionisation of a 0.10 M NH₃ solution if [NH₄⁺] = 1.0 × 10⁻³ M at equilibrium?",
-    "correct_answer": "1.0%",
-    "incorrect_answers": [
-      "10.0%",
-      "0.1%",
-      "0.01%",
-      "100%",
-      "50%"
-    ]
-  },
-  {
-    "question": "Which salt solution of a strong acid and weak base gives an acidic pH?",
-    "correct_answer": "NH₄Cl",
-    "incorrect_answers": [
-      "NaCl",
-      "KBr",
-      "BaCl₂",
-      "LiNO₃",
-      "CaCl₂"
+      "The point at which the acid and base have completely reacted.",
+      "The point where pH is exactly 7.",
+      "The start of the titration.",
+      "The point where the solution becomes saturated.",
+      "The equivalence point."
     ]
   }
 ]
