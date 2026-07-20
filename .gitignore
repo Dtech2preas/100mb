@@ -4,3 +4,4 @@ gradle-8.2-bin.zip
 app/build/
 build/
 __pycache__/
+node_modules/
