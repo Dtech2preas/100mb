@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>(function(s){s.dataset.zone='10103389',s.src='https://groleegni.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Material Downloader Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500&display=swap');
+
+    :root {
+      --primary: #00e5ff;
+      --primary-dark: #00bcd4;
+      --secondary: #1e88e5;
+      --dark-bg: #0d0d0d;
+      --card-bg: #1a1a1a;
+      --text-light: #cfd8dc;
+      --text-muted: #8a8a8a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(ellipse at top, var(--dark-bg), #000);
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      padding: 15px 20px;
+      box-shadow: 0 0 20px var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header .left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      height: 45px;
+      filter: drop-shadow(0 0 8px var(--primary));
+    }
+
+    .slogan {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-light);
+      text-shadow: 0 0 4px var(--primary);
+    }
+
+    .support-button {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 15px var(--primary);
+      transition: transform 0.2s, box-shadow 0.3s;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .support-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--primary);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 36px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px var(--secondary);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .subtitle {
+      color: var(--text-light);
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .info-box {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-left: 6px solid var(--primary);
+      border-radius: 12px;
+      color: var(--text-light);
+      text-align: center;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+    }
+
+    .filters-container {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      padding: 0 20px;
+    }
+
+    .filter-section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+    }
+
+    .filter-title {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    select:hover {
+      border-color: var(--primary);
+      background: rgba(0, 229, 255, 0.1);
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    }
+
+    .results-container {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .results-count {
+      color: var(--text-light);
+      font-size: 16px;
+    }
+
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .paper-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .paper-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 229, 255, 0.4);
+    }
+
+    .paper-name {
+      font-weight: 500;
+      margin-bottom: 15px;
+      flex-grow: 1;
+      color: var(--text-light);
+    }
+
+    .download-btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      text-align: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .download-btn:hover {
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+      grid-column: 1 / -1;
+    }
+
+    .no-results i {
+      font-size: 48px;
+      margin-bottom: 15px;
+      display: block;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .filter-options {
+        grid-template-columns: 1fr;
+      }
+
+      .papers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left">
+      <img src="logo.png" alt="Logo" class="logo">
+      <span class="slogan">Empowering the youth through digital innovation</span>
+    </div>
+    <a href="https://otieu.com/4/9630811" class="support-button" target="_blank">Support</a>
+  </header>
+
+  <div class="hero">
+    <h1>Material Downloader Dashboard</h1>
+    <p class="subtitle">Access educational materials all in one place</p>
+    <div class="info-box">
+      Select a category below to browse and download files.
+    </div>
+  </div>
+
+  <div class="filters-container">
+    <div class="filter-section">
+      <h2 class="filter-title">
+        <i>📂</i> Select Category
+      </h2>
+      <div class="filter-options">
+        <select id="category-filter" title="Select Material Category">
+          <option value="papers.json">Past Papers</option>
+          <option value="guide.json">Study Guides</option>
+          <option value="SBA.json">SBA</option>
+          <option value="PAT.json">PAT</option>
+          <option value="videos.json">Video & Audio</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-section" id="past-papers-filters">
+      <h2 class="filter-title">
+        <i>📚</i> Filter Past Papers
+      </h2>
+      <div class="filter-options">
+        <select id="subject-filter" title="Filter by Subject">
+          <option value="">All Subjects</option>
+        </select>
+
+        <select id="date-filter" title="Filter by Exam Date">
+          <option value="">All Dates</option>
+          <option value="March">March</option>
+          <option value="June">June</option>
+          <option value="Nov">November</option>
+        </select>
+
+        <select id="year-filter" title="Filter by Year">
+          <option value="">All Years</option>
+          <option value="2026">2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-container">
+    <div class="results-header">
+      <div class="results-count" id="results-count">Loading materials...</div>
+    </div>
+
+    <div class="papers-grid" id="results">
+      <!-- Results will be populated by JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    let materials = [];
+
+    async function loadData() {
+      const categoryFile = document.getElementById('category-filter').value;
+      const pastPapersFilters = document.getElementById('past-papers-filters');
+
+      if (categoryFile === 'papers.json') {
+        pastPapersFilters.style.display = 'block';
+      } else {
+        pastPapersFilters.style.display = 'none';
+      }
+
+      document.getElementById('results-count').textContent = 'Loading materials...';
+      document.getElementById('results').innerHTML = '';
+
+      try {
+        const response = await fetch(categoryFile);
+        materials = await response.json();
+
+        if (categoryFile === 'papers.json') {
+          populateSubjects();
+        }
+
+        filterMaterials();
+      } catch (error) {
+        console.error('Error loading materials:', error);
+        document.getElementById('results').innerHTML = '<div class="no-results">Error loading materials. Please try again later.</div>';
+        document.getElementById('results-count').textContent = 'Error loading';
+      }
+    }
+
+    function populateSubjects() {
+      const subjects = new Set();
+      materials.forEach(p => {
+        let subject = p.name ? p.name.split(" ")[0] : (p.title ? p.title.split(" ")[0] : "");
+        if (subject) subjects.add(subject);
+      });
+
+      const subjectFilter = document.getElementById("subject-filter");
+      // keep only the first option
+      subjectFilter.innerHTML = '<option value="">All Subjects</option>';
+
+      subjects.forEach(subj => {
+        const option = document.createElement("option");
+        option.value = subj;
+        option.textContent = subj;
+        subjectFilter.appendChild(option);
+      });
+    }
+
+    function filterMaterials() {
+      const categoryFile = document.getElementById('category-filter').value;
+      let filtered = materials;
+
+      if (categoryFile === 'papers.json') {
+        const subject = document.getElementById("subject-filter").value.toLowerCase();
+        const date = document.getElementById("date-filter").value.toLowerCase();
+        const year = document.getElementById("year-filter").value;
+
+        if (subject) {
+          filtered = filtered.filter(p => p.name && p.name.toLowerCase().startsWith(subject));
+        }
+
+        if (date) {
+          filtered = filtered.filter(p => p.name && p.name.toLowerCase().includes(date));
+        }
+
+        if (year) {
+          filtered = filtered.filter(p => p.name && p.name.includes(year));
+        }
+      }
+
+      // Update results count
+      const resultsCount = document.getElementById("results-count");
+      resultsCount.textContent = `Showing ${filtered.length} of ${materials.length} items`;
+
+      const resultsContainer = document.getElementById("results");
+      resultsContainer.innerHTML = filtered.length
+        ? filtered.map(item => {
+            const name = item.name || item.title || 'Unknown Item';
+            const fileUrl = item.file || item.url || '#';
+            return `
+            <div class="paper-card">
+              <div class="paper-name">${name}</div>
+              <a href="${fileUrl}" class="download-btn" onclick="handleDownload('${fileUrl}'); return false;">Download</a>
+            </div>`;
+          }).join('')
+        : `<div class="no-results">
+            <i>🔍</i>
+            <h3>No materials found</h3>
+            <p>Try adjusting your filters to see more results</p>
+          </div>`;
+    }
+
+    function handleDownload(fileUrl) {
+      window.open("https://otieu.com/4/9630811", "_blank");
+      const a = document.createElement('a');
+      a.href = fileUrl;
+      a.download = '';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // Add event listeners to filters
+    document.getElementById("category-filter").addEventListener("change", loadData);
+    document.getElementById("subject-filter").addEventListener("change", filterMaterials);
+    document.getElementById("date-filter").addEventListener("change", filterMaterials);
+    document.getElementById("year-filter").addEventListener("change", filterMaterials);
+
+    // Initialize the page
+    loadData();
+  </script>
+</body>
+</html>
