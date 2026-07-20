@@ -3,3 +3,4 @@ gradle-8.2-bin.zip
 .gradle/
 app/build/
 build/
+__pycache__/
