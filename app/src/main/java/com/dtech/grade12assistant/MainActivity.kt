@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         webSettings.domStorageEnabled = true
 
         webView.webViewClient = WebViewClient()
-        webView.loadUrl("https://www.preasx24.co.za")
+        webView.loadUrl("https://grade12.dtech-services.co.za")
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
