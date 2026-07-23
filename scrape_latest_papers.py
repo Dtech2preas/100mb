@@ -29,7 +29,7 @@ def get_year_pages():
 
     pages = []
     # Target 2024, 2025, 2026. (Also 2023 just in case some are missing)
-    target_years = ['2023', '2024', '2025', '2026']
+    target_years = [str(year) for year in range(2008, 2027)]
 
     for link in soup.find_all('a'):
         text = link.text.strip()
