@@ -1,4 +1,4 @@
-Total Mathematics Papers: 322
+Total Mathematics Papers: 244
 
 Name: Mathematics Paper 3 (English) March 2012
 Year: 2012
@@ -148,34 +148,6 @@ Name: Mathematics Memo 1 (Afrikaans and English) Nov 2024
 Year: 2024
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=D_T4clPBpkk%3d&tabid=5193&portalid=0&mid=13724
 
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) Nov 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=i2gQF1Hvor4%3d&tabid=5193&portalid=0&mid=13730
-
-Name: Technical Mathematics Paper 2 (English) Nov 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=N-aAZ1CljOY%3d&tabid=5193&portalid=0&mid=13730
-
-Name: Technical Mathematics Paper 2 (Afrikaans) Nov 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=e0KJlEO7ofw%3d&tabid=5193&portalid=0&mid=13730
-
-Name: Technical Mathematics Paper 1 (English) Nov 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=Ce-A4Q53xYo%3d&tabid=5193&portalid=0&mid=13730
-
-Name: Technical Mathematics Paper 1 (Afrikaans) Nov 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=1lsGL575owE%3d&tabid=5193&portalid=0&mid=13730
-
-Name: Technical Mathematics Memo 2 (Afrikaans and English) Nov 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=NKCgcgbpTU0%3d&tabid=5193&portalid=0&mid=13730
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) Nov 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=WbZ2_JS78d0%3d&tabid=5193&portalid=0&mid=13730
-
 Name: Mathematics Paper 2 Addendum (English & Afrikaans) June 2024
 Year: 2024
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=01EQ1rKhQYw%3d&tabid=4933&portalid=0&mid=13146
@@ -203,34 +175,6 @@ URL: https://www.education.gov.za/LinkClick.aspx?fileticket=hmseEn24qZI%3d&tabid
 Name: Mathematics Memo 1 (Afrikaans and English) June 2024
 Year: 2024
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=LhWLj4xwFNo%3d&tabid=4933&portalid=0&mid=13146
-
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) June 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=uE2IdkRHfvg%3d&tabid=4933&portalid=0&mid=13151
-
-Name: Technical Mathematics Paper 2 (English) June 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=nKmfvhAHv1U%3d&tabid=4933&portalid=0&mid=13151
-
-Name: Technical Mathematics Paper 2 (Afrikaans) June 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=Rhw3r2pMSNA%3d&tabid=4933&portalid=0&mid=13151
-
-Name: Technical Mathematics Paper 1 (English) June 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=eaRMlbh-CYs%3d&tabid=4933&portalid=0&mid=13151
-
-Name: Technical Mathematics Paper 1 (Afrikaans) June 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=rVpwOoMpC0I%3d&tabid=4933&portalid=0&mid=13151
-
-Name: Technical Mathematics Memo 2 (Afrikaans and English) June 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=Ao-SB6wmDdc%3d&tabid=4933&portalid=0&mid=13151
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) June 2024
-Year: 2024
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=g9VUVPaR2eQ%3d&tabid=4933&portalid=0&mid=13151
 
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) Nov 2023
 Year: 2023
@@ -260,34 +204,6 @@ Name: Mathematics Memo 1 (Afrikaans and English) Nov 2023
 Year: 2023
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=ViEtlf4659c%3d&tabid=4682&portalid=0&mid=12681
 
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) Nov 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=hFh8agqsQYc%3d&tabid=4682&portalid=0&mid=12687
-
-Name: Technical Mathematics Paper 2 (English) Nov 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=zgFWrhmtdo8%3d&tabid=4682&portalid=0&mid=12687
-
-Name: Technical Mathematics Paper 2 (Afrikaans) Nov 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=cyA7-yirsrI%3d&tabid=4682&portalid=0&mid=12687
-
-Name: Technical Mathematics Paper 1 (English) Nov 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=OiT9clHQ_So%3d&tabid=4682&portalid=0&mid=12687
-
-Name: Technical Mathematics Paper 1 (Afrikaans) Nov 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=yOa_eVEThXE%3d&tabid=4682&portalid=0&mid=12687
-
-Name: Technical Mathematics Memo 2 (Afrikaans and English) Nov 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=fn5CA2DKJUk%3d&tabid=4682&portalid=0&mid=12687
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) Nov 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=Qc4LVJdAawA%3d&tabid=4682&portalid=0&mid=12687
-
 Name: Mathematics Paper 2 Addendum (English & Afrikaans) June 2023
 Year: 2023
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=tTihfM04RXU%3d&tabid=4504&portalid=0&mid=12317
@@ -315,30 +231,6 @@ URL: https://www.education.gov.za/LinkClick.aspx?fileticket=QglalUTQMaw%3d&tabid
 Name: Mathematics Memo 1 (Afrikaans and English) June 2023
 Year: 2023
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=lKqjE45EcJE%3d&tabid=4504&portalid=0&mid=12317
-
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) June 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=E9I7wGq4Kmw%3d&tabid=4504&portalid=0&mid=12323
-
-Name: Technical Mathematics Paper 2 (English) June 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=95hH2LC80WM%3d&tabid=4504&portalid=0&mid=12323
-
-Name: Technical Mathematics Paper 2 (Afrikaans) June 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=-6KIaexRtXE%3d&tabid=4504&portalid=0&mid=12323
-
-Name: Technical Mathematics Paper 1 (English) June 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=twNDHMWpdeI%3d&tabid=4504&portalid=0&mid=12323
-
-Name: Technical Mathematics Paper 1 (Afrikaans) June 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=i93erjheLLU%3d&tabid=4504&portalid=0&mid=12323
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) June 2023
-Year: 2023
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=qwtZWEH9YmU%3d&tabid=4504&portalid=0&mid=12323
 
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) Nov 2022
 Year: 2022
@@ -368,30 +260,6 @@ Name: Mathematics Memo 1 (Afrikaans and English) Nov 2022
 Year: 2022
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=gytAGGPYSc8%3d&tabid=3294&portalid=0&mid=10986
 
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) Nov 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=UQI6ycF5aEM%3d&tabid=3294&portalid=0&mid=10992
-
-Name: Technical Mathematics Paper 2 (English) Nov 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=JDxvpqH4eb8%3d&tabid=3294&portalid=0&mid=10992
-
-Name: Technical Mathematics Paper 2 (Afrikaans) Nov 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=X8qLSTehtwY%3d&tabid=3294&portalid=0&mid=10992
-
-Name: Technical Mathematics Paper 1 (English) Nov 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=Kea7Kr1AKJ8%3d&tabid=3294&portalid=0&mid=10992
-
-Name: Technical Mathematics Paper 1 (Afrikaans) Nov 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=2ZfZDZP3k9s%3d&tabid=3294&portalid=0&mid=10992
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) Nov 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=fIHU6xIsTco%3d&tabid=3294&portalid=0&mid=10992
-
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) June 2022
 Year: 2022
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=YcvUaN-79_M%3d&tabid=3138&portalid=0&mid=10574
@@ -419,34 +287,6 @@ URL: https://www.education.gov.za/LinkClick.aspx?fileticket=iMIvxdxJCEs%3d&tabid
 Name: Mathematics Memo 1 (Afrikaans and English) June 2022
 Year: 2022
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=ias3gDQea2c%3d&tabid=3138&portalid=0&mid=10574
-
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) June 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=NZ5y0Ns0plY%3d&tabid=3138&portalid=0&mid=10579
-
-Name: Technical Mathematics Paper 2 (English) June 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=Y2jS5rC7oVY%3d&tabid=3138&portalid=0&mid=10579
-
-Name: Technical Mathematics Paper 2 (Afrikaans) June 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=QOyFe8mXc5s%3d&tabid=3138&portalid=0&mid=10579
-
-Name: Technical Mathematics Paper 1 (English) June 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=G88EQ6MsAXE%3d&tabid=3138&portalid=0&mid=10579
-
-Name: Technical Mathematics Paper 1 (Afrikaans) June 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=CYm27JyNPCs%3d&tabid=3138&portalid=0&mid=10579
-
-Name: Technical Mathematics Memo 2 (Afrikaans and English) June 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=GdxdPQ92xcQ%3d&tabid=3138&portalid=0&mid=10579
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) June 2022
-Year: 2022
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=1bmTYgtPSQc%3d&tabid=3138&portalid=0&mid=10579
 
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) Nov 2021
 Year: 2021
@@ -476,30 +316,6 @@ Name: Mathematics Memo 1 (Afrikaans and English) Nov 2021
 Year: 2021
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=LJo4MZ4DRZM%3d&tabid=2922&portalid=0&mid=10135
 
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) Nov 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=vqkojgODjBQ%3d&tabid=2922&portalid=0&mid=10141
-
-Name: Technical Mathematics Paper 2 (English) Nov 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=4vnOvdyNTu4%3d&tabid=2922&portalid=0&mid=10141
-
-Name: Technical Mathematics Paper 2 (Afrikaans) Nov 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=Rtd487knDWY%3d&tabid=2922&portalid=0&mid=10141
-
-Name: Technical Mathematics Paper 1 (English) Nov 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=QyrvPFHWmYo%3d&tabid=2922&portalid=0&mid=10141
-
-Name: Technical Mathematics Paper 1 (Afrikaans) Nov 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=0itFea4xW-I%3d&tabid=2922&portalid=0&mid=10141
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) Nov 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=9BdSOQbcIic%3d&tabid=2922&portalid=0&mid=10141
-
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) June 2021
 Year: 2021
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=VGY9gE7yrqs%3d&tabid=2837&portalid=0&mid=9915
@@ -527,34 +343,6 @@ URL: https://www.education.gov.za/LinkClick.aspx?fileticket=7HD9X7z3SWA%3d&tabid
 Name: Mathematics Memo 1 (Afrikaans and English) June 2021
 Year: 2021
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=_Uf6aXgNhio%3d&tabid=2837&portalid=0&mid=9915
-
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) June 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=-RyWSsMb8SM%3d&tabid=2837&portalid=0&mid=9921
-
-Name: Technical Mathematics Paper 2 (English) June 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=LcieHJAqWCQ%3d&tabid=2837&portalid=0&mid=9921
-
-Name: Technical Mathematics Paper 2 (Afrikaans) June 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=dTth3WG9lsQ%3d&tabid=2837&portalid=0&mid=9921
-
-Name: Technical Mathematics Paper 1 (English) June 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=agQL7JVNzdQ%3d&tabid=2837&portalid=0&mid=9921
-
-Name: Technical Mathematics Paper 1 (Afrikaans) June 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=i2q-eBwV7WM%3d&tabid=2837&portalid=0&mid=9921
-
-Name: Technical Mathematics Memo 2 (Afrikaans and English) June 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=KEmoH0HMdSA%3d&tabid=2837&portalid=0&mid=9921
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) June 2021
-Year: 2021
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=31yyaqcTptY%3d&tabid=2837&portalid=0&mid=9921
 
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) Nov 2020
 Year: 2020
@@ -584,30 +372,6 @@ Name: Mathematics Memo 1 (Afrikaans and English) Nov 2020
 Year: 2020
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=P7kQcnNxRHY%3d&tabid=2702&portalid=0&mid=9632
 
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) Nov 2020
-Year: 2020
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=LKuwEIhQHDQ%3d&tabid=2702&portalid=0&mid=9637
-
-Name: Technical Mathematics Paper 2 (English) Nov 2020
-Year: 2020
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=el-jC2NI-c4%3d&tabid=2702&portalid=0&mid=9637
-
-Name: Technical Mathematics Paper 2 (Afrikaans) Nov 2020
-Year: 2020
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=XAxSG1Q0L3c%3d&tabid=2702&portalid=0&mid=9637
-
-Name: Technical Mathematics Paper 1 (English) Nov 2020
-Year: 2020
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=jCppgnTN5Co%3d&tabid=2702&portalid=0&mid=9637
-
-Name: Technical Mathematics Paper 1 (Afrikaans) Nov 2020
-Year: 2020
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=34qsY3rcD-s%3d&tabid=2702&portalid=0&mid=9637
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) Nov 2020
-Year: 2020
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=ePhAWBH_Gx0%3d&tabid=2702&portalid=0&mid=9637
-
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) Nov 2019
 Year: 2019
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=RQxkQUKqBaU%3d&tabid=2556&portalid=0&mid=8994
@@ -635,34 +399,6 @@ URL: https://www.education.gov.za/LinkClick.aspx?fileticket=n-F98_w5Zig%3d&tabid
 Name: Mathematics Memo 1 Nov 2019
 Year: 2019
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=DtEIXt8fp_E%3d&tabid=2556&portalid=0&mid=8994
-
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) Nov 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=gDVg2HNSD7Y%3d&tabid=2556&portalid=0&mid=8988
-
-Name: Technical Mathematics Paper 2 (English) Nov 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=Yzl9dfkEQpg%3d&tabid=2556&portalid=0&mid=8988
-
-Name: Technical Mathematics Paper 2 (Afrikaans) Nov 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=0uvxSkVBEYw%3d&tabid=2556&portalid=0&mid=8988
-
-Name: Technical Mathematics Paper 1 (English) Nov 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=_YgYguUjgU4%3d&tabid=2556&portalid=0&mid=8988
-
-Name: Technical Mathematics Paper 1 (Afrikaans) Nov 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=BYdLfzDiP9g%3d&tabid=2556&portalid=0&mid=8988
-
-Name: Technical Mathematics Memo 2 Nov 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=UcJTIFkEeK0%3d&tabid=2556&portalid=0&mid=8988
-
-Name: Technical Mathematics Memo 1 Nov 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=2UgWozbJBrU%3d&tabid=2556&portalid=0&mid=8988
 
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) June 2019
 Year: 2019
@@ -692,30 +428,6 @@ Name: Mathematics Memo 1 (Afrikaans and English) June 2019
 Year: 2019
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=YcRpZvGulPo%3d&tabid=2468&portalid=0&mid=8935
 
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) June 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=uK4H2HsU-Ls%3d&tabid=2468&portalid=0&mid=8940
-
-Name: Technical Mathematics Paper 2 (English) June 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=J_W09OCiNZs%3d&tabid=2468&portalid=0&mid=8940
-
-Name: Technical Mathematics Paper 2 (Afrikaans) June 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=0OIYJ-kzu10%3d&tabid=2468&portalid=0&mid=8940
-
-Name: Technical Mathematics Paper 1 (English) June 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=6Y5U3pN0tGU%3d&tabid=2468&portalid=0&mid=8940
-
-Name: Technical Mathematics Paper 1 (Afrikaans) June 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=fv5xDkQQwyA%3d&tabid=2468&portalid=0&mid=8940
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) June 2019
-Year: 2019
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=he2VzC2etCE%3d&tabid=2468&portalid=0&mid=8940
-
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) Nov 2018
 Year: 2018
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=lS1oTeOCp7A%3d&tabid=2268&portalid=0&mid=8402
@@ -743,30 +455,6 @@ URL: https://www.education.gov.za/LinkClick.aspx?fileticket=oaZUa6tkOeI%3d&tabid
 Name: Mathematics Memo 1 (Afrikaans and English) Nov 2018
 Year: 2018
 URL: https://www.education.gov.za/LinkClick.aspx?fileticket=JGqaMbWx7XA%3d&tabid=2268&portalid=0&mid=8402
-
-Name: Technical Mathematics Paper 2 Answerbook (Afrikaans and English) Nov 2018
-Year: 2018
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=w5Z_JgrSNyw%3d&tabid=2268&portalid=0&mid=8409
-
-Name: Technical Mathematics Paper 2 (English) Nov 2018
-Year: 2018
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=iDyZVC__Atw%3d&tabid=2268&portalid=0&mid=8409
-
-Name: Technical Mathematics Paper 2 (Afrikaans) Nov 2018
-Year: 2018
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=jMFjwi6bVJU%3d&tabid=2268&portalid=0&mid=8409
-
-Name: Technical Mathematics Paper 1 (English) Nov 2018
-Year: 2018
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=PbsmJ00ytgg%3d&tabid=2268&portalid=0&mid=8409
-
-Name: Technical Mathematics Paper 1 (Afrikaans) Nov 2018
-Year: 2018
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=75fO1ACQjac%3d&tabid=2268&portalid=0&mid=8409
-
-Name: Technical Mathematics Memo 1 (Afrikaans and English) Nov 2018
-Year: 2018
-URL: https://www.education.gov.za/LinkClick.aspx?fileticket=_73i9hmpTdo%3d&tabid=2268&portalid=0&mid=8409
 
 Name: Mathematics Paper 2 Answerbook (English & Afrikaans) March 2018
 Year: 2018

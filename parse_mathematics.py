@@ -8,8 +8,8 @@ mathematics_papers = []
 for p in papers:
     name = p.get('name', '')
     url = p.get('file', '')
-
-    if 'mathematics' in name.lower():
+    name_lower = name.lower()
+    if 'mathematics' in name_lower and 'technical' not in name_lower and 'mathematical literacy' not in name_lower:
         # try to extract year
         match = re.search(r'\b(19|20)\d{2}\b', name)
         year = match.group(0) if match else "Unknown"
