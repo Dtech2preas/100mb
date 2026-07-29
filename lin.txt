@@ -1,0 +1,181 @@
+Here's a complete step-by-step guide.
+
+Step 1: Back up your files
+
+Before changing partitions, copy any important files to an external drive or cloud storage.
+
+
+---
+
+Step 2: Download Linux Mint
+
+On Windows, open your browser and go to:
+
+[Linux Mint Download Page](https://linuxmint.com/download.php?utm_source=chatgpt.com)
+
+Download the Cinnamon Edition (64-bit) ISO.
+
+
+---
+
+Step 3: Get Rufus
+
+Go to:
+
+[Rufus](https://rufus.ie?utm_source=chatgpt.com)
+
+Download the latest version.
+
+
+---
+
+Step 4: Create a bootable USB
+
+1. Insert your 8 GB (or larger) USB flash drive.
+
+
+2. Open Rufus.
+
+
+3. Under Device, select your USB.
+
+
+4. Click SELECT and choose the Linux Mint ISO you downloaded.
+
+
+5. Leave the other settings at their defaults (unless Rufus suggests changing them).
+
+
+6. Click START.
+
+
+7. Wait until it says READY.
+
+
+
+
+---
+
+Step 5: Make space for Linux
+
+1. Press Windows + X.
+
+
+2. Click Disk Management.
+
+
+3. Right-click C:.
+
+
+4. Click Shrink Volume.
+
+
+5. Enter 100000 MB (about 100 GB) or 150000 MB (about 150 GB).
+
+
+6. Click Shrink.
+
+
+
+You'll now see Unallocated space. Do not create a new partition there.
+
+
+---
+
+Step 6: Boot from the USB
+
+1. Leave the USB plugged in.
+
+
+2. Restart the laptop.
+
+
+3. As soon as it starts, repeatedly press Esc.
+
+
+4. An HP Startup Menu should appear.
+
+
+5. Press F9 for Boot Device Options.
+
+
+6. Select your USB drive and press Enter.
+
+
+
+
+---
+
+Step 7: Try Linux
+
+When Linux Mint starts, choose Start Linux Mint (or similar). It will run from the USB without changing your hard drive.
+
+If everything works (Wi-Fi, keyboard, touchpad, etc.), double-click Install Linux Mint on the desktop.
+
+
+---
+
+Step 8: Install Linux
+
+1. Choose your language.
+
+
+2. Choose your keyboard layout.
+
+
+3. Connect to Wi-Fi if prompted.
+
+
+4. Tick Install multimedia codecs.
+
+
+
+When you reach Installation type:
+
+If you see Install Linux Mint alongside Windows Boot Manager, choose that. This is the easiest option.
+
+If you don't see it, let me know before continuing.
+
+
+
+---
+
+Step 9: Finish the installation
+
+1. Choose your time zone.
+
+
+2. Create your username and password.
+
+
+3. Click Install.
+
+
+4. Wait 10–30 minutes.
+
+
+5. When it's finished, click Restart Now.
+
+
+6. Remove the USB when asked.
+
+
+
+
+---
+
+Step 10: Choose your operating system
+
+Each time you turn on your laptop, you'll see a menu where you can choose:
+
+Linux Mint
+
+Windows 10
+
+
+
+---
+
+Before you start
+
+Can you tell me what model HP Pavilion G7 you have? For example, it might say g7-2240us, g7-1300, or something similar on a sticker underneath the laptop. That will help confirm whether it uses Legacy BIOS or UEFI, so I can guide you through the correct boot settings if needed.
