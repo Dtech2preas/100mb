@@ -533,6 +533,27 @@ Appreciate: if you do something that deserves appreciate, best believe you'll ge
         
         button.style.display = 'none';
 
+        // Synchronize current input values to HTML attributes so html2canvas captures them
+        const inputs = element.querySelectorAll('input');
+        inputs.forEach(input => {
+            if (input.type === 'radio' || input.type === 'checkbox') {
+                if (input.checked) {
+                    input.setAttribute('checked', 'checked');
+                } else {
+                    input.removeAttribute('checked');
+                }
+            } else {
+                input.setAttribute('value', input.value);
+            }
+        });
+
+        const textareas = element.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            textarea.innerHTML = textarea.value;
+            // Also set textContent just in case
+            textarea.textContent = textarea.value;
+        });
+
         const opt = {
             margin:       10,
             filename:     'Boyfriend_Application_Form_Filled.pdf',
