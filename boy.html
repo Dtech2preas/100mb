@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boyfriend Application Form — 2026</title>
+    <!-- html2pdf library for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #c2185b;
+        }
+        h1 { margin-bottom: 5px; }
+        .intro-text {
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .section-title {
+            background-color: #fce4ec;
+            color: #c2185b;
+            padding: 8px 12px;
+            font-weight: bold;
+            border-left: 5px solid #c2185b;
+            margin: 25px 0 15px 0;
+            text-transform: uppercase;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .inline-label {
+            display: inline-block;
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        input.inline-input {
+            width: auto;
+            flex-grow: 1;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .radio-group label {
+            font-weight: normal;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .radio-group input[type="radio"], .radio-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .ratings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .ratings-grid div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ratings-grid input {
+            width: 60px;
+        }
+        .hr-section {
+            border: 2px dashed #c2185b;
+            padding: 20px;
+            background-color: #fafafa;
+            margin-top: 40px;
+        }
+        .hr-section h3 {
+            color: #c2185b;
+            margin-top: 0;
+        }
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .signature-box {
+            width: 45%;
+        }
+        .warning {
+            font-size: 0.85em;
+            color: #d32f2f;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .btn-export {
+            display: block;
+            width: 100%;
+            background-color: #c2185b;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background 0.3s;
+        }
+        .btn-export:hover {
+            background-color: #ad1457;
+        }
+        
+        /* Print/PDF Specific Styles */
+        @media print {
+            .btn-export { display: none; }
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="form-content" class="container">
+    <h1>BOYFRIEND APPLICATION FORM — 2026</h1>
+    <div class="intro-text">
+        <strong>Position Applied For:</strong> My Boyfriend ♥ | <strong>Department:</strong> My Heart & Happiness<br>
+        <strong>Contract:</strong> Long-term, renewable indefinitely ☺<br>
+        <strong>Application Fee:</strong> R0.00 — but wasting my time will result in immediate rejection. ☺
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="section-title">SECTION 1: PERSONAL INFORMATION</div>
+    <div class="form-group">
+        <label>Full Name:</label>
+        <input type="text" placeholder="Enter your full name">
+    </div>
+    <div class="form-row">
+        <div style="flex: 1;">
+            <label>Age:</label>
+            <input type="number" placeholder="Your age">
+        </div>
+        <div style="flex: 2;">
+            <label>Where are you from?</label>
+            <input type="text" placeholder="Your location">
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Occupation:</label>
+        <input type="text" placeholder="Your current job or study">
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Relationship status:</label>
+        <label><input type="radio" name="rel_status"> Single</label>
+        <label><input type="radio" name="rel_status"> Complicated</label>
+        <label><input type="radio" name="rel_status"> "We're basically broken up"</label>
+        <label><input type="radio" name="rel_status"> Other: <input type="text" style="width:150px; margin-left:5px; padding:2px;"></label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you have children?</label>
+        <label><input type="radio" name="children"> No</label>
+        <label><input type="radio" name="children"> Yes — How many? <input type="number" style="width:50px; margin-left:5px; padding:2px;"></label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you currently have a girlfriend/wife/"situationship"?</label>
+        <label><input type="radio" name="current_partner"> No</label>
+        <label><input type="radio" name="current_partner"> Yes</label>
+        <label><input type="radio" name="current_partner"> It's complicated</label>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section-title">♥ SECTION 2: RELATIONSHIP HISTORY</div>
+    <div class="form-group">
+        <label>How long was your last relationship?</label>
+        <input type="text">
+    </div>
+    <div class="form-group">
+        <label>Why did it end?</label>
+        <textarea></textarea>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Are you completely over your ex?</label>
+        <label><input type="radio" name="over_ex"> Yes</label>
+        <label><input type="radio" name="over_ex"> No</label>
+        <label><input type="radio" name="over_ex"> I still check their page sometimes</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you still communicate with your ex?</label>
+        <label><input type="radio" name="comm_ex"> No</label>
+        <label><input type="radio" name="comm_ex"> Yes — Explain: <input type="text" style="width:300px; margin-left:5px; padding:2px;"></label>
+    </div>
+    <div class="form-group">
+        <label>What did your previous relationship teach you?</label>
+        <textarea></textarea>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section-title">SECTION 3: EMOTIONAL INTELLIGENCE</div>
+    <div class="form-group">
+        <label>When you're angry with your partner, what do you normally do?</label>
+        <textarea></textarea>
+    </div>
+    <div class="form-group">
+        <label>If your girlfriend tells you that something you did hurt her, what would you do?</label>
+        <textarea></textarea>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Can you communicate when you're upset instead of disappearing?</label><br>
+        <label><input type="radio" name="upset_comm"> Absolutely</label>
+        <label><input type="radio" name="upset_comm"> I need time, but I communicate</label>
+        <label><input type="radio" name="upset_comm"> I disappear for 3 business days ☺</label>
+    </div>
+    <div class="form-group">
+        <label>How do you handle disagreements?</label>
+        <textarea></textarea>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section-title">SECTION 4: COMMUNICATION TEST</div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Your girlfriend sends you a message and you're busy. What do you do?</label><br>
+        <label><input type="radio" name="busy_msg"> Ignore her until I'm free</label>
+        <label><input type="radio" name="busy_msg"> Tell her I'm busy and respond when I can</label>
+        <label><input type="radio" name="busy_msg"> Send a quick "I'm busy, I'll text you later ♥"</label>
+        <label><input type="radio" name="busy_msg"> Depends on my mood</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">How often do you like communicating with your partner?</label><br>
+        <label><input type="radio" name="how_often"> All day</label>
+        <label><input type="radio" name="how_often"> Throughout the day</label>
+        <label><input type="radio" name="how_often"> Morning & evening</label>
+        <label><input type="radio" name="how_often"> Whenever I remember ☺</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Are you comfortable with phone calls/video calls?</label><br>
+        <label><input type="radio" name="calls"> Yes</label>
+        <label><input type="radio" name="calls"> No</label>
+        <label><input type="radio" name="calls"> Depends who's calling</label>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="section-title">SECTION 5: RED FLAG DISCLOSURE</div>
+    <p style="font-size: 0.9em; margin-top:-10px;"><em>Please answer HONESTLY. Lying on this section will result in immediate termination of application. ☺</em></p>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you cheat?</label>
+        <label><input type="radio" name="cheat"> No</label>
+        <label><input type="radio" name="cheat"> Sometimes</label>
+        <label><input type="radio" name="cheat"> I believe "it's not cheating if..."</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you entertain other women while in a relationship?</label>
+        <label><input type="radio" name="entertain"> No</label>
+        <label><input type="radio" name="entertain"> Sometimes</label>
+        <label><input type="radio" name="entertain"> I just like attention</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you flirt with other women?</label>
+        <label><input type="radio" name="flirt"> No</label>
+        <label><input type="radio" name="flirt"> Yes</label>
+        <label><input type="radio" name="flirt"> Only when I'm bored</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you have anger issues?</label>
+        <label><input type="radio" name="anger"> No</label>
+        <label><input type="radio" name="anger"> Sometimes</label>
+        <label><input type="radio" name="anger"> Yes — but I'm working on it</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you lie?</label>
+        <label><input type="radio" name="lie"> Never</label>
+        <label><input type="radio" name="lie"> Sometimes</label>
+        <label><input type="radio" name="lie"> Everyone lies ☺</label>
+    </div>
+    <div class="form-group">
+        <label>What is your biggest red flag?</label>
+        <textarea></textarea>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="section-title">SECTION 6: BOYFRIEND DUTIES</div>
+    <label>Rate yourself from 1–10:</label>
+    <div class="ratings-grid form-group">
+        <div>Communication: <input type="number" min="1" max="10"></div>
+        <div>Loyalty: <input type="number" min="1" max="10"></div>
+        <div>Affection: <input type="number" min="1" max="10"></div>
+        <div>Romance: <input type="number" min="1" max="10"></div>
+        <div>Patience: <input type="number" min="1" max="10"></div>
+        <div>Emotional support: <input type="number" min="1" max="10"></div>
+        <div>Consistency: <input type="number" min="1" max="10"></div>
+        <div>Making your girlfriend laugh: <input type="number" min="1" max="10"></div>
+        <div>Planning dates: <input type="number" min="1" max="10"></div>
+    </div>
+    <div class="form-group">
+        <label>What does being a good boyfriend mean to you?</label>
+        <textarea></textarea>
+    </div>
+    <div class="form-group">
+        <label>What would you do to make your girlfriend feel loved and appreciated?</label>
+        <textarea></textarea>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="section-title">SECTION 7: FINANCIAL & RESPONSIBILITY CHECK</div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you have a job/income?</label>
+        <label><input type="radio" name="income"> Yes</label>
+        <label><input type="radio" name="income"> No</label>
+        <label><input type="radio" name="income"> Currently looking</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">How do you feel about paying for dates?</label><br>
+        <label><input type="radio" name="dates"> I don't mind</label>
+        <label><input type="radio" name="dates"> We can take turns</label>
+        <label><input type="radio" name="dates"> 50/50 always</label>
+        <label><input type="radio" name="dates"> My girlfriend can pay ☺</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Are you financially responsible?</label>
+        <label><input type="radio" name="fin_resp"> Yes</label>
+        <label><input type="radio" name="fin_resp"> Trying my best</label>
+        <label><input type="radio" name="fin_resp"> My bank account needs prayer ☺</label>
+    </div>
+
+    <!-- SECTION 8 -->
+    <div class="section-title">SECTION 8: LOVE & AFFECTION</div>
+    <div class="form-group radio-group">
+        <label class="inline-label">What is your love language?</label><br>
+        <label><input type="checkbox"> Words of affirmation</label>
+        <label><input type="checkbox"> Quality time</label>
+        <label><input type="checkbox"> Physical touch</label>
+        <label><input type="checkbox"> Acts of service</label>
+        <label><input type="checkbox"> Gifts</label>
+        <label><input type="checkbox"> All of the above ☺</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">How affectionate are you?</label><br>
+        <label><input type="radio" name="affection"> Very affectionate</label>
+        <label><input type="radio" name="affection"> Moderately affectionate</label>
+        <label><input type="radio" name="affection"> I'm shy</label>
+        <label><input type="radio" name="affection"> Please don't touch me ☺</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you like giving your partner reassurance?</label>
+        <label><input type="radio" name="reassurance"> Yes</label>
+        <label><input type="radio" name="reassurance"> No</label>
+        <label><input type="radio" name="reassurance"> Only when necessary</label>
+    </div>
+    <div class="form-group">
+        <label>How would you reassure your girlfriend if she was feeling insecure?</label>
+        <textarea></textarea>
+    </div>
+
+    <!-- SECTION 9 -->
+    <div class="section-title">SECTION 9: JEALOUSY & BOUNDARIES</div>
+    <div class="form-group">
+        <label class="inline-label">How jealous are you from 1–10?</label>
+        <input type="number" min="1" max="10" style="width: 80px;">
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Would you go through your girlfriend's phone?</label><br>
+        <label><input type="radio" name="phone"> No</label>
+        <label><input type="radio" name="phone"> If I have a reason</label>
+        <label><input type="radio" name="phone"> Yes, I need to know everything</label>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Do you believe your girlfriend should have male friends?</label>
+        <label><input type="radio" name="male_friends"> Yes</label>
+        <label><input type="radio" name="male_friends"> No</label>
+        <label><input type="radio" name="male_friends"> Depends on the friendship</label>
+    </div>
+    <div class="form-group">
+        <label>What boundaries do you expect in a relationship?</label>
+        <textarea></textarea>
+    </div>
+
+    <!-- SECTION 10 -->
+    <div class="section-title">SECTION 10: INTENTIONS</div>
+    <div class="form-group">
+        <label>Why are you applying for this position?</label>
+        <textarea></textarea>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">What are you looking for?</label><br>
+        <label><input type="radio" name="looking_for"> Serious relationship</label>
+        <label><input type="radio" name="looking_for"> Something casual</label>
+        <label><input type="radio" name="looking_for"> Friendship</label>
+        <label><input type="radio" name="looking_for"> Marriage eventually</label>
+        <label><input type="radio" name="looking_for"> I don't know yet</label>
+        <label><input type="radio" name="looking_for"> I just think she's cute ☺</label>
+    </div>
+    <div class="form-group">
+        <label>Where do you see yourself in 2–3 years?</label>
+        <textarea></textarea>
+    </div>
+    <div class="form-group">
+        <label>What does commitment mean to you?</label>
+        <textarea></textarea>
+    </div>
+    <div class="form-group radio-group">
+        <label class="inline-label">Are you willing to be loyal, honest, consistent and intentional?</label><br>
+        <label><input type="radio" name="loyal"> Yes</label>
+        <label><input type="radio" name="loyal"> No</label>
+        <label><input type="radio" name="loyal"> I need to think about it</label>
+    </div>
+
+    <!-- FINAL INTERVIEW -->
+    <div class="section-title">FINAL INTERVIEW</div>
+    <div class="form-group"><label>1. Why should I choose you over the other applicants?</label><textarea></textarea></div>
+    <div class="form-group"><label>2. What is one thing you can promise me as my boyfriend?</label><textarea></textarea></div>
+    <div class="form-group"><label>3. What is something you would NEVER do to your girlfriend?</label><textarea></textarea></div>
+    <div class="form-group"><label>4. What is your idea of a perfect date?</label><textarea></textarea></div>
+    <div class="form-group"><label>5. If we had an argument, what would you do before going to sleep?</label><textarea></textarea></div>
+    <div class="form-group"><label>6. If I'm having a terrible day, how would you make it better?</label><textarea></textarea></div>
+    <div class="form-group"><label>7. What are your intentions with me specifically?</label><textarea></textarea></div>
+    <div class="form-group"><label>8. Tell me one thing about yourself that I should know before considering your application.</label><textarea></textarea></div>
+    
+    <div class="section-title">♥ THE FINAL QUESTION</div>
+    <div class="form-group">
+        <label>If you become my boyfriend, what can I expect from you that will make me feel safe, loved, respected and appreciated?</label>
+        <textarea style="min-height: 120px;"></textarea>
+    </div>
+
+    <!-- HR SECTION -->
+    <div class="hr-section">
+        <h3>HR USE ONLY — DO NOT FILL IN</h3>
+        <p>Application reviewed by: Me ☺</p>
+        <div class="radio-group" style="margin-bottom: 20px;">
+            <label><input type="checkbox" disabled> APPROVED</label>
+            <label><input type="checkbox" disabled> SHORTLISTED FOR INTERVIEW</label>
+            <label><input type="checkbox" disabled> UNDER REVIEW</label><br>
+            <label><input type="checkbox" disabled> REJECTED</label>
+            <label><input type="checkbox" disabled> REJECTED IMMEDIATELY — RED FLAGS DETECTED</label>
+        </div>
+        <div class="form-group">
+            <label class="inline-label">Overall Score: </label>
+            <input type="text" style="width: 100px;" disabled> / 100
+        </div>
+        <div class="form-group">
+            <label>Notes:</label>
+            <textarea disabled style="background-color:#eee;"></textarea>
+        </div>
+        <div class="signatures">
+            <div class="signature-box">
+                <label>HR Signature:</label>
+                <input type="text" disabled style="background-color:#eee;">
+            </div>
+            <div class="signature-box">
+                <label>Date:</label>
+                <input type="text" disabled style="background-color:#eee;">
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLICANT CONFIRMATION -->
+    <div class="warning">
+        <p>⚠ IMPORTANT NOTICE</p>
+        <p>Submitting this application does NOT guarantee employment. Successful candidates will undergo further screening, including consistency checks, communication assessments, loyalty testing and an extremely serious "Do you actually know how to treat a woman?" evaluation. ☺</p>
+        <p>By signing below, you confirm that all information provided is truthful.</p>
+    </div>
+    
+    <div class="signatures">
+        <div class="signature-box">
+            <label>Applicant Signature:</label>
+            <input type="text">
+        </div>
+        <div class="signature-box">
+            <label>Date:</label>
+            <input type="date">
+        </div>
+    </div>
+</div>
+
+<button class="btn-export" id="exportPdfBtn">Export Form as PDF</button>
+
+<script>
+    document.getElementById('exportPdfBtn').addEventListener('click', function() {
+        const element = document.getElementById('form-content');
+        const button = this;
+        
+        // Hide button during generation
+        button.style.display = 'none';
+
+        // Options for the PDF generation
+        const opt = {
+            margin:       10,
+            filename:     'Boyfriend_Application_Form_2026.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // Generate and save PDF
+        html2pdf().set(opt).from(element).save().then(function() {
+            // Restore button after generation completes
+            button.style.display = 'block';
+        });
+    });
+</script>
+
+</body>
+</html>
