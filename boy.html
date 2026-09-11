@@ -533,25 +533,43 @@ Appreciate: if you do something that deserves appreciate, best believe you'll ge
         
         button.style.display = 'none';
 
-        // Synchronize current input values to HTML attributes so html2canvas captures them
+        // Save original elements and replace them with spans/divs
+        // html2canvas struggles to render values inside inputs/textareas
+        const originalInputs = [];
         const inputs = element.querySelectorAll('input');
         inputs.forEach(input => {
+            const span = document.createElement('span');
+            span.style.cssText = window.getComputedStyle(input).cssText;
+
             if (input.type === 'radio' || input.type === 'checkbox') {
-                if (input.checked) {
-                    input.setAttribute('checked', 'checked');
-                } else {
-                    input.removeAttribute('checked');
-                }
+                span.innerText = input.checked ? '[X] ' : '[ ] ';
+                span.style.fontFamily = 'monospace';
             } else {
-                input.setAttribute('value', input.value);
+                span.innerText = input.value;
+                span.style.borderBottom = '1px solid black';
+                span.style.display = 'inline-block';
+                span.style.minWidth = '20px';
+                if (!input.value) {
+                    span.innerHTML = '&nbsp;&nbsp;';
+                }
             }
+
+            originalInputs.push({ parent: input.parentNode, input: input, span: span });
+            input.parentNode.replaceChild(span, input);
         });
 
+        const originalTextareas = [];
         const textareas = element.querySelectorAll('textarea');
         textareas.forEach(textarea => {
-            textarea.innerHTML = textarea.value;
-            // Also set textContent just in case
-            textarea.textContent = textarea.value;
+            const div = document.createElement('div');
+            div.style.cssText = window.getComputedStyle(textarea).cssText;
+            div.innerText = textarea.value;
+            div.style.border = '1px solid black';
+            div.style.whiteSpace = 'pre-wrap';
+            div.style.minHeight = textarea.style.minHeight || '50px';
+
+            originalTextareas.push({ parent: textarea.parentNode, textarea: textarea, div: div });
+            textarea.parentNode.replaceChild(div, textarea);
         });
 
         const opt = {
@@ -564,10 +582,34 @@ Appreciate: if you do something that deserves appreciate, best believe you'll ge
 
         html2pdf().set(opt).from(element).save().then(function() {
             button.style.display = 'block';
+
+            // Restore original elements
+            originalInputs.forEach(item => {
+                if (item.parent.contains(item.span)) {
+                    item.parent.replaceChild(item.input, item.span);
+                }
+            });
+            originalTextareas.forEach(item => {
+                if (item.parent.contains(item.div)) {
+                    item.parent.replaceChild(item.textarea, item.div);
+                }
+            });
         }).catch(err => {
             console.error("PDF Export failed:", err);
             alert("Export failed. Please press Ctrl+P (or Cmd+P) and choose 'Save as PDF' to export this document natively.");
             button.style.display = 'block';
+
+            // Restore original elements on failure
+            originalInputs.forEach(item => {
+                if (item.parent.contains(item.span)) {
+                    item.parent.replaceChild(item.input, item.span);
+                }
+            });
+            originalTextareas.forEach(item => {
+                if (item.parent.contains(item.div)) {
+                    item.parent.replaceChild(item.textarea, item.div);
+                }
+            });
         });
     });
 </script>
