@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boyfriend Application Form — 2026</title>
-    <!-- html2pdf library -->
+    <title>Boyfriend Application Form — Filled</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
-        /* Black and white document styling */
         body {
             font-family: "Times New Roman", Times, serif;
             color: #000;
@@ -63,7 +61,6 @@
             margin-right: 10px;
             font-weight: bold;
         }
-        /* Underlined text inputs to look like a document */
         input[type="text"], input[type="number"] {
             border: none;
             border-bottom: 1px solid #000;
@@ -72,6 +69,7 @@
             padding: 2px 5px;
             background: transparent;
             outline: none;
+            color: #000;
         }
         input.fill-line {
             width: 100%;
@@ -92,6 +90,7 @@
             min-height: 50px;
             box-sizing: border-box;
             outline: none;
+            color: #000;
         }
         .radio-group label {
             font-weight: normal;
@@ -161,7 +160,6 @@
             background-color: #333;
         }
         
-        /* Hide button when printing/exporting */
         @media print {
             .btn-export { display: none !important; }
             body, #document-container { padding: 0; margin: 0; }
@@ -182,21 +180,21 @@
     <div class="section-title">SECTION 1: PERSONAL INFORMATION</div>
     <div class="form-group" style="display: flex; align-items: center;">
         <label style="white-space: nowrap;">Full Name:</label>
-        <input type="text" class="flex-input">
+        <input type="text" class="flex-input" value="Seakwa jonas mochebane">
     </div>
     <div class="form-row">
         <div>
             <label>Age:</label>
-            <input type="number" class="flex-input">
+            <input type="number" class="flex-input" value="21">
         </div>
         <div>
             <label>Where are you from?</label>
-            <input type="text" class="flex-input">
+            <input type="text" class="flex-input" value="Home: Limpopo Polokwane currently: Eastern cape port Elizabeth">
         </div>
     </div>
     <div class="form-group" style="display: flex; align-items: center;">
         <label style="white-space: nowrap;">Occupation:</label>
-        <input type="text" class="flex-input">
+        <input type="text" class="flex-input" value="CEO at D-TECH SERVICES">
     </div>
     <div class="form-group radio-group">
         <label class="inline-label">Relationship status:</label>
@@ -221,11 +219,11 @@
     <div class="section-title">SECTION 2: RELATIONSHIP HISTORY</div>
     <div class="form-group" style="display: flex; align-items: center;">
         <label style="white-space: nowrap;">How long was your last relationship?</label>
-        <input type="text" class="flex-input">
+        <input type="text" class="flex-input" value="+ 1 year">
     </div>
     <div class="form-group">
         <label>Why did it end?</label>
-        <textarea></textarea>
+        <textarea>She became too obsessed</textarea>
     </div>
     <div class="form-group radio-group">
         <label class="inline-label">Are you completely over your ex?</label>
@@ -240,18 +238,18 @@
     </div>
     <div class="form-group">
         <label>What did your previous relationship teach you?</label>
-        <textarea></textarea>
+        <textarea>Not every girl is a liability, some are genuinely in love with you and seek the betterment of your life</textarea>
     </div>
 
     <!-- SECTION 3 -->
     <div class="section-title">SECTION 3: EMOTIONAL INTELLIGENCE</div>
     <div class="form-group">
         <label>When you're angry with your partner, what do you normally do?</label>
-        <textarea></textarea>
+        <textarea>I communicated with them , though I might be a bit too direct or not straightforward enough depending on the situation but I do community</textarea>
     </div>
     <div class="form-group">
         <label>If your girlfriend tells you that something you did hurt her, what would you do?</label>
-        <textarea></textarea>
+        <textarea>Accommodate and try to understand how it hurt her .</textarea>
     </div>
     <div class="form-group radio-group">
         <label class="inline-label" style="display:block; margin-bottom:5px;">Can you communicate when you're upset instead of disappearing?</label>
@@ -261,7 +259,7 @@
     </div>
     <div class="form-group">
         <label>How do you handle disagreements?</label>
-        <textarea></textarea>
+        <textarea>Communication, we lay everything on the table. In hopes of us being grown adults and able to resolve</textarea>
     </div>
 
     <!-- SECTION 4 -->
@@ -322,29 +320,29 @@
     </div>
     <div class="form-group">
         <label>What is your biggest red flag?</label>
-        <input type="text" class="fill-line">
+        <input type="text" class="fill-line" value="I've never taken a girl out before">
     </div>
 
     <!-- SECTION 6 -->
     <div class="section-title">SECTION 6: BOYFRIEND DUTIES</div>
     <label>Rate yourself from 1–10:</label>
     <div class="ratings-grid">
-        <div>Communication: <input type="number" min="1" max="10"></div>
-        <div>Loyalty: <input type="number" min="1" max="10"></div>
-        <div>Affection: <input type="number" min="1" max="10"></div>
-        <div>Romance: <input type="number" min="1" max="10"></div>
-        <div>Patience: <input type="number" min="1" max="10"></div>
-        <div>Emotional support: <input type="number" min="1" max="10"></div>
-        <div>Consistency: <input type="number" min="1" max="10"></div>
-        <div>Planning dates: <input type="number" min="1" max="10"></div>
+        <div>Communication: <input type="number" min="1" max="10" value="10"></div>
+        <div>Loyalty: <input type="number" min="1" max="10" value="10"></div>
+        <div>Affection: <input type="number" min="1" max="10" value="10"></div>
+        <div>Romance: <input type="number" min="1" max="10" value="8"></div>
+        <div>Patience: <input type="number" min="1" max="10" value="7"></div>
+        <div>Emotional support: <input type="number" min="1" max="10" value="6"></div>
+        <div>Consistency: <input type="number" min="1" max="10" value="8"></div>
+        <div>Planning dates: <input type="number" min="1" max="10" value="2"></div>
     </div>
     <div class="form-group" style="margin-top: 15px;">
         <label>What does being a good boyfriend mean to you?</label>
-        <textarea></textarea>
+        <textarea>Taking care of my girlfriend, supporting her thoughts , feelings and emotions . allowing her to grow . N also insuring she has fun</textarea>
     </div>
     <div class="form-group">
         <label>What would you do to make your girlfriend feel loved and appreciated?</label>
-        <textarea></textarea>
+        <textarea>Still new to those type of things , haven't done dates, flowers, chocolate etc ...so I'd depends on my technically capabilities to build something digital for her</textarea>
     </div>
 
     <!-- SECTION 7 -->
@@ -395,14 +393,14 @@
     </div>
     <div class="form-group">
         <label>How would you reassure your girlfriend if she was feeling insecure?</label>
-        <textarea></textarea>
+        <textarea>Firstly a hug , would help calm her down a bit or at the very least let her know am available. I'd then go over the issue with her, and really from there what I say will depend on what the  insecurity is</textarea>
     </div>
 
     <!-- SECTION 9 -->
     <div class="section-title">SECTION 9: JEALOUSY & BOUNDARIES</div>
     <div class="form-group">
         <label class="inline-label">How jealous are you from 1–10?</label>
-        <input type="number" min="1" max="10" style="width: 60px;">
+        <input type="number" min="1" max="10" style="width: 60px;" value="7">
     </div>
     <div class="form-group radio-group">
         <label class="inline-label">Would you go through your girlfriend's phone?</label>
@@ -418,14 +416,14 @@
     </div>
     <div class="form-group">
         <label>What boundaries do you expect in a relationship?</label>
-        <textarea></textarea>
+        <textarea>No initiating hugs with the opposite gender, that and the limitations on opposite gender friends</textarea>
     </div>
 
     <!-- SECTION 10 -->
     <div class="section-title">SECTION 10: INTENTIONS</div>
     <div class="form-group">
         <label>Why are you applying for this position?</label>
-        <input type="text" class="fill-line">
+        <input type="text" class="fill-line" value="I need something I can growth. Someone who cares and loves . And a person who can help me organize myself. My isolated self needs a smart beautiful woman">
     </div>
     <div class="form-group radio-group">
         <label class="inline-label" style="display:block; margin-bottom:5px;">What are you looking for?</label>
@@ -438,11 +436,11 @@
     </div>
     <div class="form-group">
         <label>Where do you see yourself in 2–3 years?</label>
-        <input type="text" class="fill-line">
+        <input type="text" class="fill-line" value="Running a successful D-TECH ecosystem, being able to support my family, myself and you(my potential wife)">
     </div>
     <div class="form-group">
         <label>What does commitment mean to you?</label>
-        <input type="text" class="fill-line">
+        <input type="text" class="fill-line" value="Reaching the goal . Regardless of the negatives,falls, walls and despair">
     </div>
     <div class="form-group radio-group">
         <label class="inline-label">Are you willing to be loyal, honest, consistent and intentional?</label>
@@ -453,19 +451,28 @@
 
     <!-- FINAL INTERVIEW -->
     <div class="section-title">FINAL INTERVIEW</div>
-    <div class="form-group"><label>1. Why should I choose you over the other applicants?</label><textarea></textarea></div>
-    <div class="form-group"><label>2. What is one thing you can promise me as my boyfriend?</label><textarea></textarea></div>
-    <div class="form-group"><label>3. What is something you would NEVER do to your girlfriend?</label><textarea></textarea></div>
-    <div class="form-group"><label>4. What is your idea of a perfect date?</label><textarea></textarea></div>
-    <div class="form-group"><label>5. If we had an argument, what would you do before going to sleep?</label><textarea></textarea></div>
-    <div class="form-group"><label>6. If I'm having a terrible day, how would you make it better?</label><textarea></textarea></div>
-    <div class="form-group"><label>7. What are your intentions with me specifically?</label><textarea></textarea></div>
-    <div class="form-group"><label>8. Tell me one thing about yourself that I should know before considering your application.</label><textarea></textarea></div>
+    <div class="form-group"><label>1. Why should I choose you over the other applicants?</label><textarea>I truly only need and can only handle one female in my life(lowest Chance of a boy cheating you can get) 
+When am comfortable i really don't hold back my affection</textarea></div>
+    <div class="form-group"><label>2. What is one thing you can promise me as my boyfriend?</label><textarea>I'll always be with you , care for you and most important love and cherish you</textarea></div>
+    <div class="form-group"><label>3. What is something you would NEVER do to your girlfriend?</label><textarea>Probably shouting and hurting her physically</textarea></div>
+    <div class="form-group"><label>4. What is your idea of a perfect date?</label><textarea>I don't have a standard what she desires will be what is offered</textarea></div>
+    <div class="form-group"><label>5. If we had an argument, what would you do before going to sleep?</label><textarea>Something that let her know I still love her , even though we are arguing.. eg asking if she maybe what's a snack ..or bring her a glass of water n let her know this is for you if you get thirsty at night..I'd do something like that just to let her sleep knowing I still care about her</textarea></div>
+    <div class="form-group"><label>6. If I'm having a terrible day, how would you make it better?</label><textarea>I'll let us do something I didn't previous what us to do ..just to lighten the mood .. maybe get you , your favorite snack. N if you got chores cooking, laundry etc I'll help you out</textarea></div>
+    <div class="form-group"><label>7. What are your intentions with me specifically?</label><textarea style="min-height: 100px;">Have a partner I can enjoy life with ,Be rich , live life the way we want ,Have a happy family ( that's my intentions for us)
+
+My personal intentions is that I want someone to guide me into exploring and experiencing the world</textarea></div>
+    <div class="form-group"><label>8. Tell me one thing about yourself that I should know before considering your application.</label><textarea>I might be a bit occupied with dtech sometimes.. but I'll be with you as soon as you say hi</textarea></div>
     
     <div class="section-title">THE FINAL QUESTION</div>
     <div class="form-group">
         <label>If you become my boyfriend, what can I expect from you that will make me feel safe, loved, respected and appreciated?</label>
-        <textarea style="min-height: 80px;"></textarea>
+        <textarea style="min-height: 200px;">Safe : from men I'll be your shield 🙂.. emotionally I'll accommodate all your feels so you feel safe to let everything out with me 
+
+Loved : I'll treat you well , and take into account your needs and desires ,n hope to fulfill them 
+
+Respected : what ever you say I will take it and process it to understand your stand point n offer a adequate respond. Similar to saying no i will understand and comply 
+
+Appreciate: if you do something that deserves appreciate, best believe you'll get it . Am very easy to please I doubt you'll get any less appreciate than what you expect from me</textarea>
     </div>
 
     <!-- HR SECTION -->
@@ -508,11 +515,11 @@
     <div class="signatures">
         <div class="signature-box">
             <label style="margin-right: 10px;">Applicant Signature:</label>
-            <input type="text" class="flex-input">
+            <input type="text" class="flex-input" value="Mochebane S.J">
         </div>
         <div class="signature-box">
             <label style="margin-right: 10px;">Date:</label>
-            <input type="date" style="border:none; border-bottom:1px solid #000; font-family:inherit;">
+            <input type="text" style="border:none; border-bottom:1px solid #000; font-family:inherit;" value="09/11/2026">
         </div>
     </div>
 </div>
@@ -521,27 +528,10 @@
 
 <script>
     document.getElementById('exportBtn').addEventListener('click', function() {
-        // Fix the blank screen bug in html2canvas by copying values to DOM attributes
-        const inputs = document.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            if (input.type === 'checkbox' || input.type === 'radio') {
-                if (input.checked) {
-                    input.setAttribute('checked', 'checked');
-                } else {
-                    input.removeAttribute('checked');
-                }
-            } else {
-                input.setAttribute('value', input.value);
-                if (input.tagName === 'TEXTAREA') {
-                    input.innerHTML = input.value;
-                }
-            }
-        });
-
         const element = document.getElementById('document-container');
         const button = this;
         
-        button.style.display = 'none'; // Hide button before rendering
+        button.style.display = 'none';
 
         const opt = {
             margin:       10,
@@ -552,10 +542,10 @@
         };
 
         html2pdf().set(opt).from(element).save().then(function() {
-            button.style.display = 'block'; // Show button again
+            button.style.display = 'block';
         }).catch(err => {
             console.error("PDF Export failed:", err);
-            alert("Export failed. You can also press Ctrl+P (or Cmd+P) and choose 'Save as PDF' to export this document natively.");
+            alert("Export failed. Please press Ctrl+P (or Cmd+P) and choose 'Save as PDF' to export this document natively.");
             button.style.display = 'block';
         });
     });
