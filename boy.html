@@ -159,7 +159,7 @@
         .btn-export:hover {
             background-color: #333;
         }
-        
+
         @media print {
             .btn-export { display: none !important; }
             body, #document-container { padding: 0; margin: 0; }
@@ -462,7 +462,7 @@ When am comfortable i really don't hold back my affection</textarea></div>
 
 My personal intentions is that I want someone to guide me into exploring and experiencing the world</textarea></div>
     <div class="form-group"><label>8. Tell me one thing about yourself that I should know before considering your application.</label><textarea>I might be a bit occupied with dtech sometimes.. but I'll be with you as soon as you say hi</textarea></div>
-    
+
     <div class="section-title">THE FINAL QUESTION</div>
     <div class="form-group">
         <label>If you become my boyfriend, what can I expect from you that will make me feel safe, loved, respected and appreciated?</label>
@@ -511,7 +511,7 @@ Appreciate: if you do something that deserves appreciate, best believe you'll ge
         <p><strong>⚠ IMPORTANT NOTICE:</strong> Submitting this application does NOT guarantee employment. Successful candidates will undergo further screening, including consistency checks, communication assessments, loyalty testing and an extremely serious "Do you actually know how to treat a woman?" evaluation. ☺</p>
         <p>By signing below, you confirm that all information provided is truthful.</p>
     </div>
-    
+
     <div class="signatures">
         <div class="signature-box">
             <label style="margin-right: 10px;">Applicant Signature:</label>
@@ -530,8 +530,29 @@ Appreciate: if you do something that deserves appreciate, best believe you'll ge
     document.getElementById('exportBtn').addEventListener('click', function() {
         const element = document.getElementById('document-container');
         const button = this;
-        
+
         button.style.display = 'none';
+
+        // Synchronize current input values to HTML attributes so html2canvas captures them
+        const inputs = element.querySelectorAll('input');
+        inputs.forEach(input => {
+            if (input.type === 'radio' || input.type === 'checkbox') {
+                if (input.checked) {
+                    input.setAttribute('checked', 'checked');
+                } else {
+                    input.removeAttribute('checked');
+                }
+            } else {
+                input.setAttribute('value', input.value);
+            }
+        });
+
+        const textareas = element.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            textarea.innerHTML = textarea.value;
+            // Also set textContent just in case
+            textarea.textContent = textarea.value;
+        });
 
         const opt = {
             margin:       10,
